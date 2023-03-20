@@ -1,6 +1,5 @@
-<div style="text-align: center; width: 100%; background-color: #0f182a; background-image: linear-gradient(to right, #44c0f7 , #b7c4ec); padding: 20px 0; border-radius: 5px; color: white;">
-    <img src="docs/images/logo.svg" height="80px" alt="Molfeat Logo">
-    <h3>Molecular Featurization Made Easy</h3>
+<div align="center">
+    <img src="docs/images/logo-title.png" width="400px">
 </div>
 
 ---
