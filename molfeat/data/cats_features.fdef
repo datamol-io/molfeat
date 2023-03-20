@@ -1,0 +1,53 @@
+AtomType Hydroxylgroup [O;H1;+0]
+AtomType OxygenAtom [#8]
+AtomType PosCharge [+,++,+++,++++,++++]
+AtomType NegCharge [-,--,---,----]
+AtomType Carbon_AttachedOther [#6;$([#6]~[#7,#8,#9,#15,#16,#17,#35,#53,#14,#5,#34])]
+AtomType CarbonLipophilic [#6;+0;!{Carbon_AttachedOther}]
+AtomType ClBrI [#17,#35,#53]
+AtomType SC2 [#16;X2]([#6])[#6]
+AtomType NH_NH2_NH3 [#7;H1,H2,H3;+0]
+AtomType NH0 [#7;H0;+0]
+AtomType FlCl [#9,#17]
+AtomType NH2 [#7;H2]
+AtomType CSPOOH [C,S,P](=O)-[O;H1]
+DefineFeature SingleAtomDonor [{Hydroxylgroup},{NH_NH2_NH3}]
+  Family Donor
+  Weights 1.0
+EndFeature
+DefineFeature SingleAtomAcceptor [{OxygenAtom},{NH0},{FlCl}]
+  Family Acceptor
+  Weights 1.0
+EndFeature
+DefineFeature SingleAtomPositive [{PosCharge},{NH2}]
+  Family PosIonizable
+  Weights 1.0
+EndFeature
+DefineFeature SingleAtomNegative [{NegCharge},{CSPOOH}]
+  Family NegIonizable
+  Weights 1.0
+EndFeature
+DefineFeature SingleAtomLipophilic [!a;{CarbonLipophilic},{ClBrI},{SC2}]
+  Family Hydrophobe
+  Weights 1.0
+EndFeature
+DefineFeature Arom4 [a]1[a][a][a]1
+ Family Aromatic
+ Weights 1.0,1.0,1.0,1.0
+EndFeature
+DefineFeature Arom5 [a]1[a][a][a][a]1
+ Family Aromatic
+ Weights 1.0,1.0,1.0,1.0,1.0
+EndFeature
+DefineFeature Arom6 [a]1[a][a][a][a][a]1
+ Family Aromatic
+ Weights 1.0,1.0,1.0,1.0,1.0,1.0
+EndFeature
+DefineFeature Arom7 [a]1[a][a][a][a][a][a]1
+ Family Aromatic
+ Weights 1.0,1.0,1.0,1.0,1.0,1.0,1.0
+EndFeature
+DefineFeature Arom8 [a]1[a][a][a][a][a][a][a]1
+ Family Aromatic
+ Weights 1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+EndFeature

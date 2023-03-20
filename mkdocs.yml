@@ -1,0 +1,103 @@
+site_name: "molfeat"
+site_description: "An all in one package for molecule featurization"
+site_url: ""
+repo_url: "https://github.com/datamol-org/molfeat"
+repo_name: "datamol-org/molfeat"
+copyright: Copyright 2023 Valence
+
+remote_branch: "gh-pages"
+use_directory_urls: false
+docs_dir: "docs"
+
+nav:
+  - Overview: index.md
+  - Tutorials:
+      Getting Started: tutorials/getting-started.ipynb
+      Exploring Calculator: tutorials/calculator.ipynb
+      Common Featurizers: tutorials/fpvector.ipynb
+      Pretrained Featurizers: tutorials/pretrained.ipynb
+      Graph Featurizers: tutorials/graphs.ipynb
+      Pharmacophore Featurizers: tutorials/pharmacophore.ipynb
+      Advanced Features: tutorials/advanced.ipynb
+      Using Datacache: tutorials/datacache.ipynb
+
+  - Developers:
+      Contributing: developers/contribute.md
+      Extending Molfeat: developers/create-plugin.md
+      Registering your Plugin: developers/register-plugin.md
+
+  - API:
+      - molfeat.trans:
+          - molfeat.trans.base: api/molfeat.trans.base.md
+          - molfeat.trans.fp: api/molfeat.trans.fp.md
+          - molfeat.trans.graph: api/molfeat.trans.graph.md
+          - molfeat.trans.struct: api/molfeat.trans.struct.md
+          - molfeat.trans.concat: api/molfeat.trans.concat.md
+          - molfeat.trans.pretrained:
+              - hugginface: api/molfeat.trans.pretrained.hf_transformers.md
+              - graphormer: api/molfeat.trans.pretrained.graphormer.md
+              - dgl: api/molfeat.trans.pretrained.dgl_pretrained.md
+              - fcd: api/molfeat.trans.pretrained.fcd.md
+      - molfeat.calc: api/molfeat.calc.md
+      - molfeat.utils: api/molfeat.utils.md
+      - molfeat.viz: api/molfeat.viz.md
+
+  - License: license.md
+
+theme:
+  name: material
+  custom_dir: docs/_overrides
+  palette:
+    primary: pink
+    accent: orange
+  features:
+    - navigation.expand
+
+extra_css:
+  - _assets/css/custom.css
+
+#extra_javascript:
+#  - assets/js/google-analytics.js
+
+markdown_extensions:
+  - admonition
+  - markdown_include.include
+  - pymdownx.emoji
+  - pymdownx.highlight
+  - pymdownx.magiclink
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.tasklist
+  # For `tab_length=2` in the markdown extension
+  # See https://github.com/mkdocs/mkdocs/issues/545
+  - mdx_truly_sane_lists
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+  - mkdocstrings:
+      watch:
+        - molfeat/
+      handlers:
+        python:
+          setup_commands:
+            - import sys
+            - sys.path.append("docs")
+            - sys.path.append("molfeat")
+          selection:
+            new_path_syntax: true
+          rendering:
+            show_root_heading: false
+            heading_level: 3
+            show_if_no_docstring: true
+
+  - mkdocs-jupyter:
+      execute: false
+
+  - mike:
+      version_selector: true
+
+extra:
+  version:
+    provider: mike

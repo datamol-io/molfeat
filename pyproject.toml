@@ -1,0 +1,32 @@
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39']
+include = '\.pyi?$'
+exclude = 'typings/'
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--verbose --cov-report xml --cov-report term --color yes"
+testpaths = ["tests"]
+norecursedirs = "tests/helpers"
+filterwarnings = [
+    "ignore::DeprecationWarning:tensorboard.*:",
+    "ignore::DeprecationWarning:ray.*:",
+    "ignore::DeprecationWarning:numba.*:",
+    "ignore::DeprecationWarning:rdkit.*:",
+    "ignore::UserWarning:umap.*:",
+    "ignore::DeprecationWarning:dscribe.*:",
+    "ignore::DeprecationWarning:fairseq.*:",
+    "ignore::DeprecationWarning:torchvision.*:",
+    "ignore::DeprecationWarning:torch.*:",
+    "ignore::DeprecationWarning:mordred.*:",
+    "ignore::DeprecationWarning:dgl.*:",
+]
+
+
+
+[tool.coverage.run]
+omit = ["setup.py", "tests/*"]
+
+[tool.coverage.xml]
+output = "cov.xml"
