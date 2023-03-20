@@ -7,6 +7,7 @@
 [![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/datamol-org/datamol/blob/main/LICENSE)
 [![GitHub Repo stars](https://img.shields.io/github/stars/datamol-org/molfeat)](https://github.com/datamol-org/datamol/stargazers)
 [![GitHub Repo stars](https://img.shields.io/github/forks/datamol-org/molfeat)](https://github.com/datamol-org/datamol/network/members)
+
 Molfeat is a python library to simplify molecular featurization. It supports a wide variety of molecular featurizers out-of-the-box and can be easily extended to add your own.
 
 - :snake: Simple pythonic API.
