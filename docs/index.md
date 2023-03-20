@@ -1,54 +1,38 @@
-MolFeat: An all in one package for molecule featurization
----
+# Overview
 
-`molfeat` is a python library to featurize molecules. It offers a growing list of featurization schemes, including:
+Molfeat is a python library to simplify molecular featurization. It supports a wide variety of molecular featurizers out-of-the-box and can be easily extended to add your own.
 
-- Molecular descriptors (rdkit and mordred)
-- 2D and 3D pharmacophores
-- Pretrained featurizers (chemberta, chemgpt, etc)
-- Graph featurization (tensors and dgl)
-- Fingerprints 
-- Scaffold Key
+- :snake: Simple pythonic API.
+- :rocket: Fast and efficient featurization.
+- :arrows_counterclockwise: Unifies pre-trained embeddings and hand-crafted featurizers in a single package. 
+- :heavy_plus_sign: Easily extend Molfeat with your own featurizers through plugins. 
+- :chart_with_upwards_trend: Benefit from increased performance through a trouble-free caching system.
+
+Visit our website at https://molfeat.datamol.io.
 
 ## Installation
 
-### Installing MolFeat
-Use conda:
+### Installing Molfeat
+
+Use mamba:
 
 ```bash
-
-mamba install -c invivoai -c conda-forge molfeat
-
+mamba install -c conda-forge molfeat
 ```
+
+_**Tips:** You can replace `mamba` by `conda`._
+
+_**Note:** We highly recommend using a [Conda Python distribution](https://github.com/conda-forge/miniforge) to install Molfeat. The package is also pip installable if you need it: `pip install molfeat`._
+
 
 ### Installing Plugins
 
-The functionality of `MolFeat` can be extended through plugins. There are various types of functionality (new calculators, support for 3D, new pretrained featurizers, etc) that can be extended through plugins.
+The functionality of Molfeat can be extended through plugins. The usage of a plugin system ensures that the core package remains easy to install and as light as possible, while making it easy to extend its functionality with plug-and-play components. Additionally, it ensures that plugins can be developed independently from the core package, removing the bottleneck of a central party that reviews and approves new plugins. Consult the Molfeat documentation for more details on how to [create](developers/create-plugin.md) your own plugins.
 
-Any additional plugins to `MolFeat` can be installed using the prefered installation guide of the extension (mainly through `pip` or `conda`):
+This, however, does imply that the installation of a plugin is plugin-dependent: Please consult its documentation to learn more.
 
-Note that all `MolFeat` extensions follows the `molfeat-{myplugin}` naming convention.
+### Optional dependencies
+Not all featurizers of the Molfeat core package are supported by default. Some featurizers require additional dependencies. If you try to use a featurizer that requires additional dependencies, Molfeat will raise an error and will tell you which dependencies are missing and how to install these.
 
-
-### Dependencies
-
-`molfeat` depends primarly on `rdkit` and `datamol`. However, a few featurization methods require the installation of additional packages. For example, 3D pharmacophore featurization requires `pmapper`, while the DGL graph featurizers require `dgl` and in some rare cases `dgllife`.
-
-Except for `dgllife` and `map4`, all the optional dependencies are installed through conda.
-
-- To install `dgllife`, run `mamba install -c dglteam dgllife`
-- To install `map4`: see https://github.com/reymond-group/map4
-
-For the dependencies of any specific plugin, please refer to the plugin installation guide. 
-
-
-## More
-
-- Check the [getting started tutorial](tutorials/getting-started.ipynb) to learn more how to use `molfeat`
-- Check the [Developers](developers/) section if you plan to extend molfeat functionalities with new featurizers
-- Check the [API](api/) to get the full documentation
-
-
-## Licence
-
-`MolFeat` is under the `Apache 2.0` Licence. For more information, see [Licence](./license.md)
+## How to cite
+Please cite Molfeat if you use it in your research: [![DOI]()]().

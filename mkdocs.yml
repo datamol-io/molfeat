@@ -11,8 +11,9 @@ docs_dir: "docs"
 
 nav:
   - Overview: index.md
+  - Getting Started: usage.md
   - Tutorials:
-      Getting Started: tutorials/getting-started.ipynb
+      Featurize your first molecule: tutorials/getting-started.ipynb
       Exploring Calculator: tutorials/calculator.ipynb
       Common Featurizers: tutorials/fpvector.ipynb
       Pretrained Featurizers: tutorials/pretrained.ipynb
@@ -48,10 +49,12 @@ theme:
   name: material
   custom_dir: docs/_overrides
   palette:
-    primary: pink
-    accent: orange
+    primary: light blue
+    accent: purple
   features:
     - navigation.expand
+  favicon: images/logo.png
+  logo: images/logo.png
 
 extra_css:
   - _assets/css/custom.css
