@@ -1,8 +1,8 @@
 # Configuration
 
 $PROJECT = $GITHUB_REPO  = 'molfeat'
-$GITHUB_ORG = 'datamol-org'
-$PUSH_TAG_REMOTE = 'git@github.com:datamol-org/molfeat.git'
+$GITHUB_ORG = 'datamol-io'
+$PUSH_TAG_REMOTE = 'git@github.com:datamol-io/molfeat.git'
 
 # Logic
 

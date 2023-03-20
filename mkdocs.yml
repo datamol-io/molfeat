@@ -1,8 +1,8 @@
 site_name: "molfeat"
 site_description: "An all in one package for molecule featurization"
 site_url: ""
-repo_url: "https://github.com/datamol-org/molfeat"
-repo_name: "datamol-org/molfeat"
+repo_url: "https://github.com/datamol-io/molfeat"
+repo_name: "datamol-io/molfeat"
 copyright: Copyright 2023 Valence
 
 remote_branch: "gh-pages"

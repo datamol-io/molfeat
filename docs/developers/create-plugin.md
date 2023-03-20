@@ -14,7 +14,7 @@ The fastest way to jumpstart a `MolFeat` plugin package is to use the
 according to the desired name of your plugin, following `MolFeat` conventions.
 
 See also the
-[molfeat-padel](https://github.com/datamol-org/molfeat-padel) demo plugin package for an in-depth explanation of the files & folders.
+[molfeat-padel](https://github.com/datamol-io/molfeat-padel) demo plugin package for an in-depth explanation of the files & folders.
 
 In the following, we explain some of the conventions used when building a `MolFeat` plugin.
 
