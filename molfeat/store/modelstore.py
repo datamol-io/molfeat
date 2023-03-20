@@ -38,7 +38,7 @@ class ModelStore:
 
     # EN: be careful not to recreate ada
     # EN: should we just use modelstore ?
-    MODEL_STORE_BUCKET = "gs://molfeat-store-dev/artifacts/"
+    MODEL_STORE_BUCKET = "gs://molfeat-store-prod/artifacts/"
     MODEL_PATH_NAME = "model.save"
     METADATA_PATH_NAME = "metadata.json"
 

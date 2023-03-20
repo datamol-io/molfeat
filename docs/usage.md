@@ -1,6 +1,7 @@
 # Getting started
 
-Molfeat is organized in two main modules:
+## Organization
+Molfeat is organized in three main modules:
 
 - `molfeat.store`: The model store loads, lists and registers all featurizers.
 - `molfeat.calc`: A calculator is a callable that featurizes a single molecule. 
@@ -40,7 +41,7 @@ store = ModelStore()
 store.available_models
 
 # Find a featurizer and learn how to use it
-model_card = store.search(name="DeepChem-ChemBERTa-77M-MLM")[0]
+model_card = store.search(name="ChemBERTa-77M-MLM")[0]
 model_card.usage()
 
 # Load a featurizer through the store

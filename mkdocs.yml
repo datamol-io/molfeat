@@ -11,6 +11,7 @@ docs_dir: "docs"
 
 nav:
   - Overview: index.md
+  - Why bother?: benchmark.ipynb
   - Getting Started: usage.md
   - Tutorials:
       Featurize your first molecule: tutorials/getting-started.ipynb
