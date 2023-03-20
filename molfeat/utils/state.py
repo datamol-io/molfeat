@@ -67,9 +67,7 @@ def get_type_mapping(obj, mapping):
         if type(obj) is k:
             return v
 
-    raise ValueError(
-        f"No mapping found for obj {obj}. Valid types are {mapping.keys()}"
-    )
+    raise ValueError(f"No mapping found for obj {obj}. Valid types are {mapping.keys()}")
 
 
 def compare_state(
@@ -115,7 +113,5 @@ def compare_state(
         longest = len(release2) - len(release1)
         release1 += (0,) * max(0, longest)
         release2 += (0,) * max(0, -longest)
-        version_comp = (
-            release1[: allow_version_level + 1] == release2[: allow_version_level + 1]
-        )
+        version_comp = release1[: allow_version_level + 1] == release2[: allow_version_level + 1]
     return (state_dict_1 == state_dict_2) and version_comp

@@ -29,13 +29,9 @@ class SmilesConverter:
         if self.target == "smiles" or (self.target is None or self.target == "none"):
             self.converter = None
         elif self.target == "inchi":
-            self.converter = types.SimpleNamespace(
-                decode=dm.from_inchi, encode=dm.to_inchi
-            )
+            self.converter = types.SimpleNamespace(decode=dm.from_inchi, encode=dm.to_inchi)
         elif self.target == "selfies":
-            self.converter = types.SimpleNamespace(
-                decode=dm.from_selfies, encode=dm.to_selfies
-            )
+            self.converter = types.SimpleNamespace(decode=dm.from_selfies, encode=dm.to_selfies)
 
     def decode(self, inp: str):
         """Decode inputs into smiles

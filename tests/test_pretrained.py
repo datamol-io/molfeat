@@ -129,9 +129,7 @@ class TestHGFTransformer(ut.TestCase):
 
     @pytest.mark.xfail(reason="Cache might not be faster")
     def test_hgf_pretrained_cache(self):
-        trans = PretrainedHFTransformer(
-            dtype=np.float32, pooling="mean", precompute_cache=True
-        )
+        trans = PretrainedHFTransformer(dtype=np.float32, pooling="mean", precompute_cache=True)
         t0 = time.time()
         time_buffer = 1
         fps = trans.transform(self.smiles)

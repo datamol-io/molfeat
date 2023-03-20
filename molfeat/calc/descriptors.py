@@ -23,7 +23,7 @@ from molfeat.utils.datatype import to_numpy
 from molfeat.utils import requires
 from molfeat.calc.base import SerializableCalculator
 
-if requires.check_mordred():
+if requires.check("mordred"):
     from mordred import Calculator as MordredCalculator
     from mordred import descriptors as mordred_descriptors
 
@@ -100,9 +100,7 @@ class RDKitDescriptors2D(SerializableCalculator):
             self._columns = [x for x in descrs if x in all_features]
             unknown_descrs = set(descrs) - set(all_features)
             if len(unknown_descrs) > 0:
-                logger.warning(
-                    f"Following features are not supported: {unknown_descrs}"
-                )
+                logger.warning(f"Following features are not supported: {unknown_descrs}")
         else:
             self._columns = all_features
 
@@ -211,7 +209,7 @@ class MordredDescriptors(SerializableCalculator):
             do_not_standardize: Whether to force standardize molecules or keep it the same
 
         """
-        if not requires.check_mordred():
+        if not requires.check("mordred"):
             logger.error(
                 "`mordred` is not available, please install it `pip install 'mordred[full]'`"
             )
@@ -354,9 +352,7 @@ class RDKitDescriptors3D(SerializableCalculator):
             val = float("nan")
             if desc not in self.ignore_descrs:
                 try:
-                    val = getattr(Descriptors3D.rdMolDescriptors, desc)(
-                        mol, confId=conformer_id
-                    )
+                    val = getattr(Descriptors3D.rdMolDescriptors, desc)(mol, confId=conformer_id)
                 except:
                     pass
                 desc_val.append(val)
@@ -364,9 +360,7 @@ class RDKitDescriptors3D(SerializableCalculator):
             val = [float("nan")] * self._vec_descr_length[i]
             if desc not in self.ignore_descrs:
                 try:
-                    val = getattr(Descriptors3D.rdMolDescriptors, desc)(
-                        mol, confId=conformer_id
-                    )
+                    val = getattr(Descriptors3D.rdMolDescriptors, desc)(mol, confId=conformer_id)
                 except:
                     pass
                 desc_val.extend(val)

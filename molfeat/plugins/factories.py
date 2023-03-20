@@ -193,9 +193,7 @@ def PretrainedTransformerFactory(
 
 
 @overload
-def PretrainedTransformerFactory(
-    entry_point_name: str, load: Literal[False]
-) -> EntryPoint:
+def PretrainedTransformerFactory(entry_point_name: str, load: Literal[False]) -> EntryPoint:
     ...
 
 

@@ -7,19 +7,19 @@ from typing import Dict
 from typing import List
 from typing import Any
 
-import datamol as dm
 import numpy as np
 import pandas as pd
-from sklearn.base import BaseEstimator
+import datamol as dm
+
 from rdkit.Chem import rdchem
-from molfeat.trans.base import MoleculeTransformer
+from sklearn.base import BaseEstimator
 from molfeat.trans.fp import FPVecTransformer
 from molfeat.utils import datatype
 
 
 class FeatConcat(list, BaseEstimator):
     r"""
-    Concatenation container for `MoleculeTransformer`. This class allows
+    Concatenation container for `FPVecTransformer`. This class allows
     merging multiple fingerprints into a single one.
     It gives the ability to call the following methods
         - `fit`
@@ -64,7 +64,7 @@ class FeatConcat(list, BaseEstimator):
         self.collate_fn = collate_fn
 
     def append(self, item):
-        r"""Override the ``append`` to accept only ``MoleculeTransformer``"""
+        r"""Override the ``append`` to accept only ``FPVecTransformer``"""
         self._check_supported(item)
         super().append(item)
 
@@ -101,10 +101,8 @@ class FeatConcat(list, BaseEstimator):
 
     def _check_supported(self, item):
         r"""Check if the item is the right type"""
-        if not isinstance(item, MoleculeTransformer):
-            raise ValueError(
-                "MoleculeTransformer allowed only, provided {}".format(type(item))
-            )
+        if not isinstance(item, FPVecTransformer):
+            raise ValueError("FPVecTransformer allowed only, provided {}".format(type(item)))
 
     def get_collate_fn(self, *args, **kwargs):
         """
@@ -154,7 +152,7 @@ class FeatConcat(list, BaseEstimator):
 
     def transform(self, mols: List[Union[rdchem.Mol, str]], **kwargs):
         r"""
-        Calls the ``MoleculeTransformer.transform`` for each transformer in
+        Calls the ``FPVecTransformer.transform`` for each transformer in
         the current list, and concatenates the resulting fingerprints.
 
         Args:
@@ -230,7 +228,7 @@ class FeatConcat(list, BaseEstimator):
 
         Args:
             mols: List of SMILES or molecules
-            y: target for the fitting. Usually ignored for MoleculeTransformer
+            y: target for the fitting. Usually ignored for FPVecTransformer
             fit_kwargs:  named parameters for fit
             fit_kwargs:named parameters for transform
 
@@ -247,7 +245,7 @@ class FeatConcat(list, BaseEstimator):
 
     def fit(self, X: List[Union[rdchem.Mol, str]], y=None, **kwargs):
         r"""
-        Calls the ``MoleculeTransformer.fit`` for each transformer in the current list.
+        Calls the ``FPVecTransformer.fit`` for each transformer in the current list.
 
         Args:
             X: input list of molecules

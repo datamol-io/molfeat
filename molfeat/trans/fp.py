@@ -112,9 +112,7 @@ class FPVecTransformer(MoleculeTransformer):
                 radius = max(radius // 2, 1)
             params["radius"] = radius
         if any(x in kind for x in ["morgan", "morgan_circular", "morgan-circular"]):
-            kind.replace("_circular", "").replace("-circular", "").replace(
-                "morgan", "ecfp"
-            )
+            kind.replace("_circular", "").replace("-circular", "").replace("morgan", "ecfp")
         if kind not in cls.AVAILABLE_FPS:
             raise ValueError(f"{kind} is not a valid featurizer")
         params["length"] = length
@@ -197,9 +195,7 @@ class FPVecFilteredTransformer(FPVecTransformer):
         )
         self.occ_threshold = occ_threshold
         self.del_invariant = del_invariant
-        self._input_params.update(
-            occ_threshold=occ_threshold, del_invariant=del_invariant
-        )
+        self._input_params.update(occ_threshold=occ_threshold, del_invariant=del_invariant)
 
     def _update_params(self):
         params = copy.deepcopy(self._input_params)
@@ -224,9 +220,7 @@ class FPVecFilteredTransformer(FPVecTransformer):
             _parse_to_evaluable_str(self.dtype),
         )
 
-    def fit(
-        self, X: List[Union[rdchem.Mol, str]], y: Optional[list] = None, **fit_params
-    ):
+    def fit(self, X: List[Union[rdchem.Mol, str]], y: Optional[list] = None, **fit_params):
         """Fit the current transformer on given dataset.
 
         The goal of fitting is for example to identify nan columns values

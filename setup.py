@@ -15,16 +15,16 @@ install_requires = [
 
 setup(
     name="molfeat",
-    version="0.6.1",
+    version="0.0.1",
     author="Emmanuel Noutahi",
     author_email="emmanuel@valencediscovery.com",
-    url="https://github.com/valence-platform/molfeat",
+    url="https://github.com/datamol-org/molfeat",
     description="A python library to featurize molecules.",
     long_description=open("README.md", encoding="utf8").read(),
     long_description_content_type="text/markdown",
     project_urls={
-        "Bug Tracker": "https://github.com/valence-platform/molfeat/issues",
-        "Source Code": "https://github.com/valence-platform/molfeat",
+        "Bug Tracker": "https://github.com/datamol-org/molfeat/issues",
+        "Source Code": "https://github.com/datamol-org/molfeat",
     },
     python_requires=">=3.7",
     install_requires=install_requires,

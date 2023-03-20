@@ -120,7 +120,6 @@ def show_pharm_features(
 
 
 def _build_colors_widget(colors: Dict[str, list]):
-
     import ipywidgets as ipy
 
     box_layout = ipy.Layout(

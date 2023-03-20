@@ -18,8 +18,8 @@ nav:
       Pretrained Featurizers: tutorials/pretrained.ipynb
       Graph Featurizers: tutorials/graphs.ipynb
       Pharmacophore Featurizers: tutorials/pharmacophore.ipynb
-      Advanced Features: tutorials/advanced.ipynb
       Using Datacache: tutorials/datacache.ipynb
+      Advanced Features: tutorials/advanced.ipynb
 
   - Developers:
       Contributing: developers/contribute.md

@@ -47,7 +47,6 @@ jobs:
           cache-env: true
           extra-specs: |
             python=${{ matrix.python-version }}
-            rdkit=${{ matrix.rdkit-version }}
 
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v0

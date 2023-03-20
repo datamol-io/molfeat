@@ -45,12 +45,8 @@ CALCULATOR_SPECS = {
     "WeaveAtomCalculator": lambda: DGLWeaveAtomCalculator(),
     "BondCalculator": lambda: BondCalculator(),
     "EdgeMatCalculator": lambda: EdgeMatCalculator(),
-    "CustomBondCalculator": lambda: BondCalculator(
-        featurizer_funcs=CUSTOM_BOND_FEATURIZER
-    ),
-    "CustomAtomCalculator": lambda: AtomCalculator(
-        featurizer_funcs=CUSTOM_ATOM_FEATURIZER
-    ),
+    "CustomBondCalculator": lambda: BondCalculator(featurizer_funcs=CUSTOM_BOND_FEATURIZER),
+    "CustomAtomCalculator": lambda: AtomCalculator(featurizer_funcs=CUSTOM_ATOM_FEATURIZER),
 }
 
 
@@ -73,9 +69,7 @@ def test_to_from_state(calculator_builder):
     assert state == state2
 
 
-@pytest.mark.xfail(
-    not requires.check("dgllife"), reason="3rd party module dgllife is missing"
-)
+@pytest.mark.xfail(not requires.check("dgllife"), reason="3rd party module dgllife is missing")
 class TestGraphCalculator(ut.TestCase):
     r"""Test cases for basic graph featurizer vs dgl generation"""
     smiles = [

@@ -46,9 +46,7 @@ class TestMolTreeDecomposition(ut.TestCase):
         self.assertTrue(isinstance(tree[0], dgl.DGLGraph))
 
 
-@pytest.mark.xfail(
-    not requires.check("dgllife"), reason="3rd party module dgllife is missing"
-)
+@pytest.mark.xfail(not requires.check("dgllife"), reason="3rd party module dgllife is missing")
 class TestGraphTransformer(ut.TestCase):
     r"""Test cases for AdjGraphTransformer"""
     smiles = [

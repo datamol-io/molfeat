@@ -89,9 +89,7 @@ class ESMProteinFingerprint(MoleculeTransformer):
         return len(self.repr_layers)
 
     @torch.no_grad()
-    def _embed(
-        self, prot_seqs: List[str], prot_names: Optional[List[str]] = None, **kwargs
-    ):
+    def _embed(self, prot_seqs: List[str], prot_names: Optional[List[str]] = None, **kwargs):
         r"""
         Compute features for a single molecule.
         This method would potentially need to be reimplemented by child classes
@@ -112,9 +110,7 @@ class ESMProteinFingerprint(MoleculeTransformer):
         if isinstance(prot_names, str):
             prot_names = [prot_names]
         if len(prot_seqs) != len(prot_names):
-            raise ValueError(
-                "Must provide the same number of protein sequence and label"
-            )
+            raise ValueError("Must provide the same number of protein sequence and label")
         data = list(zip(prot_names, prot_seqs))
         *_, batch_tokens = self.batch_converter(data)
         if self.device is not None:
@@ -128,7 +124,6 @@ class ESMProteinFingerprint(MoleculeTransformer):
             for _, (seq, att_concats) in enumerate(zip(prot_seqs, results["contacts"])):
                 embeddings.append(att_concats[: len(seq), : len(seq)])
         else:
-
             representation = torch.stack(
                 [results["representations"][x] for x in self.repr_layers], dim=-1
             )
@@ -139,9 +134,7 @@ class ESMProteinFingerprint(MoleculeTransformer):
                     )
             else:
                 embeddings = list(
-                    representation.view(
-                        representation.shape[0], representation.shape[1], -1
-                    )
+                    representation.view(representation.shape[0], representation.shape[1], -1)
                 )
         return embeddings
 
@@ -222,13 +215,10 @@ class ESMProteinFingerprint(MoleculeTransformer):
         if self.dtype is not None and enforce_dtype:
             if self.contact or not self._representation.startswith("seq"):
                 features = [
-                    datatype.cast(feat, dtype=self.dtype, columns=self.columns)
-                    for feat in features
+                    datatype.cast(feat, dtype=self.dtype, columns=self.columns) for feat in features
                 ]
             else:
-                features = datatype.cast(
-                    features, dtype=self.dtype, columns=self.columns
-                )
+                features = datatype.cast(features, dtype=self.dtype, columns=self.columns)
         if not ignore_errors:
             return features
         return features, ids

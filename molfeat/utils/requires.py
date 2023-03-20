@@ -1,11 +1,12 @@
 from typing import Optional
-import importlib
 from packaging import version as pkg_version
 
+import importlib
+import functools
 
-def check(
-    module: str, min_version: Optional[str] = None, max_version: Optional[str] = None
-):
+
+@functools.lru_cache()
+def check(module: str, min_version: Optional[str] = None, max_version: Optional[str] = None):
     """Check if module is available for import
 
     Args:
@@ -42,58 +43,3 @@ def mock(name: str):
 
     """
     return lambda: (_ for _ in ()).throw(Exception(f"{name} is not available"))
-
-
-## the following are provided for convenience
-
-DGL_IS_AVAILABLE = False
-MAP4_IS_AVAILABLE = False
-MORDRED_IS_AVAILABLE = False
-FCD_IS_AVAILABLE = False
-
-try:
-    import dgl
-
-    DGL_IS_AVAILABLE = True
-except ImportError:
-    pass
-try:
-    import map4
-
-    MAP4_IS_AVAILABLE = True
-except ImportError:
-    pass
-
-try:
-    import mordred
-
-    MORDRED_IS_AVAILABLE = True
-except ImportError:
-    pass
-
-try:
-    import fcd_torch
-
-    FCD_IS_AVAILABLE = True
-except ImportError:
-    pass
-
-
-def check_dgl():
-    """Check a dgl is available"""
-    return DGL_IS_AVAILABLE
-
-
-def check_map4():
-    """Check map4 availability"""
-    return MAP4_IS_AVAILABLE
-
-
-def check_mordred():
-    """Check mordred availability"""
-    return MORDRED_IS_AVAILABLE
-
-
-def check_fcd():
-    """Check fcd availability"""
-    return FCD_IS_AVAILABLE

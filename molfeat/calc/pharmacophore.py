@@ -118,9 +118,7 @@ class Pharmacophore2D(SerializableCalculator):
         # Posprocessing
         if self.length and self._should_fold:
             # refold the fingerprint
-            fp = fold_count_fp(
-                fp, dim=self.length, binary=not (self.useCounts or False)
-            )
+            fp = fold_count_fp(fp, dim=self.length, binary=not (self.useCounts or False))
             if raw:
                 fp = to_fp(fp, bitvect=True)
 
@@ -243,9 +241,7 @@ class Pharmacophore3D(SerializableCalculator):
 
         self._init_feature_factory()
 
-    def __call__(
-        self, mol: Union[dm.Mol, str], conformer_id: int = -1, raw: bool = False
-    ):
+    def __call__(self, mol: Union[dm.Mol, str], conformer_id: int = -1, raw: bool = False):
         """Compute the Pharmacophore fingeprint for the input molecule.
 
         Args:
@@ -325,9 +321,7 @@ class Pharmacophore3D(SerializableCalculator):
         if clustered_features.empty:
             features_coords = []
         else:
-            features_coords = clustered_features[
-                ["feature_name", "coords"]
-            ].values.tolist()
+            features_coords = clustered_features[["feature_name", "coords"]].values.tolist()
         # Compute the fingerprint
         fp = self.compute_fp_from_coords(features_coords, raw=raw)
 
@@ -394,9 +388,7 @@ class Pharmacophore3D(SerializableCalculator):
 
         # Align the conformers
         if align:
-            mols, _ = commons.align_conformers(
-                mols, copy=False, conformer_id=conformer_id
-            )
+            mols, _ = commons.align_conformers(mols, copy=False, conformer_id=conformer_id)
 
         all_features = pd.DataFrame()
 
@@ -657,7 +649,6 @@ def get_feature_factory(
             feature_factory = ChemicalFeatures.BuildFeatureFactoryFromString(instream.read())  # type: ignore
 
     elif factory == "default":
-
         # Load default feature definition file
         fdefFile = os.path.join(RDConfig.RDDataDir, "BaseFeatures.fdef")
         feature_factory = ChemicalFeatures.BuildFeatureFactory(fdefFile)  # type: ignore

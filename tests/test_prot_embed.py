@@ -13,9 +13,7 @@ class Test_ESMProteinFingerprint(ut.TestCase):
     expected_dim = 768
 
     def test_esm_rep(self):
-        transformer = ESMProteinFingerprint(
-            featurizer="esm1_t6_43M_UR50S", pooling="max"
-        )
+        transformer = ESMProteinFingerprint(featurizer="esm1_t6_43M_UR50S", pooling="max")
         fps = transformer.transform(self.protein_seq)
         self.assertEqual(len(fps), 1)
         self.assertEqual(fps[0].shape[-1], self.expected_dim)
@@ -29,9 +27,7 @@ class Test_ESMProteinFingerprint(ut.TestCase):
         self.assertEqual(fps[0].shape[-1], self.expected_dim * len(layers))
 
     def test_esm_token_rep(self):
-        transformer = ESMProteinFingerprint(
-            featurizer="esm1_t6_43M_UR50S", pooling=None
-        )
+        transformer = ESMProteinFingerprint(featurizer="esm1_t6_43M_UR50S", pooling=None)
         fps = transformer.transform(self.protein_seq)
         self.assertEqual(fps[0].shape[-1], self.expected_dim)
         self.assertEqual(fps[0].shape[0], len(self.protein_seq) + 1)
@@ -44,11 +40,8 @@ class Test_ESMProteinFingerprint(ut.TestCase):
         self.assertTrue(fps[0].shape[0] == fps[0].shape[-1] == len(self.protein_seq))
 
 
-@pytest.mark.xfail(
-    not requires.check("bio_embeddings"), reason="3rd party module ada is missing"
-)
+@pytest.mark.xfail(not requires.check("bio_embeddings"), reason="3rd party module ada is missing")
 class TestProtBioFingerprint(ut.TestCase):
-
     protein_seq = [
         "MKTVRQERLKSIVRILERSKEPVSGAQLAEELSVSRQVIVQDIAYLRSLGYNIVATPRGYVLAGG",
         "KALTARQQEVFDLIRD",
@@ -60,12 +53,8 @@ class TestProtBioFingerprint(ut.TestCase):
             trans(self.protein_seq)
 
     def test_unpooled_fp(self):
-        trans1 = ProtBioFingerprint(
-            featurizer="fasttext", pooling=None, device=torch.device("cpu")
-        )
-        trans2 = ProtBioFingerprint(
-            featurizer="one_hot_encoding", pooling=None, device=None
-        )
+        trans1 = ProtBioFingerprint(featurizer="fasttext", pooling=None, device=torch.device("cpu"))
+        trans2 = ProtBioFingerprint(featurizer="one_hot_encoding", pooling=None, device=None)
         out1 = trans1(self.protein_seq, enforce_dtype=True)
         out2 = trans2(self.protein_seq)
         self.assertIsInstance(out1, list)  # we expect list because we cannot concat

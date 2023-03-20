@@ -124,9 +124,7 @@ class TestMolTransformer(ut.TestCase):
             trans = FPVecTransformer(fpkind, length=1024, n_jobs=2)
             smiles = dm.data.freesolv()["smiles"].values[:50]
             fps = trans.transform(smiles)
-            with tempfile.NamedTemporaryFile(
-                delete=True, suffix=f"{fpkind}.pkl"
-            ) as OUT:
+            with tempfile.NamedTemporaryFile(delete=True, suffix=f"{fpkind}.pkl") as OUT:
                 joblib.dump(trans, OUT.name)
                 reloaded_trans = joblib.load(OUT.name)
                 reloaded_fps = reloaded_trans.transform(smiles)
@@ -190,9 +188,7 @@ class TestMolTransformer(ut.TestCase):
             "ecfp:4": dict(length=2000, n_jobs=1, useChirality=False),
             "rdkit": dict(length=512),
         }
-        concat_trans = FeatConcat(
-            [trans1, trans2, trans3], dtype=np.float32, params=params
-        )
+        concat_trans = FeatConcat([trans1, trans2, trans3], dtype=np.float32, params=params)
         expected_length = len(trans1) + 512 + 2000
         self.assertEqual(expected_length, len(concat_trans.columns))
         concat_trans.fit(self.smiles)
@@ -204,9 +200,7 @@ class TestMolTransformer(ut.TestCase):
     def test_concat_separator(self):
         trans = "maccs||ecfp:4||rdkit"
         concat_trans1 = FeatConcat(trans, dtype=np.float32)
-        concat_trans2 = FeatConcat(
-            trans, dtype=np.float32, params=dict(rdkit=dict(length=2000))
-        )
+        concat_trans2 = FeatConcat(trans, dtype=np.float32, params=dict(rdkit=dict(length=2000)))
         concat_trans1.fit(self.smiles)
         concat_trans2.fit(self.smiles)
         out1, ids = concat_trans1(self.smiles, enforce_dtype=True, ignore_errors=True)
@@ -215,7 +209,6 @@ class TestMolTransformer(ut.TestCase):
 
     # @pytest.mark.xfail
     def test_caching(self):
-
         ## check performance when cache is added from existing cache
         smiles = dm.data.freesolv().smiles.values[:50]
         desc = MordredDescriptors(replace_nan=False, ignore_3D=True)
@@ -283,9 +276,7 @@ class TestMolTransformer(ut.TestCase):
             parquet_out = temp_file.name + ".parquet"
             cache.save_to_file(parquet_out, file_type="parquet")
             reloaded_cache = FileCache.load_from_file(parquet_out, file_type="parquet")
-            trans = PrecomputedMolTransformer(
-                cache=reloaded_cache, featurizer=featurizer
-            )
+            trans = PrecomputedMolTransformer(cache=reloaded_cache, featurizer=featurizer)
             feat_cache = trans(smiles_list)
             joblib.dump(trans, temp_file.name)
             trans_reloaded = joblib.load(temp_file.name)

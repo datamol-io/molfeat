@@ -32,9 +32,7 @@ class TestUtils(ut.TestCase):
         r_fn1 = commons.hex_to_fn(hex1)
         r_fn2 = commons.hex_to_fn(hex2)
         r_fn3 = commons.hex_to_fn(hex3)
-        self.assertListEqual(
-            [fn1(inp), fn2(inp), fn3(inp)], [r_fn1(inp), r_fn2(inp), r_fn3(inp)]
-        )
+        self.assertListEqual([fn1(inp), fn2(inp), fn3(inp)], [r_fn1(inp), r_fn2(inp), r_fn3(inp)])
         with self.assertRaises(AttributeError):
             # we cannot pickle local function
             # this is impossible by design
@@ -60,9 +58,7 @@ class TestUtils(ut.TestCase):
         self.assertTrue(np.allclose(arr1, torch_arr1.cpu().numpy()))
         arr2 = None
         self.assertIsNone(datatype.cast(arr2, int))
-        self.assertListEqual(
-            list(datatype.cast(dict1, list)["test"]), list(dict1["test"])
-        )
+        self.assertListEqual(list(datatype.cast(dict1, list)["test"]), list(dict1["test"]))
 
     def test_one_hot(self):
         val1 = 1
@@ -146,18 +142,14 @@ class TestCache(ut.TestCase):
 
         with tempfile.NamedTemporaryFile(delete=True, suffix=".pkl") as temp_file:
             joblib.dump(precomputed_data, temp_file.name)
-            cache_pkl = FileCache(
-                temp_file.name, mol_hasher=hash_fn, file_type="pickle"
-            )
+            cache_pkl = FileCache(temp_file.name, mol_hasher=hash_fn, file_type="pickle")
             # check data
             self.assertTrue(first_mol in cache_pkl)
             self.assertFalse("FAKE" in cache_pkl)
             np.testing.assert_array_equal(cache_pkl[first_smiles], first_smiles_val)
 
         with tempfile.NamedTemporaryFile(delete=True, suffix=".parquet") as temp_file:
-            df_parquet = pd.DataFrame(
-                precomputed_data.items(), columns=["keys", "feats"]
-            )
+            df_parquet = pd.DataFrame(precomputed_data.items(), columns=["keys", "feats"])
             df_parquet["values"] = df_parquet["feats"]
             df_parquet.to_parquet(temp_file.name)
             cache = FileCache(temp_file.name, mol_hasher=hash_fn, file_type="parquet")
@@ -193,24 +185,14 @@ class TestCache(ut.TestCase):
             csv_out = temp_file.name + ".csv"
             cache.save_to_file(parquet_out, file_type="parquet")
             cache.save_to_file(csv_out, file_type="csv")
-            reloaded_cache = FileCache.load_from_file(
-                temp_file.name, file_type="pickle"
-            )
-            reloaded_cache_parquet = FileCache.load_from_file(
-                parquet_out, file_type="parquet"
-            )
+            reloaded_cache = FileCache.load_from_file(temp_file.name, file_type="pickle")
+            reloaded_cache_parquet = FileCache.load_from_file(parquet_out, file_type="parquet")
             reloaded_cache_csv = FileCache.load_from_file(csv_out, file_type="csv")
             self.assertTrue(first_smiles in reloaded_cache, msg=reloaded_cache)
             self.assertFalse("FAKE" in reloaded_cache)
-            np.testing.assert_array_equal(
-                reloaded_cache[first_smiles], first_smiles_val
-            )
-            np.testing.assert_array_equal(
-                reloaded_cache_parquet[first_smiles], first_smiles_val
-            )
-            np.testing.assert_array_equal(
-                reloaded_cache_csv[first_smiles], first_smiles_val
-            )
+            np.testing.assert_array_equal(reloaded_cache[first_smiles], first_smiles_val)
+            np.testing.assert_array_equal(reloaded_cache_parquet[first_smiles], first_smiles_val)
+            np.testing.assert_array_equal(reloaded_cache_csv[first_smiles], first_smiles_val)
             for path in [parquet_out, csv_out]:
                 try:
                     os.unlink(path)
@@ -225,7 +207,6 @@ class TestCache(ut.TestCase):
         vals = datatype.to_numpy(featurizer.transform(smiles_list))
 
         with tempfile.NamedTemporaryFile(delete=True, suffix="csv") as temp_file:
-
             cache1 = FileCache(temp_file.name, file_type="csv")
             cache1(smiles_list[:50], featurizer)
 
@@ -236,14 +217,10 @@ class TestCache(ut.TestCase):
             cache3(smiles_list[100:150], featurizer)
 
             cache_merge = CacheList(cache1, cache2)
-            np.testing.assert_array_equal(
-                cache_merge.fetch(smiles_list)[:100], vals[:100]
-            )
+            np.testing.assert_array_equal(cache_merge.fetch(smiles_list)[:100], vals[:100])
 
             cache_merge.update(cache3)
-            np.testing.assert_array_equal(
-                cache_merge.fetch(smiles_list)[:150], vals[:150]
-            )
+            np.testing.assert_array_equal(cache_merge.fetch(smiles_list)[:150], vals[:150])
 
             cache_merge.clear()
             self.assertTrue(len(cache1) == 0)
@@ -271,9 +248,7 @@ class TestCache(ut.TestCase):
         mols, scores = commons.align_conformers(mols)
 
         # Get the average coordinates after aligning
-        dummy_pos_averages_aligned = [
-            dm.conformers.get_coords(mol).mean() for mol in mols
-        ]
+        dummy_pos_averages_aligned = [dm.conformers.get_coords(mol).mean() for mol in mols]
 
         # Reference mol should have the same coordinate
         assert np.allclose(dummy_pos_averages[:1], dummy_pos_averages_aligned[:1])

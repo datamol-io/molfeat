@@ -16,7 +16,7 @@ from molfeat.utils import datatype
 from molfeat.utils.commons import one_hot_encoding
 from molfeat.utils import requires
 
-if requires.check_dgl():
+if requires.check("dgl"):
     import dgl
 
 
@@ -68,10 +68,8 @@ class MolTreeDecompositionTransformer(MoleculeTransformer):
             self._vocab_size = None
             self._fitted = False
 
-        if not requires.check_dgl():
-            raise ValueError(
-                "dgl is required for this featurizer, please install it first"
-            )
+        if not requires.check("dgl"):
+            raise ValueError("dgl is required for this featurizer, please install it first")
 
         if self.dtype is not None and not datatype.is_dtype_tensor(self.dtype):
             raise ValueError("DGL featurizer only supports torch tensors currently")
@@ -109,9 +107,7 @@ class MolTreeDecompositionTransformer(MoleculeTransformer):
         """
         if self.vocab is not None:
             logger.warning("The previous vocabulary of fragments will be erased.")
-        self.vocab = self.featurizer.get_vocab(
-            X, output_file=output_file, log=self.verbose
-        )
+        self.vocab = self.featurizer.get_vocab(X, output_file=output_file, log=self.verbose)
         self._vocab_size = len(self.vocab) + 1
         self._fitted = True
 
@@ -150,10 +146,7 @@ class MolTreeDecompositionTransformer(MoleculeTransformer):
                 graph.add_edges(*edge[::-1])
 
             if self.one_hot:
-                enc = [
-                    one_hot_encoding(f, self.vocab, encode_unknown=True)
-                    for f in fragments
-                ]
+                enc = [one_hot_encoding(f, self.vocab, encode_unknown=True) for f in fragments]
                 enc = np.asarray(enc)
                 enc = datatype.cast(enc, (self.dtype or torch.float))
 

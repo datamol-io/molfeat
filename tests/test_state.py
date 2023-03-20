@@ -66,20 +66,14 @@ FEATURIZERS_SPEC = {
         ),
         bond_featurizer=BondCalculator(),
     ),
-    "AdjGraphTransformer": lambda: AdjGraphTransformer(
-        atom_featurizer=AtomCalculator()
-    ),
+    "AdjGraphTransformer": lambda: AdjGraphTransformer(atom_featurizer=AtomCalculator()),
     "DGLGraphTransformer": lambda: DGLGraphTransformer(),
     "TopoDistGraphTransformer": lambda: TopoDistGraphTransformer(),
     "PYGGraphTransformer": lambda: PYGGraphTransformer(),
-    "MolTreeDecompositionTransformer": lambda: MolTreeDecompositionTransformer(
-        verbose=False
-    ),
+    "MolTreeDecompositionTransformer": lambda: MolTreeDecompositionTransformer(verbose=False),
 }
 FEATURIZERS_ATOM_PICKLES = ["AdjGraphTransformer_with_bonds_custom_atom"]
-FEATURIZERS_BUILDER_ATOM_PICKLES = [
-    FEATURIZERS_SPEC[k] for k in FEATURIZERS_ATOM_PICKLES
-]
+FEATURIZERS_BUILDER_ATOM_PICKLES = [FEATURIZERS_SPEC[k] for k in FEATURIZERS_ATOM_PICKLES]
 FEATURIZERS_NAMES, FEATURIZERS_BUILDER = zip(
     *[(k, v) for k, v in FEATURIZERS_SPEC.items() if k not in FEATURIZERS_ATOM_PICKLES]
 )
@@ -91,7 +85,6 @@ FEATURIZERS_NAMES, FEATURIZERS_BUILDER = zip(
     ids=FEATURIZERS_NAMES,
 )
 def test_to_from_state(featurizer_builder):
-
     featurizer: MoleculeTransformer = featurizer_builder()
 
     # check to_state
@@ -180,7 +173,6 @@ def test_state_atom_bond_pickle(featurizer_builder, tmp_path):
 
 
 def test_PrecomputedMolTransformer_state(tmp_path):
-
     cache_path = tmp_path / "cache.parquet"
     smiles_list = ["[NH3+]CCSc1cc(-c2ccc[nH]2)c2c3c(ccc(F)c13)NC2=O", "CCCO"]
 
@@ -204,9 +196,7 @@ def test_PrecomputedMolTransformer_state(tmp_path):
     # reload from state
     featurizer_cache2: PrecomputedMolTransformer = MoleculeTransformer.from_state_dict(state)  # type: ignore
 
-    assert (
-        featurizer_cache2.base_featurizer.to_state_dict() == featurizer.to_state_dict()
-    )
+    assert featurizer_cache2.base_featurizer.to_state_dict() == featurizer.to_state_dict()
     assert len(featurizer_cache2.cache.cache) == 2
     assert all(
         featurizer_cache2.cache.to_dataframe(pack_bits=True)
@@ -215,7 +205,6 @@ def test_PrecomputedMolTransformer_state(tmp_path):
 
 
 def test_PrecomputedMolTransformer_init_from_state_file(tmp_path):
-
     cache_path = str(tmp_path / "cache.parquet")
     smiles_list = ["[NH3+]CCSc1cc(-c2ccc[nH]2)c2c3c(ccc(F)c13)NC2=O", "CCCO"]
 
@@ -242,13 +231,9 @@ def test_PrecomputedMolTransformer_init_from_state_file(tmp_path):
     assert "_molfeat_version" in state
 
     # reload from state
-    featurizer_cache2: PrecomputedMolTransformer = PrecomputedMolTransformer(
-        state_path=state_path
-    )
+    featurizer_cache2: PrecomputedMolTransformer = PrecomputedMolTransformer(state_path=state_path)
 
-    assert (
-        featurizer_cache2.base_featurizer.to_state_dict() == featurizer.to_state_dict()
-    )
+    assert featurizer_cache2.base_featurizer.to_state_dict() == featurizer.to_state_dict()
     assert len(featurizer_cache2.cache.cache) == 2
     assert all(
         featurizer_cache2.cache.to_dataframe(pack_bits=True)
@@ -293,18 +278,14 @@ def test_fp_state():
             "_molfeat_version": MOLFEAT_VERSION,
         },
     ]
-    for i, (fp_name, fp_len) in enumerate(
-        zip(["ecfp", "fcfp-count", "maccs"], [512, 241, 2048])
-    ):
+    for i, (fp_name, fp_len) in enumerate(zip(["ecfp", "fcfp-count", "maccs"], [512, 241, 2048])):
         calc = FPCalculator(fp_name, fp_len)
         state = calc.to_state_dict()
         assert state == expected_res[i]
     # check reloading
     calc = FPCalculator("ecfp", length=512, radius=3, useChirality=True)
     state = calc.to_state_dict()
-    mol = dm.to_mol(
-        "C1CC(=O)NC(=O)[C@H]1N2C(=O)C3=CC=CC=C3C2=O"
-    )  # isomeric thalidomide
+    mol = dm.to_mol("C1CC(=O)NC(=O)[C@H]1N2C(=O)C3=CC=CC=C3C2=O")  # isomeric thalidomide
     expected = calc(mol)
     reloaded_calc = FPCalculator.from_state_dict(state)
     out = reloaded_calc(mol)
@@ -410,7 +391,6 @@ def test_skeys_state():
 
 
 def test_filecache_state(tmp_path):
-
     # setup
     cache_path = tmp_path / "cache.parquet"
     cache = FileCache(cache_file=cache_path, file_type="parquet")
@@ -436,9 +416,7 @@ def test_filecache_state(tmp_path):
     # reload from state
     cache2 = FileCache.from_state_dict(state)
     assert len(cache2.cache) == 2
-    assert all(
-        cache.to_dataframe(pack_bits=True) == cache2.to_dataframe(pack_bits=True)
-    )
+    assert all(cache.to_dataframe(pack_bits=True) == cache2.to_dataframe(pack_bits=True))
 
 
 def test_state_comparison():
@@ -457,22 +435,10 @@ def test_state_comparison():
     }
     for allowed_version in ["major", 1, "micro", None]:
         results = []
-        results.append(
-            compare_state(state_dict1, state_dict1, allow_version_level=allowed_version)
-        )
-        results.append(
-            compare_state(state_dict1, state_dict2, allow_version_level=allowed_version)
-        )
-        results.append(
-            compare_state(state_dict1, state_dict3, allow_version_level=allowed_version)
-        )
-        results.append(
-            compare_state(state_dict1, state_dict4, allow_version_level=allowed_version)
-        )
-        results.append(
-            compare_state(state_dict1, state_dict5, allow_version_level=allowed_version)
-        )
-        results.append(
-            compare_state(state_dict1, state_dict6, allow_version_level=allowed_version)
-        )
+        results.append(compare_state(state_dict1, state_dict1, allow_version_level=allowed_version))
+        results.append(compare_state(state_dict1, state_dict2, allow_version_level=allowed_version))
+        results.append(compare_state(state_dict1, state_dict3, allow_version_level=allowed_version))
+        results.append(compare_state(state_dict1, state_dict4, allow_version_level=allowed_version))
+        results.append(compare_state(state_dict1, state_dict5, allow_version_level=allowed_version))
+        results.append(compare_state(state_dict1, state_dict6, allow_version_level=allowed_version))
         assert expected_results[allowed_version] == results

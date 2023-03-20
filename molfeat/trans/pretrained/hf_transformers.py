@@ -46,9 +46,7 @@ class HFExperiment:
         # we can save both the tokenizer and the model to the same path
         model.model.save_pretrained(local_path)
         model.tokenizer.save_pretrained(local_path)
-        dm.fs.copy_dir(
-            local_path, path, force=True, progress=True, leave_progress=False
-        )
+        dm.fs.copy_dir(local_path, path, force=True, progress=True, leave_progress=False)
         logger.info(f"Model saved to {path}")
         # clean up now
         if clean_up:
@@ -65,9 +63,7 @@ class HFExperiment:
         """
         if not dm.fs.is_local_path(path):
             local_path = tempfile.mkdtemp()
-            dm.fs.copy_dir(
-                path, local_path, force=True, progress=True, leave_progress=False
-            )
+            dm.fs.copy_dir(path, local_path, force=True, progress=True, leave_progress=False)
         else:
             local_path = path
 
@@ -184,9 +180,7 @@ class HFModel(PretrainedStoreModel):
             model_class: optional model class to provide if the model should be loaded with a specific class
             model_card: optional model card to provide for registering this model
         """
-        model = cls.from_pretrained(
-            model, tokenizer, model_class, model_name=model_card.name
-        )
+        model = cls.from_pretrained(model, tokenizer, model_class, model_name=model_card.name)
         model.store.register(model_card, model._model, save_fn=HFExperiment.save)
         return model
 

@@ -239,9 +239,7 @@ class CATS(SerializableCalculator):
         # lets calculate the CATS2D raw descriptor
         # bins: a, b, c ==> [a, b], [b, c], [c, *]
         # a is always 0
-        desc = [
-            [0 for x in range(len(self.bins))] for x in range(0, len(self.DESCRIPTORS))
-        ]
+        desc = [[0 for x in range(len(self.bins))] for x in range(0, len(self.DESCRIPTORS))]
         for (x, y), labels in ppp_mat.items():
             dist = dist_mat[x, y]
             # ignore all interactions greater than the max distance we set
@@ -304,7 +302,6 @@ class CATS(SerializableCalculator):
         mol = dm.to_mol(mol)
 
         if self.use_3d_distances:
-
             if mol.GetNumConformers() < 1:  # type: ignore
                 raise ValueError("Expected a molecule with conformers information.")
 
