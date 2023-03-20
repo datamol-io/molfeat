@@ -58,6 +58,7 @@ rever/
 
 # Dev notebooks
 nb/
+notebooks/
 
 # MkDocs
 site/
