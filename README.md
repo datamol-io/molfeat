@@ -1,4 +1,13 @@
-# `MolFeat`: An all in one package for molecule featurization
+<div style="text-align: center; width: 100%; background-color: #0f182a; background-image: linear-gradient(to right, #44c0f7 , #b7c4ec); padding: 20px 0; border-radius: 5px; color: white;">
+    <img src="docs/images/logo.svg" height="80px" alt="Molfeat Logo">
+    <h3>Molecular Featurization Made Easy</h3>
+</div>
+
+---
+
+[![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/datamol-org/datamol/blob/main/LICENSE)
+[![GitHub Repo stars](https://img.shields.io/github/stars/datamol-org/molfeat)](https://github.com/datamol-org/datamol/stargazers)
+[![GitHub Repo stars](https://img.shields.io/github/forks/datamol-org/molfeat)](https://github.com/datamol-org/datamol/network/members)
 
 `molfeat` is a python library to featurize molecules. It offers a growing list of featurization schemes, including:
 
