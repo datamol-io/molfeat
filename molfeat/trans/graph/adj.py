@@ -561,7 +561,7 @@ class DGLGraphTransformer(GraphTransformer):
 
         n_atoms = mol.GetNumAtoms()
         num_bonds = mol.GetNumBonds()
-        graph = dgl.DGLGraph()
+        graph = dgl.graph()
         graph.add_nodes(n_atoms)
         bond_src = []
         bond_dst = []

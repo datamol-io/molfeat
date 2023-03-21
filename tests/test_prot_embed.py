@@ -40,7 +40,9 @@ class Test_ESMProteinFingerprint(ut.TestCase):
         self.assertTrue(fps[0].shape[0] == fps[0].shape[-1] == len(self.protein_seq))
 
 
-@pytest.mark.xfail(not requires.check("bio_embeddings"), reason="3rd party module ada is missing")
+@pytest.mark.xfail(
+    not requires.check("bio_embeddings"), reason="3rd party module bio_embeddings is missing"
+)
 class TestProtBioFingerprint(ut.TestCase):
     protein_seq = [
         "MKTVRQERLKSIVRILERSKEPVSGAQLAEELSVSRQVIVQDIAYLRSLGYNIVATPRGYVLAGG",

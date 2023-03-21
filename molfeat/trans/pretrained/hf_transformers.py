@@ -219,7 +219,7 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
 
     def __init__(
         self,
-        kind: Union[str, HFModel] = "DeepChem-ChemBERTa-77M-MLM",
+        kind: Union[str, HFModel] = "ChemBERTa-77M-MLM",
         notation: Optional[str] = "none",
         pooling: str = "mean",
         concat_layers: Union[List[int], int] = -1,
