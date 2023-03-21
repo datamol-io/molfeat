@@ -88,14 +88,19 @@ trans, model_info = store.load(model_card)
 ## How to cite
 Please cite Molfeat if you use it in your research: [![DOI]()]().
 
+## Contribute
+
+See [developers](docs/developers/) for a comprehensive guide on how to contribute to `Molfeat`
+
 ## Changelogs
 
 See the latest changelogs at [CHANGELOG.rst](./CHANGELOG.rst).
+
+## Authors
+
+See [AUTHORS.rst](./AUTHORS.rst).
 
 ## License
 
 Under the Apache-2.0 license. See [LICENSE](LICENSE).
 
-## Authors
-
-See [AUTHORS.rst](./AUTHORS.rst).
