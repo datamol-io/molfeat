@@ -10,6 +10,7 @@ authors = [
     { name = "Emmanuel Noutahi", email = "emmanuel@valencediscovery.com" },
 ]
 readme = "README.md"
+license = { text = "Apache" }
 requires-python = ">=3.8"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -39,6 +40,8 @@ Documentation = "https://doc.molfeat.io"
 
 [tool.setuptools]
 include-package-data = true
+zip-safe = false
+license-files = ["LICENSE"]
 
 [tool.setuptools.packages.find]
 where = ["."]
@@ -59,9 +62,7 @@ minversion = "6.0"
 addopts = "--verbose --cov-report xml --cov-report term --color yes"
 testpaths = ["tests"]
 norecursedirs = "tests/helpers"
-filterwarnings = [
-    "ignore::DeprecationWarning:mordred.*:",
-]
+filterwarnings = ["ignore::DeprecationWarning:mordred.*:"]
 
 [tool.coverage.run]
 omit = ["setup.py", "tests/*"]
