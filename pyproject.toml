@@ -1,29 +1,68 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "molfeat"
+description = "A python library to featurize molecules."
+version = "0.0.1" # project
+authors = [
+    { name = "Emmanuel Noutahi", email = "emmanuel@valencediscovery.com" },
+]
+readme = "README.md"
+license = { text = "Apache" }
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Healthcare Industry",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+# NOTE(hadim): to fill for the pypi release
+dependencies = []
+
+[project.urls]
+Website = "https://molfeat.io"
+"Source Code" = "https://github.com/datamol-io/molfeat"
+"Bug Tracker" = "https://github.com/datamol-io/molfeat/issues"
+Documentation = "https://doc.molfeat.io"
+
+[tool.setuptools]
+include-package-data = true
+zip-safe = false
+license-files = ["LICENSE"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["molfeat", "molfeat.*"]
+exclude = []
+namespaces = true
+
+[tool.setuptools.package-data]
+"molfeat.data" = ["**/*"]
+
 [tool.black]
 line-length = 100
-target-version = ['py38', 'py39']
+target-version = ['py39', 'py310']
 include = '\.pyi?$'
-exclude = 'typings/'
 
 [tool.pytest.ini_options]
 minversion = "6.0"
 addopts = "--verbose --cov-report xml --cov-report term --color yes"
 testpaths = ["tests"]
 norecursedirs = "tests/helpers"
-filterwarnings = [
-    "ignore::DeprecationWarning:tensorboard.*:",
-    "ignore::DeprecationWarning:ray.*:",
-    "ignore::DeprecationWarning:numba.*:",
-    "ignore::DeprecationWarning:rdkit.*:",
-    "ignore::UserWarning:umap.*:",
-    "ignore::DeprecationWarning:dscribe.*:",
-    "ignore::DeprecationWarning:fairseq.*:",
-    "ignore::DeprecationWarning:torchvision.*:",
-    "ignore::DeprecationWarning:torch.*:",
-    "ignore::DeprecationWarning:mordred.*:",
-    "ignore::DeprecationWarning:dgl.*:",
-]
-
-
+filterwarnings = ["ignore::DeprecationWarning:mordred.*:"]
 
 [tool.coverage.run]
 omit = ["setup.py", "tests/*"]
