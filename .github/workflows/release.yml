@@ -1,11 +1,15 @@
-name: upload-to-pypi
+name: release
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - "*"
+
+permissions:
+  contents: write
 
 jobs:
-  upload-to-pypi:
+  release:
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
@@ -36,3 +40,8 @@ jobs:
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
           packages-dir: dist/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844
+        with:
+          body: "See [CHANGELOGS.rst](https://github.com/datamol-io/molfeat/blob/main/CHANGELOG.rst)."
