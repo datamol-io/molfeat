@@ -14,12 +14,12 @@ nav:
   - Why bother?: benchmark.ipynb
   - Getting Started: usage.md
   - Tutorials:
-      Types of featurizers: tutorials/types_of_featurizers.ipynb
-      Add your own featurizer: tutorials/add_your_own.ipynb
-      Integrations: tutorials/integrations.ipynb
-      Featurizing graphs: tutorials/graphs.ipynb
-      Save and Load: tutorials/save_and_load.ipynb
-      The Data Cache: tutorials/datacache.ipynb
+      - Types of featurizers: tutorials/types_of_featurizers.ipynb
+      - Add your own featurizer: tutorials/add_your_own.ipynb
+      - Integrations: tutorials/integrations.ipynb
+      - Featurizing graphs: tutorials/graphs.ipynb
+      - Save and Load: tutorials/save_and_load.ipynb
+      - The Data Cache: tutorials/datacache.ipynb
 
   - Developers:
       - Contributing: developers/contribute.md
