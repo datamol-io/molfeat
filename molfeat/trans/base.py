@@ -134,17 +134,6 @@ class BaseFeaturizer(BaseEstimator):
         """
         return inputs, labels
 
-    def postprocess(self, outputs: list):
-        """Postprocess output
-
-        Args:
-            outputs: featurized output to postprocess
-
-        Returns:
-            processed: post-processed output list
-        """
-        return outputs
-
     def get_collate_fn(self, *args, **kwargs):
         """
         Get collate function of this featurizer. In the implementation of this function

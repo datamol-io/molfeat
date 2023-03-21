@@ -138,7 +138,6 @@ class FPVecTransformer(MoleculeTransformer):
         params.pop("verbose", None)
         params.pop("dtype", None)
         params.pop("n_jobs", None)
-        params.pop("callbacks", None)
         self._fitted = False
         self.featurizer = self._prepare_featurizer(self.kind, self.length, **params)
 
@@ -216,7 +215,6 @@ class FPVecFilteredTransformer(FPVecTransformer):
         params.pop("verbose", None)
         params.pop("dtype", None)
         params.pop("n_jobs", None)
-        params.pop("callbacks", None)
         params.pop("occ_threshold", None)
         params.pop("del_invariant", None)
         self.featurizer = self._prepare_featurizer(self.kind, self.length, **params)

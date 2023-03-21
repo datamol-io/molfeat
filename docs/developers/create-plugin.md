@@ -1,33 +1,43 @@
 # Plugins
 
-For developers that are planning to extend `MolFeat` functionalities, we recommend using the [plugin system](https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/). 
+For developers that are planning to extend Molfeat functionalities, we recommend using the [plugin system](https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/). The usage of a plugin system ensures that the core package remains easy to install and as light as possible, while making it easy to extend its functionality with plug-and-play components. Additionally, it ensures that plugins can be developed independently of the core package, removing the bottleneck of a central party that reviews and approves new plugins.
 
-The following document focuses on how to *package* `MolFeat` extensions (plugins) so that they can be tested, published and eventually reused by others.
+However, plugins are not always required and sometimes a simple pull request is the better option. 
 
-`MolFeat` plugins can be bundled and distributed in a [Python package](https://docs.python.org/3/tutorial/modules.html#packages) that provides a set of extensions to `MolFeat`.
+| :heavy_check_mark: **Do** use plugins if...                                          | :x: **Do not** use plugins if...                                                                                           |
+|--------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| If a new featurizer can not be loaded by current classes.                            | If a new featurizer can already be loaded through existing classes.                                                        |
+| If a new featurizer requires additional, possibly difficult to install dependencies. | If a new featurizer requires no additional dependencies.                                                                   |
+| If you want to make a new class of featurizers available to the Molfeat community.   | If you can show through benchmarks that a featurizer is so performant, it should be available as part of the core package. |
+| If you want to extend the functionality of Molfeat for private / internal use.       |                                                                                                                            |
+!!! note annotate "Decided you don't need a plugin after all?"
+    Consult the [tutorials](../tutorials/add_your_own.ipynb) to learn how to extend Molfeat's functionality without plugins.
 
+The rest of this document details how to *package* Molfeat plugins (or _extensions_) so that they can be tested, published and eventually reused by others. 
+
+We recommend Molfeat plugins to be bundled and distributed as a [Python package](https://docs.python.org/3/tutorial/modules.html#packages) that provides a set of extensions to Molfeat.
 
 ## Quickstart
 
-The fastest way to jumpstart a `MolFeat` plugin package is to use the
-[MolFeat plugin template](...) in order to template the basic folder structure, already customized
-according to the desired name of your plugin, following `MolFeat` conventions.
-
-See also the
+The fastest way to jumpstart a Molfeat plugin package is to use the
+[Molfeat plugin template](...) in order to template the basic folder structure, already customized
+according to the desired name of your plugin, following Molfeat conventions. See also the
 [molfeat-padel](https://github.com/datamol-io/molfeat-padel) demo plugin package for an in-depth explanation of the files & folders.
 
-In the following, we explain some of the conventions used when building a `MolFeat` plugin.
+In the following document, we explain the conventions used when building a Molfeat plugin.
 
 ## Choosing a name
 
-The naming convention for `MolFeat` plugin packages is `
+The naming convention for Molfeat plugin packages is `
 
-- `molfeat-<myplugin>` for the plugin distribution on [PyPI](https://pypi.python.org) or [Conda](https://docs.conda.io/en/latest/) 
+- `molfeat-<myplugin>` for the plugin distribution on [PyPI](https://pypi.python.org) or [Conda](https://docs.conda.io/en/latest/).
 - `molfeat_<myplugin>` for the corresponding python package (since python package names cannot contain dashes), leading to the following folder structure:
 
+```
     molfeat-myplugin/
        molfeat_myplugin/
           __init__.py
+```
 
 If you intend to eventually publish your plugin package, please go to the [Register a plugin](./register-plugin.md) and choose a name that is not already taken. You are also encouraged to pre-register your package (see instructions provided), both to reserve your plugin name and to inform others of your ongoing development.
 
@@ -35,7 +45,7 @@ If you intend to eventually publish your plugin package, please go to the [Regis
 
 The overall folder structure of your plugin is up to you, but it is
 useful to follow a set of basic conventions. Here is an example of a
-folder structure for a `MolFeat` plugin, illustrating different levels of
+folder structure for a Molfeat plugin, illustrating different levels of
 nesting
 
     molfeat-myplugin/           - distribution folder
@@ -61,14 +71,14 @@ nesting
 
 ## Registering plugins through entry points
 
-A `MolFeat` plugin is an extension of `MolFeat` that announces itself by means of a new *entry point*. Adding a new entry point consists of the following steps:
+A Molfeat plugin is an extension of Molfeat that announces itself by means of a new *entry point*. Adding a new entry point consists of the following steps:
 
 > 1.  Deciding a name. We *strongly* suggest to start the name of each
 >     entry point with the name of the plugin package (omitting the
->     \'molfeat-\' prefix). For a package `molfeat-myplugin`, this will
+>     'molfeat-' prefix). For a package `molfeat-myplugin`, this will
 >     usually mean `"myplugin.<something>"`
 >
-> 2.  Finding the right entry point group. Three mains entry point are defined in molfeat `molfeat.calc` (for single molecule calculator: `SerializableCalculator`, which your class should inherit from), `molfeat.trans` (for `MoleculeTransformers`) and `molfeat.trans.pretrained` (for `PretrainedMolTransformer`)
+> 2.  Finding the right entry point group. Three main entry point are defined in molfeat `molfeat.calc` (for single molecule calculator: `SerializableCalculator`, which your class should inherit from), `molfeat.trans` (for `MoleculeTransformers`) and `molfeat.trans.pretrained` (for `PretrainedMolTransformer`)
 >
 > 3.  Adding the entry point to the `entry_points` field in the
 >     `pyproject.toml` file:
@@ -84,13 +94,14 @@ A `MolFeat` plugin is an extension of `MolFeat` that announces itself by means o
 For further details, see the Python [packaging user guide](https://packaging.python.org/en/latest/tutorials/packaging-projects/).
 
 
-The main `MolFeat` package will automatically discover new molfeat plugins and appropriately make them accessible and importable. 
+The core Molfeat package will automatically discover new molfeat plugins and appropriately make them accessible and importable. 
 
-For example, upon proper registration of a plugin offereing a new `SerializableCalculator`, it should be directly accessible in the list of available calculator for `MoleculeTransformer`.
+For example, upon proper registration of a plugin offering a new `SerializableCalculator`, it should be directly accessible in the list of available calculators for `MoleculeTransformer`.
 
-The following example show how to leverage the `molfeat-padel` plugin package automatically when installed. In this example, all three scenarios are valid.
+The following example shows how to discover the newly added functionality of the `molfeat-padel` plugin package automatically when installed. 
+In this example, all three scenarios are valid.
 
-1. initializing the calculator from the plugin package
+#### 1. Initializing the calculator through the plugin package.
 
 ```python
 
@@ -100,55 +111,49 @@ from molfeat_padel.calc.padel import PadelDescriptors
 trans = MoleculeTransformer(featurizer=PadelDescriptors())
 ```
 
-2. enable autodiscovery and addition of the `PadelDescriptors` as importable attribute to the entry point group `molfeat.calc`
+#### 2. Explicitly load registered plugins to automatically discover `PadelDescriptors`.
 
 ```python
 from molfeat.trans import MoleculeTransformer
 from molfeat.plugins import load_registered_plugins
 load_registered_plugins(add_submodules=True)
 
-# this is now possible
+# PadelDescriptors is now available under the core `molfeat.calc`
 from molfeat.calc import PadelDescriptors
 trans = MoleculeTransformer(featurizer=PadelDescriptors())
+trans = MoleculeTransformer(featurizer="PadelDescriptors")
 ```
 
-3. auto discovery of PadelDescriptors 
+#### 3. Import the plugin to automatically discover the `PadelDescriptors`.
 
 ```python
 from molfeat.trans import MoleculeTransformer
 import molfeat_padel
 
-trans = MoleculeTransformer(featurizer="PadelDescriptors")
 # works because PadelDescriptors is imported in the root init of molfeat_padel
-```
-
-```python
-from molfeat.trans import MoleculeTransformer
-from molfeat.plugins import load_registered_plugins
-load_registered_plugins(add_submodules=True)
 trans = MoleculeTransformer(featurizer="PadelDescriptors")
 ```
 
 
 ## Testing a plugin package
 
-Writing tests for your `MolFeat` plugins and running continuous integration
+Writing tests for your Molfeat plugins and running continuous integration
 tests using free platforms like [GitHub
 Actions](https://github.com/features/actions) is the best way to ensure
 that your plugin works and keeps working as it is being developed. We
-recommend using the [pytest](https://pytest.org) framework for testing `MolFeat` plugins.
+recommend using the [pytest](https://pytest.org) framework for testing Molfeat plugins.
 
 
 ## Documenting a plugin package
 
-`MolFeat` plugin packages are python packages, and general [best practises
+Molfeat plugin packages are python packages, and general [best practises
 for writing python documentation](https://docs.python-guide.org/writing/documentation/) apply.
 
-In the following, we mention a few hints that apply specifically to `MolFeat` plugins.
+In the following, we mention a few hints that apply specifically to Molfeat plugins.
 
 ### Repository-level documentation
 
-Since the source code of most `MolFeat` plugins is hosted on GitHub, the
+Since the source code of most Molfeat plugins is hosted on GitHub, the
 first contact of a new user with your plugin package is likely the
 landing page of your GitHub repository.
 
@@ -161,8 +166,8 @@ landing page of your GitHub repository.
 
 ### Source-code-level documentation
 
-Source-code level documentations matters both for users of your
-plugin\'s python API and, particularly, for attracting contributions
+Source-code level documentation matters both for users of your
+plugin's python API and, particularly, for attracting contributions
 from others.
 
 When adding new types of calculations or workflows, make sure to use
@@ -172,7 +177,7 @@ and use the `help` argument to document input ports and output ports.
 
 ## Registering your plugin as official MolFeat plugin
 
-Once you have designed, and tested your plugin package, you can officially register it to be listed on the `MolFeat`
+Once you have designed, and tested your plugin package, you can officially register it to be listed on the Molfeat
 website by following the instructions at [Register a plugin](./register-plugin.md) 
 
 
