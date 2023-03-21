@@ -1,13 +1,21 @@
 # Plugins
 
-For developers that are planning to extend Molfeat functionalities, we recommend using the [plugin system](https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/). 
-The usage of a plugin system ensures that the core package remains easy to install and as light as possible, while making it easy to extend its functionality with plug-and-play components. 
-Additionally, it ensures that plugins can be developed independently of the core package, removing the bottleneck of a central party that reviews and approves new plugins.
+For developers that are planning to extend Molfeat functionalities, we recommend using the [plugin system](https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/). The usage of a plugin system ensures that the core package remains easy to install and as light as possible, while making it easy to extend its functionality with plug-and-play components. Additionally, it ensures that plugins can be developed independently of the core package, removing the bottleneck of a central party that reviews and approves new plugins.
 
-The following document focuses on how to *package* Molfeat plugins (or _extensions_) so that they can be tested, published and eventually reused by others.
+However, plugins are not always required and sometimes a simple pull request is the better option. 
 
-Molfeat plugins can be bundled and distributed in a [Python package](https://docs.python.org/3/tutorial/modules.html#packages) that provides a set of extensions to Molfeat.
+| :heavy_check_mark: **Do** use plugins if...                                          | :x: **Do not** use plugins if...                                                                                           |
+|--------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| If a new featurizer can not be loaded by current classes.                            | If a new featurizer can already be loaded through existing classes.                                                        |
+| If a new featurizer requires additional, possibly difficult to install dependencies. | If a new featurizer requires no additional dependencies.                                                                   |
+| If you want to make a new class of featurizers available to the Molfeat community.   | If you can show through benchmarks that a featurizer is so performant, it should be available as part of the core package. |
+| If you want to extend the functionality of Molfeat for private / internal use.       |                                                                                                                            |
+!!! note annotate "Decided you don't need a plugin after all?"
+    Consult the [tutorials](../tutorials/add_your_own.ipynb) to learn how to extend Molfeat's functionality without plugins.
 
+The rest of this document details how to *package* Molfeat plugins (or _extensions_) so that they can be tested, published and eventually reused by others. 
+
+We recommend Molfeat plugins to be bundled and distributed as a [Python package](https://docs.python.org/3/tutorial/modules.html#packages) that provides a set of extensions to Molfeat.
 
 ## Quickstart
 
@@ -93,7 +101,7 @@ For example, upon proper registration of a plugin offering a new `SerializableCa
 The following example shows how to discover the newly added functionality of the `molfeat-padel` plugin package automatically when installed. 
 In this example, all three scenarios are valid.
 
-**1. Initializing the calculator through the plugin package.**
+#### 1. Initializing the calculator through the plugin package.
 
 ```python
 
@@ -103,7 +111,7 @@ from molfeat_padel.calc.padel import PadelDescriptors
 trans = MoleculeTransformer(featurizer=PadelDescriptors())
 ```
 
-**2. Explicitly load registered plugins to automatically discover `PadelDescriptors`.**
+#### 2. Explicitly load registered plugins to automatically discover `PadelDescriptors`.
 
 ```python
 from molfeat.trans import MoleculeTransformer
@@ -116,7 +124,7 @@ trans = MoleculeTransformer(featurizer=PadelDescriptors())
 trans = MoleculeTransformer(featurizer="PadelDescriptors")
 ```
 
-**3. Import the plugin to automatically discover the `PadelDescriptors`.** 
+#### 3. Import the plugin to automatically discover the `PadelDescriptors`.
 
 ```python
 from molfeat.trans import MoleculeTransformer

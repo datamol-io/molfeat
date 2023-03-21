@@ -16,9 +16,9 @@ nav:
   - Tutorials:
       Types of featurizers: tutorials/types_of_featurizers.ipynb
       Add your own featurizer: tutorials/add_your_own.ipynb
-      Customization: tutorials/customization.ipynb
-      Featurization for ML: tutorials/for_ml.ipynb
       Integrations: tutorials/integrations.ipynb
+      Featurizing graphs: tutorials/graphs.ipynb
+      Save and Load: tutorials/save_and_load.ipynb
       The Data Cache: tutorials/datacache.ipynb
 
   - Developers:
@@ -34,10 +34,10 @@ nav:
           - molfeat.trans.struct: api/molfeat.trans.struct.md
           - molfeat.trans.concat: api/molfeat.trans.concat.md
           - molfeat.trans.pretrained:
-              - hugginface: api/molfeat.trans.pretrained.hf_transformers.md
-              - graphormer: api/molfeat.trans.pretrained.graphormer.md
-              - dgl: api/molfeat.trans.pretrained.dgl_pretrained.md
-              - fcd: api/molfeat.trans.pretrained.fcd.md
+              - HuggingFace: api/molfeat.trans.pretrained.hf_transformers.md
+              - Graphormer: api/molfeat.trans.pretrained.graphormer.md
+              - DGL: api/molfeat.trans.pretrained.dgl_pretrained.md
+              - FCD: api/molfeat.trans.pretrained.fcd.md
       - molfeat.calc: api/molfeat.calc.md
       - molfeat.utils: api/molfeat.utils.md
       - molfeat.viz: api/molfeat.viz.md
@@ -52,7 +52,7 @@ theme:
     accent: purple
   features:
     - navigation.expand
-  favicon: images/logo.png
+  favicon: images/favicon.png
   logo: images/logo.png
 
 extra_css:

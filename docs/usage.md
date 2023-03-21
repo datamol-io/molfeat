@@ -6,12 +6,10 @@ Molfeat is organized in three main modules:
 - `molfeat.store`: The model store loads, lists and registers all featurizers.
 - `molfeat.calc`: A calculator is a callable that featurizes a single molecule. 
 - `molfeat.trans`: A transformer is a scikit-learn compatible class that wraps a calculator in a featurization pipeline.
-  - All transformers in Molfeat inherit from `MoleculeTransformer`.
-  - Override `postprocess()` or `preprocess()` to customize the featurization pipeline.
-  - Further customize the featurization pipeline through callbacks.
-  - Override `get_collate_fn()` to associate the featurizer with a specific collate function.
-  - Easily parallelize the featurization pipeline by setting the `n_jobs` parameter.
-  - Save and load transformers through serialized state dicts.
+
+!!! note annotate "Learn more about the different types of featurizers"
+    Consult [this tutorial](../tutorials/types_of_featurizers.html) to dive deeper into the differences between the calculator and transformer.
+    It provides a good overview of the different types of featurizers and has pointers to learn about more advanced features. 
 
 ## Quick API Tour
 ```python
@@ -47,3 +45,4 @@ model_card.usage()
 # Load a featurizer through the store
 trans, model_info = store.load(model_card)
 ```
+
