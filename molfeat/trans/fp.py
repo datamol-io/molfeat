@@ -93,7 +93,7 @@ class FPVecTransformer(MoleculeTransformer):
 
     def __len__(self):
         """Compute featurizer length"""
-        if self._length is not None:
+        if getattr(self, "cols_to_keep", None) is None and self._length is not None:
             return self._length
         return super().__len__()
 
