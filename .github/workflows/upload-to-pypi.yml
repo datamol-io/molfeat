@@ -1,0 +1,38 @@
+name: upload-to-pypi
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  upload-to-pypi:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    defaults:
+      run:
+        shell: bash -l {0}
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+
+      - name: Setup conda
+        uses: mamba-org/provision-with-micromamba@v14
+        with:
+          environment-file: env.yml
+          environment-name: molfeat
+          cache-downloads: true
+          cache-env: true
+
+      - name: Install library
+        run: python -m pip install --no-deps .
+
+      - name: Build the wheel and sdist
+        run: python -m build
+
+      - name: Publish package to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
+          packages-dir: dist/

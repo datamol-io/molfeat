@@ -22,9 +22,9 @@ nav:
       The Data Cache: tutorials/datacache.ipynb
 
   - Developers:
-      Contributing: developers/contribute.md
-      Extending Molfeat: developers/create-plugin.md
-      Registering your Plugin: developers/register-plugin.md
+      - Contributing: developers/contribute.md
+      - Extending Molfeat: developers/create-plugin.md
+      - Registering your Plugin: developers/register-plugin.md
 
   - API:
       - molfeat.trans:
