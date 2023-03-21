@@ -139,7 +139,7 @@ class MolTreeDecompositionTransformer(MoleculeTransformer):
             n_nodes = len(fragments)
             enc = [self.vocab.index(f) + 1 if f in self.vocab else 0 for f in fragments]
             enc = datatype.cast(enc, (self.dtype or torch.long))
-            graph = dgl.graph()
+            graph = dgl.graph(([], []))
             graph.add_nodes(n_nodes)
             for edge in edges:
                 graph.add_edges(*edge)
