@@ -14,14 +14,12 @@ nav:
   - Why bother?: benchmark.ipynb
   - Getting Started: usage.md
   - Tutorials:
-      Featurize your first molecule: tutorials/getting-started.ipynb
-      Exploring Calculator: tutorials/calculator.ipynb
-      Common Featurizers: tutorials/fpvector.ipynb
-      Pretrained Featurizers: tutorials/pretrained.ipynb
-      Graph Featurizers: tutorials/graphs.ipynb
-      Pharmacophore Featurizers: tutorials/pharmacophore.ipynb
-      Using Datacache: tutorials/datacache.ipynb
-      Advanced Features: tutorials/advanced.ipynb
+      Types of featurizers: tutorials/types_of_featurizers.ipynb
+      Add your own featurizer: tutorials/add_your_own.ipynb
+      Customization: tutorials/customization.ipynb
+      Featurization for ML: tutorials/for_ml.ipynb
+      Integrations: tutorials/integrations.ipynb
+      The Data Cache: tutorials/datacache.ipynb
 
   - Developers:
       Contributing: developers/contribute.md

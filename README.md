@@ -45,7 +45,7 @@ Not all featurizers of the Molfeat core package are supported by default. Some f
 ## API tour
 ```python
 import datamol as dm
-from molfeat.calc import get_calculator
+from molfeat.calc import FPCalculator
 from molfeat.trans import MoleculeTransformer
 from molfeat.store.modelstore import ModelStore
 
@@ -53,7 +53,7 @@ from molfeat.store.modelstore import ModelStore
 data = dm.data.freesolv().sample(500).smiles.values
 
 # Featurize a single molecule
-calc = get_calculator("ecfp")
+calc = FPCalculator("ecfp")
 calc(data[0])
 
 # Define a parallelized featurization pipeline
