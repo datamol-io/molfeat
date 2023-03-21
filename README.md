@@ -96,11 +96,15 @@ See [developers](docs/developers/) for a comprehensive guide on how to contribut
 
 See the latest changelogs at [CHANGELOG.rst](./CHANGELOG.rst).
 
-## Authors
+## Maintainers
 
-See [AUTHORS.rst](./AUTHORS.rst).
+* @cwognum
+* @maclandrol
+* @hadim
+
 
 ## License
 
 Under the Apache-2.0 license. See [LICENSE](LICENSE).
+
 
