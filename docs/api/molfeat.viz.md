@@ -1,3 +1,0 @@
-# `molfeat.viz`
-
-::: molfeat.viz

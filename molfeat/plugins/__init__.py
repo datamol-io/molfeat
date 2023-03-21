@@ -1,1 +1,0 @@
-from .entry_point import load_registered_plugins
