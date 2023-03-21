@@ -132,9 +132,7 @@ class TreeDecomposer:
                         c1, c2 = cnei[i], cnei[j]
                         inter = set(cliques[c1]) & set(cliques[c2])
                         if edges[(c1, c2)] < len(inter):
-                            edges[(c1, c2)] = len(
-                                inter
-                            )  # cnei[i] < cnei[j] by construction
+                            edges[(c1, c2)] = len(inter)  # cnei[i] < cnei[j] by construction
 
         edges = [u + (MST_MAX_WEIGHT - v,) for u, v in edges.items()]
         frags = [MolFragmentToSmiles(mol, cluster) for cluster in cliques]

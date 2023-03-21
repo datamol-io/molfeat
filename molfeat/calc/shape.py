@@ -119,9 +119,7 @@ class ElectroShapeDescriptors(SerializableCalculator):
         if self._columns is None:
             self._columns = []
             for i in range(1, 6):
-                self._columns.extend(
-                    [f"dist-{i}-mean", f"dist-{i}-std", f"dist-{i}-crb"]
-                )
+                self._columns.extend([f"dist-{i}-mean", f"dist-{i}-std", f"dist-{i}-crb"])
 
         return self._columns
 
@@ -235,9 +233,7 @@ class ElectroShapeDescriptors(SerializableCalculator):
             mean = np.mean(distances)
             shape_descriptor[0 + i] = mean
             shape_descriptor[1 + i] = np.std(distances)
-            shape_descriptor[2 + i] = cbrt(
-                np.sum(((distances - mean) ** 3) / distances.size)
-            )
+            shape_descriptor[2 + i] = cbrt(np.sum(((distances - mean) ** 3) / distances.size))
             i += 3
         if self.replace_nan:
             return np.nan_to_num(shape_descriptor)

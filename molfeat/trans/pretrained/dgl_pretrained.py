@@ -20,8 +20,7 @@ from molfeat.trans.pretrained.base import PretrainedMolTransformer
 from molfeat.utils import requires
 from molfeat.store import ModelStore
 
-if requires.check_dgl() and requires.check("dgllife"):
-
+if requires.check("dgl") and requires.check("dgllife"):
     import dgl
     from dgl.nn.pytorch.glob import AvgPooling, MaxPooling, SumPooling
 
@@ -67,9 +66,7 @@ class DGLModel(PretrainedStoreModel):
         if query is None:
             return cls.AVAILABLE_MODELS
         else:
-            return [
-                x for x in cls.AVAILABLE_MODELS if re.search(query, x, re.IGNORECASE)
-            ]
+            return [x for x in cls.AVAILABLE_MODELS if re.search(query, x, re.IGNORECASE)]
 
     @classmethod
     def from_pretrained(cls, model_name: str):
@@ -129,9 +126,7 @@ class PretrainedDGLTransformer(PretrainedMolTransformer):
 
         """
         if not requires.check("dgllife"):
-            raise ValueError(
-                "Cannot find dgl|dgllife. It's required for this featurizer !"
-            )
+            raise ValueError("Cannot find dgl|dgllife. It's required for this featurizer !")
         super().__init__(
             dtype=dtype,
             pooling=pooling,
@@ -197,9 +192,7 @@ class PretrainedDGLTransformer(PretrainedMolTransformer):
         mol_emb = []
         for batch_id, bg in enumerate(data_loader):
             if self.verbose:
-                logger.debug(
-                    "Processing batch {:d}/{:d}".format(batch_id + 1, len(data_loader))
-                )
+                logger.debug("Processing batch {:d}/{:d}".format(batch_id + 1, len(data_loader)))
             nfeats = [
                 bg.ndata.pop("atomic_number").to(torch.device("cpu")),
                 bg.ndata.pop("chirality_type").to(torch.device("cpu")),
@@ -216,9 +209,7 @@ class PretrainedDGLTransformer(PretrainedMolTransformer):
 
     def _embed_jtvae(self, dataset):
         """Embed molecules using JTVAE"""
-        dataloader = DataLoader(
-            dataset, batch_size=1, collate_fn=JTVAECollator(training=False)
-        )
+        dataloader = DataLoader(dataset, batch_size=1, collate_fn=JTVAECollator(training=False))
 
         mol_emb = []
         for tree, tree_graph, mol_graph in dataloader:

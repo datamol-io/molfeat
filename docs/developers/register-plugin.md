@@ -23,7 +23,7 @@ We strongly encourage to **register at early stages of development**, both to re
         documentation_url: ~ 
 
     ```
-3. Create a [Pull Request](https://github.com/valence-platform/molfeat/pulls) to this repository
+3. Create a [Pull Request](https://github.com/datamol-io/molfeat/pulls) to this repository
 
 ### Valid keys for each plugin
 

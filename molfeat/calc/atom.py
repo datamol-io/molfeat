@@ -275,9 +275,7 @@ class DGLCanonicalAtomCalculator(AtomCalculator):
         Returns:
             concatenated_dict: a dict with a single key where all array have been concatenated
         """
-        out = concat_dict(
-            data_dict, new_name=self.name, order=list(self.featurizer_funcs.keys())
-        )
+        out = concat_dict(data_dict, new_name=self.name, order=list(self.featurizer_funcs.keys()))
         return out
 
 
@@ -300,7 +298,6 @@ class DGLWeaveAtomCalculator(DGLCanonicalAtomCalculator):
     }
 
     def __init__(self, concat: bool = True, name: str = "hv"):
-
         featurizer_funcs = self.DEFAULT_FEATURIZER
         featurizer_funcs["atom_weavenet_props"] = self.atom_weave_props
         super().__init__(concat=concat, name=name, featurizer_funcs=featurizer_funcs)

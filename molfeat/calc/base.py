@@ -131,13 +131,9 @@ class SerializableCalculator(abc.ABC, metaclass=_CalculatorMeta):
         override_args: Optional[dict] = None,
     ):
         if state_path.endswith("yaml") or state_path.endswith("yml"):
-            return cls.from_state_yaml_file(
-                filepath=state_path, override_args=override_args
-            )
+            return cls.from_state_yaml_file(filepath=state_path, override_args=override_args)
         elif state_path.endswith("json"):
-            return cls.from_state_json_file(
-                filepath=state_path, override_args=override_args
-            )
+            return cls.from_state_json_file(filepath=state_path, override_args=override_args)
         elif state_path.endswith("pkl"):
             with fsspec.open(state_path, "rb") as IN:
                 return joblib.load(IN)

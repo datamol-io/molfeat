@@ -15,7 +15,6 @@ FACTORIES_DEFAULT_SIZE = [19355, 189, 19355, 39972]
 
 
 def test_pharm_calculator():
-
     smiles_list = [
         "CCOc1c(OC)cc(CCN)cc1OC",
         "COc1cc(CCN)cc(OC)c1OC",
@@ -25,7 +24,6 @@ def test_pharm_calculator():
 
     # check that we can compute fps for each of them
     for i, factory in enumerate(FACTORIES):
-
         calc = Pharmacophore2D(factory=factory, length=None)
         fps = [calc(sm) for sm in smiles_list]
         assert fps[0].shape[-1] == FACTORIES_DEFAULT_SIZE[i]
@@ -85,7 +83,6 @@ def test_pharmacophore_2d_override():
 
 
 def test_pharm_refold_default():
-
     smiles_list = [
         "CCOc1c(OC)cc(CCN)cc1OC",
         "COc1cc(CCN)cc(OC)c1OC",
@@ -98,7 +95,6 @@ def test_pharm_refold_default():
 
 
 def test_pharm_refold_cats():
-
     smiles_list = [
         "CCOc1c(OC)cc(CCN)cc1OC",
         "COc1cc(CCN)cc(OC)c1OC",
@@ -128,7 +124,6 @@ def test_pharmacophore_3d_invalid_mol():
 
 @pytest.mark.xfail
 def test_pharmacophore_3d():
-
     mol = dm.to_mol("Nc1cnn(-c2ccccc2)c(=O)c1Cl")
     mol = dm.conformers.generate(mol)
 
@@ -161,9 +156,7 @@ def test_pharmacophore_3d_consensus():
 
     # EN: using 'brute' or 'auto' instead for the algorithm will likely results in
     # a segmentation fault, seems to be numpy related on distance computation
-    consensus_fp = featurizer.consensus_fp(
-        mols, eps=1, min_samples_ratio=0.5, algorithm="kd_tree"
-    )
+    consensus_fp = featurizer.consensus_fp(mols, eps=1, min_samples_ratio=0.5, algorithm="kd_tree")
     # Check
     assert len(consensus_fp) == 2048
     assert consensus_fp.sum() == 4

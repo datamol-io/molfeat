@@ -16,10 +16,7 @@ def get_default_hgf_pooler(name, config, **kwargs):
         kwargs: additional arguments to pass to the pooler
     """
     model_type = config.get("model_type", None)
-    if (
-        name not in ["bert", "roberta", "gpt", "bart"]
-        and name in Pooling.SUPPORTED_POOLING[:-1]
-    ):
+    if name not in ["bert", "roberta", "gpt", "bart"] and name in Pooling.SUPPORTED_POOLING[:-1]:
         return HFPooler(config, name=name, **kwargs)
     names = [name]
     if model_type is not None:
@@ -52,9 +49,7 @@ class Pooling(nn.Module):
         self.dim = dim
         self.name = name
 
-    def forward(
-        self, x, indices: List[int] = None, mask: torch.Tensor = None
-    ) -> torch.Tensor:
+    def forward(self, x, indices: List[int] = None, mask: torch.Tensor = None) -> torch.Tensor:
         """Perform a pooling operation on the input tensor
 
         Args:

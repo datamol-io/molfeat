@@ -414,9 +414,7 @@ def atom_num_radical_electrons_one_hot(
     """
     if allowable_set is None:
         allowable_set = RADICAL_ELECTRON_LIST
-    return one_hot_encoding(
-        atom.GetNumRadicalElectrons(), allowable_set, encode_unknown
-    )
+    return one_hot_encoding(atom.GetNumRadicalElectrons(), allowable_set, encode_unknown)
 
 
 def atom_num_radical_electrons(atom: rdchem.Atom):
@@ -692,7 +690,6 @@ def bond_direction_one_hot(
     allowable_set: Optional[List[str]] = None,
     encode_unknown: bool = False,
 ):
-
     """Get a one hot encoding for the direction of a bond.
 
     Args:

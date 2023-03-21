@@ -35,7 +35,6 @@ class PretrainedMolTransformer(MoleculeTransformer):
         precompute_cache: Optional[Union[bool, DataCache]] = None,
         **params,
     ):
-
         self._save_input_args()
 
         params.pop("featurizer", None)
@@ -84,10 +83,7 @@ class PretrainedMolTransformer(MoleculeTransformer):
         """Getting state to allow pickling"""
         d = copy.deepcopy(self.__dict__)
         d["precompute_cache"] = None
-        if (
-            isinstance(getattr(self, "featurizer", None), PretrainedModel)
-            or self.preload
-        ):
+        if isinstance(getattr(self, "featurizer", None), PretrainedModel) or self.preload:
             d.pop("featurizer", None)
         return d
 

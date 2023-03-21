@@ -62,9 +62,7 @@ class TestDescPharm(ut.TestCase):
         fps = calc(mol)
         self.assertEqual(len(fps), len(calc))
 
-    @pytest.mark.xfail(
-        not requires.check_mordred(), reason="3rd party module mordred is missing"
-    )
+    @pytest.mark.xfail(not requires.check("mordred"), reason="3rd party module mordred is missing")
     def test_mordred(self):
         calc = MordredDescriptors()
         fps = calc(self.smiles[0])

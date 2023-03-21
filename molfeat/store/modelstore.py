@@ -51,9 +51,7 @@ class ModelStore:
 
     def _update_store(self):
         """Initialize the store with all available models"""
-        all_metadata = dm.fs.glob(
-            dm.fs.join(self.model_store_bucket, "**/metadata.json")
-        )
+        all_metadata = dm.fs.glob(dm.fs.join(self.model_store_bucket, "**/metadata.json"))
         self._available_models = []
         for mtd_file in all_metadata:
             with fsspec.open(mtd_file, "r") as IN:
@@ -158,9 +156,7 @@ class ModelStore:
         remote_dir = modelcard.path(self.model_store_bucket)
         model_name = modelcard.name
         if not self.exists(modelcard, check_remote=True):
-            raise ModelStoreError(
-                f"Model {model_name} does not exist in the model store !"
-            )
+            raise ModelStoreError(f"Model {model_name} does not exist in the model store !")
 
         if output_dir is None:
             output_dir = dm.fs.join(platformdirs.user_cache_dir("molfeat"), model_name)
@@ -293,9 +289,7 @@ class ModelStore:
             if model_info.match(card, **match_params):
                 found = True
                 break
-        return found and (
-            not check_remote or dm.fs.exists(card.path(self.model_store_bucket))
-        )
+        return found and (not check_remote or dm.fs.exists(card.path(self.model_store_bucket)))
 
     def search(self, modelcard: Optional[ModelInfo] = None, **search_kwargs):
         """ "Return all model card that match the required search parameters

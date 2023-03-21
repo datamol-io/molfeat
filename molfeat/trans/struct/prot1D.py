@@ -85,9 +85,7 @@ class ProtBioFingerprint(MoleculeTransformer):
             ):
                 raise ValueError("Unknown featurizer: {}".format(featurizer))
             self._model_name = featurizer.lower()
-            featurizer = bio_embedder.name_to_embedder[self._model_name](
-                device=device, **kwargs
-            )
+            featurizer = bio_embedder.name_to_embedder[self._model_name](device=device, **kwargs)
 
         super().__init__(featurizer=featurizer, dtype=dtype, **kwargs)
         self._fitted = True
@@ -198,13 +196,10 @@ class ProtBioFingerprint(MoleculeTransformer):
         if self.dtype is not None and enforce_dtype:
             if self._representation.startswith("token"):
                 features = [
-                    datatype.cast(feat, dtype=self.dtype, columns=self.columns)
-                    for feat in features
+                    datatype.cast(feat, dtype=self.dtype, columns=self.columns) for feat in features
                 ]
             else:
-                features = datatype.cast(
-                    features, dtype=self.dtype, columns=self.columns
-                )
+                features = datatype.cast(features, dtype=self.dtype, columns=self.columns)
         if not ignore_errors:
             return features
         return features, ids

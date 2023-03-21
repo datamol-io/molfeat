@@ -181,9 +181,7 @@ def filter_arguments(fn: Callable, params: dict):
         param = str(accepted_dict[key])
         if param[0] != "*":
             accepted_list.append(param)
-    params_filtered = {
-        key: params[key] for key in list(set(accepted_list) & set(params.keys()))
-    }
+    params_filtered = {key: params[key] for key in list(set(accepted_list) & set(params.keys()))}
     return params_filtered
 
 

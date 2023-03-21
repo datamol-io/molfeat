@@ -5,7 +5,7 @@ from rdkit.Chem import rdchem
 from loguru import logger
 from molfeat.utils import requires
 
-if requires.check_map4():
+if requires.check("map4"):
     from map4 import MAP4Calculator
 else:
     MAP4Calculator = requires.mock("map4")
@@ -33,7 +33,7 @@ def MAP4(
     Returns:
         fp: fingerprint
     """
-    if not requires.check_map4():
+    if not requires.check("map4"):
         logger.error(
             "`map4` is not available, please install it: https://github.com/reymond-group/map4"
         )

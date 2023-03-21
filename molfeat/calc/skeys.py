@@ -159,11 +159,7 @@ class ScaffoldKeyCalculator(SerializableCalculator):
     ).loc[DESCRIPTORS]
 
     def __init__(
-        self,
-        normalize: bool = False,
-        verbose: bool = False,
-        use_scaffold: bool = False,
-        **kwargs
+        self, normalize: bool = False, verbose: bool = False, use_scaffold: bool = False, **kwargs
     ):
         """
         Init of the scaffold key function
@@ -326,9 +322,7 @@ class ScaffoldKeyCalculator(SerializableCalculator):
 
     def n_bonds_at_least_3_conn(self, mol: rdchem.Mol):
         """22. number of bonds with at least 3 connections on both its atoms"""
-        sm = dm.from_smarts(
-            "[$([!#1](~[!#1])(~[!#1])~[!#1])][$([!#1](~[!#1])(~[!#1])~[!#1])]"
-        )
+        sm = dm.from_smarts("[$([!#1](~[!#1])(~[!#1])~[!#1])][$([!#1](~[!#1])(~[!#1])~[!#1])]")
         return len(mol.GetSubstructMatches(sm, uniquify=True))
 
     def n_exocyclic_single_bonds_carbon(self, mol: rdchem.Mol):
@@ -348,7 +342,7 @@ class ScaffoldKeyCalculator(SerializableCalculator):
         sm = dm.from_smarts("[R:1]!@[R:2]")
         bond_list = mol.GetSubstructMatches(sm, uniquify=True)
         result = 0
-        for (a_start, a_end) in bond_list:
+        for a_start, a_end in bond_list:
             s_state = ring_atom_conj_state.get(a_start)
             e_state = ring_atom_conj_state.get(a_end)
             if False in s_state and False in e_state:
@@ -366,12 +360,10 @@ class ScaffoldKeyCalculator(SerializableCalculator):
         sm = dm.from_smarts("[R:1]!@[R:2]")
         bond_list = mol.GetSubstructMatches(sm, uniquify=True)
         result = 0
-        for (a_start, a_end) in bond_list:
+        for a_start, a_end in bond_list:
             s_state = ring_atom_conj_state.get(a_start)
             e_state = ring_atom_conj_state.get(a_end)
-            if (True in s_state and False in e_state) or (
-                False in s_state and True in e_state
-            ):
+            if (True in s_state and False in e_state) or (False in s_state and True in e_state):
                 result += 1
         return result
 
@@ -382,9 +374,7 @@ class ScaffoldKeyCalculator(SerializableCalculator):
         """
         result = 0
         huge_conn = list(
-            itertools.chain(
-                *mol.GetSubstructMatches(dm.from_smarts("[*;!D0;!D1;!D2]"), uniquify=1)
-            )
+            itertools.chain(*mol.GetSubstructMatches(dm.from_smarts("[*;!D0;!D1;!D2]"), uniquify=1))
         )
         for bond in mol.GetBonds():
             a_start, a_end = bond.GetBeginAtom(), bond.GetEndAtom()
@@ -392,9 +382,9 @@ class ScaffoldKeyCalculator(SerializableCalculator):
             allowed_conn_table = [
                 x for x in huge_conn if x not in [a_start.GetIdx(), a_end.GetIdx()]
             ]
-            if any(
-                [x.GetIdx() in allowed_conn_table for x in a_start.GetNeighbors()]
-            ) and any([y.GetIdx() in allowed_conn_table for y in a_end.GetNeighbors()]):
+            if any([x.GetIdx() in allowed_conn_table for x in a_start.GetNeighbors()]) and any(
+                [y.GetIdx() in allowed_conn_table for y in a_end.GetNeighbors()]
+            ):
                 result += 1
         return result
 
@@ -593,9 +583,7 @@ def skdistance(
         dist = np.sum(val * weights, axis=-1)
     else:
         if any((sk.ndim > 1 and sk.shape[0] != 1) for sk in [sk1, sk2]):
-            raise ValueError(
-                "`cdist` mode was not detected, you need to provide single vectors"
-            )
+            raise ValueError("`cdist` mode was not detected, you need to provide single vectors")
         val = np.abs(sk1 - sk2) ** 1.5
         dist = np.sum(val * weights)
     return dist

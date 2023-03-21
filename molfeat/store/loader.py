@@ -13,9 +13,7 @@ class PretrainedModel(abc.ABC):
 
     @classmethod
     @abc.abstractmethod
-    def _artifact_load(
-        cls, name: str, download_path: Optional[os.PathLike] = None, **kwargs
-    ):
+    def _artifact_load(cls, name: str, download_path: Optional[os.PathLike] = None, **kwargs):
         """Load internal artefact from the model store
 
         Args:
@@ -71,9 +69,7 @@ class PretrainedStoreModel(PretrainedModel):
         self.store = store
 
     @classmethod
-    def _artifact_load(
-        cls, name: str, download_path: Optional[os.PathLike] = None, **kwargs
-    ):
+    def _artifact_load(cls, name: str, download_path: Optional[os.PathLike] = None, **kwargs):
         """Load internal artefact from the model store
 
         Args:

@@ -29,7 +29,6 @@ import pandas.errors
 
 from functools import partial
 from rdkit.Chem import rdchem
-from loguru import logger
 from molfeat.utils import commons
 from molfeat.utils import datatype
 
@@ -42,7 +41,7 @@ class MolToKey:
         "dm.to_inchikey": dm.to_inchikey,
     }
 
-    def __init__(self, hash_fn: Optional[Union[Callable, str]] = None):
+    def __init__(self, hash_fn: Optional[Union[Callable, str]] = "dm.unique_id"):
         """Init function for molecular key generator.
 
         Args:
@@ -50,7 +49,6 @@ class MolToKey:
         """
 
         if isinstance(hash_fn, str):
-
             if hash_fn not in self.SUPPORTED_HASH_FN:
                 raise ValueError(
                     f"Hash function {hash_fn} is not supported. "
@@ -61,7 +59,6 @@ class MolToKey:
             self.hash_fn = self.SUPPORTED_HASH_FN[hash_fn]
 
         else:
-
             self.hash_fn = hash_fn
             self.hash_name = None
 
@@ -316,9 +313,7 @@ class DataCache(_Cache):
             delete_on_exit: Whether to delete the cache file on exit. Defaults to False.
             clear_on_exit: Whether to clear the cache on exit of the interpreter. Default to True
         """
-        super().__init__(
-            name=name, mol_hasher=mol_hasher, n_jobs=n_jobs, verbose=verbose
-        )
+        super().__init__(name=name, mol_hasher=mol_hasher, n_jobs=n_jobs, verbose=verbose)
 
         if cache_file is True:
             cache_file = pathlib.Path(
@@ -449,9 +444,7 @@ class MPDataCache(DataCache):
 
     def _initialize_cache(self):
         """Initialize empty cache using a shared dict"""
-        manager = (
-            mp.Manager()
-        )  # this might not be a great idea to initialize everytime...
+        manager = mp.Manager()  # this might not be a great idea to initialize everytime...
         self.cache = manager.dict()
 
 
@@ -494,9 +487,7 @@ class FileCache(_Cache):
                 For a pickle, we expect either a mapping or a dataframe with "keys" and "values" columns
             parquet_kwargs: Argument to pass to the parquet reader.
         """
-        super().__init__(
-            name=name, mol_hasher=mol_hasher, n_jobs=n_jobs, verbose=verbose
-        )
+        super().__init__(name=name, mol_hasher=mol_hasher, n_jobs=n_jobs, verbose=verbose)
 
         self.cache_file = cache_file
         self.file_type = file_type
@@ -551,14 +542,11 @@ class FileCache(_Cache):
 
         elif self.file_type == "csv":
             with fsspec.open(self.cache_file, "rb") as IN:
-
                 # Allow the CSV file to exist but with an empty content
                 try:
                     self.cache = pd.read_csv(
                         IN,
-                        converters={
-                            "values": lambda x: commons.unpack_bits(ast.literal_eval(x))
-                        },
+                        converters={"values": lambda x: commons.unpack_bits(ast.literal_eval(x))},
                     )
                 except pandas.errors.EmptyDataError:
                     self.cache = {}
@@ -607,8 +595,7 @@ class FileCache(_Cache):
         """
         if pack_bits:
             loaded_items = [
-                (k, commons.pack_bits(x, protocol=self._PICKLE_PROTOCOL))
-                for k, x in self.items()
+                (k, commons.pack_bits(x, protocol=self._PICKLE_PROTOCOL)) for k, x in self.items()
             ]
         else:
             loaded_items = self.items()
@@ -681,10 +668,7 @@ class FileCache(_Cache):
         return state
 
     @staticmethod
-    def from_state_dict(
-        state: dict, override_args: Optional[dict] = None
-    ) -> "FileCache":
-
+    def from_state_dict(state: dict, override_args: Optional[dict] = None) -> "FileCache":
         # Don't alter the original state dict
         state = copy.deepcopy(state)
 

@@ -22,9 +22,7 @@ def get_model_init(card):
         import_statement = f"from molfeat.trans import FPVecTransformer"
         loader_statement = f"FPVecTransformer(kind='{card.name}')"
     elif card.group == "dgllife":
-        import_statement = (
-            "from molfeat.trans.pretrained import PretrainedDGLTransformer"
-        )
+        import_statement = "from molfeat.trans.pretrained import PretrainedDGLTransformer"
         loader_statement = f"PretrainedDGLTransformer(kind='{card.name}')"
     elif card.group == "graphormer":
         import_statement = "from molfeat.trans.pretrained import GraphormerTransformer"
@@ -33,10 +31,10 @@ def get_model_init(card):
         import_statement = "from molfeat.trans.pretrained import FCDTransformer"
         loader_statement = f"FCDTransformer()"
     elif card.group == "huggingface":
-        import_statement = "from molfeat.trans.pretrained.hf_transformers import PretrainedHFTransformer"
-        loader_statement = (
-            f"PretrainedHFTransformer(kind='{card.name}', notation='{card.inputs}')"
+        import_statement = (
+            "from molfeat.trans.pretrained.hf_transformers import PretrainedHFTransformer"
         )
+        loader_statement = f"PretrainedHFTransformer(kind='{card.name}', notation='{card.inputs}')"
     else:
         raise ValueError(f"Unknown model group {card.group}")
     return import_statement, loader_statement
@@ -67,9 +65,7 @@ class ModelInfo(BaseModel):
         version = str(self.version or 0)
         return dm.fs.join(root_path, self.group, self.name, version)
 
-    def match(
-        self, new_card: Union["ModelInfo", dict], match_only: Optional[List[str]] = None
-    ):
+    def match(self, new_card: Union["ModelInfo", dict], match_only: Optional[List[str]] = None):
         """Compare two model card information and returns True if they are the same
 
         Args:

@@ -22,7 +22,7 @@ from molfeat.calc.atom import AtomCalculator
 from molfeat.calc.bond import BondCalculator
 from molfeat.calc.bond import EdgeMatCalculator
 
-if requires.check_dgl():
+if requires.check("dgl"):
     import dgl
 
 if requires.check("dgllife"):
@@ -87,9 +87,7 @@ class GraphTransformer(MoleculeTransformer):
         bf_self_loop = None
         if self.bond_featurizer is not None:
             bf_self_loop = getattr(self.bond_featurizer, "self_loop", None)
-            bf_self_loop = bf_self_loop or getattr(
-                self.bond_featurizer, "_self_loop", None
-            )
+            bf_self_loop = bf_self_loop or getattr(self.bond_featurizer, "_self_loop", None)
         if bf_self_loop is not None:
             self.self_loop = bf_self_loop
 
@@ -167,9 +165,7 @@ class GraphTransformer(MoleculeTransformer):
         """
         raise NotImplementedError
 
-    def __call__(
-        self, mols: List[Union[dm.Mol, str]], ignore_errors: bool = False, **kwargs
-    ):
+    def __call__(self, mols: List[Union[dm.Mol, str]], ignore_errors: bool = False, **kwargs):
         r"""
         Calculate features for molecules. Using __call__, instead of transform.
         Note that most Transfomers allow you to specify
@@ -278,16 +274,12 @@ class AdjGraphTransformer(GraphTransformer):
                 return batched_graph, labels
 
         # Otherwise we assume the batch is composed of single graphs.
-        return AdjGraphTransformer._collate_graphs(
-            batch, max_n_atoms=max_n_atoms, pack=pack
-        )
+        return AdjGraphTransformer._collate_graphs(batch, max_n_atoms=max_n_atoms, pack=pack)
 
     @staticmethod
     def _collate_graphs(batch, max_n_atoms, pack):
         if not all([len(b) == 2 for b in batch]):
-            raise ValueError(
-                "Default collate function only supports pair of (Graph, AtomFeats) "
-            )
+            raise ValueError("Default collate function only supports pair of (Graph, AtomFeats) ")
 
         graphs, feats = zip(*batch)
         # in case someone does not convert to tensor and wants to use collate
@@ -311,9 +303,7 @@ class AdjGraphTransformer(GraphTransformer):
                     for g in graphs
                 ]
             )
-            feats = torch.stack(
-                [F.pad(f, (0, 0, 0, cur_max_atoms - f.shape[0])) for f in feats]
-            )
+            feats = torch.stack([F.pad(f, (0, 0, 0, cur_max_atoms - f.shape[0])) for f in feats])
         return graphs, feats
 
     def get_collate_fn(self, pack: bool = False, max_n_atoms: Optional[int] = None):
@@ -337,9 +327,7 @@ class AdjGraphTransformer(GraphTransformer):
 
         return partial(self._collate_batch, pack=pack, max_n_atoms=max_n_atoms)
 
-    def transform(
-        self, mols: List[Union[dm.Mol, str]], keep_dict: bool = False, **kwargs
-    ):
+    def transform(self, mols: List[Union[dm.Mol, str]], keep_dict: bool = False, **kwargs):
         r"""
         Compute the graph featurization for a set of molecules.
 
@@ -519,7 +507,7 @@ class DGLGraphTransformer(GraphTransformer):
             logger.error(
                 "Cannot find dgllife. It's required for some features. Please install it first !"
             )
-        if not requires.check_dgl():
+        if not requires.check("dgl"):
             raise ValueError("Cannot find dgl, please install it first !")
         if self.dtype is not None and not datatype.is_dtype_tensor(self.dtype):
             raise ValueError("DGL featurizer only supports torch tensors currently")
@@ -597,15 +585,11 @@ class DGLGraphTransformer(GraphTransformer):
 
     @property
     def atom_dim(self):
-        return super(DGLGraphTransformer, self).atom_dim + int(
-            self.num_virtual_nodes > 0
-        )
+        return super(DGLGraphTransformer, self).atom_dim + int(self.num_virtual_nodes > 0)
 
     @property
     def bond_dim(self):
-        return super(DGLGraphTransformer, self).bond_dim + int(
-            self.num_virtual_nodes > 0
-        )
+        return super(DGLGraphTransformer, self).bond_dim + int(self.num_virtual_nodes > 0)
 
     def _transform(self, mol: dm.Mol):
         r"""
@@ -642,7 +626,7 @@ class DGLGraphTransformer(GraphTransformer):
                     logger.error(e)
                 graph = None
 
-        elif requires.check_dgl() and not self.complete_graph:
+        elif requires.check("dgl") and not self.complete_graph:
             # we need to build the graph ourselves.
             graph = self._graph_featurizer(mol)
             if self.atom_featurizer is not None:
@@ -669,9 +653,7 @@ class DGLGraphTransformer(GraphTransformer):
 
         def patch_feats(*args, **kwargs):
             out_dict = featurizer(*args, **kwargs)
-            out_dict = {
-                k: datatype.cast(val, dtype=dtype) for k, val in out_dict.items()
-            }
+            out_dict = {k: datatype.cast(val, dtype=dtype) for k, val in out_dict.items()}
             return out_dict
 
         return patch_feats
@@ -699,9 +681,7 @@ class PYGGraphTransformer(AdjGraphTransformer):
             a_idx_2 = bond.GetEndAtomIdx()
             graph += [[a_idx_1, a_idx_2], [a_idx_2, a_idx_1]]
         if getattr(self.bond_featurizer, "_self_loop", False):
-            graph.extend(
-                [[atom_ind, atom_ind] for atom_ind in range(mol.GetNumAtoms())]
-            )
+            graph.extend([[atom_ind, atom_ind] for atom_ind in range(mol.GetNumAtoms())])
         graph = np.asarray(graph).T
         return graph
 

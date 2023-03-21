@@ -230,9 +230,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
         self.__dict__["parallel_kwargs"] = state.get("parallel_kwargs", {})
         self._update_params()
 
-    def fit(
-        self, X: List[Union[rdchem.Mol, str]], y: Optional[list] = None, **fit_params
-    ):
+    def fit(self, X: List[Union[rdchem.Mol, str]], y: Optional[list] = None, **fit_params):
         """Fit the current transformer on given dataset.
 
         The goal of fitting is for example to identify nan columns values
@@ -380,9 +378,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
                 Only returned when ignore_errors is True.
 
         """
-        features = self.transform(
-            mols, ignore_errors=ignore_errors, enforce_dtype=False, **kwargs
-        )
+        features = self.transform(mols, ignore_errors=ignore_errors, enforce_dtype=False, **kwargs)
         ids = np.arange(len(features))
         if ignore_errors:
             features, ids = self._filter_none(features)
@@ -401,9 +397,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
                 if datatype.is_null(feat):
                     ids_bad.append(f_id)
             ids_to_keep = [
-                this_id
-                for this_id in np.arange(0, len(features))
-                if this_id not in ids_bad
+                this_id for this_id in np.arange(0, len(features)) if this_id not in ids_bad
             ]
             features = [features[ii] for ii in ids_to_keep]
 
@@ -483,8 +477,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
         use_mp_cache = (
             existing_cache is not None
             and not isinstance(existing_cache, MPDataCache)
-            and n_jobs
-            not in [None, 0, 1]  # this is based on datamol sequential vs parallel
+            and n_jobs not in [None, 0, 1]  # this is based on datamol sequential vs parallel
         )
         if use_mp_cache:
             # we need to change the cache system to one that works with multiprocessing
@@ -511,9 +504,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
             fixed_transformations = []
             for computed_trans in transformed:
                 if computed_trans is None:
-                    computed_trans = np.full(
-                        len(computed_trans), len(transformer), np.nan
-                    )
+                    computed_trans = np.full(len(computed_trans), len(transformer), np.nan)
                 else:
                     for i, x in enumerate(computed_trans):
                         if x is None:
@@ -528,9 +519,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
         """Serialize the featurizer to a state dict."""
 
         if getattr(self, "_input_args") is None:
-            raise ValueError(
-                f"Cannot save state for this transformer '{self.__class__.__name__}'"
-            )
+            raise ValueError(f"Cannot save state for this transformer '{self.__class__.__name__}'")
 
         # Process the input arguments before building the state
         args = copy.deepcopy(self._input_args)
@@ -609,9 +598,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
     # State to featurizer methods
 
     @staticmethod
-    def from_state_dict(
-        state: dict, override_args: Optional[dict] = None
-    ) -> "MoleculeTransformer":
+    def from_state_dict(state: dict, override_args: Optional[dict] = None) -> "MoleculeTransformer":
         """Reload a featurizer from a state dict."""
 
         # Don't alter the original state dict
@@ -687,9 +674,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
         override_args: Optional[dict] = None,
     ) -> "MoleculeTransformer":
         state_dict = json.loads(state_json)
-        return MoleculeTransformer.from_state_dict(
-            state_dict, override_args=override_args
-        )
+        return MoleculeTransformer.from_state_dict(state_dict, override_args=override_args)
 
     @staticmethod
     def from_state_yaml(
@@ -697,9 +682,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
         override_args: Optional[dict] = None,
     ) -> "MoleculeTransformer":
         state_dict = yaml.load(state_yaml, Loader=yaml.SafeLoader)
-        return MoleculeTransformer.from_state_dict(
-            state_dict, override_args=override_args
-        )
+        return MoleculeTransformer.from_state_dict(state_dict, override_args=override_args)
 
     @staticmethod
     def from_state_json_file(
@@ -726,9 +709,7 @@ class PrecomputedMolTransformer(MoleculeTransformer):
     def __init__(
         self,
         cache: Optional[Union[_Cache, Mapping[Any, Any], CacheList]] = None,
-        cache_dict: Optional[
-            Dict[str, Union[_Cache, Mapping[Any, Any], CacheList]]
-        ] = None,
+        cache_dict: Optional[Dict[str, Union[_Cache, Mapping[Any, Any], CacheList]]] = None,
         cache_key: Optional[str] = None,
         *args,
         featurizer: Optional[Union[MoleculeTransformer, str]] = None,
@@ -821,9 +802,7 @@ class PrecomputedMolTransformer(MoleculeTransformer):
 
     def __getstate__(self):
         """Get the state for pickling"""
-        state = {
-            k: copy.deepcopy(v) for k, v in self.__dict__.items() if k not in ["cache"]
-        }
+        state = {k: copy.deepcopy(v) for k, v in self.__dict__.items() if k not in ["cache"]}
         if isinstance(self.cache, FileCache):
             state["file_cache_args"] = dict(
                 cache_file=self.cache.cache_file,
@@ -887,9 +866,7 @@ class PrecomputedMolTransformer(MoleculeTransformer):
         args["cache"] = FileCache.from_state_dict(state["cache"])
 
         # Load the base featurizer
-        args["featurizer"] = MoleculeTransformer.from_state_dict(
-            state["base_featurizer"]
-        )
+        args["featurizer"] = MoleculeTransformer.from_state_dict(state["base_featurizer"])
 
         if override_args is not None:
             args.update(override_args)
@@ -904,13 +881,9 @@ class PrecomputedMolTransformer(MoleculeTransformer):
         override_args: Optional[dict] = None,
     ) -> "PrecomputedMolTransformer":
         if state_path.endswith("yaml") or state_path.endswith("yml"):
-            return self.from_state_yaml_file(
-                filepath=state_path, override_args=override_args
-            )
+            return self.from_state_yaml_file(filepath=state_path, override_args=override_args)
         elif state_path.endswith("json"):
-            return self.from_state_json_file(
-                filepath=state_path, override_args=override_args
-            )
+            return self.from_state_json_file(filepath=state_path, override_args=override_args)
         else:
             raise ValueError(
                 "Only files with 'yaml' or 'json' format are allowed. "

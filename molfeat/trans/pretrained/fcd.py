@@ -3,7 +3,7 @@ import numpy as np
 from molfeat.trans.pretrained.base import PretrainedMolTransformer
 from molfeat.utils import requires
 
-if requires.check_fcd():
+if requires.check("fcd_torch"):
     from fcd_torch import FCD
 
 
@@ -18,7 +18,7 @@ class FCDTransformer(PretrainedMolTransformer):
 
     def __init__(self, n_jobs=1, dtype=np.float32, **params):
         super().__init__(dtype=dtype, **params)
-        if not requires.check_fcd():
+        if not requires.check("fcd_torch"):
             raise ImportError(
                 "`fcd_torch` is not available, please install it `conda install -c conda-forge fcd_torch'`"
             )

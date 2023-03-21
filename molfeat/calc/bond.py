@@ -274,9 +274,7 @@ class EdgeMatCalculator(BondCalculator):
         self.pairwise_atom_funcs = pairwise_atom_funcs
         super().__init__(featurizer_funcs=featurizer_funcs, concat=True, name=name)
         # add conf data to toy mol
-        self._toy_mol = dm.conformers.generate(
-            self._toy_mol, n_confs=1, minimize_energy=False
-        )
+        self._toy_mol = dm.conformers.generate(self._toy_mol, n_confs=1, minimize_energy=False)
         for k in self.pairwise_atom_funcs.keys():
             self.feat_size(feat_name=k)
 
@@ -335,10 +333,7 @@ class EdgeMatCalculator(BondCalculator):
         Returns:
             int: Feature size for the feature with name ``feat_name``. Default to None.
         """
-        if (
-            feat_name not in self.featurizer_funcs
-            and feat_name not in self.pairwise_atom_funcs
-        ):
+        if feat_name not in self.featurizer_funcs and feat_name not in self.pairwise_atom_funcs:
             raise ValueError(
                 "Expect feat_name to be in {}, got {}".format(
                     list(self.featurizer_funcs.keys()), feat_name
@@ -347,9 +342,7 @@ class EdgeMatCalculator(BondCalculator):
         if feat_name not in self._feat_sizes:
             if feat_name in self.featurizer_funcs:
                 bond = self._toy_mol.GetBondWithIdx(0)
-                self._feat_sizes[feat_name] = len(
-                    self.featurizer_funcs[feat_name](bond)
-                )
+                self._feat_sizes[feat_name] = len(self.featurizer_funcs[feat_name](bond))
             elif feat_name in self.pairwise_atom_funcs:
                 self._feat_sizes[feat_name] = self.pairwise_atom_funcs[feat_name](
                     self._toy_mol
@@ -358,9 +351,7 @@ class EdgeMatCalculator(BondCalculator):
                 raise ValueError(f"Feature name {feat_name} is not defined !")
         return self._feat_sizes[feat_name]
 
-    def __call__(
-        self, mol: Union[rdchem.Mol, str], dtype: Callable = None, flat: bool = True
-    ):
+    def __call__(self, mol: Union[rdchem.Mol, str], dtype: Callable = None, flat: bool = True):
         """Featurize all bonds in a molecule.
 
         Args:
@@ -380,9 +371,7 @@ class EdgeMatCalculator(BondCalculator):
         edge_matrix = None
 
         if self.pairwise_atom_funcs is not None:
-            feat_size -= sum(
-                self._feat_sizes[x] for x in self.pairwise_atom_funcs.keys()
-            )
+            feat_size -= sum(self._feat_sizes[x] for x in self.pairwise_atom_funcs.keys())
         if self.featurizer_funcs is not None and len(self.featurizer_funcs) > 0:
             edge_matrix = np.zeros((num_atoms, num_atoms, feat_size))
             # Compute features for each bond
@@ -431,9 +420,7 @@ class DGLCanonicalBondCalculator(BondCalculator):
         Returns:
             concatenated_dict: a dict with a single key where all array have been concatenated
         """
-        return concat_dict(
-            data_dict, new_name=self.name, order=list(self.featurizer_funcs.keys())
-        )
+        return concat_dict(data_dict, new_name=self.name, order=list(self.featurizer_funcs.keys()))
 
 
 class DGLWeaveEdgeCalculator(EdgeMatCalculator):
