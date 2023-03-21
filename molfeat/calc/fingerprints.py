@@ -205,7 +205,7 @@ class FPCalculator(SerializableCalculator):
         method: str,
         length: Optional[int] = None,
         counting: bool = False,
-        **kwargs,
+        **method_params,
     ):
         """Compute the given fingeprint for a molecule
 
@@ -214,11 +214,12 @@ class FPCalculator(SerializableCalculator):
             re-folded and the count corresponds to the number of bits set to true
 
         Args:
-            method (str): Name of the fingerprint method to use
+            method (str): Name of the fingerprint method to use. See FPCalculator.available_fingerprints() for a list
             length (int, optional): Length of the fingerprint. Defaults to None.
                 The default corresponds to the fingerpint default.
             counting (bool, optional): Whether to use the count version of the fingerprint
-            kwargs (dict): any parameters to the fingerprint algorithm
+            method_params (dict): any parameters to the fingerprint algorithm.
+                See FPCalculator.default_parameters(method) for all the parameters required by a given method.
         """
         self.method = method.lower()
         self.counting = counting or "-count" in self.method
@@ -228,12 +229,28 @@ class FPCalculator(SerializableCalculator):
         if self.method not in FP_FUNCS:
             raise ValueError(f"Method {self.method} is not a supported featurizer")
         default_params = copy.deepcopy(FP_DEF_PARAMS[method])
-        unknown_params = set(kwargs.keys()).difference(set(default_params.keys()))
+        unknown_params = set(method_params.keys()).difference(set(default_params.keys()))
         if unknown_params:
             logger.error(f"Params: {unknown_params} are not valid for {method}")
         self.params = default_params
-        self.params.update({k: kwargs[k] for k in kwargs if k in default_params.keys()})
+        self.params.update(
+            {k: method_params[k] for k in method_params if k in default_params.keys()}
+        )
         self._length = self._set_length(length)
+
+    @staticmethod
+    def available_fingerprints():
+        """Get the list of available fingerprints"""
+        return list(FP_FUNCS.keys())
+
+    @staticmethod
+    def default_parameters(method: str):
+        """Get the default parameters for a given fingerprint method
+
+        Args:
+            method: name of the fingerprint method
+        """
+        return FP_DEF_PARAMS[method].copy()
 
     @property
     def columns(self):

@@ -302,10 +302,13 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
         )
 
     def _preload(self):
-        """Perform preloading of the model"""
+        """Perform preloading of the model from the store"""
         super()._preload()
-        # we can be confident that the model has been loaded here
         self.featurizer.max_length = self.max_length
+
+        # we can be confident that the model has been loaded here
+        if self._pooling_obj is not None and self.preload:
+            return
         config = self.featurizer.model.config.to_dict()
         cur_tokenizer = self.featurizer.tokenizer
         for special_token_id_name in [

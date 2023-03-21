@@ -14,7 +14,7 @@ from molfeat.utils.cache import DataCache
 
 
 @pytest.mark.xfail(
-    not requires.check("graphormer"), reason="3rd party module graphormer is missing"
+    not requires.check("graphormer_pretrained"), reason="3rd party module graphormer is missing"
 )
 class TestGraphormerTransformer(ut.TestCase):
     r"""Test cases for FingerprintsTransformer"""

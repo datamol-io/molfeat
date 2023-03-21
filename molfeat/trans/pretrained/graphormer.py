@@ -10,9 +10,9 @@ from molfeat.utils import requires
 from molfeat.utils.pooler import Pooling
 from molfeat.trans.pretrained.base import PretrainedMolTransformer
 
-if requires.check("graphormer"):
-    from graphormer.embeddings import GraphormerEmbeddingsExtractor
-    from graphormer.data.smiles_dataset import GraphormerInferenceDataset
+if requires.check("graphormer_pretrained"):
+    from graphormer_pretrained.embeddings import GraphormerEmbeddingsExtractor
+    from graphormer_pretrained.data.smiles_dataset import GraphormerInferenceDataset
 
 
 class GraphormerTransformer(PretrainedMolTransformer):
@@ -35,7 +35,7 @@ class GraphormerTransformer(PretrainedMolTransformer):
         **params,
     ):
         super().__init__(dtype=dtype, pooling=pooling, **params)
-        if not requires.check("graphormer"):
+        if not requires.check("graphormer_pretrained"):
             raise ValueError("`graphormer` is required to use this featurizer.")
 
         self.preload = True
