@@ -12,19 +12,19 @@ docs_dir: "docs"
 nav:
   - Overview: index.md
   - Tutorials:
-      Getting Started: tutorials/getting-started.ipynb
-      Exploring Calculator: tutorials/calculator.ipynb
-      Common Featurizers: tutorials/fpvector.ipynb
-      Pretrained Featurizers: tutorials/pretrained.ipynb
-      Graph Featurizers: tutorials/graphs.ipynb
-      Pharmacophore Featurizers: tutorials/pharmacophore.ipynb
-      Using Datacache: tutorials/datacache.ipynb
-      Advanced Features: tutorials/advanced.ipynb
+      - Getting Started: tutorials/getting-started.ipynb
+      - Exploring Calculator: tutorials/calculator.ipynb
+      - Common Featurizers: tutorials/fpvector.ipynb
+      - Pretrained Featurizers: tutorials/pretrained.ipynb
+      - Graph Featurizers: tutorials/graphs.ipynb
+      - Pharmacophore Featurizers: tutorials/pharmacophore.ipynb
+      - Using Datacache: tutorials/datacache.ipynb
+      - Advanced Features: tutorials/advanced.ipynb
 
   - Developers:
-      Contributing: developers/contribute.md
-      Extending Molfeat: developers/create-plugin.md
-      Registering your Plugin: developers/register-plugin.md
+      - Contributing: developers/contribute.md
+      - Extending Molfeat: developers/create-plugin.md
+      - Registering your Plugin: developers/register-plugin.md
 
   - API:
       - molfeat.trans:
