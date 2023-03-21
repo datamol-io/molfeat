@@ -79,12 +79,23 @@ class FPVecTransformer(MoleculeTransformer):
         )
         self.kind = kind
         self.length = length
+        self._length = None
         # update length for featurizer that have they fixed length
+        # EN: setting up a protected _length function helps to bypass
+        # the absurd "is" comparison done by sklearn in clone
+        # note that the featurizer length would likely be ignored by featurizer
+        # that do not support a variable length
         if hasattr(self.featurizer, "__len__"):
-            self.length = len(featurizer)
+            self._length = len(featurizer)
         self._input_params.update(kind=kind, length=length)
         if self.kind.lower() in _UNSERIALIZABLE_FPS:
             self.parallel_kwargs.update(scheduler="threads")
+
+    def __len__(self):
+        """Compute featurizer length"""
+        if self._length is not None:
+            return self._length
+        return super().__len__()
 
     def _get_param_names(self):
         """Get parameter names for the estimator"""
