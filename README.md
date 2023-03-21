@@ -32,6 +32,16 @@ _**Tips:** You can replace `mamba` by `conda`._
 
 _**Note:** We highly recommend using a [Conda Python distribution](https://github.com/conda-forge/miniforge) to install Molfeat. The package is also pip installable if you need it: `pip install molfeat`._
 
+### Optional dependencies
+Not all featurizers of the Molfeat core package are supported by default. Some featurizers require additional dependencies. If you try to use a featurizer that requires additional dependencies, Molfeat will raise an error and will tell you which dependencies are missing and how to install these. 
+
+- To install `dgl`: run `mamba install -c dglteam dgl`
+- To install `dgllife`:  run `mamba install -c dglteam dgllife`
+- To install `pyg`: run `mamba install -c conda-forge pytorch_geometric`
+- To install `graphormer-pretrained`: run `mamba install -c conda-forge graphormer-pretrained`
+- To install `map4`: see https://github.com/reymond-group/map4
+- To install `bio-embeddings`: run `mamba install -c conda-forge 'bio-embeddings >=0.2.2'`
+
 
 ### Installing Plugins
 
@@ -39,8 +49,6 @@ The functionality of Molfeat can be extended through plugins. The usage of a plu
 
 This, however, does imply that the installation of a plugin is plugin-dependent: Please consult its documentation to learn more.
 
-### Optional dependencies
-Not all featurizers of the Molfeat core package are supported by default. Some featurizers require additional dependencies. If you try to use a featurizer that requires additional dependencies, Molfeat will raise an error and will tell you which dependencies are missing and how to install these.
 
 ## API tour
 ```python
@@ -76,18 +84,10 @@ model_card.usage()
 # Load a featurizer through the store
 trans, model_info = store.load(model_card)
 ```
-`molfeat` has optional dependencies. By default `fcd_torch`, and `pmapper` will be installed with the package.
 
 ## How to cite
 Please cite Molfeat if you use it in your research: [![DOI]()]().
-- To install `dgl`: run `mamba install -c dglteam dgl`
-- To install `dgllife`:  run `mamba install -c dglteam dgllife`
-- To install `pyg`: run `mamba install -c conda-forge pytorch_geometric`
-- To install `graphormer-pretrained`: run `mamba install -c conda-forge graphormer-pretrained`
-- To install `map4`: see https://github.com/reymond-group/map4
-- To install `bio-embeddings`: run `mamba install -c conda-forge 'bio-embeddings >=0.2.2'`
 
-^ You can replace `mamba` by `conda` if you prefer in the above. 
 ## Changelogs
 
 See the latest changelogs at [CHANGELOG.rst](./CHANGELOG.rst).
