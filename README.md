@@ -4,16 +4,20 @@
 
 ---
 
-[![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/datamol-org/datamol/blob/main/LICENSE)
-[![GitHub Repo stars](https://img.shields.io/github/stars/datamol-org/molfeat)](https://github.com/datamol-org/datamol/stargazers)
-[![GitHub Repo stars](https://img.shields.io/github/forks/datamol-org/molfeat)](https://github.com/datamol-org/datamol/network/members)
+[![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/datamol-io/datamol/blob/main/LICENSE)
+[![GitHub Repo stars](https://img.shields.io/github/stars/datamol-io/molfeat)](https://github.com/datamol-io/molfeat/stargazers)
+[![GitHub Repo stars](https://img.shields.io/github/forks/datamol-io/molfeat)](https://github.com/datamol-io/molfeat/network/members)
+[![test](https://github.com/datamol-io/molfeat/actions/workflows/test.yml/badge.svg)](https://github.com/datamol-io/molfeat/actions/workflows/test.yml)
+[![code-check](https://github.com/datamol-io/molfeat/actions/workflows/code-check.yml/badge.svg)](https://github.com/datamol-io/molfeat/actions/workflows/code-check.yml)
+[![doc](https://github.com/datamol-io/molfeat/actions/workflows/doc.yml/badge.svg)](https://github.com/datamol-io/molfeat/actions/workflows/doc.yml)
+[![release](https://github.com/datamol-io/molfeat/actions/workflows/release.yml/badge.svg)](https://github.com/datamol-io/molfeat/actions/workflows/release.yml)
 
 Molfeat is a python library to simplify molecular featurization. It supports a wide variety of molecular featurizers out-of-the-box and can be easily extended to add your own.
 
 - :snake: Simple pythonic API.
 - :rocket: Fast and efficient featurization.
-- :arrows_counterclockwise: Unifies pre-trained embeddings and hand-crafted featurizers in a single package. 
-- :heavy_plus_sign: Easily extend Molfeat with your own featurizers through plugins. 
+- :arrows_counterclockwise: Unifies pre-trained embeddings and hand-crafted featurizers in a single package.
+- :heavy_plus_sign: Easily extend Molfeat with your own featurizers through plugins.
 - :chart_with_upwards_trend: Benefit from increased performance through a trouble-free caching system.
 
 Visit our website at https://molfeat.datamol.io.
@@ -51,6 +55,7 @@ This, however, does imply that the installation of a plugin is plugin-dependent:
 
 
 ## API tour
+
 ```python
 import datamol as dm
 from molfeat.calc import FPCalculator
@@ -86,6 +91,7 @@ trans, model_info = store.load(model_card)
 ```
 
 ## How to cite
+
 Please cite Molfeat if you use it in your research: [![DOI]()]().
 
 ## Contribute
