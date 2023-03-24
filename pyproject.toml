@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "molfeat"
 description = "A python library to featurize molecules."
-version = "0.0.1" # project
+dynamic = ["version"]
 authors = [
     { name = "Emmanuel Noutahi", email = "emmanuel@valencediscovery.com" },
 ]
@@ -42,6 +42,9 @@ Documentation = "https://doc.molfeat.io"
 include-package-data = true
 zip-safe = false
 license-files = ["LICENSE"]
+
+[tool.setuptools_scm]
+fallback_version = "dev"
 
 [tool.setuptools.packages.find]
 where = ["."]
