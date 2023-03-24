@@ -2,3 +2,11 @@
   email: emmanuel.noutahi@hotmail.ca
   num_commits: 1
   first_commit: 2021-04-06 11:53:10
+- name: Cas Wognum
+  email: caswognum@outlook.com
+  aliases:
+    - Cas Wognum
+- name: Hadrien Mary
+  email: hadim@users.noreply.github.com
+  alternate_emails:
+    - hadim@users.noreply.github.com
