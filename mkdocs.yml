@@ -20,6 +20,8 @@ nav:
       - Featurizing graphs: tutorials/graphs.ipynb
       - Save and Load: tutorials/save_and_load.ipynb
       - The Data Cache: tutorials/datacache.ipynb
+      - Training a GNN with PyG: tutorials/pyg_integration.ipynb
+      - Finetuning a pretrained transformer: tutorials/transformer_finetuning.ipynb
 
   - Developers:
       - Contributing: developers/contribute.md
