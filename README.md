@@ -34,7 +34,7 @@ mamba install -c conda-forge molfeat
 
 _**Tips:** You can replace `mamba` by `conda`._
 
-_**Note:** We highly recommend using a [Conda Python distribution](https://github.com/conda-forge/miniforge) to install Molfeat. The package is also pip installable if you need it: `pip install molfeat`._
+_**Note:** We highly recommend using a [Conda Python distribution](https://github.com/conda-forge/miniforge) to install Molfeat. The package is also pip installable if you need it: `pip install molfeat`._ 
 
 ### Optional dependencies
 Not all featurizers of the Molfeat core package are supported by default. Some featurizers require additional dependencies. If you try to use a featurizer that requires additional dependencies, Molfeat will raise an error and will tell you which dependencies are missing and how to install these. 
@@ -46,6 +46,9 @@ Not all featurizers of the Molfeat core package are supported by default. Some f
 - To install `graphormer-pretrained`: run `mamba install -c conda-forge graphormer-pretrained`
 - To install `map4`: see https://github.com/reymond-group/map4
 - To install `bio-embeddings`: run `mamba install -c conda-forge 'bio-embeddings >=0.2.2'`
+
+
+If you install Molfeat using pip, there are optional dependencies that can be installed with the main package. For example, `pip install "molfeat[all]"` allows installing all the compatible optional dependencies for small molecule featurization. There are other options such as `molfeat[dgl]`, `molfeat[graphormer]`, `molfeat[transformer]`, `molfeat[viz]`, and `molfeat[fcd]`. See the [optional-dependencies](./pyproject.toml) for more information.
 
 
 ### Installing Plugins

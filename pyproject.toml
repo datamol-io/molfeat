@@ -89,7 +89,7 @@ all = [
     "transformers",
     "fcd_torch",
     "nglview",
-    "ipywidgets"
+    "ipywidgets",
 ]
 
 [project.urls]
