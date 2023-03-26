@@ -18,7 +18,7 @@ nav:
       - Add your own featurizer: tutorials/add_your_own.ipynb
       - Featurizing graphs: tutorials/graphs.ipynb
       - Integrations:
-          - Integration with PyTorch: tutorials/integrations.ipynb
+          - Integration with scikit-learn and PyTorch: tutorials/integrations.ipynb
           - Training a GNN with PyG: tutorials/pyg_integration.ipynb
           - Finetuning a pretrained transformer: tutorials/transformer_finetuning.ipynb
       - Save and Load: tutorials/save_and_load.ipynb
