@@ -8,7 +8,7 @@ Molfeat is organized in three main modules:
 - `molfeat.trans`: A transformer is a scikit-learn compatible class that wraps a calculator in a featurization pipeline.
 
 !!! note annotate "Learn more about the different types of featurizers"
-    Consult [this tutorial](../tutorials/types_of_featurizers.html) to dive deeper into the differences between the calculator and transformer.
+    Consult [this tutorial](./tutorials/types_of_featurizers.ipynb) to dive deeper into the differences between the calculator and transformer.
     It provides a good overview of the different types of featurizers and has pointers to learn about more advanced features. 
 
 ## Quick API Tour

@@ -2,6 +2,7 @@
 
 * More documentation and tutorials
 * pip dependencies and optional dependencies in pyproject.toml
+* Github issue templates
 
 **Changed:**
 
