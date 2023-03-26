@@ -383,7 +383,6 @@ class DataCache(_Cache):
 
         Args:
             filepath: path to the file to load
-            kwargs: keyword arguments to pass to the constructor
         """
         cached_data = None
         with fsspec.open(filepath, "rb") as f:

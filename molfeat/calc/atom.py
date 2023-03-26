@@ -131,7 +131,7 @@ class AtomCalculator(SerializableCalculator):
 
         Args:
             state_dict: state dictionary to use to create the atom calculator
-            overrride_args: optional dictionary of arguments to override the ones in the state dict
+            override_args: optional dictionary of arguments to override the ones in the state dict
                 at construction of the new object
         """
         # EN: at this moment, version compatibility is not enforced

@@ -27,8 +27,6 @@ class USRDescriptors(SerializableCalculator):
         Args:
             method: Shape descriptor method to use. One of 'USR', 'USRCAT'. Default to 'USR'
             replace_nan: Whether to replace nan or infinite values. Defaults to False.
-            augment: Whether to augment the descriptors with some additional custom features
-            descrs: List of features to consider if not None
         """
         self.method = method.upper()
         if self.method not in ["USR", "USRCAT"]:

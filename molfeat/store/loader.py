@@ -12,9 +12,8 @@ class PretrainedModel(abc.ABC):
     """Base class for loading pretrained models"""
 
     @classmethod
-    @abc.abstractmethod
     def _artifact_load(cls, name: str, download_path: Optional[os.PathLike] = None, **kwargs):
-        """Load internal artefact from the model store
+        """Load an artifact based on its name
 
         Args:
             name: name of the model to load
@@ -23,14 +22,13 @@ class PretrainedModel(abc.ABC):
         ...
 
     @classmethod
-    @abc.abstractmethod
     def _load_or_raise(
         cls,
         name: str,
         download_path: Optional[os.PathLike] = None,
         **kwargs,
     ):
-        """Load model from the corresponding store or raise an exception
+        """Load model or raise an exception
 
         Args:
             name: name of the model to load
@@ -39,6 +37,7 @@ class PretrainedModel(abc.ABC):
         """
         ...
 
+    @abc.abstractmethod
     def load(self):
         """Load the model"""
         ...

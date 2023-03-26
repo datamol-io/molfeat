@@ -22,10 +22,9 @@ class PretrainedMolTransformer(MoleculeTransformer):
 
     !!! note
         * When implementing a subclass of this class, you need to define the `_embed` and optionally the `_convert` methods.
-        * If your model is an instance of PretrainedModel that handles loading of the model from a store, then
-        you can decide whether you want to preload the true underlying model by loading it from the store.
-        You will be in charge of handling the logic of when you need to call preload, and when you don't.
-        Note however that by default preloading is only attempted when the featurizer is still an instance of PretrainedModel.
+        * If your model is an instance of PretrainedModel that handles loading of the model from a store or through a complex mechanism
+          then you can decide whether you want to preload the true underlying model. You will be in charge of handling the logic of when you need to call preload, and when you don't.
+          Note however that by default preloading is only attempted when the featurizer is still an instance of PretrainedModel.
 
 
     Attributes
@@ -170,7 +169,7 @@ class PretrainedMolTransformer(MoleculeTransformer):
         """Perform featurization of the input molecules
 
         The featurization process is as follow:
-        1. convert the input molecules to the right format using `_convert`
+        1. convert the input molecules into the right format, expected by the pre-trained model using `_convert`
         2. compute embedding of the molecule using `_embed`
         3. perform any model-specific postprocessing and cache update
 

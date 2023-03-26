@@ -737,7 +737,7 @@ class PYGGraphTransformer(AdjGraphTransformer):
         Get collate function for pyg graphs
 
         Args:
-            follow_batchL Creates assignment batch vectors for each key in the list. (default: :obj:`None`)
+            follow_batch: Creates assignment batch vectors for each key in the list. (default: :obj:`None`)
             exclude_keys: Will exclude each key in the list. (default: :obj:`None`)
             return_pair: whether to return a pair of X,y or a databatch (default: :obj:`True`)
 

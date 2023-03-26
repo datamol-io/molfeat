@@ -95,8 +95,6 @@ class HFModel(PretrainedStoreModel):
         Args:
             name (str, optional): Name of the model for ada.
             cache_path (os.PathLike, optional): Local cache path for faster loading. This is the cache_path parameter for ADA loading !
-            device: Torch device on which to run the `predictor` model.
-            loading_fn: Optional loading function for model loading
         """
 
         super().__init__(name, cache_path=cache_path, store=store)

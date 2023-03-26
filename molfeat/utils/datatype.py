@@ -199,11 +199,7 @@ def is_dtype_numpy(dtype):
 
 
 def is_null(obj):
-    """Check if an obj is null (nan, None or array of nan)
-
-    Args:
-        is_null (bool): whether the input obj is null
-    """
+    """Check if an obj is null (nan, None or array of nan)"""
     array_nan = False
     all_none = False
     try:
