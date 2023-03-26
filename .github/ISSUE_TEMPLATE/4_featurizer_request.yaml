@@ -1,0 +1,67 @@
+name: Featurizer request
+description: Propose a new featurizer to be added to Molfeat
+labels: ["needs triage", "featurizer", "enhancement"]
+body:
+  - type: textarea
+    attributes:
+      label: Description & Motivation
+      description: A short and concise description of what the featurizer does and why it is relevant to the community.
+      placeholder: |
+        Please outline the motivation for the proposal.
+        Provide a clear and concise explanation of why you believe adding the featurizer to the main package 
+        is better than creating an [external plugin](https://github.com/datamol-io/molfeat/blob/main/docs/developers/create-plugin.md). 
+        If this is related to another GitHub issue, please link it here.
+    validations:
+      required: true
+
+  - type: checkboxes
+    attributes:
+      label: Is your featurizer open-source ?
+      description: We prioritize addition of open source models.
+      options:
+        - label: Yes it's open source
+
+  - type: checkboxes
+    attributes:
+      label: Are you willing to contribute to the PR for this featurizer ?
+      description: We encourage contribution to Molfeat, but we can also help you with the PR.
+      options:
+        - label: Yes I'm willing to contribute
+
+  - type: textarea
+    attributes:
+      label: Pitch
+      description: A clear and concise description of what you want to happen and any additional context.
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: Featurizer description
+      description: |
+        Please fill in the following information about the featurizer
+      value: |
+        <details>
+          <summary>Featurizer card</summary>
+
+          ```yaml
+          # list of authors
+          authors: 
+            - author 1
+          # describe the featurizer 
+          description: ~ 
+          # which type of input does the featurizer expect ? 
+          inputs: ~ 
+          # name of the featurizer
+          name: ~ 
+          # reference of the featurizer (a paper or a link)
+          reference: ~ 
+          # what does the featurizer return as output for molecular representation ?
+          representation: ~ 
+          # does the featurizer require 3D information ?
+          require_3D:  ~ 
+          ```
+
+        </details>
+    validations:
+      required: false

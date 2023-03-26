@@ -1,6 +1,6 @@
 # MolFeat plugin registry
 
-This document explains how to officially register a plugin in `MolFeat`. 
+This document explains how to register a plugin in `MolFeat` for listing on our website. 
 
 The `MolFeat` plugin registry aims to be the home for all publicly available `MolFeat` plugins. It
 collects information on the type of plugins provided by your package, which `MolFeat` versions it is compatible with, etc.
@@ -18,9 +18,9 @@ We strongly encourage to **register at early stages of development**, both to re
     ...
     molfeat-new:
         entry_point_prefix: new
-        available_model_infos: ~
         home_url: ~
-        documentation_url: ~ 
+        documentation_url: ~
+        molfeat_version: ~
 
     ```
 3. Create a [Pull Request](https://github.com/datamol-io/molfeat/pulls) to this repository
@@ -29,15 +29,12 @@ We strongly encourage to **register at early stages of development**, both to re
 
 - __top-level key__ (required):
 The name under which your plugin will be distributed.
-By convention, names of MolFeat plugins are lowercase and prefixed by `molfeat-` (e.g `molfeat-padelpy`)
+By convention, names of MolFeat plugins are lowercase and prefixed by `molfeat-` (e.g `molfeat-myplugin`)
 
 - __entry_point_prefix__ (required):
 The prefix of all entry points provided by the plugin.
 By convention, a plugin `molfeat-xxx` should use `entry_point_prefix: xxx`.
-For example: `molfeat-padelpy` uses the entry point prefix `padelpy` and provides numerous entry points, all of which start with `padelpy.`.
-
-- __available_model_infos__ (required):
-A path to a json file specifying the information (model card) of all models that are offered in your plugin. For more information about a model card. Please refer to the [create-plugin](./create-plugin.md) section.
+For example: `molfeat-myplugin` uses the entry point prefix `myplugin` and provides numerous entry points, all of which start with `myplugin.`.
 
 - __home_url__ (required):
 The link to the homepage of the plugin, for example its github repository.
@@ -48,3 +45,34 @@ The molfeat version required for your plugin to work.
 - __documentation_url__ (optional):
 The link to the online documentation for your plugin, for example on readthedocs.org .
 
+
+### Model Card in pull request
+
+In you pull request, please  provide a json or yaml file (or its content) that should list information on available models that are offered in your plugin. 
+
+If your plugin does not provide any additional model, you can ignore this step.
+An example of such a file is provided below. You will need to provide all keys:
+
+```yaml
+# name of the featurizer, str
+name: awesome-featurizer 
+# description of your featurizer, str
+description: Concise description for the awesome-featurizer
+# type of input the featurizer takes, str
+inputs: smiles 
+# link to the reference of the featurizer
+reference: https://link-to-the-awesome-paper/
+# type of featurizer, Literal["pretrained", "hand-crafted", "hashed"]
+type: "pretrained" 
+# output representation of the featurizer, Literal["graph", "line-notation", "vector", "tensor", "other"]
+representation: vector 
+# Whether 3D information are required, Optional[bool]
+require_3D: false 
+# up to 5 tags you want to add for searching your featurizer, List[str]
+tags:
+    - pretrained
+    - 3D
+    - GNN
+authors: # list the authors, List[str]
+    - Awesome Team 1
+```

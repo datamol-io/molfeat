@@ -5,7 +5,7 @@ For developers that are planning to extend Molfeat functionalities, we recommend
 However, plugins are not always required and sometimes a simple pull request is the better option. 
 
 | :heavy_check_mark: **Do** use plugins if...                                          | :x: **Do not** use plugins if...                                                                                           |
-|--------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
 | If a new featurizer can not be loaded by current classes.                            | If a new featurizer can already be loaded through existing classes.                                                        |
 | If a new featurizer requires additional, possibly difficult to install dependencies. | If a new featurizer requires no additional dependencies.                                                                   |
 | If you want to make a new class of featurizers available to the Molfeat community.   | If you can show through benchmarks that a featurizer is so performant, it should be available as part of the core package. |
@@ -19,10 +19,8 @@ We recommend Molfeat plugins to be bundled and distributed as a [Python package]
 
 ## Quickstart
 
-The fastest way to jumpstart a Molfeat plugin package is to use the
-[Molfeat plugin template](...) in order to template the basic folder structure, already customized
-according to the desired name of your plugin, following Molfeat conventions. See also the
-[molfeat-padel](https://github.com/datamol-io/molfeat-padel) demo plugin package for an in-depth explanation of the files & folders.
+The fastest way to jumpstart a Molfeat plugin package is to start with an existing template repository.
+The [molfeat-padel](https://github.com/datamol-io/molfeat-padel) demo plugin package provides a starting point to understand the basic folder structure and our naming convention. Please reachout to us on github if you need help to get started.
 
 In the following document, we explain the conventions used when building a Molfeat plugin.
 
