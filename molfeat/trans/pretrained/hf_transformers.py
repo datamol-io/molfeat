@@ -241,6 +241,9 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
             For bert models, the default pooling layers is a neural network. Therefore, do not use the default
             Or provide a random seed for reproducibility (in this case pooling will act as random projection to the same manifold)
 
+        !!! note
+            The pooling module of this featurizer is accessible through the `_pooling_obj` attribute.
+
         Args:
             kind: name of the featurizer as available in the model store
             notation: optional line notation to use. Only use if it cannot be found from the model card.

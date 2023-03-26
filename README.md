@@ -41,6 +41,7 @@ Not all featurizers of the Molfeat core package are supported by default. Some f
 
 - To install `dgl`: run `mamba install -c dglteam dgl`
 - To install `dgllife`:  run `mamba install -c dglteam dgllife`
+- To install `fcd_torch`: run `mamba install -c conda-forge fcd_torch`
 - To install `pyg`: run `mamba install -c conda-forge pytorch_geometric`
 - To install `graphormer-pretrained`: run `mamba install -c conda-forge graphormer-pretrained`
 - To install `map4`: see https://github.com/reymond-group/map4
@@ -78,12 +79,12 @@ trans.to_state_yaml_file("state_dict.yml")
 trans = MoleculeTransformer.from_state_yaml_file("state_dict.yml")
 trans(data)
 
-# List all availaible featurizers
+# List all available featurizers
 store = ModelStore()
 store.available_models
 
 # Find a featurizer and learn how to use it
-model_card = store.search(name="DeepChem-ChemBERTa-77M-MLM")[0]
+model_card = store.search(name="ChemBERTa-77M-MLM")[0]
 model_card.usage()
 
 # Load a featurizer through the store
