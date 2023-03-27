@@ -20,28 +20,38 @@ class PretrainedMolTransformer(MoleculeTransformer):
     r"""
     Transformer based on pretrained featurizer
 
+    !!! note
+        * When implementing a subclass of this class, you need to define the `_embed` and optionally the `_convert` methods.
+        * If your model is an instance of PretrainedModel that handles loading of the model from a store or through a complex mechanism
+          then you can decide whether you want to preload the true underlying model. You will be in charge of handling the logic of when you need to call preload, and when you don't.
+          Note however that by default preloading is only attempted when the featurizer is still an instance of PretrainedModel.
+
+
     Attributes
-        model (object): featurizer object
+        featurizer (object): featurizer object
         dtype (type, optional): Data type. Use call instead
         precompute_cache: (bool, optional): Whether to precompute the features into a local cache. Defaults to False.
             Note that due to molecular hashing, some pretrained featurizers might be better off just not using any cache as they can be faster.
             Furthermore, the cache is not saved when pickling the object. If you want to save the cache, you need to save the object separately.
         _require_mols (bool): Whether the embedding takes mols or smiles as input
+        preload: whether to preload the pretrained model from the store (if available) during initialization.
+
     """
 
     def __init__(
         self,
         dtype: Optional[Callable] = None,
         precompute_cache: Optional[Union[bool, DataCache]] = None,
+        preload: bool = False,
         **params,
     ):
         self._save_input_args()
 
-        params.pop("featurizer", None)
+        featurizer = params.pop("featurizer", None)
         super().__init__(dtype=dtype, featurizer="none", **params)
-        self.featurizer = None
+        self.featurizer = featurizer
         self._require_mols = False
-        self.preload = False
+        self.preload = preload
         self._feat_length = None
         if precompute_cache is False:
             precompute_cache = None
@@ -66,7 +76,9 @@ class PretrainedMolTransformer(MoleculeTransformer):
 
     def _embed(self, smiles: str, **kwargs):
         """Internal molecular embedding
-        src_pad_mask = inputs.get("src_mask", None)
+        This functiom takes a list of smiles or molecules and return the featurization
+        corresponding to the inputs.  In `transform` and `_transform`, this function is
+        called after calling `_convert`
 
         Args:
             smiles: input smiless
@@ -98,6 +110,8 @@ class PretrainedMolTransformer(MoleculeTransformer):
     def _convert(self, inputs: list, **kwargs):
         """Convert molecules to the right format
 
+        In `transform` and `_transform`, this function is called before calling `_embed`
+
         Args:
             inputs: inputs to preprocess
 
@@ -125,7 +139,7 @@ class PretrainedMolTransformer(MoleculeTransformer):
     def _transform(self, mol: rdchem.Mol, **kwargs):
         r"""
         Compute features for a single molecule.
-        This method would potentially need to be reimplemented by child classes
+        This method would potentially need to be reimplemented by any child class
 
         Args:
             mol (rdchem.Mol): molecule to transform into features
@@ -153,6 +167,11 @@ class PretrainedMolTransformer(MoleculeTransformer):
 
     def transform(self, smiles: List[str], **kwargs):
         """Perform featurization of the input molecules
+
+        The featurization process is as follow:
+        1. convert the input molecules into the right format, expected by the pre-trained model using `_convert`
+        2. compute embedding of the molecule using `_embed`
+        3. perform any model-specific postprocessing and cache update
 
         The dtype returned is the native datatype of the transformer.
         Use `__call__` to get the dtype in the `dtype` attribute format

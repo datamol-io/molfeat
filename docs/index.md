@@ -35,4 +35,4 @@ This, however, does imply that the installation of a plugin is plugin-dependent:
 Not all featurizers of the Molfeat core package are supported by default. Some featurizers require additional dependencies. If you try to use a featurizer that requires additional dependencies, Molfeat will raise an error and will tell you which dependencies are missing and how to install these.
 
 ## How to cite
-Please cite Molfeat if you use it in your research: [![DOI]()]().
+Please cite Molfeat if you use it in your research: [![DOI](https://zenodo.org/badge/613548667.svg)](https://zenodo.org/badge/latestdoi/613548667).

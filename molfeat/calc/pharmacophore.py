@@ -222,13 +222,11 @@ class Pharmacophore3D(SerializableCalculator):
                 to a feature definition or a feature factory object
             length: Optional desired length. If provided, the fp will be refold or padded to that length.
                 If set to None, fallback to the default for the provided sig factory.
-            minPointCount: Minimum number of points.
-            maxPointCount: Maximum number of points.
-            trianglePruneBins: Whether to prune the triangle inequality.
-            includeBondOrder: Whether to consider bond order.
-            shortestPathsOnly: Whether to only use the shortest path between pharmacophores.
-            useCounts: Whether take into account the count information. This will also impact how the folding works.
-            bins: Bins to use.
+            bin_step: Bin step to use.
+            min_features: Minimum number of features to use.
+            max_features: Maximum number of features to use.
+            use_modulo: whether to use modulo to compute the pharmacophore fingerprint
+            tolerance: tolerance value to use when computing the pharmacophore fingerprint
         """
 
         self.factory = factory

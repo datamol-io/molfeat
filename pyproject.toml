@@ -7,7 +7,7 @@ name = "molfeat"
 description = "A python library to featurize molecules."
 dynamic = ["version"]
 authors = [
-    { name = "Emmanuel Noutahi", email = "emmanuel@valencediscovery.com" },
+    { name = "Emmanuel Noutahi", email = "emmanuel.noutahi@hotmail.ca" },
 ]
 readme = "README.md"
 license = { text = "Apache" }
@@ -29,8 +29,68 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
 ]
-# NOTE(hadim): to fill for the pypi release
-dependencies = []
+
+dependencies = [
+    "tqdm",
+    "loguru",
+    "joblib",
+    "filelock",
+    "fsspec>=2021.9",
+    "s3fs >=2021.9",
+    "gcsfs >=2021.9",
+    "pandas",
+    "numpy",
+    "scipy",
+    "torch",
+    "datamol >=0.8.0",
+    "pyyaml",
+    "platformdirs",
+    "matplotlib",
+    "h5py",
+    "pyarrow",
+    "pydantic",
+    "platformdirs",
+    "scikit-learn",
+    "packaging",
+    "pmapper",
+    "mordred",
+
+]
+
+[project.optional-dependencies]
+dgl = [
+    "dgl",
+    "dgllife",
+]
+
+graphormer = [
+    "graphormer-pretrained",
+]
+
+transformer = [
+    "tokenizers <0.13.2",
+    "transformers"
+]
+
+fcd = [
+    "fcd_torch"
+]
+
+viz = [
+    "nglview",
+    "ipywidgets"
+]
+
+all = [
+    "dgl",
+    "dgllife",
+    "graphormer-pretrained",
+    "tokenizers <0.13.2",
+    "transformers",
+    "fcd_torch",
+    "nglview",
+    "ipywidgets",
+]
 
 [project.urls]
 Website = "https://molfeat.io"

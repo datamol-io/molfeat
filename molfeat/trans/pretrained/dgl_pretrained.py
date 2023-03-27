@@ -146,7 +146,7 @@ class PretrainedDGLTransformer(PretrainedMolTransformer):
             self.featurizer = DGLModel(name=self.kind)
         self.batch_size = int(batch_size)
         if self.preload:
-            self.featurizer = self.featurizer.load()
+            self._preload()
 
     def __repr__(self):
         return "{}(kind={}, pooling={}, dtype={})".format(

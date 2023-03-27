@@ -1,0 +1,15 @@
+name: Typos and doc fixes
+description: Tell us about how we can improve our documentation
+labels: ["needs triage", "docs", "enhancement"]
+body:
+  - type: textarea
+    attributes:
+      label: 📖 Documentation
+      description: A description of the issue.
+      placeholder: |
+        For typos and doc fixes, please go ahead and:
+        - Directly create a PR fixing the issues instead of opening an issue.
+        - If you are not sure about the proper solution, please describe here your finding...
+
+    validations:
+      required: true

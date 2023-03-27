@@ -436,7 +436,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
 
         Args:
             transformer: Fingerprint transformer
-            data: List of molecules to featurize
+            mols: List of molecules to featurize
             batch_size: Batch size
             n_jobs: number of jobs to run in parallel
             concatenate: Whether to concatenate the results or return the list of batched results

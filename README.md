@@ -46,7 +46,22 @@ mamba install -c conda-forge molfeat
 
 _**Tips:** You can replace `mamba` by `conda`._
 
-_**Note:** We highly recommend using a [Conda Python distribution](https://github.com/conda-forge/miniforge) to install Molfeat. The package is also pip installable if you need it: `pip install molfeat`._
+_**Note:** We highly recommend using a [Conda Python distribution](https://github.com/conda-forge/miniforge) to install Molfeat. The package is also pip installable if you need it: `pip install molfeat`._ 
+
+### Optional dependencies
+Not all featurizers of the Molfeat core package are supported by default. Some featurizers require additional dependencies. If you try to use a featurizer that requires additional dependencies, Molfeat will raise an error and will tell you which dependencies are missing and how to install these. 
+
+- To install `dgl`: run `mamba install -c dglteam dgl`
+- To install `dgllife`:  run `mamba install -c conda-forge dgllife`
+- To install `fcd_torch`: run `mamba install -c conda-forge fcd_torch`
+- To install `pyg`: run `mamba install -c conda-forge pytorch_geometric`
+- To install `graphormer-pretrained`: run `mamba install -c conda-forge graphormer-pretrained`
+- To install `map4`: see https://github.com/reymond-group/map4
+- To install `bio-embeddings`: run `mamba install -c conda-forge 'bio-embeddings >=0.2.2'`
+
+
+If you install Molfeat using pip, there are optional dependencies that can be installed with the main package. For example, `pip install "molfeat[all]"` allows installing all the compatible optional dependencies for small molecule featurization. There are other options such as `molfeat[dgl]`, `molfeat[graphormer]`, `molfeat[transformer]`, `molfeat[viz]`, and `molfeat[fcd]`. See the [optional-dependencies](./pyproject.toml) for more information.
+
 
 ### Installing Plugins
 
@@ -54,9 +69,6 @@ The functionality of Molfeat can be extended through plugins. The usage of a plu
 
 This, however, does imply that the installation of a plugin is plugin-dependent: Please consult its documentation to learn more.
 
-### Optional dependencies
-
-Not all featurizers of the Molfeat core package are supported by default. Some featurizers require additional dependencies. If you try to use a featurizer that requires additional dependencies, Molfeat will raise an error and will tell you which dependencies are missing and how to install these.
 
 ## API tour
 
@@ -82,7 +94,7 @@ trans.to_state_yaml_file("state_dict.yml")
 trans = MoleculeTransformer.from_state_yaml_file("state_dict.yml")
 trans(data)
 
-# List all availaible featurizers
+# List all available featurizers
 store = ModelStore()
 store.available_models
 
@@ -98,14 +110,23 @@ trans, model_info = store.load(model_card)
 
 Please cite Molfeat if you use it in your research: [![DOI](https://zenodo.org/badge/613548667.svg)](https://zenodo.org/badge/latestdoi/613548667).
 
+## Contribute
+
+See [developers](docs/developers/) for a comprehensive guide on how to contribute to `Molfeat`
+
 ## Changelogs
 
 See the latest changelogs at [CHANGELOG.rst](./CHANGELOG.rst).
+
+## Maintainers
+
+* @cwognum
+* @maclandrol
+* @hadim
+
 
 ## License
 
 Under the Apache-2.0 license. See [LICENSE](LICENSE).
 
-## Authors
 
-See [AUTHORS.rst](./AUTHORS.rst).

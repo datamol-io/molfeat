@@ -95,8 +95,6 @@ class HFModel(PretrainedStoreModel):
         Args:
             name (str, optional): Name of the model for ada.
             cache_path (os.PathLike, optional): Local cache path for faster loading. This is the cache_path parameter for ADA loading !
-            device: Torch device on which to run the `predictor` model.
-            loading_fn: Optional loading function for model loading
         """
 
         super().__init__(name, cache_path=cache_path, store=store)
@@ -241,6 +239,9 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
             For bert models, the default pooling layers is a neural network. Therefore, do not use the default
             Or provide a random seed for reproducibility (in this case pooling will act as random projection to the same manifold)
 
+        !!! note
+            The pooling module of this featurizer is accessible through the `_pooling_obj` attribute.
+
         Args:
             kind: name of the featurizer as available in the model store
             notation: optional line notation to use. Only use if it cannot be found from the model card.
@@ -302,10 +303,13 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
         )
 
     def _preload(self):
-        """Perform preloading of the model"""
+        """Perform preloading of the model from the store"""
         super()._preload()
-        # we can be confident that the model has been loaded here
         self.featurizer.max_length = self.max_length
+
+        # we can be confident that the model has been loaded here
+        if self._pooling_obj is not None and self.preload:
+            return
         config = self.featurizer.model.config.to_dict()
         cur_tokenizer = self.featurizer.tokenizer
         for special_token_id_name in [
