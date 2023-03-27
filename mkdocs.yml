@@ -3,11 +3,10 @@ site_description: "An all in one package for molecule featurization"
 site_url: ""
 repo_url: "https://github.com/datamol-io/molfeat"
 repo_name: "datamol-io/molfeat"
-copyright: Copyright 2023 Valence
 
 remote_branch: "gh-pages"
 use_directory_urls: false
-docs_dir: "docs"
+copyright: Copyright 2020 - 2023 datamol.io
 
 nav:
   - Overview: index.md
@@ -27,6 +26,7 @@ nav:
       - Registering your Plugin: developers/register-plugin.md
 
   - API:
+      - molfeat.calc: api/molfeat.calc.md
       - molfeat.trans:
           - molfeat.trans.base: api/molfeat.trans.base.md
           - molfeat.trans.fp: api/molfeat.trans.fp.md
@@ -38,7 +38,8 @@ nav:
               - Graphormer: api/molfeat.trans.pretrained.graphormer.md
               - DGL: api/molfeat.trans.pretrained.dgl_pretrained.md
               - FCD: api/molfeat.trans.pretrained.fcd.md
-      - molfeat.calc: api/molfeat.calc.md
+      - molfeat.store: api/molfeat.store.md
+      - molfeat.plugins: api/molfeat.plugins.md
       - molfeat.utils: api/molfeat.utils.md
       - molfeat.viz: api/molfeat.viz.md
 
@@ -46,20 +47,17 @@ nav:
 
 theme:
   name: material
-  custom_dir: docs/_overrides
-  palette:
-    primary: light blue
-    accent: purple
+  # NOTE(cwognum): to customize the material primary and secondary
+  # color check `docs/assets/css/custom-molfeat.css`.
   features:
     - navigation.expand
-  favicon: images/favicon.png
-  logo: images/logo.png
+  favicon: images/logo-black.png
+  logo: images/logo.svg
 
 extra_css:
-  - _assets/css/custom.css
-
-#extra_javascript:
-#  - assets/js/google-analytics.js
+  - assets/css/custom.css
+  - assets/css/custom-molfeat.css
+  - assets/css/tweak-width.css
 
 markdown_extensions:
   - admonition

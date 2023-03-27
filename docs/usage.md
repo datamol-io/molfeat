@@ -1,5 +1,4 @@
 # Getting started
-
 ## Organization
 Molfeat is organized in three main modules:
 

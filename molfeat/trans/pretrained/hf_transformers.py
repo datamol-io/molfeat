@@ -348,18 +348,20 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
         def _to_smiles(x):
             return dm.to_smiles(x) if not isinstance(x, str) else x
 
+        parallel_kwargs = getattr(self, "parallel_kwargs", {})
+
         if len(inputs) > 1:
             smiles = dm.utils.parallelized(
                 _to_smiles,
                 inputs,
                 n_jobs=self.n_jobs,
-                progress=len(inputs) > 1,
+                **parallel_kwargs,
             )
             inputs = dm.utils.parallelized(
                 self.converter.encode,
                 smiles,
                 n_jobs=self.n_jobs,
-                progress=len(smiles) > 1,
+                **parallel_kwargs,
             )
         else:
             inputs = self.converter.encode(_to_smiles(inputs[0]))

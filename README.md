@@ -1,6 +1,18 @@
 <div align="center">
-    <img src="docs/images/logo-title.png" width="100%">
+    <img src="docs/images/logo-title.svg" width="100%">
 </div>
+
+<p align="center">
+    <b>molfeat - all your molecular featurizers in one place </b>. <br />
+</p>
+<p align="center">
+  <a href="https://datamol-io.github.io/molfeat/stable/index.html" target="_blank">
+      Docs
+  </a> | 
+  <a href="https://www.molfeat.datamol.io/" target="_blank">
+      Homepage
+  </a>
+</p>
 
 ---
 
@@ -75,7 +87,7 @@ store = ModelStore()
 store.available_models
 
 # Find a featurizer and learn how to use it
-model_card = store.search(name="DeepChem-ChemBERTa-77M-MLM")[0]
+model_card = store.search(name="ChemBERTa-77M-MLM")[0]
 model_card.usage()
 
 # Load a featurizer through the store
