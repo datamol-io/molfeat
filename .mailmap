@@ -9,4 +9,6 @@
 # This file is up-to-date if the command git log --format="%aN <%aE>" | sort -u
 # gives no duplicates.
 
+Cas Wognum <caswognum@outlook.com> cwognum <caswognum@outlook.com>
+Hadrien Mary <hadrien.mary@gmail.com> Hadrien Mary <hadim@users.noreply.github.com>
 maclandrol <emmanuel.noutahi@hotmail.ca>
