@@ -7,7 +7,7 @@ name = "molfeat"
 description = "A python library to featurize molecules."
 dynamic = ["version"]
 authors = [
-    { name = "Emmanuel Noutahi", email = "emmanuel@valencediscovery.com" },
+    { name = "Emmanuel Noutahi", email = "emmanuel.noutahi@hotmail.ca" },
 ]
 readme = "README.md"
 license = { text = "Apache" }
