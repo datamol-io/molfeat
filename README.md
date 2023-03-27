@@ -1,6 +1,18 @@
 <div align="center">
-    <img src="docs/images/logo-title.png" width="85%">
+    <img src="docs/images/logo-title.svg" width="100%">
 </div>
+
+<p align="center">
+    <b>molfeat - all your molecular featurizers in one place </b>. <br />
+</p>
+<p align="center">
+  <a href="https://datamol-io.github.io/molfeat/stable/index.html" target="_blank">
+      Docs
+  </a> | 
+  <a href="https://www.molfeat.datamol.io/" target="_blank">
+      Homepage
+  </a>
+</p>
 
 ---
 
