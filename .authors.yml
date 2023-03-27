@@ -6,11 +6,15 @@
   email: caswognum@outlook.com
   aliases:
   - cwognum
-  num_commits: 9
+  num_commits: 16
   first_commit: 2023-03-20 13:05:13
 - name: Hadrien Mary
   email: hadrien.mary@gmail.com
   alternate_emails:
   - hadim@users.noreply.github.com
-  num_commits: 17
+  num_commits: 21
   first_commit: 2023-03-21 12:50:42
+- name: Therence
+  email: 38595485+Therence1@users.noreply.github.com
+  num_commits: 1
+  first_commit: 2023-03-26 23:33:17

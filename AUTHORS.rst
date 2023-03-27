@@ -3,4 +3,5 @@ Authors are sorted alphabetically.
 
 * Cas Wognum
 * Hadrien Mary
+* Therence
 * maclandrol
