@@ -96,7 +96,7 @@ trans, model_info = store.load(model_card)
 
 ## How to cite
 
-Please cite Molfeat if you use it in your research: [![DOI]()]().
+Please cite Molfeat if you use it in your research: [![DOI](https://zenodo.org/badge/613548667.svg)](https://zenodo.org/badge/latestdoi/613548667).
 
 ## Changelogs
 
