@@ -326,8 +326,51 @@
   
   
     <li class="md-nav__item">
+      <a href="../tutorials/graphs.html" class="md-nav__link">
+        Featurizing graphs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+          Integrations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Integrations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../tutorials/integrations.html" class="md-nav__link">
-        Integrations
+        Integration with scikit-learn and PyTorch
       </a>
     </li>
   
@@ -340,9 +383,30 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/graphs.html" class="md-nav__link">
-        Featurizing graphs
+      <a href="../tutorials/pyg_integration.html" class="md-nav__link">
+        Training a GNN with PyG
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/transformer_finetuning.html" class="md-nav__link">
+        Finetuning a pretrained transformer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -491,6 +555,13 @@
           <li class="md-nav__item">
   <a href="#valid-keys-for-each-plugin" class="md-nav__link">
     Valid keys for each plugin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-card-in-pull-request" class="md-nav__link">
+    Model Card in pull request
   </a>
   
 </li>
@@ -876,6 +947,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#model-card-in-pull-request" class="md-nav__link">
+    Model Card in pull request
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -900,7 +978,7 @@
 
 
 <h1 id="molfeat-plugin-registry">MolFeat plugin registry<a class="headerlink" href="#molfeat-plugin-registry" title="Permanent link">&para;</a></h1>
-<p>This document explains how to officially register a plugin in <code>MolFeat</code>. </p>
+<p>This document explains how to register a plugin in <code>MolFeat</code> for listing on our website. </p>
 <p>The <code>MolFeat</code> plugin registry aims to be the home for all publicly available <code>MolFeat</code> plugins. It
 collects information on the type of plugins provided by your package, which <code>MolFeat</code> versions it is compatible with, etc.</p>
 <p>If you are starting to develop a new plugin or if you already have one, please register it here.
@@ -912,9 +990,9 @@ We strongly encourage to <strong>register at early stages of development</strong
     <div class="highlight"><pre><span></span><code>...
 molfeat-new:
     entry_point_prefix: new
-    available_model_infos: ~
     home_url: ~
-    documentation_url: ~ 
+    documentation_url: ~
+    molfeat_version: ~
 </code></pre></div></li>
 <li>Create a <a href="https://github.com/datamol-io/molfeat/pulls">Pull Request</a> to this repository</li>
 </ol>
@@ -922,17 +1000,13 @@ molfeat-new:
 <ul>
 <li><strong>top-level key</strong> (required):
 The name under which your plugin will be distributed.
-By convention, names of MolFeat plugins are lowercase and prefixed by <code>molfeat-</code> (e.g <code>molfeat-padelpy</code>)</li>
+By convention, names of MolFeat plugins are lowercase and prefixed by <code>molfeat-</code> (e.g <code>molfeat-myplugin</code>)</li>
 </ul>
 <ul>
 <li><strong>entry_point_prefix</strong> (required):
 The prefix of all entry points provided by the plugin.
 By convention, a plugin <code>molfeat-xxx</code> should use <code>entry_point_prefix: xxx</code>.
-For example: <code>molfeat-padelpy</code> uses the entry point prefix <code>padelpy</code> and provides numerous entry points, all of which start with <code>padelpy.</code>.</li>
-</ul>
-<ul>
-<li><strong>available_model_infos</strong> (required):
-A path to a json file specifying the information (model card) of all models that are offered in your plugin. For more information about a model card. Please refer to the <a href="create-plugin.html">create-plugin</a> section.</li>
+For example: <code>molfeat-myplugin</code> uses the entry point prefix <code>myplugin</code> and provides numerous entry points, all of which start with <code>myplugin.</code>.</li>
 </ul>
 <ul>
 <li><strong>home_url</strong> (required):
@@ -946,6 +1020,32 @@ The molfeat version required for your plugin to work.</li>
 <li><strong>documentation_url</strong> (optional):
 The link to the online documentation for your plugin, for example on readthedocs.org .</li>
 </ul>
+<h3 id="model-card-in-pull-request">Model Card in pull request<a class="headerlink" href="#model-card-in-pull-request" title="Permanent link">&para;</a></h3>
+<p>In you pull request, please  provide a json or yaml file (or its content) that should list information on available models that are offered in your plugin. </p>
+<p>If your plugin does not provide any additional model, you can ignore this step.
+An example of such a file is provided below. You will need to provide all keys:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># name of the featurizer, str</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">awesome-featurizer</span><span class="w"> </span>
+<span class="c1"># description of your featurizer, str</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Concise description for the awesome-featurizer</span>
+<span class="c1"># type of input the featurizer takes, str</span>
+<span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">smiles</span><span class="w"> </span>
+<span class="c1"># link to the reference of the featurizer</span>
+<span class="nt">reference</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://link-to-the-awesome-paper/</span>
+<span class="c1"># type of featurizer, Literal[&quot;pretrained&quot;, &quot;hand-crafted&quot;, &quot;hashed&quot;]</span>
+<span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;pretrained&quot;</span><span class="w"> </span>
+<span class="c1"># output representation of the featurizer, Literal[&quot;graph&quot;, &quot;line-notation&quot;, &quot;vector&quot;, &quot;tensor&quot;, &quot;other&quot;]</span>
+<span class="nt">representation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vector</span><span class="w"> </span>
+<span class="c1"># Whether 3D information are required, Optional[bool]</span>
+<span class="nt">require_3D</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span>
+<span class="c1"># up to 5 tags you want to add for searching your featurizer, List[str]</span>
+<span class="nt">tags</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pretrained</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3D</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GNN</span>
+<span class="nt">authors</span><span class="p">:</span><span class="w"> </span><span class="c1"># list the authors, List[str]</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Awesome Team 1</span>
+</code></pre></div>
 
 
 
