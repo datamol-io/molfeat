@@ -4,6 +4,27 @@ molfeat Change Log
 
 .. current developments
 
+v0.8.2
+====================
+
+**Added:**
+
+* More documentation and tutorials
+* pip dependencies and optional dependencies in pyproject.toml
+* Github issue templates
+
+**Fixed:**
+
+* Minor typos and function definition
+
+**Authors:**
+
+* Cas Wognum
+* Hadrien Mary
+* maclandrol
+
+
+
 v0.8.1
 ====================
 
