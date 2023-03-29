@@ -11,17 +11,17 @@
       
       
       
-        <link rel="prev" href="types_of_featurizers.html">
+        <link rel="prev" href="pyg_integration.html">
       
       
-        <link rel="next" href="graphs.html">
+        <link rel="next" href="save_and_load.html">
       
       <link rel="icon" href="../images/logo-black.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.4">
     
     
       
-        <title>Add your own featurizer - molfeat</title>
+        <title>Finetuning a pretrained transformer - molfeat</title>
       
     
     
@@ -77,7 +77,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#define-your-own-calculator" class="md-skip">
+        <a href="#huggingface-transformer-finetuning" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Add your own featurizer
+              Finetuning a pretrained transformer
             
           </span>
         </div>
@@ -310,69 +310,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Add your own featurizer
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="add_your_own.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="add_your_own.html" class="md-nav__link">
         Add your own featurizer
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#define-your-own-calculator" class="md-nav__link">
-    Define your own calculator
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#define-your-own-transformer" class="md-nav__link">
-    Define your own transformer
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-it-to-the-model-store" class="md-nav__link">
-    Add it to the Model Store
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#share-with-the-community" class="md-nav__link">
-    Share with the community
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -396,16 +338,16 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-        
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
       
       
       
@@ -414,7 +356,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_4_4">
           <span class="md-nav__icon md-icon"></span>
           Integrations
@@ -453,11 +395,82 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="transformer_finetuning.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Finetuning a pretrained transformer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="transformer_finetuning.html" class="md-nav__link md-nav__link--active">
         Finetuning a pretrained transformer
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#huggingface-transformer-finetuning" class="md-nav__link">
+    HuggingFace Transformer Finetuning
+  </a>
+  
+    <nav class="md-nav" aria-label="HuggingFace Transformer Finetuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#featurizer" class="md-nav__link">
+    Featurizer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataset" class="md-nav__link">
+    Dataset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-training" class="md-nav__link">
+    Network + Training
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -928,30 +941,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#define-your-own-calculator" class="md-nav__link">
-    Define your own calculator
+  <a href="#huggingface-transformer-finetuning" class="md-nav__link">
+    HuggingFace Transformer Finetuning
+  </a>
+  
+    <nav class="md-nav" aria-label="HuggingFace Transformer Finetuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#featurizer" class="md-nav__link">
+    Featurizer
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#define-your-own-transformer" class="md-nav__link">
-    Define your own transformer
+        
+          <li class="md-nav__item">
+  <a href="#dataset" class="md-nav__link">
+    Dataset
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#add-it-to-the-model-store" class="md-nav__link">
-    Add it to the Model Store
+        
+          <li class="md-nav__item">
+  <a href="#network-training" class="md-nav__link">
+    Network + Training
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#share-with-the-community" class="md-nav__link">
-    Share with the community
+        
+          <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    Testing
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -973,7 +999,7 @@
   
 
 
-  <h1>Add your own featurizer</h1>
+  <h1>Finetuning a pretrained transformer</h1>
 
 <script>
 (function (global, factory) {
@@ -2011,7 +2037,7 @@ Licensed under the Apache License, Version 2.0.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2029,12 +2055,20 @@ Licensed under the Apache License, Version 2.0.
             <div class="highlight-ipynb hl-python "><pre><span></span><span class="o">%</span><span class="n">load_ext</span> <span class="n">autoreload</span>
 <span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>
 
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">tqdm.auto</span> <span class="kn">import</span> <span class="n">tqdm</span>
 </pre></div>
 <div id="cell-1" class="clipboard-copy-txt">%load_ext autoreload
 %autoreload 2
 
-import numpy as np</div>
+import torch
+import copy
+import pandas as pd
+import numpy as np
+from tqdm.auto import tqdm</div>
         
         </div>
     </div>
@@ -2050,19 +2084,34 @@ import numpy as np</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="define-your-own-calculator">Define your own calculator<a class="anchor-link" href="#define-your-own-calculator">&#182;</a></h2><p>Remember that a calculator is simply a Callable that takes in a molecule (either a RDKit <code>Chem.Mol</code> object or SMILES string) and returns a dictionary of features.
-We can thus easily define our own calculator!</p>
+<h2 id="huggingface-transformer-finetuning">HuggingFace Transformer Finetuning<a class="anchor-link" href="#huggingface-transformer-finetuning">&#182;</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Wanna finetune one of the pretrained transformers for molecular featurization in Molfeat for your property prediction task ? not sure where to start ? Do you need something extra-customized ? Do you feel like getting your hands dirty by hacking Molfeat ? Are you a smooth criminal ?</p>
+<p><strong>This tutorial is for you !</strong></p>
+<p>We have previously shown how <a href="./integration.html">Molfeat integrates with PyTorch in general</a> and even with <a href="./pyg_integration.html">Pytorch Geometric</a>. Now we will demonstrate how to use Molfeat to finetune a pretrained transformer for molecular property prediction.</p>
+<p>To run this tutorial, you will need to install <code>transformers</code> and <code>tokenizers</code>.</p>
+<p><code>mamba install -c conda-forge transformers &quot;tokenizers &lt;0.13.2&quot;</code></p>
+<p>⚠️ Warning: advanced users only !</p>
 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[36]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2077,59 +2126,16 @@ We can thus easily define our own calculator!</p>
                     </div>
                 </clipboard-copy>
             </div>
-            <div class="highlight-ipynb hl-python "><pre><span></span><span class="kn">from</span> <span class="nn">molfeat.trans</span> <span class="kn">import</span> <span class="n">MoleculeTransformer</span>
-<span class="kn">from</span> <span class="nn">rdkit.Chem.rdMolDescriptors</span> <span class="kn">import</span> <span class="n">CalcNumHeteroatoms</span>
-
-<span class="k">def</span> <span class="nf">my_calculator</span><span class="p">(</span><span class="n">mol</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;My custom featurizer&quot;&quot;&quot;</span>
-    <span class="n">mol</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">to_mol</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
-    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">mol</span><span class="o">.</span><span class="n">GetNumAtoms</span><span class="p">(),</span> <span class="n">mol</span><span class="o">.</span><span class="n">GetNumBonds</span><span class="p">(),</span> <span class="n">CalcNumHeteroatoms</span><span class="p">(</span><span class="n">mol</span><span class="p">),</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">()]</span>
-
-<span class="c1"># This directly works with the MoleculeTransformer</span>
-<span class="n">trans</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">my_calculator</span><span class="p">)</span>
-<span class="n">trans</span><span class="p">([</span><span class="s2">&quot;CN1C=NC2=C1C(=O)N(C(=O)N2C)C&quot;</span><span class="p">])</span>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="kn">from</span> <span class="nn">molfeat.utils.converters</span> <span class="kn">import</span> <span class="n">SmilesConverter</span>
+<span class="kn">from</span> <span class="nn">molfeat.trans.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedHFTransformer</span>
 </pre></div>
-<div id="cell-2" class="clipboard-copy-txt">from molfeat.trans import MoleculeTransformer
-from rdkit.Chem.rdMolDescriptors import CalcNumHeteroatoms
-
-def my_calculator(mol):
-    """My custom featurizer"""
-    mol = dm.to_mol(mol)
-    rng = np.random.default_rng(0)
-    return [mol.GetNumAtoms(), mol.GetNumBonds(), CalcNumHeteroatoms(mol), rng.random()]
-
-# This directly works with the MoleculeTransformer
-trans = MoleculeTransformer(my_calculator)
-trans(["CN1C=NC2=C1C(=O)N(C(=O)N2C)C"])</div>
+<div id="cell-2" class="clipboard-copy-txt">from molfeat.utils.converters import SmilesConverter
+from molfeat.trans.pretrained import PretrainedHFTransformer</div>
         
         </div>
     </div>
 
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[36]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[array([14.        , 15.        ,  6.        ,  0.63696169])]</pre>
-</div>
-
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -2140,19 +2146,20 @@ trans(["CN1C=NC2=C1C(=O)N(C(=O)N2C)C"])</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>If such functions get more complex, it might however be easier to wrap it in class.
-This also ensures the calculator remains serializable.</p>
+<h3 id="featurizer">Featurizer<a class="anchor-link" href="#featurizer">&#182;</a></h3><p>Pretrained Transformer Featurizer in Molfeat have an underlying object <code>featurizer</code> that can handle both tokenization and embedding.</p>
+<p>We will leverage that structure in molfeat to initialize our transformer model, but also to tokenize our molecules</p>
+<p>We first start by defining our featurizer. Here we will use the ChemBERTa pretrained model.</p>
 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[37]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2167,69 +2174,14 @@ This also ensures the calculator remains serializable.</p>
                     </div>
                 </clipboard-copy>
             </div>
-            <div class="highlight-ipynb hl-python "><pre><span></span><span class="kn">from</span> <span class="nn">molfeat.calc</span> <span class="kn">import</span> <span class="n">SerializableCalculator</span>
-
-
-<span class="k">class</span> <span class="nc">MyCalculator</span><span class="p">(</span><span class="n">SerializableCalculator</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mol</span><span class="p">):</span>
-        <span class="n">mol</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">to_mol</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
-        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">mol</span><span class="o">.</span><span class="n">GetNumAtoms</span><span class="p">(),</span> <span class="n">mol</span><span class="o">.</span><span class="n">GetNumBonds</span><span class="p">(),</span> <span class="n">CalcNumHeteroatoms</span><span class="p">(</span><span class="n">mol</span><span class="p">),</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">()]</span>
-
-
-<span class="n">trans</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">MyCalculator</span><span class="p">())</span>
-<span class="n">trans</span><span class="p">([</span><span class="s2">&quot;CN1C=NC2=C1C(=O)N(C(=O)N2C)C&quot;</span><span class="p">])</span>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="n">trans</span> <span class="o">=</span> <span class="n">PretrainedHFTransformer</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;ChemBERTa-77M-MLM&quot;</span><span class="p">,</span> <span class="n">pooling</span><span class="o">=</span><span class="s2">&quot;bert&quot;</span><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
-<div id="cell-3" class="clipboard-copy-txt">from molfeat.calc import SerializableCalculator
-
-
-class MyCalculator(SerializableCalculator):
-    def __call__(self, mol):
-        mol = dm.to_mol(mol)
-        rng = np.random.default_rng(0)
-        return [mol.GetNumAtoms(), mol.GetNumBonds(), CalcNumHeteroatoms(mol), rng.random()]
-
-
-trans = MoleculeTransformer(MyCalculator())
-trans(["CN1C=NC2=C1C(=O)N(C(=O)N2C)C"])</div>
+<div id="cell-3" class="clipboard-copy-txt">trans = PretrainedHFTransformer(kind="ChemBERTa-77M-MLM", pooling="bert", preload=True)</div>
         
         </div>
     </div>
 
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>2023-03-21 14:26:26.358 | WARNING  | molfeat.calc.base:__init__:23 - The &#39;MyCalculator&#39; interaction has been superseded by a new class with id 0x5624f1236620
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[37]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[array([14.        , 15.        ,  6.        ,  0.63696169])]</pre>
-</div>
-
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -2240,19 +2192,33 @@ trans(["CN1C=NC2=C1C(=O)N(C(=O)N2C)C"])</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="define-your-own-transformer">Define your own transformer<a class="anchor-link" href="#define-your-own-transformer">&#182;</a></h2><p>The above example shows that in many cases, there's no direct need to create your own transformer class. You can simply use the <code>MoleculeTransformer</code> base class.
-In more complex cases, such as with pretrained models, it will however be better to create your own subclass.</p>
+<ul>
+<li>Note the use of preload to preload the model in the <code>__init__</code></li>
+<li>Note how we define a pooling mechanism here. Molfeat provides <a href="./api/molfeat.utils.html#pooling">several poolers that you can explore in the API</a>. Because a pooling layer can already be specified and will be accessible through the <code>_pooling_obj</code> attribute we will not bother in defining one later, instead we will just retrieve the one from the featurizer.</li>
+</ul>
 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="dataset">Dataset<a class="anchor-link" href="#dataset">&#182;</a></h3><p>For the dataset, we will use the <code>BBBP</code> dataset, which contains binary labels of blood-brain barrier penetration.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[71]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2267,73 +2233,277 @@ In more complex cases, such as with pretrained models, it will however be better
                     </div>
                 </clipboard-copy>
             </div>
-            <div class="highlight-ipynb hl-python "><pre><span></span><span class="kn">import</span> <span class="nn">datamol</span> <span class="k">as</span> <span class="nn">dm</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
-<span class="kn">from</span> <span class="nn">molfeat.trans.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedMolTransformer</span>
-
-
-<span class="k">class</span> <span class="nc">MyFoundationModel</span><span class="p">(</span><span class="n">PretrainedMolTransformer</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_featurizer</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="s2">&quot;maccs&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">train_dummy_model</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">train_dummy_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Load the pretrained model.</span>
-<span class="sd">        In this dummy example, we train a RF model to predict the cLogP</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">freesolv</span><span class="p">()</span><span class="o">.</span><span class="n">smiles</span><span class="o">.</span><span class="n">values</span>
-        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_featurizer</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dm</span><span class="o">.</span><span class="n">descriptors</span><span class="o">.</span><span class="n">clogp</span><span class="p">(</span><span class="n">dm</span><span class="o">.</span><span class="n">to_mol</span><span class="p">(</span><span class="n">smi</span><span class="p">))</span> <span class="k">for</span> <span class="n">smi</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert the molecule to a format that the model expects&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_featurizer</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_embed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>  <span class="n">mols</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Embed the molecules using the pretrained model</span>
-<span class="sd">        In this dummy example, we simply multiply the features by the importance of the feature</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">feats</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">feature_importances_</span> <span class="k">for</span> <span class="n">feats</span> <span class="ow">in</span> <span class="n">mols</span><span class="p">]</span>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://deepchemdata.s3-us-west-1.amazonaws.com/datasets/BBBP.csv&quot;</span><span class="p">)</span>
 </pre></div>
-<div id="cell-4" class="clipboard-copy-txt">import datamol as dm
-from sklearn.ensemble import RandomForestRegressor
-from molfeat.trans.pretrained import PretrainedMolTransformer
+<div id="cell-4" class="clipboard-copy-txt">df = pd.read_csv("https://deepchemdata.s3-us-west-1.amazonaws.com/datasets/BBBP.csv")</div>
+        
+        </div>
+    </div>
+
+</div>
+</div>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+        <div class="CodeMirror cm-s-jupyter">
+            <div class="zeroclipboard-container">
+                <clipboard-copy for="cell-5">
+                <div>
+                    <span class="notice" hidden>Copied!</span>
+                    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
+                        <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
+                        <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                    </svg>
+                    </div>
+                </clipboard-copy>
+            </div>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+<div id="cell-5" class="clipboard-copy-txt">df.head()</div>
+        
+        </div>
+    </div>
+
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
 
 
-class MyFoundationModel(PretrainedMolTransformer):
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
 
-    def __init__(self):
-        super().__init__(dtype=np.float32)
-        self._featurizer = MoleculeTransformer("maccs", dtype=np.float32)
-        self._model = RandomForestRegressor()
-        self.train_dummy_model()
 
-    def train_dummy_model(self):
-        """
-        Load the pretrained model.
-        In this dummy example, we train a RF model to predict the cLogP
-        """
-        data = dm.data.freesolv().smiles.values
-        X = self._featurizer(data)
-        y = np.array([dm.descriptors.clogp(dm.to_mol(smi)) for smi in data])
-        self._model.fit(X, y)
 
-    def _convert(self, inputs: list, **kwargs):
-        """Convert the molecule to a format that the model expects"""
-        return self._featurizer(inputs)
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-    def _embed(self,  mols: list, **kwargs):
-        """
-        Embed the molecules using the pretrained model
-        In this dummy example, we simply multiply the features by the importance of the feature
-        """
-        return [feats * self._model.feature_importances_ for feats in mols]</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>num</th>
+      <th>name</th>
+      <th>p_np</th>
+      <th>smiles</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Propanolol</td>
+      <td>1</td>
+      <td>[Cl].CC(C)NCC(O)COc1cccc2ccccc12</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Terbutylchlorambucil</td>
+      <td>1</td>
+      <td>C(=O)(OC(C)(C)C)CCCc1ccc(cc1)N(CCCl)CCCl</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>40730</td>
+      <td>1</td>
+      <td>c12c3c(N4CCN(C)CC4)c(F)cc1c(c(C(O)=O)cn2C(C)CO...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>24</td>
+      <td>1</td>
+      <td>C1CCN(CC1)Cc1cccc(c1)OCCCNC(=O)C</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>cloxacillin</td>
+      <td>1</td>
+      <td>Cc1onc(c2ccccc2Cl)c1C(=O)N[C@H]3[C@H]4SC(C)(C)...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now we just need to define our PyTorch Dataset. As discussed above, we will leverage the internal structure of our transformer</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+        <div class="CodeMirror cm-s-jupyter">
+            <div class="zeroclipboard-container">
+                <clipboard-copy for="cell-6">
+                <div>
+                    <span class="notice" hidden>Copied!</span>
+                    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
+                        <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
+                        <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                    </svg>
+                    </div>
+                </clipboard-copy>
+            </div>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">default_data_collator</span>
+
+
+<span class="k">class</span> <span class="nc">DTset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">smiles</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">mf_featurizer</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">smiles</span> <span class="o">=</span> <span class="n">smiles</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mf_featurizer</span> <span class="o">=</span> <span class="n">mf_featurizer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+        <span class="c1"># here we use the molfeat mf_featurizer to convert the smiles to</span>
+        <span class="c1"># corresponding tokens based on the internal tokenizer</span>
+        <span class="c1"># we just want the data from the batch encoding object</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transformed_mols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mf_featurizer</span><span class="o">.</span><span class="n">_convert</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">embedding_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mf_featurizer</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">max_length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">transformed_mols</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="k">def</span> <span class="nf">collate_fn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># the default collate fn self.mf_featurizer.get_collate_fn(**kwargs)</span>
+        <span class="c1"># returns None, which should just concatenate the inputs</span>
+        <span class="c1"># You could also use `transformers.default_data_collator` instead</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mf_featurizer</span><span class="o">.</span><span class="n">get_collate_fn</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="n">datapoint</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">name</span><span class="p">,</span> <span class="n">val</span><span class="p">[</span><span class="n">index</span><span class="p">])</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">transformed_mols</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="n">datapoint</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">datapoint</span>
+</pre></div>
+<div id="cell-6" class="clipboard-copy-txt">from torch.utils.data import Dataset
+from torch.utils.data import DataLoader
+from transformers import default_data_collator
+
+
+class DTset(Dataset):
+    def __init__(self, smiles, y, mf_featurizer):
+        super().__init__()
+        self.smiles = smiles
+        self.mf_featurizer = mf_featurizer
+        self.y = torch.tensor(y).float()
+        # here we use the molfeat mf_featurizer to convert the smiles to
+        # corresponding tokens based on the internal tokenizer
+        # we just want the data from the batch encoding object
+        self.transformed_mols = self.mf_featurizer._convert(smiles)
+
+    @property
+    def embedding_dim(self):
+        return len(self.mf_featurizer)
+
+    @property
+    def max_length(self):
+        return self.transformed_mols.shape[-1]
+    
+    def __len__(self):
+        return self.y.shape[0]
+    
+    def collate_fn(self, **kwargs):
+        # the default collate fn self.mf_featurizer.get_collate_fn(**kwargs)
+        # returns None, which should just concatenate the inputs
+        # You could also use `transformers.default_data_collator` instead
+        return self.mf_featurizer.get_collate_fn(**kwargs)
+    
+    def __getitem__(self, index):
+        datapoint = dict((name, val[index]) for name, val in self.transformed_mols.items())
+        datapoint["y"] = self.y[index]
+        return datapoint</div>
+        
+        </div>
+    </div>
+
+</div>
+</div>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+        <div class="CodeMirror cm-s-jupyter">
+            <div class="zeroclipboard-container">
+                <clipboard-copy for="cell-7">
+                <div>
+                    <span class="notice" hidden>Copied!</span>
+                    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
+                        <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
+                        <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                    </svg>
+                    </div>
+                </clipboard-copy>
+            </div>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">DTset</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">smiles</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">p_np</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">trans</span><span class="p">)</span>
+<span class="n">generator</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Generator</span><span class="p">()</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">train_dt</span><span class="p">,</span> <span class="n">test_dt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">random_split</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="n">generator</span><span class="o">=</span><span class="n">generator</span><span class="p">)</span>
+</pre></div>
+<div id="cell-7" class="clipboard-copy-txt">dataset = DTset(df.smiles.values, df.p_np.values, trans)
+generator = torch.Generator().manual_seed(42)
+train_dt, test_dt = torch.utils.data.random_split(dataset, [0.8, 0.2], generator=generator)</div>
         
         </div>
     </div>
@@ -2352,8 +2522,482 @@ class MyFoundationModel(PretrainedMolTransformer):
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>2023-03-21 15:35:59.406 | WARNING  | molfeat.trans.base:__init__:52 - The &#39;MyFoundationModel&#39; interaction has been superseded by a new class with id 0x5624f1ddce60
+
+
+<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
+<pre>  0%|          | 0/2050 [00:00&lt;?, ?it/s]</pre>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
+<pre>  0%|          | 0/2050 [00:00&lt;?, ?it/s]</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+        <div class="CodeMirror cm-s-jupyter">
+            <div class="zeroclipboard-container">
+                <clipboard-copy for="cell-8">
+                <div>
+                    <span class="notice" hidden>Copied!</span>
+                    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
+                        <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
+                        <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                    </svg>
+                    </div>
+                </clipboard-copy>
+            </div>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dt</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">collate_fn</span><span class="p">())</span>
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">test_dt</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">collate_fn</span><span class="p">())</span>
+</pre></div>
+<div id="cell-8" class="clipboard-copy-txt">BATCH_SIZE = 64
+train_loader = DataLoader(train_dt, batch_size=BATCH_SIZE, shuffle=True, collate_fn=dataset.collate_fn())
+test_loader = DataLoader(test_dt, batch_size=BATCH_SIZE, shuffle=False, collate_fn=dataset.collate_fn())</div>
+        
+        </div>
+    </div>
+
+</div>
+</div>
+
+</div>
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="network-training">Network + Training<a class="anchor-link" href="#network-training">&#182;</a></h3><p>We are ready to go, now we just need to define our Model for finetuning pretrained ChemBerta on the BBBP task.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+        <div class="CodeMirror cm-s-jupyter">
+            <div class="zeroclipboard-container">
+                <clipboard-copy for="cell-9">
+                <div>
+                    <span class="notice" hidden>Copied!</span>
+                    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
+                        <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
+                        <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                    </svg>
+                    </div>
+                </clipboard-copy>
+            </div>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="k">class</span> <span class="nc">AwesomeNet</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mf_featurizer</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">output_size</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span> <span class="o">=</span> <span class="n">hidden_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_size</span> <span class="o">=</span> <span class="n">output_size</span>
+        <span class="c1"># we get the underlying model from the molfeat featurizer</span>
+        <span class="c1"># here we fetch the &quot;base&quot; huggingface transformer model </span>
+        <span class="c1"># and not the wrapper around for MLM</span>
+        <span class="c1"># this is principally to get smaller model and training efficiency</span>
+        <span class="n">base_pretrained_model</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">mf_featurizer</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">mf_featurizer</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">base_model_prefix</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_layer</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">base_pretrained_model</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_dim</span> <span class="o">=</span> <span class="n">mf_featurizer</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span>
+        <span class="c1"># given that we are not concatenating layers, the following is equivalent</span>
+        <span class="c1"># self.embedding_dim = len(mf_featurizer)</span>
+        <span class="c1"># we get the the pooling layer from the molfeat featurizer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pooling_layer</span> <span class="o">=</span> <span class="n">mf_featurizer</span><span class="o">.</span><span class="n">_pooling_obj</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_layer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">dropout</span><span class="p">),</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mf_featurizer</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">),</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_layer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_size</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># get embeddings</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_layer</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="c1"># we take the last hidden state</span>
+        <span class="c1"># you could also set `output_hidden_states` to true above </span>
+        <span class="c1"># and take x[&quot;hidden_states&quot;][-1] instead</span>
+        <span class="n">emb</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;last_hidden_state&quot;</span><span class="p">]</span>
+        <span class="c1"># run poolings</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pooling_layer</span><span class="p">(</span>
+            <span class="n">emb</span><span class="p">,</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">],</span>
+            <span class="n">mask</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;attention_mask&#39;</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="c1"># run through our custom and optional hidden layer</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_layer</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+        <span class="c1"># run through output layers to get logits</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_layer</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+</pre></div>
+<div id="cell-9" class="clipboard-copy-txt">class AwesomeNet(torch.nn.Module):
+    def __init__(self, mf_featurizer, hidden_size=128, dropout=0.1, output_size=1):
+        super().__init__()
+        self.hidden_size = hidden_size
+        self.output_size = output_size
+        # we get the underlying model from the molfeat featurizer
+        # here we fetch the "base" huggingface transformer model 
+        # and not the wrapper around for MLM
+        # this is principally to get smaller model and training efficiency
+        base_pretrained_model = getattr(mf_featurizer.featurizer.model, mf_featurizer.featurizer.model.base_model_prefix)
+        self.embedding_layer = copy.deepcopy(base_pretrained_model)
+        self.embedding_dim = mf_featurizer.featurizer.model.config.hidden_size
+        # given that we are not concatenating layers, the following is equivalent
+        # self.embedding_dim = len(mf_featurizer)
+        # we get the the pooling layer from the molfeat featurizer
+        self.pooling_layer = mf_featurizer._pooling_obj
+        self.hidden_layer = torch.nn.Sequential(
+            torch.nn.Dropout(p=dropout),
+            torch.nn.Linear(len(mf_featurizer), self.hidden_size),
+            torch.nn.ReLU()
+        )
+        self.output_layer = torch.nn.Linear(self.hidden_size, self.output_size)
+
+    def forward(self, *, y=None, **kwargs):
+        # get embeddings
+        x = self.embedding_layer(**kwargs)
+        # we take the last hidden state
+        # you could also set `output_hidden_states` to true above 
+        # and take x["hidden_states"][-1] instead
+        emb = x["last_hidden_state"]
+        # run poolings
+        h = self.pooling_layer(
+            emb,
+            kwargs["input_ids"],
+            mask=kwargs.get('attention_mask'),
+        )
+        # run through our custom and optional hidden layer
+        h = self.hidden_layer(h)
+        # run through output layers to get logits
+        return self.output_layer(h)</div>
+        
+        </div>
+    </div>
+
+</div>
+</div>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+        <div class="CodeMirror cm-s-jupyter">
+            <div class="zeroclipboard-container">
+                <clipboard-copy for="cell-10">
+                <div>
+                    <span class="notice" hidden>Copied!</span>
+                    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
+                        <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
+                        <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                    </svg>
+                    </div>
+                </clipboard-copy>
+            </div>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="n">DEVICE</span> <span class="o">=</span> <span class="s2">&quot;cpu&quot;</span>
+<span class="n">NUM_EPOCHS</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">LEARNING_RATE</span> <span class="o">=</span> <span class="mf">1e-3</span>
+<span class="n">PNA_AGGREGATORS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">]</span>
+<span class="n">PNA_SCALERS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="s1">&#39;amplification&#39;</span><span class="p">,</span> <span class="s1">&#39;attenuation&#39;</span><span class="p">]</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">AwesomeNet</span><span class="p">(</span><span class="n">trans</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">output_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">LEARNING_RATE</span><span class="p">)</span>
+<span class="n">loss_fn</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">BCEWithLogitsLoss</span><span class="p">()</span>
+</pre></div>
+<div id="cell-10" class="clipboard-copy-txt">DEVICE = "cpu"
+NUM_EPOCHS = 10
+LEARNING_RATE = 1e-3
+PNA_AGGREGATORS = ['mean', 'min', 'max', 'std']
+PNA_SCALERS = ['identity', 'amplification', 'attenuation']
+
+model = AwesomeNet(trans, hidden_size=64, dropout=0.1, output_size=1)
+optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
+loss_fn = torch.nn.BCEWithLogitsLoss()</div>
+        
+        </div>
+    </div>
+
+</div>
+</div>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+        <div class="CodeMirror cm-s-jupyter">
+            <div class="zeroclipboard-container">
+                <clipboard-copy for="cell-11">
+                <div>
+                    <span class="notice" hidden>Copied!</span>
+                    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
+                        <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
+                        <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                    </svg>
+                    </div>
+                </clipboard-copy>
+            </div>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+</pre></div>
+<div id="cell-11" class="clipboard-copy-txt">model = model.to(DEVICE).float()
+model = model.train()</div>
+        
+        </div>
+    </div>
+
+</div>
+</div>
+
+</div>
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>You might want to have a look at the model summary for a sanity check</p>
+<div class="highlight"><pre><span></span><span class="err">!</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">torchinfo</span>
+<span class="kn">from</span> <span class="nn">torchinfo</span> <span class="kn">import</span> <span class="n">summary</span>
+<span class="n">summary</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+<p>You should now see the following output:</p>
+<pre><code>==========================================================================================
+Layer (type:depth-idx)                                            Param #
+==========================================================================================
+AwesomeNet                                                        --
+├─RobertaForMaskedLM: 1-1                                         --
+│    └─RobertaModel: 2-1                                          --
+│    │    └─RobertaEmbeddings: 3-1                                429,312
+│    │    └─RobertaEncoder: 3-2                                   2,850,288
+│    └─RobertaLMHead: 2-2                                         --
+│    │    └─Linear: 3-3                                           147,840
+│    │    └─LayerNorm: 3-4                                        768
+│    │    └─Linear: 3-5                                           231,000
+├─BertPooler: 1-2                                                 --
+│    └─Linear: 2-3                                                147,840
+│    └─Tanh: 2-4                                                  --
+├─Sequential: 1-3                                                 --
+│    └─Dropout: 2-5                                               --
+│    └─Linear: 2-6                                                24,640
+│    └─ReLU: 2-7                                                  --
+├─Linear: 1-4                                                     65
+==========================================================================================
+Total params: 3,831,753
+Trainable params: 3,831,753
+Non-trainable params: 0
+==========================================================================================
+</code></pre>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+        <div class="CodeMirror cm-s-jupyter">
+            <div class="zeroclipboard-container">
+                <clipboard-copy for="cell-12">
+                <div>
+                    <span class="notice" hidden>Copied!</span>
+                    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
+                        <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
+                        <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                    </svg>
+                    </div>
+                </clipboard-copy>
+            </div>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="c1"># Train</span>
+<span class="k">with</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">NUM_EPOCHS</span><span class="p">))</span> <span class="k">as</span> <span class="n">pbar</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">pbar</span><span class="p">:</span>
+        <span class="n">losses</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="o">**</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">])</span>
+            <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+            <span class="n">losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+        <span class="n">pbar</span><span class="o">.</span><span class="n">set_description</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2"> - Loss </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">losses</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+<div id="cell-12" class="clipboard-copy-txt"># Train
+with tqdm(range(NUM_EPOCHS)) as pbar:
+    for epoch in pbar:
+        losses = []
+        for data in train_loader:
+            optimizer.zero_grad()
+            out = model(**data)
+            loss = loss_fn(out.squeeze(), data["y"])
+            loss.backward()
+            optimizer.step()
+            losses.append(loss.item())
+        pbar.set_description(f"Epoch {epoch} - Loss {np.mean(losses):.3f}")</div>
+        
+        </div>
+    </div>
+
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
+<pre>  0%|          | 0/10 [00:00&lt;?, ?it/s]</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="testing">Testing<a class="anchor-link" href="#testing">&#182;</a></h3><p>We can now test our model.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+        <div class="CodeMirror cm-s-jupyter">
+            <div class="zeroclipboard-container">
+                <clipboard-copy for="cell-13">
+                <div>
+                    <span class="notice" hidden>Copied!</span>
+                    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
+                        <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
+                        <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                    </svg>
+                    </div>
+                </clipboard-copy>
+            </div>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="n">test_y_hat</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">test_y_true</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="o">**</span><span class="n">data</span><span class="p">)</span>
+        <span class="c1"># we apply sigmoid</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+        <span class="n">test_y_hat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())</span>
+        <span class="n">test_y_true</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">])</span>
+<span class="n">test_y_hat</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">test_y_hat</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">test_y_true</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">test_y_true</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">test_y_true</span><span class="p">,</span> <span class="n">test_y_hat</span><span class="p">)</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_y_true</span><span class="p">,</span> <span class="n">test_y_hat</span><span class="o">&gt;=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test ROC AUC: </span><span class="si">{</span><span class="n">roc_auc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="se">\n</span><span class="s2">Test Accuracy: </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+<div id="cell-13" class="clipboard-copy-txt">from sklearn.metrics import accuracy_score, roc_auc_score
+from matplotlib import pyplot as plt
+
+model.eval()
+test_y_hat = []
+test_y_true = []
+with torch.no_grad():
+    for data in test_loader:
+        out = model(**data)
+        # we apply sigmoid
+        out = torch.sigmoid(out)
+        test_y_hat.append(out.detach().cpu().squeeze())
+        test_y_true.append(data["y"])
+test_y_hat = torch.cat(test_y_hat).squeeze().numpy()
+test_y_true = torch.cat(test_y_true).squeeze().numpy()
+roc_auc = roc_auc_score(test_y_true, test_y_hat)
+acc = accuracy_score(test_y_true, test_y_hat>=0.5)
+print(f"Test ROC AUC: {roc_auc:.3f}\nTest Accuracy: {acc:.3f}")</div>
+        
+        </div>
+    </div>
+
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Test ROC AUC: 0.964
+Test Accuracy: 0.905
 </pre>
 </div>
 </div>
@@ -2362,245 +3006,6 @@ class MyFoundationModel(PretrainedMolTransformer):
 
 </div>
 
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[72]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-            <div class="zeroclipboard-container">
-                <clipboard-copy for="cell-5">
-                <div>
-                    <span class="notice" hidden>Copied!</span>
-                    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                        <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                        <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                    </svg>
-                    </div>
-                </clipboard-copy>
-            </div>
-            <div class="highlight-ipynb hl-python "><pre><span></span><span class="n">trans</span> <span class="o">=</span> <span class="n">MyFoundationModel</span><span class="p">()</span>
-<span class="n">trans</span><span class="p">([</span><span class="s2">&quot;CN1C=NC2=C1C(=O)N(C(=O)N2C)C&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-<div id="cell-5" class="clipboard-copy-txt">trans = MyFoundationModel()
-trans(["CN1C=NC2=C1C(=O)N(C(=O)N2C)C"]).shape</div>
-        
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[72]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>(1, 167)</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div>
-<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="add-it-to-the-model-store">Add it to the Model Store<a class="anchor-link" href="#add-it-to-the-model-store">&#182;</a></h2><p>Molfeat has a Model store to publish your models in a central place.
-The default is a read-only GCP bucket, but you can replace this with your own file storage. This can for example be useful to share private featurizers with your team.</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[74]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-            <div class="zeroclipboard-container">
-                <clipboard-copy for="cell-6">
-                <div>
-                    <span class="notice" hidden>Copied!</span>
-                    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                        <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                        <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                    </svg>
-                    </div>
-                </clipboard-copy>
-            </div>
-            <div class="highlight-ipynb hl-python "><pre><span></span><span class="kn">import</span> <span class="nn">platformdirs</span>
-<span class="kn">from</span> <span class="nn">molfeat.store.modelstore</span> <span class="kn">import</span> <span class="n">ModelStore</span>
-<span class="kn">from</span> <span class="nn">molfeat.store</span> <span class="kn">import</span> <span class="n">ModelInfo</span>
-
-<span class="n">path</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">platformdirs</span><span class="o">.</span><span class="n">user_cache_dir</span><span class="p">(</span><span class="s2">&quot;molfeat&quot;</span><span class="p">),</span> <span class="s2">&quot;custom_model_store&quot;</span><span class="p">)</span>
-<span class="n">store</span> <span class="o">=</span> <span class="n">ModelStore</span><span class="p">(</span><span class="n">model_store_bucket</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">store</span><span class="o">.</span><span class="n">available_models</span><span class="p">)</span>
-</pre></div>
-<div id="cell-6" class="clipboard-copy-txt">import platformdirs
-from molfeat.store.modelstore import ModelStore
-from molfeat.store import ModelInfo
-
-path = dm.fs.join(platformdirs.user_cache_dir("molfeat"), "custom_model_store")
-store = ModelStore(model_store_bucket=path)
-len(store.available_models)</div>
-        
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[74]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>0</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[77]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-            <div class="zeroclipboard-container">
-                <clipboard-copy for="cell-7">
-                <div>
-                    <span class="notice" hidden>Copied!</span>
-                    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                        <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                        <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                    </svg>
-                    </div>
-                </clipboard-copy>
-            </div>
-            <div class="highlight-ipynb hl-python "><pre><span></span><span class="c1"># Let&#39;s define our model&#39;s info</span>
-<span class="n">info</span> <span class="o">=</span> <span class="n">ModelInfo</span><span class="p">(</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;my_foundation_model&quot;</span><span class="p">,</span>
-    <span class="n">inputs</span> <span class="o">=</span> <span class="s2">&quot;smiles&quot;</span><span class="p">,</span>
-    <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;pretrained&quot;</span><span class="p">,</span>
-    <span class="n">group</span><span class="o">=</span><span class="s2">&quot;my_group&quot;</span><span class="p">,</span>
-    <span class="n">version</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">submitter</span><span class="o">=</span><span class="s2">&quot;Datamol&quot;</span><span class="p">,</span>
-    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Solves chemistry!&quot;</span><span class="p">,</span>
-    <span class="n">representation</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
-    <span class="n">require_3D</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">tags</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;foundation_model&quot;</span><span class="p">,</span> <span class="s2">&quot;random_forest&quot;</span><span class="p">],</span>
-    <span class="n">authors</span><span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Datamol&quot;</span><span class="p">],</span>
-    <span class="n">reference</span> <span class="o">=</span> <span class="s2">&quot;/fake/ref&quot;</span>
-<span class="p">)</span>
-
-<span class="n">store</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
-<span class="n">store</span><span class="o">.</span><span class="n">available_models</span>
-</pre></div>
-<div id="cell-7" class="clipboard-copy-txt"># Let's define our model's info
-info = ModelInfo(
-    name = "my_foundation_model",
-    inputs = "smiles",
-    type="pretrained",
-    group="my_group",
-    version=0,
-    submitter="Datamol",
-    description="Solves chemistry!",
-    representation="vector",
-    require_3D=False,
-    tags = ["foundation_model", "random_forest"],
-    authors= ["Datamol"],
-    reference = "/fake/ref"
-)
-
-store.register(info)
-store.available_models</div>
-        
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[77]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[ModelInfo(name=&#39;my_foundation_model&#39;, inputs=&#39;smiles&#39;, type=&#39;pretrained&#39;, version=0, group=&#39;my_group&#39;, submitter=&#39;Datamol&#39;, description=&#39;Solves chemistry!&#39;, representation=&#39;vector&#39;, require_3D=False, tags=[&#39;foundation_model&#39;, &#39;random_forest&#39;], authors=[&#39;Datamol&#39;], reference=&#39;/fake/ref&#39;, created_at=datetime.datetime(2023, 3, 21, 15, 37, 4, 59739), sha256sum=&#39;9c298d589a2158eb513cb52191144518a2acab2cb0c04f1df14fca0f712fa4a1&#39;)]</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-</div>
-<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="share-with-the-community">Share with the community<a class="anchor-link" href="#share-with-the-community">&#182;</a></h2><p>We invite you to share your featurizers with the community to progress the field.
-To learn more, visit <a href="../developers/create-plugin.html">the developer documentation</a>.</p>
-
-</div>
-</div>
 </div>
 </div>
 </div>

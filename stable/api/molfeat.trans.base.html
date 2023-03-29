@@ -326,8 +326,51 @@
   
   
     <li class="md-nav__item">
+      <a href="../tutorials/graphs.html" class="md-nav__link">
+        Featurizing graphs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+          Integrations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Integrations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../tutorials/integrations.html" class="md-nav__link">
-        Integrations
+        Integration with scikit-learn and PyTorch
       </a>
     </li>
   
@@ -340,9 +383,30 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/graphs.html" class="md-nav__link">
-        Featurizing graphs
+      <a href="../tutorials/pyg_integration.html" class="md-nav__link">
+        Training a GNN with PyG
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/transformer_finetuning.html" class="md-nav__link">
+        Finetuning a pretrained transformer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2992,7 +3056,7 @@ input argument of the init are kept as is in the object attributes.</p>
 
 <span class="sd">        Args:</span>
 <span class="sd">            transformer: Fingerprint transformer</span>
-<span class="sd">            data: List of molecules to featurize</span>
+<span class="sd">            mols: List of molecules to featurize</span>
 <span class="sd">            batch_size: Batch size</span>
 <span class="sd">            n_jobs: number of jobs to run in parallel</span>
 <span class="sd">            concatenate: Whether to concatenate the results or return the list of batched results</span>
@@ -3803,8 +3867,9 @@ Only returned when ignore_errors is True.</p></td>
           </td>
         </tr>
         <tr>
-          <td><code>data</code></td>
+          <td><code>mols</code></td>
           <td>
+                <code><span title="typing.List">List</span>[<span title="typing.Union">Union</span>[<span title="rdkit.Chem.rdchem">rdchem</span>.<span title="rdkit.Chem.rdchem.Mol">Mol</span>, str]]</code>
           </td>
           <td><p>List of molecules to featurize</p></td>
           <td>
@@ -3988,7 +4053,7 @@ Only returned when ignore_errors is True.</p></td>
 
 <span class="sd">    Args:</span>
 <span class="sd">        transformer: Fingerprint transformer</span>
-<span class="sd">        data: List of molecules to featurize</span>
+<span class="sd">        mols: List of molecules to featurize</span>
 <span class="sd">        batch_size: Batch size</span>
 <span class="sd">        n_jobs: number of jobs to run in parallel</span>
 <span class="sd">        concatenate: Whether to concatenate the results or return the list of batched results</span>

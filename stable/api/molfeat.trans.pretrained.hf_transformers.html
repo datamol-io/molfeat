@@ -326,8 +326,51 @@
   
   
     <li class="md-nav__item">
+      <a href="../tutorials/graphs.html" class="md-nav__link">
+        Featurizing graphs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+          Integrations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Integrations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../tutorials/integrations.html" class="md-nav__link">
-        Integrations
+        Integration with scikit-learn and PyTorch
       </a>
     </li>
   
@@ -340,9 +383,30 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/graphs.html" class="md-nav__link">
-        Featurizing graphs
+      <a href="../tutorials/pyg_integration.html" class="md-nav__link">
+        Training a GNN with PyG
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/transformer_finetuning.html" class="md-nav__link">
+        Finetuning a pretrained transformer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1892,9 +1956,7 @@
 <span class="normal">201</span>
 <span class="normal">202</span>
 <span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">HFModel</span><span class="p">(</span><span class="n">PretrainedStoreModel</span><span class="p">):</span>
+<span class="normal">204</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">HFModel</span><span class="p">(</span><span class="n">PretrainedStoreModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Transformer model loading model loading&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -1908,8 +1970,6 @@
 <span class="sd">        Args:</span>
 <span class="sd">            name (str, optional): Name of the model for ada.</span>
 <span class="sd">            cache_path (os.PathLike, optional): Local cache path for faster loading. This is the cache_path parameter for ADA loading !</span>
-<span class="sd">            device: Torch device on which to run the `predictor` model.</span>
-<span class="sd">            loading_fn: Optional loading function for model loading</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">cache_path</span><span class="o">=</span><span class="n">cache_path</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="n">store</span><span class="p">)</span>
@@ -2077,24 +2137,6 @@
                 <code>None</code>
           </td>
         </tr>
-        <tr>
-          <td><code>device</code></td>
-          <td>
-          </td>
-          <td><p>Torch device on which to run the <code>predictor</code> model.</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>loading_fn</code></td>
-          <td>
-          </td>
-          <td><p>Optional loading function for model loading</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
     </tbody>
   </table>
 
@@ -2114,9 +2156,7 @@
 <span class="normal"> 98</span>
 <span class="normal"> 99</span>
 <span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">101</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">cache_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2127,8 +2167,6 @@
 <span class="sd">    Args:</span>
 <span class="sd">        name (str, optional): Name of the model for ada.</span>
 <span class="sd">        cache_path (os.PathLike, optional): Local cache path for faster loading. This is the cache_path parameter for ADA loading !</span>
-<span class="sd">        device: Torch device on which to run the `predictor` model.</span>
-<span class="sd">        loading_fn: Optional loading function for model loading</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">cache_path</span><span class="o">=</span><span class="n">cache_path</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="n">store</span><span class="p">)</span>
@@ -2212,7 +2250,9 @@
 
       <details class="quote">
         <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">123</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
 <span class="normal">124</span>
 <span class="normal">125</span>
 <span class="normal">126</span>
@@ -2253,9 +2293,7 @@
 <span class="normal">161</span>
 <span class="normal">162</span>
 <span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">164</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">from_pretrained</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">PreTrainedModel</span><span class="p">],</span>
@@ -2321,15 +2359,15 @@
 
       <details class="quote">
         <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">187</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
 <span class="normal">188</span>
 <span class="normal">189</span>
 <span class="normal">190</span>
 <span class="normal">191</span>
 <span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_notation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_notation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="normal">193</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_notation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_notation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the notation of the model&quot;&quot;&quot;</span>
     <span class="n">notation</span> <span class="o">=</span> <span class="n">default_notation</span>
     <span class="k">try</span><span class="p">:</span>
@@ -2360,16 +2398,16 @@
 
       <details class="quote">
         <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">197</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
 <span class="normal">198</span>
 <span class="normal">199</span>
 <span class="normal">200</span>
 <span class="normal">201</span>
 <span class="normal">202</span>
 <span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">204</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Load Transformer Pretrained featurizer model&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span>
@@ -2458,7 +2496,9 @@
 
       <details class="quote">
         <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">168</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
 <span class="normal">169</span>
 <span class="normal">170</span>
 <span class="normal">171</span>
@@ -2473,9 +2513,7 @@
 <span class="normal">180</span>
 <span class="normal">181</span>
 <span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">183</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">register_pretrained</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">PreTrainedModel</span><span class="p">],</span>
@@ -2533,7 +2571,9 @@ smiles and molecules, then perform the internal conversion, based on the notatio
 
         <details class="quote">
           <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">209</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
 <span class="normal">210</span>
 <span class="normal">211</span>
 <span class="normal">212</span>
@@ -2738,7 +2778,11 @@ smiles and molecules, then perform the internal conversion, based on the notatio
 <span class="normal">411</span>
 <span class="normal">412</span>
 <span class="normal">413</span>
-<span class="normal">414</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">PretrainedHFTransformer</span><span class="p">(</span><span class="n">PretrainedMolTransformer</span><span class="p">):</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">PretrainedHFTransformer</span><span class="p">(</span><span class="n">PretrainedMolTransformer</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    HuggingFace Transformer for feature extraction.</span>
 
@@ -2772,6 +2816,9 @@ smiles and molecules, then perform the internal conversion, based on the notatio
 <span class="sd">        !!! warning</span>
 <span class="sd">            For bert models, the default pooling layers is a neural network. Therefore, do not use the default</span>
 <span class="sd">            Or provide a random seed for reproducibility (in this case pooling will act as random projection to the same manifold)</span>
+
+<span class="sd">        !!! note</span>
+<span class="sd">            The pooling module of this featurizer is accessible through the `_pooling_obj` attribute.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            kind: name of the featurizer as available in the model store</span>
@@ -2834,10 +2881,13 @@ smiles and molecules, then perform the internal conversion, based on the notatio
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_preload</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform preloading of the model&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform preloading of the model from the store&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_preload</span><span class="p">()</span>
-        <span class="c1"># we can be confident that the model has been loaded here</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">max_length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span>
+
+        <span class="c1"># we can be confident that the model has been loaded here</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pooling_obj</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">preload</span><span class="p">:</span>
+            <span class="k">return</span>
         <span class="n">config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
         <span class="n">cur_tokenizer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">tokenizer</span>
         <span class="k">for</span> <span class="n">special_token_id_name</span> <span class="ow">in</span> <span class="p">[</span>
@@ -3188,6 +3238,10 @@ similar to what is performed by the pipeline 'feature-extraction' in hugging fac
 <p>For bert models, the default pooling layers is a neural network. Therefore, do not use the default
 Or provide a random seed for reproducibility (in this case pooling will act as random projection to the same manifold)</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The pooling module of this featurizer is accessible through the <code>_pooling_obj</code> attribute.</p>
+</div>
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3314,7 +3368,9 @@ See <code>molfeat.utils.pooler.get_default_hf_pooler</code> for more details.</p
 
       <details class="quote">
         <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">220</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
 <span class="normal">221</span>
 <span class="normal">222</span>
 <span class="normal">223</span>
@@ -3380,7 +3436,8 @@ See <code>molfeat.utils.pooler.get_default_hf_pooler</code> for more details.</p
 <span class="normal">283</span>
 <span class="normal">284</span>
 <span class="normal">285</span>
-<span class="normal">286</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">286</span>
+<span class="normal">287</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">kind</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">HFModel</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ChemBERTa-77M-MLM&quot;</span><span class="p">,</span>
     <span class="n">notation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
@@ -3403,6 +3460,9 @@ See <code>molfeat.utils.pooler.get_default_hf_pooler</code> for more details.</p
 <span class="sd">    !!! warning</span>
 <span class="sd">        For bert models, the default pooling layers is a neural network. Therefore, do not use the default</span>
 <span class="sd">        Or provide a random seed for reproducibility (in this case pooling will act as random projection to the same manifold)</span>
+
+<span class="sd">    !!! note</span>
+<span class="sd">        The pooling module of this featurizer is accessible through the `_pooling_obj` attribute.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        kind: name of the featurizer as available in the model store</span>
@@ -3469,10 +3529,10 @@ See <code>molfeat.utils.pooler.get_default_hf_pooler</code> for more details.</p
 
       <details class="quote">
         <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">411</span>
-<span class="normal">412</span>
-<span class="normal">413</span>
-<span class="normal">414</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_max_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_length</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_max_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_length</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Set the maximum length for this featurizer&quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span> <span class="o">=</span> <span class="n">max_length</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_preload</span><span class="p">()</span>

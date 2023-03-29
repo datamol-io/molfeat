@@ -326,8 +326,51 @@
   
   
     <li class="md-nav__item">
+      <a href="../tutorials/graphs.html" class="md-nav__link">
+        Featurizing graphs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+          Integrations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Integrations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../tutorials/integrations.html" class="md-nav__link">
-        Integrations
+        Integration with scikit-learn and PyTorch
       </a>
     </li>
   
@@ -340,9 +383,30 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/graphs.html" class="md-nav__link">
-        Featurizing graphs
+      <a href="../tutorials/pyg_integration.html" class="md-nav__link">
+        Training a GNN with PyG
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/transformer_finetuning.html" class="md-nav__link">
+        Finetuning a pretrained transformer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1087,10 +1151,8 @@
 <p>The rest of this document details how to <em>package</em> Molfeat plugins (or <em>extensions</em>) so that they can be tested, published and eventually reused by others. </p>
 <p>We recommend Molfeat plugins to be bundled and distributed as a <a href="https://docs.python.org/3/tutorial/modules.html#packages">Python package</a> that provides a set of extensions to Molfeat.</p>
 <h2 id="quickstart">Quickstart<a class="headerlink" href="#quickstart" title="Permanent link">&para;</a></h2>
-<p>The fastest way to jumpstart a Molfeat plugin package is to use the
-<a href="...">Molfeat plugin template</a> in order to template the basic folder structure, already customized
-according to the desired name of your plugin, following Molfeat conventions. See also the
-<a href="https://github.com/datamol-io/molfeat-padel">molfeat-padel</a> demo plugin package for an in-depth explanation of the files &amp; folders.</p>
+<p>The fastest way to jumpstart a Molfeat plugin package is to start with an existing template repository.
+The <a href="https://github.com/datamol-io/molfeat-padel">molfeat-padel</a> demo plugin package provides a starting point to understand the basic folder structure and our naming convention. Please reachout to us on github if you need help to get started.</p>
 <p>In the following document, we explain the conventions used when building a Molfeat plugin.</p>
 <h2 id="choosing-a-name">Choosing a name<a class="headerlink" href="#choosing-a-name" title="Permanent link">&para;</a></h2>
 <p>The naming convention for Molfeat plugin packages is `</p>

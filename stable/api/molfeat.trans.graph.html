@@ -326,8 +326,51 @@
   
   
     <li class="md-nav__item">
+      <a href="../tutorials/graphs.html" class="md-nav__link">
+        Featurizing graphs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+          Integrations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Integrations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../tutorials/integrations.html" class="md-nav__link">
-        Integrations
+        Integration with scikit-learn and PyTorch
       </a>
     </li>
   
@@ -340,9 +383,30 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/graphs.html" class="md-nav__link">
-        Featurizing graphs
+      <a href="../tutorials/pyg_integration.html" class="md-nav__link">
+        Training a GNN with PyG
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/transformer_finetuning.html" class="md-nav__link">
+        Finetuning a pretrained transformer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -4500,9 +4564,9 @@ Only returned when ignore_errors is True.</p></td>
 <span class="sd">        Get collate function for pyg graphs</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            follow_batchL Creates assignment batch vectors for each key in the list. (default: :obj:`None`)</span>
+<span class="sd">            follow_batch: Creates assignment batch vectors for each key in the list. (default: :obj:`None`)</span>
 <span class="sd">            exclude_keys: Will exclude each key in the list. (default: :obj:`None`)</span>
-<span class="sd">            return_pair: whether to return a pair of X,y (for molearn) of a databatch (default: :obj:`True`)</span>
+<span class="sd">            return_pair: whether to return a pair of X,y or a databatch (default: :obj:`True`)</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Collated samples.</span>
@@ -4572,13 +4636,13 @@ Only returned when ignore_errors is True.</p></td>
     </thead>
     <tbody>
         <tr>
-          <td><code>follow_batchL</code></td>
+          <td><code>follow_batch</code></td>
           <td>
-                <code>Creates assignment batch vectors for each key in the list. (default</code>
+                <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[str]]</code>
           </td>
-          <td><p>:obj:<code>None</code>)</p></td>
+          <td><p>Creates assignment batch vectors for each key in the list. (default: :obj:<code>None</code>)</p></td>
           <td>
-              <em>required</em>
+                <code>None</code>
           </td>
         </tr>
         <tr>
@@ -4596,7 +4660,7 @@ Only returned when ignore_errors is True.</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[bool]</code>
           </td>
-          <td><p>whether to return a pair of X,y (for molearn) of a databatch (default: :obj:<code>True</code>)</p></td>
+          <td><p>whether to return a pair of X,y or a databatch (default: :obj:<code>True</code>)</p></td>
           <td>
                 <code>True</code>
           </td>
@@ -4653,9 +4717,9 @@ Only returned when ignore_errors is True.</p></td>
 <span class="sd">    Get collate function for pyg graphs</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        follow_batchL Creates assignment batch vectors for each key in the list. (default: :obj:`None`)</span>
+<span class="sd">        follow_batch: Creates assignment batch vectors for each key in the list. (default: :obj:`None`)</span>
 <span class="sd">        exclude_keys: Will exclude each key in the list. (default: :obj:`None`)</span>
-<span class="sd">        return_pair: whether to return a pair of X,y (for molearn) of a databatch (default: :obj:`True`)</span>
+<span class="sd">        return_pair: whether to return a pair of X,y or a databatch (default: :obj:`True`)</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Collated samples.</span>
