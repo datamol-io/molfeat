@@ -51,8 +51,8 @@ class TestProtBioFingerprint(ut.TestCase):
 
     def test_unsupported_fp(self):
         with self.assertRaises(ValueError):
-            trans = ProtBioFingerprint(featurizer="unsupported")
-            trans(self.protein_seq)
+            transf = ProtBioFingerprint(featurizer="unsupported")
+            transf(self.protein_seq)
 
     def test_unpooled_fp(self):
         trans1 = ProtBioFingerprint(featurizer="fasttext", pooling=None, device=torch.device("cpu"))
@@ -65,17 +65,17 @@ class TestProtBioFingerprint(ut.TestCase):
         self.assertEqual(out1[0].shape[-1], len(trans1))
 
     def test_pooled_fp(self):
-        trans = ProtBioFingerprint(
+        transf = ProtBioFingerprint(
             featurizer="glove",
             pooling="mean",
             device=torch.device("cpu"),
             dtype=torch.float,
         )
-        out1 = trans._transform(self.protein_seq[0])
-        out2 = trans.transform(self.protein_seq)
-        out3, _ = trans(self.protein_seq, enforce_dtype=True, ignore_errors=True)
+        out1 = transf._transform(self.protein_seq[0])
+        out2 = transf.transform(self.protein_seq)
+        out3, _ = transf(self.protein_seq, enforce_dtype=True, ignore_errors=True)
         self.assertEqual(out3.shape[0], len(self.protein_seq))
-        self.assertEqual(out3.shape[1], len(trans))
+        self.assertEqual(out3.shape[1], len(transf))
         self.assertEqual(len(out1.shape), 1)
         self.assertEqual(len(out2), len(self.protein_seq))
         self.assertTrue(torch.is_tensor(out3[0]))

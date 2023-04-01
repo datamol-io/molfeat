@@ -25,6 +25,7 @@ from loguru import logger
 from molfeat._version import __version__ as MOLFEAT_VERSION
 
 from molfeat.calc import get_calculator
+from molfeat.calc.base import _CALCULATORS
 from molfeat.utils import datatype
 from molfeat.utils.cache import _Cache, FileCache, MPDataCache
 from molfeat.utils.cache import CacheList
@@ -644,11 +645,16 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
                 args["bond_featurizer"] = hex_to_fn(args["bond_featurizer"])
             args.pop("_bond_featurizer_is_pickled", None)
         ## Deal with custom featurizer
-        if "featurizer" in args and args.get("_featurizer_is_pickled") is True:
-            # buffer = io.BytesIO(bytes.fromhex(args["featurizer"]))
-            # args["featurizer"] = joblib.load(buffer)
-            args["featurizer"] = hex_to_fn(args["featurizer"])
-            args.pop("_featurizer_is_pickled")
+        if "featurizer" in args and not isinstance(args["featurizer"], str):
+            if args.get("_featurizer_is_pickled") is True:
+                # buffer = io.BytesIO(bytes.fromhex(args["featurizer"]))
+                # args["featurizer"] = joblib.load(buffer)
+                args["featurizer"] = hex_to_fn(args["featurizer"])
+                args.pop("_featurizer_is_pickled")
+            else:
+                klass_name = args["featurizer"].get("name")
+                args["featurizer"] = _CALCULATORS[klass_name].from_state_dict(args["featurizer"])
+                args.pop("_featurizer_is_pickled")
 
         if override_args is not None:
             args.update(override_args)
