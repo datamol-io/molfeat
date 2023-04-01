@@ -9,6 +9,7 @@ If you are starting to develop a new plugin or if you already have one, please r
 We strongly encourage you to **register at early stages of development**, both to reserve the name of your plugin and to inform the community of your ongoing work.
 
 
+
 ## How to register a plugin
 
 1. Fork this repository
@@ -32,13 +33,8 @@ By convention, names of molfeat plugins are lowercase and prefixed by `molfeat-`
 
 - __entry_point_prefix__ (required):
 the prefix of all entry points provided by the plugin.
-By convention, a plugin `molfeat-xxx` should use `entry_point_prefix: xxx`. You can also use the module name of your plugin. For example: `molfeat-myplugin` uses the entry point prefix `myplugin` and provides numerous entry points, all of which start with `myplugin.`. The entry point is also how you signal to users how they can load your plugin through molfeat. 
-
-```python
-from molfeat.trans import MoleculeTransformer
-from molfeat.plugins import load_registered_plugins
-load_registered_plugins(add_submodules=True, plugins=["new"])
-```
+By convention, a plugin `molfeat-xxx` should use `entry_point_prefix: xxx`.
+For example: `molfeat-myplugin` uses the entry point prefix `myplugin` and provides numerous entry points, all of which start with `myplugin.`.
 
 - __home_url__ (required):
 the link to the homepage of the plugin, for example its github repository.

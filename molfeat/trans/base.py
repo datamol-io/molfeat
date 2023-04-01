@@ -636,15 +636,13 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
                 args["bond_featurizer"] = hex_to_fn(args["bond_featurizer"])
             args.pop("_bond_featurizer_is_pickled", None)
         ## Deal with custom featurizer
-        if "featurizer" in args:
+        if "featurizer" in args and not isinstance(args["featurizer"], str):
             if args.get("_featurizer_is_pickled") is True:
+                # buffer = io.BytesIO(bytes.fromhex(args["featurizer"]))
+                # args["featurizer"] = joblib.load(buffer)
                 args["featurizer"] = hex_to_fn(args["featurizer"])
                 args.pop("_featurizer_is_pickled")
-            elif (
-                isinstance(args["featurizer"], Mapping)
-                and args["featurizer"].get("name") in _CALCULATORS
-            ):
-                # we have found a known calculator
+            else:
                 klass_name = args["featurizer"].get("name")
                 args["featurizer"] = _CALCULATORS[klass_name].from_state_dict(args["featurizer"])
                 args.pop("_featurizer_is_pickled")
