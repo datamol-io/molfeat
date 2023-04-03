@@ -6,10 +6,10 @@
     <b>molfeat - all your molecular featurizers in one place </b>. <br />
 </p>
 <p align="center">
-  <a href="https://datamol-io.github.io/molfeat/stable/index.html" target="_blank">
+  <a href="https://molfeat-docs.datamol.io/" target="_blank">
       Docs
   </a> | 
-  <a href="https://www.molfeat.datamol.io/" target="_blank">
+  <a href="https://molfeat.datamol.io/" target="_blank">
       Homepage
   </a>
 </p>
