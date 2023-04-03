@@ -10,8 +10,8 @@ However, plugins are not always required and sometimes a simple pull request is 
 | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
 | If a new featurizer can not be loaded by current classes.                            | If a new featurizer can already be loaded through existing classes.                                                        |
 | If a new featurizer requires additional, possibly difficult-to-install dependencies. | If a new featurizer requires no additional dependencies.                                                                   |
-| If you want to make a new class of featurizers available to the Molfeat community.   | If you can show through benchmarks that a featurizer is so performant, it should be available as part of the core package. |
-| If you want to extend the functionality of Molfeat for private / internal use.       |                                                                                                                            |
+| If you want to make a new class of featurizers available to the molfeat community.   | If you can show through benchmarks that a featurizer is so performant, it should be available as part of the core package. |
+| If you want to extend the functionality of molfeat for private / internal use.       |                                                                                                                            |
 
 
 !!! note annotate "Decided you don't need a plugin after all?"
