@@ -555,9 +555,6 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
                 args["featurizer"] = args["featurizer"].to_state_dict()
                 args["_featurizer_is_pickled"] = False
             else:
-                # buffer = io.BytesIO()
-                # joblib.dump(args["atom_featurizer"], buffer)
-                # args["atom_featurizer"] = buffer.getvalue().hex()
                 logger.warning(
                     "You are attempting to pickle a callable without a `to_state_dict` function into a hex string"
                 )
