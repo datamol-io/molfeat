@@ -202,9 +202,9 @@ class FeatConcat(list, BaseEstimator):
 
         fps = []
         valid_idx = np.zeros(len(mols))
-        for _, trans in enumerate(self):
-            fp = trans.transform(mols, ignore_errors=ignore_errors, **kwargs)
-            fp, idx = trans._filter_none(fp)
+        for _, transf in enumerate(self):
+            fp = transf.transform(mols, ignore_errors=ignore_errors, **kwargs)
+            fp, idx = transf._filter_none(fp)
             fps.append(fp)
             valid_idx[idx] += 1  # increase counter of valids
         valid_idx = np.nonzero(valid_idx == len(self))[0]

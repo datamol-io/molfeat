@@ -39,9 +39,9 @@ class TestMolTreeDecomposition(ut.TestCase):
         self.assertSetEqual(set(frags), set(expected_frags))
 
     def test_moltree_transformer(self):
-        trans = MolTreeDecompositionTransformer()
-        trans.fit(self.mols)
-        tree, ids = trans(self.smiles, ignore_errors=True)
+        transf = MolTreeDecompositionTransformer()
+        transf.fit(self.mols)
+        tree, ids = transf(self.smiles, ignore_errors=True)
         self.assertIsInstance(tree, list)
         self.assertTrue(isinstance(tree[0], dgl.DGLGraph))
 
@@ -58,8 +58,8 @@ class TestGraphTransformer(ut.TestCase):
     mols = [dm.to_mol(x) for x in smiles]
 
     def test_adj_transformer(self):
-        trans = AdjGraphTransformer(self_loop=True, dtype=torch.float)
-        data, ids = trans(self.smiles, enforce_dtype=True, ignore_errors=True)
+        transf = AdjGraphTransformer(self_loop=True, dtype=torch.float)
+        data, ids = transf(self.smiles, enforce_dtype=True, ignore_errors=True)
         # graphs and node features tuple
         self.assertEqual(len(data[0]), 2)
         self.assertEqual(ids, [0, 1, 2])
@@ -70,12 +70,12 @@ class TestGraphTransformer(ut.TestCase):
         self.assertAlmostEqual(graphs[0].sum().item(), mat_sum)
 
     def test_dgl_transformer(self):
-        trans = DGLGraphTransformer()
-        graphs, ids = trans(self.smiles, ignore_errors=True)
+        transf = DGLGraphTransformer()
+        graphs, ids = transf(self.smiles, ignore_errors=True)
         self.assertEqual(ids, [0, 1, 2])
         self.assertTrue(isinstance(graphs[0], dgl.DGLGraph))
         self.assertTrue(graphs[0].number_of_nodes(), self.mols[0].GetNumAtoms())
 
         with self.assertRaises(ValueError) as context:
-            _ = trans(self.smiles, ignore_errors=False)
+            _ = transf(self.smiles, ignore_errors=False)
             self.assertTrue("transform molecule at index 3" in str(context.exception))

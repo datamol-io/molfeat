@@ -25,36 +25,36 @@ class TestGraphormerTransformer(ut.TestCase):
     ]
 
     def test_graphormer_pickling(self):
-        trans = GraphormerTransformer(dtype=np.float32, pooling="sum")
+        transf = GraphormerTransformer(dtype=np.float32, pooling="sum")
         with tempfile.NamedTemporaryFile(delete=True) as pickled_file:
-            joblib.dump(trans, pickled_file.name)
+            joblib.dump(transf, pickled_file.name)
             trans2 = joblib.load(pickled_file.name)
-        ori_feat = trans(dm.freesolv().smiles.values[:10])
+        ori_feat = transf(dm.freesolv().smiles.values[:10])
         reloaded_feat = trans2(dm.freesolv().smiles.values[:10])
         np.testing.assert_array_equal(ori_feat, reloaded_feat)
 
     def test_graphormer(self):
-        trans = GraphormerTransformer(dtype=np.float32, pooling="sum")
+        transf = GraphormerTransformer(dtype=np.float32, pooling="sum")
         trans2 = GraphormerTransformer(dtype=np.float32, pooling="mean")
-        fps = trans(self.smiles, enforce_dtype=True)
-        fps2 = trans(self.smiles, enforce_dtype=True)
+        fps = transf(self.smiles, enforce_dtype=True)
+        fps2 = transf(self.smiles, enforce_dtype=True)
         fps3 = trans2(self.smiles, enforce_dtype=True)
         self.assertEqual(len(fps), 3)
-        self.assertEqual(len(trans), fps[0].shape[-1])
+        self.assertEqual(len(transf), fps[0].shape[-1])
         np.testing.assert_array_equal(fps, fps2)
         node_per_mol = np.rint(fps / fps3)
         node_per_mol = np.unique(node_per_mol)
         self.assertLessEqual(len(node_per_mol), 2)
 
     def test_graphormer_cache(self):
-        trans = GraphormerTransformer(
+        transf = GraphormerTransformer(
             dtype=np.float32, pooling="mean", max_length=25, precompute_cache=True
         )
         t0 = time.time()
         time_buffer = 1
-        fps = trans.transform(self.smiles)
+        fps = transf.transform(self.smiles)
         ori_run = time.time() - t0
-        fps2 = trans.transform(self.smiles)
+        fps2 = transf.transform(self.smiles)
         cached_run = time.time() - t0 - ori_run
         np.testing.assert_array_equal(fps, fps2)
         # add buffers
@@ -70,32 +70,32 @@ class TestDGLTransformer(ut.TestCase):
     ]
 
     def test_dgl_pickling(self):
-        trans = PretrainedDGLTransformer(dtype=np.float32, pooling="sum")
+        transf = PretrainedDGLTransformer(dtype=np.float32, pooling="sum")
         with tempfile.NamedTemporaryFile(delete=True) as pickled_file:
-            joblib.dump(trans, pickled_file.name)
+            joblib.dump(transf, pickled_file.name)
             trans2 = joblib.load(pickled_file.name)
-        ori_feat = trans(dm.freesolv().smiles.values[:10])
+        ori_feat = transf(dm.freesolv().smiles.values[:10])
         reloaded_feat = trans2(dm.freesolv().smiles.values[:10])
         np.testing.assert_array_equal(ori_feat, reloaded_feat)
 
     def test_dgl_pretrained(self):
-        trans = PretrainedDGLTransformer(dtype=np.float32, pooling="sum")
-        fps = trans(self.smiles, enforce_dtype=True)
-        fps2 = trans(self.smiles, enforce_dtype=True)
+        transf = PretrainedDGLTransformer(dtype=np.float32, pooling="sum")
+        fps = transf(self.smiles, enforce_dtype=True)
+        fps2 = transf(self.smiles, enforce_dtype=True)
         self.assertEqual(len(fps), 3)
-        self.assertEqual(len(trans), fps[0].shape[-1])
+        self.assertEqual(len(transf), fps[0].shape[-1])
         np.testing.assert_array_equal(fps, fps2)
 
     @pytest.mark.xfail(reason="Cache might not be faster")
     def test_dgl_pretrained_cache(self):
-        trans = PretrainedDGLTransformer(
+        transf = PretrainedDGLTransformer(
             dtype=np.float32, pooling="mean", max_length=25, precompute_cache=True
         )
         t0 = time.time()
         time_buffer = 1
-        fps = trans.transform(self.smiles)
+        fps = transf.transform(self.smiles)
         ori_run = time.time() - t0
-        fps2 = trans.transform(self.smiles)
+        fps2 = transf.transform(self.smiles)
         cached_run = time.time() - t0 - ori_run
         np.testing.assert_array_equal(fps, fps2)
         # add buffers
@@ -111,30 +111,30 @@ class TestHGFTransformer(ut.TestCase):
     ]
 
     def test_hgf_pickling(self):
-        trans = PretrainedHFTransformer(dtype=np.float32, pooling="sum")
+        transf = PretrainedHFTransformer(dtype=np.float32, pooling="sum")
         with tempfile.NamedTemporaryFile(delete=True) as pickled_file:
-            joblib.dump(trans, pickled_file.name)
+            joblib.dump(transf, pickled_file.name)
             trans2 = joblib.load(pickled_file.name)
-        ori_feat = trans(dm.freesolv().smiles.values[:10])
+        ori_feat = transf(dm.freesolv().smiles.values[:10])
         reloaded_feat = trans2(dm.freesolv().smiles.values[:10])
         np.testing.assert_array_equal(ori_feat, reloaded_feat)
 
     def test_hgf_pretrained(self):
-        trans = PretrainedHFTransformer(dtype=np.float32, pooling="sum")
-        fps = trans(self.smiles, enforce_dtype=True)
-        fps2 = trans(self.smiles, enforce_dtype=True)
+        transf = PretrainedHFTransformer(dtype=np.float32, pooling="sum")
+        fps = transf(self.smiles, enforce_dtype=True)
+        fps2 = transf(self.smiles, enforce_dtype=True)
         self.assertEqual(len(fps), 3)
-        self.assertEqual(len(trans), fps[0].shape[-1])
+        self.assertEqual(len(transf), fps[0].shape[-1])
         np.testing.assert_array_equal(fps, fps2)
 
     @pytest.mark.xfail(reason="Cache might not be faster")
     def test_hgf_pretrained_cache(self):
-        trans = PretrainedHFTransformer(dtype=np.float32, pooling="mean", precompute_cache=True)
+        transf = PretrainedHFTransformer(dtype=np.float32, pooling="mean", precompute_cache=True)
         t0 = time.time()
         time_buffer = 1
-        fps = trans.transform(self.smiles)
+        fps = transf.transform(self.smiles)
         ori_run = time.time() - t0
-        fps2 = trans.transform(self.smiles)
+        fps2 = transf.transform(self.smiles)
         cached_run = time.time() - t0 - ori_run
         np.testing.assert_array_equal(fps, fps2)
         # add buffers

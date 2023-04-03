@@ -45,6 +45,10 @@ FEATURIZERS_SPEC = {
         useFeatures=True,
         dtype=np.float64,
     ),
+    "MoleculeTransformerFP": lambda: MoleculeTransformer(
+        FPCalculator("ecfp", radius=2),
+        dtype=np.float64,
+    ),
     "FPVecFilteredTransformer": lambda: FPVecFilteredTransformer(),
     # base
     "MoleculeTransformer": lambda: MoleculeTransformer(featurizer=_dummy_featurizer_fn),

@@ -61,7 +61,7 @@ class ModelStore:
 
     @property
     def available_models(self):
-        """Return a list of all models that have been serialized in MolFeat"""
+        """Return a list of all models that have been serialized in molfeat"""
         return self._available_models
 
     def register(

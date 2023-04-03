@@ -10,7 +10,7 @@ copyright: Copyright 2020 - 2023 datamol.io
 
 nav:
   - Overview: index.md
-  - Why bother?: benchmark.ipynb
+  - Why should you care?: benchmark.ipynb
   - Getting Started: usage.md
   - Tutorials:
       - Types of featurizers: tutorials/types_of_featurizers.ipynb
