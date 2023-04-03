@@ -1,6 +1,21 @@
 # Contribute
 
-This document details the development lifecycle of Molfeat.
+Welcome to the molfeat community! We appreciate everyone's contribution and welcome all. Apart from code contributions, there are various other ways to support the community such as answering questions, providing assistance to others, enhancing the documentation, giving a ⭐️ or sharing the project.
+
+However you choose to contribute, please be mindful and respect our [code of conduct](https://github.com/datamol-io/molfeat/blob/main/.github/CODE_OF_CONDUCT.md).
+
+
+## Ways to contribute
+
+You can contribute to molfeat in several ways:
+
+- Fix existing code issues.
+- Submit issues related to bugs or new features.
+- Suggest or implement new featurizers.
+- Improve existing documentation or add new tutorials. 
+
+For a more detailed description of the development lifecycle of molfeat, please refer to the rest of this document.
+
 
 ## Setup a dev environment
 
