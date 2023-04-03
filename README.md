@@ -30,7 +30,7 @@
 [![doc](https://github.com/datamol-io/molfeat/actions/workflows/doc.yml/badge.svg)](https://github.com/datamol-io/molfeat/actions/workflows/doc.yml)
 [![release](https://github.com/datamol-io/molfeat/actions/workflows/release.yml/badge.svg)](https://github.com/datamol-io/molfeat/actions/workflows/release.yml)
 
-Molfeat is a centralized hub of molecular featurizers. It supports a wide variety of out-of-the-box molecular featurizers and can be easily extended to include custom featurizers.
+Molfeat is a hub of molecular featurizers. It supports a wide variety of out-of-the-box molecular featurizers and can be easily extended to include your own custom featurizers.
 
 - :rocket: Fast, with a simple and efficient API.
 - :arrows_counterclockwise: Unify pre-trained molecular embeddings and hand-crafted featurizers in a single package.
@@ -54,7 +54,7 @@ _**Tips:** You can replace `mamba` by `conda`._
 _**Note:** We highly recommend using a [Conda Python distribution](https://github.com/conda-forge/miniforge) to install Molfeat. The package is also pip installable if you need it: `pip install molfeat`._ 
 
 ### Optional dependencies
-Not all featurizers in Molfeat core package are supported by default. Some featurizers require additional dependencies. If you try to use a featurizer that requires additional dependencies, Molfeat will raise an error and tell you which dependencies are missing and how to install them. 
+Not all featurizers in the Molfeat core package are supported by default. Some featurizers require additional dependencies. If you try to use a featurizer that requires additional dependencies, Molfeat will raise an error and tell you which dependencies are missing and how to install them. 
 
 - To install `dgl`: run `mamba install -c dglteam dgl`
 - To install `dgllife`:  run `mamba install -c conda-forge dgllife`

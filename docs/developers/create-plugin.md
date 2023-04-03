@@ -1,8 +1,8 @@
 # Plugins
 
-Molecular representation is an active area of research leading to the steady emergence of new approaches to solve this complex set problems. As new molecular featurizers emerge, you can easily add yours to Molfeat and share it with the rest of the community.
+Molecular featurization is an active area of research leading to the steady emergence of new approaches to solve this complex set of problems. As new molecular featurizers emerge, you can easily add yours to molfeat and share it with the rest of the community.
 
-For developers that are planning to extend Molfeat functionality, we recommend using the [plugin system](https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/). The use of a plugin system ensures that the core package remains easy to install and as light as possible, while making it easy to extend its functionality with plug-and-play components. Additionally, it ensures that plugins can be developed independently of the core package, removing the bottleneck of a central party that reviews and approves new plugins.
+For developers that are planning to extend molfeat functionality, we recommend using the [plugin system](https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/). The use of a plugin system ensures that the core package remains easy to install and as light as possible, while making it easy to extend its functionality with plug-and-play components. Additionally, it ensures that plugins can be developed independently of the core package, removing the bottleneck of a central party that reviews and approves new plugins.
 
 However, plugins are not always required and sometimes a simple pull request is the better option. 
 
@@ -19,7 +19,7 @@ However, plugins are not always required and sometimes a simple pull request is 
 
 The rest of this document details how to *package* Molfeat plugins (or _extensions_) so that they can be tested, published and eventually reused by others. 
 
-We recommend Molfeat plugins be bundled and distributed as a [Python package](https://docs.python.org/3/tutorial/modules.html#packages) that provides a set of extensions to Molfeat.
+We recommend molfeat plugins be bundled and distributed as a [Python package](https://docs.python.org/3/tutorial/modules.html#packages) that provides a set of extensions to molfeat.
 
 ## Quickstart
 
@@ -179,7 +179,7 @@ and use the `help` argument to document input ports and output ports.
 
 ## Registering your plugin as official molfeat plugin
 
-Once you have designed and tested your plugin package, you can officially register it to be listed on the Molfeat
+Once you have designed and tested your plugin package, you can officially register it to be listed on the molfeat
 website by following the instructions at [Register a plugin](./register-plugin.md) 
 
 
