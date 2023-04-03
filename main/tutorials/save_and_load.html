@@ -17,7 +17,7 @@
         <link rel="next" href="datacache.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.4">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.240905d7.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7a7fce14.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -240,7 +240,7 @@
   
     <li class="md-nav__item">
       <a href="../benchmark.html" class="md-nav__link">
-        Why bother?
+        Why should you care?
       </a>
     </li>
   
@@ -1978,7 +1978,7 @@ Licensed under the Apache License, Version 2.0.
     init_mathjax();
     </script>
     <!-- End of mathjax configuration --><div class="jupyter-wrapper"><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2016,20 +2016,20 @@ import datamol as dm</div>
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Any Molfeat featurizer should be serializable. This makes it easy to share a specific instantiation of a featurizer.
-Any featurizer can thus be created from - or saved to - a state dictionary. We support native support to save these state dicts to both YAML and JSON</p>
+Any featurizer can thus be created from - or saved to - a state dictionary. We support native support to save these state dicts to both YAML and JSON.</p>
 <h2 id="example">Example<a class="anchor-link" href="#example">&#182;</a></h2>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2051,11 +2051,11 @@ Any featurizer can thus be created from - or saved to - a state dictionary. We s
             </div>
             <div class="highlight-ipynb hl-python "><pre><span></span><span class="kn">from</span> <span class="nn">molfeat.trans</span> <span class="kn">import</span> <span class="n">MoleculeTransformer</span>
 
-<span class="n">trans</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="s2">&quot;ecfp&quot;</span><span class="p">)</span>
+<span class="n">featurizer</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="s2">&quot;ecfp&quot;</span><span class="p">)</span>
 </pre></div>
 <div id="cell-2" class="clipboard-copy-txt">from molfeat.trans import MoleculeTransformer
 
-trans = MoleculeTransformer("ecfp")</div>
+featurizer = MoleculeTransformer("ecfp")</div>
         
         </div>
     </div>
@@ -2065,7 +2065,7 @@ trans = MoleculeTransformer("ecfp")</div>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2085,9 +2085,9 @@ trans = MoleculeTransformer("ecfp")</div>
                     </div>
                 </clipboard-copy>
             </div>
-            <div class="highlight-ipynb hl-python "><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">to_state_yaml</span><span class="p">())</span>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">featurizer</span><span class="o">.</span><span class="n">to_state_yaml</span><span class="p">())</span>
 </pre></div>
-<div id="cell-3" class="clipboard-copy-txt">print(trans.to_state_yaml())</div>
+<div id="cell-3" class="clipboard-copy-txt">print(featurizer.to_state_yaml())</div>
         
         </div>
     </div>
@@ -2107,7 +2107,7 @@ trans = MoleculeTransformer("ecfp")</div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>_molfeat_version: 0.0.1
+<pre>_molfeat_version: 0.8.2.dev26+g8b6a1c9.d20230401
 args:
   dtype: null
   featurizer: ecfp
@@ -2126,7 +2126,7 @@ name: MoleculeTransformer
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2146,9 +2146,9 @@ name: MoleculeTransformer
                     </div>
                 </clipboard-copy>
             </div>
-            <div class="highlight-ipynb hl-python "><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">to_state_json</span><span class="p">())</span>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">featurizer</span><span class="o">.</span><span class="n">to_state_json</span><span class="p">())</span>
 </pre></div>
-<div id="cell-4" class="clipboard-copy-txt">print(trans.to_state_json())</div>
+<div id="cell-4" class="clipboard-copy-txt">print(featurizer.to_state_json())</div>
         
         </div>
     </div>
@@ -2168,7 +2168,7 @@ name: MoleculeTransformer
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>{&#34;name&#34;: &#34;MoleculeTransformer&#34;, &#34;args&#34;: {&#34;featurizer&#34;: &#34;ecfp&#34;, &#34;n_jobs&#34;: 1, &#34;verbose&#34;: false, &#34;dtype&#34;: null, &#34;parallel_kwargs&#34;: null}, &#34;_molfeat_version&#34;: &#34;0.0.1&#34;}
+<pre>{&#34;name&#34;: &#34;MoleculeTransformer&#34;, &#34;args&#34;: {&#34;featurizer&#34;: &#34;ecfp&#34;, &#34;n_jobs&#34;: 1, &#34;verbose&#34;: false, &#34;dtype&#34;: null, &#34;parallel_kwargs&#34;: null}, &#34;_molfeat_version&#34;: &#34;0.8.2.dev26+g8b6a1c9.d20230401&#34;}
 </pre>
 </div>
 </div>
@@ -2179,7 +2179,7 @@ name: MoleculeTransformer
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2199,9 +2199,9 @@ name: MoleculeTransformer
                     </div>
                 </clipboard-copy>
             </div>
-            <div class="highlight-ipynb hl-python "><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">to_state_dict</span><span class="p">())</span>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">featurizer</span><span class="o">.</span><span class="n">to_state_dict</span><span class="p">())</span>
 </pre></div>
-<div id="cell-5" class="clipboard-copy-txt">print(trans.to_state_dict())</div>
+<div id="cell-5" class="clipboard-copy-txt">print(featurizer.to_state_dict())</div>
         
         </div>
     </div>
@@ -2221,7 +2221,7 @@ name: MoleculeTransformer
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>{&#39;name&#39;: &#39;MoleculeTransformer&#39;, &#39;args&#39;: {&#39;featurizer&#39;: &#39;ecfp&#39;, &#39;n_jobs&#39;: 1, &#39;verbose&#39;: False, &#39;dtype&#39;: None, &#39;parallel_kwargs&#39;: None}, &#39;_molfeat_version&#39;: &#39;0.0.1&#39;}
+<pre>{&#39;name&#39;: &#39;MoleculeTransformer&#39;, &#39;args&#39;: {&#39;featurizer&#39;: &#39;ecfp&#39;, &#39;n_jobs&#39;: 1, &#39;verbose&#39;: False, &#39;dtype&#39;: None, &#39;parallel_kwargs&#39;: None}, &#39;_molfeat_version&#39;: &#39;0.8.2.dev26+g8b6a1c9.d20230401&#39;}
 </pre>
 </div>
 </div>
@@ -2232,7 +2232,7 @@ name: MoleculeTransformer
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2252,9 +2252,9 @@ name: MoleculeTransformer
                     </div>
                 </clipboard-copy>
             </div>
-            <div class="highlight-ipynb hl-python "><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">to_state_json</span><span class="p">())</span>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">featurizer</span><span class="o">.</span><span class="n">to_state_json</span><span class="p">())</span>
 </pre></div>
-<div id="cell-6" class="clipboard-copy-txt">print(trans.to_state_json())</div>
+<div id="cell-6" class="clipboard-copy-txt">print(featurizer.to_state_json())</div>
         
         </div>
     </div>
@@ -2274,7 +2274,7 @@ name: MoleculeTransformer
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>{&#34;name&#34;: &#34;MoleculeTransformer&#34;, &#34;args&#34;: {&#34;featurizer&#34;: &#34;ecfp&#34;, &#34;n_jobs&#34;: 1, &#34;verbose&#34;: false, &#34;dtype&#34;: null, &#34;parallel_kwargs&#34;: null}, &#34;_molfeat_version&#34;: &#34;0.0.1&#34;}
+<pre>{&#34;name&#34;: &#34;MoleculeTransformer&#34;, &#34;args&#34;: {&#34;featurizer&#34;: &#34;ecfp&#34;, &#34;n_jobs&#34;: 1, &#34;verbose&#34;: false, &#34;dtype&#34;: null, &#34;parallel_kwargs&#34;: null}, &#34;_molfeat_version&#34;: &#34;0.8.2.dev26+g8b6a1c9.d20230401&#34;}
 </pre>
 </div>
 </div>
@@ -2285,7 +2285,7 @@ name: MoleculeTransformer
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2310,16 +2310,16 @@ name: MoleculeTransformer
 
 <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmpdir</span><span class="p">:</span>
     <span class="n">path</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">,</span> <span class="s2">&quot;state_dict.yml&quot;</span><span class="p">)</span>
-    <span class="n">trans</span><span class="o">.</span><span class="n">to_state_yaml_file</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-    <span class="n">trans</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="o">.</span><span class="n">from_state_yaml_file</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">featurizer</span><span class="o">.</span><span class="n">to_state_yaml_file</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">featurizer</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="o">.</span><span class="n">from_state_yaml_file</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 </pre></div>
 <div id="cell-7" class="clipboard-copy-txt"># You can also directly save to files:
 import tempfile
 
 with tempfile.TemporaryDirectory() as tmpdir:
     path = dm.fs.join(tmpdir, "state_dict.yml")
-    trans.to_state_yaml_file(path)
-    trans = MoleculeTransformer.from_state_yaml_file(path)</div>
+    featurizer.to_state_yaml_file(path)
+    featurizer = MoleculeTransformer.from_state_yaml_file(path)</div>
         
         </div>
     </div>
@@ -2329,19 +2329,19 @@ with tempfile.TemporaryDirectory() as tmpdir:
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="loop-over-multiple-featurizers">Loop over multiple featurizers<a class="anchor-link" href="#loop-over-multiple-featurizers">&#182;</a></h2><p>One implication of this, is that despite the various different interfaces, you can eaisly loop over multiple featurizers.</p>
+<h2 id="loop-over-multiple-featurizers">Loop over multiple featurizers<a class="anchor-link" href="#loop-over-multiple-featurizers">&#182;</a></h2><p>One implication of this, is that despite the various interfaces, you can easily loop over multiple featurizers.</p>
 
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2381,7 +2381,7 @@ with tempfile.TemporaryDirectory() as tmpdir:
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2402,11 +2402,11 @@ with tempfile.TemporaryDirectory() as tmpdir:
                 </clipboard-copy>
             </div>
             <div class="highlight-ipynb hl-python "><pre><span></span><span class="k">for</span> <span class="n">state_dict</span> <span class="ow">in</span> <span class="n">FEATURIZERS</span><span class="p">:</span>
-    <span class="n">trans</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="o">.</span><span class="n">from_state_dict</span><span class="p">(</span><span class="n">state_dict</span><span class="p">)</span>
+    <span class="n">featurizer</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="o">.</span><span class="n">from_state_dict</span><span class="p">(</span><span class="n">state_dict</span><span class="p">)</span>
     <span class="c1"># ... Work your magic!</span>
 </pre></div>
 <div id="cell-9" class="clipboard-copy-txt">for state_dict in FEATURIZERS:
-    trans = MoleculeTransformer.from_state_dict(state_dict)
+    featurizer = MoleculeTransformer.from_state_dict(state_dict)
     # ... Work your magic!</div>
         
         </div>
@@ -2464,7 +2464,7 @@ with tempfile.TemporaryDirectory() as tmpdir:
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.19047be9.min.js"></script>
+      <script src="../assets/javascripts/bundle.407015b8.min.js"></script>
       
     
   </body>

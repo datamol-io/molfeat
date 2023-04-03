@@ -17,7 +17,7 @@
         <link rel="next" href="pyg_integration.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.4">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.240905d7.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7a7fce14.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -240,7 +240,7 @@
   
     <li class="md-nav__item">
       <a href="../benchmark.html" class="md-nav__link">
-        Why bother?
+        Why should you care?
       </a>
     </li>
   
@@ -2004,7 +2004,7 @@ Licensed under the Apache License, Version 2.0.
     init_mathjax();
     </script>
     <!-- End of mathjax configuration --><div class="jupyter-wrapper"><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2048,7 +2048,7 @@ import matplotlib.pyplot as plt</div>
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2057,13 +2057,13 @@ import matplotlib.pyplot as plt</div>
 <p>All transformers in Molfeat are a subclass of <code>MoleculeTransformer</code> which in turns implements the <code>BaseFeaturizer</code> interface.
 The <code>BaseFeaturizer</code> interface ensures that transformers are compatible with both Scikit-Learn and deep learning frameworks, such as PyTorch and DGL.</p>
 <h2 id="scikit-learn">Scikit-learn<a class="anchor-link" href="#scikit-learn">&#182;</a></h2><p><code>MoleculeTransformer</code> implements the <code>BaseEstimator</code> and <code>TransformerMixin</code> interfaces from Scikit-Learn. This makes it easy to integrate Molfeat featurizers with Scikit-Learn.
-In the example below we create a simple Scikit-learn pipeline to predict the solubility of molecules using a random forest regressor.</p>
+In the example below, we create a simple Scikit-learn pipeline to predict the solubility of molecules using a random forest regressor.</p>
 
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2105,7 +2105,7 @@ from molfeat.trans import MoleculeTransformer</div>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2130,16 +2130,16 @@ from molfeat.trans import MoleculeTransformer</div>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># The Molfeat transformer seemingly integrates with Scikit-learn Pipeline!</span>
-<span class="n">trans</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="s2">&quot;desc2d&quot;</span><span class="p">)</span>
-<span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s2">&quot;feat&quot;</span><span class="p">,</span> <span class="n">trans</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;scaler&quot;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span> <span class="p">(</span><span class="s2">&quot;rf&quot;</span><span class="p">,</span> <span class="n">RandomForestRegressor</span><span class="p">())])</span>
+<span class="n">transf</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="s2">&quot;desc2d&quot;</span><span class="p">)</span>
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s2">&quot;feat&quot;</span><span class="p">,</span> <span class="n">transf</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;scaler&quot;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span> <span class="p">(</span><span class="s2">&quot;rf&quot;</span><span class="p">,</span> <span class="n">RandomForestRegressor</span><span class="p">())])</span>
 </pre></div>
 <div id="cell-3" class="clipboard-copy-txt">df = dm.data.freesolv()
 X, y = df["smiles"], df["expt"]
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
 
 # The Molfeat transformer seemingly integrates with Scikit-learn Pipeline!
-trans = MoleculeTransformer("desc2d")
-pipe = Pipeline([("feat", trans), ("scaler", StandardScaler()), ("rf", RandomForestRegressor())])</div>
+transf = MoleculeTransformer("desc2d")
+pipe = Pipeline([("feat", transf), ("scaler", StandardScaler()), ("rf", RandomForestRegressor())])</div>
         
         </div>
     </div>
@@ -2149,7 +2149,7 @@ pipe = Pipeline([("feat", trans), ("scaler", StandardScaler()), ("rf", RandomFor
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2212,7 +2212,7 @@ print(score)</div>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2276,7 +2276,7 @@ class="
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2288,7 +2288,7 @@ class="
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2381,20 +2381,20 @@ score</div>
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="pytorch">PyTorch<a class="anchor-link" href="#pytorch">&#182;</a></h2><p>The <code>MoleculeTransformer</code> also defines some utilities such as the <code>__len__()</code> method and the <code>get_collate_fn()</code> method which makes it easy to integrate with PyTorch.
-In the example below we create a simple PyTorch dataset and dataloader using the Molfeat featurizer.</p>
+In the example below, we create a simple PyTorch dataset and dataloader using the Molfeat featurizer.</p>
 
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2415,24 +2415,24 @@ In the example below we create a simple PyTorch dataset and dataloader using the
                 </clipboard-copy>
             </div>
             <div class="highlight-ipynb hl-python "><pre><span></span><span class="c1"># We can easily get the dimension of the vector!</span>
-<span class="n">input_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">trans</span><span class="p">)</span>
+<span class="n">input_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">transf</span><span class="p">)</span>
 
 <span class="c1"># To for example define the first layer of a Neural Network</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Easily get the associated collate function,</span>
 <span class="c1"># This is for example useful when training a DGL GNN.</span>
-<span class="n">dataloader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="n">trans</span><span class="o">.</span><span class="n">get_collate_fn</span><span class="p">())</span>
+<span class="n">dataloader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="n">transf</span><span class="o">.</span><span class="n">get_collate_fn</span><span class="p">())</span>
 </pre></div>
 <div id="cell-7" class="clipboard-copy-txt"># We can easily get the dimension of the vector!
-input_size = len(trans)
+input_size = len(transf)
 
 # To for example define the first layer of a Neural Network
 model = nn.Linear(input_size, 1)
 
 # Easily get the associated collate function,
 # This is for example useful when training a DGL GNN.
-dataloader = torch.utils.data.DataLoader(X_train, collate_fn=trans.get_collate_fn())</div>
+dataloader = torch.utils.data.DataLoader(X_train, collate_fn=transf.get_collate_fn())</div>
         
         </div>
     </div>
@@ -2442,19 +2442,19 @@ dataloader = torch.utils.data.DataLoader(X_train, collate_fn=trans.get_collate_f
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="featurization-for-training-neural-networks">Featurization for training Neural Networks<a class="anchor-link" href="#featurization-for-training-neural-networks">&#182;</a></h3><p>Molfeat also includes featurization schemes to convert molecules in a format that is suited for training neural networks (e.g. tokenized strings or graphs).</p>
+<h3 id="featurization-for-training-neural-networks">Featurization for training Neural Networks<a class="anchor-link" href="#featurization-for-training-neural-networks">&#182;</a></h3><p>Molfeat also includes featurization schemes to convert molecules into a format suited for training neural networks (e.g. tokenized strings or graphs).</p>
 
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2479,8 +2479,8 @@ dataloader = torch.utils.data.DataLoader(X_train, collate_fn=trans.get_collate_f
 <span class="n">smi</span> <span class="o">=</span> <span class="s2">&quot;CN1C=NC2=C1C(=O)N(C(=O)N2C)C&quot;</span>
 
 <span class="c1"># Get the adjacency matrix</span>
-<span class="n">trans</span> <span class="o">=</span> <span class="n">DGLGraphTransformer</span><span class="p">()</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">trans</span><span class="p">([</span><span class="n">smi</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">transf</span> <span class="o">=</span> <span class="n">DGLGraphTransformer</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">transf</span><span class="p">([</span><span class="n">smi</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
 <div id="cell-8" class="clipboard-copy-txt">from molfeat.trans.graph import DGLGraphTransformer
@@ -2488,8 +2488,8 @@ dataloader = torch.utils.data.DataLoader(X_train, collate_fn=trans.get_collate_f
 smi = "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
 
 # Get the adjacency matrix
-trans = DGLGraphTransformer()
-X = trans([smi])[0]
+transf = DGLGraphTransformer()
+X = transf([smi])[0]
 type(X)</div>
         
         </div>
@@ -2523,7 +2523,7 @@ type(X)</div>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2543,9 +2543,9 @@ type(X)</div>
                     </div>
                 </clipboard-copy>
             </div>
-            <div class="highlight-ipynb hl-python "><pre><span></span><span class="n">trans</span><span class="o">.</span><span class="n">get_collate_fn</span><span class="p">()</span>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="n">transf</span><span class="o">.</span><span class="n">get_collate_fn</span><span class="p">()</span>
 </pre></div>
-<div id="cell-9" class="clipboard-copy-txt">trans.get_collate_fn()</div>
+<div id="cell-9" class="clipboard-copy-txt">transf.get_collate_fn()</div>
         
         </div>
     </div>
@@ -2578,7 +2578,7 @@ type(X)</div>
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2642,7 +2642,7 @@ type(X)</div>
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.19047be9.min.js"></script>
+      <script src="../assets/javascripts/bundle.407015b8.min.js"></script>
       
     
   </body>

@@ -17,7 +17,7 @@
         <link rel="next" href="../developers/contribute.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.4">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.240905d7.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7a7fce14.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -240,7 +240,7 @@
   
     <li class="md-nav__item">
       <a href="../benchmark.html" class="md-nav__link">
-        Why bother?
+        Why should you care?
       </a>
     </li>
   
@@ -2031,13 +2031,13 @@ Licensed under the Apache License, Version 2.0.
     }
     init_mathjax();
     </script>
-    <!-- End of mathjax configuration --><div class="jupyter-wrapper"><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+    <!-- End of mathjax configuration --><div class="jupyter-wrapper"><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div id="cell-id=55bdabf8-d809-4b6c-a48e-1e27850aab72" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2064,30 +2064,52 @@ Licensed under the Apache License, Version 2.0.
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>The autoreload extension is already loaded. To reload it, use:
+  %reload_ext autoreload
+</pre>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+
+</div>
+
+</div>
+
+</div>
+</div>
+<div id="cell-id=b4b1410d-2d44-4c5a-9743-f8c0d71f13fa" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="caching-features">Caching features<a class="anchor-link" href="#caching-features">&#182;</a></h3><p>Molfeat offers a caching system to accelerate molecular featurization. There are two main type of caching systems offered in Molfeat.</p>
+<h3 id="caching-features">Caching features<a class="anchor-link" href="#caching-features">&#182;</a></h3><p>molfeat offers a caching system to accelerate molecular featurization. There are two main types of caching systems offered in Molfeat:</p>
 <h5 id="datacache">DataCache<a class="anchor-link" href="#datacache">&#182;</a></h5><p><code>DataCache</code> is the default, mostly <em>in memory</em> caching system of <code>molfeat</code>. The underlying cache system of <code>DataCache</code> is simply a dictionary. To improve efficiency, <code>DataCache</code> also supports <strong>shelf</strong> for object persistence.  See the relevant documentation to learn more about <code>DataCache</code>.</p>
-<h5 id="filecache">FileCache<a class="anchor-link" href="#filecache">&#182;</a></h5><p><code>FileCache</code> takes a file-based serialization approach to setup the underlying caching system. <code>FileCache</code> supports <code>pickle</code>, <code>parquet</code> and <code>csv</code> formats. We recommend the <code>parquet</code> file format for its effiency and lightweightness.</p>
+<h5 id="filecache">FileCache<a class="anchor-link" href="#filecache">&#182;</a></h5><p><code>FileCache</code> takes a file-based serialization approach to establish the underlying caching system. <code>FileCache</code> supports <code>pickle</code>, <code>parquet</code> and <code>csv</code> formats. We recommend the <code>parquet</code> file format for its efficiency.</p>
 <hr />
-<p>For both <code>FileCache</code> and <code>DataCache</code>, the key used to save and retrieve a molecule representation is <code>datamol.unique_id</code>. You can alternatively use inchikey, which is less robust (e.g. does not differentiate tautomers) or even setup you own molecular hashing function that you can pass as input to the cache object.</p>
+<p>For both <code>FileCache</code> and <code>DataCache</code>, the key used to save and retrieve a molecular representation is <code>datamol.unique_id</code>. Alternatively, you can use inchikey, which is less robust (e.g. does not differentiate tautomers) or even define your own molecular hashing function that you can pass as input to the cache object.</p>
 
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div id="cell-id=b248ca43-1c17-41c7-8816-a3bbd6846add" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2122,12 +2144,12 @@ from molfeat.trans.pretrained import FCDTransformer</div>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div id="cell-id=e4253d50-2c3b-46b7-9f57-e5cfe9cd9c6e" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2160,12 +2182,12 @@ targets = data["expt"].values</div>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div id="cell-id=0cbb1c6a-60c0-4bee-af01-faa1e1858bac" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2210,12 +2232,12 @@ transformer = FCDTransformer()</div>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div id="cell-id=9f26176a-4510-4fd1-8324-c35bd4e2b7bb" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2246,7 +2268,7 @@ cache.save_to_file(filepath=cache.name)</div>
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div id="cell-id=07d7dcf8" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2257,7 +2279,7 @@ cache.save_to_file(filepath=cache.name)</div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div id="cell-id=521c2de1" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2269,12 +2291,12 @@ cache.save_to_file(filepath=cache.name)</div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div id="cell-id=87d30e68" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2311,7 +2333,7 @@ benzene in cache</div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[24]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
 
 
 
@@ -2328,12 +2350,12 @@ benzene in cache</div>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div id="cell-id=7b660a42" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2370,7 +2392,7 @@ paracetamol in cache</div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[23]:</div>
 
 
 
@@ -2387,7 +2409,7 @@ paracetamol in cache</div>
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div id="cell-id=081d5f97" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2399,12 +2421,12 @@ paracetamol in cache</div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div id="cell-id=389f6525" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2439,7 +2461,7 @@ fps.shape</div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[24]:</div>
 
 
 
@@ -2456,24 +2478,24 @@ fps.shape</div>
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div id="cell-id=e0c8609f" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Obviously you can serialize a cache by converting it to a state dict</p>
+<p>You can also serialize a cache by converting it to a state dict</p>
 
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div id="cell-id=33804aeb" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2506,7 +2528,7 @@ fps.shape</div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[27]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
 
 
 
@@ -2531,7 +2553,7 @@ fps.shape</div>
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div id="cell-id=6a3dbfa3" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2543,12 +2565,12 @@ fps.shape</div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div id="cell-id=34439598" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2589,13 +2611,13 @@ len(reload_cache)</div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
 
 
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>500</pre>
+<pre>609</pre>
 </div>
 
 </div>
@@ -2606,12 +2628,12 @@ len(reload_cache)</div>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div id="cell-id=fb564fd2" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2646,13 +2668,13 @@ len(reload_state_dict_cache)</div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[27]:</div>
 
 
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>500</pre>
+<pre>609</pre>
 </div>
 
 </div>
@@ -2663,7 +2685,7 @@ len(reload_state_dict_cache)</div>
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div id="cell-id=2cbd9f77" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2675,12 +2697,12 @@ len(reload_state_dict_cache)</div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div id="cell-id=1e8284ed-a371-4edb-af03-5c95aa07b7cd" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2729,13 +2751,13 @@ len(memorycache)</div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[31]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
 
 
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>500</pre>
+<pre>609</pre>
 </div>
 
 </div>
@@ -2746,25 +2768,25 @@ len(memorycache)</div>
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div id="cell-id=11595b87" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="using-a-cache-with-a-precomputed-transformer">Using a cache with a precomputed transformer<a class="anchor-link" href="#using-a-cache-with-a-precomputed-transformer">&#182;</a></h4><p>Some molecule transformers natively supports a <code>precompute_cache</code> attribute that can be used to cache featurization or load cache state into a new featurizer.</p>
-<p>Molfeat also provide a <code>PrecomputedMolTransformer</code> class that makes the process easier which allows you quickly build a new transformer from an existing cache. Similar to any <code>MoleculeTransformer</code>, you can serialize the state of a <code>PrecomputedMolTransformer</code> and reload it easily.</p>
+<h4 id="using-a-cache-with-a-precomputed-transformer">Using a cache with a precomputed transformer<a class="anchor-link" href="#using-a-cache-with-a-precomputed-transformer">&#182;</a></h4><p>Some molecular transformers natively support a <code>precompute_cache</code> attribute that can be used to cache featurization or load cache state into a new featurizer.</p>
+<p>molfeat also provides a <code>PrecomputedMolTransformer</code> class that makes the process easier which allows you to quickly build a new transformer from an existing cache. Similar to any <code>MoleculeTransformer</code>, you can serialize the state of a <code>PrecomputedMolTransformer</code> and reload it easily.</p>
 
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div id="cell-id=357e0c00-c0c5-4df4-8b04-fabea5571734" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[37]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2780,12 +2802,12 @@ len(memorycache)</div>
                 </clipboard-copy>
             </div>
             <div class="highlight-ipynb hl-python "><pre><span></span><span class="o">%%</span><span class="n">timeit</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span> <span class="o">-</span><span class="n">r</span> <span class="mi">3</span>
-<span class="n">trans</span> <span class="o">=</span> <span class="n">PrecomputedMolTransformer</span><span class="p">(</span><span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span> <span class="n">featurizer</span><span class="o">=</span><span class="n">FCDTransformer</span><span class="p">())</span>
-<span class="n">trans</span><span class="p">(</span><span class="n">molecules</span><span class="p">)</span>
+<span class="n">transformer</span> <span class="o">=</span> <span class="n">PrecomputedMolTransformer</span><span class="p">(</span><span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span> <span class="n">featurizer</span><span class="o">=</span><span class="n">FCDTransformer</span><span class="p">())</span>
+<span class="n">transformer</span><span class="p">(</span><span class="n">molecules</span><span class="p">)</span>
 </pre></div>
 <div id="cell-13" class="clipboard-copy-txt">%%timeit -n 1 -r 3
-trans = PrecomputedMolTransformer(cache=cache, featurizer=FCDTransformer())
-trans(molecules)</div>
+transformer = PrecomputedMolTransformer(cache=cache, featurizer=FCDTransformer())
+transformer(molecules)</div>
         
         </div>
     </div>
@@ -2805,7 +2827,7 @@ trans(molecules)</div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>895 ms ± 148 ms per loop (mean ± std. dev. of 3 runs, 1 loop each)
+<pre>291 ms ± 21.2 ms per loop (mean ± std. dev. of 3 runs, 1 loop each)
 </pre>
 </div>
 </div>
@@ -2816,12 +2838,12 @@ trans(molecules)</div>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div id="cell-id=dabd45ce-7aba-402d-ba70-ef5c26740324" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[38]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2837,12 +2859,12 @@ trans(molecules)</div>
                 </clipboard-copy>
             </div>
             <div class="highlight-ipynb hl-python "><pre><span></span><span class="o">%%</span><span class="n">timeit</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span> <span class="o">-</span><span class="n">r</span> <span class="mi">3</span>
-<span class="n">trans</span> <span class="o">=</span> <span class="n">FCDTransformer</span><span class="p">()</span>
-<span class="n">trans</span><span class="p">(</span><span class="n">molecules</span><span class="p">)</span>
+<span class="n">transformer</span> <span class="o">=</span> <span class="n">FCDTransformer</span><span class="p">()</span>
+<span class="n">transformer</span><span class="p">(</span><span class="n">molecules</span><span class="p">)</span>
 </pre></div>
 <div id="cell-14" class="clipboard-copy-txt">%%timeit -n 1 -r 3
-trans = FCDTransformer()
-trans(molecules)</div>
+transformer = FCDTransformer()
+transformer(molecules)</div>
         
         </div>
     </div>
@@ -2862,7 +2884,7 @@ trans(molecules)</div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>14.4 s ± 1.9 s per loop (mean ± std. dev. of 3 runs, 1 loop each)
+<pre>2.17 s ± 120 ms per loop (mean ± std. dev. of 3 runs, 1 loop each)
 </pre>
 </div>
 </div>
@@ -2873,25 +2895,25 @@ trans(molecules)</div>
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div id="cell-id=6a1dce4c" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>By computing the features once on you dataset, you can gain astonishing speed on featurization later.</p>
-<p>Even better, the <code>PrecomputedMolTransformer</code> class provide a <code>batch_transform</code> function that can leverage parallel computing with shared memory for further performance gain. The <code>batch_transform</code> method allows you to both compute features and cache them in a parallel setting, the most efficient way. This could be relevant for featurizer that accepts batch of molecules, since the normal caching system compute the feature one molecule at a time.</p>
+<p>Even better, the <code>PrecomputedMolTransformer</code> class provides a <code>batch_transform</code> function that can leverage parallel computing with shared memory for further performance gains. The <code>batch_transform</code> method allows you to both compute features and cache them in a multiprocessing setting for maximum efficiency. This could be relevant for featurizers that accept a batch of molecules, since the normal caching system computes the feature one molecule at a time.</p>
 
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div id="cell-id=2b4a208b" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[46]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2932,7 +2954,7 @@ len(cache_empty)</div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[46]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[31]:</div>
 
 
 
@@ -2949,12 +2971,12 @@ len(cache_empty)</div>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div id="cell-id=2f5ccc74" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[47]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[32]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -2970,12 +2992,12 @@ len(cache_empty)</div>
                 </clipboard-copy>
             </div>
             <div class="highlight-ipynb hl-python "><pre><span></span><span class="o">%%</span><span class="n">timeit</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span> <span class="o">-</span><span class="n">r</span> <span class="mi">1</span>
-<span class="n">trans</span> <span class="o">=</span> <span class="n">PrecomputedMolTransformer</span><span class="p">(</span><span class="n">cache</span><span class="o">=</span><span class="n">cache_empty</span><span class="p">,</span> <span class="n">featurizer</span><span class="o">=</span><span class="n">FCDTransformer</span><span class="p">())</span>
-<span class="n">trans</span><span class="o">.</span><span class="n">batch_transform</span><span class="p">(</span><span class="n">trans</span><span class="p">,</span> <span class="n">molecules</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">transformer</span> <span class="o">=</span> <span class="n">PrecomputedMolTransformer</span><span class="p">(</span><span class="n">cache</span><span class="o">=</span><span class="n">cache_empty</span><span class="p">,</span> <span class="n">featurizer</span><span class="o">=</span><span class="n">FCDTransformer</span><span class="p">())</span>
+<span class="n">transformer</span><span class="o">.</span><span class="n">batch_transform</span><span class="p">(</span><span class="n">transformer</span><span class="p">,</span> <span class="n">molecules</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 </pre></div>
 <div id="cell-16" class="clipboard-copy-txt">%%timeit -n 1 -r 1
-trans = PrecomputedMolTransformer(cache=cache_empty, featurizer=FCDTransformer())
-trans.batch_transform(trans, molecules, n_jobs=-1, batch_size=50)</div>
+transformer = PrecomputedMolTransformer(cache=cache_empty, featurizer=FCDTransformer())
+transformer.batch_transform(transformer, molecules, n_jobs=-1, batch_size=50)</div>
         
         </div>
     </div>
@@ -3007,7 +3029,7 @@ trans.batch_transform(trans, molecules, n_jobs=-1, batch_size=50)</div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>17.3 s ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
+<pre>39.7 s ± 0 ns per loop (mean ± std. dev. of 1 run, 1 loop each)
 </pre>
 </div>
 </div>
@@ -3018,12 +3040,12 @@ trans.batch_transform(trans, molecules, n_jobs=-1, batch_size=50)</div>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div id="cell-id=6a405a3b" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[48]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -3058,7 +3080,7 @@ len(cache_empty)</div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[48]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[33]:</div>
 
 
 
@@ -3122,7 +3144,7 @@ len(cache_empty)</div>
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.19047be9.min.js"></script>
+      <script src="../assets/javascripts/bundle.407015b8.min.js"></script>
       
     
   </body>

@@ -17,7 +17,7 @@
         <link rel="next" href="save_and_load.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.4">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.240905d7.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7a7fce14.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -240,7 +240,7 @@
   
     <li class="md-nav__item">
       <a href="../benchmark.html" class="md-nav__link">
-        Why bother?
+        Why should you care?
       </a>
     </li>
   
@@ -2032,7 +2032,7 @@ Licensed under the Apache License, Version 2.0.
     init_mathjax();
     </script>
     <!-- End of mathjax configuration --><div class="jupyter-wrapper"><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2078,7 +2078,7 @@ from tqdm.auto import tqdm</div>
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2089,24 +2089,25 @@ from tqdm.auto import tqdm</div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Wanna finetune one of the pretrained transformers for molecular featurization in Molfeat for your property prediction task ? not sure where to start ? Do you need something extra-customized ? Do you feel like getting your hands dirty by hacking Molfeat ? Are you a smooth criminal ?</p>
-<p><strong>This tutorial is for you !</strong></p>
-<p>We have previously shown how <a href="./integration.html">Molfeat integrates with PyTorch in general</a> and even with <a href="./pyg_integration.html">Pytorch Geometric</a>. Now we will demonstrate how to use Molfeat to finetune a pretrained transformer for molecular property prediction.</p>
+<p>We have previously shown how <a href="./integration.html">Molfeat integrates with PyTorch in general</a> and even with <a href="./pyg_integration.html">Pytorch Geometric</a>. Now we will demonstrate how to use molfeat to finetune a pretrained transformer. This tutorial will walk you through an example of finetuning the ChemBERTa pretrained model for molecular property prediction. These same principles can be applied to any pretrained transformers available in molfeat.</p>
 <p>To run this tutorial, you will need to install <code>transformers</code> and <code>tokenizers</code>.</p>
 <p><code>mamba install -c conda-forge transformers &quot;tokenizers &lt;0.13.2&quot;</code></p>
-<p>⚠️ Warning: advanced users only !</p>
+<div class="admonition warning highlight blink">
+<p class="admonition-title">Advanced users</p>
+<p>This tutorial is for advanced users that are comfortable with the APIs of molfeat and Hugging Face transformers.</p>
+</div>
 
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2140,21 +2141,21 @@ from molfeat.trans.pretrained import PretrainedHFTransformer</div>
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="featurizer">Featurizer<a class="anchor-link" href="#featurizer">&#182;</a></h3><p>Pretrained Transformer Featurizer in Molfeat have an underlying object <code>featurizer</code> that can handle both tokenization and embedding.</p>
-<p>We will leverage that structure in molfeat to initialize our transformer model, but also to tokenize our molecules</p>
+<h3 id="featurizer">Featurizer<a class="anchor-link" href="#featurizer">&#182;</a></h3><p>Pretrained Transformer Featurizer in molfeat have an underlying object <code>featurizer</code> that can handle both tokenization and embedding.</p>
+<p>We will leverage this structure in molfeat to initialize our transformer model, but also to tokenize our molecules</p>
 <p>We first start by defining our featurizer. Here we will use the ChemBERTa pretrained model.</p>
 
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2174,9 +2175,9 @@ from molfeat.trans.pretrained import PretrainedHFTransformer</div>
                     </div>
                 </clipboard-copy>
             </div>
-            <div class="highlight-ipynb hl-python "><pre><span></span><span class="n">trans</span> <span class="o">=</span> <span class="n">PretrainedHFTransformer</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;ChemBERTa-77M-MLM&quot;</span><span class="p">,</span> <span class="n">pooling</span><span class="o">=</span><span class="s2">&quot;bert&quot;</span><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="n">featurizer</span> <span class="o">=</span> <span class="n">PretrainedHFTransformer</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;ChemBERTa-77M-MLM&quot;</span><span class="p">,</span> <span class="n">pooling</span><span class="o">=</span><span class="s2">&quot;bert&quot;</span><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
-<div id="cell-3" class="clipboard-copy-txt">trans = PretrainedHFTransformer(kind="ChemBERTa-77M-MLM", pooling="bert", preload=True)</div>
+<div id="cell-3" class="clipboard-copy-txt">featurizer = PretrainedHFTransformer(kind="ChemBERTa-77M-MLM", pooling="bert", preload=True)</div>
         
         </div>
     </div>
@@ -2186,7 +2187,7 @@ from molfeat.trans.pretrained import PretrainedHFTransformer</div>
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2194,14 +2195,14 @@ from molfeat.trans.pretrained import PretrainedHFTransformer</div>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
 <li>Note the use of preload to preload the model in the <code>__init__</code></li>
-<li>Note how we define a pooling mechanism here. Molfeat provides <a href="./api/molfeat.utils.html#pooling">several poolers that you can explore in the API</a>. Because a pooling layer can already be specified and will be accessible through the <code>_pooling_obj</code> attribute we will not bother in defining one later, instead we will just retrieve the one from the featurizer.</li>
+<li>Note how we define a pooling mechanism here. Molfeat provides <a href="./api/molfeat.utils.html#pooling">several poolers that you can explore in the API</a>. Because a pooling layer can already be specified and will be accessible through the <code>_pooling_obj</code> attribute we will not bother defining one later. Instead we will just retrieve the one from the featurizer.</li>
 </ul>
 
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2213,7 +2214,7 @@ from molfeat.trans.pretrained import PretrainedHFTransformer</div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2245,7 +2246,7 @@ from molfeat.trans.pretrained import PretrainedHFTransformer</div>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2361,7 +2362,7 @@ from molfeat.trans.pretrained import PretrainedHFTransformer</div>
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2373,7 +2374,7 @@ from molfeat.trans.pretrained import PretrainedHFTransformer</div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2477,7 +2478,7 @@ class DTset(Dataset):
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2497,11 +2498,11 @@ class DTset(Dataset):
                     </div>
                 </clipboard-copy>
             </div>
-            <div class="highlight-ipynb hl-python "><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">DTset</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">smiles</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">p_np</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">trans</span><span class="p">)</span>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">DTset</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">smiles</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">p_np</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">featurizer</span><span class="p">)</span>
 <span class="n">generator</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Generator</span><span class="p">()</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">train_dt</span><span class="p">,</span> <span class="n">test_dt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">random_split</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="n">generator</span><span class="o">=</span><span class="n">generator</span><span class="p">)</span>
 </pre></div>
-<div id="cell-7" class="clipboard-copy-txt">dataset = DTset(df.smiles.values, df.p_np.values, trans)
+<div id="cell-7" class="clipboard-copy-txt">dataset = DTset(df.smiles.values, df.p_np.values, featurizer)
 generator = torch.Generator().manual_seed(42)
 train_dt, test_dt = torch.utils.data.random_split(dataset, [0.8, 0.2], generator=generator)</div>
         
@@ -2548,7 +2549,7 @@ train_dt, test_dt = torch.utils.data.random_split(dataset, [0.8, 0.2], generator
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2584,7 +2585,7 @@ test_loader = DataLoader(test_dt, batch_size=BATCH_SIZE, shuffle=False, collate_
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2596,7 +2597,7 @@ test_loader = DataLoader(test_dt, batch_size=BATCH_SIZE, shuffle=False, collate_
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2706,7 +2707,7 @@ test_loader = DataLoader(test_dt, batch_size=BATCH_SIZE, shuffle=False, collate_
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2732,7 +2733,7 @@ test_loader = DataLoader(test_dt, batch_size=BATCH_SIZE, shuffle=False, collate_
 <span class="n">PNA_AGGREGATORS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">]</span>
 <span class="n">PNA_SCALERS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="s1">&#39;amplification&#39;</span><span class="p">,</span> <span class="s1">&#39;attenuation&#39;</span><span class="p">]</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">AwesomeNet</span><span class="p">(</span><span class="n">trans</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">output_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AwesomeNet</span><span class="p">(</span><span class="n">featurizer</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">output_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">LEARNING_RATE</span><span class="p">)</span>
 <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">BCEWithLogitsLoss</span><span class="p">()</span>
 </pre></div>
@@ -2742,7 +2743,7 @@ LEARNING_RATE = 1e-3
 PNA_AGGREGATORS = ['mean', 'min', 'max', 'std']
 PNA_SCALERS = ['identity', 'amplification', 'attenuation']
 
-model = AwesomeNet(trans, hidden_size=64, dropout=0.1, output_size=1)
+model = AwesomeNet(featurizer, hidden_size=64, dropout=0.1, output_size=1)
 optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
 loss_fn = torch.nn.BCEWithLogitsLoss()</div>
         
@@ -2754,7 +2755,7 @@ loss_fn = torch.nn.BCEWithLogitsLoss()</div>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2788,13 +2789,13 @@ model = model.train()</div>
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>You might want to have a look at the model summary for a sanity check</p>
+<p>You might want to have a look at the model summary for a sanity check.</p>
 <div class="highlight"><pre><span></span><span class="err">!</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">torchinfo</span>
 <span class="kn">from</span> <span class="nn">torchinfo</span> <span class="kn">import</span> <span class="n">summary</span>
 <span class="n">summary</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
@@ -2831,7 +2832,7 @@ Non-trainable params: 0
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2908,7 +2909,7 @@ with tqdm(range(NUM_EPOCHS)) as pbar:
 
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2920,7 +2921,7 @@ with tqdm(range(NUM_EPOCHS)) as pbar:
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -3055,7 +3056,7 @@ Test Accuracy: 0.905
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.19047be9.min.js"></script>
+      <script src="../assets/javascripts/bundle.407015b8.min.js"></script>
       
     
   </body>

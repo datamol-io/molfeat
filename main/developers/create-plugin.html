@@ -17,7 +17,7 @@
         <link rel="next" href="register-plugin.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.4">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.240905d7.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7a7fce14.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -240,7 +240,7 @@
   
     <li class="md-nav__item">
       <a href="../benchmark.html" class="md-nav__link">
-        Why bother?
+        Why should you care?
       </a>
     </li>
   
@@ -621,7 +621,7 @@
       
         <li class="md-nav__item">
   <a href="#registering-your-plugin-as-official-molfeat-plugin" class="md-nav__link">
-    Registering your plugin as official MolFeat plugin
+    Registering your plugin as official molfeat plugin
   </a>
   
 </li>
@@ -1092,7 +1092,7 @@
       
         <li class="md-nav__item">
   <a href="#registering-your-plugin-as-official-molfeat-plugin" class="md-nav__link">
-    Registering your plugin as official MolFeat plugin
+    Registering your plugin as official molfeat plugin
   </a>
   
 </li>
@@ -1116,7 +1116,8 @@
 
 
 <h1 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">&para;</a></h1>
-<p>For developers that are planning to extend Molfeat functionalities, we recommend using the <a href="https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/">plugin system</a>. The usage of a plugin system ensures that the core package remains easy to install and as light as possible, while making it easy to extend its functionality with plug-and-play components. Additionally, it ensures that plugins can be developed independently of the core package, removing the bottleneck of a central party that reviews and approves new plugins.</p>
+<p>Molecular featurization is an active area of research leading to the steady emergence of new approaches to solve this complex set of problems. As new molecular featurizers emerge, you can easily add yours to molfeat and share it with the rest of the community.</p>
+<p>For developers that are planning to extend molfeat functionality, we recommend using the <a href="https://packaging.python.org/en/latest/guides/creating-and-discovering-plugins/">plugin system</a>. The use of a plugin system ensures that the core package remains easy to install and as light as possible, while making it easy to extend its functionality with plug-and-play components. Additionally, it ensures that plugins can be developed independently of the core package, removing the bottleneck of a central party that reviews and approves new plugins.</p>
 <p>However, plugins are not always required and sometimes a simple pull request is the better option. </p>
 <table>
 <thead>
@@ -1131,31 +1132,31 @@
 <td>If a new featurizer can already be loaded through existing classes.</td>
 </tr>
 <tr>
-<td>If a new featurizer requires additional, possibly difficult to install dependencies.</td>
+<td>If a new featurizer requires additional, possibly difficult-to-install dependencies.</td>
 <td>If a new featurizer requires no additional dependencies.</td>
 </tr>
 <tr>
-<td>If you want to make a new class of featurizers available to the Molfeat community.</td>
+<td>If you want to make a new class of featurizers available to the molfeat community.</td>
 <td>If you can show through benchmarks that a featurizer is so performant, it should be available as part of the core package.</td>
 </tr>
 <tr>
-<td>If you want to extend the functionality of Molfeat for private / internal use.</td>
+<td>If you want to extend the functionality of molfeat for private / internal use.</td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note annotate">
 <p class="admonition-title">Decided you don't need a plugin after all?</p>
-<p>Consult the <a href="../tutorials/add_your_own.html">tutorials</a> to learn how to extend Molfeat's functionality without plugins.</p>
+<p>Consult the <a href="../tutorials/add_your_own.html">tutorials</a> to learn how to extend molfeat's functionality without plugins.</p>
 </div>
-<p>The rest of this document details how to <em>package</em> Molfeat plugins (or <em>extensions</em>) so that they can be tested, published and eventually reused by others. </p>
-<p>We recommend Molfeat plugins to be bundled and distributed as a <a href="https://docs.python.org/3/tutorial/modules.html#packages">Python package</a> that provides a set of extensions to Molfeat.</p>
+<p>The rest of this document details how to <em>package</em> molfeat plugins (or <em>extensions</em>) so that they can be tested, published and eventually reused by others. </p>
+<p>We recommend molfeat plugins be bundled and distributed as a <a href="https://docs.python.org/3/tutorial/modules.html#packages">Python package</a> that provides a set of extensions to molfeat.</p>
 <h2 id="quickstart">Quickstart<a class="headerlink" href="#quickstart" title="Permanent link">&para;</a></h2>
-<p>The fastest way to jumpstart a Molfeat plugin package is to start with an existing template repository.
+<p>The fastest way to jumpstart a molfeat plugin package is to start with an existing template repository.
 The <a href="https://github.com/datamol-io/molfeat-padel">molfeat-padel</a> demo plugin package provides a starting point to understand the basic folder structure and our naming convention. Please reachout to us on github if you need help to get started.</p>
-<p>In the following document, we explain the conventions used when building a Molfeat plugin.</p>
+<p>In the following document, we explain the conventions used when building a molfeat plugin.</p>
 <h2 id="choosing-a-name">Choosing a name<a class="headerlink" href="#choosing-a-name" title="Permanent link">&para;</a></h2>
-<p>The naming convention for Molfeat plugin packages is `</p>
+<p>The naming convention for molfeat plugin packages is `</p>
 <ul>
 <li><code>molfeat-&lt;myplugin&gt;</code> for the plugin distribution on <a href="https://pypi.python.org">PyPI</a> or <a href="https://docs.conda.io/en/latest/">Conda</a>.</li>
 <li><code>molfeat_&lt;myplugin&gt;</code> for the corresponding python package (since python package names cannot contain dashes), leading to the following folder structure:</li>
@@ -1168,7 +1169,7 @@ The <a href="https://github.com/datamol-io/molfeat-padel">molfeat-padel</a> demo
 <h2 id="folder-structure">Folder structure<a class="headerlink" href="#folder-structure" title="Permanent link">&para;</a></h2>
 <p>The overall folder structure of your plugin is up to you, but it is
 useful to follow a set of basic conventions. Here is an example of a
-folder structure for a Molfeat plugin, illustrating different levels of
+folder structure for a molfeat plugin, illustrating different levels of
 nesting</p>
 <div class="highlight"><pre><span></span><code>molfeat-myplugin/           - distribution folder
    tests/                   - tests directory (possibly with subdirectories)
@@ -1191,11 +1192,11 @@ nesting</p>
    ...
 </code></pre></div>
 <h2 id="registering-plugins-through-entry-points">Registering plugins through entry points<a class="headerlink" href="#registering-plugins-through-entry-points" title="Permanent link">&para;</a></h2>
-<p>A Molfeat plugin is an extension of Molfeat that announces itself by means of a new <em>entry point</em>. Adding a new entry point consists of the following steps:</p>
+<p>A molfeat plugin is an extension of molfeat that announces itself by means of a new <em>entry point</em>. Adding a new entry point consists of the following steps:</p>
 <blockquote>
 <ol>
 <li>
-<p>Deciding a name. We <em>strongly</em> suggest to start the name of each
+<p>Deciding on a name. We <em>strongly</em> suggest starting the name of each
     entry point with the name of the plugin package (omitting the
     'molfeat-' prefix). For a package <code>molfeat-myplugin</code>, this will
     usually mean <code>"myplugin.&lt;something&gt;"</code></p>
@@ -1217,7 +1218,7 @@ nesting</p>
 </ol>
 </blockquote>
 <p>For further details, see the Python <a href="https://packaging.python.org/en/latest/tutorials/packaging-projects/">packaging user guide</a>.</p>
-<p>The core Molfeat package will automatically discover new molfeat plugins and appropriately make them accessible and importable. </p>
+<p>The core molfeat package will automatically discover new molfeat plugins and appropriately make them accessible and importable. </p>
 <p>For example, upon proper registration of a plugin offering a new <code>SerializableCalculator</code>, it should be directly accessible in the list of available calculators for <code>MoleculeTransformer</code>.</p>
 <p>The following example shows how to discover the newly added functionality of the <code>molfeat-padel</code> plugin package automatically when installed. 
 In this example, all three scenarios are valid.</p>
@@ -1225,7 +1226,7 @@ In this example, all three scenarios are valid.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">molfeat.trans</span> <span class="kn">import</span> <span class="n">MoleculeTransformer</span>
 
 <span class="kn">from</span> <span class="nn">molfeat_padel.calc.padel</span> <span class="kn">import</span> <span class="n">PadelDescriptors</span>
-<span class="n">trans</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">featurizer</span><span class="o">=</span><span class="n">PadelDescriptors</span><span class="p">())</span>
+<span class="n">mol_transf</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">featurizer</span><span class="o">=</span><span class="n">PadelDescriptors</span><span class="p">())</span>
 </code></pre></div>
 <h4 id="2-explicitly-load-registered-plugins-to-automatically-discover-padeldescriptors">2. Explicitly load registered plugins to automatically discover <code>PadelDescriptors</code>.<a class="headerlink" href="#2-explicitly-load-registered-plugins-to-automatically-discover-padeldescriptors" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">molfeat.trans</span> <span class="kn">import</span> <span class="n">MoleculeTransformer</span>
@@ -1234,28 +1235,28 @@ In this example, all three scenarios are valid.</p>
 
 <span class="c1"># PadelDescriptors is now available under the core `molfeat.calc`</span>
 <span class="kn">from</span> <span class="nn">molfeat.calc</span> <span class="kn">import</span> <span class="n">PadelDescriptors</span>
-<span class="n">trans</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">featurizer</span><span class="o">=</span><span class="n">PadelDescriptors</span><span class="p">())</span>
-<span class="n">trans</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">featurizer</span><span class="o">=</span><span class="s2">&quot;PadelDescriptors&quot;</span><span class="p">)</span>
+<span class="n">mol_transf</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">featurizer</span><span class="o">=</span><span class="n">PadelDescriptors</span><span class="p">())</span>
+<span class="n">mol_transf</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">featurizer</span><span class="o">=</span><span class="s2">&quot;PadelDescriptors&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="3-import-the-plugin-to-automatically-discover-the-padeldescriptors">3. Import the plugin to automatically discover the <code>PadelDescriptors</code>.<a class="headerlink" href="#3-import-the-plugin-to-automatically-discover-the-padeldescriptors" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">molfeat.trans</span> <span class="kn">import</span> <span class="n">MoleculeTransformer</span>
 <span class="kn">import</span> <span class="nn">molfeat_padel</span>
 
 <span class="c1"># works because PadelDescriptors is imported in the root init of molfeat_padel</span>
-<span class="n">trans</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">featurizer</span><span class="o">=</span><span class="s2">&quot;PadelDescriptors&quot;</span><span class="p">)</span>
+<span class="n">mol_transf</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">featurizer</span><span class="o">=</span><span class="s2">&quot;PadelDescriptors&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="testing-a-plugin-package">Testing a plugin package<a class="headerlink" href="#testing-a-plugin-package" title="Permanent link">&para;</a></h2>
-<p>Writing tests for your Molfeat plugins and running continuous integration
+<p>Writing tests for your molfeat plugins and running continuous integration
 tests using free platforms like <a href="https://github.com/features/actions">GitHub
 Actions</a> is the best way to ensure
 that your plugin works and keeps working as it is being developed. We
-recommend using the <a href="https://pytest.org">pytest</a> framework for testing Molfeat plugins.</p>
+recommend using the <a href="https://pytest.org">pytest</a> framework for testing molfeat plugins.</p>
 <h2 id="documenting-a-plugin-package">Documenting a plugin package<a class="headerlink" href="#documenting-a-plugin-package" title="Permanent link">&para;</a></h2>
-<p>Molfeat plugin packages are python packages, and general <a href="https://docs.python-guide.org/writing/documentation/">best practises
+<p>molfeat plugin packages are python packages, and general <a href="https://docs.python-guide.org/writing/documentation/">best practises
 for writing python documentation</a> apply.</p>
-<p>In the following, we mention a few hints that apply specifically to Molfeat plugins.</p>
+<p>In the following, we mention a few hints that apply specifically to molfeat plugins.</p>
 <h3 id="repository-level-documentation">Repository-level documentation<a class="headerlink" href="#repository-level-documentation" title="Permanent link">&para;</a></h3>
-<p>Since the source code of most Molfeat plugins is hosted on GitHub, the
+<p>Since the source code of most molfeat plugins is hosted on GitHub, the
 first contact of a new user with your plugin package is likely the
 landing page of your GitHub repository.</p>
 <blockquote>
@@ -1275,8 +1276,8 @@ from others.</p>
 <p>When adding new types of calculations or workflows, make sure to use
 <a href="https://www.python.org/dev/peps/pep-0257/#what-is-a-docstring">docstrings</a>,
 and use the <code>help</code> argument to document input ports and output ports.</p>
-<h2 id="registering-your-plugin-as-official-molfeat-plugin">Registering your plugin as official MolFeat plugin<a class="headerlink" href="#registering-your-plugin-as-official-molfeat-plugin" title="Permanent link">&para;</a></h2>
-<p>Once you have designed, and tested your plugin package, you can officially register it to be listed on the Molfeat
+<h2 id="registering-your-plugin-as-official-molfeat-plugin">Registering your plugin as official molfeat plugin<a class="headerlink" href="#registering-your-plugin-as-official-molfeat-plugin" title="Permanent link">&para;</a></h2>
+<p>Once you have designed and tested your plugin package, you can officially register it to be listed on the molfeat
 website by following the instructions at <a href="register-plugin.html">Register a plugin</a> </p>
 
 
@@ -1322,7 +1323,7 @@ website by following the instructions at <a href="register-plugin.html">Register
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.19047be9.min.js"></script>
+      <script src="../assets/javascripts/bundle.407015b8.min.js"></script>
       
     
   </body>

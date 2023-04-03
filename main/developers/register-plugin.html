@@ -17,7 +17,7 @@
         <link rel="next" href="../api/molfeat.calc.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.4">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.240905d7.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7a7fce14.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -240,7 +240,7 @@
   
     <li class="md-nav__item">
       <a href="../benchmark.html" class="md-nav__link">
-        Why bother?
+        Why should you care?
       </a>
     </li>
   
@@ -977,12 +977,12 @@
   
 
 
-<h1 id="molfeat-plugin-registry">MolFeat plugin registry<a class="headerlink" href="#molfeat-plugin-registry" title="Permanent link">&para;</a></h1>
-<p>This document explains how to register a plugin in <code>MolFeat</code> for listing on our website. </p>
-<p>The <code>MolFeat</code> plugin registry aims to be the home for all publicly available <code>MolFeat</code> plugins. It
-collects information on the type of plugins provided by your package, which <code>MolFeat</code> versions it is compatible with, etc.</p>
+<h1 id="molfeat-plugin-registry">molfeat plugin registry<a class="headerlink" href="#molfeat-plugin-registry" title="Permanent link">&para;</a></h1>
+<p>This document explains how to register a plugin in <code>molfeat</code> for listing on our website. </p>
+<p>The <code>molfeat</code> plugin registry aims to be the home for all publicly available <code>molfeat</code> plugins. It
+collects information on the type of plugins provided by your package and which <code>molfeat</code> versions it is compatible with.</p>
 <p>If you are starting to develop a new plugin or if you already have one, please register it here.
-We strongly encourage to <strong>register at early stages of development</strong>, both to reserve the name of your plugin and to inform the community of your ongoing work.</p>
+We strongly encourage you to <strong>register at early stages of development</strong>, both to reserve the name of your plugin and to inform the community of your ongoing work.</p>
 <h2 id="how-to-register-a-plugin">How to register a plugin<a class="headerlink" href="#how-to-register-a-plugin" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Fork this repository</li>
@@ -999,26 +999,26 @@ molfeat-new:
 <h3 id="valid-keys-for-each-plugin">Valid keys for each plugin<a class="headerlink" href="#valid-keys-for-each-plugin" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>top-level key</strong> (required):
-The name under which your plugin will be distributed.
-By convention, names of MolFeat plugins are lowercase and prefixed by <code>molfeat-</code> (e.g <code>molfeat-myplugin</code>)</li>
+the name under which your plugin will be distributed.
+By convention, names of molfeat plugins are lowercase and prefixed by <code>molfeat-</code> (e.g <code>molfeat-myplugin</code>)</li>
 </ul>
 <ul>
 <li><strong>entry_point_prefix</strong> (required):
-The prefix of all entry points provided by the plugin.
+the prefix of all entry points provided by the plugin.
 By convention, a plugin <code>molfeat-xxx</code> should use <code>entry_point_prefix: xxx</code>.
 For example: <code>molfeat-myplugin</code> uses the entry point prefix <code>myplugin</code> and provides numerous entry points, all of which start with <code>myplugin.</code>.</li>
 </ul>
 <ul>
 <li><strong>home_url</strong> (required):
-The link to the homepage of the plugin, for example its github repository.</li>
+the link to the homepage of the plugin, for example its github repository.</li>
 </ul>
 <ul>
 <li><strong>molfeat_version</strong> (required):
-The molfeat version required for your plugin to work.</li>
+the molfeat version required for your plugin to work.</li>
 </ul>
 <ul>
 <li><strong>documentation_url</strong> (optional):
-The link to the online documentation for your plugin, for example on readthedocs.org .</li>
+the link to the online documentation for your plugin, for example on readthedocs.org .</li>
 </ul>
 <h3 id="model-card-in-pull-request">Model Card in pull request<a class="headerlink" href="#model-card-in-pull-request" title="Permanent link">&para;</a></h3>
 <p>In you pull request, please  provide a json or yaml file (or its content) that should list information on available models that are offered in your plugin. </p>
@@ -1090,7 +1090,7 @@ An example of such a file is provided below. You will need to provide all keys:<
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.19047be9.min.js"></script>
+      <script src="../assets/javascripts/bundle.407015b8.min.js"></script>
       
     
   </body>
