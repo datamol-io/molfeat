@@ -1,6 +1,6 @@
 # Overview
 
-Molfeat is a centralized hub of molecular featurizers. It supports a wide variety of out-of-the-box molecular featurizers and can be easily extended to include custom featurizers.
+Molfeat is a hub of molecular featurizers. It supports a wide variety of out-of-the-box molecular featurizers and can be easily extended to include your own custom featurizers.
 
 - :rocket: Fast, with a simple and efficient API.
 - :arrows_counterclockwise: Unify pre-trained molecular embeddings and hand-crafted featurizers in a single package.
@@ -27,7 +27,7 @@ _**Note:** We highly recommend using a [Conda Python distribution](https://githu
 
 ### Installing Plugins
 
-The functionality of Molfeat can be extended through plugins. The use of a plugin system ensures that the core package remains easy to install and as light as possible, while making it easy to extend its functionality with plug-and-play components. Additionally, it ensures that plugins can be developed independently from the core package, removing the bottleneck of a central party that reviews and approves new plugins. Consult the molfeat documentation for more details on how to [create](developers/create-plugin.md) your own plugins.
+The functionality of molfeat can be extended through plugins. The use of a plugin system ensures that the core package remains easy to install and as light as possible, while making it easy to extend its functionality with plug-and-play components. Additionally, it ensures that plugins can be developed independently from the core package, removing the bottleneck of a central party that reviews and approves new plugins. Consult the molfeat documentation for more details on how to [create](developers/create-plugin.md) your own plugins.
 
 However, this does imply that the installation of a plugin is plugin-dependent: please consult the relevant documentation to learn more.
 
