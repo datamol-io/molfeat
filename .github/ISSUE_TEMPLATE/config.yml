@@ -7,5 +7,5 @@ contact_links:
     url: https://m2d2group.slack.com/
     about: Live chat with experts, engineers, and datamol users in the M2D2 slack community.
   - name: 📖 Read the documentation
-    url: https://datamol-io.github.io/molfeat/stable/index.html
+    url: https://molfeat-docs.datamol.io/
     about: Please consult the documentation before opening any issues!

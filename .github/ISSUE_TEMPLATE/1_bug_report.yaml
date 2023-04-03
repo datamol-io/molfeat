@@ -7,7 +7,7 @@ body:
       value: >
         Before you go any further. Is this really a **🐛 bug**?
 
-        If it's a question about how the API or how Molfeat works, have a look at our [Molfeat documentation](https://datamol-io.github.io/molfeat/)
+        If it's a question about how the API or how Molfeat works, have a look at our [Molfeat documentation](https://molfeat-docs.datamol.io/)
         or ask a question on our [Discussion board](https://github.com/datamol-io/molfeat/discussions).
 
   - type: checkboxes
