@@ -12,7 +12,7 @@
 
 **Removed:**
 
-* duplicated ODEOWNER file
+* duplicated CODEOWNER file
 
 **Fixed:**
 
