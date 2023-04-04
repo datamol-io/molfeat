@@ -15,7 +15,7 @@
         <link rel="next" href="benchmark.html">
       
       <link rel="icon" href="images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.4">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.240905d7.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.7a7fce14.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -313,7 +313,7 @@
   
     <li class="md-nav__item">
       <a href="benchmark.html" class="md-nav__link">
-        Why bother?
+        Why should you care?
       </a>
     </li>
   
@@ -1004,13 +1004,12 @@
 
 
 <h1 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h1>
-<p>Molfeat is a python library to simplify molecular featurization. It supports a wide variety of molecular featurizers out-of-the-box and can be easily extended to add your own.</p>
+<p>Molfeat is a hub of molecular featurizers. It supports a wide variety of out-of-the-box molecular featurizers and can be easily extended to include your own custom featurizers.</p>
 <ul>
-<li><img alt="🐍" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f40d.png" title=":snake:" /> Simple pythonic API.</li>
-<li><img alt="🚀" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f680.png" title=":rocket:" /> Fast and efficient featurization.</li>
-<li><img alt="🔄" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f504.png" title=":arrows_counterclockwise:" /> Unifies pre-trained embeddings and hand-crafted featurizers in a single package. </li>
-<li><img alt="➕" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/2795.png" title=":heavy_plus_sign:" /> Easily extend Molfeat with your own featurizers through plugins. </li>
-<li><img alt="📈" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4c8.png" title=":chart_with_upwards_trend:" /> Benefit from increased performance through a trouble-free caching system.</li>
+<li>🚀 Fast, with a simple and efficient API.</li>
+<li>🔄 Unify pre-trained molecular embeddings and hand-crafted featurizers in a single package.</li>
+<li>➕ Easily add your own featurizers through plugins.</li>
+<li>📈 Benefit from increased performance through a trouble-free caching system.</li>
 </ul>
 <p>Visit our website at <a href="https://molfeat.datamol.io">https://molfeat.datamol.io</a>.</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
@@ -1021,10 +1020,20 @@
 <p><em><strong>Tips:</strong> You can replace <code>mamba</code> by <code>conda</code>.</em></p>
 <p><em><strong>Note:</strong> We highly recommend using a <a href="https://github.com/conda-forge/miniforge">Conda Python distribution</a> to install Molfeat. The package is also pip installable if you need it: <code>pip install molfeat</code>.</em></p>
 <h3 id="installing-plugins">Installing Plugins<a class="headerlink" href="#installing-plugins" title="Permanent link">&para;</a></h3>
-<p>The functionality of Molfeat can be extended through plugins. The usage of a plugin system ensures that the core package remains easy to install and as light as possible, while making it easy to extend its functionality with plug-and-play components. Additionally, it ensures that plugins can be developed independently of the core package, removing the bottleneck of a central party that reviews and approves new plugins. Consult the Molfeat documentation for more details on how to <a href="developers/create-plugin.html">create</a> your own plugins.</p>
-<p>This, however, does imply that the installation of a plugin is plugin-dependent: Please consult its documentation to learn more.</p>
+<p>The functionality of molfeat can be extended through plugins. The use of a plugin system ensures that the core package remains easy to install and as light as possible, while making it easy to extend its functionality with plug-and-play components. Additionally, it ensures that plugins can be developed independently from the core package, removing the bottleneck of a central party that reviews and approves new plugins. Consult the molfeat documentation for more details on how to <a href="developers/create-plugin.html">create</a> your own plugins.</p>
+<p>However, this does imply that the installation of a plugin is plugin-dependent: please consult the relevant documentation to learn more.</p>
 <h3 id="optional-dependencies">Optional dependencies<a class="headerlink" href="#optional-dependencies" title="Permanent link">&para;</a></h3>
-<p>Not all featurizers of the Molfeat core package are supported by default. Some featurizers require additional dependencies. If you try to use a featurizer that requires additional dependencies, Molfeat will raise an error and will tell you which dependencies are missing and how to install these.</p>
+<p>Not all featurizers in Molfeat core package are supported by default. Some featurizers require additional dependencies. If you try to use a featurizer that requires additional dependencies, Molfeat will raise an error and tell you which dependencies are missing and how to install them. </p>
+<ul>
+<li>To install <code>dgl</code>: run <code>mamba install -c dglteam dgl</code></li>
+<li>To install <code>dgllife</code>:  run <code>mamba install -c conda-forge dgllife</code></li>
+<li>To install <code>fcd_torch</code>: run <code>mamba install -c conda-forge fcd_torch</code></li>
+<li>To install <code>pyg</code>: run <code>mamba install -c conda-forge pytorch_geometric</code></li>
+<li>To install <code>graphormer-pretrained</code>: run <code>mamba install -c conda-forge graphormer-pretrained</code></li>
+<li>To install <code>map4</code>: see <a href="https://github.com/reymond-group/map4">https://github.com/reymond-group/map4</a></li>
+<li>To install <code>bio-embeddings</code>: run <code>mamba install -c conda-forge 'bio-embeddings &gt;=0.2.2'</code></li>
+</ul>
+<p>If you install Molfeat using pip, there are optional dependencies that can be installed with the main package. For example, <code>pip install "molfeat[all]"</code> allows installing all the compatible optional dependencies for small molecule featurization. There are other options such as <code>molfeat[dgl]</code>, <code>molfeat[graphormer]</code>, <code>molfeat[transformer]</code>, <code>molfeat[viz]</code>, and <code>molfeat[fcd]</code>.</p>
 <h2 id="how-to-cite">How to cite<a class="headerlink" href="#how-to-cite" title="Permanent link">&para;</a></h2>
 <p>Please cite Molfeat if you use it in your research: <a href="https://zenodo.org/badge/latestdoi/613548667"><img alt="DOI" src="https://zenodo.org/badge/613548667.svg" /></a>.</p>
 
@@ -1071,7 +1080,7 @@
     <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand"], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.19047be9.min.js"></script>
+      <script src="assets/javascripts/bundle.407015b8.min.js"></script>
       
     
   </body>

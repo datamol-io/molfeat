@@ -17,7 +17,7 @@
         <link rel="next" href="transformer_finetuning.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.4">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.240905d7.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7a7fce14.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -240,7 +240,7 @@
   
     <li class="md-nav__item">
       <a href="../benchmark.html" class="md-nav__link">
-        Why bother?
+        Why should you care?
       </a>
     </li>
   
@@ -2095,7 +2095,7 @@ from tqdm.auto import tqdm</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>As seen in the <a href="./integration.html">Molfeat integration tutorial</a>, Molfeat integrates easily with the PyTorch ecosystem. In this tutorial, we will demonstrate how Molfeat easily integrates with <a href="https://pytorch-geometric.readthedocs.io/en/latest/">PyG</a> for training SOTA GNNs.</p>
+<p>As seen in the <a href="./integration.html">molfeat integration tutorial</a>, molfeat integrates easily with the PyTorch ecosystem. In this tutorial, we will demonstrate how you can integrate molfeat with <a href="https://pytorch-geometric.readthedocs.io/en/latest/">PyG</a> for training SOTA GNNs.</p>
 <p>To run this tutorial, you will need to install <code>pytorch-geometric</code>.</p>
 <p><code>mamba install -c conda-forge pytorch_geometric</code></p>
 
@@ -2145,8 +2145,7 @@ from molfeat.calc.bond import EdgeMatCalculator</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="featurizer">Featurizer<a class="anchor-link" href="#featurizer">&#182;</a></h3><p><em>This is the most important part (according to the Molfeat team)!</em></p>
-<p>We first start by defining our featurizer. We will use the <code>PYGGraphTransformer</code> from Molfeat with atom and bon featurizers</p>
+<h3 id="featurizer">Featurizer<a class="anchor-link" href="#featurizer">&#182;</a></h3><p>We first start by defining our featurizer. We will use the <code>PYGGraphTransformer</code> from molfeat with atom and bond featurizers</p>
 
 </div>
 </div>
@@ -2172,12 +2171,12 @@ from molfeat.calc.bond import EdgeMatCalculator</div>
                     </div>
                 </clipboard-copy>
             </div>
-            <div class="highlight-ipynb hl-python "><pre><span></span><span class="n">trans</span> <span class="o">=</span> <span class="n">PYGGraphTransformer</span><span class="p">(</span>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="n">featurizer</span> <span class="o">=</span> <span class="n">PYGGraphTransformer</span><span class="p">(</span>
     <span class="n">atom_featurizer</span><span class="o">=</span><span class="n">AtomCalculator</span><span class="p">(),</span> 
     <span class="n">bond_featurizer</span><span class="o">=</span><span class="n">EdgeMatCalculator</span><span class="p">()</span>
 <span class="p">)</span>
 </pre></div>
-<div id="cell-3" class="clipboard-copy-txt">trans = PYGGraphTransformer(
+<div id="cell-3" class="clipboard-copy-txt">featurizer = PYGGraphTransformer(
     atom_featurizer=AtomCalculator(), 
     bond_featurizer=EdgeMatCalculator()
 )</div>
@@ -2350,7 +2349,7 @@ from molfeat.calc.bond import EdgeMatCalculator</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Since training a network with PyTorch requires defining a dataset and dataloader, we can define our custom dataset that will take the <strong>(1)</strong> the SMILES; <strong>(2)</strong> the LogD measurement and <strong>(3)</strong> our Molfeat transformer as input to generate the data point we need for model training.</p>
+<p>Since training a network with PyTorch requires defining a dataset and dataloader, we can define our custom dataset that will take <strong>(1)</strong> the SMILES, <strong>(2)</strong> the LogD measurement, and <strong>(3)</strong> our molfeat transformer as input to generate the data point we need for model training.</p>
 
 </div>
 </div>
@@ -2510,11 +2509,11 @@ class DTset(Dataset):
                     </div>
                 </clipboard-copy>
             </div>
-            <div class="highlight-ipynb hl-python "><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">DTset</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">smiles</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">exp</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">trans</span><span class="p">)</span>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">DTset</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">smiles</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">exp</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">featurizer</span><span class="p">)</span>
 <span class="n">generator</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Generator</span><span class="p">()</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">train_dt</span><span class="p">,</span> <span class="n">test_dt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">random_split</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="n">generator</span><span class="o">=</span><span class="n">generator</span><span class="p">)</span>
 </pre></div>
-<div id="cell-7" class="clipboard-copy-txt">dataset = DTset(df.smiles.values, df.exp.values, trans)
+<div id="cell-7" class="clipboard-copy-txt">dataset = DTset(df.smiles.values, df.exp.values, featurizer)
 generator = torch.Generator().manual_seed(42)
 train_dt, test_dt = torch.utils.data.random_split(dataset, [0.8, 0.2], generator=generator)</div>
         
@@ -2569,7 +2568,7 @@ test_loader = DataLoader(test_dt, batch_size=BATCH_SIZE, shuffle=False, collate_
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="network-training">Network + Training<a class="anchor-link" href="#network-training">&#182;</a></h3><p>We are ready to go, now we just need to define our GNN. Here, we use <a href="https://arxiv.org/abs/2004.05718">PNA</a> as our GNN.</p>
+<h3 id="network-training">Network + Training<a class="anchor-link" href="#network-training">&#182;</a></h3><p>We are almost ready to go, we just need to define our GNN. Here we use <a href="https://arxiv.org/abs/2004.05718">PNA</a> as our GNN.</p>
 
 </div>
 </div>
@@ -2766,8 +2765,7 @@ with tqdm(range(NUM_EPOCHS)) as pbar:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="testing">Testing<a class="anchor-link" href="#testing">&#182;</a></h3><p>We can now test our model.</p>
-<p>Of course, we don't expect amazing performance since we didn't perform any hyper-parameter search for the model and did not perform any evaluation of the best atom or bond featurization.</p>
+<h3 id="testing">Testing<a class="anchor-link" href="#testing">&#182;</a></h3><p>We can now test our model. For the simplicity of this tutorial, no hyper-parameter search and evaluation of the best atom/bond featurization was performed. This inevitably impacts the performance.</p>
 
 </div>
 </div>
@@ -2932,7 +2930,7 @@ class="
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.19047be9.min.js"></script>
+      <script src="../assets/javascripts/bundle.407015b8.min.js"></script>
       
     
   </body>

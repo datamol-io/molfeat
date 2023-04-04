@@ -17,7 +17,7 @@
         <link rel="next" href="add_your_own.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.4">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.240905d7.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7a7fce14.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -240,7 +240,7 @@
   
     <li class="md-nav__item">
       <a href="../benchmark.html" class="md-nav__link">
-        Why bother?
+        Why should you care?
       </a>
     </li>
   
@@ -2088,7 +2088,7 @@ import numpy as np</div>
 </ol>
 <p>In this tutorial, we will look at each of these classes in more detail.</p>
 <h2 id="calculators">Calculators<a class="anchor-link" href="#calculators">&#182;</a></h2><p>A calculator is a Callable that takes an RDKit <code>Chem.Mol</code> object or a SMILES string and returns a feature vector.
-In the following example, we will us The <code>FPCalculator</code>, which is .</p>
+In the following example, we will use the <code>FPCalculator</code>.</p>
 
 </div>
 </div>
@@ -2305,7 +2305,7 @@ X.shape</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Besides these fingerprints, Molfeat also provides calculators for other molecular descriptors. The list of available options can be even further extended through <a href="../developers/create-plugin.html">plugins</a>. All available calculator classes, both built-in and plugin-based, can be found through the <code>molfeat.calc</code> module:</p>
+<p>Beyond these fingerprints, Molfeat also provides calculators for other molecular descriptors. The list of available options can be further extended through <a href="../developers/create-plugin.html">plugins</a>. All available calculator classes, both built-in and plugin-based, can be found through the <code>molfeat.calc</code> module:</p>
 
 </div>
 </div>
@@ -2374,7 +2374,7 @@ _CALCULATORS.keys()</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Every calculator is serializable, meaning it can be efficiently stored to - and loaded from - disk. To learn more, please see the <a href="./save_and_load.html">tutorial on saving and loading featurizers</a>.</p>
+<p>Every calculator is serializable, meaning it can be efficiently stored to — and loaded from — disk. To learn more, please see the <a href="./save_and_load.html">tutorial on saving and loading featurizers</a>.</p>
 <h2 id="transformers">Transformers<a class="anchor-link" href="#transformers">&#182;</a></h2><p>In practice, you won't want to featurize a single molecule, but rather a batch of molecules. This is where transformers come in. A transformer is a class that wraps a calculator in a featurization pipeline. The <code>MoleculeTransformer</code> class provides a convenient interface for featurizing a batch of molecules. It also provides a number of useful methods to customize the featurization pipeline.</p>
 
 </div>
@@ -2411,10 +2411,10 @@ _CALCULATORS.keys()</div>
 <span class="n">calc</span> <span class="o">=</span> <span class="n">RDKitDescriptors2D</span><span class="p">(</span><span class="n">replace_nan</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Wrap the calculator in a transformer instance</span>
-<span class="n">trans</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">calc</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">featurizer</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">calc</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
 
 <span class="k">with</span> <span class="n">dm</span><span class="o">.</span><span class="n">without_rdkit_log</span><span class="p">():</span>
-    <span class="n">feats</span> <span class="o">=</span> <span class="n">trans</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">feats</span> <span class="o">=</span> <span class="n">featurizer</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 <span class="n">feats</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
@@ -2428,10 +2428,10 @@ data = dm.data.freesolv().smiles.values
 calc = RDKitDescriptors2D(replace_nan=True)
 
 # Wrap the calculator in a transformer instance
-trans = MoleculeTransformer(calc, dtype=np.float64)
+featurizer = MoleculeTransformer(calc, dtype=np.float64)
 
 with dm.without_rdkit_log():
-    feats = trans(data)
+    feats = featurizer(data)
 
 feats.shape</div>
         
@@ -2554,18 +2554,18 @@ feats.shape</div>
                 </clipboard-copy>
             </div>
             <div class="highlight-ipynb hl-python "><pre><span></span><span class="c1"># To save on memory, we would rather use `float32` than `float64`. Let&#39;s change that!</span>
-<span class="n">trans</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">calc</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">featurizer</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">calc</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 
 <span class="k">with</span> <span class="n">dm</span><span class="o">.</span><span class="n">without_rdkit_log</span><span class="p">():</span>
-    <span class="n">feats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">trans</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+    <span class="n">feats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">featurizer</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
 
 <span class="n">feats</span><span class="o">.</span><span class="n">dtype</span>
 </pre></div>
 <div id="cell-8" class="clipboard-copy-txt"># To save on memory, we would rather use `float32` than `float64`. Let's change that!
-trans = MoleculeTransformer(calc, dtype=np.float32)
+featurizer = MoleculeTransformer(calc, dtype=np.float32)
 
 with dm.without_rdkit_log():
-    feats = np.stack(trans(data))
+    feats = np.stack(featurizer(data))
 
 feats.dtype</div>
         
@@ -2621,17 +2621,17 @@ feats.dtype</div>
                 </clipboard-copy>
             </div>
             <div class="highlight-ipynb hl-python "><pre><span></span><span class="c1"># Even better, let&#39;s directly cast to Torch vectors so we can use them in PyTorch!</span>
-<span class="n">trans</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">calc</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">featurizer</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">calc</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 
 <span class="k">with</span> <span class="n">dm</span><span class="o">.</span><span class="n">without_rdkit_log</span><span class="p">():</span>
-    <span class="n">feats</span> <span class="o">=</span> <span class="n">trans</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">feats</span> <span class="o">=</span> <span class="n">featurizer</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">feats</span><span class="o">.</span><span class="n">dtype</span>
 </pre></div>
 <div id="cell-9" class="clipboard-copy-txt"># Even better, let's directly cast to Torch vectors so we can use them in PyTorch!
-trans = MoleculeTransformer(calc, dtype=torch.float32)
+featurizer = MoleculeTransformer(calc, dtype=torch.float32)
 
 with dm.without_rdkit_log():
-    feats = trans(data)
+    feats = featurizer(data)
 feats.dtype</div>
         
         </div>
@@ -2687,15 +2687,15 @@ feats.dtype</div>
             </div>
             <div class="highlight-ipynb hl-python "><pre><span></span><span class="o">%%</span><span class="n">timeit</span>
 <span class="c1"># Let&#39;s time our current featurization pipeline</span>
-<span class="n">trans</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">calc</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">featurizer</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">calc</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="k">with</span> <span class="n">dm</span><span class="o">.</span><span class="n">without_rdkit_log</span><span class="p">():</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">trans</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">featurizer</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 <div id="cell-10" class="clipboard-copy-txt">%%timeit
 # Let's time our current featurization pipeline
-trans = MoleculeTransformer(calc, n_jobs=1, dtype=torch.float32)
+featurizer = MoleculeTransformer(calc, n_jobs=1, dtype=torch.float32)
 with dm.without_rdkit_log():
-    X = trans(data)</div>
+    X = featurizer(data)</div>
         
         </div>
     </div>
@@ -2715,7 +2715,7 @@ with dm.without_rdkit_log():
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>2.65 s ± 34.9 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<pre>19.8 s ± 4.42 s per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre>
 </div>
 </div>
@@ -2748,15 +2748,15 @@ with dm.without_rdkit_log():
             </div>
             <div class="highlight-ipynb hl-python "><pre><span></span><span class="o">%%</span><span class="n">timeit</span>
 <span class="c1"># With transformer classes, it&#39;s really easy to add parallelization! Let&#39;s try speed this up.</span>
-<span class="n">trans</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">calc</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">featurizer</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">calc</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="k">with</span> <span class="n">dm</span><span class="o">.</span><span class="n">without_rdkit_log</span><span class="p">():</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">trans</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">featurizer</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 <div id="cell-11" class="clipboard-copy-txt">%%timeit
 # With transformer classes, it's really easy to add parallelization! Let's try speed this up.
-trans = MoleculeTransformer(calc, n_jobs=4, dtype=torch.float32)
+featurizer = MoleculeTransformer(calc, n_jobs=4, dtype=torch.float32)
 with dm.without_rdkit_log():
-    X = trans(data)</div>
+    X = featurizer(data)</div>
         
         </div>
     </div>
@@ -2776,7 +2776,7 @@ with dm.without_rdkit_log():
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>2.18 s ± 25.7 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<pre>5.79 s ± 180 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre>
 </div>
 </div>
@@ -2805,7 +2805,8 @@ with dm.without_rdkit_log():
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Even with such a small dataset, we can already see some performance improvements.</p>
-<h3 id="concatenate-featurizers">Concatenate featurizers<a class="anchor-link" href="#concatenate-featurizers">&#182;</a></h3><p>Another interesting features offered in Molfeat is the ability to concatenate multiple featurizers together. Feature concatenation has some limitations, though. The major limitation being the inability to set the parameters of all transformers in a single call. It is therefore not compatible with the Scikit-learn grid search CV API and you will need to handle the update of the parameters of the concatenated featurizer yourself.</p>
+<h3 id="concatenate-featurizers">Concatenate featurizers<a class="anchor-link" href="#concatenate-featurizers">&#182;</a></h3><p>Another interesting feature offered in Molfeat is the ability to concatenate multiple featurizers. However, feature concatenation has some limitations. The most significant being the inability to set the parameters of all transformers in a single call unless you are passing a list of strings corresponding to the calculator names at initialization.</p>
+<p>It might therefore not be compatible with the Scikit-learn grid search CV API and you will need to handle the update of the parameters of the concatenated featurizer yourself.</p>
 
 </div>
 </div>
@@ -2900,13 +2901,13 @@ maccs([smiles]).shape, ecfp4([smiles]).shape</div>
             </div>
             <div class="highlight-ipynb hl-python "><pre><span></span><span class="kn">from</span> <span class="nn">molfeat.trans.concat</span> <span class="kn">import</span> <span class="n">FeatConcat</span>
 
-<span class="n">trans</span> <span class="o">=</span> <span class="n">FeatConcat</span><span class="p">([</span><span class="n">maccs</span><span class="p">,</span> <span class="n">ecfp4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="n">trans</span><span class="p">([</span><span class="n">smiles</span><span class="p">])</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">featurizer</span> <span class="o">=</span> <span class="n">FeatConcat</span><span class="p">([</span><span class="n">maccs</span><span class="p">,</span> <span class="n">ecfp4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">featurizer</span><span class="p">([</span><span class="n">smiles</span><span class="p">])</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 <div id="cell-13" class="clipboard-copy-txt">from molfeat.trans.concat import FeatConcat
 
-trans = FeatConcat([maccs, ecfp4], dtype=np.float32)
-trans([smiles]).shape</div>
+featurizer = FeatConcat([maccs, ecfp4], dtype=np.float32)
+featurizer([smiles]).shape</div>
         
         </div>
     </div>
@@ -2945,21 +2946,96 @@ trans([smiles]).shape</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="further-reading">Further reading<a class="anchor-link" href="#further-reading">&#182;</a></h3><p>This has only scratched the surface of what the <code>MoleculeTransformer</code> class offers. Subsequent tutorials will dive in more detail:</p>
+<p>Alternatively you can use a list of strings corresponding to the <code>FPVecTransformer</code> name and even define parameters for each featurizer.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+        <div class="CodeMirror cm-s-jupyter">
+            <div class="zeroclipboard-container">
+                <clipboard-copy for="cell-14">
+                <div>
+                    <span class="notice" hidden>Copied!</span>
+                    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
+                        <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
+                        <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                    </svg>
+                    </div>
+                </clipboard-copy>
+            </div>
+            <div class="highlight-ipynb hl-python "><pre><span></span><span class="kn">from</span> <span class="nn">molfeat.trans.concat</span> <span class="kn">import</span> <span class="n">FeatConcat</span>
+
+<span class="n">ecfp_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;radius&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+<span class="n">featurizer</span> <span class="o">=</span> <span class="n">FeatConcat</span><span class="p">([</span><span class="s2">&quot;maccs&quot;</span><span class="p">,</span> <span class="s2">&quot;ecfp&quot;</span><span class="p">],</span> <span class="n">params</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">ecfp</span><span class="o">=</span><span class="n">ecfp_params</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">featurizer</span><span class="p">([</span><span class="n">smiles</span><span class="p">])</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+<div id="cell-14" class="clipboard-copy-txt">from molfeat.trans.concat import FeatConcat
+
+ecfp_params = {'radius':2}
+featurizer = FeatConcat(["maccs", "ecfp"], params=dict(ecfp=ecfp_params), dtype=np.float32)
+featurizer([smiles]).shape</div>
+        
+        </div>
+    </div>
+
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>(1, 2167)</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="further-reading">Further reading<a class="anchor-link" href="#further-reading">&#182;</a></h3><p>This has only scratched the surface of what the <code>MoleculeTransformer</code> class offers. Subsequent tutorials will dive into more detail:</p>
 <ul>
-<li><a href="./add_your_own.html">Easily add your own featurizers</a>: Learn how to easily add your own featurizers to Molfeat to take full control.</li>
-<li><a href="./integrations.html">Integrations with ML frameworks</a>: Learn how to easily integrate Molfeat with PyTorch and Scikit-learn.</li>
+<li><a href="./add_your_own.html">Easily add your own featurizers</a>: learn how to easily add your own featurizers to Molfeat to take full control.</li>
+<li><a href="./integrations.html">Integrations with ML frameworks</a>: learn how to easily integrate Molfeat with PyTorch and Scikit-learn.</li>
 </ul>
-<h2 id="pretrained-transformers">Pretrained transformers<a class="anchor-link" href="#pretrained-transformers">&#182;</a></h2><p>Finally, the <code>PretrainedMolTransformer</code> class extends the transformer interface to support the usage of pretrained models. This class is a subclass of <code>MoleculeTransformer</code> and inherits all its methods. On top of that, it adds the <code>_embed()</code>, <code>_preload()</code> and <code>_convert()</code>.</p>
+<h2 id="pretrained-transformers">Pretrained transformers<a class="anchor-link" href="#pretrained-transformers">&#182;</a></h2><p>Finally, the <code>PretrainedMolTransformer</code> class extends the transformer interface to support the usage of pretrained models. This class is a subclass of <code>MoleculeTransformer</code> and inherits all its methods. In addition, it adds the <code>_embed()</code>, and <code>_convert()</code>.</p>
 <ul>
-<li><code>_embed()</code>: Since pre-trained models benefit from batched featurization, this method is called by the transformer instead of the calculator.</li>
-<li><code>_convert()</code>: This method is called by the transformer to convert the input. For example:<ul>
+<li><code>_embed()</code>: since pre-trained models benefit from batched featurization, this method is called by the transformer instead of the calculator.</li>
+<li><code>_convert()</code>: this method is called by the transformer to convert the input. For example:<ul>
 <li>For a pre-trained language model, we convert from a SMILES string or Mol object to a SELFIES string.</li>
 <li>For a pre-trained GNN, we convert from a SMILES string or Mol object to a DGL graph.</li>
 </ul>
 </li>
 </ul>
-<p>Furthermore, the <code>PretrainedMolTransformer</code> support the use of a caching system. To learn more, see the <a href="./datacache.html">tutorial on the cache</a>.</p>
+<p>Furthermore, the <code>PretrainedMolTransformer</code> supports the use of a caching system. To learn more, see the <a href="./datacache.html">tutorial on the cache</a>.</p>
 
 </div>
 </div>
@@ -3012,7 +3088,7 @@ trans([smiles]).shape</div>
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.19047be9.min.js"></script>
+      <script src="../assets/javascripts/bundle.407015b8.min.js"></script>
       
     
   </body>

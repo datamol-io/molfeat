@@ -17,7 +17,7 @@
         <link rel="next" href="tutorials/types_of_featurizers.html">
       
       <link rel="icon" href="images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.4">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.240905d7.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.7a7fce14.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -240,7 +240,7 @@
   
     <li class="md-nav__item">
       <a href="benchmark.html" class="md-nav__link">
-        Why bother?
+        Why should you care?
       </a>
     </li>
   
@@ -962,7 +962,7 @@
 <div class="admonition note annotate">
 <p class="admonition-title">Learn more about the different types of featurizers</p>
 <p>Consult <a href="tutorials/types_of_featurizers.html">this tutorial</a> to dive deeper into the differences between the calculator and transformer.
-It provides a good overview of the different types of featurizers and has pointers to learn about more advanced features. </p>
+It provides a good overview of the different types of featurizers and has pointers for learning about more advanced features. </p>
 </div>
 <h2 id="quick-api-tour">Quick API Tour<a class="headerlink" href="#quick-api-tour" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">datamol</span> <span class="k">as</span> <span class="nn">dm</span>
@@ -971,31 +971,28 @@ It provides a good overview of the different types of featurizers and has pointe
 <span class="kn">from</span> <span class="nn">molfeat.store.modelstore</span> <span class="kn">import</span> <span class="n">ModelStore</span>
 
 <span class="c1"># Load some dummy data</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">freesolv</span><span class="p">()</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span><span class="o">.</span><span class="n">smiles</span><span class="o">.</span><span class="n">values</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">freesolv</span><span class="p">()</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">smiles</span><span class="o">.</span><span class="n">values</span>
 
 <span class="c1"># Featurize a single molecule</span>
 <span class="n">calc</span> <span class="o">=</span> <span class="n">FPCalculator</span><span class="p">(</span><span class="s2">&quot;ecfp&quot;</span><span class="p">)</span>
 <span class="n">calc</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="c1"># Define a parallelized featurization pipeline</span>
-<span class="n">trans</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">calc</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">trans</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">mol_transf</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">calc</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">mol_transf</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 <span class="c1"># Easily save and load featurizers</span>
-<span class="n">trans</span><span class="o">.</span><span class="n">to_state_yaml_file</span><span class="p">(</span><span class="s2">&quot;state_dict.yml&quot;</span><span class="p">)</span>
-<span class="n">trans</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="o">.</span><span class="n">from_state_yaml_file</span><span class="p">(</span><span class="s2">&quot;state_dict.yml&quot;</span><span class="p">)</span>
-<span class="n">trans</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">mol_transf</span><span class="o">.</span><span class="n">to_state_yaml_file</span><span class="p">(</span><span class="s2">&quot;state_dict.yml&quot;</span><span class="p">)</span>
+<span class="n">mol_transf</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="o">.</span><span class="n">from_state_yaml_file</span><span class="p">(</span><span class="s2">&quot;state_dict.yml&quot;</span><span class="p">)</span>
+<span class="n">mol_transf</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-<span class="c1"># List all availaible featurizers</span>
+<span class="c1"># List all available featurizers</span>
 <span class="n">store</span> <span class="o">=</span> <span class="n">ModelStore</span><span class="p">()</span>
 <span class="n">store</span><span class="o">.</span><span class="n">available_models</span>
 
 <span class="c1"># Find a featurizer and learn how to use it</span>
 <span class="n">model_card</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ChemBERTa-77M-MLM&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">model_card</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span>
-
-<span class="c1"># Load a featurizer through the store</span>
-<span class="n">trans</span><span class="p">,</span> <span class="n">model_info</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_card</span><span class="p">)</span>
 </code></pre></div>
 
 
@@ -1041,7 +1038,7 @@ It provides a good overview of the different types of featurizers and has pointe
     <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand"], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.19047be9.min.js"></script>
+      <script src="assets/javascripts/bundle.407015b8.min.js"></script>
       
     
   </body>

@@ -17,7 +17,7 @@
         <link rel="next" href="create-plugin.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.4">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.240905d7.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7a7fce14.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -240,7 +240,7 @@
   
     <li class="md-nav__item">
       <a href="../benchmark.html" class="md-nav__link">
-        Why bother?
+        Why should you care?
       </a>
     </li>
   
@@ -515,6 +515,13 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ways-to-contribute" class="md-nav__link">
+    Ways to contribute
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#setup-a-dev-environment" class="md-nav__link">
@@ -948,6 +955,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#ways-to-contribute" class="md-nav__link">
+    Ways to contribute
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#setup-a-dev-environment" class="md-nav__link">
     Setup a dev environment
   </a>
@@ -1008,7 +1022,17 @@
 
 
 <h1 id="contribute">Contribute<a class="headerlink" href="#contribute" title="Permanent link">&para;</a></h1>
-<p>This document details the development lifecycle of Molfeat.</p>
+<p>Welcome to the molfeat community! We appreciate everyone's contribution and welcome all. Apart from code contributions, there are various other ways to support the community such as answering questions, providing assistance to others, enhancing the documentation, giving a ⭐️ or sharing the project.</p>
+<p>However you choose to contribute, please be mindful and respect our <a href="https://github.com/datamol-io/molfeat/blob/main/.github/CODE_OF_CONDUCT.md">code of conduct</a>.</p>
+<h2 id="ways-to-contribute">Ways to contribute<a class="headerlink" href="#ways-to-contribute" title="Permanent link">&para;</a></h2>
+<p>You can contribute to molfeat in several ways:</p>
+<ul>
+<li>Fix existing code issues.</li>
+<li>Submit issues related to bugs or new features.</li>
+<li>Suggest or implement new featurizers.</li>
+<li>Improve existing documentation or add new tutorials. </li>
+</ul>
+<p>For a more detailed description of the development lifecycle of molfeat, please refer to the rest of this document.</p>
 <h2 id="setup-a-dev-environment">Setup a dev environment<a class="headerlink" href="#setup-a-dev-environment" title="Permanent link">&para;</a></h2>
 <p>First you'll need to fork and clone the repository. Once you have a local copy, install the dependencies. 
 It is strongly recommended that you do so in a new conda environment.</p>
@@ -1017,7 +1041,7 @@ conda<span class="w"> </span>activate<span class="w"> </span>molfeat
 pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </code></pre></div>
 <h2 id="continuous-integration">Continuous Integration<a class="headerlink" href="#continuous-integration" title="Permanent link">&para;</a></h2>
-<p>MolFeat uses Github Actions to:</p>
+<p>molfeat uses Github Actions to:</p>
 <ul>
 <li><strong>Build and test</strong> <code>molfeat</code>.</li>
 <li><strong>Check code formating</strong> the code: <code>black</code>.</li>
@@ -1034,13 +1058,13 @@ mkdocs<span class="w"> </span>serve
 <h2 id="submitting-pull-requests">Submitting Pull Requests<a class="headerlink" href="#submitting-pull-requests" title="Permanent link">&para;</a></h2>
 <p>If you're considering a large code contribution to Molfeat, please open an issue first to get early feedback on the idea.</p>
 <p>Once you think the code is ready to be reviewed, push it to your fork and open a pull request. We will assign a reviewer to your PR.
-For a change to be accepted all existing tests will need to still pass. We expect additional tests and documentation for any new features.</p>
+For a change to be accepted all existing tests will need to pass. We expect additional tests and documentation for any new features.</p>
 <p>If you are developing a plugin for Molfeat, please refer to the corresponding section <a href="create-plugin.html">Extending Molfeat</a></p>
 <h2 id="release-a-new-version">Release a new version<a class="headerlink" href="#release-a-new-version" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Run check: <code>rever check</code>.</li>
 <li>Bump and release new version: <code>rever VERSION_NUMBER</code>.</li>
-<li>Releasing a new version will do the following things in that order:<ul>
+<li>Releasing a new version will do the following tasks in this order:<ul>
 <li>Update <code>AUTHORS.rst</code>.</li>
 <li>Update <code>CHANGELOG.rst</code>.</li>
 <li>Bump the version number in <code>setup.py</code> and <code>_version.py</code>.</li>
@@ -1094,7 +1118,7 @@ For a change to be accepted all existing tests will need to still pass. We expec
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.19047be9.min.js"></script>
+      <script src="../assets/javascripts/bundle.407015b8.min.js"></script>
       
     
   </body>
