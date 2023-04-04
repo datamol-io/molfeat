@@ -2,10 +2,11 @@
 
 Molfeat is a hub of molecular featurizers. It supports a wide variety of out-of-the-box molecular featurizers and can be easily extended to include your own custom featurizers.
 
-- :rocket: Fast, with a simple and efficient API.
-- :arrows_counterclockwise: Unify pre-trained molecular embeddings and hand-crafted featurizers in a single package.
-- :heavy_plus_sign: Easily add your own featurizers through plugins.
-- :chart_with_upwards_trend: Benefit from increased performance through a trouble-free caching system.
+- 🚀 Fast, with a simple and efficient API.
+- 🔄 Unify pre-trained molecular embeddings and hand-crafted featurizers in a single package.
+- ➕ Easily add your own featurizers through plugins.
+- 📈 Benefit from increased performance through a trouble-free caching system.
+
 
 Visit our website at https://molfeat.datamol.io.
 
