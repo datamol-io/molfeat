@@ -3,7 +3,7 @@
 </div>
 
 <p align="center">
-    <b>molfeat - all your molecular featurizers in one place </b>. <br />
+    <b>molfeat - the hub for all your molecular featurizerse </b> <br />
 </p>
 <p align="center">
   <a href="https://molfeat-docs.datamol.io/" target="_blank">
