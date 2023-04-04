@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "molfeat"
-description = "A python library to featurize molecules."
+description = "molfeat - the hub for all your molecular featurizers"
 dynamic = ["version"]
 authors = [
     { name = "Emmanuel Noutahi", email = "emmanuel.noutahi@hotmail.ca" },
@@ -93,10 +93,10 @@ all = [
 ]
 
 [project.urls]
-Website = "https://molfeat.io"
+Website = "https://molfeat.datamol.io"
 "Source Code" = "https://github.com/datamol-io/molfeat"
 "Bug Tracker" = "https://github.com/datamol-io/molfeat/issues"
-Documentation = "https://doc.molfeat.io"
+Documentation = "https://molfeat-docs.datamol.io/"
 
 [tool.setuptools]
 include-package-data = true
