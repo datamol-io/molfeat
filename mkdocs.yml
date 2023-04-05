@@ -62,6 +62,9 @@ extra_css:
   - assets/css/custom-molfeat.css
   - assets/css/tweak-width.css
 
+extra_javascript:
+  - assets/js/google-analytics.js
+
 markdown_extensions:
   - admonition
   - markdown_include.include
