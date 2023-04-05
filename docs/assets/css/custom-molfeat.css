@@ -43,6 +43,10 @@
   color: rgb(255, 255, 255);
 }
 
+.md-search__input {
+  color: #222222 !important;
+}
+
 .md-source__repository,
 .md-source__icon,
 .md-header__button,
