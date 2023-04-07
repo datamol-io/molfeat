@@ -4,6 +4,29 @@ molfeat Change Log
 
 .. current developments
 
+v0.8.4
+====================
+
+**Added:**
+
+* Add Google Analytics support.
+
+**Removed:**
+
+* Remove support for the `np.float128` dtype (issue #26)
+
+**Fixed:**
+
+* Color bug of the search input bar
+
+**Authors:**
+
+* Cas Wognum
+* Honore Hounwanou
+* maclandrol
+
+
+
 v0.8.3
 ====================
 
