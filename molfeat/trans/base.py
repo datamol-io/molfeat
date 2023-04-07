@@ -156,6 +156,10 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
     !!! note
         The transformer supports a variety of datatype, they are only enforced when passing the
         `enforce_dtype=True` attributes in `__call__`. For pandas dataframes, use `'pandas'|'df'|'dataframe'|pd.DataFrame`
+
+    ???+ tip "Using a custom Calculator"
+        You can use your own calculator for featurization. It's recommended to subclass `molfeat.calc.base.SerializableCalculator`
+        If you calculator also implements a `batch_compute` method, it will be used for batch featurization and parallelization options will be passed to it.
     """
 
     def __init__(
@@ -296,19 +300,24 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
 
         parallel_kwargs = getattr(self, "parallel_kwargs", {})
 
-        mols = dm.parallelized(_to_mol, mols, n_jobs=self.n_jobs, **parallel_kwargs)
-
-        if self.n_jobs not in [0, 1]:
-            # use a proxy model to run in parallel
-            cpy = self.copy()
-            features = dm.parallelized(
-                cpy._transform,
-                mols,
-                n_jobs=self.n_jobs,
-                **cpy.parallel_kwargs,
+        if hasattr(self.featurizer, "batch_compute") and callable(self.featurizer.batch_compute):
+            # this calculator can be batched which will be faster
+            features = self.featurizer.batch_compute(
+                mols, n_jobs=self.n_jobs, parallel_kwargs=parallel_kwargs
             )
         else:
-            features = [self._transform(mol) for mol in mols]
+            mols = dm.parallelized(_to_mol, mols, n_jobs=self.n_jobs, **parallel_kwargs)
+            if self.n_jobs not in [0, 1]:
+                # use a proxy model to run in parallel
+                cpy = self.copy()
+                features = dm.parallelized(
+                    cpy._transform,
+                    mols,
+                    n_jobs=self.n_jobs,
+                    **cpy.parallel_kwargs,
+                )
+            else:
+                features = [self._transform(mol) for mol in mols]
         if not ignore_errors:
             for ind, feat in enumerate(features):
                 if feat is None:

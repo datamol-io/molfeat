@@ -10,6 +10,7 @@ import tempfile
 import joblib
 
 from rdkit.DataStructs.cDataStructs import ExplicitBitVect
+from molfeat.calc import SerializableCalculator
 from molfeat.calc.descriptors import MordredDescriptors
 from molfeat.calc.fingerprints import FPCalculator
 from molfeat.calc.pharmacophore import Pharmacophore2D
@@ -19,6 +20,22 @@ from molfeat.trans.fp import FPVecTransformer
 from molfeat.trans.fp import FPVecFilteredTransformer
 from molfeat.trans.concat import FeatConcat
 from molfeat.utils.cache import DataCache, FileCache, MPDataCache
+
+
+class CustomBatchCalculator(SerializableCalculator):
+    def __init__(self, random_seed: int = 42, length: int = 10):
+        self.random_seed = random_seed
+        self.length = length
+        self.rng = np.random.RandomState(self.random_seed)
+
+    def __call__(self, mol, **kwargs):
+        return self.rng.randn(self.length)
+
+    def __len__(self):
+        return self.length
+
+    def batch_compute(self, mols, **kwargs):
+        return self.rng.randn(len(mols), self.length)
 
 
 class TestMolTransformer(ut.TestCase):
@@ -58,6 +75,13 @@ class TestMolTransformer(ut.TestCase):
             self.assertTrue(len(cache) == len(fps))
             np.testing.assert_array_equal(cache[smiles[0]], fps[0])
             np.testing.assert_allclose(fps, batched_fps)
+
+    def test_custom_calculator(self):
+        calc = CustomBatchCalculator()
+        transf = MoleculeTransformer(featurizer=calc)
+        fps = transf.transform(self.smiles)
+        self.assertEqual(len(fps), len(self.smiles))
+        self.assertEqual(len(fps[0]), len(calc))
 
     def test_transformer(self):
         for fpkind in self.fp_list:
