@@ -4,6 +4,14 @@ molfeat Change Log
 
 .. current developments
 
+v0.8.5
+====================
+
+**Authors:**
+
+
+
+
 v0.8.4
 ====================
 
