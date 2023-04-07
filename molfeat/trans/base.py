@@ -303,7 +303,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
         if hasattr(self.featurizer, "batch_compute") and callable(self.featurizer.batch_compute):
             # this calculator can be batched which will be faster
             features = self.featurizer.batch_compute(
-                mols, n_jobs=self.n_jobs, parallel_kwargs=parallel_kwargs
+                mols, n_jobs=self.n_jobs, **parallel_kwargs)
             )
         else:
             mols = dm.parallelized(_to_mol, mols, n_jobs=self.n_jobs, **parallel_kwargs)
