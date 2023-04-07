@@ -11,6 +11,7 @@ import abc
 import copy
 import joblib
 import json
+
 import yaml
 import fsspec
 import pandas as pd
@@ -33,13 +34,11 @@ from molfeat.utils.commons import fn_to_hex
 from molfeat.utils.commons import hex_to_fn
 from molfeat.utils.parsing import get_input_args
 from molfeat.utils.parsing import import_from_string
-from molfeat.utils.state import DTYPES_MAPPING
-from molfeat.utils.state import DTYPES_MAPPING_REVERSE
+from molfeat.utils.state import map_dtype
 from molfeat.utils.state import ATOM_FEATURIZER_MAPPING
 from molfeat.utils.state import BOND_FEATURIZER_MAPPING
 from molfeat.utils.state import ATOM_FEATURIZER_MAPPING_REVERSE
 from molfeat.utils.state import BOND_FEATURIZER_MAPPING_REVERSE
-from molfeat.utils.state import get_type_mapping
 
 _TRANSFORMERS = {}
 
@@ -514,13 +513,9 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
         # Process the input arguments before building the state
         args = copy.deepcopy(self._input_args)
 
-        ## Deal with dtype
+        # Deal with dtype
         if "dtype" in args and not isinstance(args["dtype"], str):
-            if args["dtype"] not in DTYPES_MAPPING:
-                raise ValueError(
-                    f"Invalid dtype {args['dtype']}. Valid dtypes are {DTYPES_MAPPING.keys()}"
-                )
-            args["dtype"] = DTYPES_MAPPING[args["dtype"]]
+            args["dtype"] = map_dtype(args["dtype"])
 
         ## Deal with graph atom/bond featurizers
         # NOTE(hadim): it's important to highlight that atom/bond featurizers can't be
@@ -609,14 +604,9 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
         # Process the state as needed
         args = state.get("args", {})
 
-        ## Deal with dtype
-        if "dtype" in args:
-            if args["dtype"] not in DTYPES_MAPPING_REVERSE:
-                raise ValueError(
-                    f"Invalid dtype {args['dtype']}. Valid dtypes are"
-                    f" {DTYPES_MAPPING_REVERSE.keys()}"
-                )
-            args["dtype"] = DTYPES_MAPPING_REVERSE[args["dtype"]]
+        # Deal with dtype
+        if "dtype" in args and isinstance(args["dtype"], str):
+            args["dtype"] = map_dtype(args["dtype"])
 
         ## Deal with graph atom/bond featurizers
         if args.get("atom_featurizer") is not None:
