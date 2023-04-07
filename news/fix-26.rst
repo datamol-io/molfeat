@@ -12,11 +12,11 @@
 
 **Removed:**
 
-* <news item>
+* Remove support for the `np.float128` dtype (issue #26)
 
 **Fixed:**
 
-* Since the np.float128 dtype is not available on all system, we now first check if it exists (issue #26)
+* <news item>
 
 **Security:**
 
