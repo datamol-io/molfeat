@@ -22,7 +22,7 @@
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/molfeat)](https://pypi.org/project/molfeat/)
 [![Conda](https://img.shields.io/conda/dn/conda-forge/molfeat)](https://anaconda.org/conda-forge/molfeat)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/molfeat)](https://pypi.org/project/molfeat/)
-[![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/datamol-io/datamol/blob/main/LICENSE)
+[![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/datamol-io/molfeat/blob/main/LICENSE)
 [![GitHub Repo stars](https://img.shields.io/github/stars/datamol-io/molfeat)](https://github.com/datamol-io/molfeat/stargazers)
 [![GitHub Repo stars](https://img.shields.io/github/forks/datamol-io/molfeat)](https://github.com/datamol-io/molfeat/network/members)
 [![test](https://github.com/datamol-io/molfeat/actions/workflows/test.yml/badge.svg)](https://github.com/datamol-io/molfeat/actions/workflows/test.yml)
