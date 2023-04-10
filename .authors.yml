@@ -1,12 +1,12 @@
 - name: maclandrol
   email: emmanuel.noutahi@hotmail.ca
-  num_commits: 29
+  num_commits: 34
   first_commit: 2021-04-06 11:53:10
 - name: Cas Wognum
   email: caswognum@outlook.com
   aliases:
   - cwognum
-  num_commits: 28
+  num_commits: 30
   first_commit: 2023-03-20 13:05:13
 - name: Hadrien Mary
   email: hadrien.mary@gmail.com
