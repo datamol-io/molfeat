@@ -64,6 +64,8 @@ class Pooling(nn.Module):
         if indices is not None:
             mask[:, indices] = 0
         neg_inf = torch.finfo(x.dtype).min
+        if mask.ndim == 2:
+            mask = mask.unsqueeze(-1)  # B, S, 1
         if self.name == "clf":
             return x[:, 0, :]
         if self.name == "max":
