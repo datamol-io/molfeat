@@ -1833,8 +1833,8 @@ This featurizer is compatible with scikit-learn estimators and thus can be plugg
 <code class="highlight language-python"><span class="n">n_jobs</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-writable"><code>writable</code></small>
       <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-writable"><code>writable</code></small>
   </span>
 
 <a href="#molfeat.trans.base.BaseFeaturizer.n_jobs" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -2814,7 +2814,7 @@ If you calculator also implements a <code>batch_compute</code> method, it will b
             <span class="n">parallel_kwargs</span><span class="o">=</span><span class="n">parallel_kwargs</span><span class="p">,</span>
             <span class="o">**</span><span class="n">params</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">featurizer</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">featurizer</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span> <span class="o">=</span> <span class="n">featurizer</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span> <span class="o">=</span> <span class="n">get_calculator</span><span class="p">(</span><span class="n">featurizer</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
@@ -2836,7 +2836,7 @@ If you calculator also implements a <code>batch_compute</code> method, it will b
             <span class="bp">self</span><span class="o">.</span><span class="n">_input_args</span> <span class="o">=</span> <span class="n">get_input_args</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_update_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="p">):</span>
             <span class="n">params</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_input_params</span><span class="p">)</span>
             <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;featurizer&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span> <span class="o">=</span> <span class="n">get_calculator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
@@ -2925,7 +2925,7 @@ If you calculator also implements a <code>batch_compute</code> method, it will b
 
         <span class="n">parallel_kwargs</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;parallel_kwargs&quot;</span><span class="p">,</span> <span class="p">{})</span>
 
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="p">,</span> <span class="s2">&quot;batch_compute&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">batch_compute</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="p">,</span> <span class="s2">&quot;batch_compute&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">batch_compute</span><span class="p">):</span>
             <span class="c1"># this calculator can be batched which will be faster</span>
             <span class="n">features</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">batch_compute</span><span class="p">(</span><span class="n">mols</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">,</span> <span class="o">**</span><span class="n">parallel_kwargs</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -2962,7 +2962,7 @@ If you calculator also implements a <code>batch_compute</code> method, it will b
             <span class="c1"># then check the featurizer length if it&#39;s a callable and not a string/None</span>
             <span class="k">if</span> <span class="p">(</span>
                 <span class="n">cur_length</span> <span class="ow">is</span> <span class="kc">None</span>
-                <span class="ow">and</span> <span class="n">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="p">)</span>
                 <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="p">,</span> <span class="s2">&quot;__len__&quot;</span><span class="p">)</span>
             <span class="p">):</span>
                 <span class="n">cur_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="p">)</span>
@@ -3717,7 +3717,7 @@ Only returned when ignore_errors is True.</p></td>
         <span class="n">parallel_kwargs</span><span class="o">=</span><span class="n">parallel_kwargs</span><span class="p">,</span>
         <span class="o">**</span><span class="n">params</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">featurizer</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">featurizer</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span> <span class="o">=</span> <span class="n">featurizer</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span> <span class="o">=</span> <span class="n">get_calculator</span><span class="p">(</span><span class="n">featurizer</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
@@ -3786,7 +3786,7 @@ Only returned when ignore_errors is True.</p></td>
         <span class="c1"># then check the featurizer length if it&#39;s a callable and not a string/None</span>
         <span class="k">if</span> <span class="p">(</span>
             <span class="n">cur_length</span> <span class="ow">is</span> <span class="kc">None</span>
-            <span class="ow">and</span> <span class="n">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="p">)</span>
             <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="p">,</span> <span class="s2">&quot;__len__&quot;</span><span class="p">)</span>
         <span class="p">):</span>
             <span class="n">cur_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="p">)</span>
@@ -4957,7 +4957,7 @@ of these molecules and filter them out according to your own logic.</p>
 
     <span class="n">parallel_kwargs</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;parallel_kwargs&quot;</span><span class="p">,</span> <span class="p">{})</span>
 
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="p">,</span> <span class="s2">&quot;batch_compute&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">batch_compute</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="p">,</span> <span class="s2">&quot;batch_compute&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">batch_compute</span><span class="p">):</span>
         <span class="c1"># this calculator can be batched which will be faster</span>
         <span class="n">features</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">batch_compute</span><span class="p">(</span><span class="n">mols</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">,</span> <span class="o">**</span><span class="n">parallel_kwargs</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
