@@ -19,7 +19,7 @@ def get_model_init(card):
         import_statement = "from molfeat.trans import MoleculeTransformer"
         loader_statement = f"MoleculeTransformer(featurizer='{card.name}')"
     elif card.group in ["rdkit", "fp"]:
-        import_statement = f"from molfeat.trans import FPVecTransformer"
+        import_statement = f"from molfeat.trans.fp import FPVecTransformer"
         loader_statement = f"FPVecTransformer(kind='{card.name}')"
     elif card.group == "dgllife":
         import_statement = "from molfeat.trans.pretrained import PretrainedDGLTransformer"
