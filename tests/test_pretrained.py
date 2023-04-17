@@ -2,7 +2,6 @@ import unittest as ut
 import time
 import numpy as np
 import datamol as dm
-import torch
 import pytest
 import tempfile
 import joblib
@@ -10,7 +9,6 @@ from molfeat.trans.pretrained import GraphormerTransformer
 from molfeat.trans.pretrained import PretrainedDGLTransformer
 from molfeat.trans.pretrained import PretrainedHFTransformer
 from molfeat.utils import requires
-from molfeat.utils.cache import DataCache
 
 
 @pytest.mark.xfail(
@@ -28,23 +26,48 @@ class TestGraphormerTransformer(ut.TestCase):
         transf = GraphormerTransformer(dtype=np.float32, pooling="sum")
         with tempfile.NamedTemporaryFile(delete=True) as pickled_file:
             joblib.dump(transf, pickled_file.name)
-            trans2 = joblib.load(pickled_file.name)
+            transf2 = joblib.load(pickled_file.name)
         ori_feat = transf(dm.freesolv().smiles.values[:10])
-        reloaded_feat = trans2(dm.freesolv().smiles.values[:10])
+        reloaded_feat = transf2(dm.freesolv().smiles.values[:10])
         np.testing.assert_array_equal(ori_feat, reloaded_feat)
 
     def test_graphormer(self):
         transf = GraphormerTransformer(dtype=np.float32, pooling="sum")
-        trans2 = GraphormerTransformer(dtype=np.float32, pooling="mean")
+        transf2 = GraphormerTransformer(dtype=np.float32, pooling="mean")
+        transf3 = GraphormerTransformer(dtype=np.float32, pooling="mean", concat_layers=[-1, -2])
         fps = transf(self.smiles, enforce_dtype=True)
         fps2 = transf(self.smiles, enforce_dtype=True)
-        fps3 = trans2(self.smiles, enforce_dtype=True)
+        fps3 = transf2(self.smiles, enforce_dtype=True)
+        fps4 = transf3(self.smiles, enforce_dtype=True)
         self.assertEqual(len(fps), 3)
         self.assertEqual(len(transf), fps[0].shape[-1])
+        # concatenated layer should be twice bigger
+        self.assertEqual(len(transf3), fps[0].shape[-1] * 2)
         np.testing.assert_array_equal(fps, fps2)
-        node_per_mol = np.rint(fps / fps3)
-        node_per_mol = np.unique(node_per_mol)
-        self.assertLessEqual(len(node_per_mol), 2)
+        # first layer should be equal to the mean pooling
+        np.testing.assert_array_equal(fps3, fps4[:, : fps[0].shape[-1]])
+        n_atoms = np.asarray([dm.descriptors.n_heavy_atoms(dm.to_mol(x)) for x in self.smiles])
+        n_atoms += 1  # we add the virtual node that is connected to all other nodes.
+        np.testing.assert_allclose(fps, fps3 * n_atoms[:, None], atol=1e-5)
+
+    def test_graphormer_pooling(self):
+        transf = GraphormerTransformer(dtype=np.float32, pooling="mean", ignore_padding=True)
+        transf2 = GraphormerTransformer(
+            dtype=np.float32, pooling="mean", max_length=100, ignore_padding=True
+        )
+        transf3 = GraphormerTransformer(
+            dtype=np.float32, pooling="virtual", max_length=100, ignore_padding=True
+        )
+        transf4 = GraphormerTransformer(
+            dtype=np.float32, pooling="virtual", max_length=50, ignore_padding=True
+        )
+        fps = transf(self.smiles, enforce_dtype=True)
+        fps2 = transf2(self.smiles, enforce_dtype=True)
+        fps3 = transf3(self.smiles, enforce_dtype=True)
+        fps4 = transf4(self.smiles, enforce_dtype=True)
+
+        np.testing.assert_array_equal(fps, fps2)
+        np.testing.assert_array_equal(fps3, fps4)
 
     def test_graphormer_cache(self):
         transf = GraphormerTransformer(
@@ -73,9 +96,9 @@ class TestDGLTransformer(ut.TestCase):
         transf = PretrainedDGLTransformer(dtype=np.float32, pooling="sum")
         with tempfile.NamedTemporaryFile(delete=True) as pickled_file:
             joblib.dump(transf, pickled_file.name)
-            trans2 = joblib.load(pickled_file.name)
+            transf2 = joblib.load(pickled_file.name)
         ori_feat = transf(dm.freesolv().smiles.values[:10])
-        reloaded_feat = trans2(dm.freesolv().smiles.values[:10])
+        reloaded_feat = transf2(dm.freesolv().smiles.values[:10])
         np.testing.assert_array_equal(ori_feat, reloaded_feat)
 
     def test_dgl_pretrained(self):
@@ -114,9 +137,9 @@ class TestHGFTransformer(ut.TestCase):
         transf = PretrainedHFTransformer(dtype=np.float32, pooling="sum")
         with tempfile.NamedTemporaryFile(delete=True) as pickled_file:
             joblib.dump(transf, pickled_file.name)
-            trans2 = joblib.load(pickled_file.name)
+            transf2 = joblib.load(pickled_file.name)
         ori_feat = transf(dm.freesolv().smiles.values[:10])
-        reloaded_feat = trans2(dm.freesolv().smiles.values[:10])
+        reloaded_feat = transf2(dm.freesolv().smiles.values[:10])
         np.testing.assert_array_equal(ori_feat, reloaded_feat)
 
     def test_hgf_pretrained(self):
