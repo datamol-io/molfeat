@@ -322,11 +322,18 @@ class DGLWeaveAtomCalculator(DGLCanonicalAtomCalculator):
                     is_acceptor[u] = True
         return is_donor, is_acceptor
 
+    @staticmethod
+    @lru_cache(maxsize=None)
+    def _feat_factory_cache():
+        """Build and cache chemical features caching for speed"""
+        fdef_name = os.path.join(RDConfig.RDDataDir, "BaseFeatures.fdef")
+        chem_feats = ChemicalFeatures.BuildFeatureFactory(fdef_name)
+        return chem_feats
+
     @lru_cache
     def _compute_weave_net_properties(self, mol: rdchem.Mol):
         # Get information for donor and acceptor
-        fdef_name = os.path.join(RDConfig.RDDataDir, "BaseFeatures.fdef")
-        chem_feats = ChemicalFeatures.BuildFeatureFactory(fdef_name)
+        chem_feats = self._feat_factory_cache()
         mol_feats = chem_feats.GetFeaturesForMol(mol)
         is_donor, is_acceptor = self._get_atom_state_info(mol_feats)
         sssr = GetSymmSSSR(mol)
