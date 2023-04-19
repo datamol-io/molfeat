@@ -656,7 +656,6 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
             args.update(override_args)
 
         # Create the transformer
-        print(transformer_class)
         featurizer = transformer_class(**args)
         return featurizer
 
