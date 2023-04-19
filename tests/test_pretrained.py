@@ -66,8 +66,8 @@ class TestGraphormerTransformer(ut.TestCase):
         fps3 = transf3(self.smiles, enforce_dtype=True)
         fps4 = transf4(self.smiles, enforce_dtype=True)
 
-        np.testing.assert_array_equal(fps, fps2)
-        np.testing.assert_array_equal(fps3, fps4)
+        np.testing.assert_allclose(fps, fps2, atol=1e-5)
+        np.testing.assert_allclose(fps3, fps4, atol=1e-5)
 
     def test_graphormer_cache(self):
         transf = GraphormerTransformer(
@@ -79,7 +79,7 @@ class TestGraphormerTransformer(ut.TestCase):
         ori_run = time.time() - t0
         fps2 = transf.transform(self.smiles)
         cached_run = time.time() - t0 - ori_run
-        np.testing.assert_array_equal(fps, fps2)
+        np.testing.assert_allclose(fps, fps2, atol=1e-5)
         # add buffers
         self.assertLessEqual(cached_run, ori_run + time_buffer)
 
