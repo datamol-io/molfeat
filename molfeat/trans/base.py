@@ -634,8 +634,6 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
                     klass_name
                 ].from_state_dict(args["bond_featurizer"])
             else:
-                # buffer = io.BytesIO(bytes.fromhex(args["bond_featurizer"]))
-                # args["bond_featurizer"] = joblib.load(buffer)
                 args["bond_featurizer"] = hex_to_fn(args["bond_featurizer"])
             args.pop("_bond_featurizer_is_pickled", None)
         ## Deal with custom featurizer
