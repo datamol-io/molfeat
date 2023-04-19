@@ -3259,18 +3259,18 @@ If you calculator also implements a <code>batch_compute</code> method, it will b
                     <span class="n">klass_name</span>
                 <span class="p">]</span><span class="o">.</span><span class="n">from_state_dict</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;bond_featurizer&quot;</span><span class="p">])</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="c1"># buffer = io.BytesIO(bytes.fromhex(args[&quot;bond_featurizer&quot;]))</span>
-                <span class="c1"># args[&quot;bond_featurizer&quot;] = joblib.load(buffer)</span>
                 <span class="n">args</span><span class="p">[</span><span class="s2">&quot;bond_featurizer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hex_to_fn</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;bond_featurizer&quot;</span><span class="p">])</span>
             <span class="n">args</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;_bond_featurizer_is_pickled&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="c1">## Deal with custom featurizer</span>
         <span class="k">if</span> <span class="s2">&quot;featurizer&quot;</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;_featurizer_is_pickled&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-                <span class="c1"># buffer = io.BytesIO(bytes.fromhex(args[&quot;featurizer&quot;]))</span>
-                <span class="c1"># args[&quot;featurizer&quot;] = joblib.load(buffer)</span>
                 <span class="n">args</span><span class="p">[</span><span class="s2">&quot;featurizer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hex_to_fn</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;featurizer&quot;</span><span class="p">])</span>
                 <span class="n">args</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;_featurizer_is_pickled&quot;</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;featurizer&quot;</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">elif</span> <span class="p">(</span>
+                <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;featurizer&quot;</span><span class="p">],</span> <span class="n">Mapping</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;featurizer&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span> <span class="ow">in</span> <span class="n">_CALCULATORS</span>
+            <span class="p">):</span>
+                <span class="c1"># we have found a known calculator</span>
                 <span class="n">klass_name</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;featurizer&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
                 <span class="n">args</span><span class="p">[</span><span class="s2">&quot;featurizer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_CALCULATORS</span><span class="p">[</span><span class="n">klass_name</span><span class="p">]</span><span class="o">.</span><span class="n">from_state_dict</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;featurizer&quot;</span><span class="p">])</span>
                 <span class="n">args</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;_featurizer_is_pickled&quot;</span><span class="p">)</span>
@@ -4382,18 +4382,18 @@ that needs to be removed from the dataset</p>
                 <span class="n">klass_name</span>
             <span class="p">]</span><span class="o">.</span><span class="n">from_state_dict</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;bond_featurizer&quot;</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="c1"># buffer = io.BytesIO(bytes.fromhex(args[&quot;bond_featurizer&quot;]))</span>
-            <span class="c1"># args[&quot;bond_featurizer&quot;] = joblib.load(buffer)</span>
             <span class="n">args</span><span class="p">[</span><span class="s2">&quot;bond_featurizer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hex_to_fn</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;bond_featurizer&quot;</span><span class="p">])</span>
         <span class="n">args</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;_bond_featurizer_is_pickled&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="c1">## Deal with custom featurizer</span>
     <span class="k">if</span> <span class="s2">&quot;featurizer&quot;</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;_featurizer_is_pickled&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="c1"># buffer = io.BytesIO(bytes.fromhex(args[&quot;featurizer&quot;]))</span>
-            <span class="c1"># args[&quot;featurizer&quot;] = joblib.load(buffer)</span>
             <span class="n">args</span><span class="p">[</span><span class="s2">&quot;featurizer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hex_to_fn</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;featurizer&quot;</span><span class="p">])</span>
             <span class="n">args</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;_featurizer_is_pickled&quot;</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;featurizer&quot;</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="p">(</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;featurizer&quot;</span><span class="p">],</span> <span class="n">Mapping</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;featurizer&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span> <span class="ow">in</span> <span class="n">_CALCULATORS</span>
+        <span class="p">):</span>
+            <span class="c1"># we have found a known calculator</span>
             <span class="n">klass_name</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;featurizer&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
             <span class="n">args</span><span class="p">[</span><span class="s2">&quot;featurizer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_CALCULATORS</span><span class="p">[</span><span class="n">klass_name</span><span class="p">]</span><span class="o">.</span><span class="n">from_state_dict</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;featurizer&quot;</span><span class="p">])</span>
             <span class="n">args</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;_featurizer_is_pickled&quot;</span><span class="p">)</span>

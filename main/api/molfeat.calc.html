@@ -17970,7 +17970,14 @@ which have been collected from various material science packages</p>
 <span class="normal">365</span>
 <span class="normal">366</span>
 <span class="normal">367</span>
-<span class="normal">368</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">DGLWeaveAtomCalculator</span><span class="p">(</span><span class="n">DGLCanonicalAtomCalculator</span><span class="p">):</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">DGLWeaveAtomCalculator</span><span class="p">(</span><span class="n">DGLCanonicalAtomCalculator</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Default atom featurizer used by WeaveNet in DGLLife&quot;&quot;&quot;</span>
 
     <span class="n">DEFAULT_FEATURIZER</span> <span class="o">=</span> <span class="p">{</span>
@@ -18013,11 +18020,18 @@ which have been collected from various material science packages</p>
                     <span class="n">is_acceptor</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="n">is_donor</span><span class="p">,</span> <span class="n">is_acceptor</span>
 
+    <span class="nd">@staticmethod</span>
+    <span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_feat_factory_cache</span><span class="p">():</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build and cache chemical features caching for speed&quot;&quot;&quot;</span>
+        <span class="n">fdef_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">RDConfig</span><span class="o">.</span><span class="n">RDDataDir</span><span class="p">,</span> <span class="s2">&quot;BaseFeatures.fdef&quot;</span><span class="p">)</span>
+        <span class="n">chem_feats</span> <span class="o">=</span> <span class="n">ChemicalFeatures</span><span class="o">.</span><span class="n">BuildFeatureFactory</span><span class="p">(</span><span class="n">fdef_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">chem_feats</span>
+
     <span class="nd">@lru_cache</span>
     <span class="k">def</span> <span class="nf">_compute_weave_net_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mol</span><span class="p">:</span> <span class="n">rdchem</span><span class="o">.</span><span class="n">Mol</span><span class="p">):</span>
         <span class="c1"># Get information for donor and acceptor</span>
-        <span class="n">fdef_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">RDConfig</span><span class="o">.</span><span class="n">RDDataDir</span><span class="p">,</span> <span class="s2">&quot;BaseFeatures.fdef&quot;</span><span class="p">)</span>
-        <span class="n">chem_feats</span> <span class="o">=</span> <span class="n">ChemicalFeatures</span><span class="o">.</span><span class="n">BuildFeatureFactory</span><span class="p">(</span><span class="n">fdef_name</span><span class="p">)</span>
+        <span class="n">chem_feats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feat_factory_cache</span><span class="p">()</span>
         <span class="n">mol_feats</span> <span class="o">=</span> <span class="n">chem_feats</span><span class="o">.</span><span class="n">GetFeaturesForMol</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
         <span class="n">is_donor</span><span class="p">,</span> <span class="n">is_acceptor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_atom_state_info</span><span class="p">(</span><span class="n">mol_feats</span><span class="p">)</span>
         <span class="n">sssr</span> <span class="o">=</span> <span class="n">GetSymmSSSR</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
@@ -18158,14 +18172,7 @@ which have been collected from various material science packages</p>
 
       <details class="quote">
         <summary>Source code in <code>molfeat/calc/atom.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">353</span>
-<span class="normal">354</span>
-<span class="normal">355</span>
-<span class="normal">356</span>
-<span class="normal">357</span>
-<span class="normal">358</span>
-<span class="normal">359</span>
-<span class="normal">360</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">360</span>
 <span class="normal">361</span>
 <span class="normal">362</span>
 <span class="normal">363</span>
@@ -18173,7 +18180,14 @@ which have been collected from various material science packages</p>
 <span class="normal">365</span>
 <span class="normal">366</span>
 <span class="normal">367</span>
-<span class="normal">368</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mol</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">rdchem</span><span class="o">.</span><span class="n">Mol</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mol</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">rdchem</span><span class="o">.</span><span class="n">Mol</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get rdkit basic descriptors for a molecule</span>
 
@@ -18238,11 +18252,11 @@ which have been collected from various material science packages</p>
 
       <details class="quote">
         <summary>Source code in <code>molfeat/calc/atom.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">347</span>
-<span class="normal">348</span>
-<span class="normal">349</span>
-<span class="normal">350</span>
-<span class="normal">351</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">atom_weave_props</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atom</span><span class="p">:</span> <span class="n">rdchem</span><span class="o">.</span><span class="n">Atom</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">atom_weave_props</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atom</span><span class="p">:</span> <span class="n">rdchem</span><span class="o">.</span><span class="n">Atom</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the WeaveNet properties for an atom&quot;&quot;&quot;</span>
     <span class="n">mol</span> <span class="o">=</span> <span class="n">atom</span><span class="o">.</span><span class="n">GetOwningMol</span><span class="p">()</span>
     <span class="n">feats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_weave_net_properties</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
