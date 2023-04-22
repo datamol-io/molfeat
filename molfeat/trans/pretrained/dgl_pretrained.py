@@ -42,7 +42,7 @@ class DGLModel(PretrainedStoreModel):
         "gin_supervised_infomax",
         "gin_supervised_edgepred",
         "gin_supervised_masking",
-        "JTVAE_ZINC_no_kl",
+        "jtvae_zinc_no_kl",
     ]
 
     def __init__(
