@@ -1,5 +1,5 @@
-molfeat-new:
-  entry_point_prefix: new
-  home_url: ~
-  molfeat_version: ~
+molfeat-MolT5:
+  entry_point_prefix: MolT5
+  home_url: https://github.com/dessygil/molfeat-MolT5
+  molfeat_version: 0.8.6
   documentation_url: ~
