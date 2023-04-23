@@ -30,7 +30,40 @@ class _CalculatorMeta(abc.ABCMeta):
 
 
 class SerializableCalculator(abc.ABC, metaclass=_CalculatorMeta):
-    """Interface to define a serializable calculator"""
+    """Interface to define a serializable calculator
+
+    ???+ tip "Subclassing SerializableCalculator"
+        When subclassing a calculator, you must implement the __call__ method.
+        If your calculator also implements a `batch_compute` method, it will be used
+        by `MoleculeTransformer` to accelerate featurization.
+
+        ```python
+        from molfeat.calc import SerializableCalculator
+
+        class MyCalculator(SerializableCalculator):
+
+            def __call__(self, mol, **kwargs):
+                # you have to implement this
+                ...
+
+            def __len__(self):
+                # you don't have to implement this but are encouraged to do so
+                # this is used to determine the length of the output
+                ...
+
+            @property
+            def columns(self):
+                # you don't have to implement this
+                # use this to return the name of each entry returned by your featurizer
+                ...
+
+            def batch_compute(self, mols:list, **dm_parallelized_kwargs):
+                # you don't need to implement this
+                # but you should if there is an efficient batching process
+                # By default dm.parallelized arguments will also be passed as input
+                ...
+        ```
+    """
 
     @abc.abstractmethod
     def __call__(self, *args, **kwargs):

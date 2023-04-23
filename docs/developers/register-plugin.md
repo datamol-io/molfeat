@@ -1,12 +1,12 @@
-# MolFeat plugin registry
+# molfeat plugin registry
 
-This document explains how to register a plugin in `MolFeat` for listing on our website. 
+This document explains how to register a plugin in `molfeat` for listing on our website. 
 
-The `MolFeat` plugin registry aims to be the home for all publicly available `MolFeat` plugins. It
-collects information on the type of plugins provided by your package, which `MolFeat` versions it is compatible with, etc.
+The `molfeat` plugin registry aims to be the home for all publicly available `molfeat` plugins. It
+collects information on the type of plugins provided by your package and which `molfeat` versions it is compatible with.
 
 If you are starting to develop a new plugin or if you already have one, please register it here.
-We strongly encourage to **register at early stages of development**, both to reserve the name of your plugin and to inform the community of your ongoing work.
+We strongly encourage you to **register at early stages of development**, both to reserve the name of your plugin and to inform the community of your ongoing work.
 
 
 
@@ -28,22 +28,22 @@ We strongly encourage to **register at early stages of development**, both to re
 ### Valid keys for each plugin
 
 - __top-level key__ (required):
-The name under which your plugin will be distributed.
-By convention, names of MolFeat plugins are lowercase and prefixed by `molfeat-` (e.g `molfeat-myplugin`)
+the name under which your plugin will be distributed.
+By convention, names of molfeat plugins are lowercase and prefixed by `molfeat-` (e.g `molfeat-myplugin`)
 
 - __entry_point_prefix__ (required):
-The prefix of all entry points provided by the plugin.
+the prefix of all entry points provided by the plugin.
 By convention, a plugin `molfeat-xxx` should use `entry_point_prefix: xxx`.
 For example: `molfeat-myplugin` uses the entry point prefix `myplugin` and provides numerous entry points, all of which start with `myplugin.`.
 
 - __home_url__ (required):
-The link to the homepage of the plugin, for example its github repository.
+the link to the homepage of the plugin, for example its github repository.
 
 - __molfeat_version__ (required):
-The molfeat version required for your plugin to work.
+the molfeat version required for your plugin to work.
 
 - __documentation_url__ (optional):
-The link to the online documentation for your plugin, for example on readthedocs.org .
+the link to the online documentation for your plugin, for example on readthedocs.org .
 
 
 ### Model Card in pull request

@@ -27,7 +27,6 @@ DTYPES_MAPPING = {
     np.float16: "np.float16",
     np.float32: "np.float32",
     np.float64: "np.float64",
-    np.float128: "np.float128",
     np.int8: "np.int8",
     np.int16: "np.int16",
     np.int32: "np.int32",
@@ -62,12 +61,19 @@ BOND_FEATURIZER_MAPPING = {
 BOND_FEATURIZER_MAPPING_REVERSE = {v: k for k, v in BOND_FEATURIZER_MAPPING.items()}
 
 
-def get_type_mapping(obj, mapping):
-    for k, v in mapping.items():
-        if type(obj) is k:
-            return v
+def map_dtype(dtype: Optional[Union[str, torch.dtype, np.dtype]]):
+    """Map a dtype to a string representation or the other way around"""
 
-    raise ValueError(f"No mapping found for obj {obj}. Valid types are {mapping.keys()}")
+    if isinstance(dtype, str):
+        mapping = DTYPES_MAPPING_REVERSE
+    else:
+        mapping = DTYPES_MAPPING
+
+    if dtype not in mapping:
+        msg = f"{dtype} is not a valid dtype. The valid dtypes are {list(mapping.keys())}."
+        raise ValueError(msg)
+
+    return mapping[dtype]
 
 
 def compare_state(

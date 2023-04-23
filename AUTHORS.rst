@@ -3,5 +3,7 @@ Authors are sorted alphabetically.
 
 * Cas Wognum
 * Hadrien Mary
+* Honore Hounwanou
+* Saurav Maheshkar
 * Therence
 * maclandrol

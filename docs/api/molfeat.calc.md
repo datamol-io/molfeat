@@ -2,14 +2,16 @@
 
 ::: molfeat.calc
 
-### `Fingerprints`
-::: molfeat.calc.fingerprints
+----
+
+#### Serializable Calculator are the base abstract class for implementing your calculators.
+
+::: molfeat.calc.base
 
 ----
 
-
-### `Descriptors`
-::: molfeat.calc.descriptors
+### `Fingerprints`
+::: molfeat.calc.fingerprints
 
 ----
 
@@ -17,7 +19,6 @@
 ::: molfeat.calc.cats
 
 ----
-
 
 ### `Pharmacophore`
 ::: molfeat.calc.pharmacophore

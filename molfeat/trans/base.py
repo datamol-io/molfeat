@@ -11,6 +11,7 @@ import abc
 import copy
 import joblib
 import json
+
 import yaml
 import fsspec
 import pandas as pd
@@ -25,6 +26,7 @@ from loguru import logger
 from molfeat._version import __version__ as MOLFEAT_VERSION
 
 from molfeat.calc import get_calculator
+from molfeat.calc.base import _CALCULATORS
 from molfeat.utils import datatype
 from molfeat.utils.cache import _Cache, FileCache, MPDataCache
 from molfeat.utils.cache import CacheList
@@ -32,13 +34,11 @@ from molfeat.utils.commons import fn_to_hex
 from molfeat.utils.commons import hex_to_fn
 from molfeat.utils.parsing import get_input_args
 from molfeat.utils.parsing import import_from_string
-from molfeat.utils.state import DTYPES_MAPPING
-from molfeat.utils.state import DTYPES_MAPPING_REVERSE
+from molfeat.utils.state import map_dtype
 from molfeat.utils.state import ATOM_FEATURIZER_MAPPING
 from molfeat.utils.state import BOND_FEATURIZER_MAPPING
 from molfeat.utils.state import ATOM_FEATURIZER_MAPPING_REVERSE
 from molfeat.utils.state import BOND_FEATURIZER_MAPPING_REVERSE
-from molfeat.utils.state import get_type_mapping
 
 _TRANSFORMERS = {}
 
@@ -156,6 +156,10 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
     !!! note
         The transformer supports a variety of datatype, they are only enforced when passing the
         `enforce_dtype=True` attributes in `__call__`. For pandas dataframes, use `'pandas'|'df'|'dataframe'|pd.DataFrame`
+
+    ???+ tip "Using a custom Calculator"
+        You can use your own calculator for featurization. It's recommended to subclass `molfeat.calc.base.SerializableCalculator`
+        If you calculator also implements a `batch_compute` method, it will be used for batch featurization and parallelization options will be passed to it.
     """
 
     def __init__(
@@ -296,19 +300,22 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
 
         parallel_kwargs = getattr(self, "parallel_kwargs", {})
 
-        mols = dm.parallelized(_to_mol, mols, n_jobs=self.n_jobs, **parallel_kwargs)
-
-        if self.n_jobs not in [0, 1]:
-            # use a proxy model to run in parallel
-            cpy = self.copy()
-            features = dm.parallelized(
-                cpy._transform,
-                mols,
-                n_jobs=self.n_jobs,
-                **cpy.parallel_kwargs,
-            )
+        if hasattr(self.featurizer, "batch_compute") and callable(self.featurizer.batch_compute):
+            # this calculator can be batched which will be faster
+            features = self.featurizer.batch_compute(mols, n_jobs=self.n_jobs, **parallel_kwargs)
         else:
-            features = [self._transform(mol) for mol in mols]
+            mols = dm.parallelized(_to_mol, mols, n_jobs=self.n_jobs, **parallel_kwargs)
+            if self.n_jobs not in [0, 1]:
+                # use a proxy model to run in parallel
+                cpy = self.copy()
+                features = dm.parallelized(
+                    cpy._transform,
+                    mols,
+                    n_jobs=self.n_jobs,
+                    **cpy.parallel_kwargs,
+                )
+            else:
+                features = [self._transform(mol) for mol in mols]
         if not ignore_errors:
             for ind, feat in enumerate(features):
                 if feat is None:
@@ -513,13 +520,9 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
         # Process the input arguments before building the state
         args = copy.deepcopy(self._input_args)
 
-        ## Deal with dtype
+        # Deal with dtype
         if "dtype" in args and not isinstance(args["dtype"], str):
-            if args["dtype"] not in DTYPES_MAPPING:
-                raise ValueError(
-                    f"Invalid dtype {args['dtype']}. Valid dtypes are {DTYPES_MAPPING.keys()}"
-                )
-            args["dtype"] = DTYPES_MAPPING[args["dtype"]]
+            args["dtype"] = map_dtype(args["dtype"])
 
         ## Deal with graph atom/bond featurizers
         # NOTE(hadim): it's important to highlight that atom/bond featurizers can't be
@@ -554,9 +557,6 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
                 args["featurizer"] = args["featurizer"].to_state_dict()
                 args["_featurizer_is_pickled"] = False
             else:
-                # buffer = io.BytesIO()
-                # joblib.dump(args["atom_featurizer"], buffer)
-                # args["atom_featurizer"] = buffer.getvalue().hex()
                 logger.warning(
                     "You are attempting to pickle a callable without a `to_state_dict` function into a hex string"
                 )
@@ -611,14 +611,9 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
         # Process the state as needed
         args = state.get("args", {})
 
-        ## Deal with dtype
-        if "dtype" in args:
-            if args["dtype"] not in DTYPES_MAPPING_REVERSE:
-                raise ValueError(
-                    f"Invalid dtype {args['dtype']}. Valid dtypes are"
-                    f" {DTYPES_MAPPING_REVERSE.keys()}"
-                )
-            args["dtype"] = DTYPES_MAPPING_REVERSE[args["dtype"]]
+        # Deal with dtype
+        if "dtype" in args and isinstance(args["dtype"], str):
+            args["dtype"] = map_dtype(args["dtype"])
 
         ## Deal with graph atom/bond featurizers
         if args.get("atom_featurizer") is not None:
@@ -639,16 +634,21 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
                     klass_name
                 ].from_state_dict(args["bond_featurizer"])
             else:
-                # buffer = io.BytesIO(bytes.fromhex(args["bond_featurizer"]))
-                # args["bond_featurizer"] = joblib.load(buffer)
                 args["bond_featurizer"] = hex_to_fn(args["bond_featurizer"])
             args.pop("_bond_featurizer_is_pickled", None)
         ## Deal with custom featurizer
-        if "featurizer" in args and args.get("_featurizer_is_pickled") is True:
-            # buffer = io.BytesIO(bytes.fromhex(args["featurizer"]))
-            # args["featurizer"] = joblib.load(buffer)
-            args["featurizer"] = hex_to_fn(args["featurizer"])
-            args.pop("_featurizer_is_pickled")
+        if "featurizer" in args:
+            if args.get("_featurizer_is_pickled") is True:
+                args["featurizer"] = hex_to_fn(args["featurizer"])
+                args.pop("_featurizer_is_pickled")
+            elif (
+                isinstance(args["featurizer"], Mapping)
+                and args["featurizer"].get("name") in _CALCULATORS
+            ):
+                # we have found a known calculator
+                klass_name = args["featurizer"].get("name")
+                args["featurizer"] = _CALCULATORS[klass_name].from_state_dict(args["featurizer"])
+                args.pop("_featurizer_is_pickled")
 
         if override_args is not None:
             args.update(override_args)
