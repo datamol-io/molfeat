@@ -16,7 +16,6 @@ from loguru import logger
 from joblib import Memory
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import minimum_spanning_tree
-from rdkit.Chem import rdchem
 from rdkit.Chem import GetSymmSSSR
 from rdkit.Chem import MolFragmentToSmiles
 
@@ -52,7 +51,7 @@ class TreeDecomposer:
                 self.decomposition_into_tree, ignore=["self", "mol"]
             )
 
-    def decomposition_into_tree(self, mol: rdchem.Mol, inchikey: str = None):
+    def decomposition_into_tree(self, mol: dm.Mol, inchikey: str = None):
         """
         Find the maximum spanning tree over all the clusters of a molecule
 
@@ -151,7 +150,7 @@ class TreeDecomposer:
 
     def __call__(
         self,
-        mol: Union[rdchem.Mol, str],
+        mol: Union[dm.Mol, str],
         as_smiles: bool = True,
     ):
         """
@@ -169,7 +168,7 @@ class TreeDecomposer:
 
     def get_vocab(
         self,
-        mol_list: List[Union[str, rdchem.Mol]],
+        mol_list: List[Union[str, dm.Mol]],
         output_file: Optional[os.PathLike] = None,
         log: bool = False,
     ):
@@ -179,7 +178,7 @@ class TreeDecomposer:
         before doing some learning.
 
         Args:
-            mol_list (Iterable[rdchem.Mo]): A collection of molecules
+            mol_list (Iterable[dm.Mol]): A collection of molecules
             output_file: path to a file that will be used to store the generated set of fragments.
             log (bool, optional): Whether to print intermediate results to stdout
 

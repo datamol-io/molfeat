@@ -9,7 +9,6 @@ import datamol as dm
 import numpy as np
 import torch.nn.functional as F
 from loguru import logger
-from rdkit.Chem import rdchem
 from rdkit.Chem.rdmolops import GetAdjacencyMatrix
 from rdkit.Chem.rdmolops import GetDistanceMatrix
 from rdkit.Chem.rdmolops import Get3DDistanceMatrix

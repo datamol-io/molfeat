@@ -6,7 +6,6 @@ from typing import Union
 import re
 import copy
 import numpy as np
-from rdkit.Chem import rdchem
 
 from molfeat.calc import get_calculator, FP_FUNCS
 from molfeat.trans.base import MoleculeTransformer
@@ -229,7 +228,7 @@ class FPVecFilteredTransformer(FPVecTransformer):
             _parse_to_evaluable_str(self.dtype),
         )
 
-    def fit(self, X: List[Union[rdchem.Mol, str]], y: Optional[list] = None, **fit_params):
+    def fit(self, X: List[Union[dm.Mol, str]], y: Optional[list] = None, **fit_params):
         """Fit the current transformer on given dataset.
 
         The goal of fitting is for example to identify nan columns values

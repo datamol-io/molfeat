@@ -28,7 +28,6 @@ import multiprocessing as mp
 import pandas.errors
 
 from functools import partial
-from rdkit.Chem import rdchem
 from molfeat.utils import commons
 from molfeat.utils import datatype
 
@@ -66,17 +65,16 @@ class MolToKey:
                 self.hash_fn = dm.unique_id
                 self.hash_name = "dm.unique_id"
 
-    def __call__(self, mol: rdchem.Mol):
+    def __call__(self, mol: dm.Mol):
         """Convert a molecule object to a key that can be used for the cache system
 
         Args:
             mol: input molecule object
         """
-        is_mol = dm.to_mol(mol) is not None
-
-        if is_mol and self.hash_fn is not None:
-            return self.hash_fn(mol)
-
+        with dm.without_rdkit_log():
+            is_mol = dm.to_mol(mol) is not None
+            if is_mol and self.hash_fn is not None:
+                return self.hash_fn(mol)
         return mol
 
     def to_state_dict(self):
@@ -160,7 +158,7 @@ class _Cache(abc.ABC):
 
     def __call__(
         self,
-        mols: List[Union[rdchem.Mol, str]],
+        mols: List[Union[dm.Mol, str]],
         featurizer: Any,
         enforce_dtype=True,
         **transform_kwargs,
@@ -247,9 +245,9 @@ class _Cache(abc.ABC):
 
     def fetch(
         self,
-        mols: List[Union[rdchem.Mol, str]],
+        mols: List[Union[dm.Mol, str]],
     ):
-        """Get the representation for a single
+        """Get the cached representation for a list of input molecules
 
         Args:
             mols: list of molecules
@@ -257,15 +255,17 @@ class _Cache(abc.ABC):
         if isinstance(mols, str) or not isinstance(mols, Iterable):
             mols = [mols]
 
-        converter = copy.deepcopy(self.mol_hasher)
-        mol_ids = dm.parallelized(
-            converter,
-            mols,
-            n_jobs=self.n_jobs,
-            progress=self.verbose,
-            tqdm_kwargs=dict(leave=False),
+        # copy if possible to prevent parallel issues
+        try:
+            cache_getter = copy.deepcopy(self)
+            n_jobs = self.n_jobs
+        except:
+            # cannot parallelize process, ensure n_jobs is 0
+            cache_getter = self.get
+            n_jobs = 0
+        return dm.parallelized(
+            cache_getter, mols, n_jobs=n_jobs, progress=self.verbose, tqdm_kwargs=dict(leave=False)
         )
-        return [self.get(mol_id) for mol_id in mol_ids]
 
     @abc.abstractclassmethod
     def load_from_file(cls, filepath: Union[os.PathLike, str], **kwargs):
@@ -772,7 +772,7 @@ class CacheList:
 
     def fetch(
         self,
-        mols: List[Union[rdchem.Mol, str]],
+        mols: List[Union[dm.Mol, str]],
     ):
         """Get the representation for a single
 

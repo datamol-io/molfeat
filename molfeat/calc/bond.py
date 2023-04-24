@@ -11,8 +11,6 @@ import inspect
 import datamol as dm
 import numpy as np
 
-from rdkit.Chem import rdchem
-
 from molfeat._version import __version__ as MOLFEAT_VERSION
 from molfeat.calc.base import SerializableCalculator
 from molfeat.calc._atom_bond_features import bond_type_one_hot
@@ -178,7 +176,7 @@ class BondCalculator(SerializableCalculator):
         """Get length of the property estimator"""
         return sum(v for k, v in self._feat_sizes.items() if k != self.name)
 
-    def __call__(self, mol: Union[rdchem.Mol, str], dtype: Callable = None, **kwargs):
+    def __call__(self, mol: Union[dm.Mol, str], dtype: Callable = None, **kwargs):
         """Featurize all bonds in a molecule.
 
         Args:
@@ -351,7 +349,7 @@ class EdgeMatCalculator(BondCalculator):
                 raise ValueError(f"Feature name {feat_name} is not defined !")
         return self._feat_sizes[feat_name]
 
-    def __call__(self, mol: Union[rdchem.Mol, str], dtype: Callable = None, flat: bool = True):
+    def __call__(self, mol: Union[dm.Mol, str], dtype: Callable = None, flat: bool = True):
         """Featurize all bonds in a molecule.
 
         Args:
