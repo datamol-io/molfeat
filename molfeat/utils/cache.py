@@ -169,6 +169,7 @@ class _Cache(abc.ABC):
         Args:
             mols: list of molecule to preprocess
             featurizer: input featurizer to use to compute the molecular representation. Should implement a `__call__` method.
+            enforce_dtype: whether to ensure the featurizer dtype is returned
             transformer_kwargs: keyword arguments to pass to the transformer.
 
         !!! note
@@ -201,7 +202,7 @@ class _Cache(abc.ABC):
                 **transform_kwargs,
             )
             dtype = getattr(featurizer, "dtype", None)
-            if dtype is not None:
+            if dtype is not None and enforce_dtype:
                 features = datatype.cast(features, dtype=dtype)
             for key, feat in zip(unseen_ids, features):
                 self[key] = feat
@@ -257,14 +258,14 @@ class _Cache(abc.ABC):
 
         # copy if possible to prevent parallel issues
         try:
-            cache_getter = copy.deepcopy(self)
+            cacher = copy.deepcopy(self)
             n_jobs = self.n_jobs
         except:
             # cannot parallelize process, ensure n_jobs is 0
-            cache_getter = self.get
+            cacher = self
             n_jobs = 0
         return dm.parallelized(
-            cache_getter, mols, n_jobs=n_jobs, progress=self.verbose, tqdm_kwargs=dict(leave=False)
+            cacher.get, mols, n_jobs=n_jobs, progress=self.verbose, tqdm_kwargs=dict(leave=False)
         )
 
     @abc.abstractclassmethod
