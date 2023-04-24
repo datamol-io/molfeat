@@ -6,12 +6,12 @@ from typing import Union
 import re
 import copy
 import numpy as np
+import datamol as dm
 
 from molfeat.calc import get_calculator, FP_FUNCS
 from molfeat.trans.base import MoleculeTransformer
 from molfeat.utils import datatype
 from molfeat.utils.commons import _parse_to_evaluable_str
-
 
 _UNSERIALIZABLE_FPS = []
 

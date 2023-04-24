@@ -2,19 +2,16 @@ import copy
 from typing import Union, List, Optional
 from collections import OrderedDict
 
-
 import datamol as dm
 import numpy as np
 
 from loguru import logger
-
 from rdkit.Chem.QED import properties
 from rdkit.Chem import Descriptors
 from rdkit.Chem import Descriptors3D
 from rdkit.Chem import FindMolChiralCenters
 from rdkit.Chem import rdPartialCharges
 from rdkit.Chem import rdMolDescriptors
-
 
 from molfeat.utils.commons import requires_conformer
 from molfeat.utils.commons import requires_standardization

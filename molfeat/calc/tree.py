@@ -6,7 +6,6 @@ from typing import Optional
 from collections import defaultdict
 
 import os
-import copy
 import pathlib
 import platformdirs
 import fsspec
