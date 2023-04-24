@@ -2,20 +2,16 @@ import copy
 from typing import Union, List, Optional
 from collections import OrderedDict
 
-
 import datamol as dm
 import numpy as np
 
 from loguru import logger
-
 from rdkit.Chem.QED import properties
 from rdkit.Chem import Descriptors
 from rdkit.Chem import Descriptors3D
-from rdkit.Chem import rdchem
 from rdkit.Chem import FindMolChiralCenters
 from rdkit.Chem import rdPartialCharges
 from rdkit.Chem import rdMolDescriptors
-
 
 from molfeat.utils.commons import requires_conformer
 from molfeat.utils.commons import requires_standardization
@@ -117,7 +113,7 @@ class RDKitDescriptors2D(SerializableCalculator):
         state["do_not_standardize"] = getattr(self, "do_not_standardize", False)
         return state
 
-    def _compute_extra_features(self, mol: Union[rdchem.Mol, str]):
+    def _compute_extra_features(self, mol: Union[dm.Mol, str]):
         """Compute the extra properties required for the augmented features version
 
         Args:
@@ -148,7 +144,7 @@ class RDKitDescriptors2D(SerializableCalculator):
         return len(self._columns)
 
     @requires_standardization(disconnect_metals=True, remove_salt=True)
-    def __call__(self, mol: Union[rdchem.Mol, str]):
+    def __call__(self, mol: Union[dm.Mol, str]):
         r"""
         Get rdkit basic descriptors for a molecule
 
@@ -248,7 +244,7 @@ class MordredDescriptors(SerializableCalculator):
         self.__dict__.update(state)
         self._init_calc()
 
-    def __call__(self, mol: Union[rdchem.Mol, str], conformer_id: Optional[int] = -1):
+    def __call__(self, mol: Union[dm.Mol, str], conformer_id: Optional[int] = -1):
         r"""
         Get rdkit basic descriptors for a molecule
 
@@ -334,7 +330,7 @@ class RDKitDescriptors3D(SerializableCalculator):
         return self._columns
 
     @requires_conformer
-    def __call__(self, mol: Union[rdchem.Mol, str], conformer_id: Optional[int] = -1):
+    def __call__(self, mol: Union[dm.Mol, str], conformer_id: Optional[int] = -1):
         r"""
         Get rdkit 3D descriptors for a molecule
 

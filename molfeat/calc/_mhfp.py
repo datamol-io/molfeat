@@ -2,11 +2,10 @@ from typing import Union
 
 import datamol as dm
 from rdkit.Chem.rdMHFPFingerprint import MHFPEncoder
-from rdkit.Chem import rdchem
 
 
 def MHFP(
-    x: Union[rdchem.Mol, str],
+    x: Union[dm.Mol, str],
     n_permutations: int = 128,
     radius: int = 3,
     min_radius: int = 1,
@@ -46,7 +45,7 @@ def MHFP(
 
 
 def SECFP(
-    x: Union[rdchem.Mol, str],
+    x: Union[dm.Mol, str],
     n_permutations: int = 128,
     nBits: int = 2048,
     radius: int = 3,

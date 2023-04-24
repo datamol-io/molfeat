@@ -18,7 +18,6 @@ import pandas as pd
 import datamol as dm
 import numpy as np
 
-from rdkit.Chem import rdchem
 from sklearn.base import TransformerMixin
 from sklearn.base import BaseEstimator
 from loguru import logger
@@ -223,7 +222,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
         self.__dict__["parallel_kwargs"] = state.get("parallel_kwargs", {})
         self._update_params()
 
-    def fit(self, X: List[Union[rdchem.Mol, str]], y: Optional[list] = None, **fit_params):
+    def fit(self, X: List[Union[dm.Mol, str]], y: Optional[list] = None, **fit_params):
         """Fit the current transformer on given dataset.
 
         The goal of fitting is for example to identify nan columns values
@@ -245,13 +244,13 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
         self._fitted = True
         return self
 
-    def _transform(self, mol: rdchem.Mol):
+    def _transform(self, mol: dm.Mol):
         r"""
         Compute features for a single molecule.
         This method would potentially need to be reimplemented by child classes
 
         Args:
-            mol (rdchem.Mol): molecule to transform into features
+            mol (dm.Mol): molecule to transform into features
 
         Returns
             feat: featurized input molecule
@@ -269,7 +268,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
 
     def transform(
         self,
-        mols: List[Union[rdchem.Mol, str]],
+        mols: List[Union[dm.Mol, str]],
         ignore_errors: bool = False,
         **kwargs,
     ):
@@ -292,7 +291,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
             features: a list of features for each molecule in the input set
         """
         # Convert single mol to iterable format
-        if isinstance(mols, (str, rdchem.Mol)) or not isinstance(mols, Iterable):
+        if isinstance(mols, (str, dm.Mol)) or not isinstance(mols, Iterable):
             mols = [mols]
 
         def _to_mol(x):
@@ -351,7 +350,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
 
     def __call__(
         self,
-        mols: List[Union[rdchem.Mol, str]],
+        mols: List[Union[dm.Mol, str]],
         enforce_dtype: bool = True,
         ignore_errors: bool = False,
         **kwargs,
@@ -430,7 +429,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
     @staticmethod
     def batch_transform(
         transformer: Callable,
-        mols: List[Union[rdchem.Mol, str]],
+        mols: List[Union[dm.Mol, str]],
         batch_size: int = 256,
         n_jobs: Optional[int] = None,
         concatenate: bool = True,
@@ -754,12 +753,12 @@ class PrecomputedMolTransformer(MoleculeTransformer):
                 " to determine the length of the featurizer."
             )
 
-    def _transform(self, mol: rdchem.Mol):
+    def _transform(self, mol: dm.Mol):
         r"""
         Return precomputed feature for a single molecule
 
         Args:
-            mol (rdchem.Mol): molecule to transform into features
+            mol (dm.Mol): molecule to transform into features
 
         Returns
             feat: featurized input molecule

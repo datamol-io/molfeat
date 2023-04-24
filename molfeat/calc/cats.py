@@ -15,7 +15,6 @@ import functools
 import datamol as dm
 import numpy as np
 
-from rdkit.Chem import rdchem
 from rdkit.Chem.rdmolops import GetDistanceMatrix
 from rdkit.Chem.rdmolops import Get3DDistanceMatrix
 
@@ -154,7 +153,7 @@ class CATS(SerializableCalculator):
 
         return smarts_mols
 
-    def _get_pcore_group(self, mol: Union[rdchem.Mol, str]):
+    def _get_pcore_group(self, mol: Union[dm.Mol, str]):
         """
         Assign a PPP (potential pharmacophore points) to individual atoms of a molecule.
 

@@ -1,4 +1,3 @@
-#!
 from typing import Union
 from typing import Optional
 
@@ -10,7 +9,6 @@ from rdkit.Avalon import pyAvalonTools
 from rdkit.Chem import rdMolDescriptors
 from rdkit.Chem import rdReducedGraphs
 from rdkit.Chem import rdmolops
-from rdkit.Chem import rdchem
 from rdkit.Chem.EState import Fingerprinter as EStateFingerprinter
 
 from loguru import logger
@@ -293,7 +291,7 @@ class FPCalculator(SerializableCalculator):
             fplen = length
         return fplen
 
-    def __call__(self, mol: Union[rdchem.Mol, str], raw: bool = False):
+    def __call__(self, mol: Union[dm.Mol, str], raw: bool = False):
         r"""
         Compute the Fingerprint of a molecule
 

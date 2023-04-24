@@ -1,7 +1,6 @@
 from typing import Union
 
 import datamol as dm
-from rdkit.Chem import rdchem
 from loguru import logger
 from molfeat.utils import requires
 
@@ -12,7 +11,7 @@ else:
 
 
 def MAP4(
-    x: Union[rdchem.Mol, str],
+    x: Union[dm.Mol, str],
     dimensions: int = 2048,
     radius: int = 2,
     is_counted: bool = False,
