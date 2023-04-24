@@ -4,6 +4,35 @@ molfeat Change Log
 
 .. current developments
 
+v0.8.7
+====================
+
+**Added:**
+
+* Support for `ignore_padding` in Graphormer
+* More flexibility overall for graphormer embeddings
+
+**Changed:**
+
+* Phased out rdchem.Mol, rdchem.Atom and rdkit.Bond in favor of datamol versions
+* Fully automated release process.
+
+**Fixed:**
+
+* Random logging in cache coming from testing if an input is a molecule
+* Some small typos in doc strings
+* Naming of JTVAE models
+* Fix issue #37 by making WeaveFeaturizer faster
+* Usage card for rdkit and fingerprints/descriptors featurizers
+
+**Authors:**
+
+* Hadrien Mary
+* maclandrol
+* rbyrne-momatx
+
+
+
 v0.8.6
 ====================
 
