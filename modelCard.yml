@@ -1,0 +1,20 @@
+- name: laituan245/molt5-large-smiles2caption
+  inputs: smiles
+  type: pretrained
+  group: huggingface
+  version: 0
+  submitter: Desmond Gilmour
+  description: "MolT5 specifically Smiles2Caption is a pretrained model based on the Colossal Clean Crawl Corpus for textual descriptions, ZINC-15 for SMILES strings, and fine tuned using ChEBI-20."
+  representation: text
+  require_3D: false
+  tags:
+    - smiles
+    - huggingface
+    - transformers
+    - text2text
+  authors:
+    - Tuan Manh Lai
+    - Carl Edwards
+  reference: 
+    - https://github.com/blender-nlp/MolT5
+    - https://huggingface.co/laituan245/molt5-large-caption2smiles?text=caffeine

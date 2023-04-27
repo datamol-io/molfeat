@@ -387,6 +387,7 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
 
         Args:
             inputs: smiles or seqs
+            use_encoder: If model requires encoderfeaturi
             kwargs: any additional parameters
         """
         self._preload()
@@ -397,7 +398,10 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
         else:
             attention_mask = None
         with torch.no_grad():
-            out_dict = self.featurizer.model(output_hidden_states=True, **inputs)
+            if hasattr(self.featurizer.model, 'encoder'):
+                out_dict = self.featurizer.model.encoder(output_hidden_states=True, **inputs)
+            else:
+                out_dict = self.featurizer.model(output_hidden_states=True, **inputs)
             hidden_state = out_dict["hidden_states"]
             emb_layers = []
             for layer in self.concat_layers:
