@@ -387,7 +387,6 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
 
         Args:
             inputs: smiles or seqs
-            use_encoder: If model requires encoderfeaturi
             kwargs: any additional parameters
         """
         self._preload()

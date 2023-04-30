@@ -61,6 +61,7 @@ dependencies = [
 dgl = [
     "dgl",
     "dgllife",
+    "sentencepiece",
 ]
 
 graphormer = [
