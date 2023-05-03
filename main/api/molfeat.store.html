@@ -1767,63 +1767,67 @@
 
         <details class="quote">
           <summary>Source code in <code>molfeat/store/modelcard.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span>
-<span class="normal">92</span>
-<span class="normal">93</span>
-<span class="normal">94</span>
-<span class="normal">95</span>
-<span class="normal">96</span>
-<span class="normal">97</span>
-<span class="normal">98</span>
-<span class="normal">99</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">ModelInfo</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">ModelInfo</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">inputs</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;smiles&quot;</span>
     <span class="nb">type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;pretrained&quot;</span><span class="p">,</span> <span class="s2">&quot;hand-crafted&quot;</span><span class="p">,</span> <span class="s2">&quot;hashed&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">]</span>
@@ -1871,12 +1875,16 @@
     <span class="k">def</span> <span class="nf">usage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the usage of the model&quot;&quot;&quot;</span>
         <span class="n">import_statement</span><span class="p">,</span> <span class="n">loader_statement</span> <span class="o">=</span> <span class="n">get_model_init</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">comment</span> <span class="o">=</span> <span class="s2">&quot;# sanitize and standardize your molecules if needed&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">require_3D</span><span class="p">:</span>
+            <span class="n">comment</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"># &lt;generate 3D coordinates here&gt; &quot;</span>
         <span class="n">usage</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        import datamol as dm</span>
 <span class="s2">        </span><span class="si">{</span><span class="n">import_statement</span><span class="si">}</span>
-<span class="s2">        data = dm.freesolv().iloc[:100]</span>
+<span class="s2">        smiles = dm.freesolv().iloc[:100].smiles</span>
+<span class="s2">        </span><span class="si">{</span><span class="n">comment</span><span class="si">}</span>
 <span class="s2">        transformer = </span><span class="si">{</span><span class="n">loader_statement</span><span class="si">}</span>
-<span class="s2">        features = transformer(data[&quot;smiles&quot;])</span>
+<span class="s2">        features = transformer(smiles)</span>
 <span class="s2">        &quot;&quot;&quot;</span>
         <span class="n">usage</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">usage</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)])</span>
         <span class="k">return</span> <span class="n">usage</span>
@@ -2211,25 +2219,25 @@
 
       <details class="quote">
         <summary>Source code in <code>molfeat/store/modelcard.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">80</span>
 <span class="normal">81</span>
 <span class="normal">82</span>
 <span class="normal">83</span>
 <span class="normal">84</span>
 <span class="normal">85</span>
-<span class="normal">86</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_card</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;ModelInfo&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">],</span> <span class="n">match_only</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span>
+<span class="normal">98</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_card</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;ModelInfo&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">],</span> <span class="n">match_only</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compare two model card information and returns True if they are the same</span>
 
 <span class="sd">    Args:</span>
@@ -2294,14 +2302,14 @@
 
       <details class="quote">
         <summary>Source code in <code>molfeat/store/modelcard.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate the folder path where to save this model</span>
 
 <span class="sd">    Args:</span>
@@ -2331,26 +2339,34 @@
 
       <details class="quote">
         <summary>Source code in <code>molfeat/store/modelcard.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span>
-<span class="normal">92</span>
-<span class="normal">93</span>
-<span class="normal">94</span>
-<span class="normal">95</span>
-<span class="normal">96</span>
-<span class="normal">97</span>
-<span class="normal">98</span>
-<span class="normal">99</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">usage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">usage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the usage of the model&quot;&quot;&quot;</span>
     <span class="n">import_statement</span><span class="p">,</span> <span class="n">loader_statement</span> <span class="o">=</span> <span class="n">get_model_init</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="n">comment</span> <span class="o">=</span> <span class="s2">&quot;# sanitize and standardize your molecules if needed&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">require_3D</span><span class="p">:</span>
+        <span class="n">comment</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"># &lt;generate 3D coordinates here&gt; &quot;</span>
     <span class="n">usage</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    import datamol as dm</span>
 <span class="s2">    </span><span class="si">{</span><span class="n">import_statement</span><span class="si">}</span>
-<span class="s2">    data = dm.freesolv().iloc[:100]</span>
+<span class="s2">    smiles = dm.freesolv().iloc[:100].smiles</span>
+<span class="s2">    </span><span class="si">{</span><span class="n">comment</span><span class="si">}</span>
 <span class="s2">    transformer = </span><span class="si">{</span><span class="n">loader_statement</span><span class="si">}</span>
-<span class="s2">    features = transformer(data[&quot;smiles&quot;])</span>
+<span class="s2">    features = transformer(smiles)</span>
 <span class="s2">    &quot;&quot;&quot;</span>
     <span class="n">usage</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">usage</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)])</span>
     <span class="k">return</span> <span class="n">usage</span>
@@ -2436,7 +2452,19 @@
 <span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
-<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_model_init</span><span class="p">(</span><span class="n">card</span><span class="p">):</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_model_init</span><span class="p">(</span><span class="n">card</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the model initialization code</span>
 
 <span class="sd">    Args:</span>
@@ -2444,24 +2472,36 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">card</span><span class="o">.</span><span class="n">group</span> <span class="o">==</span> <span class="s2">&quot;all&quot;</span> <span class="ow">and</span> <span class="n">card</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="s2">&quot;pretrained&quot;</span><span class="p">:</span>
         <span class="n">import_statement</span> <span class="o">=</span> <span class="s2">&quot;from molfeat.trans import MoleculeTransformer&quot;</span>
-        <span class="n">loader_statement</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;MoleculeTransformer(featurizer=&#39;</span><span class="si">{</span><span class="n">card</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;)&quot;</span>
-    <span class="k">elif</span> <span class="n">card</span><span class="o">.</span><span class="n">group</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;rdkit&quot;</span><span class="p">,</span> <span class="s2">&quot;fp&quot;</span><span class="p">]:</span>
+        <span class="n">loader_statement</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;MoleculeTransformer(featurizer=&#39;</span><span class="si">{</span><span class="n">card</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;, dtype=float)&quot;</span>
+    <span class="k">elif</span> <span class="n">card</span><span class="o">.</span><span class="n">group</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;rdkit&quot;</span><span class="p">,</span> <span class="s2">&quot;fp&quot;</span><span class="p">,</span> <span class="s2">&quot;shape&quot;</span><span class="p">]:</span>
         <span class="n">import_statement</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;from molfeat.trans.fp import FPVecTransformer&quot;</span>
-        <span class="n">loader_statement</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;FPVecTransformer(kind=&#39;</span><span class="si">{</span><span class="n">card</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;)&quot;</span>
+        <span class="n">loader_statement</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;FPVecTransformer(kind=&#39;</span><span class="si">{</span><span class="n">card</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;, dtype=float)&quot;</span>
     <span class="k">elif</span> <span class="n">card</span><span class="o">.</span><span class="n">group</span> <span class="o">==</span> <span class="s2">&quot;dgllife&quot;</span><span class="p">:</span>
         <span class="n">import_statement</span> <span class="o">=</span> <span class="s2">&quot;from molfeat.trans.pretrained import PretrainedDGLTransformer&quot;</span>
-        <span class="n">loader_statement</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;PretrainedDGLTransformer(kind=&#39;</span><span class="si">{</span><span class="n">card</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;)&quot;</span>
+        <span class="n">loader_statement</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;PretrainedDGLTransformer(kind=&#39;</span><span class="si">{</span><span class="n">card</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;, dtype=float)&quot;</span>
     <span class="k">elif</span> <span class="n">card</span><span class="o">.</span><span class="n">group</span> <span class="o">==</span> <span class="s2">&quot;graphormer&quot;</span><span class="p">:</span>
         <span class="n">import_statement</span> <span class="o">=</span> <span class="s2">&quot;from molfeat.trans.pretrained import GraphormerTransformer&quot;</span>
-        <span class="n">loader_statement</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;GraphormerTransformer(kind=&#39;</span><span class="si">{</span><span class="n">card</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;)&quot;</span>
+        <span class="n">loader_statement</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;GraphormerTransformer(kind=&#39;</span><span class="si">{</span><span class="n">card</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;, dtype=float)&quot;</span>
     <span class="k">elif</span> <span class="n">card</span><span class="o">.</span><span class="n">group</span> <span class="o">==</span> <span class="s2">&quot;fcd&quot;</span><span class="p">:</span>
         <span class="n">import_statement</span> <span class="o">=</span> <span class="s2">&quot;from molfeat.trans.pretrained import FCDTransformer&quot;</span>
         <span class="n">loader_statement</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;FCDTransformer()&quot;</span>
+    <span class="k">elif</span> <span class="n">card</span><span class="o">.</span><span class="n">group</span> <span class="o">==</span> <span class="s2">&quot;pharmacophore&quot;</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">card</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">card</span><span class="o">.</span><span class="n">require_3D</span><span class="p">:</span>
+            <span class="n">import_class</span> <span class="o">=</span> <span class="s2">&quot;Pharmacophore3D&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">import_class</span> <span class="o">=</span> <span class="s2">&quot;Pharmacophore2D&quot;</span>
+        <span class="n">import_statement</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;from molfeat.trans.base import MoleculeTransformer</span><span class="se">\n</span><span class="s2">from molfeat.calc.pharmacophore import </span><span class="si">{</span><span class="n">import_class</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">loader_statement</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;MoleculeTransformer(featurizer=</span><span class="si">{</span><span class="n">import_class</span><span class="si">}</span><span class="s2">(factory=&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;), dtype=float)&quot;</span>
+        <span class="p">)</span>
     <span class="k">elif</span> <span class="n">card</span><span class="o">.</span><span class="n">group</span> <span class="o">==</span> <span class="s2">&quot;huggingface&quot;</span><span class="p">:</span>
         <span class="n">import_statement</span> <span class="o">=</span> <span class="p">(</span>
             <span class="s2">&quot;from molfeat.trans.pretrained.hf_transformers import PretrainedHFTransformer&quot;</span>
         <span class="p">)</span>
-        <span class="n">loader_statement</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;PretrainedHFTransformer(kind=&#39;</span><span class="si">{</span><span class="n">card</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;, notation=&#39;</span><span class="si">{</span><span class="n">card</span><span class="o">.</span><span class="n">inputs</span><span class="si">}</span><span class="s2">&#39;)&quot;</span>
+        <span class="n">loader_statement</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;PretrainedHFTransformer(kind=&#39;</span><span class="si">{</span><span class="n">card</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;, notation=&#39;</span><span class="si">{</span><span class="n">card</span><span class="o">.</span><span class="n">inputs</span><span class="si">}</span><span class="s2">&#39;, dtype=float)&quot;</span>
+        <span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown model group </span><span class="si">{</span><span class="n">card</span><span class="o">.</span><span class="n">group</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">import_statement</span><span class="p">,</span> <span class="n">loader_statement</span>
@@ -2806,7 +2846,10 @@ but should also help in listing model availability and registering models</p>
 <span class="normal">306</span>
 <span class="normal">307</span>
 <span class="normal">308</span>
-<span class="normal">309</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">ModelStore</span><span class="p">:</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">ModelStore</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A class emulating artefact serializing from any url</span>
 
 <span class="sd">    This class should not only allow pretrained model serializing and loading,</span>
@@ -3024,6 +3067,9 @@ but should also help in listing model availability and registering models</p>
 <span class="sd">            chunk_size: chunk size for download</span>
 <span class="sd">            force: whether to reforce the download of the file</span>
 
+<span class="sd">        Returns:</span>
+<span class="sd">            model: Optional model, if the model requires download or loading weights</span>
+<span class="sd">            model_info: model information card</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="c1"># find the model with the same name</span>
@@ -3217,8 +3263,8 @@ but should also help in listing model availability and registering models</p>
 
       <details class="quote">
         <summary>Source code in <code>molfeat/store/modelstore.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">270</span>
-<span class="normal">271</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">card</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ModelInfo</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">273</span>
+<span class="normal">274</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">card</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ModelInfo</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">card</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
@@ -3555,10 +3601,7 @@ but should also help in listing model availability and registering models</p>
 
       <details class="quote">
         <summary>Source code in <code>molfeat/store/modelstore.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">273</span>
-<span class="normal">274</span>
-<span class="normal">275</span>
-<span class="normal">276</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">276</span>
 <span class="normal">277</span>
 <span class="normal">278</span>
 <span class="normal">279</span>
@@ -3574,7 +3617,10 @@ but should also help in listing model availability and registering models</p>
 <span class="normal">289</span>
 <span class="normal">290</span>
 <span class="normal">291</span>
-<span class="normal">292</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">exists</span><span class="p">(</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">exists</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">card</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ModelInfo</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">check_remote</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -3688,6 +3734,28 @@ but should also help in listing model availability and registering models</p>
     </tbody>
   </table>
 
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>model</code></td>          <td>
+          </td>
+          <td><p>Optional model, if the model requires download or loading weights</p></td>
+        </tr>
+        <tr>
+<td><code>model_info</code></td>          <td>
+          </td>
+          <td><p>model information card</p></td>
+        </tr>
+    </tbody>
+  </table>
+
       <details class="quote">
         <summary>Source code in <code>molfeat/store/modelstore.py</code></summary>
         <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">223</span>
@@ -3735,7 +3803,10 @@ but should also help in listing model availability and registering models</p>
 <span class="normal">265</span>
 <span class="normal">266</span>
 <span class="normal">267</span>
-<span class="normal">268</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">load</span><span class="p">(</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">load</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">model_name</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">ModelInfo</span><span class="p">],</span>
     <span class="n">load_fn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -3755,6 +3826,9 @@ but should also help in listing model availability and registering models</p>
 <span class="sd">        chunk_size: chunk size for download</span>
 <span class="sd">        force: whether to reforce the download of the file</span>
 
+<span class="sd">    Returns:</span>
+<span class="sd">        model: Optional model, if the model requires download or loading weights</span>
+<span class="sd">        model_info: model information card</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="c1"># find the model with the same name</span>
@@ -4047,10 +4121,7 @@ but should also help in listing model availability and registering models</p>
 
       <details class="quote">
         <summary>Source code in <code>molfeat/store/modelstore.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">294</span>
-<span class="normal">295</span>
-<span class="normal">296</span>
-<span class="normal">297</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">297</span>
 <span class="normal">298</span>
 <span class="normal">299</span>
 <span class="normal">300</span>
@@ -4062,7 +4133,10 @@ but should also help in listing model availability and registering models</p>
 <span class="normal">306</span>
 <span class="normal">307</span>
 <span class="normal">308</span>
-<span class="normal">309</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modelcard</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ModelInfo</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">search_kwargs</span><span class="p">):</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modelcard</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ModelInfo</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">search_kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; &quot;Return all model card that match the required search parameters</span>
 
 <span class="sd">    Args:</span>

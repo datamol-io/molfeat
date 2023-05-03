@@ -1024,6 +1024,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.prefer_encoder" class="md-nav__link">
+    prefer_encoder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.preload" class="md-nav__link">
     preload
   </a>
@@ -1417,6 +1424,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.prefer_encoder" class="md-nav__link">
+    prefer_encoder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.preload" class="md-nav__link">
     preload
   </a>
@@ -1516,8 +1530,7 @@
 
         <details class="quote">
           <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">30</span>
-<span class="normal">31</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
@@ -1567,7 +1580,8 @@
 <span class="normal">78</span>
 <span class="normal">79</span>
 <span class="normal">80</span>
-<span class="normal">81</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="normal">81</span>
+<span class="normal">82</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">HFExperiment</span><span class="p">:</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">PreTrainedModel</span>
     <span class="n">tokenizer</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">PreTrainedTokenizer</span><span class="p">,</span> <span class="n">PreTrainedTokenizerFast</span><span class="p">]</span>
@@ -1744,8 +1758,7 @@
 
       <details class="quote">
         <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">57</span>
-<span class="normal">58</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">58</span>
 <span class="normal">59</span>
 <span class="normal">60</span>
 <span class="normal">61</span>
@@ -1768,7 +1781,8 @@
 <span class="normal">78</span>
 <span class="normal">79</span>
 <span class="normal">80</span>
-<span class="normal">81</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">81</span>
+<span class="normal">82</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model_class</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Load a model from the given path</span>
 <span class="sd">    Args:</span>
@@ -1863,8 +1877,7 @@
 
       <details class="quote">
         <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">36</span>
-<span class="normal">37</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
@@ -1882,7 +1895,8 @@
 <span class="normal">52</span>
 <span class="normal">53</span>
 <span class="normal">54</span>
-<span class="normal">55</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">55</span>
+<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">HFExperiment</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">clean_up</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Save a hugging face model to a specific path</span>
 
@@ -1937,8 +1951,7 @@
 
         <details class="quote">
           <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 84</span>
-<span class="normal"> 85</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 85</span>
 <span class="normal"> 86</span>
 <span class="normal"> 87</span>
 <span class="normal"> 88</span>
@@ -2057,7 +2070,8 @@
 <span class="normal">201</span>
 <span class="normal">202</span>
 <span class="normal">203</span>
-<span class="normal">204</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">HFModel</span><span class="p">(</span><span class="n">PretrainedStoreModel</span><span class="p">):</span>
+<span class="normal">204</span>
+<span class="normal">205</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">HFModel</span><span class="p">(</span><span class="n">PretrainedStoreModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Transformer model loading model loading&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -2243,8 +2257,7 @@
 
       <details class="quote">
         <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 87</span>
-<span class="normal"> 88</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 88</span>
 <span class="normal"> 89</span>
 <span class="normal"> 90</span>
 <span class="normal"> 91</span>
@@ -2257,7 +2270,8 @@
 <span class="normal"> 98</span>
 <span class="normal"> 99</span>
 <span class="normal">100</span>
-<span class="normal">101</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">101</span>
+<span class="normal">102</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">cache_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2351,8 +2365,7 @@
 
       <details class="quote">
         <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">121</span>
-<span class="normal">122</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">122</span>
 <span class="normal">123</span>
 <span class="normal">124</span>
 <span class="normal">125</span>
@@ -2394,7 +2407,8 @@
 <span class="normal">161</span>
 <span class="normal">162</span>
 <span class="normal">163</span>
-<span class="normal">164</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">164</span>
+<span class="normal">165</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">from_pretrained</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">PreTrainedModel</span><span class="p">],</span>
@@ -2460,15 +2474,15 @@
 
       <details class="quote">
         <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">185</span>
-<span class="normal">186</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">186</span>
 <span class="normal">187</span>
 <span class="normal">188</span>
 <span class="normal">189</span>
 <span class="normal">190</span>
 <span class="normal">191</span>
 <span class="normal">192</span>
-<span class="normal">193</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_notation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_notation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="normal">193</span>
+<span class="normal">194</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_notation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_notation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the notation of the model&quot;&quot;&quot;</span>
     <span class="n">notation</span> <span class="o">=</span> <span class="n">default_notation</span>
     <span class="k">try</span><span class="p">:</span>
@@ -2499,8 +2513,7 @@
 
       <details class="quote">
         <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">195</span>
-<span class="normal">196</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">196</span>
 <span class="normal">197</span>
 <span class="normal">198</span>
 <span class="normal">199</span>
@@ -2508,7 +2521,8 @@
 <span class="normal">201</span>
 <span class="normal">202</span>
 <span class="normal">203</span>
-<span class="normal">204</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">204</span>
+<span class="normal">205</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Load Transformer Pretrained featurizer model&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span>
@@ -2597,8 +2611,7 @@
 
       <details class="quote">
         <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">166</span>
-<span class="normal">167</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">167</span>
 <span class="normal">168</span>
 <span class="normal">169</span>
 <span class="normal">170</span>
@@ -2614,7 +2627,8 @@
 <span class="normal">180</span>
 <span class="normal">181</span>
 <span class="normal">182</span>
-<span class="normal">183</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">183</span>
+<span class="normal">184</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">register_pretrained</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">PreTrainedModel</span><span class="p">],</span>
@@ -2672,8 +2686,7 @@ smiles and molecules, then perform the internal conversion, based on the notatio
 
         <details class="quote">
           <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">207</span>
-<span class="normal">208</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">208</span>
 <span class="normal">209</span>
 <span class="normal">210</span>
 <span class="normal">211</span>
@@ -2883,7 +2896,17 @@ smiles and molecules, then perform the internal conversion, based on the notatio
 <span class="normal">415</span>
 <span class="normal">416</span>
 <span class="normal">417</span>
-<span class="normal">418</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">PretrainedHFTransformer</span><span class="p">(</span><span class="n">PretrainedMolTransformer</span><span class="p">):</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">PretrainedHFTransformer</span><span class="p">(</span><span class="n">PretrainedMolTransformer</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    HuggingFace Transformer for feature extraction.</span>
 
@@ -2900,6 +2923,7 @@ smiles and molecules, then perform the internal conversion, based on the notatio
         <span class="n">notation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
         <span class="n">pooling</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span>
         <span class="n">concat_layers</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">prefer_encoder</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
         <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
         <span class="n">max_length</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span><span class="p">,</span>
@@ -2927,6 +2951,7 @@ smiles and molecules, then perform the internal conversion, based on the notatio
 <span class="sd">            pooling: type of pooling to use. One of [&#39;default&#39;, &#39;mean&#39;, &#39;max&#39;, &#39;sum&#39;]. The value &quot;default&quot; corresponds to the default litterature pooling for each model type.</span>
 <span class="sd">                See `molfeat.utils.pooler.get_default_hf_pooler` for more details.</span>
 <span class="sd">            concat_layers: Layer to concat to get the representation. By default the last hidden layer is returned.</span>
+<span class="sd">            prefer_encoder: For an encoder-decoder model, prefer the embeddings provided by the encoder.</span>
 <span class="sd">            dtype: Data type to output</span>
 <span class="sd">            device: Torch device on which to run the featurizer.</span>
 <span class="sd">            max_length: Maximum length of the input sequence to consider. Please update this for large sequences</span>
@@ -2953,6 +2978,7 @@ smiles and molecules, then perform the internal conversion, based on the notatio
         <span class="bp">self</span><span class="o">.</span><span class="n">random_seed</span> <span class="o">=</span> <span class="n">random_seed</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">preload</span> <span class="o">=</span> <span class="n">preload</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pooling</span> <span class="o">=</span> <span class="n">pooling</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prefer_encoder</span> <span class="o">=</span> <span class="n">prefer_encoder</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pooling_obj</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">kind</span><span class="p">,</span> <span class="n">HFModel</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="n">kind</span><span class="o">.</span><span class="n">name</span>
@@ -3076,7 +3102,13 @@ smiles and molecules, then perform the internal conversion, based on the notatio
         <span class="k">else</span><span class="p">:</span>
             <span class="n">attention_mask</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
-            <span class="n">out_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">output_hidden_states</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">inputs</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">EncoderDecoderModel</span><span class="p">)</span>
+                <span class="ow">or</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;encoder&quot;</span><span class="p">)</span>
+            <span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefer_encoder</span><span class="p">:</span>
+                <span class="n">out_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">output_hidden_states</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">inputs</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">out_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">output_hidden_states</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">inputs</span><span class="p">)</span>
             <span class="n">hidden_state</span> <span class="o">=</span> <span class="n">out_dict</span><span class="p">[</span><span class="s2">&quot;hidden_states&quot;</span><span class="p">]</span>
             <span class="n">emb_layers</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">concat_layers</span><span class="p">:</span>
@@ -3283,6 +3315,25 @@ smiles and molecules, then perform the internal conversion, based on the notatio
 
 
 
+<h4 id="molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.prefer_encoder" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">prefer_encoder</span> <span class="o">=</span> <span class="n">prefer_encoder</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.prefer_encoder" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
 <h4 id="molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.preload" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">preload</span> <span class="o">=</span> <span class="n">preload</span></code>
   
@@ -3324,7 +3375,7 @@ smiles and molecules, then perform the internal conversion, based on the notatio
 
 
 <h4 id="molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.__init__" class="doc doc-heading">
-<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;ChemBERTa-77M-MLM&#39;</span><span class="p">,</span> <span class="n">notation</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">pooling</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">concat_layers</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">ignore_padding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;ChemBERTa-77M-MLM&#39;</span><span class="p">,</span> <span class="n">notation</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">pooling</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">concat_layers</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">prefer_encoder</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">ignore_padding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span></code>
 
 <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.__init__" class="headerlink" title="Permanent link">&para;</a></h4>
 
@@ -3394,6 +3445,16 @@ See <code>molfeat.utils.pooler.get_default_hf_pooler</code> for more details.</p
           <td><p>Layer to concat to get the representation. By default the last hidden layer is returned.</p></td>
           <td>
                 <code>-1</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>prefer_encoder</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>For an encoder-decoder model, prefer the embeddings provided by the encoder.</p></td>
+          <td>
+                <code>True</code>
           </td>
         </tr>
         <tr>
@@ -3469,8 +3530,7 @@ See <code>molfeat.utils.pooler.get_default_hf_pooler</code> for more details.</p
 
       <details class="quote">
         <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">218</span>
-<span class="normal">219</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">219</span>
 <span class="normal">220</span>
 <span class="normal">221</span>
 <span class="normal">222</span>
@@ -3538,12 +3598,17 @@ See <code>molfeat.utils.pooler.get_default_hf_pooler</code> for more details.</p
 <span class="normal">284</span>
 <span class="normal">285</span>
 <span class="normal">286</span>
-<span class="normal">287</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">kind</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">HFModel</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ChemBERTa-77M-MLM&quot;</span><span class="p">,</span>
     <span class="n">notation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
     <span class="n">pooling</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span>
     <span class="n">concat_layers</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">prefer_encoder</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
     <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
     <span class="n">max_length</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span><span class="p">,</span>
@@ -3571,6 +3636,7 @@ See <code>molfeat.utils.pooler.get_default_hf_pooler</code> for more details.</p
 <span class="sd">        pooling: type of pooling to use. One of [&#39;default&#39;, &#39;mean&#39;, &#39;max&#39;, &#39;sum&#39;]. The value &quot;default&quot; corresponds to the default litterature pooling for each model type.</span>
 <span class="sd">            See `molfeat.utils.pooler.get_default_hf_pooler` for more details.</span>
 <span class="sd">        concat_layers: Layer to concat to get the representation. By default the last hidden layer is returned.</span>
+<span class="sd">        prefer_encoder: For an encoder-decoder model, prefer the embeddings provided by the encoder.</span>
 <span class="sd">        dtype: Data type to output</span>
 <span class="sd">        device: Torch device on which to run the featurizer.</span>
 <span class="sd">        max_length: Maximum length of the input sequence to consider. Please update this for large sequences</span>
@@ -3597,6 +3663,7 @@ See <code>molfeat.utils.pooler.get_default_hf_pooler</code> for more details.</p
     <span class="bp">self</span><span class="o">.</span><span class="n">random_seed</span> <span class="o">=</span> <span class="n">random_seed</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">preload</span> <span class="o">=</span> <span class="n">preload</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">pooling</span> <span class="o">=</span> <span class="n">pooling</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">prefer_encoder</span> <span class="o">=</span> <span class="n">prefer_encoder</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_pooling_obj</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">kind</span><span class="p">,</span> <span class="n">HFModel</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="n">kind</span><span class="o">.</span><span class="n">name</span>
@@ -3630,10 +3697,10 @@ See <code>molfeat.utils.pooler.get_default_hf_pooler</code> for more details.</p
 
       <details class="quote">
         <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">415</span>
-<span class="normal">416</span>
-<span class="normal">417</span>
-<span class="normal">418</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_max_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_length</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_max_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_length</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Set the maximum length for this featurizer&quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span> <span class="o">=</span> <span class="n">max_length</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_preload</span><span class="p">()</span>

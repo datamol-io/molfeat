@@ -1934,8 +1934,8 @@ This featurizer is compatible with scikit-learn estimators and thus can be plugg
 <code class="highlight language-python"><span class="n">n_jobs</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-property"><code>property</code></small>
       <small class="doc doc-label doc-label-writable"><code>writable</code></small>
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
 
 <a href="#molfeat.trans.base.BaseFeaturizer.n_jobs" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -3206,7 +3206,7 @@ If you calculator also implements a <code>batch_compute</code> method, it will b
             <span class="c1"># to have a shared memory</span>
             <span class="n">new_cache</span> <span class="o">=</span> <span class="n">MPDataCache</span><span class="p">()</span>
             <span class="n">new_cache</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">existing_cache</span><span class="p">)</span>
-            <span class="n">transformer</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="n">new_cache</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="n">transformer</span><span class="p">,</span> <span class="n">cache_attr</span><span class="p">,</span> <span class="n">new_cache</span><span class="p">)</span>
 
         <span class="n">transformed</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">parallelized</span><span class="p">(</span>
             <span class="n">transformer</span><span class="p">,</span>
@@ -3218,7 +3218,7 @@ If you calculator also implements a <code>batch_compute</code> method, it will b
         <span class="k">if</span> <span class="n">use_mp_cache</span><span class="p">:</span>
             <span class="c1"># we set back the original transformation while updating it with</span>
             <span class="c1"># all the missing values</span>
-            <span class="n">existing_cache</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">transformer</span><span class="o">.</span><span class="n">cache</span><span class="p">)</span>
+            <span class="n">existing_cache</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">transformer</span><span class="p">,</span> <span class="n">cache_attr</span><span class="p">,</span> <span class="p">{}))</span>
             <span class="nb">setattr</span><span class="p">(</span><span class="n">transformer</span><span class="p">,</span> <span class="n">cache_attr</span><span class="p">,</span> <span class="n">existing_cache</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">concatenate</span><span class="p">:</span>
@@ -4196,7 +4196,7 @@ Only returned when ignore_errors is True.</p></td>
         <span class="c1"># to have a shared memory</span>
         <span class="n">new_cache</span> <span class="o">=</span> <span class="n">MPDataCache</span><span class="p">()</span>
         <span class="n">new_cache</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">existing_cache</span><span class="p">)</span>
-        <span class="n">transformer</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="n">new_cache</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">transformer</span><span class="p">,</span> <span class="n">cache_attr</span><span class="p">,</span> <span class="n">new_cache</span><span class="p">)</span>
 
     <span class="n">transformed</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">parallelized</span><span class="p">(</span>
         <span class="n">transformer</span><span class="p">,</span>
@@ -4208,7 +4208,7 @@ Only returned when ignore_errors is True.</p></td>
     <span class="k">if</span> <span class="n">use_mp_cache</span><span class="p">:</span>
         <span class="c1"># we set back the original transformation while updating it with</span>
         <span class="c1"># all the missing values</span>
-        <span class="n">existing_cache</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">transformer</span><span class="o">.</span><span class="n">cache</span><span class="p">)</span>
+        <span class="n">existing_cache</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">transformer</span><span class="p">,</span> <span class="n">cache_attr</span><span class="p">,</span> <span class="p">{}))</span>
         <span class="nb">setattr</span><span class="p">(</span><span class="n">transformer</span><span class="p">,</span> <span class="n">cache_attr</span><span class="p">,</span> <span class="n">existing_cache</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">concatenate</span><span class="p">:</span>

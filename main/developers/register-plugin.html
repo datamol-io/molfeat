@@ -1106,9 +1106,12 @@ By convention, names of molfeat plugins are lowercase and prefixed by <code>molf
 <ul>
 <li><strong>entry_point_prefix</strong> (required):
 the prefix of all entry points provided by the plugin.
-By convention, a plugin <code>molfeat-xxx</code> should use <code>entry_point_prefix: xxx</code>.
-For example: <code>molfeat-myplugin</code> uses the entry point prefix <code>myplugin</code> and provides numerous entry points, all of which start with <code>myplugin.</code>.</li>
+By convention, a plugin <code>molfeat-xxx</code> should use <code>entry_point_prefix: xxx</code>. You can also use the module name of your plugin. For example: <code>molfeat-myplugin</code> uses the entry point prefix <code>myplugin</code> and provides numerous entry points, all of which start with <code>myplugin.</code>. The entry point is also how you signal to users how they can load your plugin through molfeat. </li>
 </ul>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">molfeat.trans</span> <span class="kn">import</span> <span class="n">MoleculeTransformer</span>
+<span class="kn">from</span> <span class="nn">molfeat.plugins</span> <span class="kn">import</span> <span class="n">load_registered_plugins</span>
+<span class="n">load_registered_plugins</span><span class="p">(</span><span class="n">add_submodules</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plugins</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">])</span>
+</code></pre></div>
 <ul>
 <li><strong>home_url</strong> (required):
 the link to the homepage of the plugin, for example its github repository.</li>
@@ -1130,7 +1133,10 @@ An example of such a file is provided below. You will need to provide all keys:<
 <span class="c1"># description of your featurizer, str</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Concise description for the awesome-featurizer</span>
 <span class="c1"># type of input the featurizer takes, str</span>
-<span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">smiles</span><span class="w"> </span>
+<span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">smiles</span>
+<span class="c1"># which group does the featurizer belong to. </span>
+<span class="c1"># This helps for the usage card. Ask a maintainer for help</span>
+<span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;rdkit&quot;</span>
 <span class="c1"># link to the reference of the featurizer</span>
 <span class="nt">reference</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://link-to-the-awesome-paper/</span>
 <span class="c1"># type of featurizer, Literal[&quot;pretrained&quot;, &quot;hand-crafted&quot;, &quot;hashed&quot;]</span>
