@@ -4,6 +4,32 @@ molfeat Change Log
 
 .. current developments
 
+v0.8.8
+====================
+
+**Added:**
+
+* A model named Molt5
+* Existing plugins to a the `plugin.yml` file
+* Documents missing featurizers
+
+**Changed:**
+
+* Different docs style, with Tabs on the top for `Overview`, `Usage`, `Tutorials`, `API`, `Contribute`, `License`
+* Small updates in docs
+
+**Fixed:**
+
+* Fix #43: Pretrained models should now work better with `batch_transform`,  allowing efficient parallelization, while retaining all cached features.
+
+**Authors:**
+
+* DomInvivo
+* dessygil
+* maclandrol
+
+
+
 v0.8.7
 ====================
 
