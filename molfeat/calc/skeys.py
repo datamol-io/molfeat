@@ -10,7 +10,6 @@ from collections import defaultdict as ddict
 from pathlib import Path
 from loguru import logger
 from rdkit import Chem
-from rdkit.Chem import rdchem
 from rdkit.Chem import rdMolDescriptors as Desc
 from rdkit.Chem.rdmolops import GetFormalCharge
 from rdkit.Chem.Scaffolds import MurckoScaffold
@@ -19,7 +18,7 @@ from molfeat.calc.base import SerializableCalculator
 import molfeat
 
 
-def _is_ring_fully_conjugated(mol: rdchem.Mol, ring: list):
+def _is_ring_fully_conjugated(mol: dm.Mol, ring: list):
     """Check whether a ring is fully conjugated"""
     suppl = Chem.ResonanceMolSupplier(mol)
     first_idx_conj = -1
@@ -38,7 +37,7 @@ def _is_ring_fully_conjugated(mol: rdchem.Mol, ring: list):
     return True
 
 
-def _n_multiple_bond_in_ring(mol: rdchem.Mol, ring: list):
+def _n_multiple_bond_in_ring(mol: dm.Mol, ring: list):
     """Get number of multiple bonds in a ring"""
     atom_i = -1
     atom_j = -1
@@ -57,7 +56,7 @@ def _n_multiple_bond_in_ring(mol: rdchem.Mol, ring: list):
     return nr_multiple_bonds
 
 
-def _count_heteroatom_per_ring(mol: rdchem.Mol, rings: list):
+def _count_heteroatom_per_ring(mol: dm.Mol, rings: list):
     """Count number of heteroatoms in rings"""
     n_heteros = [0] * len(rings)
     for i, ring in enumerate(rings):
@@ -67,7 +66,7 @@ def _count_heteroatom_per_ring(mol: rdchem.Mol, rings: list):
     return n_heteros
 
 
-def _get_ring_system(mol: rdchem.Mol):
+def _get_ring_system(mol: dm.Mol):
     """Build ring systems in a molecule"""
     q = mol.GetRingInfo()
     simple_rings = q.AtomRings()
@@ -91,7 +90,7 @@ def _get_ring_system(mol: rdchem.Mol):
     return list(simple_rings), rings, ring_map
 
 
-def _ring_atom_state(mol: rdchem.Mol):
+def _ring_atom_state(mol: dm.Mol):
     """Get the conjugated state of ring atoms"""
     ri = mol.GetRingInfo()
     ring_atom_conj_state = ddict(list)
@@ -191,12 +190,12 @@ class ScaffoldKeyCalculator(SerializableCalculator):
         """
         return (features - cls.NORM_PARAMS["mean"]) / cls.NORM_PARAMS["std"]
 
-    def n_atom_in_rings(self, mol: rdchem.Mol):
+    def n_atom_in_rings(self, mol: dm.Mol):
         """1. number of ring atoms"""
         sm = dm.from_smarts("[r]")
         return len(mol.GetSubstructMatches(sm, uniquify=True))
 
-    def n_atom_in_conjugated_ring(self, mol: rdchem.Mol):
+    def n_atom_in_conjugated_ring(self, mol: dm.Mol):
         """2. number of atoms in conjugated rings"""
         ri = mol.GetRingInfo()
         n = 0
@@ -205,7 +204,7 @@ class ScaffoldKeyCalculator(SerializableCalculator):
                 n += len(ring)
         return n
 
-    def n_atoms_not_in_conjugated_ring(self, mol: rdchem.Mol):
+    def n_atoms_not_in_conjugated_ring(self, mol: dm.Mol):
         """
         3. number of atoms not in conjugated rings
         (i.e. atoms in aliphatic rings and non-ring atoms)
@@ -218,62 +217,62 @@ class ScaffoldKeyCalculator(SerializableCalculator):
                 n += len(ring)
         return n
 
-    def n_atom_in_chain(self, mol: rdchem.Mol):
+    def n_atom_in_chain(self, mol: dm.Mol):
         """4. number atoms in chains (not counting double-connected exo-chain atoms)"""
         sm = dm.from_smarts("[!r;!$(*=[r])]")
         return len(mol.GetSubstructMatches(sm, uniquify=True))
 
-    def n_atom_exocyclic(self, mol: rdchem.Mol):
+    def n_atom_exocyclic(self, mol: dm.Mol):
         """5. number of exocyclic atoms (connected by multiple bonds to a ring)"""
         sm = dm.from_smarts("[!r;!$(*-[r])&$(*~[r])]")
         return len(mol.GetSubstructMatches(sm, uniquify=True))
 
-    def n_nitrogen(self, mol: rdchem.Mol):
+    def n_nitrogen(self, mol: dm.Mol):
         """6. number of nitrogen"""
         sm = dm.from_smarts("[#7]")
         return len(mol.GetSubstructMatches(sm, uniquify=True))
 
-    def n_nitrogen_in_ring(self, mol: rdchem.Mol):
+    def n_nitrogen_in_ring(self, mol: dm.Mol):
         """7. number of nitrogen in rings"""
         sm = dm.from_smarts("[#7;r]")
         return len(mol.GetSubstructMatches(sm, uniquify=True))
 
-    def n_oxygen(self, mol: rdchem.Mol):
+    def n_oxygen(self, mol: dm.Mol):
         """8. number of oxygen"""
         sm = dm.from_smarts("[#8]")
         return len(mol.GetSubstructMatches(sm, uniquify=True))
 
-    def n_oxygen_in_ring(self, mol: rdchem.Mol):
+    def n_oxygen_in_ring(self, mol: dm.Mol):
         """9. number of oxygen in rings"""
         sm = dm.from_smarts("[#8]")
         return len(mol.GetSubstructMatches(sm, uniquify=True))
 
-    def n_sulfur(self, mol: rdchem.Mol):
+    def n_sulfur(self, mol: dm.Mol):
         """10. number of sulfur atoms"""
         sm = dm.from_smarts("[#16]")
         return len(mol.GetSubstructMatches(sm, uniquify=True))
 
-    def n_heteroatoms(self, mol: rdchem.Mol):
+    def n_heteroatoms(self, mol: dm.Mol):
         """11. number of heteroatoms"""
 
         sm = dm.from_smarts("[!#1&!#6]")
         return len(mol.GetSubstructMatches(sm, uniquify=True))
 
-    def n_heteroatoms_in_ring(self, mol: rdchem.Mol):
+    def n_heteroatoms_in_ring(self, mol: dm.Mol):
         """12. number of heteroatoms in rings"""
         sm = dm.from_smarts("[!#1&!#6&r]")
         return len(mol.GetSubstructMatches(sm, uniquify=True))
 
-    def n_atom_spiro_atoms(self, mol: rdchem.Mol):
+    def n_atom_spiro_atoms(self, mol: dm.Mol):
         """13. number of spiro atoms"""
         return Desc.CalcNumSpiroAtoms(mol)
 
-    def n_heteroatom_more_than_2_conn(self, mol: rdchem.Mol):
+    def n_heteroatom_more_than_2_conn(self, mol: dm.Mol):
         """14. number of heteroatoms with more than 2 connections"""
         sm = dm.from_smarts("[!#1;!#6;!D1!D0;!D2]")
         return len(mol.GetSubstructMatches(sm, uniquify=True))
 
-    def n_carbon_atleast_2_heteroatoms(self, mol: rdchem.Mol):
+    def n_carbon_atleast_2_heteroatoms(self, mol: dm.Mol):
         """15. number of carbon atoms connected to at least 2 heteroatoms"""
         n_atoms = 0
         for atom in mol.GetAtoms():
@@ -281,7 +280,7 @@ class ScaffoldKeyCalculator(SerializableCalculator):
             n_atoms += len(tmp) >= 2
         return n_atoms
 
-    def n_atom_at_least_2_nei_more_than_2_conn(self, mol: rdchem.Mol):
+    def n_atom_at_least_2_nei_more_than_2_conn(self, mol: dm.Mol):
         """16. Number of atoms where at least 2 connected atoms have more than 2 connections"""
         n_atoms = 0
         for atom in mol.GetAtoms():
@@ -289,16 +288,16 @@ class ScaffoldKeyCalculator(SerializableCalculator):
             n_atoms += len(tmp) > 2
         return n_atoms
 
-    def abs_scaffold_format_charge(self, mol: rdchem.Mol):
+    def abs_scaffold_format_charge(self, mol: dm.Mol):
         """17. absolute value of the scaffold formal charge"""
         charge = GetFormalCharge(mol)
         return abs(charge)
 
-    def n_bonds(self, mol: rdchem.Mol):
+    def n_bonds(self, mol: dm.Mol):
         """18. number of bonds"""
         return mol.GetNumBonds()
 
-    def n_multiple_non_conj_ring_bonds(self, mol: rdchem.Mol):
+    def n_multiple_non_conj_ring_bonds(self, mol: dm.Mol):
         """19. number of multiple, nonconjugated ring bonds"""
         extracted_rings = []
         nr_multiple_bonds_infcr = 0  # infcr: in not fully conjugated ring
@@ -310,32 +309,32 @@ class ScaffoldKeyCalculator(SerializableCalculator):
                 nr_multiple_bonds_infcr += _n_multiple_bond_in_ring(mol, ring)
         return nr_multiple_bonds_infcr
 
-    def n_bonds_2_heteroatoms(self, mol: rdchem.Mol):
+    def n_bonds_2_heteroatoms(self, mol: dm.Mol):
         """20. number of bonds connecting 2 heteroatoms"""
         sm = dm.from_smarts("[!#1&!#6]~[!#1&!#6]")
         return len(mol.GetSubstructMatches(sm, uniquify=True))
 
-    def n_carbon_het_carbon_het_bonds(self, mol: rdchem.Mol):
+    def n_carbon_het_carbon_het_bonds(self, mol: dm.Mol):
         """21. number of bonds connecting 2 heteroatoms through 2 carbons"""
         sm = dm.from_smarts("[!#1&!#6]~[#6]~[#6]~[!#1&!#6]")
         return len(mol.GetSubstructMatches(sm, uniquify=True))
 
-    def n_bonds_at_least_3_conn(self, mol: rdchem.Mol):
+    def n_bonds_at_least_3_conn(self, mol: dm.Mol):
         """22. number of bonds with at least 3 connections on both its atoms"""
         sm = dm.from_smarts("[$([!#1](~[!#1])(~[!#1])~[!#1])][$([!#1](~[!#1])(~[!#1])~[!#1])]")
         return len(mol.GetSubstructMatches(sm, uniquify=True))
 
-    def n_exocyclic_single_bonds_carbon(self, mol: rdchem.Mol):
+    def n_exocyclic_single_bonds_carbon(self, mol: dm.Mol):
         """23. number of exocyclic single bonds where a ring atom is carbon"""
         sm = dm.from_smarts("[!R;!#1]-[#6;R]")
         return len(mol.GetSubstructMatches(sm, uniquify=True))
 
-    def n_exocyclic_single_bonds_nitrogen(self, mol: rdchem.Mol):
+    def n_exocyclic_single_bonds_nitrogen(self, mol: dm.Mol):
         """24. number of exocyclic single bonds where a ring atom is nitrogen"""
         sm = dm.from_smarts("[!R;!#1]-[#7;R]")
         return len(mol.GetSubstructMatches(sm, uniquify=True))
 
-    def n_non_ring_bonds_2_conj_rings(self, mol: rdchem.Mol):
+    def n_non_ring_bonds_2_conj_rings(self, mol: dm.Mol):
         """25. number of non-ring bonds connecting 2 nonconjugated rings"""
         # EN: this is interpretated literally as bonds and not path
         ring_atom_conj_state = _ring_atom_state(mol)
@@ -349,7 +348,7 @@ class ScaffoldKeyCalculator(SerializableCalculator):
                 result += 1
         return result
 
-    def n_non_ring_bonds_conj_nonconj_rings(self, mol: rdchem.Mol):
+    def n_non_ring_bonds_conj_nonconj_rings(self, mol: dm.Mol):
         """
         26. number of non-ring bonds connecting 2 rings,
         one of them conjugated and one non-conjugated
@@ -367,7 +366,7 @@ class ScaffoldKeyCalculator(SerializableCalculator):
                 result += 1
         return result
 
-    def n_bonds_atoms_with_at_least_one_nei_with_2_conn(self, mol: rdchem.Mol):
+    def n_bonds_atoms_with_at_least_one_nei_with_2_conn(self, mol: dm.Mol):
         """
         27. number of bonds where both atoms have at least one neighbor
         (not considering the bond atoms) with more than 2 connections
@@ -388,42 +387,42 @@ class ScaffoldKeyCalculator(SerializableCalculator):
                 result += 1
         return result
 
-    def n_simple_rings(self, mol: rdchem.Mol):
+    def n_simple_rings(self, mol: dm.Mol):
         """28. number of simple rings"""
         ri = mol.GetRingInfo()
         return ri.NumRings()
 
-    def size_largest_ring(self, mol: rdchem.Mol):
+    def size_largest_ring(self, mol: dm.Mol):
         """29. Size of the largest ring"""
         ri = mol.GetRingInfo()
         max_ring_size = max((len(r) for r in ri.AtomRings()), default=0)
         return max_ring_size
 
-    def n_simple_rings_no_heteroatoms(self, mol: rdchem.Mol):
+    def n_simple_rings_no_heteroatoms(self, mol: dm.Mol):
         """30. number of simple rings with no heteroatoms"""
         ri = mol.GetRingInfo()
         n_heteros = _count_heteroatom_per_ring(mol, ri.AtomRings())
         return sum(1 for x in n_heteros if x == 0)
 
-    def n_simple_rings_1_heteroatoms(self, mol: rdchem.Mol):
+    def n_simple_rings_1_heteroatoms(self, mol: dm.Mol):
         """31. number of simple rings with 1 heteroatom"""
         ri = mol.GetRingInfo()
         n_heteros = _count_heteroatom_per_ring(mol, ri.AtomRings())
         return sum(1 for x in n_heteros if x == 1)
 
-    def n_simple_rings_2_heteroatoms(self, mol: rdchem.Mol):
+    def n_simple_rings_2_heteroatoms(self, mol: dm.Mol):
         """32. number of simple rings with 2 heteroatom"""
         ri = mol.GetRingInfo()
         n_heteros = _count_heteroatom_per_ring(mol, ri.AtomRings())
         return sum(1 for x in n_heteros if x == 2)
 
-    def n_simple_rings_at_least_3_heteroatoms(self, mol: rdchem.Mol):
+    def n_simple_rings_at_least_3_heteroatoms(self, mol: dm.Mol):
         """33. number of simple rings with 3 or more heteroatoms"""
         ri = mol.GetRingInfo()
         n_heteros = _count_heteroatom_per_ring(mol, ri.AtomRings())
         return sum(1 for x in n_heteros if x >= 3)
 
-    def n_simple_non_conj_5_atoms_rings(self, mol: rdchem.Mol):
+    def n_simple_non_conj_5_atoms_rings(self, mol: dm.Mol):
         """34. number of simple non-conjugated rings with 5 atoms"""
         ri = mol.GetRingInfo()
         n = 0
@@ -432,7 +431,7 @@ class ScaffoldKeyCalculator(SerializableCalculator):
                 n += 1
         return n
 
-    def n_simple_non_conj_6_atoms_rings(self, mol: rdchem.Mol):
+    def n_simple_non_conj_6_atoms_rings(self, mol: dm.Mol):
         """35. number of simple non-conjugated rings with 6 atoms"""
         ri = mol.GetRingInfo()
         n = 0
@@ -441,12 +440,12 @@ class ScaffoldKeyCalculator(SerializableCalculator):
                 n += 1
         return n
 
-    def n_ring_system(self, mol: rdchem.Mol):
+    def n_ring_system(self, mol: dm.Mol):
         """36. number of ring systems"""
         simple_rings, ring_system, _ = _get_ring_system(mol)
         return len(ring_system)
 
-    def n_ring_system_with_2_non_conj_simple_ring(self, mol: rdchem.Mol):
+    def n_ring_system_with_2_non_conj_simple_ring(self, mol: dm.Mol):
         """37. number of rings systems with 2 non-conjugated simple rings"""
         simple_rings, _, ring_map = _get_ring_system(mol)
         conj_rings_map = dict(
@@ -458,7 +457,7 @@ class ScaffoldKeyCalculator(SerializableCalculator):
             result += n_not_conj == 2
         return result
 
-    def n_ring_system_with_2_conj_simple_ring(self, mol: rdchem.Mol):
+    def n_ring_system_with_2_conj_simple_ring(self, mol: dm.Mol):
         """38. number of rings systems with 2 conjugated simple rings"""
         simple_rings, _, ring_map = _get_ring_system(mol)
         conj_rings_map = dict(
@@ -470,7 +469,7 @@ class ScaffoldKeyCalculator(SerializableCalculator):
             result += n_conj == 2
         return result
 
-    def n_ring_system_with_conj_non_conj_simple_ring(self, mol: rdchem.Mol):
+    def n_ring_system_with_conj_non_conj_simple_ring(self, mol: dm.Mol):
         """39 number of ring system containing 2 simple rings, one conjugated and one nonconjugated"""
         simple_rings, _, ring_map = _get_ring_system(mol)
         conj_rings_map = dict(
@@ -483,7 +482,7 @@ class ScaffoldKeyCalculator(SerializableCalculator):
                 result += n_conj == 1
         return result
 
-    def n_ring_system_with_3_conj_simple_ring(self, mol: rdchem.Mol):
+    def n_ring_system_with_3_conj_simple_ring(self, mol: dm.Mol):
         """40. number of rings systems with 3 conjugated simple rings"""
         simple_rings, _, ring_map = _get_ring_system(mol)
         conj_rings_map = dict(
@@ -495,7 +494,7 @@ class ScaffoldKeyCalculator(SerializableCalculator):
             result += n_conj == 3
         return result
 
-    def n_ring_system_with_3_non_conj_simple_ring(self, mol: rdchem.Mol):
+    def n_ring_system_with_3_non_conj_simple_ring(self, mol: dm.Mol):
         """41. number of rings systems with 3 non-conjugated simple rings"""
         simple_rings, _, ring_map = _get_ring_system(mol)
         conj_rings_map = dict(
@@ -507,7 +506,7 @@ class ScaffoldKeyCalculator(SerializableCalculator):
             result += n_not_conj == 3
         return result
 
-    def n_ring_system_with_greater_one_conj_nonconj_simple_ring(self, mol: rdchem.Mol):
+    def n_ring_system_with_greater_one_conj_nonconj_simple_ring(self, mol: dm.Mol):
         """42. number of ring system containing 3 simple rings, at least one conjugated and one nonconjugated"""
         simple_rings, _, ring_map = _get_ring_system(mol)
         conj_rings_map = dict(
@@ -525,7 +524,7 @@ class ScaffoldKeyCalculator(SerializableCalculator):
         """Get the name of all the descriptors of this calculator"""
         return list(self.DESCRIPTORS)
 
-    def __call__(self, mol: Union[rdchem.Mol, str]):
+    def __call__(self, mol: Union[dm.Mol, str]):
         r"""
         Compute the Fingerprint of a molecule
 

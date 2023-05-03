@@ -11,7 +11,6 @@ import numpy as np
 import pandas as pd
 import datamol as dm
 
-from rdkit.Chem import rdchem
 from sklearn.base import BaseEstimator
 from molfeat.trans.fp import FPVecTransformer
 from molfeat.utils import datatype
@@ -150,7 +149,7 @@ class FeatConcat(list, BaseEstimator):
             columns.extend(fp_columns)
         return columns
 
-    def transform(self, mols: List[Union[rdchem.Mol, str]], **kwargs):
+    def transform(self, mols: List[Union[dm.Mol, str]], **kwargs):
         r"""
         Calls the ``FPVecTransformer.transform`` for each transformer in
         the current list, and concatenates the resulting fingerprints.
@@ -176,7 +175,7 @@ class FeatConcat(list, BaseEstimator):
 
     def __call__(
         self,
-        mols: List[Union[rdchem.Mol, str]],
+        mols: List[Union[dm.Mol, str]],
         enforce_dtype: bool = False,
         ignore_errors: bool = False,
         **kwargs,
@@ -217,7 +216,7 @@ class FeatConcat(list, BaseEstimator):
 
     def fit_transform(
         self,
-        mols: List[Union[str, rdchem.Mol]],
+        mols: List[Union[str, dm.Mol]],
         y: Optional[Iterable] = None,
         fit_kwargs: Dict = None,
         trans_kwargs: Dict = None,
@@ -243,7 +242,7 @@ class FeatConcat(list, BaseEstimator):
         self.fit(mols, y=y, **fit_kwargs)
         return self.transform(mols, **trans_kwargs)
 
-    def fit(self, X: List[Union[rdchem.Mol, str]], y=None, **kwargs):
+    def fit(self, X: List[Union[dm.Mol, str]], y=None, **kwargs):
         r"""
         Calls the ``FPVecTransformer.fit`` for each transformer in the current list.
 

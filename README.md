@@ -69,7 +69,7 @@ If you install Molfeat using pip, there are optional dependencies that can be in
 
 ### Installing Plugins
 
-The functionality of Molfeat can be extended through plugins. The use of a plugin system ensures that the core package remains easy to install and as light as possible, while making it easy to extend its functionality with plug-and-play components. Additionally, it ensures that plugins can be developed independently from the core package, removing the bottleneck of a central party that reviews and approves new plugins. Consult the molfeat documentation for more details on how to [create](developers/create-plugin.md) your own plugins.
+The functionality of Molfeat can be extended through plugins. The use of a plugin system ensures that the core package remains easy to install and as light as possible, while making it easy to extend its functionality with plug-and-play components. Additionally, it ensures that plugins can be developed independently from the core package, removing the bottleneck of a central party that reviews and approves new plugins. Consult the molfeat documentation for more details on how to [create](docs/developers/create-plugin.md) your own plugins.
 
 However, this does imply that the installation of a plugin is plugin-dependent: please consult the relevant documentation to learn more.
 

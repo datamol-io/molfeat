@@ -9,7 +9,6 @@ import torch
 import numpy as np
 import datamol as dm
 from loguru import logger
-from rdkit.Chem import rdchem
 from molfeat.calc.tree import TreeDecomposer
 from molfeat.trans.base import MoleculeTransformer
 from molfeat.utils import datatype
@@ -85,7 +84,7 @@ class MolTreeDecompositionTransformer(MoleculeTransformer):
 
     def fit(
         self,
-        X: List[Union[rdchem.Mol, str]],
+        X: List[Union[dm.Mol, str]],
         y: Optional[list] = None,
         output_file: Optional[os.PathLike] = None,
         **fit_params,
@@ -116,13 +115,13 @@ class MolTreeDecompositionTransformer(MoleculeTransformer):
 
         return self
 
-    def _transform(self, mol: rdchem.Mol):
+    def _transform(self, mol: dm.Mol):
         r"""
         Compute features for a single molecule.
         This method would potentially need to be reimplemented by child classes
 
         Args:
-            mol (rdchem.Mol): molecule to transform into features
+            mol (dm.Mol): molecule to transform into features
 
         Returns
             feat: featurized input molecule

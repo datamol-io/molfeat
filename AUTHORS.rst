@@ -7,3 +7,4 @@ Authors are sorted alphabetically.
 * Saurav Maheshkar
 * Therence
 * maclandrol
+* rbyrne-momatx

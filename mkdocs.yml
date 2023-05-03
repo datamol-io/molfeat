@@ -53,6 +53,7 @@ theme:
   # NOTE(cwognum): to customize the material primary and secondary
   # color check `docs/assets/css/custom-molfeat.css`.
   features:
+    - navigation.tabs
     - navigation.expand
   favicon: images/logo-black.png
   logo: images/logo.svg

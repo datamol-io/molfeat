@@ -10,19 +10,16 @@ from functools import lru_cache
 
 import inspect
 import importlib
+import os
 import datamol as dm
 import numpy as np
-import os
 
 from rdkit import RDConfig
 from rdkit.Chem import AllChem
 from rdkit.Chem import ChemicalFeatures
 from rdkit.Chem import GetSymmSSSR
-from rdkit.Chem import rdchem
 
 from molfeat._version import __version__ as MOLFEAT_VERSION
-from molfeat.utils.commons import hex_to_fn
-from molfeat.utils.commons import fn_to_hex
 from molfeat.calc.base import SerializableCalculator
 from molfeat.calc._atom_bond_features import atom_one_hot
 from molfeat.calc._atom_bond_features import atom_degree_one_hot
@@ -42,6 +39,8 @@ from molfeat.calc._atom_bond_features import DGLLIFE_WEAVE_ATOMS
 from molfeat.calc._atom_bond_features import DGLLIFE_WEAVE_CHIRAL_TYPES
 from molfeat.utils import datatype
 from molfeat.utils.commons import concat_dict
+from molfeat.utils.commons import hex_to_fn
+from molfeat.utils.commons import fn_to_hex
 
 
 class AtomCalculator(SerializableCalculator):
@@ -76,7 +75,7 @@ class AtomCalculator(SerializableCalculator):
             featurizer_funcs : Mapping of feature name to the featurization function.
                 For compatibility a list of callable/function is still accepted, and the corresponding
                 featurizer name will be automatically generated. Each function is of signature
-                ``func(rdkit.Chem.rdchem.Atom) -> list or 1D numpy array``.
+                ``func(dm.Atom) -> list or 1D numpy array``.
             concat: Whether to concat all the data into a single value in the output dict
             name: Name of the key name of the concatenated features
         """
@@ -193,7 +192,7 @@ class AtomCalculator(SerializableCalculator):
         """Get length of the property estimator"""
         return sum(v for k, v in self._feat_sizes.items() if k != self.name)
 
-    def __call__(self, mol: Union[rdchem.Mol, str], dtype: Callable = None):
+    def __call__(self, mol: Union[dm.Mol, str], dtype: Callable = None):
         """
         Get rdkit basic descriptors for a molecule
 
@@ -331,7 +330,7 @@ class DGLWeaveAtomCalculator(DGLCanonicalAtomCalculator):
         return chem_feats
 
     @lru_cache
-    def _compute_weave_net_properties(self, mol: rdchem.Mol):
+    def _compute_weave_net_properties(self, mol: dm.Mol):
         # Get information for donor and acceptor
         chem_feats = self._feat_factory_cache()
         mol_feats = chem_feats.GetFeaturesForMol(mol)
@@ -351,13 +350,13 @@ class DGLWeaveAtomCalculator(DGLCanonicalAtomCalculator):
             atom_features.append(cur_atom_props)
         return atom_features
 
-    def atom_weave_props(self, atom: rdchem.Atom):
+    def atom_weave_props(self, atom: dm.Atom):
         """Get the WeaveNet properties for an atom"""
         mol = atom.GetOwningMol()
         feats = self._compute_weave_net_properties(mol)
         return feats[atom.GetIdx()]
 
-    def __call__(self, mol: Union[rdchem.Mol, str], dtype: Callable = None):
+    def __call__(self, mol: Union[dm.Mol, str], dtype: Callable = None):
         """
         Get rdkit basic descriptors for a molecule
 

@@ -9,7 +9,6 @@ import copy
 import datamol as dm
 
 from loguru import logger
-from rdkit.Chem import rdchem
 from molfeat.utils.commons import _parse_to_evaluable_str
 from molfeat.trans.base import MoleculeTransformer
 from molfeat.utils.cache import DataCache
@@ -75,13 +74,13 @@ class PretrainedMolTransformer(MoleculeTransformer):
         return out
 
     def _embed(self, smiles: str, **kwargs):
-        """Internal molecular embedding
+        """Compute molecular embeddings for input list of smiles
         This functiom takes a list of smiles or molecules and return the featurization
         corresponding to the inputs.  In `transform` and `_transform`, this function is
         called after calling `_convert`
 
         Args:
-            smiles: input smiless
+            smiles: input smiles
         """
         raise NotImplementedError
 
@@ -136,13 +135,13 @@ class PretrainedMolTransformer(MoleculeTransformer):
                 pass
         return out
 
-    def _transform(self, mol: rdchem.Mol, **kwargs):
+    def _transform(self, mol: dm.Mol, **kwargs):
         r"""
         Compute features for a single molecule.
         This method would potentially need to be reimplemented by any child class
 
         Args:
-            mol (rdchem.Mol): molecule to transform into features
+            mol (dm.Mol): molecule to transform into features
 
         Returns
             feat: featurized input molecule

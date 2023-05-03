@@ -3,8 +3,10 @@ from typing import List
 from typing import Any
 
 
-import numpy as np
 import torch
+import numpy as np
+import datamol as dm
+
 from rdkit.Chem import rdchem
 from rdkit.Chem import AllChem
 from rdkit.Chem import GetSymmSSSR
@@ -127,7 +129,7 @@ BOND_DIRECTION = [
 
 
 def atom_one_hot(
-    atom: rdchem.Atom,
+    atom: dm.Atom,
     allowable_set: Optional[List[str]] = None,
     encode_unknown: bool = False,
     number: bool = False,
@@ -149,7 +151,7 @@ def atom_one_hot(
     return one_hot_encoding(atom_val, allowable_set, encode_unknown)
 
 
-def atom_number(atom: rdchem.Atom):
+def atom_number(atom: dm.Atom):
     """Get the atomic number for an atom.
 
     Args:
@@ -163,7 +165,7 @@ def atom_number(atom: rdchem.Atom):
 
 
 def atom_degree_one_hot(
-    atom: rdchem.Atom,
+    atom: dm.Atom,
     allowable_set: Optional[List[str]] = None,
     encode_unknown: bool = False,
 ):
@@ -186,7 +188,7 @@ def atom_degree_one_hot(
 
 
 def atom_degree(
-    atom: rdchem.Atom,
+    atom: dm.Atom,
 ):
     """Get the degree of an atom.
 
@@ -201,7 +203,7 @@ def atom_degree(
 
 
 def atom_total_degree_one_hot(
-    atom: rdchem.Atom,
+    atom: dm.Atom,
     allowable_set: Optional[List[str]] = None,
     encode_unknown: bool = False,
 ):
@@ -221,7 +223,7 @@ def atom_total_degree_one_hot(
     return one_hot_encoding(atom.GetTotalDegree(), allowable_set, encode_unknown)
 
 
-def atom_total_degree(atom: rdchem.Atom):
+def atom_total_degree(atom: dm.Atom):
     """Get the total degree of an atom.
 
     Result might be different if hydrogen have been added or not.
@@ -235,7 +237,7 @@ def atom_total_degree(atom: rdchem.Atom):
 
 
 def atom_explicit_valence_one_hot(
-    atom: rdchem.Atom,
+    atom: dm.Atom,
     allowable_set: Optional[List[str]] = None,
     encode_unknown: bool = False,
 ):
@@ -254,7 +256,7 @@ def atom_explicit_valence_one_hot(
     return one_hot_encoding(atom.GetExplicitValence(), allowable_set, encode_unknown)
 
 
-def atom_explicit_valence(atom: rdchem.Atom):
+def atom_explicit_valence(atom: dm.Atom):
     """Get the explicit valence of an atom.
 
     Args:
@@ -266,7 +268,7 @@ def atom_explicit_valence(atom: rdchem.Atom):
 
 
 def atom_implicit_valence_one_hot(
-    atom: rdchem.Atom,
+    atom: dm.Atom,
     allowable_set: Optional[List[str]] = None,
     encode_unknown: bool = False,
 ):
@@ -285,7 +287,7 @@ def atom_implicit_valence_one_hot(
     return one_hot_encoding(atom.GetImplicitValence(), allowable_set, encode_unknown)
 
 
-def atom_implicit_valence(atom: rdchem.Atom):
+def atom_implicit_valence(atom: dm.Atom):
     """Get the implicit valence of an atom.
 
     Args:
@@ -297,7 +299,7 @@ def atom_implicit_valence(atom: rdchem.Atom):
 
 
 def atom_hybridization_one_hot(
-    atom: rdchem.Atom,
+    atom: dm.Atom,
     allowable_set: Optional[List[str]] = None,
     encode_unknown: bool = False,
 ):
@@ -317,7 +319,7 @@ def atom_hybridization_one_hot(
 
 
 def atom_total_num_H_one_hot(
-    atom: rdchem.Atom,
+    atom: dm.Atom,
     allowable_set: Optional[List[str]] = None,
     encode_unknown: bool = False,
 ):
@@ -336,7 +338,7 @@ def atom_total_num_H_one_hot(
     return one_hot_encoding(atom.GetTotalNumHs(), allowable_set, encode_unknown)
 
 
-def atom_total_num_H(atom: rdchem.Atom):
+def atom_total_num_H(atom: dm.Atom):
     """Get the total number of Hs of an atom.
 
     Args:
@@ -348,7 +350,7 @@ def atom_total_num_H(atom: rdchem.Atom):
 
 
 def atom_formal_charge_one_hot(
-    atom: rdchem.Atom,
+    atom: dm.Atom,
     allowable_set: Optional[List[str]] = None,
     encode_unknown: bool = False,
 ):
@@ -367,7 +369,7 @@ def atom_formal_charge_one_hot(
     return one_hot_encoding(atom.GetFormalCharge(), allowable_set, encode_unknown)
 
 
-def atom_formal_charge(atom: rdchem.Atom):
+def atom_formal_charge(atom: dm.Atom):
     """Get formal charge for an atom.
 
     Args:
@@ -378,7 +380,7 @@ def atom_formal_charge(atom: rdchem.Atom):
     return [atom.GetFormalCharge()]
 
 
-def atom_partial_charge(atom: rdchem.Atom):
+def atom_partial_charge(atom: dm.Atom):
     """Get Gasteiger partial charge for an atom.
 
     This function requires calling ``AllChem.ComputeGasteigerCharges(mol)`` first to compute Gasteiger charges.
@@ -398,7 +400,7 @@ def atom_partial_charge(atom: rdchem.Atom):
 
 
 def atom_num_radical_electrons_one_hot(
-    atom: rdchem.Atom,
+    atom: dm.Atom,
     allowable_set: Optional[List[str]] = None,
     encode_unknown: bool = False,
 ):
@@ -417,7 +419,7 @@ def atom_num_radical_electrons_one_hot(
     return one_hot_encoding(atom.GetNumRadicalElectrons(), allowable_set, encode_unknown)
 
 
-def atom_num_radical_electrons(atom: rdchem.Atom):
+def atom_num_radical_electrons(atom: dm.Atom):
     """Get the number of radical electrons for an atom.
 
     Args:
@@ -429,7 +431,7 @@ def atom_num_radical_electrons(atom: rdchem.Atom):
 
 
 def atom_is_aromatic_one_hot(
-    atom: rdchem.Atom,
+    atom: dm.Atom,
     allowable_set: Optional[List[str]] = None,
     encode_unknown: bool = False,
 ):
@@ -448,7 +450,7 @@ def atom_is_aromatic_one_hot(
     return one_hot_encoding(atom.GetIsAromatic(), allowable_set, encode_unknown)
 
 
-def atom_is_aromatic(atom: rdchem.Atom):
+def atom_is_aromatic(atom: dm.Atom):
     """Get whether the atom is aromatic.
 
 
@@ -461,7 +463,7 @@ def atom_is_aromatic(atom: rdchem.Atom):
 
 
 def atom_is_in_ring_one_hot(
-    atom: rdchem.Atom,
+    atom: dm.Atom,
     allowable_set: Optional[List[str]] = None,
     encode_unknown: bool = False,
 ):
@@ -480,7 +482,7 @@ def atom_is_in_ring_one_hot(
     return one_hot_encoding(atom.IsInRing(), allowable_set, encode_unknown)
 
 
-def atom_is_in_ring(atom: rdchem.Atom):
+def atom_is_in_ring(atom: dm.Atom):
     """Get whether the atom is in ring.
 
     Args:
@@ -492,7 +494,7 @@ def atom_is_in_ring(atom: rdchem.Atom):
 
 
 def atom_chiral_tag_one_hot(
-    atom: rdchem.Atom,
+    atom: dm.Atom,
     allowable_set: Optional[List[str]] = None,
     encode_unknown: bool = False,
 ):
@@ -512,7 +514,7 @@ def atom_chiral_tag_one_hot(
 
 
 def atom_chirality_type_one_hot(
-    atom: rdchem.Atom,
+    atom: dm.Atom,
     allowable_set: Optional[List[str]] = None,
     encode_unknown: bool = False,
 ):
@@ -535,7 +537,7 @@ def atom_chirality_type_one_hot(
     return one_hot_encoding(cip_code, allowable_set, encode_unknown)
 
 
-def atom_mass(atom: rdchem.Atom, coeff: float = 1):
+def atom_mass(atom: dm.Atom, coeff: float = 1):
     """Get the mass of an atom and scale it.
 
     Args:
@@ -547,7 +549,7 @@ def atom_mass(atom: rdchem.Atom, coeff: float = 1):
     return [atom.GetMass() * coeff]
 
 
-def atom_is_chiral_center(atom: rdchem.Atom):
+def atom_is_chiral_center(atom: dm.Atom):
     """Get whether the atom is chiral center
 
     Args:
@@ -558,7 +560,7 @@ def atom_is_chiral_center(atom: rdchem.Atom):
     return [atom.HasProp("_ChiralityPossible")]
 
 
-def atom_extended_properties(atom: rdchem.Atom, dataset: str = "origin"):
+def atom_extended_properties(atom: dm.Atom, dataset: str = "origin"):
     """Get a full set of atom descriptors
 
     Args:
@@ -583,7 +585,7 @@ def atom_extended_properties(atom: rdchem.Atom, dataset: str = "origin"):
 
 
 def bond_type_one_hot(
-    bond: rdchem.Bond,
+    bond: dm.Bond,
     allowable_set: Optional[List[Any]] = None,
     encode_unknown: bool = False,
 ):
@@ -604,7 +606,7 @@ def bond_type_one_hot(
 
 
 def bond_is_conjugated_one_hot(
-    bond: rdchem.Bond,
+    bond: dm.Bond,
     allowable_set: Optional[List[str]] = None,
     encode_unknown: bool = False,
 ):
@@ -623,7 +625,7 @@ def bond_is_conjugated_one_hot(
     return one_hot_encoding(bond.GetIsConjugated(), allowable_set, encode_unknown)
 
 
-def bond_is_conjugated(bond: rdchem.Bond):
+def bond_is_conjugated(bond: dm.Bond):
     """Get whether the bond is conjugated.
 
     Args:
@@ -635,7 +637,7 @@ def bond_is_conjugated(bond: rdchem.Bond):
 
 
 def bond_is_in_ring_one_hot(
-    bond: rdchem.Bond,
+    bond: dm.Bond,
     allowable_set: Optional[List[str]] = None,
     encode_unknown: bool = False,
 ):
@@ -654,7 +656,7 @@ def bond_is_in_ring_one_hot(
     return one_hot_encoding(bond.IsInRing(), allowable_set, encode_unknown)
 
 
-def bond_is_in_ring(bond: rdchem.Bond):
+def bond_is_in_ring(bond: dm.Bond):
     """Get whether the bond is in ring.
 
     Args:
@@ -666,7 +668,7 @@ def bond_is_in_ring(bond: rdchem.Bond):
 
 
 def bond_stereo_one_hot(
-    bond: rdchem.Bond,
+    bond: dm.Bond,
     allowable_set: Optional[List[str]] = None,
     encode_unknown: bool = False,
 ):
@@ -686,7 +688,7 @@ def bond_stereo_one_hot(
 
 
 def bond_direction_one_hot(
-    bond: rdchem.Bond,
+    bond: dm.Bond,
     allowable_set: Optional[List[str]] = None,
     encode_unknown: bool = False,
 ):
@@ -706,7 +708,7 @@ def bond_direction_one_hot(
     return one_hot_encoding(bond.GetBondDir(), allowable_set, encode_unknown)
 
 
-def pairwise_2D_dist(mol: rdchem.Mol):
+def pairwise_2D_dist(mol: dm.Mol):
     """Compute the pairwise distance between all pairs of atoms in 2D
 
     Args:
@@ -720,7 +722,7 @@ def pairwise_2D_dist(mol: rdchem.Mol):
 
 
 @requires_conformer
-def pairwise_3D_dist(mol: rdchem.Mol, conformer_id: int = -1):
+def pairwise_3D_dist(mol: dm.Mol, conformer_id: int = -1):
     """Compute the pairwise 3D distance between all pair of atoms
 
     Args:
@@ -734,7 +736,7 @@ def pairwise_3D_dist(mol: rdchem.Mol, conformer_id: int = -1):
     return mat.reshape(-1, 1)
 
 
-def pairwise_dist_indicator(mol: rdchem.Mol, max_distance: int = 7):
+def pairwise_dist_indicator(mol: dm.Mol, max_distance: int = 7):
     """Compute the pairwise distance matrix gated by a max distance for the weave featurizer
 
     Args:
@@ -747,7 +749,7 @@ def pairwise_dist_indicator(mol: rdchem.Mol, max_distance: int = 7):
     return dist_indicator.numpy()
 
 
-def pairwise_bond_indicator(mol: rdchem.Mol, allowable_set: Optional[List[Any]] = None):
+def pairwise_bond_indicator(mol: dm.Mol, allowable_set: Optional[List[Any]] = None):
     """Compute the pairwise bond indicator for weave net
 
     Args:
@@ -770,7 +772,7 @@ def pairwise_bond_indicator(mol: rdchem.Mol, allowable_set: Optional[List[Any]] 
     return bond_indicators.numpy()
 
 
-def pairwise_ring_membership(mol: rdchem.Mol):
+def pairwise_ring_membership(mol: dm.Mol):
     """Compute the joint ring membership of all atom pairs
 
     Args:
