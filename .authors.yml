@@ -1,5 +1,7 @@
 - name: maclandrol
   email: emmanuel.noutahi@hotmail.ca
+  alternate_emails:
+  - maclandrol@users.noreply.github.com
   num_commits: 0
   first_commit: 2021-04-06 11:53:10
 - name: Cas Wognum
