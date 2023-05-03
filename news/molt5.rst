@@ -17,7 +17,7 @@
 
 **Fixed:**
 
-* <news item>
+* Fix #43: Pretrained models should now work better with `batch_transform`,  allowing efficient parallelization, while retaining all cached features.
 
 **Security:**
 
