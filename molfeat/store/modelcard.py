@@ -17,16 +17,16 @@ def get_model_init(card):
     """
     if card.group == "all" and card.type != "pretrained":
         import_statement = "from molfeat.trans import MoleculeTransformer"
-        loader_statement = f"MoleculeTransformer(featurizer='{card.name}')"
+        loader_statement = f"MoleculeTransformer(featurizer='{card.name}', dtypes='float')"
     elif card.group in ["rdkit", "fp", "shape"]:
         import_statement = f"from molfeat.trans.fp import FPVecTransformer"
-        loader_statement = f"FPVecTransformer(kind='{card.name}')"
+        loader_statement = f"FPVecTransformer(kind='{card.name}', dtypes='float')"
     elif card.group == "dgllife":
         import_statement = "from molfeat.trans.pretrained import PretrainedDGLTransformer"
-        loader_statement = f"PretrainedDGLTransformer(kind='{card.name}')"
+        loader_statement = f"PretrainedDGLTransformer(kind='{card.name}', dtypes='float')"
     elif card.group == "graphormer":
         import_statement = "from molfeat.trans.pretrained import GraphormerTransformer"
-        loader_statement = f"GraphormerTransformer(kind='{card.name}')"
+        loader_statement = f"GraphormerTransformer(kind='{card.name}', dtypes='float')"
     elif card.group == "fcd":
         import_statement = "from molfeat.trans.pretrained import FCDTransformer"
         loader_statement = f"FCDTransformer()"
@@ -37,12 +37,16 @@ def get_model_init(card):
         else:
             import_class = "Pharmacophore2D"
         import_statement = f"from molfeat.trans.base import MoleculeTransformer\nfrom molfeat.calc.pharmacophore import {import_class}"
-        loader_statement = f"MoleculeTransformer(featurizer={import_class}(factory='{name}'))"
+        loader_statement = (
+            f"MoleculeTransformer(featurizer={import_class}(factory='{name}'), dtypes='float')"
+        )
     elif card.group == "huggingface":
         import_statement = (
             "from molfeat.trans.pretrained.hf_transformers import PretrainedHFTransformer"
         )
-        loader_statement = f"PretrainedHFTransformer(kind='{card.name}', notation='{card.inputs}')"
+        loader_statement = (
+            f"PretrainedHFTransformer(kind='{card.name}', notation='{card.inputs}', dtypes='float')"
+        )
     else:
         raise ValueError(f"Unknown model group {card.group}")
     return import_statement, loader_statement
@@ -98,14 +102,14 @@ class ModelInfo(BaseModel):
         import_statement, loader_statement = get_model_init(self)
         comment = "# sanitize and standardize your molecules if needed"
         if self.require_3D:
-            comment += "\n# generate 3D coordinates if needed"
+            comment += "\n# <generate 3D coordinates here> "
         usage = f"""
         import datamol as dm
         {import_statement}
-        data = dm.freesolv().iloc[:100]
+        smiles = dm.freesolv().iloc[:100].smiles
         {comment}
         transformer = {loader_statement}
-        features = transformer(data["smiles"])
+        features = transformer(smiles)
         """
         usage = "\n".join([x.strip() for x in usage.split("\n")])
         return usage
