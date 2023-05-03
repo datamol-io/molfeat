@@ -1,0 +1,11 @@
+molfeat-padel:
+  entry_point_prefix: padel
+  home_url: https://github.com/datamol-io/molfeat-padel
+  molfeat_version: ">=0.8.6"
+  documentation_url: https://github.com/datamol-io/molfeat-padel
+
+molfeat-hype:
+  entry_point_prefix: hype
+  home_url: https://github.com/maclandrol/molfeat-hype
+  molfeat_version: ">=0.8.6"
+  documentation_url: https://maclandrol.github.io/molfeat-hype/main/

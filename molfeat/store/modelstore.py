@@ -240,6 +240,9 @@ class ModelStore:
             chunk_size: chunk size for download
             force: whether to reforce the download of the file
 
+        Returns:
+            model: Optional model, if the model requires download or loading weights
+            model_info: model information card
         """
         if isinstance(model_name, str):
             # find the model with the same name

@@ -39,6 +39,9 @@ class FPVecTransformer(MoleculeTransformer):
         "pharm3D",
         "scaffoldkeys",
         "skeys",
+        "electroshape",
+        "usr",
+        "usrcat",
     ]
 
     def __init__(

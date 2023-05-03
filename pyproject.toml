@@ -69,7 +69,8 @@ graphormer = [
 
 transformer = [
     "tokenizers <0.13.2",
-    "transformers"
+    "transformers",
+    "sentencepiece",
 ]
 
 fcd = [

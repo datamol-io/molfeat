@@ -13,6 +13,7 @@ import datamol as dm
 
 from dataclasses import dataclass
 from loguru import logger
+from transformers import EncoderDecoderModel
 from transformers import AutoTokenizer
 from transformers import AutoModel
 from transformers import AutoConfig
@@ -221,6 +222,7 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
         notation: Optional[str] = "none",
         pooling: str = "mean",
         concat_layers: Union[List[int], int] = -1,
+        prefer_encoder: bool = True,
         dtype=np.float32,
         device="cpu",
         max_length: int = 128,
@@ -248,6 +250,7 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
             pooling: type of pooling to use. One of ['default', 'mean', 'max', 'sum']. The value "default" corresponds to the default litterature pooling for each model type.
                 See `molfeat.utils.pooler.get_default_hf_pooler` for more details.
             concat_layers: Layer to concat to get the representation. By default the last hidden layer is returned.
+            prefer_encoder: For an encoder-decoder model, prefer the embeddings provided by the encoder.
             dtype: Data type to output
             device: Torch device on which to run the featurizer.
             max_length: Maximum length of the input sequence to consider. Please update this for large sequences
@@ -274,6 +277,7 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
         self.random_seed = random_seed
         self.preload = preload
         self.pooling = pooling
+        self.prefer_encoder = prefer_encoder
         self._pooling_obj = None
         if isinstance(kind, HFModel):
             self.kind = kind.name
@@ -397,7 +401,13 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
         else:
             attention_mask = None
         with torch.no_grad():
-            out_dict = self.featurizer.model(output_hidden_states=True, **inputs)
+            if (
+                isinstance(self.featurizer.model, EncoderDecoderModel)
+                or hasattr(self.featurizer.model, "encoder")
+            ) and self.prefer_encoder:
+                out_dict = self.featurizer.model.encoder(output_hidden_states=True, **inputs)
+            else:
+                out_dict = self.featurizer.model(output_hidden_states=True, **inputs)
             hidden_state = out_dict["hidden_states"]
             emb_layers = []
             for layer in self.concat_layers:
