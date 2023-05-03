@@ -17,16 +17,16 @@ def get_model_init(card):
     """
     if card.group == "all" and card.type != "pretrained":
         import_statement = "from molfeat.trans import MoleculeTransformer"
-        loader_statement = f"MoleculeTransformer(featurizer='{card.name}', dtypes='float')"
+        loader_statement = f"MoleculeTransformer(featurizer='{card.name}', dtype=float)"
     elif card.group in ["rdkit", "fp", "shape"]:
         import_statement = f"from molfeat.trans.fp import FPVecTransformer"
-        loader_statement = f"FPVecTransformer(kind='{card.name}', dtypes='float')"
+        loader_statement = f"FPVecTransformer(kind='{card.name}', dtype=float)"
     elif card.group == "dgllife":
         import_statement = "from molfeat.trans.pretrained import PretrainedDGLTransformer"
-        loader_statement = f"PretrainedDGLTransformer(kind='{card.name}', dtypes='float')"
+        loader_statement = f"PretrainedDGLTransformer(kind='{card.name}', dtype=float)"
     elif card.group == "graphormer":
         import_statement = "from molfeat.trans.pretrained import GraphormerTransformer"
-        loader_statement = f"GraphormerTransformer(kind='{card.name}', dtypes='float')"
+        loader_statement = f"GraphormerTransformer(kind='{card.name}', dtype=float)"
     elif card.group == "fcd":
         import_statement = "from molfeat.trans.pretrained import FCDTransformer"
         loader_statement = f"FCDTransformer()"
@@ -38,14 +38,14 @@ def get_model_init(card):
             import_class = "Pharmacophore2D"
         import_statement = f"from molfeat.trans.base import MoleculeTransformer\nfrom molfeat.calc.pharmacophore import {import_class}"
         loader_statement = (
-            f"MoleculeTransformer(featurizer={import_class}(factory='{name}'), dtypes='float')"
+            f"MoleculeTransformer(featurizer={import_class}(factory='{name}'), dtype=float)"
         )
     elif card.group == "huggingface":
         import_statement = (
             "from molfeat.trans.pretrained.hf_transformers import PretrainedHFTransformer"
         )
         loader_statement = (
-            f"PretrainedHFTransformer(kind='{card.name}', notation='{card.inputs}', dtypes='float')"
+            f"PretrainedHFTransformer(kind='{card.name}', notation='{card.inputs}', dtype=float)"
         )
     else:
         raise ValueError(f"Unknown model group {card.group}")
