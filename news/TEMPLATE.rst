@@ -1,6 +1,6 @@
 **Added:**
 
-* A model named Molt5
+* <news item>
 
 **Changed:**
 

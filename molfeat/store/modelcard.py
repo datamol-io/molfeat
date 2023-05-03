@@ -18,7 +18,7 @@ def get_model_init(card):
     if card.group == "all" and card.type != "pretrained":
         import_statement = "from molfeat.trans import MoleculeTransformer"
         loader_statement = f"MoleculeTransformer(featurizer='{card.name}')"
-    elif card.group in ["rdkit", "fp"]:
+    elif card.group in ["rdkit", "fp", "shape"]:
         import_statement = f"from molfeat.trans.fp import FPVecTransformer"
         loader_statement = f"FPVecTransformer(kind='{card.name}')"
     elif card.group == "dgllife":
@@ -30,6 +30,14 @@ def get_model_init(card):
     elif card.group == "fcd":
         import_statement = "from molfeat.trans.pretrained import FCDTransformer"
         loader_statement = f"FCDTransformer()"
+    elif card.group == "pharmacophore":
+        name = card.name.split("-")[-1]
+        if card.require_3D:
+            import_class = "Pharmacophore3D"
+        else:
+            import_class = "Pharmacophore2D"
+        import_statement = f"from molfeat.trans.base import MoleculeTransformer\nfrom molfeat.calc.pharmacophore import {import_class}"
+        loader_statement = f"MoleculeTransformer(featurizer={import_class}(factory='{name}'))"
     elif card.group == "huggingface":
         import_statement = (
             "from molfeat.trans.pretrained.hf_transformers import PretrainedHFTransformer"
@@ -88,10 +96,14 @@ class ModelInfo(BaseModel):
     def usage(self):
         """Return the usage of the model"""
         import_statement, loader_statement = get_model_init(self)
+        comment = "# sanitize and standardize your molecules if needed"
+        if self.require_3D:
+            comment += "\n# generate 3D coordinates if needed"
         usage = f"""
         import datamol as dm
         {import_statement}
         data = dm.freesolv().iloc[:100]
+        {comment}
         transformer = {loader_statement}
         features = transformer(data["smiles"])
         """
