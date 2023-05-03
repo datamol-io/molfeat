@@ -479,7 +479,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
             # to have a shared memory
             new_cache = MPDataCache()
             new_cache.update(existing_cache)
-            transformer.cache = new_cache
+            setattr(transformer, cache_attr, new_cache)
 
         transformed = dm.parallelized(
             transformer,
@@ -491,7 +491,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
         if use_mp_cache:
             # we set back the original transformation while updating it with
             # all the missing values
-            existing_cache.update(transformer.cache)
+            existing_cache.update(getattr(transformer, cache_attr, {}))
             setattr(transformer, cache_attr, existing_cache)
 
         if concatenate:
