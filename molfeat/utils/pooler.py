@@ -115,7 +115,7 @@ class HFPooler(nn.Module):
 class BertPooler(nn.Module):
     """
     Default Bert pooler as implemented in huggingface transformers
-    The bert pooling function focuses on the first token ([CLS]) to get a sentence representation.
+    The bert pooling function focuses on a projection of the first token ([CLS]) to get a sentence representation.
     """
 
     def __init__(
@@ -157,7 +157,7 @@ class BertPooler(nn.Module):
 class BartPooler(nn.Module):
     """
     Default Bart pooler as implemented in huggingface transformers
-    The Bart pooling function focusing on the first token ([CLS]) to get a sentence representation.
+    The Bart pooling function focusing on the eos token ([EOS]) to get a sentence representation.
     """
 
     def __init__(self, config, **kwargs):
@@ -186,7 +186,7 @@ class BartPooler(nn.Module):
 class GPTPooler(nn.Module):
     """
     Default GPT pooler as implemented in huggingface transformers
-    The Bart pooling function focusing on the first token ([CLS]) to get a sentence representation.
+    The GPT pooling function focusing on the last non-padding token given sequence length to get a sentence representation.
     """
 
     def __init__(self, config, **kwargs):
