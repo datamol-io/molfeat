@@ -53,23 +53,29 @@ You can build and serve the documentation locally with:
 mkdocs serve
 ```
 
+
 ## Submitting Pull Requests
 
-If you're considering a large code contribution to Molfeat, please open an issue first to get early feedback on the idea.
+If you're considering a large code contribution to molfeat, please open an issue first to get early feedback on the idea.
 
 Once you think the code is ready to be reviewed, push it to your fork and open a pull request. We will assign a reviewer to your PR.
 For a change to be accepted all existing tests will need to pass. We expect additional tests and documentation for any new features.
 
-If you are developing a plugin for Molfeat, please refer to the corresponding section [Extending Molfeat](./create-plugin.md)
+If you are developing a plugin for molfeat, please refer to the corresponding section [Extending molfeat](./create-plugin.md)
 
-## Release a new version
 
-- Run check: `rever check`.
-- Bump and release new version: `rever VERSION_NUMBER`.
-- Releasing a new version will do the following tasks in this order:
-  - Update `AUTHORS.rst`.
-  - Update `CHANGELOG.rst`.
-  - Bump the version number in `setup.py` and `_version.py`.
-  - Add a git tag.
-  - Push the git tag.
-  - Add a new release on the GH repo associated with the git tag.
+## Adding ETL notebooks
+
+Here's an improved version:
+
+## Adding ETL Notebooks
+
+The ETL (extraction, transformation, and loading) scripts document the process of creating new featurizers, and we make our ETL notebooks open to the community for transparency purposes. As a developer adding new featurizers, please document your process in the [etl notebook folder](https://github.com/datamol-io/molfeat/tree/main/nb/etl).
+
+By documenting your process in the ETL notebook, you help ensure that the registration of new models can be reviewed by the community and provide greater visibility into the development process. This can help build trust with our users and contributors, and encourage collaboration and feedback.
+
+## Releasing a New Version
+
+To release a new version, code maintainers can use the `release` GitHub action. However, before releasing a new version, it is important to coordinate with the code owners to ensure that the release roadmap is followed and any critical pull requests have been merged.
+
+The release roadmap should be followed to ensure that the new version is stable, functional, and meets the requirements of the release. This includes proper testing, documentation, and ensuring backward compatibility where necessary. By following these guidelines, we can ensure that new versions are released smoothly and efficiently, with clear communication to our users and contributors.
