@@ -53,7 +53,6 @@ theme:
   custom_dir: docs/overrides
   features:
     - navigation.tabs
-    - navigation.expand
   favicon: images/logo-black.png
   logo: images/logo.svg
 
