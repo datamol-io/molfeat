@@ -67,6 +67,7 @@ class ModelInfo(BaseModel):
     reference: Optional[str]
     created_at: datetime = Field(default_factory=datetime.now)
     sha256sum: Optional[str]
+    model_usage: Optional[str]
 
     def path(self, root_path: str):
         """Generate the folder path where to save this model
@@ -97,8 +98,18 @@ class ModelInfo(BaseModel):
             new_content = {k: new_content.get(k) for k in match_only}
         return self_content == new_content
 
+    def set_usage(self, usage: str):
+        """Set the usage of the model
+
+        Args:
+            usage: usage of the model
+        """
+        self.model_usage = usage
+
     def usage(self):
         """Return the usage of the model"""
+        if self.model_usage is not None and self.model_usage:
+            return self.model_usage
         import_statement, loader_statement = get_model_init(self)
         comment = "# sanitize and standardize your molecules if needed"
         if self.require_3D:

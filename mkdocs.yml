@@ -9,12 +9,17 @@ use_directory_urls: false
 copyright: Copyright 2020 - 2023 datamol.io
 
 nav:
-  - Overview: index.md
-  - Why should you care?: benchmark.ipynb
-  - Getting Started: usage.md
+  - Getting started:
+      - What is molfeat ?: index.md
+      - How to use ?: usage.md
+      - Why should you care?: benchmark.ipynb
+      - License: license.md
+
   - Tutorials:
       - Types of featurizers: tutorials/types_of_featurizers.ipynb
-      - Add your own featurizer: tutorials/add_your_own.ipynb
+      - Add your own:
+          - Create your own featurizers: tutorials/add_your_own.ipynb
+          - Create a custom modelstore: tutorials/custom_model_store.ipynb
       - Featurizing graphs: tutorials/graphs.ipynb
       - Integrations:
           - Integration with scikit-learn and PyTorch: tutorials/integrations.ipynb
@@ -46,14 +51,13 @@ nav:
       - molfeat.utils: api/molfeat.utils.md
       - molfeat.viz: api/molfeat.viz.md
 
-  - License: license.md
-
 theme:
   name: material
-  # EN: overwrite the default material theme
-  custom_dir: docs/overrides
   features:
     - navigation.tabs
+    - navigation.tracking
+    - navigation.top
+
   favicon: images/logo-black.png
   logo: images/logo.svg
 

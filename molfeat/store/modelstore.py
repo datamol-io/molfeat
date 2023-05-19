@@ -12,10 +12,14 @@ import tempfile
 import platformdirs
 import filelock
 import datamol as dm
+from dotenv import load_dotenv
 from loguru import logger
 
 from molfeat.store.modelcard import ModelInfo
 from molfeat.utils import commons
+
+
+load_dotenv()
 
 
 class ModelStoreError(Exception):
@@ -23,16 +27,27 @@ class ModelStoreError(Exception):
 
 
 class ModelStore:
-    """A class emulating artefact serializing from any url
+    """A class for artefact serializing from any url
 
-    This class should not only allow pretrained model serializing and loading,
-    but should also help in listing model availability and registering models
+    This class not only allow pretrained model serializing and loading,
+    but also help in listing model availability and registering models.
 
     For simplicity.
         * There is no versioning.
-        * Only one model per model name is permitted
-        * Model deletion is not allowed
-        * Only a single Cloud storage is supported
+        * Only one model should match a given name
+        * Model deletion is not allowed (on the read-only default store)
+        * Only a single store is supported per model store instance
+
+    !!! note "Building a New Model Store"
+        To create a new model store, you will mainly need a model store bucket path. The default model store bucket, located at `gs://molfeat-store-prod/artifacts/`, is **read-only**.
+
+        To build your own model store bucket, follow the instructions below:
+
+        1. Create a local or remote cloud directory that can be accessed by fsspec (and the corresponding filesystem).
+        2. [Optional] Sync the default model store bucket to your new path if you want to access the default models.
+        3. Set the environment variable `MOLFEAT_MODEL_STORE_BUCKET` to your new path. This variable will be used as the default model store bucket when creating a new model store instance without specifying a path.
+            Note that setting up this path is necessary if you want to access models directly by their names, without manually loading them from your custom model store.
+
 
     """
 
@@ -44,7 +59,7 @@ class ModelStore:
 
     def __init__(self, model_store_bucket: Optional[str] = None):
         if model_store_bucket is None:
-            model_store_bucket = self.MODEL_STORE_BUCKET
+            model_store_bucket = os.getenv("MOLFEAT_MODEL_STORE_BUCKET", self.MODEL_STORE_BUCKET)
         self.model_store_bucket = model_store_bucket
         self._available_models = []
         self._update_store()
@@ -64,6 +79,10 @@ class ModelStore:
         """Return a list of all models that have been serialized in molfeat"""
         return self._available_models
 
+    def __len__(self):
+        """Return the length of the model store"""
+        return len(self.available_models)
+
     def register(
         self,
         modelcard: Union[ModelInfo, dict],
@@ -76,11 +95,17 @@ class ModelStore:
         """
         Register a new model to the store
 
+        !!! note `save_fn`
+            You can pass additional kwargs for your `save_fn` through the `save_fn_kwargs` argument.
+            It's expected that `save_fn` will be called as : `save_fn(model, <model_upload_path>, **save_fn_wargs)`,
+            with `<model_upload_path>` being provided by the model store, and that it will return the path to the serialized model.
+            If not provided, `joblib.dump` is used by default.
+
         Args:
             modelcard: Model information
             model: A path to the model artifact or any object that needs to be saved
             chunk_size: the chunk size for the upload
-            save_fn: any custom function for serializing the model, that takes the model, the upload path and parameters as inputs
+            save_fn: any custom function for serializing the model, that takes the model, the upload path and parameters `save_fn_kwargs` as inputs.
             save_fn_kwargs: any additional kwargs to pass to save_fn
             force: whether to force upload to the bucket
 
@@ -116,6 +141,8 @@ class ModelStore:
             )
         else:
             model_path = save_fn(model, model_upload_path, **save_fn_kwargs)
+            # we reset to None if the save_fn has not returned anything
+            model_path = model_path or model_upload_path
         modelcard.sha256sum = commons.sha256sum(model_path)
         # then we save the metadata as json
         with fsspec.open(model_metadata_upload_path, "w") as OUT:
