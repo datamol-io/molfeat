@@ -3,10 +3,10 @@ Authors are sorted alphabetically.
 
 * Cas Wognum
 * DomInvivo
+* Emmanuel Noutahi
 * Hadrien Mary
 * Honore Hounwanou
 * Saurav Maheshkar
 * Therence
 * dessygil
-* maclandrol
 * rbyrne-momatx
