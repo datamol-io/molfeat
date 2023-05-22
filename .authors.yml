@@ -1,5 +1,7 @@
-- name: maclandrol
+- name: Emmanuel Noutahi
   email: emmanuel.noutahi@hotmail.ca
+  aliases:
+  - maclandrol
   alternate_emails:
   - maclandrol@users.noreply.github.com
   num_commits: 0
