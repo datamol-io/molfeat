@@ -1,5 +1,5 @@
-# Getting started
-## Organization
+# Usage
+## Structure
 Molfeat is organized in three main modules:
 
 - `molfeat.store`: The model store loads, lists and registers all featurizers.

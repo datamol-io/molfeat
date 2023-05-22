@@ -1,4 +1,4 @@
-# Overview
+# What is molfeat ?
 
 Molfeat is a hub of molecular featurizers. It supports a wide variety of out-of-the-box molecular featurizers and can be easily extended to include your own custom featurizers.
 

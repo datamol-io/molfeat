@@ -247,7 +247,7 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
         Args:
             kind: name of the featurizer as available in the model store
             notation: optional line notation to use. Only use if it cannot be found from the model card.
-            pooling: type of pooling to use. One of ['default', 'mean', 'max', 'sum']. The value "default" corresponds to the default litterature pooling for each model type.
+            pooling: type of pooling to use. One of ['default', 'mean', 'max', 'sum', 'clf', ]. The value "default" corresponds to the default litterature pooling for each model type.
                 See `molfeat.utils.pooler.get_default_hf_pooler` for more details.
             concat_layers: Layer to concat to get the representation. By default the last hidden layer is returned.
             prefer_encoder: For an encoder-decoder model, prefer the embeddings provided by the encoder.

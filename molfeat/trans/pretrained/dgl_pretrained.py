@@ -51,9 +51,6 @@ class DGLModel(PretrainedStoreModel):
         cache_path: Optional[os.PathLike] = None,
         store: Optional[ModelStore] = None,
     ):
-        if name not in self.AVAILABLE_MODELS:
-            raise ValueError(f"{name} is not a supported pretrained gin model")
-
         super().__init__(name, cache_path=cache_path, store=store)
         self._model = None
 
