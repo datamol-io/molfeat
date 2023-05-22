@@ -4,6 +4,26 @@ molfeat Change Log
 
 .. current developments
 
+v0.8.9
+====================
+
+**Added:**
+
+* Support for new featurizers (GPT2-Zinc480M-87M and  Roberta-Zinc480M-102M)
+* ETL scripts/notebooks for transparency
+
+**Fixed:**
+
+* Nav Bar with Tabs
+* Typos in docs
+
+**Authors:**
+
+* Cas Wognum
+* Emmanuel Noutahi
+
+
+
 v0.8.8
 ====================
 
