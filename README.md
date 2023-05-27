@@ -110,9 +110,11 @@ model_card.usage()
 
 Please cite Molfeat if you use it in your research: [![DOI](https://zenodo.org/badge/613548667.svg)](https://zenodo.org/badge/latestdoi/613548667).
 
-## Contribute
+## Contribute and Community
 
-See [developers](docs/developers/) for a comprehensive guide on how to contribute to `Molfeat`
+See [developers](docs/developers/) for a comprehensive guide on how to contribute to `molfeat`. `molfeat` is a community-led
+initiative and whether you're a first-time contributor or an open-source veteran, this project greatly benefits from your contributions.
+To learn more about the community that is behind molfeat, please see [community](docs/community/).
 
 ## Changelogs
 

@@ -1,9 +1,17 @@
 # Contribute
 
-Welcome to the molfeat community! We appreciate everyone's contribution and welcome all. Apart from code contributions, there are various other ways to support the community such as answering questions, providing assistance to others, enhancing the documentation, giving a ⭐️ or sharing the project.
+Welcome to the molfeat community! We appreciate everyone's contribution and welcome all. Apart from code contributions, there are various other ways to support the community. In short, you can: 
+
+- :star: **Star** the repository on Github
+- :computer: **Fix** existing code issues. 
+- :bug: **Report** bugs or **request** new features. 
+- :books: Improve **existing documentation** or add **new tutorials**.
 
 However you choose to contribute, please be mindful and respect our [code of conduct](https://github.com/datamol-io/molfeat/blob/main/.github/CODE_OF_CONDUCT.md).
 
+!!! note annotate "Get inspired by community contributions"
+    As we love community contributions, we decided to create some dedicate space in our documentation to highlight and celebrate such contributions.
+    Visit [Community Contribitons](../community/contributions.md) to learn more!s
 
 ## Ways to contribute
 
