@@ -1,0 +1,18 @@
+name: Community contribution
+description: Bring a novel community contribution to our attention so we can highlight it in our documentation.
+labels: ["needs triage", "docs", "enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: >
+        We love community contributions :heart:
+        
+        To celebrate and showcase community contributions, we created a dedicated space in our documentation. 
+        To learn more, see [Community Contributions](https://molfeat-docs.datamol.io/main/community/contributions.html)
+  - type: textarea
+    attributes:
+      label: Details
+      description: Please provide us with any relevant information to highlight your work in our docs..
+      placeholder: Enter details here...
+    validations:
+      required: true

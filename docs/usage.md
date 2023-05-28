@@ -11,6 +11,10 @@ Molfeat is organized in three main modules:
     It provides a good overview of the different types of featurizers and has pointers for learning about more advanced features. 
 
 ## Quick API Tour
+
+!!! note tip "Community contribution"
+    Curious how molfeat can simplify training QSAR models? See this tutorial contributed by [@PatWalters](https://github.com/PatWalters): [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PatWalters/practical_cheminformatics_tutorials/blob/main/ml_models/QSAR_in_8_lines.ipynb)  
+
 ```python
 import datamol as dm
 from molfeat.calc import FPCalculator

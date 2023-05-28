@@ -30,7 +30,7 @@ nav:
 
   - Developers:
       - Contributing: developers/contribute.md
-      - Extending Molfeat: developers/create-plugin.md
+      - Extending molfeat: developers/create-plugin.md
       - Registering your Plugin: developers/register-plugin.md
 
   - Community:

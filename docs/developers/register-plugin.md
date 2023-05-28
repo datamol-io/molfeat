@@ -8,6 +8,8 @@ collects information on the type of plugins provided by your package and which `
 If you are starting to develop a new plugin or if you already have one, please register it here.
 We strongly encourage you to **register at early stages of development**, both to reserve the name of your plugin and to inform the community of your ongoing work.
 
+!!! note annotate "Curious what other plugins exist?"
+    Visit [Community contributions](../community/contributions.md) to learn more about the current plugins!
 
 ## How to register a plugin
 
