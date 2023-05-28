@@ -1,29 +1,12 @@
 # Contribute
 
-Welcome to the molfeat community! We appreciate everyone's contribution and welcome all. Apart from code contributions, there are various other ways to support the community. In short, you can: 
-
-- :star: **Star** the repository on Github
-- :computer: **Fix** existing code issues. 
-- :bug: **Report** bugs or **request** new features. 
-- :books: Improve **existing documentation** or add **new tutorials**.
-
-However you choose to contribute, please be mindful and respect our [code of conduct](https://github.com/datamol-io/molfeat/blob/main/.github/CODE_OF_CONDUCT.md).
+Welcome to the molfeat community! We appreciate everyone's contribution and welcome all. Apart from code contributions, there are various other ways to support the community. If you would like to get involved, please see the [community documentation](../community/get_involved.md) for more details on how to contribute. However you choose to contribute, please be mindful and respect our [code of conduct](https://github.com/datamol-io/molfeat/blob/main/.github/CODE_OF_CONDUCT.md).
 
 !!! note annotate "Get inspired by community contributions"
-    As we love community contributions, we decided to create some dedicate space in our documentation to highlight and celebrate such contributions.
-    Visit [Community Contribitons](../community/contributions.md) to learn more!s
+    As we love community contributions, we decided to create a dedicate space in our documentation to highlight and celebrate such contributions.
+    Visit [Community Contribitons](../community/contributions.md) to learn more!
 
-## Ways to contribute
-
-You can contribute to molfeat in several ways:
-
-- Fix existing code issues.
-- Submit issues related to bugs or new features.
-- Suggest or implement new featurizers.
-- Improve existing documentation or add new tutorials. 
-
-For a more detailed description of the development lifecycle of molfeat, please refer to the rest of this document.
-
+The rest of this page details the development lifecycle of molfeat.
 
 ## Setup a dev environment
 
@@ -71,10 +54,6 @@ For a change to be accepted all existing tests will need to pass. We expect addi
 
 If you are developing a plugin for molfeat, please refer to the corresponding section [Extending molfeat](./create-plugin.md)
 
-
-## Adding ETL notebooks
-
-Here's an improved version:
 
 ## Adding ETL Notebooks
 
