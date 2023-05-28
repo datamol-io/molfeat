@@ -7,7 +7,7 @@ For developers that are planning to extend molfeat functionality, we recommend u
 However, plugins are not always required and sometimes a simple pull request is the better option. 
 
 | :heavy_check_mark: **Do** use plugins if...                                          | :x: **Do not** use plugins if...                                                                                           |
-| ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
+|--------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
 | If a new featurizer can not be loaded by current classes.                            | If a new featurizer can already be loaded through existing classes.                                                        |
 | If a new featurizer requires additional, possibly difficult-to-install dependencies. | If a new featurizer requires no additional dependencies.                                                                   |
 | If you want to make a new class of featurizers available to the molfeat community.   | If you can show through benchmarks that a featurizer is so performant, it should be available as part of the core package. |

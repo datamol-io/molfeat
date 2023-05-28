@@ -10,8 +10,8 @@ copyright: Copyright 2020 - 2023 datamol.io
 
 nav:
   - Getting started:
-      - What is molfeat ?: index.md
-      - How to use ?: usage.md
+      - What is molfeat?: index.md
+      - How to use molfeat?: usage.md
       - Why should you care?: benchmark.ipynb
       - License: license.md
 
@@ -30,8 +30,12 @@ nav:
 
   - Developers:
       - Contributing: developers/contribute.md
-      - Extending Molfeat: developers/create-plugin.md
+      - Extending molfeat: developers/create-plugin.md
       - Registering your Plugin: developers/register-plugin.md
+
+  - Community:
+      - Get involved: community/get_involved.md
+      - Community contributions: community/contributions.md
 
   - API:
       - molfeat.calc: api/molfeat.calc.md
