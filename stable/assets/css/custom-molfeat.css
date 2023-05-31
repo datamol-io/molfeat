@@ -39,6 +39,10 @@
   background-image: linear-gradient(to right, #1E2F6C, #217EBB);
 }
 
+.md-tabs {
+  background-image: linear-gradient(to right, #F4F6F9, #C3CFE2);
+}
+
 .md-header__topic {
   color: rgb(255, 255, 255);
 }
