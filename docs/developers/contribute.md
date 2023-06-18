@@ -3,23 +3,21 @@
 Welcome to the molfeat community! We appreciate everyone's contribution and welcome all. Apart from code contributions, there are various other ways to support the community. If you would like to get involved, please see the [community documentation](../community/get_involved.md) for more details on how to contribute. However you choose to contribute, please be mindful and respect our [code of conduct](https://github.com/datamol-io/molfeat/blob/main/.github/CODE_OF_CONDUCT.md).
 
 !!! note annotate "Get inspired by community contributions"
-    As we love community contributions, we decided to create a dedicate space in our documentation to highlight and celebrate such contributions.
-    Visit [Community Contribitons](../community/contributions.md) to learn more!
+As we love community contributions, we decided to create a dedicate space in our documentation to highlight and celebrate such contributions.
+Visit [Community Contribitons](../community/contributions.md) to learn more!
 
 The rest of this page details the development lifecycle of molfeat.
 
 ## Setup a dev environment
 
-First you'll need to fork and clone the repository. Once you have a local copy, install the dependencies. 
+First you'll need to fork and clone the repository. Once you have a local copy, install the dependencies.
 It is strongly recommended that you do so in a new conda environment.
-
 
 ```bash
 mamba env create -n molfeat -f env.yml
-conda activate molfeat
+mamba activate molfeat
 pip install -e .
 ```
-
 
 ## Continuous Integration
 
@@ -44,7 +42,6 @@ You can build and serve the documentation locally with:
 mkdocs serve
 ```
 
-
 ## Submitting Pull Requests
 
 If you're considering a large code contribution to molfeat, please open an issue first to get early feedback on the idea.
@@ -53,7 +50,6 @@ Once you think the code is ready to be reviewed, push it to your fork and open a
 For a change to be accepted all existing tests will need to pass. We expect additional tests and documentation for any new features.
 
 If you are developing a plugin for molfeat, please refer to the corresponding section [Extending molfeat](./create-plugin.md)
-
 
 ## Adding ETL Notebooks
 
