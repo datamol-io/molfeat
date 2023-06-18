@@ -18,7 +18,6 @@ jobs:
       matrix:
         python-version: ["3.9"]
         os: ["ubuntu-latest"] #, "macos-latest", "windows-latest"]
-        pytorch-lightning-version: ["1.8", "1.9"]
         pytorch-version: ["1.12"]
 
     runs-on: ${{ matrix.os }}
@@ -31,7 +30,6 @@ jobs:
     name: |
       os=${{ matrix.os }}
       - python=${{ matrix.python-version }}
-      - pytorch-lightning=${{ matrix.pytorch-lightning-version }}
       - pytorch=${{ matrix.pytorch-version }}
 
     steps:
@@ -47,7 +45,6 @@ jobs:
           cache-downloads: true
           create-args: >-
             python=${{ matrix.python-version }}
-            pytorch-lightning=${{ matrix.pytorch-lightning-version }}
             pytorch=${{ matrix.pytorch-version }}
 
       - name: Install library
