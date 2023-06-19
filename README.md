@@ -116,10 +116,6 @@ See [developers](docs/developers/) for a comprehensive guide on how to contribut
 initiative and whether you're a first-time contributor or an open-source veteran, this project greatly benefits from your contributions.
 To learn more about the community and [datamol.io](https://datamol.io/) ecosystem, please see [community](docs/community/).
 
-## Changelogs
-
-See the latest changelogs at [CHANGELOG.rst](./CHANGELOG.rst).
-
 ## Maintainers
 
 - @cwognum
