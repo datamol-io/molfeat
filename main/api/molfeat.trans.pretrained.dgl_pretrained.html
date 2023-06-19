@@ -17,7 +17,7 @@
         <link rel="next" href="molfeat.trans.pretrained.fcd.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
     
     
       
@@ -1686,7 +1686,11 @@
           <td>
                 <code>str</code>
           </td>
-          <td><p>Query to filter the list of available models. Defaults to None.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Query to filter the list of available models. Defaults to None.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -1856,28 +1860,44 @@
           <td>
                 <code><a class="autorefs autorefs-internal" title="molfeat.trans.pretrained.dgl_pretrained.DGLModel" href="#molfeat.trans.pretrained.dgl_pretrained.DGLModel">DGLModel</a></code>
           </td>
-          <td><p>DGL featurizer object</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>DGL featurizer object</p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td><code>dtype</code></td>
           <td>
                 <code>type</code>
           </td>
-          <td><p>Data type.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Data type.</p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td><code>pooling</code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Pooling method for GIN's embedding layer (Default: mean)</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Pooling method for GIN's embedding layer (Default: mean)</p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td><code>batch_size</code></td>
           <td>
                 <code>int</code>
           </td>
-          <td><p>Batch size to consider for model</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Batch size to consider for model</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -2408,7 +2428,11 @@
           <td>
                 <code>str</code>
           </td>
-          <td><p>name of the pretrained gin. Defaults to "gin_supervised_contextpred".</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>name of the pretrained gin. Defaults to "gin_supervised_contextpred".</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;gin_supervised_contextpred&#39;</code>
           </td>
@@ -2418,7 +2442,11 @@
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>datatype. Defaults to np.float32.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>datatype. Defaults to np.float32.</p>
+            </div>
+          </td>
           <td>
                 <code>np.float32</code>
           </td>
@@ -2428,7 +2456,11 @@
           <td>
                 <code>str</code>
           </td>
-          <td><p>global pooling to perform. Defaults to "mean".</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>global pooling to perform. Defaults to "mean".</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;mean&#39;</code>
           </td>
@@ -2438,7 +2470,11 @@
           <td>
                 <code>int</code>
           </td>
-          <td><p>batch size for featurizing the molecules. Defaults to 32.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>batch size for featurizing the molecules. Defaults to 32.</p>
+            </div>
+          </td>
           <td>
                 <code>32</code>
           </td>
@@ -2448,7 +2484,11 @@
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to preload the internal pretrained featurizer or not</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to preload the internal pretrained featurizer or not</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -2612,7 +2652,11 @@
           <td>
                 <code>str</code>
           </td>
-          <td><p>name of the pooling method</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>name of the pooling method</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2693,7 +2737,11 @@
           <td>
                 <code><span title="typing.List">List</span>[str]</code>
           </td>
-          <td><p>SMILES of molecules for embedding computation</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>SMILES of molecules for embedding computation</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2713,12 +2761,20 @@
         <tr>
 <td><code>dataset</code></td>          <td>
           </td>
-          <td><p>List of graphs constructed and featurized</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List of graphs constructed and featurized</p>
+            </div>
+          </td>
         </tr>
         <tr>
 <td></td>          <td>
           </td>
-          <td><p>list of bool: Indicators for whether the SMILES string can be parsed by RDKit</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>list of bool: Indicators for whether the SMILES string can be parsed by RDKit</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -2891,9 +2947,11 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.top"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      <script src="../assets/javascripts/bundle.a51614de.min.js"></script>
       
-        <script src="../assets/js/google-analytics.js"></script>
+        
+          <script src="../assets/js/google-analytics.js"></script>
+        
       
     
   </body>

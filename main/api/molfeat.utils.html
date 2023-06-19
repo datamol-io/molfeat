@@ -17,7 +17,7 @@
         <link rel="next" href="molfeat.viz.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
     
     
       
@@ -3379,7 +3379,11 @@
           <td>
                 <code><span title="typing.Any">Any</span></code>
           </td>
-          <td><p>key to check in the cache</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>key to check in the cache</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3544,7 +3548,11 @@
           <td>
                 <code><span title="typing.Any">Any</span></code>
           </td>
-          <td><p>input key to set</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>input key to set</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3554,7 +3562,11 @@
           <td>
                 <code><span title="typing.Any">Any</span></code>
           </td>
-          <td><p>value of the key to set</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>value of the key to set</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3648,7 +3660,11 @@
           <td>
                 <code><span title="typing.List">List</span>[<span title="typing.Union">Union</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>, str]]</code>
           </td>
-          <td><p>list of molecules</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>list of molecules</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3716,7 +3732,11 @@
           <td><code>key</code></td>
           <td>
           </td>
-          <td><p>key to get</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>key to get</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3726,7 +3746,11 @@
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Any">Any</span>]</code>
           </td>
-          <td><p>default value to return when the key is not found</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>default value to return when the key is not found</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -4289,7 +4313,11 @@
           <td>
                 <code>str</code>
           </td>
-          <td><p>name of the cache</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>name of the cache</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4299,7 +4327,11 @@
           <td>
                 <code>int</code>
           </td>
-          <td><p>number of parallel jobs to use when performing any computation</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>number of parallel jobs to use when performing any computation</p>
+            </div>
+          </td>
           <td>
                 <code>-1</code>
           </td>
@@ -4309,7 +4341,11 @@
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[<span title="typing.Callable">Callable</span>, str, <a class="autorefs autorefs-internal" title="molfeat.utils.cache.MolToKey" href="#molfeat.utils.cache.MolToKey">MolToKey</a>]]</code>
           </td>
-          <td><p>function to use to hash molecules. If not provided, `dm.unique_id`` is used by default</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>function to use to hash molecules. If not provided, `dm.unique_id`` is used by default</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -4319,7 +4355,11 @@
           <td>
                 <code><span title="typing.Union">Union</span>[bool, int]</code>
           </td>
-          <td><p>whether to print progress. Default to False</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to print progress. Default to False</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -4329,7 +4369,11 @@
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[os.<span title="os.PathLike">PathLike</span>, bool]]</code>
           </td>
-          <td><p>Cache location. Defaults to None, which will use in-memory caching.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Cache location. Defaults to None, which will use in-memory caching.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -4339,7 +4383,11 @@
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to delete the cache file on exit. Defaults to False.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to delete the cache file on exit. Defaults to False.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -4349,7 +4397,11 @@
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to clear the cache on exit of the interpreter. Default to True</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to clear the cache on exit of the interpreter. Default to True</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -4467,7 +4519,11 @@ Note that a cleared cache cannot be used anymore</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to delete the cache file if on disk</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to delete the cache file if on disk</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -4560,7 +4616,11 @@ Note that a cleared cache cannot be used anymore</p>
           <td>
                 <code><span title="typing.Union">Union</span>[os.<span title="os.PathLike">PathLike</span>, str]</code>
           </td>
-          <td><p>path to the file to load</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>path to the file to load</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4633,7 +4693,11 @@ Note that a cleared cache cannot be used anymore</p>
           <td>
                 <code><span title="typing.Union">Union</span>[os.<span title="os.PathLike">PathLike</span>, str]</code>
           </td>
-          <td><p>path to the file to save</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>path to the file to save</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4712,7 +4776,11 @@ Note that a cleared cache cannot be used anymore</p>
           <td>
                 <code><span title="typing.Mapping">Mapping</span>[<span title="typing.Any">Any</span>, <span title="typing.Any">Any</span>]</code>
           </td>
-          <td><p>new cache with items to use to update current cache</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>new cache with items to use to update current cache</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -5413,7 +5481,11 @@ the input file needs to be loaded as a dataframe.</p>
           <td>
                 <code><span title="typing.Union">Union</span>[os.<span title="os.PathLike">PathLike</span>, str]</code>
           </td>
-          <td><p>Cache location. Can be a local file or a remote file</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Cache location. Can be a local file or a remote file</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -5423,7 +5495,11 @@ the input file needs to be loaded as a dataframe.</p>
           <td>
                 <code><span title="typing.Optional">Optional</span>[str]</code>
           </td>
-          <td><p>optional name to give the cache</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>optional name to give the cache</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -5433,7 +5509,11 @@ the input file needs to be loaded as a dataframe.</p>
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[<span title="typing.Callable">Callable</span>, str, <a class="autorefs autorefs-internal" title="molfeat.utils.cache.MolToKey" href="#molfeat.utils.cache.MolToKey">MolToKey</a>]]</code>
           </td>
-          <td><p>function to use to hash molecules. If not provided, <code>dm.unique_id</code> is used by default</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>function to use to hash molecules. If not provided, <code>dm.unique_id</code> is used by default</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -5443,7 +5523,11 @@ the input file needs to be loaded as a dataframe.</p>
           <td>
                 <code><span title="typing.Optional">Optional</span>[int]</code>
           </td>
-          <td><p>number of parallel jobs to use when performing any computation</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>number of parallel jobs to use when performing any computation</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -5453,7 +5537,11 @@ the input file needs to be loaded as a dataframe.</p>
           <td>
                 <code><span title="typing.Union">Union</span>[bool, int]</code>
           </td>
-          <td><p>whether to print information about the cache</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to print information about the cache</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -5463,7 +5551,11 @@ the input file needs to be loaded as a dataframe.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to clear the cache on exit of the interpreter</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to clear the cache on exit of the interpreter</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -5473,9 +5565,13 @@ the input file needs to be loaded as a dataframe.</p>
           <td>
                 <code>str</code>
           </td>
-          <td><p>File type that was provided. One of "csv", "pickle", "hdf5" and "parquet"
+          <td>
+            <div class="doc-md-description">
+              <p>File type that was provided. One of "csv", "pickle", "hdf5" and "parquet"
 For "csv" and "parquet", we expect columns "keys" and "values"
-For a pickle, we expect either a mapping or a dataframe with "keys" and "values" columns</p></td>
+For a pickle, we expect either a mapping or a dataframe with "keys" and "values" columns</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;parquet&#39;</code>
           </td>
@@ -5485,7 +5581,11 @@ For a pickle, we expect either a mapping or a dataframe with "keys" and "values"
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Dict">Dict</span>[<span title="typing.Any">Any</span>, <span title="typing.Any">Any</span>]]</code>
           </td>
-          <td><p>Argument to pass to the parquet reader.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Argument to pass to the parquet reader.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -5758,7 +5858,11 @@ Note that a cleared cache cannot be used anymore !</p>
           <td>
                 <code><span title="typing.Union">Union</span>[os.<span title="os.PathLike">PathLike</span>, str]</code>
           </td>
-          <td><p>path to the file to load</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>path to the file to load</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -5767,7 +5871,11 @@ Note that a cleared cache cannot be used anymore !</p>
           <td><code>kwargs</code></td>
           <td>
           </td>
-          <td><p>keyword arguments to pass to the constructor</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>keyword arguments to pass to the constructor</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
@@ -5832,7 +5940,11 @@ Note that a cleared cache cannot be used anymore !</p>
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[os.<span title="os.PathLike">PathLike</span>, str]]</code>
           </td>
-          <td><p>path to the file to save. If None, the cache is saved to the original file.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>path to the file to save. If None, the cache is saved to the original file.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -5842,8 +5954,12 @@ Note that a cleared cache cannot be used anymore !</p>
           <td>
                 <code><span title="typing.Optional">Optional</span>[str]</code>
           </td>
-          <td><p>format used to save the cache to file one of "pickle", "csv", "hdf5", "parquet".
-If None, the original file type is used.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>format used to save the cache to file one of "pickle", "csv", "hdf5", "parquet".
+If None, the original file type is used.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -5852,7 +5968,11 @@ If None, the original file type is used.</p></td>
           <td><code>kwargs</code></td>
           <td>
           </td>
-          <td><p>keyword arguments to pass to the serializer to disk (e.g to pass to pd.to_csv or pd.to_parquet)</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>keyword arguments to pass to the serializer to disk (e.g to pass to pd.to_csv or pd.to_parquet)</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
@@ -5979,8 +6099,12 @@ If None, the original file type is used.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to pack the values columns into bits.
-By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as an array</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to pack the values columns into bits.
+By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as an array</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -6055,7 +6179,11 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to save the cache to file.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to save the cache to file.</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -6144,7 +6272,11 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
           <td>
                 <code><span title="typing.Mapping">Mapping</span>[<span title="typing.Any">Any</span>, <span title="typing.Any">Any</span>]</code>
           </td>
-          <td><p>new cache with items to use to update current cache</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>new cache with items to use to update current cache</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -6326,7 +6458,11 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
           <td>
                 <code><span title="typing.Optional">Optional</span>[str]</code>
           </td>
-          <td><p>name of the cache</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>name of the cache</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -6336,7 +6472,11 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
           <td>
                 <code>int</code>
           </td>
-          <td><p>number of parallel jobs to use when performing any computation</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>number of parallel jobs to use when performing any computation</p>
+            </div>
+          </td>
           <td>
                 <code>-1</code>
           </td>
@@ -6346,7 +6486,11 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[<span title="typing.Callable">Callable</span>, str, <a class="autorefs autorefs-internal" title="molfeat.utils.cache.MolToKey" href="#molfeat.utils.cache.MolToKey">MolToKey</a>]]</code>
           </td>
-          <td><p>function to use to hash molecules. If not provided, `dm.unique_id`` is used by default</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>function to use to hash molecules. If not provided, `dm.unique_id`` is used by default</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -6356,7 +6500,11 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
           <td>
                 <code><span title="typing.Union">Union</span>[bool, int]</code>
           </td>
-          <td><p>whether to print progress. Default to False</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to print progress. Default to False</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -6366,7 +6514,11 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to clear the cache on exit. Default is False to allow sharing the cache content</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to clear the cache on exit. Default is False to allow sharing the cache content</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -6686,7 +6838,11 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
           <td>
                 <code><span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span></code>
           </td>
-          <td><p>input molecule object</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>input molecule object</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -6753,7 +6909,11 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[<span title="typing.Callable">Callable</span>, str]]</code>
           </td>
-          <td><p>hash function to use for the molecular key</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>hash function to use for the molecular key</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;dm.unique_id&#39;</code>
           </td>
@@ -6964,7 +7124,11 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
           <td>
                 <code><span title="typing.List">List</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>]</code>
           </td>
-          <td><p>List of molecules to align. All the molecules must have a conformer.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List of molecules to align. All the molecules must have a conformer.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -6974,8 +7138,12 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
           <td>
                 <code>int</code>
           </td>
-          <td><p>Index of the reference molecule. By default, the first molecule in the list
-will be used as reference.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Index of the reference molecule. By default, the first molecule in the list
+will be used as reference.</p>
+            </div>
+          </td>
           <td>
                 <code>0</code>
           </td>
@@ -6985,7 +7153,11 @@ will be used as reference.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to copy the molecules before performing the alignement.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to copy the molecules before performing the alignement.</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -6995,7 +7167,11 @@ will be used as reference.</p></td>
           <td>
                 <code>int</code>
           </td>
-          <td><p>Conformer id to use.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Conformer id to use.</p>
+            </div>
+          </td>
           <td>
                 <code>-1</code>
           </td>
@@ -7015,12 +7191,20 @@ will be used as reference.</p></td>
         <tr>
 <td><code>mols</code></td>          <td>
           </td>
-          <td><p>The aligned molecules.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The aligned molecules.</p>
+            </div>
+          </td>
         </tr>
         <tr>
 <td><code>scores</code></td>          <td>
           </td>
-          <td><p>The score of the alignement.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The score of the alignement.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -7178,7 +7362,11 @@ will be used as reference.</p></td>
           <td>
                 <code>dict</code>
           </td>
-          <td><p>Input dict of property names and their computed values</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Input dict of property names and their computed values</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -7188,7 +7376,11 @@ will be used as reference.</p></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>new name under which the concatenated property dict will be returned</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>new name under which the concatenated property dict will be returned</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -7198,7 +7390,11 @@ will be used as reference.</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Iterable">Iterable</span>[str]]</code>
           </td>
-          <td><p>Optional list of key that specifies the order in which concatenation should be done. Sorting list by default</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional list of key that specifies the order in which concatenation should be done. Sorting list by default</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -7218,7 +7414,11 @@ will be used as reference.</p></td>
         <tr>
 <td><code>dict</code></td>          <td>
           </td>
-          <td><p>dictionary of concatenated output values with a single key corresponding to new_name</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>dictionary of concatenated output values with a single key corresponding to new_name</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -7296,7 +7496,11 @@ will be used as reference.</p></td>
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>function to be pickled</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>function to be pickled</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -7359,7 +7563,11 @@ will be used as reference.</p></td>
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>Function for which arguments will be checked</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Function for which arguments will be checked</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -7369,7 +7577,11 @@ will be used as reference.</p></td>
           <td>
                 <code>dict</code>
           </td>
-          <td><p>key-val dictionary of arguments to pass to the input function</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>key-val dictionary of arguments to pass to the input function</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -7390,7 +7602,11 @@ will be used as reference.</p></td>
 <td><code>params_filtered</code></td>          <td>
                 <code>dict</code>
           </td>
-          <td><p>dict of filtered arguments for the function</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>dict of filtered arguments for the function</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -7467,7 +7683,11 @@ will be used as reference.</p></td>
           <td><code>fn</code></td>
           <td>
           </td>
-          <td><p>object to pickle</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>object to pickle</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -7487,7 +7707,11 @@ will be used as reference.</p></td>
         <tr>
 <td><code>str</code></td>          <td>
           </td>
-          <td><p>hex representation of object</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>hex representation of object</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -7551,7 +7775,11 @@ will be used as reference.</p></td>
           <td>
                 <code><span title="typing.Iterable">Iterable</span></code>
           </td>
-          <td><p>iterable fingerprint</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>iterable fingerprint</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -7561,7 +7789,11 @@ will be used as reference.</p></td>
           <td>
                 <code>int</code>
           </td>
-          <td><p>dimension of the folded array if not provided. Defaults to 2**10.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>dimension of the folded array if not provided. Defaults to 2**10.</p>
+            </div>
+          </td>
           <td>
                 <code>2 ** 10</code>
           </td>
@@ -7571,7 +7803,11 @@ will be used as reference.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to fold into a binary array or take use a count vector</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to fold into a binary array or take use a count vector</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -7591,7 +7827,11 @@ will be used as reference.</p></td>
         <tr>
 <td><code>folded</code></td>          <td>
           </td>
-          <td><p>returns folded array to the provided dimension</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>returns folded array to the provided dimension</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -7699,7 +7939,11 @@ will be used as reference.</p></td>
           <td>
                 <code><span title="typing.Type">Type</span></code>
           </td>
-          <td><p>name of the class</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>name of the class</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -7766,7 +8010,11 @@ will be used as reference.</p></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>hex string to load as a callable</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>hex string to load as a callable</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -7786,7 +8034,11 @@ will be used as reference.</p></td>
         <tr>
 <td><code>callable</code></td>          <td>
           </td>
-          <td><p>callable loaded from the hex string</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>callable loaded from the hex string</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -7852,7 +8104,11 @@ will be used as reference.</p></td>
           <td>
                 <code>int</code>
           </td>
-          <td><p>class to be converted into a one hot vector</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>class to be converted into a one hot vector</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -7862,7 +8118,11 @@ will be used as reference.</p></td>
           <td>
                 <code><span title="typing.Iterable">Iterable</span></code>
           </td>
-          <td><p>a list or 1D array of allowed choices for val to take</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>a list or 1D array of allowed choices for val to take</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -7872,7 +8132,11 @@ will be used as reference.</p></td>
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>data type of the the return. Default = int.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>data type of the the return. Default = int.</p>
+            </div>
+          </td>
           <td>
                 <code>int</code>
           </td>
@@ -7882,7 +8146,11 @@ will be used as reference.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to map inputs not in allowable set to an additional last element.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to map inputs not in allowable set to an additional last element.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -7902,7 +8170,11 @@ will be used as reference.</p></td>
         <tr>
           <td>
           </td>
-          <td><p>A numpy 1D array of length len(allowable_set) + 1</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>A numpy 1D array of length len(allowable_set) + 1</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -7997,7 +8269,11 @@ will be used as reference.</p></td>
           <td><code>obj</code></td>
           <td>
           </td>
-          <td><p>object to pack</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>object to pack</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -8017,7 +8293,11 @@ will be used as reference.</p></td>
         <tr>
 <td><code>bytes</code></td>          <td>
           </td>
-          <td><p>byte-packed version of object</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>byte-packed version of object</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -8079,7 +8359,11 @@ will be used as reference.</p></td>
           <td>
                 <code><span title="typing.List">List</span>[torch.<span title="torch.FloatTensor">FloatTensor</span>]</code>
           </td>
-          <td><p>List of adjacency graph, each of size (n_i, n_i).</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List of adjacency graph, each of size (n_i, n_i).</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -8089,7 +8373,11 @@ will be used as reference.</p></td>
           <td>
                 <code><span title="typing.List">List</span>[torch.<span title="torch.FloatTensor">FloatTensor</span>]</code>
           </td>
-          <td><p>List of atom feature matrices, each of size (n_i, F), F being the number of features</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List of atom feature matrices, each of size (n_i, F), F being the number of features</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -8109,10 +8397,14 @@ will be used as reference.</p></td>
         <tr>
           <td>
           </td>
-          <td><p>new_batch_G, new_batch_x: torch.LongTensor 2D, torch.Tensor 2D
+          <td>
+            <div class="doc-md-description">
+              <p>new_batch_G, new_batch_x: torch.LongTensor 2D, torch.Tensor 2D
 This tuple represents a new arbitrary graph that contains the whole batch,
 and the corresponding atom feature matrix. new_batch_G has a size (N, N), with :math:<code>N = \sum_i n_i</code>,
-while new_batch_x has size (N,D)</p></td>
+while new_batch_x has size (N,D)</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -8277,7 +8569,11 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>calculator to wrap</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>calculator to wrap</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -8287,7 +8583,11 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to force metal disconnection</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to force metal disconnection</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -8297,7 +8597,11 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to remove salt from the molecule</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to remove salt from the molecule</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -8428,7 +8732,11 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code><span title="typing.Union">Union</span>[str, os.<span title="os.PathLike">PathLike</span>]</code>
           </td>
-          <td><p>The path to the file to compute the MD5 hash on.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The path to the file to compute the MD5 hash on.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -8504,7 +8812,11 @@ while new_batch_x has size (N,D)</p></td>
           <td><code>bvalues</code></td>
           <td>
           </td>
-          <td><p>bytes to be unpacked</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>bytes to be unpacked</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -8524,7 +8836,11 @@ while new_batch_x has size (N,D)</p></td>
         <tr>
 <td><code>obj</code></td>          <td>
           </td>
-          <td><p>object that was packed</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>object that was packed</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -8618,7 +8934,11 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>name of the module to check</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>name of the module to check</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -8628,7 +8948,11 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[str]</code>
           </td>
-          <td><p>optional minimum version string to check</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>optional minimum version string to check</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -8638,7 +8962,11 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[str]</code>
           </td>
-          <td><p>optional maximum version string to check</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>optional maximum version string to check</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -8739,7 +9067,11 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>name of the module or function to mock</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>name of the module or function to mock</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -8828,7 +9160,11 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code>array</code>
           </td>
-          <td><p>Input array to cast (2D)</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Input array to cast (2D)</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -8838,7 +9174,11 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Callable">Callable</span>]</code>
           </td>
-          <td><p>datatype to cast to</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>datatype to cast to</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -8848,7 +9188,11 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Iterable">Iterable</span>]</code>
           </td>
-          <td><p>column names for pandas dataframe</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>column names for pandas dataframe</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -8971,7 +9315,11 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code><span title="typing.Union">Union</span>[<span title="rdkit.DataStructs.cDataStructs.SparseBitVect">SparseBitVect</span>, <span title="rdkit.DataStructs.cDataStructs.ExplicitBitVect">ExplicitBitVect</span>]</code>
           </td>
-          <td><p>input vector</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>input vector</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -8991,7 +9339,11 @@ while new_batch_x has size (N,D)</p></td>
         <tr>
 <td><code>converted</code></td>          <td>
           </td>
-          <td><p>ExplicitBitVect if input is SparseBitVec, else input as is</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>ExplicitBitVect if input is SparseBitVec, else input as is</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -9057,7 +9409,11 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code>callable</code>
           </td>
-          <td><p>The dtype of a value. E.g. np.int32, str, torch.float</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The dtype of a value. E.g. np.int32, str, torch.float</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -9077,7 +9433,11 @@ while new_batch_x has size (N,D)</p></td>
         <tr>
           <td>
           </td>
-          <td><p>A boolean saying if the dtype is a torch dtype</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>A boolean saying if the dtype is a torch dtype</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -9145,7 +9505,11 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code>callable</code>
           </td>
-          <td><p>The dtype of a value. E.g. np.int32, str, torch.float</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The dtype of a value. E.g. np.int32, str, torch.float</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -9224,7 +9588,11 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code>callable</code>
           </td>
-          <td><p>The dtype of a value. E.g. np.int32, str, torch.float</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The dtype of a value. E.g. np.int32, str, torch.float</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -9244,7 +9612,11 @@ while new_batch_x has size (N,D)</p></td>
         <tr>
           <td>
           </td>
-          <td><p>A boolean saying if the dtype is a torch dtype</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>A boolean saying if the dtype is a torch dtype</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -9357,7 +9729,11 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p>Numpy array to convert to bitvec</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Numpy array to convert to bitvec</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -9367,7 +9743,11 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to assume the data is a bitvect or intvect</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to assume the data is a bitvect or intvect</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -9377,7 +9757,11 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to convert to sparse bit vect</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to convert to sparse bit vect</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -9397,7 +9781,11 @@ while new_batch_x has size (N,D)</p></td>
         <tr>
 <td><code>fp</code></td>          <td>
           </td>
-          <td><p>RDKit bit vector</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>RDKit bit vector</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -9491,7 +9879,11 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code>Object</code>
           </td>
-          <td><p>The Python object to convert.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The Python object to convert.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -9501,9 +9893,13 @@ while new_batch_x has size (N,D)</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to copy the memory.
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to copy the memory.
 By default, if a tensor is already on CPU, the
-Numpy array will be a view of the tensor.</p></td>
+Numpy array will be a view of the tensor.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -9513,7 +9909,11 @@ Numpy array will be a view of the tensor.</p></td>
           <td>
                 <code>callable</code>
           </td>
-          <td><p>Optional type to cast the values to</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional type to cast the values to</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -9533,12 +9933,20 @@ Numpy array will be a view of the tensor.</p></td>
         <tr>
           <td>
           </td>
-          <td><p>A new Python object with the same structure as <code>x</code> but where the tensors are now Numpy</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>A new Python object with the same structure as <code>x</code> but where the tensors are now Numpy</p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td>
           </td>
-          <td><p>arrays. Not supported type are left as reference in the new object.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>arrays. Not supported type are left as reference in the new object.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -9660,7 +10068,11 @@ Numpy array will be a view of the tensor.</p></td>
           <td>
                 <code>torch.<span title="torch.Tensor">Tensor</span></code>
           </td>
-          <td><p>tensor to convert</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>tensor to convert</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -9670,8 +10082,12 @@ Numpy array will be a view of the tensor.</p></td>
           <td>
                 <code>torch.<span title="torch.dtype">dtype</span></code>
           </td>
-          <td><p>Enforces new data type for the output.
-If None, it keeps the same datatype as x (Default: None)</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Enforces new data type for the output.
+If None, it keeps the same datatype as x (Default: None)</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -9691,7 +10107,11 @@ If None, it keeps the same datatype as x (Default: None)</p></td>
         <tr>
           <td>
           </td>
-          <td><p>new torch.sparse Tensor</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>new torch.sparse Tensor</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -9782,7 +10202,11 @@ the same as the original array, unless specify otherwise</p>
           <td>
                 <code>numpy.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p>Numpy array to convert to tensor type</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Numpy array to convert to tensor type</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -9792,7 +10216,11 @@ the same as the original array, unless specify otherwise</p>
           <td>
                 <code>bool optional</code>
           </td>
-          <td><p>Whether to move tensor to gpu. Default False</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to move tensor to gpu. Default False</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -9802,7 +10230,11 @@ the same as the original array, unless specify otherwise</p>
           <td>
                 <code>torch.<span title="torch.dtype">dtype</span></code>
           </td>
-          <td><p>Enforces new data type for the output</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Enforces new data type for the output</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -9822,7 +10254,11 @@ the same as the original array, unless specify otherwise</p>
         <tr>
           <td>
           </td>
-          <td><p>New torch.Tensor</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>New torch.Tensor</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -10075,7 +10511,11 @@ The Bart pooling function focusing on the eos token ([EOS]) to get a sentence re
           <td>
                 <code>torch.<span title="torch.Tensor">Tensor</span></code>
           </td>
-          <td><p>hidden representation of the input sequence to pool over</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>hidden representation of the input sequence to pool over</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -10085,7 +10525,11 @@ The Bart pooling function focusing on the eos token ([EOS]) to get a sentence re
           <td>
                 <code><span title="typing.Optional">Optional</span>[torch.<span title="torch.Tensor">Tensor</span>]</code>
           </td>
-          <td><p>inputs tokens to the bart underlying model</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>inputs tokens to the bart underlying model</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -10106,7 +10550,11 @@ The Bart pooling function focusing on the eos token ([EOS]) to get a sentence re
 <td><code>pooled_output</code></td>          <td>
                 <code>torch.<span title="torch.Tensor">Tensor</span></code>
           </td>
-          <td><p>pooled representation of the input sequence</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>pooled representation of the input sequence</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -10431,7 +10879,11 @@ The bert pooling function focuses on a projection of the first token ([CLS]) to 
           <td>
                 <code>torch.<span title="torch.Tensor">Tensor</span></code>
           </td>
-          <td><p>hidden representation of the input sequence to pool over</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>hidden representation of the input sequence to pool over</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -10441,7 +10893,11 @@ The bert pooling function focuses on a projection of the first token ([CLS]) to 
           <td>
                 <code><span title="typing.Optional">Optional</span>[torch.<span title="torch.Tensor">Tensor</span>]</code>
           </td>
-          <td><p>optional input that has been provided to the underlying bert model</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>optional input that has been provided to the underlying bert model</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -10462,7 +10918,11 @@ The bert pooling function focuses on a projection of the first token ([CLS]) to 
 <td><code>pooled_output</code></td>          <td>
                 <code>torch.<span title="torch.Tensor">Tensor</span></code>
           </td>
-          <td><p>pooled representation of the input sequence</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>pooled representation of the input sequence</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -10725,7 +11185,11 @@ The GPT pooling function focusing on the last non-padding token given sequence l
           <td>
                 <code>torch.<span title="torch.Tensor">Tensor</span></code>
           </td>
-          <td><p>hidden representation of the input sequence to pool over</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>hidden representation of the input sequence to pool over</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -10735,7 +11199,11 @@ The GPT pooling function focusing on the last non-padding token given sequence l
           <td>
                 <code><span title="typing.Optional">Optional</span>[torch.<span title="torch.Tensor">Tensor</span>]</code>
           </td>
-          <td><p>inputs tokens to the bart underlying model</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>inputs tokens to the bart underlying model</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -10756,7 +11224,11 @@ The GPT pooling function focusing on the last non-padding token given sequence l
 <td><code>pooled_output</code></td>          <td>
                 <code>torch.<span title="torch.Tensor">Tensor</span></code>
           </td>
-          <td><p>pooled representation of the input sequence</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>pooled representation of the input sequence</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -11024,7 +11496,11 @@ The GPT pooling function focusing on the last non-padding token given sequence l
           <td>
                 <code>torch.<span title="torch.Tensor">Tensor</span></code>
           </td>
-          <td><p>hidden representation of the input sequence to pool over</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>hidden representation of the input sequence to pool over</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -11034,7 +11510,11 @@ The GPT pooling function focusing on the last non-padding token given sequence l
           <td>
                 <code><span title="typing.Optional">Optional</span>[torch.<span title="torch.Tensor">Tensor</span>]</code>
           </td>
-          <td><p>optional input that has been provided to the underlying bert model</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>optional input that has been provided to the underlying bert model</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -11044,7 +11524,11 @@ The GPT pooling function focusing on the last non-padding token given sequence l
           <td>
                 <code><span title="typing.Optional">Optional</span>[torch.<span title="torch.Tensor">Tensor</span>]</code>
           </td>
-          <td><p>optional mask to use in place of computing the padding specific mask</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>optional mask to use in place of computing the padding specific mask</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -11054,7 +11538,11 @@ The GPT pooling function focusing on the last non-padding token given sequence l
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to ignore padding tokens when pooling</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to ignore padding tokens when pooling</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -11075,7 +11563,11 @@ The GPT pooling function focusing on the last non-padding token given sequence l
 <td><code>pooled_output</code></td>          <td>
                 <code>torch.<span title="torch.Tensor">Tensor</span></code>
           </td>
-          <td><p>pooled representation of the input sequence</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>pooled representation of the input sequence</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -11358,7 +11850,11 @@ The GPT pooling function focusing on the last non-padding token given sequence l
           <td>
                 <code>int</code>
           </td>
-          <td><p>dimension to pool over, default is 1</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>dimension to pool over, default is 1</p>
+            </div>
+          </td>
           <td>
                 <code>1</code>
           </td>
@@ -11368,7 +11864,11 @@ The GPT pooling function focusing on the last non-padding token given sequence l
           <td>
                 <code>str</code>
           </td>
-          <td><p>pooling type. Default is 'mean'.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>pooling type. Default is 'mean'.</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;max&#39;</code>
           </td>
@@ -11434,7 +11934,11 @@ The GPT pooling function focusing on the last non-padding token given sequence l
           <td><code>x</code></td>
           <td>
           </td>
-          <td><p>input tensor to pull over</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>input tensor to pull over</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -11444,7 +11948,11 @@ The GPT pooling function focusing on the last non-padding token given sequence l
           <td>
                 <code><span title="typing.List">List</span>[int]</code>
           </td>
-          <td><p>Subset of indices to pool over. Defaults to None for all indices.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Subset of indices to pool over. Defaults to None for all indices.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -11454,8 +11962,12 @@ The GPT pooling function focusing on the last non-padding token given sequence l
           <td>
                 <code>torch.<span title="torch.Tensor">Tensor</span></code>
           </td>
-          <td><p>binary mask to apply when pooling. Defaults to None, which is a matrix of 1.
-If mask is provided it takes precedence over indices.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>binary mask to apply when pooling. Defaults to None, which is a matrix of 1.
+If mask is provided it takes precedence over indices.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -11562,7 +12074,11 @@ If mask is provided it takes precedence over indices.</p></td>
           <td><code>name</code></td>
           <td>
           </td>
-          <td><p>name of the model</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>name of the model</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -11571,7 +12087,11 @@ If mask is provided it takes precedence over indices.</p></td>
           <td><code>config</code></td>
           <td>
           </td>
-          <td><p>config of the model</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>config of the model</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -11580,7 +12100,11 @@ If mask is provided it takes precedence over indices.</p></td>
           <td><code>kwargs</code></td>
           <td>
           </td>
-          <td><p>additional arguments to pass to the pooler</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>additional arguments to pass to the pooler</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
@@ -11903,7 +12427,11 @@ If mask is provided it takes precedence over indices.</p></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>target representation.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>target representation.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -11988,7 +12516,11 @@ If mask is provided it takes precedence over indices.</p></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>input representation to decode</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>input representation to decode</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -12061,7 +12593,11 @@ If mask is provided it takes precedence over indices.</p></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>input smiles to encode</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>input smiles to encode</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -12169,9 +12705,11 @@ If mask is provided it takes precedence over indices.</p></td>
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.top"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      <script src="../assets/javascripts/bundle.a51614de.min.js"></script>
       
-        <script src="../assets/js/google-analytics.js"></script>
+        
+          <script src="../assets/js/google-analytics.js"></script>
+        
       
     
   </body>

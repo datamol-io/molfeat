@@ -17,7 +17,7 @@
         <link rel="next" href="molfeat.trans.pretrained.dgl_pretrained.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
     
     
       
@@ -1469,19 +1469,31 @@ for the prediction of homo-lumo gap.</p>
           <td><code>featurizer</code></td>
           <td>
           </td>
-          <td><p>Graphormer embedding object</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Graphormer embedding object</p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td><code>dtype</code></td>
           <td>
           </td>
-          <td><p>Data type. Use call instead</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Data type. Use call instead</p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td><code>pooling</code></td>
           <td>
           </td>
-          <td><p>Pooling method for Graphormer's embedding layer</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Pooling method for Graphormer's embedding layer</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -2033,7 +2045,11 @@ averaged across all nodes (including the virtual node connected to all other nod
           <td>
                 <code>str</code>
           </td>
-          <td><p>name of the featurizer as available in the model store</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>name of the featurizer as available in the model store</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;pcqm4mv2_graphormer_base&#39;</code>
           </td>
@@ -2043,7 +2059,11 @@ averaged across all nodes (including the virtual node connected to all other nod
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>Data type to output</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Data type to output</p>
+            </div>
+          </td>
           <td>
                 <code>np.float32</code>
           </td>
@@ -2053,7 +2073,11 @@ averaged across all nodes (including the virtual node connected to all other nod
           <td>
                 <code>str</code>
           </td>
-          <td><p>type of pooling to use. One of ['graph', 'virtual', 'mean', 'max', 'sum']. The value "graph" corresponds to the virtual node representation</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>type of pooling to use. One of ['graph', 'virtual', 'mean', 'max', 'sum']. The value "graph" corresponds to the virtual node representation</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;mean&#39;</code>
           </td>
@@ -2063,7 +2087,11 @@ averaged across all nodes (including the virtual node connected to all other nod
           <td>
                 <code><span title="typing.Optional">Optional</span>[int]</code>
           </td>
-          <td><p>Maximum length of the input sequence to consider. Please update this for large sequences</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Maximum length of the input sequence to consider. Please update this for large sequences</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2073,7 +2101,11 @@ averaged across all nodes (including the virtual node connected to all other nod
           <td>
                 <code><span title="typing.Union">Union</span>[<span title="typing.List">List</span>[int], int]</code>
           </td>
-          <td><p>Layer to concat to get the representation. By default the last hidden layer is returned.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Layer to concat to get the representation. By default the last hidden layer is returned.</p>
+            </div>
+          </td>
           <td>
                 <code>-1</code>
           </td>
@@ -2083,7 +2115,11 @@ averaged across all nodes (including the virtual node connected to all other nod
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to ignore padding in the representation (default: True) to avoid effect of batching</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to ignore padding in the representation (default: True) to avoid effect of batching</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -2092,7 +2128,11 @@ averaged across all nodes (including the virtual node connected to all other nod
           <td><code>params</code></td>
           <td>
           </td>
-          <td><p>any other parameter to pass to PretrainedMolTransformer</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>any other parameter to pass to PretrainedMolTransformer</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
@@ -2315,7 +2355,11 @@ averaged across all nodes (including the virtual node connected to all other nod
           <td>
                 <code>list</code>
           </td>
-          <td><p>input list of molecules</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>input list of molecules</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2495,9 +2539,11 @@ averaged across all nodes (including the virtual node connected to all other nod
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.top"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      <script src="../assets/javascripts/bundle.a51614de.min.js"></script>
       
-        <script src="../assets/js/google-analytics.js"></script>
+        
+          <script src="../assets/js/google-analytics.js"></script>
+        
       
     
   </body>

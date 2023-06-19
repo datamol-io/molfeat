@@ -17,7 +17,7 @@
         <link rel="next" href="molfeat.trans.fp.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
     
     
       
@@ -2218,7 +2218,11 @@ you should set the relevant attributes or argument of the underlying collate fun
         <tr>
 <td><code>fn</code></td>          <td>
           </td>
-          <td><p>Collate function for pytorch or None</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Collate function for pytorch or None</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -2280,7 +2284,11 @@ you should set the relevant attributes or argument of the underlying collate fun
           <td>
                 <code>list</code>
           </td>
-          <td><p>inputs to preprocess</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>inputs to preprocess</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2290,7 +2298,11 @@ you should set the relevant attributes or argument of the underlying collate fun
           <td>
                 <code><span title="typing.Optional">Optional</span>[list]</code>
           </td>
-          <td><p>labels to preprocess (optional)</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>labels to preprocess (optional)</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2310,7 +2322,11 @@ you should set the relevant attributes or argument of the underlying collate fun
         <tr>
 <td><code>processed</code></td>          <td>
           </td>
-          <td><p>pre-processed input list</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>pre-processed input list</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -2370,7 +2386,11 @@ you should set the relevant attributes or argument of the underlying collate fun
         <tr>
 <td><code>self</code></td>          <td>
           </td>
-          <td><p>estimator instance</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>estimator instance</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -3597,7 +3617,11 @@ If you calculator also implements a <code>batch_compute</code> method, it will b
 <td><code>columns</code></td>          <td>
                 <code>list</code>
           </td>
-          <td><p>Name of the columns of the descriptor</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Name of the columns of the descriptor</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -3659,7 +3683,11 @@ a return datatype.</p>
           <td>
                 <code><span title="typing.List">List</span>[<span title="typing.Union">Union</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>, str]]</code>
           </td>
-          <td><p>Mol or SMILES of the molecules to be transformed</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Mol or SMILES of the molecules to be transformed</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3669,7 +3697,11 @@ a return datatype.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to enforce the instance dtype in the generated fingerprint</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to enforce the instance dtype in the generated fingerprint</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -3679,7 +3711,11 @@ a return datatype.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to ignore errors during featurization or raise an error.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to ignore errors during featurization or raise an error.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -3688,7 +3724,11 @@ a return datatype.</p>
           <td><code>kwargs</code></td>
           <td>
           </td>
-          <td><p>Named parameters for the transform method</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Named parameters for the transform method</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
@@ -3708,13 +3748,21 @@ a return datatype.</p>
         <tr>
 <td><code>feats</code></td>          <td>
           </td>
-          <td><p>list of valid features</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>list of valid features</p>
+            </div>
+          </td>
         </tr>
         <tr>
 <td><code>ids</code></td>          <td>
           </td>
-          <td><p>all valid molecule positions that did not failed during featurization.
-Only returned when ignore_errors is True.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>all valid molecule positions that did not failed during featurization.
+Only returned when ignore_errors is True.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -3824,7 +3872,11 @@ Only returned when ignore_errors is True.</p></td>
           <td>
                 <code><span title="typing.Union">Union</span>[str, <span title="typing.Callable">Callable</span>]</code>
           </td>
-          <td><p>featurizer to use</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>featurizer to use</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3834,7 +3886,11 @@ Only returned when ignore_errors is True.</p></td>
           <td>
                 <code>int</code>
           </td>
-          <td><p>Number of job to run in parallel. Defaults to 1.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Number of job to run in parallel. Defaults to 1.</p>
+            </div>
+          </td>
           <td>
                 <code>1</code>
           </td>
@@ -3844,7 +3900,11 @@ Only returned when ignore_errors is True.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Verbosity level. Defaults to True.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Verbosity level. Defaults to True.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -3854,7 +3914,11 @@ Only returned when ignore_errors is True.</p></td>
           <td>
                 <code>callable</code>
           </td>
-          <td><p>Output data type. Defaults to None, where numpy arrays are returned.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Output data type. Defaults to None, where numpy arrays are returned.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3864,7 +3928,11 @@ Only returned when ignore_errors is True.</p></td>
           <td>
                 <code>dict</code>
           </td>
-          <td><p>Optional kwargs to pass to the dm.parallelized function. Defaults to None.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional kwargs to pass to the dm.parallelized function. Defaults to None.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -4085,7 +4153,11 @@ Only returned when ignore_errors is True.</p></td>
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>Fingerprint transformer</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Fingerprint transformer</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4095,7 +4167,11 @@ Only returned when ignore_errors is True.</p></td>
           <td>
                 <code><span title="typing.List">List</span>[<span title="typing.Union">Union</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>, str]]</code>
           </td>
-          <td><p>List of molecules to featurize</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List of molecules to featurize</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4105,7 +4181,11 @@ Only returned when ignore_errors is True.</p></td>
           <td>
                 <code>int</code>
           </td>
-          <td><p>Batch size</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Batch size</p>
+            </div>
+          </td>
           <td>
                 <code>256</code>
           </td>
@@ -4115,7 +4195,11 @@ Only returned when ignore_errors is True.</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[int]</code>
           </td>
-          <td><p>number of jobs to run in parallel</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>number of jobs to run in parallel</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -4125,7 +4209,11 @@ Only returned when ignore_errors is True.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to concatenate the results or return the list of batched results</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to concatenate the results or return the list of batched results</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -4135,7 +4223,11 @@ Only returned when ignore_errors is True.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to show progress bar</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to show progress bar</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -4145,7 +4237,11 @@ Only returned when ignore_errors is True.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to leave progress bar after completion</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to leave progress bar after completion</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -4154,7 +4250,11 @@ Only returned when ignore_errors is True.</p></td>
           <td><code>parallel_kwargs</code></td>
           <td>
           </td>
-          <td><p>additional arguments to pass to dm.parallelized</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>additional arguments to pass to dm.parallelized</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
@@ -4174,7 +4274,11 @@ Only returned when ignore_errors is True.</p></td>
         <tr>
           <td>
           </td>
-          <td><p>List of batches</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List of batches</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -4380,7 +4484,11 @@ that needs to be removed from the dataset</p>
           <td>
                 <code><span title="typing.List">List</span>[<span title="typing.Union">Union</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>, str]]</code>
           </td>
-          <td><p>input list of molecules</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>input list of molecules</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4390,7 +4498,11 @@ that needs to be removed from the dataset</p>
           <td>
                 <code>list</code>
           </td>
-          <td><p>Optional list of molecular properties. Defaults to None.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional list of molecular properties. Defaults to None.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -4410,7 +4522,11 @@ that needs to be removed from the dataset</p>
         <tr>
 <td><code>self</code></td>          <td>
           </td>
-          <td><p>MolTransformer instance after fitting</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>MolTransformer instance after fitting</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -5052,7 +5168,11 @@ of these molecules and filter them out according to your own logic.</p>
           <td>
                 <code><span title="typing.List">List</span>[<span title="typing.Union">Union</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>, str]]</code>
           </td>
-          <td><p>a list containing smiles or mol objects</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>a list containing smiles or mol objects</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -5062,7 +5182,11 @@ of these molecules and filter them out according to your own logic.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to silently ignore errors</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to silently ignore errors</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -5082,7 +5206,11 @@ of these molecules and filter them out according to your own logic.</p>
         <tr>
 <td><code>features</code></td>          <td>
           </td>
-          <td><p>a list of features for each molecule in the input set</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>a list of features for each molecule in the input set</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -5799,7 +5927,11 @@ of these molecules and filter them out according to your own logic.</p>
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[<span title="molfeat.utils.cache._Cache">_Cache</span>, <span title="typing.Mapping">Mapping</span>[<span title="typing.Any">Any</span>, <span title="typing.Any">Any</span>], <a class="autorefs autorefs-internal" title="molfeat.utils.cache.CacheList" href="molfeat.utils.html#molfeat.utils.cache.CacheList">CacheList</a>]]</code>
           </td>
-          <td><p>a datastructure of type mapping that maps each molecule to the precomputed features</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>a datastructure of type mapping that maps each molecule to the precomputed features</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -5809,8 +5941,12 @@ of these molecules and filter them out according to your own logic.</p>
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Dict">Dict</span>[str, <span title="typing.Union">Union</span>[<span title="molfeat.utils.cache._Cache">_Cache</span>, <span title="typing.Mapping">Mapping</span>[<span title="typing.Any">Any</span>, <span title="typing.Any">Any</span>], <a class="autorefs autorefs-internal" title="molfeat.utils.cache.CacheList" href="molfeat.utils.html#molfeat.utils.cache.CacheList">CacheList</a>]]]</code>
           </td>
-          <td><p>A dictionary of cache objects. This is a convenient structure when use multiple
-datacache for model selection.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>A dictionary of cache objects. This is a convenient structure when use multiple
+datacache for model selection.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -5820,7 +5956,11 @@ datacache for model selection.</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[str]</code>
           </td>
-          <td><p>The key of cache object to use.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The key of cache object to use.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -5830,8 +5970,12 @@ datacache for model selection.</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="molfeat.trans.base.MoleculeTransformer" href="#molfeat.trans.base.MoleculeTransformer">MoleculeTransformer</a>, str]]</code>
           </td>
-          <td><p>optional featurizer used to compute the features of values not in the cache.
-Either the featurizer object or a string.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>optional featurizer used to compute the features of values not in the cache.
+Either the featurizer object or a string.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -5841,7 +5985,11 @@ Either the featurizer object or a string.</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[str]</code>
           </td>
-          <td><p>optional state file path used to initiate the transformer object at the initialization</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>optional state file path used to initiate the transformer object at the initialization</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -6152,7 +6300,11 @@ Either the featurizer object or a string.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to save the cache to file.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to save the cache to file.</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -6251,7 +6403,11 @@ Either the featurizer object or a string.</p></td>
           <td>
                 <code><span title="typing.Mapping">Mapping</span>[<span title="typing.Any">Any</span>, <span title="typing.Any">Any</span>]</code>
           </td>
-          <td><p>A dictionary of molecules to features.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>A dictionary of molecules to features.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -6347,9 +6503,11 @@ Either the featurizer object or a string.</p></td>
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.top"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      <script src="../assets/javascripts/bundle.a51614de.min.js"></script>
       
-        <script src="../assets/js/google-analytics.js"></script>
+        
+          <script src="../assets/js/google-analytics.js"></script>
+        
       
     
   </body>

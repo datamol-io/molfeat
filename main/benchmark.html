@@ -17,7 +17,7 @@
         <link rel="next" href="license.html">
       
       <link rel="icon" href="images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
     
     
       
@@ -2369,7 +2369,7 @@ Licensed under the Apache License, Version 2.0.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Unlike many other machine learning domains, molecular featurization (i.e. the process of transforming a molecule into a vector) lacks a consistently good default. 
+<p>Unlike many other machine learning domains, molecular featurization (i.e. the process of transforming a molecule into a vector) lacks a consistently good default.
 It is still an open question how to best capture the complexity of molecular data with a unified representation. Which molecular representation works best depends largely on which task you are modeling. To achieve optimal performance, it is wise to experiment with a variety of featurization schemes, from structural fingerprints to physicochemical descriptors and pre-trained embeddings.</p>
 <h2 id="use-cases">Use cases<a class="anchor-link" href="#use-cases">&#182;</a></h2><p>Molecular representations / featurizers are an integral part of any molecular modelling workflow and are commonly used for:</p>
 <ul>
@@ -2392,6 +2392,7 @@ It is still an open question how to best capture the complexity of molecular dat
 <p class="admonition-title">Tl;dr - Importance of molecular representation</p>
 <p>
 No featurizer consistently stood out for either task or even within a task category:
+
 <ul>
 <li><p><strong>Modeling:</strong>  The Mordred featurizer outperforms the next best featurizer by ~20% on the <em>Lipophilicity</em> prediction task. On <em>ClinTox</em>, however, things are reversed and ChemBERTa outperforms the other featurizers by ~about 18%.</p>
 </li>
@@ -2401,6 +2402,7 @@ No featurizer consistently stood out for either task or even within a task categ
 <p>These quick examples show the context-dependent nature and thus the importance of experimenting with trying different featurizers. <strong>In short, the perfect molecular featurizer doesn’t exist (yet!)</strong>. All have their pros and cons depending on the data and the downstream task.</p>
 </p>
 </div>
+
 <h3 id="modeling">Modeling<a class="anchor-link" href="#modeling">&#182;</a></h3><p>We will compare the performance on two datasets using scikit-learn <a href="https://github.com/automl/auto-sklearn">AutoML</a> [7, 8] models.</p>
 
 </div>
@@ -3607,6 +3609,7 @@ class="
 <b>There is no single "best" molecular featurizer.</b> With Molfeat, it is now easier than ever to experiment with a diverse set of popular featurizers to ensure you pick the best one for your task of interest!
 </p>
 </div>
+
 <h2 id="citations">Citations<a class="anchor-link" href="#citations">&#182;</a></h2><ol>
 <li>Wu, Z., Ramsundar, B., Feinberg, E. N., Gomes, J., Geniesse, C., Pappu, A. S., ... &amp; Pande, V. (2018). MoleculeNet: a benchmark for molecular machine learning. Chemical science, 9(2), 513-530.</li>
 <li>Riniker, S., Fechner, N., &amp; Landrum, G. A. (2013). Heterogeneous classifier fusion for ligand-based virtual screening: or, how decision making by committee can be a good thing. Journal of chemical information and modeling, 53(11), 2829-2836.</li>
@@ -3674,9 +3677,11 @@ class="
     <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.tracking", "navigation.top"], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.b4d07000.min.js"></script>
+      <script src="assets/javascripts/bundle.a51614de.min.js"></script>
       
-        <script src="assets/js/google-analytics.js"></script>
+        
+          <script src="assets/js/google-analytics.js"></script>
+        
       
     
   </body>

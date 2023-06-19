@@ -17,7 +17,7 @@
         <link rel="next" href="molfeat.trans.base.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
     
     
       
@@ -4489,7 +4489,11 @@
           <td>
                 <code>str</code>
           </td>
-          <td><p>Name of the featurizer</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Name of the featurizer</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4499,7 +4503,11 @@
           <td>
                 <code>dict</code>
           </td>
-          <td><p>Parameters of the featurizer</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Parameters of the featurizer</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
@@ -4520,7 +4528,11 @@
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>When featurizer is not supported</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>When featurizer is not supported</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -4537,7 +4549,11 @@
         <tr>
 <td><code>featurizer</code></td>          <td>
           </td>
-          <td><p>Callable</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Callable</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -5101,7 +5117,11 @@ by <code>MoleculeTransformer</code> to accelerate featurization.</p>
           <td>
                 <code>dict</code>
           </td>
-          <td><p>dictionary to use to create the the calculator</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>dictionary to use to create the the calculator</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -5110,8 +5130,12 @@ by <code>MoleculeTransformer</code> to accelerate featurization.</p>
           <td><code>overrride_args</code></td>
           <td>
           </td>
-          <td><p>optional dictionary of arguments to override the ones in the state dict
-at construction of the new object</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>optional dictionary of arguments to override the ones in the state dict
+at construction of the new object</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -6068,7 +6092,11 @@ at construction of the new object</p></td>
           <td>
                 <code><span title="typing.Union">Union</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>, str]</code>
           </td>
-          <td><p>the molecule of interest</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the molecule of interest</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -6078,7 +6106,11 @@ at construction of the new object</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to keep original datatype or convert to numpy. Useful for rdkit's similarity functions</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to keep original datatype or convert to numpy. Useful for rdkit's similarity functions</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -6099,7 +6131,11 @@ at construction of the new object</p></td>
 <td><code>props</code></td>          <td>
                 <code>np.<span title="np.ndarray">ndarray</span></code>
           </td>
-          <td><p>list of computed rdkit molecular descriptors</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>list of computed rdkit molecular descriptors</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -6227,7 +6263,11 @@ re-folded and the count corresponds to the number of bits set to true</p>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Name of the fingerprint method to use. See FPCalculator.available_fingerprints() for a list</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Name of the fingerprint method to use. See FPCalculator.available_fingerprints() for a list</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -6237,8 +6277,12 @@ re-folded and the count corresponds to the number of bits set to true</p>
           <td>
                 <code>int</code>
           </td>
-          <td><p>Length of the fingerprint. Defaults to None.
-The default corresponds to the fingerpint default.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Length of the fingerprint. Defaults to None.
+The default corresponds to the fingerpint default.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -6248,7 +6292,11 @@ The default corresponds to the fingerpint default.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to use the count version of the fingerprint</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to use the count version of the fingerprint</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -6258,8 +6306,12 @@ The default corresponds to the fingerpint default.</p></td>
           <td>
                 <code>dict</code>
           </td>
-          <td><p>any parameters to the fingerprint algorithm.
-See FPCalculator.default_parameters(method) for all the parameters required by a given method.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>any parameters to the fingerprint algorithm.
+See FPCalculator.default_parameters(method) for all the parameters required by a given method.</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
@@ -6471,7 +6523,11 @@ See FPCalculator.default_parameters(method) for all the parameters required by a
           <td>
                 <code>str</code>
           </td>
-          <td><p>name of the fingerprint method</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>name of the fingerprint method</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -7460,7 +7516,11 @@ results if you add or remove hydrogen atoms</p>
           <td>
                 <code><span title="typing.Union">Union</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>, str]</code>
           </td>
-          <td><p>the molecule of interest.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the molecule of interest.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -7470,8 +7530,12 @@ results if you add or remove hydrogen atoms</p>
           <td>
                 <code>int</code>
           </td>
-          <td><p>Optional conformer id. Only relevant when <code>use_3d_distances</code>
-is set to True.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional conformer id. Only relevant when <code>use_3d_distances</code>
+is set to True.</p>
+            </div>
+          </td>
           <td>
                 <code>-1</code>
           </td>
@@ -7492,7 +7556,11 @@ is set to True.</p></td>
 <td><code>props</code></td>          <td>
                 <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p>list of computed rdkit molecular descriptors</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>list of computed rdkit molecular descriptors</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -7623,8 +7691,12 @@ which you can get by calling <code>len(calc)</code></p>
           <td>
                 <code><span title="typing.Union">Union</span>[float, int]</code>
           </td>
-          <td><p>Maximum distance between pairs. When set to None, the default for 2D is
-set to <code>max_dist=8</code> and for 3D to <code>max_dist=5</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Maximum distance between pairs. When set to None, the default for 2D is
+set to <code>max_dist=8</code> and for 3D to <code>max_dist=5</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -7634,7 +7706,11 @@ set to <code>max_dist=8</code> and for 3D to <code>max_dist=5</code>.</p></td>
           <td>
                 <code><span title="typing.List">List</span>[int]</code>
           </td>
-          <td><p>Bins to use. Defaults to equal spacing <code>[0, max_dist[</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Bins to use. Defaults to equal spacing <code>[0, max_dist[</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -7644,10 +7720,14 @@ set to <code>max_dist=8</code> and for 3D to <code>max_dist=5</code>.</p></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>How to scale the values. Supported values are:
+          <td>
+            <div class="doc-md-description">
+              <p>How to scale the values. Supported values are:
  - 'raw' for the raw values.
  - 'num' for values normalized by the number of atoms.
- - 'count' for scaling based on occurence of the PPP.</p></td>
+ - 'count' for scaling based on occurence of the PPP.</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;raw&#39;</code>
           </td>
@@ -7657,8 +7737,12 @@ set to <code>max_dist=8</code> and for 3D to <code>max_dist=5</code>.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to use the 3D distances instead of the topological distances.
-If set to True, the input molecules must contain a conformer.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to use the 3D distances instead of the topological distances.
+If set to True, the input molecules must contain a conformer.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -7667,7 +7751,11 @@ If set to True, the input molecules must contain a conformer.</p></td>
           <td><code>kwargs</code></td>
           <td>
           </td>
-          <td><p>silently ignored extra parameters for compatibility with other calculators.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>silently ignored extra parameters for compatibility with other calculators.</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
@@ -8491,7 +8579,11 @@ is available in the RDKit book. In particular the following figure describes the
           <td>
                 <code><span title="typing.Union">Union</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>, str]</code>
           </td>
-          <td><p>the molecule of interest</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the molecule of interest</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -8501,7 +8593,11 @@ is available in the RDKit book. In particular the following figure describes the
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to return the raw fingerprint or a Numpy array.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to return the raw fingerprint or a Numpy array.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -8521,7 +8617,11 @@ is available in the RDKit book. In particular the following figure describes the
         <tr>
 <td><code>fp</code></td>          <td>
           </td>
-          <td><p>the computed fingerprint as a Numpy array or as a raw object.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the computed fingerprint as a Numpy array or as a raw object.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -8682,8 +8782,12 @@ is available in the RDKit book. In particular the following figure describes the
           <td>
                 <code><span title="typing.Union">Union</span>[str, <span title="rdkit.Chem.rdMolChemicalFeatures.MolChemicalFeatureFactory">MolChemicalFeatureFactory</span>]</code>
           </td>
-          <td><p>Which features factory to use. One of "default", "cats", "gobbi" , "pmapper" or path
-to a feature definition or a feature factory object</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Which features factory to use. One of "default", "cats", "gobbi" , "pmapper" or path
+to a feature definition or a feature factory object</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;pmapper&#39;</code>
           </td>
@@ -8693,8 +8797,12 @@ to a feature definition or a feature factory object</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[int]</code>
           </td>
-          <td><p>Optional desired length. If provided, the fp will be refold or padded to that length.
-If set to None, fallback to the default for the provided sig factory.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional desired length. If provided, the fp will be refold or padded to that length.
+If set to None, fallback to the default for the provided sig factory.</p>
+            </div>
+          </td>
           <td>
                 <code>2048</code>
           </td>
@@ -8704,7 +8812,11 @@ If set to None, fallback to the default for the provided sig factory.</p></td>
           <td>
                 <code>int</code>
           </td>
-          <td><p>Minimum number of points.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Minimum number of points.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -8714,7 +8826,11 @@ If set to None, fallback to the default for the provided sig factory.</p></td>
           <td>
                 <code>int</code>
           </td>
-          <td><p>Maximum number of points.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Maximum number of points.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -8724,7 +8840,11 @@ If set to None, fallback to the default for the provided sig factory.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to prune the triangle inequality.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to prune the triangle inequality.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -8734,7 +8854,11 @@ If set to None, fallback to the default for the provided sig factory.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to consider bond order.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to consider bond order.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -8744,7 +8868,11 @@ If set to None, fallback to the default for the provided sig factory.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to only use the shortest path between pharmacophores.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to only use the shortest path between pharmacophores.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -8754,7 +8882,11 @@ If set to None, fallback to the default for the provided sig factory.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether take into account the count information. This will also impact how the folding works.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether take into account the count information. This will also impact how the folding works.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -8764,7 +8896,11 @@ If set to None, fallback to the default for the provided sig factory.</p></td>
           <td>
                 <code><span title="typing.List">List</span>[<span title="typing.Tuple">Tuple</span>[int, int]]</code>
           </td>
-          <td><p>Bins to use.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Bins to use.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -9979,7 +10115,11 @@ If set to None, fallback to the default for the provided sig factory.</p></td>
           <td>
                 <code><span title="typing.Union">Union</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>, str]</code>
           </td>
-          <td><p>the molecule of interest</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the molecule of interest</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -9989,7 +10129,11 @@ If set to None, fallback to the default for the provided sig factory.</p></td>
           <td>
                 <code>int</code>
           </td>
-          <td><p>the conformer id to use.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the conformer id to use.</p>
+            </div>
+          </td>
           <td>
                 <code>-1</code>
           </td>
@@ -9999,7 +10143,11 @@ If set to None, fallback to the default for the provided sig factory.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to return the raw fingerprint or a Numpy array.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to return the raw fingerprint or a Numpy array.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -10019,7 +10167,11 @@ If set to None, fallback to the default for the provided sig factory.</p></td>
         <tr>
 <td><code>fp</code></td>          <td>
           </td>
-          <td><p>the computed fingerprint as a Numpy array.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the computed fingerprint as a Numpy array.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -10172,8 +10324,12 @@ If set to None, fallback to the default for the provided sig factory.</p></td>
           <td>
                 <code><span title="typing.Union">Union</span>[str, <span title="rdkit.Chem.rdMolChemicalFeatures.MolChemicalFeatureFactory">MolChemicalFeatureFactory</span>]</code>
           </td>
-          <td><p>Which features factory to use. One of "default", "cats", "gobbi" , "pmapper" or path
-to a feature definition or a feature factory object</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Which features factory to use. One of "default", "cats", "gobbi" , "pmapper" or path
+to a feature definition or a feature factory object</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;pmapper&#39;</code>
           </td>
@@ -10183,8 +10339,12 @@ to a feature definition or a feature factory object</p></td>
           <td>
                 <code>int</code>
           </td>
-          <td><p>Optional desired length. If provided, the fp will be refold or padded to that length.
-If set to None, fallback to the default for the provided sig factory.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional desired length. If provided, the fp will be refold or padded to that length.
+If set to None, fallback to the default for the provided sig factory.</p>
+            </div>
+          </td>
           <td>
                 <code>2048</code>
           </td>
@@ -10194,7 +10354,11 @@ If set to None, fallback to the default for the provided sig factory.</p></td>
           <td>
                 <code>float</code>
           </td>
-          <td><p>Bin step to use.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Bin step to use.</p>
+            </div>
+          </td>
           <td>
                 <code>1</code>
           </td>
@@ -10204,7 +10368,11 @@ If set to None, fallback to the default for the provided sig factory.</p></td>
           <td>
                 <code>int</code>
           </td>
-          <td><p>Minimum number of features to use.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Minimum number of features to use.</p>
+            </div>
+          </td>
           <td>
                 <code>2</code>
           </td>
@@ -10214,7 +10382,11 @@ If set to None, fallback to the default for the provided sig factory.</p></td>
           <td>
                 <code>int</code>
           </td>
-          <td><p>Maximum number of features to use.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Maximum number of features to use.</p>
+            </div>
+          </td>
           <td>
                 <code>3</code>
           </td>
@@ -10224,7 +10396,11 @@ If set to None, fallback to the default for the provided sig factory.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to use modulo to compute the pharmacophore fingerprint</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to use modulo to compute the pharmacophore fingerprint</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -10234,7 +10410,11 @@ If set to None, fallback to the default for the provided sig factory.</p></td>
           <td>
                 <code>float</code>
           </td>
-          <td><p>tolerance value to use when computing the pharmacophore fingerprint</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>tolerance value to use when computing the pharmacophore fingerprint</p>
+            </div>
+          </td>
           <td>
                 <code>0</code>
           </td>
@@ -10376,7 +10556,11 @@ the number of clusters.</p>
           <td>
                 <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
           </td>
-          <td><p>A dataframe of features.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>A dataframe of features.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -10386,8 +10570,12 @@ the number of clusters.</p>
           <td>
                 <code>float</code>
           </td>
-          <td><p>Percentages of mols that must contain a pharmacophoric point
-to be considered as a core point.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Percentages of mols that must contain a pharmacophoric point
+to be considered as a core point.</p>
+            </div>
+          </td>
           <td>
                 <code>0.5</code>
           </td>
@@ -10397,9 +10585,13 @@ to be considered as a core point.</p></td>
           <td>
                 <code>int</code>
           </td>
-          <td><p>Optional number of compounds to compute <code>min_samples</code> from the
+          <td>
+            <div class="doc-md-description">
+              <p>Optional number of compounds to compute <code>min_samples</code> from the
 <code>min_samples_ratio</code> value. If not set it will use <code>mol_index</code> from
-the <code>features</code> dataframe.</p></td>
+the <code>features</code> dataframe.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -10409,8 +10601,12 @@ the <code>features</code> dataframe.</p></td>
           <td>
                 <code>float</code>
           </td>
-          <td><p>The maximum distance between two samples for one to be considered as
-in the neighborhood of the other. This is max_eps in OPTICS</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The maximum distance between two samples for one to be considered as
+in the neighborhood of the other. This is max_eps in OPTICS</p>
+            </div>
+          </td>
           <td>
                 <code>np.inf</code>
           </td>
@@ -10419,7 +10615,11 @@ in the neighborhood of the other. This is max_eps in OPTICS</p></td>
           <td><code>kwargs</code></td>
           <td>
           </td>
-          <td><p>Any additional parameters to pass to <code>sklearn.cluster.OPTICS</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Any additional parameters to pass to <code>sklearn.cluster.OPTICS</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
@@ -10608,7 +10808,11 @@ in the neighborhood of the other. This is max_eps in OPTICS</p></td>
           <td>
                 <code><span title="typing.List">List</span>[<span title="typing.Tuple">Tuple</span>[str, <span title="typing.Tuple">Tuple</span>[float]]]</code>
           </td>
-          <td><p>Features coords: <code>[('A', (1.23, 2.34, 3.45)), ('A', (4.56, 5.67, 6.78)), ...]</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Features coords: <code>[('A', (1.23, 2.34, 3.45)), ('A', (4.56, 5.67, 6.78)), ...]</code>.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -10618,7 +10822,11 @@ in the neighborhood of the other. This is max_eps in OPTICS</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to return the raw fingerprint or a Numpy array.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to return the raw fingerprint or a Numpy array.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -10747,7 +10955,11 @@ in the neighborhood of the other. This is max_eps in OPTICS</p></td>
           <td>
                 <code><span title="typing.List">List</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>]</code>
           </td>
-          <td><p>a list of molecules.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>a list of molecules.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -10757,7 +10969,11 @@ in the neighborhood of the other. This is max_eps in OPTICS</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to align the conformers of the molecules.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to align the conformers of the molecules.</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -10767,7 +10983,11 @@ in the neighborhood of the other. This is max_eps in OPTICS</p></td>
           <td>
                 <code>int</code>
           </td>
-          <td><p>Optional conformer id.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional conformer id.</p>
+            </div>
+          </td>
           <td>
                 <code>-1</code>
           </td>
@@ -10777,7 +10997,11 @@ in the neighborhood of the other. This is max_eps in OPTICS</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to copy the molecules before clustering.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to copy the molecules before clustering.</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -10787,8 +11011,12 @@ in the neighborhood of the other. This is max_eps in OPTICS</p></td>
           <td>
                 <code>float</code>
           </td>
-          <td><p>Percentages of mols that must contain a pharmacophoric point
-to be considered as a core point.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Percentages of mols that must contain a pharmacophoric point
+to be considered as a core point.</p>
+            </div>
+          </td>
           <td>
                 <code>0.5</code>
           </td>
@@ -10798,8 +11026,12 @@ to be considered as a core point.</p></td>
           <td>
                 <code>float</code>
           </td>
-          <td><p>The maximum distance between two samples for one to be considered as
-in the neighborhood of the other.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The maximum distance between two samples for one to be considered as
+in the neighborhood of the other.</p>
+            </div>
+          </td>
           <td>
                 <code>2</code>
           </td>
@@ -10809,7 +11041,11 @@ in the neighborhood of the other.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to return the raw fingerprint or a Numpy array.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to return the raw fingerprint or a Numpy array.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -10818,7 +11054,11 @@ in the neighborhood of the other.</p></td>
           <td><code>cluster_kwargs</code></td>
           <td>
           </td>
-          <td><p>additional keyword arguments for the clustering algorithm.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>additional keyword arguments for the clustering algorithm.</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
@@ -10963,7 +11203,11 @@ in the neighborhood of the other.</p></td>
           <td>
                 <code><span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span></code>
           </td>
-          <td><p>the molecule of interest</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the molecule of interest</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -10984,7 +11228,11 @@ in the neighborhood of the other.</p></td>
 <td><code>features</code></td>          <td>
                 <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
           </td>
-          <td><p>the features as a Numpy array</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the features as a Numpy array</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -11083,7 +11331,11 @@ alignement step.</p>
           <td>
                 <code><span title="typing.List">List</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>]</code>
           </td>
-          <td><p>List of molecules with conformers.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List of molecules with conformers.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -11093,7 +11345,11 @@ alignement step.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to align the conformers of the molecules.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to align the conformers of the molecules.</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -11103,7 +11359,11 @@ alignement step.</p>
           <td>
                 <code>int</code>
           </td>
-          <td><p>Optional conformer id.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional conformer id.</p>
+            </div>
+          </td>
           <td>
                 <code>-1</code>
           </td>
@@ -11113,7 +11373,11 @@ alignement step.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to copy the molecules before clustering.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to copy the molecules before clustering.</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -11123,7 +11387,11 @@ alignement step.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to keep the molecules in the returned dataframe.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to keep the molecules in the returned dataframe.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -11252,7 +11520,11 @@ alignement step.</p>
           <td>
                 <code><span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span></code>
           </td>
-          <td><p>the molecule of interest</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the molecule of interest</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -11262,7 +11534,11 @@ alignement step.</p>
           <td>
                 <code>float</code>
           </td>
-          <td><p>Alpha value for the colors (currently not working).</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Alpha value for the colors (currently not working).</p>
+            </div>
+          </td>
           <td>
                 <code>1.0</code>
           </td>
@@ -11272,7 +11548,11 @@ alignement step.</p>
           <td>
                 <code>float</code>
           </td>
-          <td><p>Radius of the spheres for the features.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Radius of the spheres for the features.</p>
+            </div>
+          </td>
           <td>
                 <code>0.4</code>
           </td>
@@ -11282,8 +11562,12 @@ alignement step.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Display the legend (the layout is bad but at least it
-shows the legend).</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Display the legend (the layout is bad but at least it
+shows the legend).</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -11386,7 +11670,11 @@ shows the legend).</p></td>
           <td>
                 <code><span title="typing.List">List</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>]</code>
           </td>
-          <td><p>a list of molecules.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>a list of molecules.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -11396,7 +11684,11 @@ shows the legend).</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to align the conformers of the molecules.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to align the conformers of the molecules.</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -11406,7 +11698,11 @@ shows the legend).</p></td>
           <td>
                 <code>int</code>
           </td>
-          <td><p>Optional conformer id.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional conformer id.</p>
+            </div>
+          </td>
           <td>
                 <code>-1</code>
           </td>
@@ -11416,7 +11712,11 @@ shows the legend).</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to copy the molecules before clustering.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to copy the molecules before clustering.</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -11426,8 +11726,12 @@ shows the legend).</p></td>
           <td>
                 <code>float</code>
           </td>
-          <td><p>Percentages of mols that must contain a pharmacophoric point
-to be considered as a core point.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Percentages of mols that must contain a pharmacophoric point
+to be considered as a core point.</p>
+            </div>
+          </td>
           <td>
                 <code>0.5</code>
           </td>
@@ -11437,8 +11741,12 @@ to be considered as a core point.</p></td>
           <td>
                 <code>float</code>
           </td>
-          <td><p>The maximum distance between two samples for one to be considered as
-in the neighborhood of the other.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The maximum distance between two samples for one to be considered as
+in the neighborhood of the other.</p>
+            </div>
+          </td>
           <td>
                 <code>2</code>
           </td>
@@ -11448,7 +11756,11 @@ in the neighborhood of the other.</p></td>
           <td>
                 <code>float</code>
           </td>
-          <td><p>Alpha value for the colors (currently not working).</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Alpha value for the colors (currently not working).</p>
+            </div>
+          </td>
           <td>
                 <code>1.0</code>
           </td>
@@ -11458,7 +11770,11 @@ in the neighborhood of the other.</p></td>
           <td>
                 <code>float</code>
           </td>
-          <td><p>Radius of the spheres for the features.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Radius of the spheres for the features.</p>
+            </div>
+          </td>
           <td>
                 <code>0.4</code>
           </td>
@@ -11468,8 +11784,12 @@ in the neighborhood of the other.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Display the legend (the layout is bad but at least it
-shows the legend).</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Display the legend (the layout is bad but at least it
+shows the legend).</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -11825,7 +12145,11 @@ shows the legend).</p></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>The name of the factory.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The name of the factory.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -13157,7 +13481,11 @@ shows the legend).</p></td>
           <td>
                 <code><span title="typing.Union">Union</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>, str]</code>
           </td>
-          <td><p>the molecule of interest</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the molecule of interest</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -13178,7 +13506,11 @@ shows the legend).</p></td>
 <td><code>props</code></td>          <td>
                 <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p>list of computed rdkit molecular descriptors</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>list of computed rdkit molecular descriptors</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -13309,7 +13641,11 @@ shows the legend).</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to normalize the value of the feature</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to normalize the value of the feature</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -13319,7 +13655,11 @@ shows the legend).</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to log errors</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to log errors</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -13329,7 +13669,11 @@ shows the legend).</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to convert the molecule into scaffold first</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to convert the molecule into scaffold first</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -15015,7 +15359,11 @@ The input features are expected to be normalized beforehand (see paper)</p>
           <td>
                 <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p>scaffold key 1</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>scaffold key 1</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -15025,7 +15373,11 @@ The input features are expected to be normalized beforehand (see paper)</p>
           <td>
                 <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p>scaffold key 2</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>scaffold key 2</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -15035,7 +15387,11 @@ The input features are expected to be normalized beforehand (see paper)</p>
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span>]</code>
           </td>
-          <td><p>how to weight each of the features. By default rank ordering is used.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>how to weight each of the features. By default rank ordering is used.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -15045,7 +15401,11 @@ The input features are expected to be normalized beforehand (see paper)</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to compute the features on a batched of inputs (expected 2D)</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to compute the features on a batched of inputs (expected 2D)</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -15066,7 +15426,11 @@ The input features are expected to be normalized beforehand (see paper)</p>
 <td><code>dist</code></td>          <td>
                 <code>float</code>
           </td>
-          <td><p>distance between two scaffold keys</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>distance between two scaffold keys</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -15652,7 +16016,11 @@ J Comput Aided Mol Des 24, 789-801 (2010). <a href="http://dx.doi.org/doi:10.100
           <td>
                 <code><span title="typing.Union">Union</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>, str]</code>
           </td>
-          <td><p>the molecule of interest</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the molecule of interest</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -15662,7 +16030,11 @@ J Comput Aided Mol Des 24, 789-801 (2010). <a href="http://dx.doi.org/doi:10.100
           <td>
                 <code>int</code>
           </td>
-          <td><p>Optional conformer id. Defaults to -1.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional conformer id. Defaults to -1.</p>
+            </div>
+          </td>
           <td>
                 <code>-1</code>
           </td>
@@ -15683,7 +16055,11 @@ J Comput Aided Mol Des 24, 789-801 (2010). <a href="http://dx.doi.org/doi:10.100
 <td><code>shape_descriptor</code></td>          <td>
                 <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p>computed shape descriptor</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>computed shape descriptor</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -15892,9 +16268,13 @@ J Comput Aided Mol Des 24, 789-801 (2010). <a href="http://dx.doi.org/doi:10.100
           <td>
                 <code>str</code>
           </td>
-          <td><p>charge model to use. One of ('gasteiger', 'tripos', 'mmff94', 'formal'). Defaults to "gasteiger".
+          <td>
+            <div class="doc-md-description">
+              <p>charge model to use. One of ('gasteiger', 'tripos', 'mmff94', 'formal'). Defaults to "gasteiger".
 Note that formal charges will be computed on the fly if not provided in the input molecules.
-The <code>tripos</code> charge models comes from TRIPOS force field and are often parsed from mol2 files.</p></td>
+The <code>tripos</code> charge models comes from TRIPOS force field and are often parsed from mol2 files.</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;gasteiger&#39;</code>
           </td>
@@ -15904,7 +16284,11 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to replace NaN values. Defaults False</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to replace NaN values. Defaults False</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -15914,7 +16298,11 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
           <td>
                 <code>float</code>
           </td>
-          <td><p>scaling factor to convert electron charges to Angstroms. Defaults to 25.0.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>scaling factor to convert electron charges to Angstroms. Defaults to 25.0.</p>
+            </div>
+          </td>
           <td>
                 <code>25.0</code>
           </td>
@@ -16032,7 +16420,11 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
           <td>
                 <code>str</code>
           </td>
-          <td><p>charge model to use. One of ('gasteiger', 'tripos', 'mmff94', 'formal'). Defaults to "gasteiger".</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>charge model to use. One of ('gasteiger', 'tripos', 'mmff94', 'formal'). Defaults to "gasteiger".</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -16381,7 +16773,11 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
           <td>
                 <code><span title="typing.Union">Union</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>, str]</code>
           </td>
-          <td><p>the molecule of interest</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the molecule of interest</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -16391,7 +16787,11 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
           <td>
                 <code>int</code>
           </td>
-          <td><p>Optional conformer id. Defaults to -1.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional conformer id. Defaults to -1.</p>
+            </div>
+          </td>
           <td>
                 <code>-1</code>
           </td>
@@ -16412,7 +16812,11 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
 <td><code>shape_descriptors</code></td>          <td>
                 <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p>list of computed mordred molecular descriptors</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>list of computed mordred molecular descriptors</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -16523,7 +16927,11 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
           <td>
                 <code>str</code>
           </td>
-          <td><p>Shape descriptor method to use. One of 'USR', 'USRCAT'. Default to 'USR'</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Shape descriptor method to use. One of 'USR', 'USRCAT'. Default to 'USR'</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;USR&#39;</code>
           </td>
@@ -16533,7 +16941,11 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to replace nan or infinite values. Defaults to False.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to replace nan or infinite values. Defaults to False.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -16637,7 +17049,11 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
           <td><code>shape_1</code></td>
           <td>
           </td>
-          <td><p>USR shape descriptor of first molecule</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>USR shape descriptor of first molecule</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -16646,7 +17062,11 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
           <td><code>shape_2</code></td>
           <td>
           </td>
-          <td><p>USR shape descriptor</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>USR shape descriptor</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -16656,7 +17076,11 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[float]]</code>
           </td>
-          <td><p>List of scaling factor to use for</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List of scaling factor to use for</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -16676,7 +17100,11 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
         <tr>
 <td><code>dist</code></td>          <td>
           </td>
-          <td><p>Distance [0-1] between shapes of molecules, 0 indicates identical molecules</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Distance [0-1] between shapes of molecules, 0 indicates identical molecules</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -17291,7 +17719,11 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
           <td>
                 <code><span title="typing.Union">Union</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>, str]</code>
           </td>
-          <td><p>the molecule of interest</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the molecule of interest</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -17301,7 +17733,11 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>requested data type</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>requested data type</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -17321,7 +17757,11 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
         <tr>
 <td><code>dict</code></td>          <td>
           </td>
-          <td><p>For each function in self.featurizer_funcs with the key <code>k</code>, store the computed feature under the key <code>k</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>For each function in self.featurizer_funcs with the key <code>k</code>, store the computed feature under the key <code>k</code>.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -17434,10 +17874,14 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
           <td><code>featurizer_funcs</code></td>
           <td>
           </td>
-          <td><p>Mapping of feature name to the featurization function.
+          <td>
+            <div class="doc-md-description">
+              <p>Mapping of feature name to the featurization function.
 For compatibility a list of callable/function is still accepted, and the corresponding
 featurizer name will be automatically generated. Each function is of signature
-<code>func(dm.Atom) -&gt; list or 1D numpy array</code>.</p></td>
+<code>func(dm.Atom) -&gt; list or 1D numpy array</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -17447,7 +17891,11 @@ featurizer name will be automatically generated. Each function is of signature
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to concat all the data into a single value in the output dict</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to concat all the data into a single value in the output dict</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -17457,7 +17905,11 @@ featurizer name will be automatically generated. Each function is of signature
           <td>
                 <code>str</code>
           </td>
-          <td><p>Name of the key name of the concatenated features</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Name of the key name of the concatenated features</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;hv&#39;</code>
           </td>
@@ -17595,7 +18047,11 @@ featurizer name will be automatically generated. Each function is of signature
           <td><code>feat_name</code></td>
           <td>
           </td>
-          <td><p>Feature for query.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Feature for query.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -17615,7 +18071,11 @@ featurizer name will be automatically generated. Each function is of signature
         <tr>
 <td><code>int</code></td>          <td>
           </td>
-          <td><p>Feature size for the feature with name <code>feat_name</code>. Default to None.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Feature size for the feature with name <code>feat_name</code>. Default to None.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -17716,7 +18176,11 @@ featurizer name will be automatically generated. Each function is of signature
           <td><code>state_dict</code></td>
           <td>
           </td>
-          <td><p>state dictionary to use to create the atom calculator</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>state dictionary to use to create the atom calculator</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -17726,8 +18190,12 @@ featurizer name will be automatically generated. Each function is of signature
           <td>
                 <code><span title="typing.Optional">Optional</span>[dict]</code>
           </td>
-          <td><p>optional dictionary of arguments to override the ones in the state dict
-at construction of the new object</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>optional dictionary of arguments to override the ones in the state dict
+at construction of the new object</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -18363,7 +18831,11 @@ which have been collected from various material science packages</p>
           <td>
                 <code><span title="typing.Union">Union</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>, str]</code>
           </td>
-          <td><p>the molecule of interest</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the molecule of interest</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -18373,7 +18845,11 @@ which have been collected from various material science packages</p>
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>requested data type</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>requested data type</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -18393,7 +18869,11 @@ which have been collected from various material science packages</p>
         <tr>
 <td><code>dict</code></td>          <td>
           </td>
-          <td><p>For each function in self.featurizer_funcs with the key <code>k</code>, store the computed feature under the key <code>k</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>For each function in self.featurizer_funcs with the key <code>k</code>, store the computed feature under the key <code>k</code>.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -19095,7 +19575,11 @@ a bi-directed graph by default.</p>
           <td>
                 <code><span title="typing.Union">Union</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>, str]</code>
           </td>
-          <td><p>the molecule of interest</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the molecule of interest</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -19105,7 +19589,11 @@ a bi-directed graph by default.</p>
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>requested data type</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>requested data type</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -19125,8 +19613,12 @@ a bi-directed graph by default.</p>
         <tr>
 <td><code>dict</code></td>          <td>
           </td>
-          <td><p>For each function in self.featurizer_funcs with the key <code>k</code>,
-store the computed feature under the key <code>k</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>For each function in self.featurizer_funcs with the key <code>k</code>,
+store the computed feature under the key <code>k</code>.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -19294,7 +19786,11 @@ store the computed feature under the key <code>k</code>.</p></td>
           <td>
                 <code><span title="typing.Union">Union</span>[list, dict]</code>
           </td>
-          <td><p>Mapping feature name to the featurization function.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Mapping feature name to the featurization function.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -19304,9 +19800,13 @@ store the computed feature under the key <code>k</code>.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether self loops will be added. Default to False. If True, an additional
+          <td>
+            <div class="doc-md-description">
+              <p>Whether self loops will be added. Default to False. If True, an additional
 column of binary values to indicate the identity of self loops will be added.
-The other features of the self loops will be zero.</p></td>
+The other features of the self loops will be zero.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -19316,7 +19816,11 @@ The other features of the self loops will be zero.</p></td>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to concat all the data into a single value in the output dict</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to concat all the data into a single value in the output dict</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -19326,7 +19830,11 @@ The other features of the self loops will be zero.</p></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Name of the key name of the concatenated features</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Name of the key name of the concatenated features</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;he&#39;</code>
           </td>
@@ -19473,7 +19981,11 @@ The other features of the self loops will be zero.</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[str]</code>
           </td>
-          <td><p>Feature for query.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Feature for query.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -19493,7 +20005,11 @@ The other features of the self loops will be zero.</p></td>
         <tr>
 <td><code>int</code></td>          <td>
           </td>
-          <td><p>Feature size for the feature with name <code>feat_name</code>. Default to None.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Feature size for the feature with name <code>feat_name</code>. Default to None.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -19592,7 +20108,11 @@ The other features of the self loops will be zero.</p></td>
           <td><code>state_dict</code></td>
           <td>
           </td>
-          <td><p>state dictionary to use to create the atom calculator</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>state dictionary to use to create the atom calculator</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -19602,8 +20122,12 @@ The other features of the self loops will be zero.</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[dict]</code>
           </td>
-          <td><p>optional dictionary of arguments to override the ones in the state dict
-at construction of the new object</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>optional dictionary of arguments to override the ones in the state dict
+at construction of the new object</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -20428,7 +20952,11 @@ which considers the following default:</p>
           <td>
                 <code><span title="typing.Union">Union</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>, str]</code>
           </td>
-          <td><p>the molecule of interest</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the molecule of interest</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -20438,7 +20966,11 @@ which considers the following default:</p>
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>requested data type</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>requested data type</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -20448,7 +20980,11 @@ which considers the following default:</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to return a collapsed N^2, M or a N, N, M matrix</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to return a collapsed N^2, M or a N, N, M matrix</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -20468,8 +21004,12 @@ which considers the following default:</p>
         <tr>
 <td><code>dict</code></td>          <td>
           </td>
-          <td><p>For each function in self.featurizer_funcs with the key <code>k</code>,
-store the computed feature under the key <code>k</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>For each function in self.featurizer_funcs with the key <code>k</code>,
+store the computed feature under the key <code>k</code>.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -20613,7 +21153,11 @@ store the computed feature under the key <code>k</code>.</p></td>
           <td>
                 <code><span title="typing.Union">Union</span>[list, dict]</code>
           </td>
-          <td><p>Mapping feature name to the featurization function.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Mapping feature name to the featurization function.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -20623,8 +21167,12 @@ store the computed feature under the key <code>k</code>.</p></td>
           <td>
                 <code><span title="typing.Union">Union</span>[list, dict, str]</code>
           </td>
-          <td><p>Mapping feature name to pairwise featurization function.
-Use the keywords "default" for the default values</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Mapping feature name to pairwise featurization function.
+Use the keywords "default" for the default values</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;default&#39;</code>
           </td>
@@ -20719,7 +21267,11 @@ Use the keywords "default" for the default values</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[str]</code>
           </td>
-          <td><p>Feature for query.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Feature for query.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -20739,7 +21291,11 @@ Use the keywords "default" for the default values</p></td>
         <tr>
 <td><code>int</code></td>          <td>
           </td>
-          <td><p>Feature size for the feature with name <code>feat_name</code>. Default to None.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Feature size for the feature with name <code>feat_name</code>. Default to None.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -20836,7 +21392,11 @@ Use the keywords "default" for the default values</p></td>
           <td><code>state_dict</code></td>
           <td>
           </td>
-          <td><p>state dictionary to use to create the atom calculator</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>state dictionary to use to create the atom calculator</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -20846,8 +21406,12 @@ Use the keywords "default" for the default values</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[dict]</code>
           </td>
-          <td><p>optional dictionary of arguments to override the ones in the state dict
-at construction of the new object</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>optional dictionary of arguments to override the ones in the state dict
+at construction of the new object</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -21038,9 +21602,11 @@ need to be pickled and not just list</p>
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.top"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      <script src="../assets/javascripts/bundle.a51614de.min.js"></script>
       
-        <script src="../assets/js/google-analytics.js"></script>
+        
+          <script src="../assets/js/google-analytics.js"></script>
+        
       
     
   </body>

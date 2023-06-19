@@ -17,7 +17,7 @@
         <link rel="next" href="molfeat.trans.pretrained.hf_transformers.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
     
     
       
@@ -1995,7 +1995,11 @@ on a list of transformers and concatenate the results.</p>
 <td><code>columns</code></td>          <td>
                 <code>list</code>
           </td>
-          <td><p>Name of the columns of the descriptor</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Name of the columns of the descriptor</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -2124,7 +2128,11 @@ Note that <strong>len</strong> returns the number of base featurizer here instea
           <td>
                 <code><span title="typing.List">List</span>[<span title="typing.Union">Union</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>, str]]</code>
           </td>
-          <td><p>Mol or SMILES of the molecules to be transformed</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Mol or SMILES of the molecules to be transformed</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2134,7 +2142,11 @@ Note that <strong>len</strong> returns the number of base featurizer here instea
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to enforce the instance dtype in the generated fingerprint</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to enforce the instance dtype in the generated fingerprint</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -2144,7 +2156,11 @@ Note that <strong>len</strong> returns the number of base featurizer here instea
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to ignore errors during featurization or raise an error.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to ignore errors during featurization or raise an error.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -2153,7 +2169,11 @@ Note that <strong>len</strong> returns the number of base featurizer here instea
           <td><code>kwargs</code></td>
           <td>
           </td>
-          <td><p>Named parameters for the transform method</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Named parameters for the transform method</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
@@ -2173,16 +2193,24 @@ Note that <strong>len</strong> returns the number of base featurizer here instea
         <tr>
 <td><code>fp</code></td>          <td>
           </td>
-          <td><p>array
+          <td>
+            <div class="doc-md-description">
+              <p>array
 computed fingerprints of size NxD, where D is the
 sum of the length of each transformer and N is the number of input
-molecules that have been successfully featurized.</p></td>
+molecules that have been successfully featurized.</p>
+            </div>
+          </td>
         </tr>
         <tr>
 <td><code>idx</code></td>          <td>
           </td>
-          <td><p>array
-Indices of successful featurization given the original molecule input.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>array
+Indices of successful featurization given the original molecule input.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -2304,7 +2332,11 @@ Indices of successful featurization given the original molecule input.</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[<span title="typing.Iterable">Iterable</span>, str]]</code>
           </td>
-          <td><p>List of featurizer to concatenate.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List of featurizer to concatenate.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2314,7 +2346,11 @@ Indices of successful featurization given the original molecule input.</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Callable">Callable</span>]</code>
           </td>
-          <td><p>Datatype of the computed fingerprint</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Datatype of the computed fingerprint</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2324,7 +2360,11 @@ Indices of successful featurization given the original molecule input.</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Dict">Dict</span>[str, <span title="typing.Any">Any</span>]]</code>
           </td>
-          <td><p>Optional dictionary of parameters for the featurizers when there is a need for initializing them</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional dictionary of parameters for the featurizers when there is a need for initializing them</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2334,8 +2374,12 @@ Indices of successful featurization given the original molecule input.</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Callable">Callable</span>]</code>
           </td>
-          <td><p>optional function to provide for custom collating.
-By default the collate function will be None, which will use the torch default</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>optional function to provide for custom collating.
+By default the collate function will be None, which will use the torch default</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2494,7 +2538,11 @@ By default the collate function will be None, which will use the torch default</
           <td>
                 <code><span title="typing.List">List</span>[<span title="typing.Union">Union</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>, str]]</code>
           </td>
-          <td><p>input list of molecules</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>input list of molecules</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2504,7 +2552,11 @@ By default the collate function will be None, which will use the torch default</
           <td>
                 <code>list</code>
           </td>
-          <td><p>Optional list of molecular properties. Defaults to None.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional list of molecular properties. Defaults to None.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2524,7 +2576,11 @@ By default the collate function will be None, which will use the torch default</
         <tr>
 <td><code>self</code></td>          <td>
           </td>
-          <td><p>FeatConcat instance after fitting</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>FeatConcat instance after fitting</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -2597,7 +2653,11 @@ the current list, and concatenates the resulting fingerprints.</p>
           <td>
                 <code><span title="typing.List">List</span>[<span title="typing.Union">Union</span>[str, <span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>]]</code>
           </td>
-          <td><p>List of SMILES or molecules</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List of SMILES or molecules</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2607,7 +2667,11 @@ the current list, and concatenates the resulting fingerprints.</p>
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Iterable">Iterable</span>]</code>
           </td>
-          <td><p>target for the fitting. Usually ignored for FPVecTransformer</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>target for the fitting. Usually ignored for FPVecTransformer</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2617,7 +2681,11 @@ the current list, and concatenates the resulting fingerprints.</p>
           <td>
                 <code><span title="typing.Dict">Dict</span></code>
           </td>
-          <td><p>named parameters for fit</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>named parameters for fit</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2627,7 +2695,11 @@ the current list, and concatenates the resulting fingerprints.</p>
           <td>
                 <code><span title="typing.Dict">Dict</span></code>
           </td>
-          <td><p>named parameters for transform</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>named parameters for transform</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2647,9 +2719,13 @@ the current list, and concatenates the resulting fingerprints.</p>
         <tr>
 <td><code>fp</code></td>          <td>
           </td>
-          <td><p>computed fingerprints of size NxD, where D is the
+          <td>
+            <div class="doc-md-description">
+              <p>computed fingerprints of size NxD, where D is the
 sum of the length of each transformer and N is the number of input
-molecules that have been successfully featurized.</p></td>
+molecules that have been successfully featurized.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -2742,7 +2818,11 @@ collate function which does not do anything.</p>
         <tr>
 <td><code>fn</code></td>          <td>
           </td>
-          <td><p>Collate function for pytorch or None</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Collate function for pytorch or None</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -2831,7 +2911,11 @@ collate function which does not do anything.</p>
           <td>
                 <code><span title="typing.Union">Union</span>[int, <span title="typing.Iterator">Iterator</span>[int]]</code>
           </td>
-          <td><p>The indexes to index the <code>FeatConcat</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The indexes to index the <code>FeatConcat</code>.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2911,7 +2995,11 @@ the current list, and concatenates the resulting fingerprints.</p>
           <td>
                 <code><span title="typing.List">List</span>[<span title="typing.Union">Union</span>[<span title="datamol">dm</span>.<span title="datamol.Mol">Mol</span>, str]]</code>
           </td>
-          <td><p>List of SMILES or molecules</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List of SMILES or molecules</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2920,7 +3008,11 @@ the current list, and concatenates the resulting fingerprints.</p>
           <td><code>kwargs</code></td>
           <td>
           </td>
-          <td><p>named parameters for transform (see below)</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>named parameters for transform (see below)</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
@@ -2940,9 +3032,13 @@ the current list, and concatenates the resulting fingerprints.</p>
         <tr>
 <td><code>fps</code></td>          <td>
           </td>
-          <td><p>Computed fingerprints of size NxD, where D is the
+          <td>
+            <div class="doc-md-description">
+              <p>Computed fingerprints of size NxD, where D is the
 sum of the length of each transformer and N is the number of input
-molecules that have been successfully featurized.</p></td>
+molecules that have been successfully featurized.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -3065,9 +3161,11 @@ molecules that have been successfully featurized.</p></td>
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.top"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      <script src="../assets/javascripts/bundle.a51614de.min.js"></script>
       
-        <script src="../assets/js/google-analytics.js"></script>
+        
+          <script src="../assets/js/google-analytics.js"></script>
+        
       
     
   </body>

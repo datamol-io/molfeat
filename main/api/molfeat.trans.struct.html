@@ -17,7 +17,7 @@
         <link rel="next" href="molfeat.trans.concat.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
     
     
       
@@ -2315,7 +2315,11 @@ If ignore_error is True, a list of features and valid ids are returned.</p>
           <td>
                 <code><span title="typing.List">List</span>[str]</code>
           </td>
-          <td><p>list of protein sequence as amino acids</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>list of protein sequence as amino acids</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2325,7 +2329,11 @@ If ignore_error is True, a list of features and valid ids are returned.</p>
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[str]]</code>
           </td>
-          <td><p>protein names</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>protein names</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2335,7 +2343,11 @@ If ignore_error is True, a list of features and valid ids are returned.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to enforce the instance dtype in the generated fingerprint</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to enforce the instance dtype in the generated fingerprint</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -2345,7 +2357,11 @@ If ignore_error is True, a list of features and valid ids are returned.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to ignore errors during featurization or raise an error.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to ignore errors during featurization or raise an error.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -2354,7 +2370,11 @@ If ignore_error is True, a list of features and valid ids are returned.</p>
           <td><code>kwargs</code></td>
           <td>
           </td>
-          <td><p>Named parameters for the transform method</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Named parameters for the transform method</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
@@ -2374,13 +2394,21 @@ If ignore_error is True, a list of features and valid ids are returned.</p>
         <tr>
 <td><code>feats</code></td>          <td>
           </td>
-          <td><p>list of valid embeddings</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>list of valid embeddings</p>
+            </div>
+          </td>
         </tr>
         <tr>
 <td><code>ids</code></td>          <td>
           </td>
-          <td><p>all valid positions that did not failed during featurization.
-Only returned when ignore_errors is True.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>all valid positions that did not failed during featurization.
+Only returned when ignore_errors is True.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -2500,7 +2528,11 @@ Only returned when ignore_errors is True.</p></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Name of the ESM model to use. Defaults to "esm1b_t33_650M_UR50S".</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Name of the ESM model to use. Defaults to "esm1b_t33_650M_UR50S".</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;esm1b_t33_650M_UR50S&#39;</code>
           </td>
@@ -2510,7 +2542,11 @@ Only returned when ignore_errors is True.</p></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Path to local dir containing the model or to a github repo. Default to "facebookresearch/esm:main</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Path to local dir containing the model or to a github repo. Default to "facebookresearch/esm:main</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;facebookresearch/esm:main&#39;</code>
           </td>
@@ -2520,7 +2556,11 @@ Only returned when ignore_errors is True.</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[str]</code>
           </td>
-          <td><p>Torch device to move the model to. Defaults to None.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Torch device to move the model to. Defaults to None.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2530,7 +2570,11 @@ Only returned when ignore_errors is True.</p></td>
           <td>
                 <code><span title="typing.List">List</span>[int]</code>
           </td>
-          <td><p>Layers to use to extract information. Defaults to None, which is the last layers.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Layers to use to extract information. Defaults to None, which is the last layers.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2540,8 +2584,12 @@ Only returned when ignore_errors is True.</p></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Pooling method to use for sequence embedding. Defaults to "mean".
-If you set pooling to None, token representation will be returned (excluding BOS)</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Pooling method to use for sequence embedding. Defaults to "mean".
+If you set pooling to None, token representation will be returned (excluding BOS)</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;mean&#39;</code>
           </td>
@@ -2551,7 +2599,11 @@ If you set pooling to None, token representation will be returned (excluding BOS
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>Representation output datatype. Defaults to None.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Representation output datatype. Defaults to None.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2561,7 +2613,11 @@ If you set pooling to None, token representation will be returned (excluding BOS
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to return the predictied attention contact instead of the representation. Defaults to False.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to return the predictied attention contact instead of the representation. Defaults to False.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -2768,7 +2824,11 @@ If you set pooling to None, token representation will be returned (excluding BOS
           <td>
                 <code><span title="typing.List">List</span>[str]</code>
           </td>
-          <td><p>list of protein sequence as amino acids</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>list of protein sequence as amino acids</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2778,7 +2838,11 @@ If you set pooling to None, token representation will be returned (excluding BOS
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[str]]</code>
           </td>
-          <td><p>protein names</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>protein names</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2798,8 +2862,12 @@ If you set pooling to None, token representation will be returned (excluding BOS
         <tr>
           <td>
           </td>
-          <td><p>Embedding of size (N_SEQS, SEQ_LEN, FEAT_DIM * N_LAYERS) for token embeddings
-and (N_SEQS, FEAT_DIM * N_LAYERS) for sequence embeddings. Use</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Embedding of size (N_SEQS, SEQ_LEN, FEAT_DIM * N_LAYERS) for token embeddings
+and (N_SEQS, FEAT_DIM * N_LAYERS) for sequence embeddings. Use</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -3418,7 +3486,11 @@ If ignore_error is True, a list of features and valid ids are returned.</p>
           <td>
                 <code><span title="typing.List">List</span>[str]</code>
           </td>
-          <td><p>list of protein or nucleotide sequence as amino acids</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>list of protein or nucleotide sequence as amino acids</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3428,7 +3500,11 @@ If ignore_error is True, a list of features and valid ids are returned.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to enforce the instance dtype in the generated fingerprint</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to enforce the instance dtype in the generated fingerprint</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -3438,7 +3514,11 @@ If ignore_error is True, a list of features and valid ids are returned.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Whether to ignore errors during featurization or raise an error.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to ignore errors during featurization or raise an error.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -3447,7 +3527,11 @@ If ignore_error is True, a list of features and valid ids are returned.</p>
           <td><code>kwargs</code></td>
           <td>
           </td>
-          <td><p>Named parameters for the transform method</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Named parameters for the transform method</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
@@ -3467,13 +3551,21 @@ If ignore_error is True, a list of features and valid ids are returned.</p>
         <tr>
 <td><code>feats</code></td>          <td>
           </td>
-          <td><p>list of valid embeddings</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>list of valid embeddings</p>
+            </div>
+          </td>
         </tr>
         <tr>
 <td><code>ids</code></td>          <td>
           </td>
-          <td><p>all valid positions that did not failed during featurization.
-Only returned when ignore_errors is True.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>all valid positions that did not failed during featurization.
+Only returned when ignore_errors is True.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -3590,7 +3682,11 @@ SeqVec featurizer will e</p>
           <td>
                 <code><span title="typing.Union">Union</span>[str, <span title="typing.Callable">Callable</span>]</code>
           </td>
-          <td><p>Name of callable of the embedding model</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Name of callable of the embedding model</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;seqvec&#39;</code>
           </td>
@@ -3600,8 +3696,12 @@ SeqVec featurizer will e</p>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Pooling method to use for sequence embedding. Defaults to "mean".
-If you set pooling to None, token representation will be returned</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Pooling method to use for sequence embedding. Defaults to "mean".
+If you set pooling to None, token representation will be returned</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;mean&#39;</code>
           </td>
@@ -3611,7 +3711,11 @@ If you set pooling to None, token representation will be returned</p></td>
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>Representation output datatype. Defaults to None.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Representation output datatype. Defaults to None.</p>
+            </div>
+          </td>
           <td>
                 <code>np.float32</code>
           </td>
@@ -3621,7 +3725,11 @@ If you set pooling to None, token representation will be returned</p></td>
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[torch.<span title="torch.device">device</span>, str]]</code>
           </td>
-          <td><p>Torch device to move the model to. Defaults to None.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Torch device to move the model to. Defaults to None.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3631,8 +3739,12 @@ If you set pooling to None, token representation will be returned</p></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>Layer-wise pooling method to use when &gt; 1 layer exists. Default to 'sum'.
-If None, last layers is taken. This is relevant for <code>seqvec</code> mostly</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Layer-wise pooling method to use when &gt; 1 layer exists. Default to 'sum'.
+If None, last layers is taken. This is relevant for <code>seqvec</code> mostly</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;sum&#39;</code>
           </td>
@@ -3829,7 +3941,11 @@ If None, last layers is taken. This is relevant for <code>seqvec</code> mostly</
           <td>
                 <code><span title="typing.List">List</span>[str]</code>
           </td>
-          <td><p>list of protein/nucleotide sequence as amino acids</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>list of protein/nucleotide sequence as amino acids</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3839,7 +3955,11 @@ If None, last layers is taken. This is relevant for <code>seqvec</code> mostly</
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[str]]</code>
           </td>
-          <td><p>names of the macromolecules.  Will be ignored</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>names of the macromolecules.  Will be ignored</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3848,7 +3968,11 @@ If None, last layers is taken. This is relevant for <code>seqvec</code> mostly</
           <td><code>kwargs</code></td>
           <td>
           </td>
-          <td><p>additional arguments for the featurizer</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>additional arguments for the featurizer</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
@@ -3868,8 +3992,12 @@ If None, last layers is taken. This is relevant for <code>seqvec</code> mostly</
         <tr>
           <td>
           </td>
-          <td><p>Embedding of size (N_SEQS, FEAT_DIM) for token embeddings
-and (FEAT_DIM, N_LAYERS) for sequence embeddings</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Embedding of size (N_SEQS, FEAT_DIM) for token embeddings
+and (FEAT_DIM, N_LAYERS) for sequence embeddings</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -3988,9 +4116,11 @@ and (FEAT_DIM, N_LAYERS) for sequence embeddings</p></td>
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.top"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      <script src="../assets/javascripts/bundle.a51614de.min.js"></script>
       
-        <script src="../assets/js/google-analytics.js"></script>
+        
+          <script src="../assets/js/google-analytics.js"></script>
+        
       
     
   </body>
