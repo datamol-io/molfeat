@@ -32,7 +32,6 @@ class FPVecTransformer(MoleculeTransformer):
     AVAILABLE_FPS = list(FP_FUNCS.keys()) + [
         "desc3D",
         "desc2D",
-        "mordred",
         "cats2D",
         "cats3D",
         "pharm2D",

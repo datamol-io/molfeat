@@ -1,22 +1,20 @@
-import unittest as ut
-import pytest
-
 import tempfile
-
-import joblib
+import unittest as ut
 
 import datamol as dm
+import joblib
 import numpy as np
+import pytest
 
-from molfeat.calc import CATS
-from molfeat.calc import ScaffoldKeyCalculator
-from molfeat.calc import RDKitDescriptors2D
-from molfeat.calc import RDKitDescriptors3D
-from molfeat.calc import MordredDescriptors
-from molfeat.calc import USRDescriptors
-from molfeat.calc import ElectroShapeDescriptors
+from molfeat.calc import (
+    CATS,
+    ElectroShapeDescriptors,
+    RDKitDescriptors2D,
+    RDKitDescriptors3D,
+    ScaffoldKeyCalculator,
+    USRDescriptors
+)
 from molfeat.calc.skeys import skdistance
-from molfeat.utils import requires
 
 
 class TestDescPharm(ut.TestCase):
@@ -60,12 +58,6 @@ class TestDescPharm(ut.TestCase):
         calc = RDKitDescriptors3D()
         mol = dm.conformers.generate(dm.to_mol(self.smiles[0]))
         fps = calc(mol)
-        self.assertEqual(len(fps), len(calc))
-
-    @pytest.mark.xfail(not requires.check("mordred"), reason="3rd party module mordred is missing")
-    def test_mordred(self):
-        calc = MordredDescriptors()
-        fps = calc(self.smiles[0])
         self.assertEqual(len(fps), len(calc))
 
     def test_cats_2d(self):
