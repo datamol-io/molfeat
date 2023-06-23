@@ -12,7 +12,7 @@ from molfeat.calc import (
     RDKitDescriptors2D,
     RDKitDescriptors3D,
     ScaffoldKeyCalculator,
-    USRDescriptors
+    USRDescriptors,
 )
 from molfeat.calc.skeys import skdistance
 

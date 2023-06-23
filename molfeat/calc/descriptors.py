@@ -5,7 +5,13 @@ from typing import List, Optional, Union
 import datamol as dm
 import numpy as np
 from loguru import logger
-from rdkit.Chem import Descriptors, Descriptors3D, FindMolChiralCenters, rdMolDescriptors, rdPartialCharges
+from rdkit.Chem import (
+    Descriptors,
+    Descriptors3D,
+    FindMolChiralCenters,
+    rdMolDescriptors,
+    rdPartialCharges,
+)
 from rdkit.Chem.QED import properties
 
 from molfeat.calc.base import SerializableCalculator
