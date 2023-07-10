@@ -17,7 +17,7 @@
         <link rel="next" href="molfeat.trans.base.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
       
@@ -4560,7 +4560,11 @@
 
       <details class="quote">
         <summary>Source code in <code>molfeat/calc/__init__.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">14</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
@@ -4606,13 +4610,7 @@
 <span class="normal">57</span>
 <span class="normal">58</span>
 <span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_calculator</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+<span class="normal">60</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_calculator</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get molecular calculator based on name</span>
 
 <span class="sd">    Args:</span>
@@ -4636,8 +4634,6 @@
         <span class="n">featurizer</span> <span class="o">=</span> <span class="n">RDKitDescriptors3D</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;desc2d&quot;</span><span class="p">:</span>
         <span class="n">featurizer</span> <span class="o">=</span> <span class="n">RDKitDescriptors2D</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;mordred&quot;</span><span class="p">:</span>
-        <span class="n">featurizer</span> <span class="o">=</span> <span class="n">MordredDescriptors</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;cats&quot;</span><span class="p">:</span>
         <span class="n">featurizer</span> <span class="o">=</span> <span class="n">CATS</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;cats2d&quot;</span><span class="p">:</span>
@@ -7315,8 +7311,8 @@ results if you add or remove hydrogen atoms</p>
 <code class="highlight language-python"><span class="n">DESCRIPTORS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;DD&#39;</span><span class="p">,</span> <span class="s1">&#39;AD&#39;</span><span class="p">,</span> <span class="s1">&#39;DP&#39;</span><span class="p">,</span> <span class="s1">&#39;DN&#39;</span><span class="p">,</span> <span class="s1">&#39;DL&#39;</span><span class="p">,</span> <span class="s1">&#39;DR&#39;</span><span class="p">,</span> <span class="s1">&#39;AA&#39;</span><span class="p">,</span> <span class="s1">&#39;AP&#39;</span><span class="p">,</span> <span class="s1">&#39;AN&#39;</span><span class="p">,</span> <span class="s1">&#39;AL&#39;</span><span class="p">,</span> <span class="s1">&#39;AR&#39;</span><span class="p">,</span> <span class="s1">&#39;PP&#39;</span><span class="p">,</span> <span class="s1">&#39;NP&#39;</span><span class="p">,</span> <span class="s1">&#39;LP&#39;</span><span class="p">,</span> <span class="s1">&#39;PR&#39;</span><span class="p">,</span> <span class="s1">&#39;NN&#39;</span><span class="p">,</span> <span class="s1">&#39;LN&#39;</span><span class="p">,</span> <span class="s1">&#39;NR&#39;</span><span class="p">,</span> <span class="s1">&#39;LL&#39;</span><span class="p">,</span> <span class="s1">&#39;LR&#39;</span><span class="p">,</span> <span class="s1">&#39;RR&#39;</span><span class="p">]</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#molfeat.calc.cats.CATS.DESCRIPTORS" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -7335,8 +7331,8 @@ results if you add or remove hydrogen atoms</p>
 <code class="highlight language-python"><span class="n">MAX_DIST_DEFAULT_2D</span> <span class="o">=</span> <span class="mi">8</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#molfeat.calc.cats.CATS.MAX_DIST_DEFAULT_2D" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -7355,8 +7351,8 @@ results if you add or remove hydrogen atoms</p>
 <code class="highlight language-python"><span class="n">MAX_DIST_DEFAULT_3D</span> <span class="o">=</span> <span class="mi">5</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#molfeat.calc.cats.CATS.MAX_DIST_DEFAULT_3D" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -7375,8 +7371,8 @@ results if you add or remove hydrogen atoms</p>
 <code class="highlight language-python"><span class="n">SMARTS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;[!$([#6,H0,-,-2,-3])]&#39;</span><span class="p">],</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;[!$([#6,F,Cl,Br,I,o,s,nX3,#7v5,#15v5,#16v4,#16v6,*+1,*+2,*+3])]&#39;</span><span class="p">],</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;[*+]&#39;</span><span class="p">,</span> <span class="s1">&#39;[#7H2]&#39;</span><span class="p">],</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;[*-]&#39;</span><span class="p">,</span> <span class="s1">&#39;[C&amp;$(C(=O)O),P&amp;$(P(=O)),S&amp;$(S(=O)O)]&#39;</span><span class="p">],</span> <span class="s1">&#39;L&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;[Cl,Br,I]&#39;</span><span class="p">,</span> <span class="s1">&#39;[S;D2;$(S(C)(C))]&#39;</span><span class="p">,</span> <span class="s1">&#39;[C;D2;$(C(=C)(=C))]&#39;</span><span class="p">,</span> <span class="s1">&#39;[C;D3;$(C(=C)(C)(C))]&#39;</span><span class="p">,</span> <span class="s1">&#39;[C;D4;$(C(C)(C)(C)(C))]&#39;</span><span class="p">,</span> <span class="s1">&#39;[C;D3;H1;$(C(C)(C)(C))]&#39;</span><span class="p">,</span> <span class="s1">&#39;[C;D2;H2;$(C(C)(C))]&#39;</span><span class="p">],</span> <span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;[a]&#39;</span><span class="p">]}</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#molfeat.calc.cats.CATS.SMARTS" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -13339,8 +13335,8 @@ shows the legend).</p>
 <code class="highlight language-python"><span class="n">DESCRIPTORS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;n_atom_in_rings&#39;</span><span class="p">,</span> <span class="s1">&#39;n_atom_in_conjugated_ring&#39;</span><span class="p">,</span> <span class="s1">&#39;n_atoms_not_in_conjugated_ring&#39;</span><span class="p">,</span> <span class="s1">&#39;n_atom_in_chain&#39;</span><span class="p">,</span> <span class="s1">&#39;n_atom_exocyclic&#39;</span><span class="p">,</span> <span class="s1">&#39;n_nitrogen&#39;</span><span class="p">,</span> <span class="s1">&#39;n_nitrogen_in_ring&#39;</span><span class="p">,</span> <span class="s1">&#39;n_oxygen&#39;</span><span class="p">,</span> <span class="s1">&#39;n_oxygen_in_ring&#39;</span><span class="p">,</span> <span class="s1">&#39;n_sulfur&#39;</span><span class="p">,</span> <span class="s1">&#39;n_heteroatoms&#39;</span><span class="p">,</span> <span class="s1">&#39;n_heteroatoms_in_ring&#39;</span><span class="p">,</span> <span class="s1">&#39;n_atom_spiro_atoms&#39;</span><span class="p">,</span> <span class="s1">&#39;n_heteroatom_more_than_2_conn&#39;</span><span class="p">,</span> <span class="s1">&#39;n_carbon_atleast_2_heteroatoms&#39;</span><span class="p">,</span> <span class="s1">&#39;n_atom_at_least_2_nei_more_than_2_conn&#39;</span><span class="p">,</span> <span class="s1">&#39;abs_scaffold_format_charge&#39;</span><span class="p">,</span> <span class="s1">&#39;n_bonds&#39;</span><span class="p">,</span> <span class="s1">&#39;n_multiple_non_conj_ring_bonds&#39;</span><span class="p">,</span> <span class="s1">&#39;n_bonds_2_heteroatoms&#39;</span><span class="p">,</span> <span class="s1">&#39;n_carbon_het_carbon_het_bonds&#39;</span><span class="p">,</span> <span class="s1">&#39;n_bonds_at_least_3_conn&#39;</span><span class="p">,</span> <span class="s1">&#39;n_exocyclic_single_bonds_carbon&#39;</span><span class="p">,</span> <span class="s1">&#39;n_exocyclic_single_bonds_nitrogen&#39;</span><span class="p">,</span> <span class="s1">&#39;n_non_ring_bonds_2_conj_rings&#39;</span><span class="p">,</span> <span class="s1">&#39;n_non_ring_bonds_conj_nonconj_rings&#39;</span><span class="p">,</span> <span class="s1">&#39;n_bonds_atoms_with_at_least_one_nei_with_2_conn&#39;</span><span class="p">,</span> <span class="s1">&#39;n_simple_rings&#39;</span><span class="p">,</span> <span class="s1">&#39;size_largest_ring&#39;</span><span class="p">,</span> <span class="s1">&#39;n_simple_rings_no_heteroatoms&#39;</span><span class="p">,</span> <span class="s1">&#39;n_simple_rings_1_heteroatoms&#39;</span><span class="p">,</span> <span class="s1">&#39;n_simple_rings_2_heteroatoms&#39;</span><span class="p">,</span> <span class="s1">&#39;n_simple_rings_at_least_3_heteroatoms&#39;</span><span class="p">,</span> <span class="s1">&#39;n_simple_non_conj_5_atoms_rings&#39;</span><span class="p">,</span> <span class="s1">&#39;n_simple_non_conj_6_atoms_rings&#39;</span><span class="p">,</span> <span class="s1">&#39;n_ring_system&#39;</span><span class="p">,</span> <span class="s1">&#39;n_ring_system_with_2_non_conj_simple_ring&#39;</span><span class="p">,</span> <span class="s1">&#39;n_ring_system_with_2_conj_simple_ring&#39;</span><span class="p">,</span> <span class="s1">&#39;n_ring_system_with_conj_non_conj_simple_ring&#39;</span><span class="p">,</span> <span class="s1">&#39;n_ring_system_with_3_conj_simple_ring&#39;</span><span class="p">,</span> <span class="s1">&#39;n_ring_system_with_3_non_conj_simple_ring&#39;</span><span class="p">,</span> <span class="s1">&#39;n_ring_system_with_greater_one_conj_nonconj_simple_ring&#39;</span><span class="p">]</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#molfeat.calc.skeys.ScaffoldKeyCalculator.DESCRIPTORS" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -13359,8 +13355,8 @@ shows the legend).</p>
 <code class="highlight language-python"><span class="n">NORM_PARAMS</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">molfeat</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;data/skey_parameters.csv&#39;</span><span class="p">),</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">DESCRIPTORS</span><span class="p">]</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#molfeat.calc.skeys.ScaffoldKeyCalculator.NORM_PARAMS" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -15558,7 +15554,9 @@ J Comput Aided Mol Des 24, 789-801 (2010). <a href="http://dx.doi.org/doi:10.100
 
         <details class="quote">
           <summary>Source code in <code>molfeat/calc/shape.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 81</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
 <span class="normal"> 82</span>
 <span class="normal"> 83</span>
 <span class="normal"> 84</span>
@@ -15713,9 +15711,7 @@ J Comput Aided Mol Des 24, 789-801 (2010). <a href="http://dx.doi.org/doi:10.100
 <span class="normal">233</span>
 <span class="normal">234</span>
 <span class="normal">235</span>
-<span class="normal">236</span>
-<span class="normal">237</span>
-<span class="normal">238</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">ElectroShapeDescriptors</span><span class="p">(</span><span class="n">SerializableCalculator</span><span class="p">):</span>
+<span class="normal">236</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">ElectroShapeDescriptors</span><span class="p">(</span><span class="n">SerializableCalculator</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute Electroshape descriptors as described by</span>
 
 <span class="sd">    Armstrong et al. ElectroShape: fast molecular similarity calculations incorporating shape, chirality and electrostatics.</span>
@@ -15894,8 +15890,8 @@ J Comput Aided Mol Des 24, 789-801 (2010). <a href="http://dx.doi.org/doi:10.100
 <code class="highlight language-python"><span class="n">SUPPORTED_CHARGE_MODELS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;gasteiger&#39;</span><span class="p">,</span> <span class="s1">&#39;tripos&#39;</span><span class="p">,</span> <span class="s1">&#39;mmff94&#39;</span><span class="p">,</span> <span class="s1">&#39;formal&#39;</span><span class="p">]</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#molfeat.calc.shape.ElectroShapeDescriptors.SUPPORTED_CHARGE_MODELS" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -16066,7 +16062,9 @@ J Comput Aided Mol Des 24, 789-801 (2010). <a href="http://dx.doi.org/doi:10.100
 
       <details class="quote">
         <summary>Source code in <code>molfeat/calc/shape.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">172</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
 <span class="normal">173</span>
 <span class="normal">174</span>
 <span class="normal">175</span>
@@ -16130,9 +16128,7 @@ J Comput Aided Mol Des 24, 789-801 (2010). <a href="http://dx.doi.org/doi:10.100
 <span class="normal">233</span>
 <span class="normal">234</span>
 <span class="normal">235</span>
-<span class="normal">236</span>
-<span class="normal">237</span>
-<span class="normal">238</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@requires_conformer</span>
+<span class="normal">236</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@requires_conformer</span>
 <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mol</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">dm</span><span class="o">.</span><span class="n">Mol</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">conformer_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get rdkit 3D descriptors for a molecule</span>
@@ -16219,13 +16215,13 @@ J Comput Aided Mol Des 24, 789-801 (2010). <a href="http://dx.doi.org/doi:10.100
 
       <details class="quote">
         <summary>Source code in <code>molfeat/calc/shape.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">124</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
 <span class="normal">125</span>
 <span class="normal">126</span>
 <span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">128</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">state</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">state</span><span class="p">[</span><span class="s2">&quot;charge_model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">charge_model</span>
     <span class="n">state</span><span class="p">[</span><span class="s2">&quot;replace_nan&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">replace_nan</span>
@@ -16312,7 +16308,9 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
 
       <details class="quote">
         <summary>Source code in <code>molfeat/calc/shape.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 90</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
 <span class="normal"> 91</span>
 <span class="normal"> 92</span>
 <span class="normal"> 93</span>
@@ -16330,9 +16328,7 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
 <span class="normal">105</span>
 <span class="normal">106</span>
 <span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">108</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">charge_model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;gasteiger&quot;</span><span class="p">,</span>
     <span class="n">replace_nan</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -16375,9 +16371,9 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
 
       <details class="quote">
         <summary>Source code in <code>molfeat/calc/shape.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the length of the calculator&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -16434,7 +16430,9 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
 
       <details class="quote">
         <summary>Source code in <code>molfeat/calc/shape.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">136</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
 <span class="normal">137</span>
 <span class="normal">138</span>
 <span class="normal">139</span>
@@ -16466,9 +16464,7 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
 <span class="normal">165</span>
 <span class="normal">166</span>
 <span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="normal">168</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span> <span class="nf">compute_charge</span><span class="p">(</span><span class="n">mol</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">dm</span><span class="o">.</span><span class="n">Mol</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">charge_model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the molecular charge of the molecule.</span>
@@ -16542,7 +16538,9 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
 
         <details class="quote">
           <summary>Source code in <code>molfeat/calc/shape.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
@@ -16603,9 +16601,7 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
 <span class="normal">73</span>
 <span class="normal">74</span>
 <span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">USRDescriptors</span><span class="p">(</span><span class="n">SerializableCalculator</span><span class="p">):</span>
+<span class="normal">76</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">USRDescriptors</span><span class="p">(</span><span class="n">SerializableCalculator</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Descriptors for the shape of a molecule.</span>
 
 <span class="sd">    !!! note:</span>
@@ -16651,16 +16647,16 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 
     <span class="nd">@requires_conformer</span>
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mol</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">dm</span><span class="o">.</span><span class="n">Mol</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">conformer_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mol</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">dm</span><span class="o">.</span><span class="n">Mol</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">conformer_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get rdkit 3D descriptors for a molecule</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            mol: the molecule of interest</span>
-<span class="sd">            conformer_id (int, optional): Optional conformer id. Defaults to -1.</span>
+<span class="sd">            conformer_id: Optional conformer id. Defaults to -1.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            shape_descriptors (np.ndarray): list of computed mordred molecular descriptors</span>
+<span class="sd">            shape_descriptors: list of computed molecular descriptors</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;USR&quot;</span><span class="p">:</span>
             <span class="n">shape_descr</span> <span class="o">=</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">GetUSR</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">confId</span><span class="o">=</span><span class="n">conformer_id</span><span class="p">)</span>
@@ -16785,7 +16781,7 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
         <tr>
           <td><code>conformer_id</code></td>
           <td>
-                <code>int</code>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -16814,7 +16810,7 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
           </td>
           <td>
             <div class="doc-md-description">
-              <p>list of computed mordred molecular descriptors</p>
+              <p>list of computed molecular descriptors</p>
             </div>
           </td>
         </tr>
@@ -16823,7 +16819,9 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
 
       <details class="quote">
         <summary>Source code in <code>molfeat/calc/shape.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">60</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
 <span class="normal">61</span>
 <span class="normal">62</span>
 <span class="normal">63</span>
@@ -16839,19 +16837,17 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
 <span class="normal">73</span>
 <span class="normal">74</span>
 <span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@requires_conformer</span>
-<span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mol</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">dm</span><span class="o">.</span><span class="n">Mol</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">conformer_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+<span class="normal">76</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@requires_conformer</span>
+<span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mol</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">dm</span><span class="o">.</span><span class="n">Mol</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">conformer_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get rdkit 3D descriptors for a molecule</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        mol: the molecule of interest</span>
-<span class="sd">        conformer_id (int, optional): Optional conformer id. Defaults to -1.</span>
+<span class="sd">        conformer_id: Optional conformer id. Defaults to -1.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        shape_descriptors (np.ndarray): list of computed mordred molecular descriptors</span>
+<span class="sd">        shape_descriptors: list of computed molecular descriptors</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;USR&quot;</span><span class="p">:</span>
         <span class="n">shape_descr</span> <span class="o">=</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">GetUSR</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">confId</span><span class="o">=</span><span class="n">conformer_id</span><span class="p">)</span>
@@ -16880,12 +16876,12 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
 
       <details class="quote">
         <summary>Source code in <code>molfeat/calc/shape.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">37</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">state</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">state</span><span class="p">[</span><span class="s2">&quot;method&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span>
     <span class="n">state</span><span class="p">[</span><span class="s2">&quot;replace_nan&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">replace_nan</span>
@@ -16955,7 +16951,9 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
 
       <details class="quote">
         <summary>Source code in <code>molfeat/calc/shape.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">24</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
 <span class="normal">25</span>
 <span class="normal">26</span>
 <span class="normal">27</span>
@@ -16964,9 +16962,7 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
 <span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;USR&quot;</span><span class="p">,</span> <span class="n">replace_nan</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;USR&quot;</span><span class="p">,</span> <span class="n">replace_nan</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Constructor for ShapeDescriptors</span>
 
 <span class="sd">    Args:</span>
@@ -17000,9 +16996,9 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
 
       <details class="quote">
         <summary>Source code in <code>molfeat/calc/shape.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute descriptors length&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -17111,7 +17107,9 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
 
       <details class="quote">
         <summary>Source code in <code>molfeat/calc/shape.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">241</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
 <span class="normal">242</span>
 <span class="normal">243</span>
 <span class="normal">244</span>
@@ -17140,9 +17138,7 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
 <span class="normal">267</span>
 <span class="normal">268</span>
 <span class="normal">269</span>
-<span class="normal">270</span>
-<span class="normal">271</span>
-<span class="normal">272</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">usrdistance</span><span class="p">(</span>
+<span class="normal">270</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">usrdistance</span><span class="p">(</span>
     <span class="n">shape_1</span><span class="p">,</span>
     <span class="n">shape_2</span><span class="p">,</span>
     <span class="n">weights</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -17618,8 +17614,8 @@ The <code>tripos</code> charge models comes from TRIPOS force field and are ofte
 <code class="highlight language-python"><span class="n">DEFAULT_FEATURIZER</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;atom_one_hot&#39;</span><span class="p">:</span> <span class="n">atom_one_hot</span><span class="p">,</span> <span class="s1">&#39;atom_degree_one_hot&#39;</span><span class="p">:</span> <span class="n">atom_degree_one_hot</span><span class="p">,</span> <span class="s1">&#39;atom_implicit_valence_one_hot&#39;</span><span class="p">:</span> <span class="n">atom_implicit_valence_one_hot</span><span class="p">,</span> <span class="s1">&#39;atom_hybridization_one_hot&#39;</span><span class="p">:</span> <span class="n">atom_hybridization_one_hot</span><span class="p">,</span> <span class="s1">&#39;atom_is_aromatic&#39;</span><span class="p">:</span> <span class="n">atom_is_aromatic</span><span class="p">,</span> <span class="s1">&#39;atom_formal_charge&#39;</span><span class="p">:</span> <span class="n">atom_formal_charge</span><span class="p">,</span> <span class="s1">&#39;atom_num_radical_electrons&#39;</span><span class="p">:</span> <span class="n">atom_num_radical_electrons</span><span class="p">,</span> <span class="s1">&#39;atom_is_in_ring&#39;</span><span class="p">:</span> <span class="n">atom_is_in_ring</span><span class="p">,</span> <span class="s1">&#39;atom_total_num_H_one_hot&#39;</span><span class="p">:</span> <span class="n">atom_total_num_H_one_hot</span><span class="p">,</span> <span class="s1">&#39;atom_chiral_tag_one_hot&#39;</span><span class="p">:</span> <span class="n">atom_chiral_tag_one_hot</span><span class="p">,</span> <span class="s1">&#39;atom_is_chiral_center&#39;</span><span class="p">:</span> <span class="n">atom_is_chiral_center</span><span class="p">}</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#molfeat.calc.atom.AtomCalculator.DEFAULT_FEATURIZER" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -18421,8 +18417,8 @@ which have been collected from various material science packages</p>
 <code class="highlight language-python"><span class="n">DEFAULT_FEATURIZER</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;atom_one_hot&#39;</span><span class="p">:</span> <span class="n">atom_one_hot</span><span class="p">,</span> <span class="s1">&#39;atom_extended_properties&#39;</span><span class="p">:</span> <span class="n">atom_extended_properties</span><span class="p">,</span> <span class="s1">&#39;atom_degree_one_hot&#39;</span><span class="p">:</span> <span class="n">atom_degree_one_hot</span><span class="p">,</span> <span class="s1">&#39;atom_implicit_valence_one_hot&#39;</span><span class="p">:</span> <span class="n">atom_implicit_valence_one_hot</span><span class="p">,</span> <span class="s1">&#39;atom_hybridization_one_hot&#39;</span><span class="p">:</span> <span class="n">atom_hybridization_one_hot</span><span class="p">,</span> <span class="s1">&#39;atom_is_aromatic&#39;</span><span class="p">:</span> <span class="n">atom_is_aromatic</span><span class="p">,</span> <span class="s1">&#39;atom_formal_charge&#39;</span><span class="p">:</span> <span class="n">atom_formal_charge</span><span class="p">,</span> <span class="s1">&#39;atom_num_radical_electrons&#39;</span><span class="p">:</span> <span class="n">atom_num_radical_electrons</span><span class="p">,</span> <span class="s1">&#39;atom_is_in_ring&#39;</span><span class="p">:</span> <span class="n">atom_is_in_ring</span><span class="p">,</span> <span class="s1">&#39;atom_chiral_tag_one_hot&#39;</span><span class="p">:</span> <span class="n">atom_chiral_tag_one_hot</span><span class="p">,</span> <span class="s1">&#39;atom_is_chiral_center&#39;</span><span class="p">:</span> <span class="n">atom_is_chiral_center</span><span class="p">}</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#molfeat.calc.atom.AtomMaterialCalculator.DEFAULT_FEATURIZER" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -18536,8 +18532,8 @@ which have been collected from various material science packages</p>
 <code class="highlight language-python"><span class="n">DEFAULT_FEATURIZER</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;atom_one_hot&#39;</span><span class="p">:</span> <span class="n">atom_one_hot</span><span class="p">,</span> <span class="s1">&#39;atom_degree_one_hot&#39;</span><span class="p">:</span> <span class="n">atom_degree_one_hot</span><span class="p">,</span> <span class="s1">&#39;atom_implicit_valence_one_hot&#39;</span><span class="p">:</span> <span class="n">atom_implicit_valence_one_hot</span><span class="p">,</span> <span class="s1">&#39;atom_formal_charge&#39;</span><span class="p">:</span> <span class="n">atom_formal_charge</span><span class="p">,</span> <span class="s1">&#39;atom_num_radical_electrons&#39;</span><span class="p">:</span> <span class="n">atom_num_radical_electrons</span><span class="p">,</span> <span class="s1">&#39;atom_hybridization_one_hot&#39;</span><span class="p">:</span> <span class="n">partial</span><span class="p">(</span><span class="n">atom_hybridization_one_hot</span><span class="p">,</span> <span class="n">allowable_set</span><span class="o">=</span><span class="n">DGLLIFE_HYBRIDIZATION_LIST</span><span class="p">),</span> <span class="s1">&#39;atom_is_aromatic&#39;</span><span class="p">:</span> <span class="n">atom_is_aromatic</span><span class="p">,</span> <span class="s1">&#39;atom_total_num_H_one_hot&#39;</span><span class="p">:</span> <span class="n">atom_total_num_H_one_hot</span><span class="p">}</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#molfeat.calc.atom.DGLCanonicalAtomCalculator.DEFAULT_FEATURIZER" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -18787,8 +18783,8 @@ which have been collected from various material science packages</p>
 <code class="highlight language-python"><span class="n">DEFAULT_FEATURIZER</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;atom_one_hot&#39;</span><span class="p">:</span> <span class="n">partial</span><span class="p">(</span><span class="n">atom_one_hot</span><span class="p">,</span> <span class="n">allowable_set</span><span class="o">=</span><span class="n">DGLLIFE_WEAVE_ATOMS</span><span class="p">,</span> <span class="n">encode_unknown</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="s1">&#39;atom_chiral_tag_one_hot&#39;</span><span class="p">:</span> <span class="n">partial</span><span class="p">(</span><span class="n">atom_chiral_tag_one_hot</span><span class="p">,</span> <span class="n">allowable_set</span><span class="o">=</span><span class="n">DGLLIFE_WEAVE_CHIRAL_TYPES</span><span class="p">),</span> <span class="s1">&#39;atom_formal_charge&#39;</span><span class="p">:</span> <span class="n">atom_formal_charge</span><span class="p">,</span> <span class="s1">&#39;atom_partial_charge&#39;</span><span class="p">:</span> <span class="n">atom_partial_charge</span><span class="p">,</span> <span class="s1">&#39;atom_is_aromatic&#39;</span><span class="p">:</span> <span class="n">atom_is_aromatic</span><span class="p">,</span> <span class="s1">&#39;atom_hybridization_one_hot&#39;</span><span class="p">:</span> <span class="n">partial</span><span class="p">(</span><span class="n">atom_hybridization_one_hot</span><span class="p">,</span> <span class="n">allowable_set</span><span class="o">=</span><span class="n">DGLLIFE_HYBRIDIZATION_LIST</span><span class="p">[:</span><span class="mi">3</span><span class="p">])}</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#molfeat.calc.atom.DGLWeaveAtomCalculator.DEFAULT_FEATURIZER" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -19474,8 +19470,8 @@ a bi-directed graph by default.</p>
 <code class="highlight language-python"><span class="n">DEFAULT_FEATURIZER</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bond_type_one_hot&#39;</span><span class="p">:</span> <span class="n">bond_type_one_hot</span><span class="p">,</span> <span class="s1">&#39;bond_stereo_one_hot&#39;</span><span class="p">:</span> <span class="n">bond_stereo_one_hot</span><span class="p">,</span> <span class="s1">&#39;bond_is_in_ring&#39;</span><span class="p">:</span> <span class="n">bond_is_in_ring</span><span class="p">,</span> <span class="s1">&#39;bond_is_conjugated&#39;</span><span class="p">:</span> <span class="n">bond_is_conjugated</span><span class="p">,</span> <span class="s1">&#39;bond_direction_one_hot&#39;</span><span class="p">:</span> <span class="n">bond_direction_one_hot</span><span class="p">}</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#molfeat.calc.bond.BondCalculator.DEFAULT_FEATURIZER" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -20346,8 +20342,8 @@ need to be pickled and not just list</p>
 <code class="highlight language-python"><span class="n">DEFAULT_FEATURIZER</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bond_type_one_hot&#39;</span><span class="p">:</span> <span class="n">bond_type_one_hot</span><span class="p">,</span> <span class="s1">&#39;bond_is_conjugated&#39;</span><span class="p">:</span> <span class="n">bond_is_conjugated</span><span class="p">,</span> <span class="s1">&#39;bond_is_in_ring&#39;</span><span class="p">:</span> <span class="n">bond_is_in_ring</span><span class="p">,</span> <span class="s1">&#39;bond_stereo_one_hot&#39;</span><span class="p">:</span> <span class="n">bond_stereo_one_hot</span><span class="p">}</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#molfeat.calc.bond.DGLCanonicalBondCalculator.DEFAULT_FEATURIZER" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -20488,8 +20484,8 @@ which considers the following default:</p>
 <code class="highlight language-python"><span class="n">DEFAULT_FEATURIZER</span> <span class="o">=</span> <span class="p">{}</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#molfeat.calc.bond.DGLWeaveEdgeCalculator.DEFAULT_FEATURIZER" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -20508,8 +20504,8 @@ which considers the following default:</p>
 <code class="highlight language-python"><span class="n">DEFAULT_PAIRWISE_FEATURIZER</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pairwise_dist_indicator&#39;</span><span class="p">:</span> <span class="n">pairwise_dist_indicator</span><span class="p">,</span> <span class="s1">&#39;pairwise_bond_indicator&#39;</span><span class="p">:</span> <span class="n">pairwise_bond_indicator</span><span class="p">,</span> <span class="s1">&#39;pairwise_ring_membership&#39;</span><span class="p">:</span> <span class="n">pairwise_ring_membership</span><span class="p">}</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#molfeat.calc.bond.DGLWeaveEdgeCalculator.DEFAULT_PAIRWISE_FEATURIZER" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -20889,8 +20885,8 @@ which considers the following default:</p>
 <code class="highlight language-python"><span class="n">DEFAULT_PAIRWISE_FEATURIZER</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pairwise_2D_dist&#39;</span><span class="p">:</span> <span class="n">pairwise_2D_dist</span><span class="p">,</span> <span class="s1">&#39;pairwise_ring_membership&#39;</span><span class="p">:</span> <span class="n">pairwise_ring_membership</span><span class="p">}</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#molfeat.calc.bond.EdgeMatCalculator.DEFAULT_PAIRWISE_FEATURIZER" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -21599,10 +21595,10 @@ need to be pickled and not just list</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.top"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.top"], "search": "../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.a51614de.min.js"></script>
+      <script src="../assets/javascripts/bundle.220ee61c.min.js"></script>
       
         
           <script src="../assets/js/google-analytics.js"></script>
