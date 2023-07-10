@@ -1,3 +1,4 @@
+from pathlib import Path
 from typing import Mapping
 from typing import Union
 from typing import List
@@ -575,11 +576,11 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
     def to_state_yaml(self) -> str:
         return yaml.dump(self.to_state_dict(), Dumper=yaml.SafeDumper)
 
-    def to_state_json_file(self, filepath: str):
+    def to_state_json_file(self, filepath: Union[str, Path]):
         with fsspec.open(filepath, "w") as f:
             f.write(self.to_state_json())  # type: ignore
 
-    def to_state_yaml_file(self, filepath: str):
+    def to_state_yaml_file(self, filepath: Union[str, Path]):
         with fsspec.open(filepath, "w") as f:
             f.write(self.to_state_yaml())  # type: ignore
 
@@ -674,7 +675,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
 
     @staticmethod
     def from_state_json_file(
-        filepath: str,
+        filepath: Union[str, Path],
         override_args: Optional[dict] = None,
     ) -> "MoleculeTransformer":
         with fsspec.open(filepath, "r") as f:
@@ -683,7 +684,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
 
     @staticmethod
     def from_state_yaml_file(
-        filepath: str,
+        filepath: Union[str, Path],
         override_args: Optional[dict] = None,
     ) -> "MoleculeTransformer":
         with fsspec.open(filepath, "r") as f:
