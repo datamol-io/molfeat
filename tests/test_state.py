@@ -3,7 +3,13 @@ import numpy as np
 import pytest
 
 from molfeat._version import __version__ as MOLFEAT_VERSION
-from molfeat.calc import CATS, FPCalculator, Pharmacophore2D, RDKitDescriptors2D, ScaffoldKeyCalculator
+from molfeat.calc import (
+    CATS,
+    FPCalculator,
+    Pharmacophore2D,
+    RDKitDescriptors2D,
+    ScaffoldKeyCalculator,
+)
 from molfeat.calc._atom_bond_features import atom_chiral_tag_one_hot, atom_one_hot
 from molfeat.calc.atom import AtomCalculator, AtomMaterialCalculator
 from molfeat.calc.bond import BondCalculator
@@ -14,9 +20,13 @@ from molfeat.trans.graph import (
     DGLGraphTransformer,
     MolTreeDecompositionTransformer,
     PYGGraphTransformer,
-    TopoDistGraphTransformer
+    TopoDistGraphTransformer,
 )
-from molfeat.trans.pretrained import GraphormerTransformer, PretrainedDGLTransformer, PretrainedHFTransformer
+from molfeat.trans.pretrained import (
+    GraphormerTransformer,
+    PretrainedDGLTransformer,
+    PretrainedHFTransformer,
+)
 from molfeat.utils.cache import FileCache, MolToKey
 from molfeat.utils.state import compare_state
 

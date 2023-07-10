@@ -51,7 +51,9 @@ def get_model_init(card):
 
 class ModelInfo(BaseModel):
     model_config = ConfigDict(
-        protected_namespaces=('protected_',)  # Prevents warning from usage of model_ prefix in fields
+        protected_namespaces=(
+            "protected_",
+        )  # Prevents warning from usage of model_ prefix in fields
     )
 
     name: str
