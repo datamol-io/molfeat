@@ -9,8 +9,7 @@ def get_model_init(card):
     """Get the model initialization code
 
     Args:
-        card: model card to usec
-
+        card: model card to use
     """
     if card.group == "all" and card.type != "pretrained":
         import_statement = "from molfeat.trans import MoleculeTransformer"
