@@ -199,10 +199,10 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
         self._fitted = False
 
         self._save_input_args()
-        if self.featurizer and (
-            not isinstance(self.featurizer, str) or not is_callable(self.featurizer)
+        if self.featurizer and not (
+            isinstance(self.featurizer, str) or is_callable(self.featurizer)
         ):
-            raise AttributeError("Featurizer must be a callable or a string")
+            raise AttributeError(f"Featurizer {self.featurizer} must be a callable or a string")
 
     def _save_input_args(self):
         """Save the input arguments of a transformer to the attribute
