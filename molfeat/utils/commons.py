@@ -28,6 +28,7 @@ from molfeat.utils import datatype
 
 FUNCTYPES = (types.FunctionType, types.MethodType, functools.partial)
 
+
 def is_callable(func):
     r"""
     Check if func is a function or a callable

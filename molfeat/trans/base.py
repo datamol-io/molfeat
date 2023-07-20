@@ -199,7 +199,9 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
         self._fitted = False
 
         self._save_input_args()
-        if self.featurizer and (not isinstance(self.featurizer, str) or not is_callable(self.featurizer)):
+        if self.featurizer and (
+            not isinstance(self.featurizer, str) or not is_callable(self.featurizer)
+        ):
             raise AttributeError("Featurizer must be a callable or a string")
 
     def _save_input_args(self):
@@ -322,7 +324,9 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
         if not ignore_errors:
             for ind, feat in enumerate(features):
                 if feat is None:
-                    raise ValueError(f"Cannot transform molecule at index {ind}. Please check logs (set verbose to True) to see errors!")
+                    raise ValueError(
+                        f"Cannot transform molecule at index {ind}. Please check logs (set verbose to True) to see errors!"
+                    )
 
         return features
 
