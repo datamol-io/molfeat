@@ -48,55 +48,50 @@ model_card.usage()
 
 
 ## FAQ
-<details>
-<summary>What is a molecular featurizer ?</summary>
+#### What is a molecular featurizer ?
+A molecular featurizer is a function or model that provides numerical representations for molecular structures. These numerical features serve as inputs for machine learning models, enabling them to predict molecular properties and activities, design novel molecules, perform molecular analyses, or conduct searches for similar molecules.
 
-A molecular featurizer is function or model that provides numerical representations from molecular structures. These numerical features can then be used as input for machine learning models to predict molecular properties and activities, to design new molecules, to perform molecular analyses, or to search for similar molecules. 
-</details>
+#### Why so many molecular featurizers in `molfeat`?
 
-
-<details>
-<summary>Why so many molecular featurizers in `molfeat`?</summary>
-
-To date, it's not clear which molecular representation performs better. There are multiple ways of representing molecules (e.g using their physico-chemical descriptors, using a fingerprint corresponding to a hash of the molecular structure, using deep learning embeddings, etc). Depending on your tasks, one representation could perform better than another, this is why `molfeat` attempt to provide a broad range of featurizer to ensure, everyone has access to their favorite featurizers.
-</details>
+The reason for providing a diverse range of molecular featurizers in `molfeat` is to address the inherent uncertainty in determining which molecular representation performs best for a given task. Different featurization methods exist, such as using physico-chemical descriptors, molecular structure fingerprints, deep learning embeddings, and more. The effectiveness of these representations varies depending on the specific application. Therefore, the availability of multiple featurizers in `molfeat` ensures that users can access the most suitable featurizer for their unique needs.
 
 
-<details>
-<summary>What is the difference between a calculator and a featurizer in `molfeat`?</summary>
+#### What is the difference between a calculator and a featurizer in `molfeat`?
 
 In `molfeat`,
-- a `calculator` operate on the level of a single molecule, it dictates how to transform an input molecule into a numerical representation. 
 
-- a `featurizer` operates on batches of molecules, because deep learning models are often more efficient on batch of samples. Some  `featurizers` uses `calculator` internally to each molecule individually and stitch them together. `featurizers` also provide convenient tools such as parallelism, caching, etc to make computation of molecular representation efficient. 
+- a `calculator` operates on individual molecules and specifies the process of transforming an input molecule into a numerical representation.
+- a `featurizer`  works with batches of molecules, leveraging the efficiency of deep learning models on batch processing. Some  `featurizers` uses a `calculator` internally to feature each molecule individually and then stitch their outputs together. Additionally, `featurizers` offer convenient tools, such as parallelism and caching, to optimize the computation of molecular representations efficiently.
 
-`molfeat` is designed to be extremely flexible. This is because the space of actions that users often wish to perform is huge and there are often not "wrong" ways.
-</details>
-
-<details>
-<summary>What are the function I should know when using a `featurizer` ?</summary>
+`molfeat` has been designed with utmost flexibility, recognizing that the actions users wish to perform with molecular data can be vast and diverse, and there often isn't a single "right" way to approach them.
 
 
-Every featurizer would have: 
-  - a `preprocess` method  that can perform preprocessing of your input molecules, to ensure compatibility with the expected featurizer class you are using. The preprocess steps is not called automatically for you to decouple it from the molecular transformation. It's a suggestion for the preprocessing steps you should perform when using a given featurizer.
+#### What functions should I be familiar with when using the featurizer classes ?
 
-The `preprocess` function expect your molecule inputs, but also some optional labels and can be redefined when creating your own custom featurizer.
+When using a `featurizer` in `molfeat`, you should be familiar with the following functions:
 
-  - a `transform` method that operates on a batch of molecules and returns a list of representation, this is where the `magic` happens. Position where featurization failed can be `None` when you elect to `ignore_errors`.
-  - a `_transform` method that operates on a single input molecule, this is where the `magic` happens
-  - a `__call__` method that uses `transform` under the hood and add some convenient argument such as enforcing the datatype you defined when initializing your model to the outputs.  If you ask to `ignore_errors`, a vector of indexes where featurization did not fail will also be returned. 
+- `preprocess()`: This method performs preprocessing of your input molecules to ensure compatibility with the expected featurizer class you are using. It's essential to note that the preprocessing steps **are not automatically applied to your inputs** to maintain independence from the molecular transformation. The preprocess function takes your molecule inputs, along with optional labels, and can be redefined when creating a custom featurizer.
 
-In addition to the method described above, `PretrainedMolTransformer` also defines the following functions:
+-  `transform()`: This method operates on a batch of molecules and returns a list of representations, where the actual featurization occurs. In cases where featurization fails, the position can be denoted as `None`, especially when you choose to `ignore_errors`.
+- `_transform()`: This method operates on a single input molecule, performing the actual featurization.
+- `__call__()`: This method uses `transform()` under the hood and provides convenient arguments, such as enforcing the datatype defined during the initialization of your model, to the outputs. If you specify `ignore_errors`, a vector of indexes where featurization did not fail will also be returned.
 
-- `_embed`: since pre-trained models benefit from batched featurization, this method is called by internally during `transform` instead of an internal calculator. 
-- `_convert`: this method is called by the transformer to convert the molecule input into the expected format of the underlying ML model. For example for a pre-trained language model expecting SELFIES strings, we will convert for input into SELFIES strings here.
+In addition to the methods described above, PretrainedMolTransformer introduces the following functions:
 
-</details>
+- `_embed()`: For pre-trained models that benefit from batched featurization, this method is internally called during transform instead of an internal calculator.
+- `_convert()`: This method is called by the transformer to convert the molecule input into the expected format of the underlying ML model. For example, for a pre-trained language model expecting SELFIES strings, we will perform the conversion to SELFIES strings here.
 
-<details>
-<summary>I am getting an error and I am not sure what to do. </summary>
 
-User can decide to `ignore_errors` when featurization fails on some molecules of their dataset, with the hope of filtering them after. Therefore, some silent errors are caught in the `transform` errors. Set the verbosity of the featurizer to True to get a log of all errors.
+
+#### I am getting an error and I am not sure what to do ?
+
+When encountering an error during the featurization process, you have a couple of options to handle it:
+
+- Ignore Errors: You can choose to set the `ignore_errors` parameter to `True` when using the featurizer. This allows the featurizer to continue processing even if it encounters errors on some molecules in your dataset. The featurizer will still attempt to calculate representations for all molecules, and any molecules that failed featurization will have their position in the output list marked as `None`.
+
+- Increase Verbosity: If you're unsure about the specific errors occurring during featurization, you can set the verbosity of the featurizer to True. This will enable the featurizer to log all errors encountered during the process, providing more detailed information about the cause of the issue, since because of the above features, some silent errors are often caught but not propagated.
+
+For example, the following will ensure that all errors are logged.
 
 ```python
 from molfeat.trans.concat import FeatConcat
@@ -106,20 +101,18 @@ featurizer = MoleculeTransformer(..., dtype=np.float32, verbose=True)
 featurizer(["CSc1nc2cc3c(cc2[nH]1)N(Cc1ccc(S(=O)(=O)c2ccccc2)cc1)CCC3"], enforce_dtype=True)
 ```
 
-you will alway have a log of all errors. 
-</details>
 
-<details>
-<summary>What are the base featurizers class in molfeat and how to use them ?</summary>
+#### What are the base featurizers class in molfeat and how to use them ?
 
-|    Class  	| Module	| Why ? 	|
-|-------------	|-----------------------	|----------------------	|
-| [`BaseFeaturizer`](https://molfeat-docs.datamol.io/stable/api/molfeat.trans.base.html#molfeat.trans.base.BaseFeaturizer) 	| `molfeat.trans.base`          	| Lowest level featurizer class. All featurizers (even if not molecular) inherits from this class.  It's recommended to use `MoleculeTransformer` as root class instead          	|
-| [`MoleculeTransformer`](https://molfeat-docs.datamol.io/stable/api/molfeat.trans.base.html#molfeat.trans.base.MoleculeTransformer) 	| `molfeat.trans.base`          	| <ul><li> Base class for all molecule featurizers. This is where you start if you want to implement a new featurizer.</li> <li> You can provide either an existing `calculator` or your own (a **python callable**) directly to define a new `featurizer`</li></ul>|
-|[`PrecomputedMolTransformer``](https://molfeat-docs.datamol.io/stable/api/molfeat.trans.base.html#molfeat.trans.base.PrecomputedMolTransformer) 	| `molfeat.trans.base` | Class for dealing with precomputed features. You can leverage this class to compute features, save them in a file, and reload them after for other task efficiently. [See this tutorial !](https://molfeat-docs.datamol.io/stable/tutorials/datacache.html#using-a-cache-with-a-precomputed-transformer) |
-|[`FeatConcat`](https://molfeat-docs.datamol.io/stable/api/molfeat.trans.concat.html#molfeat.trans.concat.FeatConcat) 	| `molfeat.trans.concat` | Convenient class for concatenating multiple vector-featurizers automatically. If you want to combine multiple 'fingerprints' and descriptors, this is the class you use. [See example !](https://molfeat-docs.datamol.io/stable/tutorials/types_of_featurizers.html#concatenate-featurizers) |
-|[`PretrainedMolTransformer`](https://molfeat-docs.datamol.io/stable/api/molfeat.trans.pretrained.base.html)	| `molfeat.trans.pretrained.base` | Base class for all `pretrained featurizers`. A `pretrained featurizer` is a `featurizer` that is derived from a pretrained machine learning model. Implement a subclass of this to define your new pretrained featurizer.  [See example !](https://molfeat-docs.datamol.io/stable/tutorials/add_your_own.html#define-your-own-transformer) |
-|`PretrainedDGLTransformer` 	| `molfeat.trans.pretrained.dgl_pretrained` | Base class for all `dgl pretrained featurizers`. You can initialize a new dgl/dgllife pretrained model as a `molfeat featurizer` easily using this class. You only need to add the dgl model object to a store. |
-|[`PretrainedHFTransformer``](https://molfeat-docs.datamol.io/stable/api/molfeat.trans.pretrained.hf_transformers.html#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer) 	| `molfeat.trans.pretrained.hf_transformer` | Base class for all `huggingface pretrained featurizers`. You can initialize a new 🤗 Transformers pretrained model as a `molfeat featurizer` easily using this class. [See this example !](https://github.com/datamol-io/molfeat/blob/main/nb/etl/molt5-etl.ipynb) |
 
-</details>
+| Class                                                                                                                                                                                | Module                                    | Why?                                                                                                                                                                                                                                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [BaseFeaturizer](https://molfeat-docs.datamol.io/stable/api/molfeat.trans.base.html#molfeat.trans.base.BaseFeaturizer)                                                               | `molfeat.trans.base`                      | Lowest level featurizer class. All featurizers (even if not molecular) inherit from this class. It's recommended to use `MoleculeTransformer` as the root class instead.                                                                                                                                                                 |
+| [MoleculeTransformer](https://molfeat-docs.datamol.io/stable/api/molfeat.trans.base.html#molfeat.trans.base.MoleculeTransformer)                                                     | `molfeat.trans.base`                      | <ul><li> Base class for all molecule featurizers. This is where you start if you want to implement a new featurizer.</li><li> You can provide either an existing `calculator` or your own (a **python callable**) directly to define a new `featurizer`.</li></ul>                                                                       |
+| [PrecomputedMolTransformer](https://molfeat-docs.datamol.io/stable/api/molfeat.trans.base.html#molfeat.trans.base.PrecomputedMolTransformer)                                         | `molfeat.trans.base`                      | Class for dealing with precomputed features. You can leverage this class to compute features, save them in a file, and reload them after for other tasks efficiently. [See this tutorial!](https://molfeat-docs.datamol.io/stable/tutorials/datacache.html#using-a-cache-with-a-precomputed-transformer)                                 |
+| [FeatConcat](https://molfeat-docs.datamol.io/stable/api/molfeat.trans.concat.html#molfeat.trans.concat.FeatConcat)                                                                   | `molfeat.trans.concat`                    | Convenient class for concatenating multiple vector-featurizers automatically. If you want to combine multiple 'fingerprints' and descriptors, this is the class you use. [See example!](https://molfeat-docs.datamol.io/stable/tutorials/types_of_featurizers.html#concatenate-featurizers)                                              |
+| [PretrainedMolTransformer](https://molfeat-docs.datamol.io/stable/api/molfeat.trans.pretrained.base.html)                                                                            | `molfeat.trans.pretrained.base`           | Base class for all `pretrained featurizers`. A `pretrained featurizer` is a `featurizer` that is derived from a pretrained machine learning model. Implement a subclass of this to define your new pretrained featurizer. [See example!](https://molfeat-docs.datamol.io/stable/tutorials/add_your_own.html#define-your-own-transformer) |
+| [PretrainedDGLTransformer](https://molfeat-docs.datamol.io/stable/api/molfeat.trans.pretrained.dgl_pretrained.html#molfeat.trans.pretrained.dgl_pretrained.PretrainedDGLTransformer) | `molfeat.trans.pretrained.dgl_pretrained` | Base class for all `dgl pretrained featurizers`. You can initialize a new dgl/dgllife pretrained model as a `molfeat featurizer` easily using this class. You only need to add the dgl model object to a store. [See this example!](https://github.com/datamol-io/molfeat/blob/main/nb/etl/dgl-etl.ipynb)                                |
+| [PretrainedHFTransformer](https://molfeat-docs.datamol.io/stable/api/molfeat.trans.pretrained.hf_transformers.html#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer) | `molfeat.trans.pretrained.hf_transformer` | Base class for all `huggingface pretrained featurizers`. You can initialize a new 🤗 Transformers pretrained model as a `molfeat featurizer` easily using this class. [See this example!](https://github.com/datamol-io/molfeat/blob/main/nb/etl/molt5-etl.ipynb)                                                                         |
+
+
