@@ -6,6 +6,7 @@ from typing import Optional
 from typing import List
 from typing import Union
 
+import types
 import os
 import inspect
 import hashlib
@@ -23,6 +24,15 @@ from rdkit.Chem import rdMolDescriptors
 from rdkit.Chem import rdMolAlign
 from rdkit.Chem import SaltRemover
 from molfeat.utils import datatype
+
+
+FUNCTYPES = (types.FunctionType, types.MethodType, functools.partial)
+
+def is_callable(func):
+    r"""
+    Check if func is a function or a callable
+    """
+    return func and (isinstance(func, FUNCTYPES) or callable(func))
 
 
 def sha256sum(filepath: Union[str, os.PathLike]):

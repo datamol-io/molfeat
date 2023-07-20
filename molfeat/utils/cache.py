@@ -260,7 +260,7 @@ class _Cache(abc.ABC):
         try:
             cacher = copy.deepcopy(self)
             n_jobs = self.n_jobs
-        except:
+        except: # noqa
             # cannot parallelize process, ensure n_jobs is 0
             cacher = self
             n_jobs = 0
@@ -357,7 +357,7 @@ class DataCache(_Cache):
                 for path in glob.glob(str(self.cache_file) + "*"):
                     try:
                         os.unlink(path)
-                    except:
+                    except: # noqa
                         pass
         else:
             self._initialize_cache()
