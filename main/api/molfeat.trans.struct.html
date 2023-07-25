@@ -17,7 +17,7 @@
         <link rel="next" href="molfeat.trans.concat.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.eebd395e.min.css">
       
       
 
@@ -1197,6 +1197,20 @@
   
   
     <li class="md-nav__item">
+      <a href="molfeat.trans.pretrained.base.html" class="md-nav__link">
+        Base Pretrained Models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="molfeat.trans.pretrained.hf_transformers.html" class="md-nav__link">
         HuggingFace
       </a>
@@ -1621,25 +1635,24 @@
 
 
 <h3 id="molfeat.trans.struct.esm.ESMProteinFingerprint" class="doc doc-heading">
-        <code>ESMProteinFingerprint</code>
+          <code>ESMProteinFingerprint</code>
 
 
 <a href="#molfeat.trans.struct.esm.ESMProteinFingerprint" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.base.MoleculeTransformer" href="molfeat.trans.base.html#molfeat.trans.base.MoleculeTransformer">MoleculeTransformer</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.base.MoleculeTransformer" href="molfeat.trans.base.html#molfeat.trans.base.MoleculeTransformer">MoleculeTransformer</a></code></p>
 
   
       <p>ESM (Evolutionary Scale Modeling) protein representation embedding.
 ESM is a transformer protein language model introduced by Facebook FAIR in Rives et al., 2019:
 'Biological structure and function emerge from scaling unsupervised learning to 250 million protein sequences'</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/trans/struct/esm.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 15</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/struct/esm.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 15</span>
 <span class="normal"> 16</span>
 <span class="normal"> 17</span>
 <span class="normal"> 18</span>
@@ -2059,7 +2072,7 @@ ESM is a transformer protein language model introduced by Facebook FAIR in Rives
             <span class="k">return</span> <span class="n">features</span>
         <span class="k">return</span> <span class="n">features</span><span class="p">,</span> <span class="n">ids</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -2284,6 +2297,7 @@ ESM is a transformer protein language model introduced by Facebook FAIR in Rives
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -2298,6 +2312,8 @@ ESM is a transformer protein language model introduced by Facebook FAIR in Rives
   
       <p>Compute molecular representation of a protein sequence.
 If ignore_error is True, a list of features and valid ids are returned.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2382,6 +2398,8 @@ If ignore_error is True, a list of features and valid ids are returned.</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -2413,9 +2431,9 @@ Only returned when ignore_errors is True.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/struct/esm.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">186</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/struct/esm.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">186</span>
 <span class="normal">187</span>
 <span class="normal">188</span>
 <span class="normal">189</span>
@@ -2493,10 +2511,11 @@ Only returned when ignore_errors is True.</p>
         <span class="k">return</span> <span class="n">features</span>
     <span class="k">return</span> <span class="n">features</span><span class="p">,</span> <span class="n">ids</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2511,6 +2530,8 @@ Only returned when ignore_errors is True.</p>
   <div class="doc doc-contents ">
   
       <p>Constructor for ESM protein representation</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2625,9 +2646,9 @@ If you set pooling to None, token representation will be returned (excluding BOS
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/struct/esm.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/struct/esm.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
@@ -2723,10 +2744,11 @@ If you set pooling to None, token representation will be returned (excluding BOS
     <span class="bp">self</span><span class="o">.</span><span class="n">_feat_length</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_load_model</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2742,9 +2764,9 @@ If you set pooling to None, token representation will be returned (excluding BOS
   
       <p>Get featurizer length</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/struct/esm.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">79</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/struct/esm.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">79</span>
 <span class="normal">80</span>
 <span class="normal">81</span>
 <span class="normal">82</span>
@@ -2756,10 +2778,11 @@ If you set pooling to None, token representation will be returned (excluding BOS
         <span class="bp">self</span><span class="o">.</span><span class="n">_feat_length</span> <span class="o">=</span> <span class="n">embds</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feat_length</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2773,9 +2796,9 @@ If you set pooling to None, token representation will be returned (excluding BOS
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/struct/esm.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">141</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/struct/esm.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">141</span>
 <span class="normal">142</span>
 <span class="normal">143</span>
 <span class="normal">144</span>
@@ -2789,10 +2812,11 @@ If you set pooling to None, token representation will be returned (excluding BOS
         <span class="n">_parse_to_evaluable_str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2807,6 +2831,8 @@ If you set pooling to None, token representation will be returned (excluding BOS
   <div class="doc doc-contents ">
   
       <p>Transform a list of protein sequence into a feature vector.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2850,6 +2876,8 @@ If you set pooling to None, token representation will be returned (excluding BOS
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -2872,9 +2900,9 @@ and (N_SEQS, FEAT_DIM * N_LAYERS) for sequence embeddings. Use</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/struct/esm.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">163</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/struct/esm.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">163</span>
 <span class="normal">164</span>
 <span class="normal">165</span>
 <span class="normal">166</span>
@@ -2918,7 +2946,7 @@ and (N_SEQS, FEAT_DIM * N_LAYERS) for sequence embeddings. Use</p>
         <span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_embed</span><span class="p">(</span><span class="n">seqs</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -2964,15 +2992,15 @@ and (N_SEQS, FEAT_DIM * N_LAYERS) for sequence embeddings. Use</p>
 
 
 <h3 id="molfeat.trans.struct.prot1D.ProtBioFingerprint" class="doc doc-heading">
-        <code>ProtBioFingerprint</code>
+          <code>ProtBioFingerprint</code>
 
 
 <a href="#molfeat.trans.struct.prot1D.ProtBioFingerprint" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.base.MoleculeTransformer" href="molfeat.trans.base.html#molfeat.trans.base.MoleculeTransformer">MoleculeTransformer</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.base.MoleculeTransformer" href="molfeat.trans.base.html#molfeat.trans.base.MoleculeTransformer">MoleculeTransformer</a></code></p>
 
   
       <p>Wrapper for general purpose biological sequence representations, as provided by <a href="https://github.com/sacdallago/bio_embeddings"><code>bio_embeddings</code></a></p>
@@ -2983,10 +3011,9 @@ and (N_SEQS, FEAT_DIM * N_LAYERS) for sequence embeddings. Use</p>
 <div class="highlight"><pre><span></span><code>According to the bio_embeddings documentation, `prottrans_bert_bfd` and `seqvec` are the best embeddings.
 </code></pre></div>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/trans/struct/prot1D.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 18</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/struct/prot1D.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 18</span>
 <span class="normal"> 19</span>
 <span class="normal"> 20</span>
 <span class="normal"> 21</span>
@@ -3362,7 +3389,7 @@ and (N_SEQS, FEAT_DIM * N_LAYERS) for sequence embeddings. Use</p>
             <span class="k">return</span> <span class="n">features</span>
         <span class="k">return</span> <span class="n">features</span><span class="p">,</span> <span class="n">ids</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -3382,8 +3409,8 @@ and (N_SEQS, FEAT_DIM * N_LAYERS) for sequence embeddings. Use</p>
 <code class="highlight language-python"><span class="n">SUPPORTED_EMBEDDINGS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bepler&#39;</span><span class="p">,</span> <span class="s1">&#39;cpcprot&#39;</span><span class="p">,</span> <span class="s1">&#39;esm&#39;</span><span class="p">,</span> <span class="s1">&#39;esm1b&#39;</span><span class="p">,</span> <span class="s1">&#39;esm1v&#39;</span><span class="p">,</span> <span class="s1">&#39;fasttext&#39;</span><span class="p">,</span> <span class="s1">&#39;glove&#39;</span><span class="p">,</span> <span class="s1">&#39;one_hot_encoding&#39;</span><span class="p">,</span> <span class="s1">&#39;plus_rnn&#39;</span><span class="p">,</span> <span class="s1">&#39;prottrans_albert_bfd&#39;</span><span class="p">,</span> <span class="s1">&#39;prottrans_bert_bfd&#39;</span><span class="p">,</span> <span class="s1">&#39;prottrans_t5_bfd&#39;</span><span class="p">,</span> <span class="s1">&#39;prottrans_t5_uniref50&#39;</span><span class="p">,</span> <span class="s1">&#39;prottrans_t5_xl_u50&#39;</span><span class="p">,</span> <span class="s1">&#39;prottrans_xlnet_uniref100&#39;</span><span class="p">,</span> <span class="s1">&#39;seqvec&#39;</span><span class="p">,</span> <span class="s1">&#39;unirep&#39;</span><span class="p">,</span> <span class="s1">&#39;word2vec&#39;</span><span class="p">]</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 <a href="#molfeat.trans.struct.prot1D.ProtBioFingerprint.SUPPORTED_EMBEDDINGS" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -3455,6 +3482,7 @@ and (N_SEQS, FEAT_DIM * N_LAYERS) for sequence embeddings. Use</p>
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -3469,6 +3497,8 @@ and (N_SEQS, FEAT_DIM * N_LAYERS) for sequence embeddings. Use</p>
   
       <p>Compute molecular representation of a protein sequence.
 If ignore_error is True, a list of features and valid ids are returned.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3539,6 +3569,8 @@ If ignore_error is True, a list of features and valid ids are returned.</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -3570,9 +3602,9 @@ Only returned when ignore_errors is True.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/struct/prot1D.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">169</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/struct/prot1D.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">169</span>
 <span class="normal">170</span>
 <span class="normal">171</span>
 <span class="normal">172</span>
@@ -3646,10 +3678,11 @@ Only returned when ignore_errors is True.</p>
         <span class="k">return</span> <span class="n">features</span>
     <span class="k">return</span> <span class="n">features</span><span class="p">,</span> <span class="n">ids</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3665,6 +3698,8 @@ Only returned when ignore_errors is True.</p>
   
       <p>Constructor for Deep Learning based Protein representation.
 SeqVec featurizer will e</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3717,7 +3752,7 @@ If you set pooling to None, token representation will be returned</p>
             </div>
           </td>
           <td>
-                <code>np.float32</code>
+                <code><span title="numpy">np</span>.<span title="numpy.float32">float32</span></code>
           </td>
         </tr>
         <tr>
@@ -3752,9 +3787,9 @@ If None, last layers is taken. This is relevant for <code>seqvec</code> mostly</
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/struct/prot1D.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">52</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/struct/prot1D.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">52</span>
 <span class="normal">53</span>
 <span class="normal">54</span>
 <span class="normal">55</span>
@@ -3846,10 +3881,11 @@ If None, last layers is taken. This is relevant for <code>seqvec</code> mostly</
         <span class="bp">self</span><span class="o">.</span><span class="n">_representation</span> <span class="o">=</span> <span class="s2">&quot;token&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_feat_length</span> <span class="o">=</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3865,18 +3901,19 @@ If None, last layers is taken. This is relevant for <code>seqvec</code> mostly</
   
       <p>Get featurizer length</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/struct/prot1D.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 99</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/struct/prot1D.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 99</span>
 <span class="normal">100</span>
 <span class="normal">101</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get featurizer length&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">embedding_dimension</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3890,9 +3927,9 @@ If None, last layers is taken. This is relevant for <code>seqvec</code> mostly</
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/struct/prot1D.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">108</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/struct/prot1D.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">108</span>
 <span class="normal">109</span>
 <span class="normal">110</span>
 <span class="normal">111</span>
@@ -3906,10 +3943,11 @@ If None, last layers is taken. This is relevant for <code>seqvec</code> mostly</
         <span class="n">_parse_to_evaluable_str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3924,6 +3962,8 @@ If None, last layers is taken. This is relevant for <code>seqvec</code> mostly</
   <div class="doc doc-contents ">
   
       <p>Transform a list of protein/nucleotide sequence into a feature vector.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3980,6 +4020,8 @@ If None, last layers is taken. This is relevant for <code>seqvec</code> mostly</
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -4002,9 +4044,9 @@ and (FEAT_DIM, N_LAYERS) for sequence embeddings</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/struct/prot1D.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">147</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/struct/prot1D.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">147</span>
 <span class="normal">148</span>
 <span class="normal">149</span>
 <span class="normal">150</span>
@@ -4046,7 +4088,7 @@ and (FEAT_DIM, N_LAYERS) for sequence embeddings</p>
     <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_pool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">res</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">res</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

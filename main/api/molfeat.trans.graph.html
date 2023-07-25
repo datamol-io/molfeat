@@ -17,7 +17,7 @@
         <link rel="next" href="molfeat.trans.struct.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.eebd395e.min.css">
       
       
 
@@ -1250,6 +1250,20 @@
   
   
     <li class="md-nav__item">
+      <a href="molfeat.trans.pretrained.base.html" class="md-nav__link">
+        Base Pretrained Models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="molfeat.trans.pretrained.hf_transformers.html" class="md-nav__link">
         HuggingFace
       </a>
@@ -1727,24 +1741,23 @@
 
 
 <h3 id="molfeat.trans.graph.adj.AdjGraphTransformer" class="doc doc-heading">
-        <code>AdjGraphTransformer</code>
+          <code>AdjGraphTransformer</code>
 
 
 <a href="#molfeat.trans.graph.adj.AdjGraphTransformer" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.graph.adj.GraphTransformer" href="#molfeat.trans.graph.adj.GraphTransformer">GraphTransformer</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.graph.adj.GraphTransformer" href="#molfeat.trans.graph.adj.GraphTransformer">GraphTransformer</a></code></p>
 
   
       <p>Transforms a molecule into a molecular graph representation formed by an
 adjacency matrix of atoms and a set of features for each atom (and potentially bond).</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">192</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">192</span>
 <span class="normal">193</span>
 <span class="normal">194</span>
 <span class="normal">195</span>
@@ -2150,11 +2163,12 @@ adjacency matrix of atoms and a set of features for each atom (and potentially b
             <span class="n">feats</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="n">feats</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
   <div class="doc doc-children">
+
 
 
 
@@ -2177,6 +2191,8 @@ adjacency matrix of atoms and a set of features for each atom (and potentially b
   <div class="doc doc-contents ">
   
       <p>Adjacency graph transformer</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2318,9 +2334,9 @@ adjacency matrix of atoms and a set of features for each atom (and potentially b
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">198</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">198</span>
 <span class="normal">199</span>
 <span class="normal">200</span>
 <span class="normal">201</span>
@@ -2398,10 +2414,11 @@ adjacency matrix of atoms and a set of features for each atom (and potentially b
         <span class="o">**</span><span class="n">params</span><span class="p">,</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2422,6 +2439,8 @@ or diagonally packing the graph into a super graph. Either a format of (batch, l
 <p>Edge features are not supported yet in the default collate because
 there is no straightforward and universal way to collate them</p>
 </div>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2465,9 +2484,9 @@ If the graph needs to be packed and it is not set, instance attributes will be u
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">309</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">309</span>
 <span class="normal">310</span>
 <span class="normal">311</span>
 <span class="normal">312</span>
@@ -2507,10 +2526,11 @@ If the graph needs to be packed and it is not set, instance attributes will be u
 
     <span class="k">return</span> <span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_collate_batch</span><span class="p">,</span> <span class="n">pack</span><span class="o">=</span><span class="n">pack</span><span class="p">,</span> <span class="n">max_n_atoms</span><span class="o">=</span><span class="n">max_n_atoms</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2525,6 +2545,8 @@ If the graph needs to be packed and it is not set, instance attributes will be u
   <div class="doc doc-contents ">
   
       <p>Compute the graph featurization for a set of molecules.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2583,9 +2605,9 @@ If the graph needs to be packed and it is not set, instance attributes will be u
       <p>Returns:
      features: a list of features for each molecule in the input set</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">330</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">330</span>
 <span class="normal">331</span>
 <span class="normal">332</span>
 <span class="normal">333</span>
@@ -2651,7 +2673,7 @@ If the graph needs to be packed and it is not set, instance attributes will be u
         <span class="n">features</span> <span class="o">=</span> <span class="n">out</span>
     <span class="k">return</span> <span class="n">features</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -2669,23 +2691,22 @@ If the graph needs to be packed and it is not set, instance attributes will be u
 
 
 <h3 id="molfeat.trans.graph.adj.CompleteGraphTransformer" class="doc doc-heading">
-        <code>CompleteGraphTransformer</code>
+          <code>CompleteGraphTransformer</code>
 
 
 <a href="#molfeat.trans.graph.adj.CompleteGraphTransformer" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.graph.adj.GraphTransformer" href="#molfeat.trans.graph.adj.GraphTransformer">GraphTransformer</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.graph.adj.GraphTransformer" href="#molfeat.trans.graph.adj.GraphTransformer">GraphTransformer</a></code></p>
 
   
       <p>Transforms a molecule into a complete graph</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">397</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">397</span>
 <span class="normal">398</span>
 <span class="normal">399</span>
 <span class="normal">400</span>
@@ -2719,7 +2740,7 @@ If the graph needs to be packed and it is not set, instance attributes will be u
             <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">adj_mat</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">adj_mat</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -2746,24 +2767,23 @@ If the graph needs to be packed and it is not set, instance attributes will be u
 
 
 <h3 id="molfeat.trans.graph.adj.DGLGraphTransformer" class="doc doc-heading">
-        <code>DGLGraphTransformer</code>
+          <code>DGLGraphTransformer</code>
 
 
 <a href="#molfeat.trans.graph.adj.DGLGraphTransformer" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.graph.adj.GraphTransformer" href="#molfeat.trans.graph.adj.GraphTransformer">GraphTransformer</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.graph.adj.GraphTransformer" href="#molfeat.trans.graph.adj.GraphTransformer">GraphTransformer</a></code></p>
 
   
       <p>Transforms a molecule into a molecular graph representation formed by an
 adjacency matrix of atoms and a set of features for each atom (and potentially bond).</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">456</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">456</span>
 <span class="normal">457</span>
 <span class="normal">458</span>
 <span class="normal">459</span>
@@ -3171,7 +3191,7 @@ adjacency matrix of atoms and a set of features for each atom (and potentially b
 
         <span class="k">return</span> <span class="n">patch_feats</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -3223,6 +3243,7 @@ adjacency matrix of atoms and a set of features for each atom (and potentially b
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -3236,6 +3257,8 @@ adjacency matrix of atoms and a set of features for each atom (and potentially b
   <div class="doc doc-contents ">
   
       <p>Adjacency graph transformer</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3391,9 +3414,9 @@ adjacency matrix of atoms and a set of features for each atom (and potentially b
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">462</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">462</span>
 <span class="normal">463</span>
 <span class="normal">464</span>
 <span class="normal">465</span>
@@ -3497,10 +3520,11 @@ adjacency matrix of atoms and a set of features for each atom (and potentially b
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">datatype</span><span class="o">.</span><span class="n">is_dtype_tensor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;DGL featurizer only supports torch tensors currently&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3515,6 +3539,8 @@ adjacency matrix of atoms and a set of features for each atom (and potentially b
   <div class="doc doc-contents ">
   
       <p>Recast the output of a featurizer to the transformer underlying type</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3544,9 +3570,9 @@ adjacency matrix of atoms and a set of features for each atom (and potentially b
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">644</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">644</span>
 <span class="normal">645</span>
 <span class="normal">646</span>
 <span class="normal">647</span>
@@ -3578,10 +3604,11 @@ adjacency matrix of atoms and a set of features for each atom (and potentially b
 
     <span class="k">return</span> <span class="n">patch_feats</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3597,9 +3624,9 @@ adjacency matrix of atoms and a set of features for each atom (and potentially b
   
       <p>Patch the featurizer to auto support self loop based on the bond featurizer characteristics</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">515</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">515</span>
 <span class="normal">516</span>
 <span class="normal">517</span>
 <span class="normal">518</span>
@@ -3609,10 +3636,11 @@ adjacency matrix of atoms and a set of features for each atom (and potentially b
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bond_featurizer</span><span class="p">,</span> <span class="n">EdgeMatCalculator</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">self_loop</span> <span class="o">=</span> <span class="kc">True</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3628,15 +3656,15 @@ adjacency matrix of atoms and a set of features for each atom (and potentially b
   
       <p>Return DGL collate function for a batch of molecular graph</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">521</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">521</span>
 <span class="normal">522</span>
 <span class="normal">523</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_collate_fn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return DGL collate function for a batch of molecular graph&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dgl_collate</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -3654,24 +3682,23 @@ adjacency matrix of atoms and a set of features for each atom (and potentially b
 
 
 <h3 id="molfeat.trans.graph.adj.DistGraphTransformer3D" class="doc doc-heading">
-        <code>DistGraphTransformer3D</code>
+          <code>DistGraphTransformer3D</code>
 
 
 <a href="#molfeat.trans.graph.adj.DistGraphTransformer3D" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.graph.adj.AdjGraphTransformer" href="#molfeat.trans.graph.adj.AdjGraphTransformer">AdjGraphTransformer</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.graph.adj.AdjGraphTransformer" href="#molfeat.trans.graph.adj.AdjGraphTransformer">AdjGraphTransformer</a></code></p>
 
   
       <p>Graph featurizer using the 3D distance between pair of atoms for the adjacency matrix
 The <code>self_loop</code> attribute is ignored here as the distance between an atom and itself is 0.</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">436</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">436</span>
 <span class="normal">437</span>
 <span class="normal">438</span>
 <span class="normal">439</span>
@@ -3707,7 +3734,7 @@ The <code>self_loop</code> attribute is ignored here as the distance between an 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Get3DDistanceMatrix</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -3734,23 +3761,22 @@ The <code>self_loop</code> attribute is ignored here as the distance between an 
 
 
 <h3 id="molfeat.trans.graph.adj.GraphTransformer" class="doc doc-heading">
-        <code>GraphTransformer</code>
+          <code>GraphTransformer</code>
 
 
 <a href="#molfeat.trans.graph.adj.GraphTransformer" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.base.MoleculeTransformer" href="molfeat.trans.base.html#molfeat.trans.base.MoleculeTransformer">MoleculeTransformer</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.base.MoleculeTransformer" href="molfeat.trans.base.html#molfeat.trans.base.MoleculeTransformer">MoleculeTransformer</a></code></p>
 
   
       <p>Base class for all graph transformers including DGL</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 36</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 36</span>
 <span class="normal"> 37</span>
 <span class="normal"> 38</span>
 <span class="normal"> 39</span>
@@ -4058,7 +4084,7 @@ The <code>self_loop</code> attribute is ignored here as the distance between an 
         <span class="n">features</span><span class="p">,</span> <span class="n">ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter_none</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">features</span><span class="p">,</span> <span class="n">ids</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -4087,6 +4113,8 @@ The <code>self_loop</code> attribute is ignored here as the distance between an 
   <div class="doc doc-contents ">
   
       <p>Get the number of features per atom</p>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -4150,6 +4178,8 @@ The <code>self_loop</code> attribute is ignored here as the distance between an 
   
       <p>Get the number of features for a bond</p>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -4196,6 +4226,7 @@ The <code>self_loop</code> attribute is ignored here as the distance between an 
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -4211,6 +4242,8 @@ The <code>self_loop</code> attribute is ignored here as the distance between an 
       <p>Calculate features for molecules. Using <strong>call</strong>, instead of transform.
 Note that most Transfomers allow you to specify
 a return datatype.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -4267,6 +4300,8 @@ a return datatype.</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -4298,9 +4333,9 @@ Only returned when ignore_errors is True.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">168</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">168</span>
 <span class="normal">169</span>
 <span class="normal">170</span>
 <span class="normal">171</span>
@@ -4344,10 +4379,11 @@ Only returned when ignore_errors is True.</p>
     <span class="n">features</span><span class="p">,</span> <span class="n">ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter_none</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">features</span><span class="p">,</span> <span class="n">ids</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -4362,6 +4398,8 @@ Only returned when ignore_errors is True.</p>
   <div class="doc doc-contents ">
   
       <p>Mol to Graph transformer base class</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -4489,9 +4527,9 @@ Only returned when ignore_errors is True.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">41</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
 <span class="normal">44</span>
@@ -4577,10 +4615,11 @@ Only returned when ignore_errors is True.</p>
     <span class="bp">self</span><span class="o">.</span><span class="n">_atom_dim</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_bond_dim</span> <span class="o">=</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -4596,9 +4635,9 @@ Only returned when ignore_errors is True.</p>
   
       <p>Patch the featurizer to auto support self loop based on the bond featurizer characteristics</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">85</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">85</span>
 <span class="normal">86</span>
 <span class="normal">87</span>
 <span class="normal">88</span>
@@ -4614,10 +4653,11 @@ Only returned when ignore_errors is True.</p>
     <span class="k">if</span> <span class="n">bf_self_loop</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">self_loop</span> <span class="o">=</span> <span class="n">bf_self_loop</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -4633,9 +4673,9 @@ Only returned when ignore_errors is True.</p>
   
       <p>Fit the current transformer on given dataset.</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">112</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">112</span>
 <span class="normal">113</span>
 <span class="normal">114</span>
 <span class="normal">115</span>
@@ -4645,10 +4685,11 @@ Only returned when ignore_errors is True.</p>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;GraphTransformer featurizers cannot be fitted !&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -4663,6 +4704,8 @@ Only returned when ignore_errors is True.</p>
   <div class="doc doc-contents ">
   
       <p>Preprocess list of input molecules</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -4691,9 +4734,9 @@ Only returned when ignore_errors is True.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 94</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 94</span>
 <span class="normal"> 95</span>
 <span class="normal"> 96</span>
 <span class="normal"> 97</span>
@@ -4727,7 +4770,7 @@ Only returned when ignore_errors is True.</p>
 
     <span class="k">return</span> <span class="n">new_inputs</span><span class="p">,</span> <span class="n">labels</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -4745,23 +4788,22 @@ Only returned when ignore_errors is True.</p>
 
 
 <h3 id="molfeat.trans.graph.adj.PYGGraphTransformer" class="doc doc-heading">
-        <code>PYGGraphTransformer</code>
+          <code>PYGGraphTransformer</code>
 
 
 <a href="#molfeat.trans.graph.adj.PYGGraphTransformer" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.graph.adj.AdjGraphTransformer" href="#molfeat.trans.graph.adj.AdjGraphTransformer">AdjGraphTransformer</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.graph.adj.AdjGraphTransformer" href="#molfeat.trans.graph.adj.AdjGraphTransformer">AdjGraphTransformer</a></code></p>
 
   
       <p>Graph transformer for the PYG models</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">662</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">662</span>
 <span class="normal">663</span>
 <span class="normal">664</span>
 <span class="normal">665</span>
@@ -4979,11 +5021,12 @@ Only returned when ignore_errors is True.</p>
             <span class="k">return</span> <span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">batch</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">batch</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
   <div class="doc doc-children">
+
 
 
 
@@ -5006,6 +5049,8 @@ Only returned when ignore_errors is True.</p>
   <div class="doc doc-contents ">
   
       <p>Get collate function for pyg graphs</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -5063,6 +5108,8 @@ Only returned when ignore_errors is True.</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -5084,9 +5131,9 @@ Only returned when ignore_errors is True.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">729</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">729</span>
 <span class="normal">730</span>
 <span class="normal">731</span>
 <span class="normal">732</span>
@@ -5126,10 +5173,11 @@ Only returned when ignore_errors is True.</p>
     <span class="n">collator</span> <span class="o">=</span> <span class="n">Collater</span><span class="p">(</span><span class="n">follow_batch</span><span class="o">=</span><span class="n">follow_batch</span><span class="p">,</span> <span class="n">exclude_keys</span><span class="o">=</span><span class="n">exclude_keys</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_collate_batch</span><span class="p">,</span> <span class="n">collator</span><span class="o">=</span><span class="n">collator</span><span class="p">,</span> <span class="n">return_pair</span><span class="o">=</span><span class="n">return_pair</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -5144,6 +5192,8 @@ Only returned when ignore_errors is True.</p>
   <div class="doc doc-contents ">
   
       <p>Compute the graph featurization for a set of molecules.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -5188,9 +5238,9 @@ Only returned when ignore_errors is True.</p>
       <p>Returns:
      features: a list of Data point for each molecule in the input set</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">715</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">715</span>
 <span class="normal">716</span>
 <span class="normal">717</span>
 <span class="normal">718</span>
@@ -5216,7 +5266,7 @@ Only returned when ignore_errors is True.</p>
     <span class="n">features</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">mols</span><span class="p">,</span> <span class="n">keep_dict</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_convert_feat_to_data_point</span><span class="p">(</span><span class="o">*</span><span class="n">feat</span><span class="p">)</span> <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">features</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -5234,25 +5284,24 @@ Only returned when ignore_errors is True.</p>
 
 
 <h3 id="molfeat.trans.graph.adj.TopoDistGraphTransformer" class="doc doc-heading">
-        <code>TopoDistGraphTransformer</code>
+          <code>TopoDistGraphTransformer</code>
 
 
 <a href="#molfeat.trans.graph.adj.TopoDistGraphTransformer" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.graph.adj.AdjGraphTransformer" href="#molfeat.trans.graph.adj.AdjGraphTransformer">AdjGraphTransformer</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.graph.adj.AdjGraphTransformer" href="#molfeat.trans.graph.adj.AdjGraphTransformer">AdjGraphTransformer</a></code></p>
 
   
       <p>Graph featurizer using the topological distance between each pair
 of nodes instead of the adjacency matrix.</p>
 <p>The <code>self_loop</code> attribute is ignored here as the distance between an atom and itself is 0.</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">416</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/graph/adj.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">416</span>
 <span class="normal">417</span>
 <span class="normal">418</span>
 <span class="normal">419</span>
@@ -5288,7 +5337,7 @@ of nodes instead of the adjacency matrix.</p>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">GetDistanceMatrix</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -5343,23 +5392,22 @@ of nodes instead of the adjacency matrix.</p>
 
 
 <h3 id="molfeat.trans.graph.tree.MolTreeDecompositionTransformer" class="doc doc-heading">
-        <code>MolTreeDecompositionTransformer</code>
+          <code>MolTreeDecompositionTransformer</code>
 
 
 <a href="#molfeat.trans.graph.tree.MolTreeDecompositionTransformer" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.base.MoleculeTransformer" href="molfeat.trans.base.html#molfeat.trans.base.MoleculeTransformer">MoleculeTransformer</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.base.MoleculeTransformer" href="molfeat.trans.base.html#molfeat.trans.base.MoleculeTransformer">MoleculeTransformer</a></code></p>
 
   
       <p>Transforms a molecule into a tree structure whose nodes correspond to different functional groups.</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/trans/graph/tree.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 22</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/graph/tree.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 22</span>
 <span class="normal"> 23</span>
 <span class="normal"> 24</span>
 <span class="normal"> 25</span>
@@ -5633,7 +5681,7 @@ of nodes instead of the adjacency matrix.</p>
             <span class="n">graph</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="n">graph</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -5682,6 +5730,8 @@ of nodes instead of the adjacency matrix.</p>
   
       <p>Compute vocab size of this featurizer</p>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -5708,6 +5758,7 @@ of nodes instead of the adjacency matrix.</p>
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -5721,6 +5772,8 @@ of nodes instead of the adjacency matrix.</p>
   <div class="doc doc-contents ">
   
       <p>MolTree featurizer</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -5795,6 +5848,8 @@ otherwise, vocabulary elements  ar mapped into one-hot vectors</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Attributes:</strong></p>
   <table>
     <thead>
@@ -5838,9 +5893,9 @@ otherwise, vocabulary elements  ar mapped into one-hot vectors</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/graph/tree.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">27</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/graph/tree.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
 <span class="normal">30</span>
@@ -5936,10 +5991,11 @@ otherwise, vocabulary elements  ar mapped into one-hot vectors</p>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">datatype</span><span class="o">.</span><span class="n">is_dtype_tensor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;DGL featurizer only supports torch tensors currently&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -5956,6 +6012,8 @@ otherwise, vocabulary elements  ar mapped into one-hot vectors</p>
       <p>Fit the current transformer on given dataset.</p>
 <p>The goal of fitting is for example to identify nan columns values
 that needs to be removed from the dataset</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -6026,6 +6084,8 @@ that needs to be removed from the dataset</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -6047,9 +6107,9 @@ that needs to be removed from the dataset</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/graph/tree.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 85</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/graph/tree.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 85</span>
 <span class="normal"> 86</span>
 <span class="normal"> 87</span>
 <span class="normal"> 88</span>
@@ -6113,7 +6173,7 @@ that needs to be removed from the dataset</p>
 
     <span class="k">return</span> <span class="bp">self</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

@@ -17,7 +17,7 @@
         <link rel="next" href="molfeat.trans.pretrained.dgl_pretrained.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.eebd395e.min.css">
       
       
 
@@ -940,6 +940,20 @@
   
   
     <li class="md-nav__item">
+      <a href="molfeat.trans.pretrained.base.html" class="md-nav__link">
+        Base Pretrained Models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="molfeat.trans.pretrained.hf_transformers.html" class="md-nav__link">
         HuggingFace
       </a>
@@ -1441,19 +1455,21 @@
 
 
 <h3 id="molfeat.trans.pretrained.graphormer.GraphormerTransformer" class="doc doc-heading">
-        <code>GraphormerTransformer</code>
+          <code>GraphormerTransformer</code>
 
 
 <a href="#molfeat.trans.pretrained.graphormer.GraphormerTransformer" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><span title="molfeat.trans.pretrained.base.PretrainedMolTransformer">PretrainedMolTransformer</span></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.pretrained.base.PretrainedMolTransformer" href="molfeat.trans.pretrained.base.html#molfeat.trans.pretrained.base.PretrainedMolTransformer">PretrainedMolTransformer</a></code></p>
 
   
       <p>Graphormer transformer from microsoft, pretrained on PCQM4Mv2 quantum chemistry dataset
 for the prediction of homo-lumo gap.</p>
+
+
 
   <p><strong>Attributes:</strong></p>
   <table>
@@ -1498,10 +1514,9 @@ for the prediction of homo-lumo gap.</p>
     </tbody>
   </table>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/trans/pretrained/graphormer.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 19</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/pretrained/graphormer.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 19</span>
 <span class="normal"> 20</span>
 <span class="normal"> 21</span>
 <span class="normal"> 22</span>
@@ -1807,7 +1822,7 @@ for the prediction of homo-lumo gap.</p>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">max_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -1973,6 +1988,7 @@ for the prediction of homo-lumo gap.</p>
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -1987,9 +2003,9 @@ for the prediction of homo-lumo gap.</p>
   
       <p>Getting state to allow pickling</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/pretrained/graphormer.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">121</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/graphormer.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">121</span>
 <span class="normal">122</span>
 <span class="normal">123</span>
 <span class="normal">124</span>
@@ -2001,10 +2017,11 @@ for the prediction of homo-lumo gap.</p>
     <span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;featurizer&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">d</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2028,6 +2045,8 @@ averaged across all nodes (including the virtual node connected to all other nod
 * <code>mean</code>, <code>max</code>, <code>sum</code>, etc or any other supported pooling of <code>molfeat.utils.pooler.Pooling</code>
     will take the operation defined by the pooling layer across all nodes of each graph</p>
 </div>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2065,7 +2084,7 @@ averaged across all nodes (including the virtual node connected to all other nod
             </div>
           </td>
           <td>
-                <code>np.float32</code>
+                <code><span title="numpy">np</span>.<span title="numpy.float32">float32</span></code>
           </td>
         </tr>
         <tr>
@@ -2140,9 +2159,9 @@ averaged across all nodes (including the virtual node connected to all other nod
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/pretrained/graphormer.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">30</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/graphormer.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
@@ -2258,10 +2277,11 @@ averaged across all nodes (including the virtual node connected to all other nod
     <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">max_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2275,9 +2295,9 @@ averaged across all nodes (including the virtual node connected to all other nod
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/pretrained/graphormer.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">89</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/graphormer.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">89</span>
 <span class="normal">90</span>
 <span class="normal">91</span>
 <span class="normal">92</span>
@@ -2291,10 +2311,11 @@ averaged across all nodes (including the virtual node connected to all other nod
         <span class="n">_parse_to_evaluable_str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2310,9 +2331,9 @@ averaged across all nodes (including the virtual node connected to all other nod
   
       <p>Setting state during reloading pickling</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/pretrained/graphormer.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">128</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/graphormer.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">128</span>
 <span class="normal">129</span>
 <span class="normal">130</span>
 <span class="normal">131</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">__setstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
@@ -2320,10 +2341,11 @@ averaged across all nodes (including the virtual node connected to all other nod
     <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_update_params</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2338,6 +2360,8 @@ averaged across all nodes (including the virtual node connected to all other nod
   <div class="doc doc-contents ">
   
       <p>Compute maximum node number for the input list of molecules</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2367,9 +2391,9 @@ averaged across all nodes (including the virtual node connected to all other nod
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/pretrained/graphormer.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">133</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/graphormer.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">133</span>
 <span class="normal">134</span>
 <span class="normal">135</span>
 <span class="normal">136</span>
@@ -2395,10 +2419,11 @@ averaged across all nodes (including the virtual node connected to all other nod
     <span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">]</span>
     <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2418,9 +2443,9 @@ averaged across all nodes (including the virtual node connected to all other nod
   
       <p>List available graphormer model to use</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/pretrained/graphormer.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 97</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/graphormer.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 97</span>
 <span class="normal"> 98</span>
 <span class="normal"> 99</span>
 <span class="normal">100</span>
@@ -2438,10 +2463,11 @@ averaged across all nodes (including the virtual node connected to all other nod
         <span class="s2">&quot;oc20is2re_graphormer3d_base&quot;</span><span class="p">,</span>  <span class="c1"># Open Catalyst Challenge</span>
     <span class="p">]</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2457,9 +2483,9 @@ averaged across all nodes (including the virtual node connected to all other nod
   
       <p>Set the maximum length for this featurizer</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/pretrained/graphormer.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">147</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/graphormer.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">147</span>
 <span class="normal">148</span>
 <span class="normal">149</span>
 <span class="normal">150</span>
@@ -2469,7 +2495,7 @@ averaged across all nodes (including the virtual node connected to all other nod
     <span class="bp">self</span><span class="o">.</span><span class="n">_update_params</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_preload</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

@@ -17,7 +17,7 @@
         <link rel="next" href="molfeat.store.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.eebd395e.min.css">
       
       
 
@@ -940,6 +940,20 @@
   
   
     <li class="md-nav__item">
+      <a href="molfeat.trans.pretrained.base.html" class="md-nav__link">
+        Base Pretrained Models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="molfeat.trans.pretrained.hf_transformers.html" class="md-nav__link">
         HuggingFace
       </a>
@@ -1273,18 +1287,20 @@
 
 
 <h3 id="molfeat.trans.pretrained.fcd.FCDTransformer" class="doc doc-heading">
-        <code>FCDTransformer</code>
+          <code>FCDTransformer</code>
 
 
 <a href="#molfeat.trans.pretrained.fcd.FCDTransformer" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><span title="molfeat.trans.pretrained.base.PretrainedMolTransformer">PretrainedMolTransformer</span></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.pretrained.base.PretrainedMolTransformer" href="molfeat.trans.pretrained.base.html#molfeat.trans.pretrained.base.PretrainedMolTransformer">PretrainedMolTransformer</a></code></p>
 
   
       <p>FCD transformer based on the ChemNet pretrained model</p>
+
+
 
   <p><strong>Attributes:</strong></p>
   <table>
@@ -1321,10 +1337,9 @@
     </tbody>
   </table>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/trans/pretrained/fcd.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/pretrained/fcd.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
@@ -1376,7 +1391,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_update_params</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span> <span class="o">=</span> <span class="n">FCD</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -1428,6 +1443,7 @@
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -1440,9 +1456,9 @@
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/pretrained/fcd.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">19</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/fcd.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
@@ -1460,7 +1476,7 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="o">=</span> <span class="n">n_jobs</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span> <span class="o">=</span> <span class="n">FCD</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

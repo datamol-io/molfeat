@@ -17,7 +17,7 @@
         <link rel="next" href="benchmark.html">
       
       <link rel="icon" href="images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.eebd395e.min.css">
       
       
 
@@ -396,6 +396,61 @@
   <a href="#quick-api-tour" class="md-nav__link">
     Quick API Tour
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq" class="md-nav__link">
+    FAQ
+  </a>
+  
+    <nav class="md-nav" aria-label="FAQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-molecular-featurizer" class="md-nav__link">
+    What is a molecular featurizer ?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-so-many-molecular-featurizers-in-molfeat" class="md-nav__link">
+    Why so many molecular featurizers in molfeat?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-a-calculator-and-a-featurizer-in-molfeat" class="md-nav__link">
+    What is the difference between a calculator and a featurizer in molfeat?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-functions-should-i-be-familiar-with-when-using-the-featurizer-classes" class="md-nav__link">
+    What functions should I be familiar with when using the featurizer classes ?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-am-getting-an-error-and-i-am-not-sure-what-to-do" class="md-nav__link">
+    I am getting an error and I am not sure what to do ?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-are-the-base-featurizers-class-in-molfeat-and-how-to-use-them" class="md-nav__link">
+    What are the base featurizers class in molfeat and how to use them ?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -984,6 +1039,20 @@
   
   
     <li class="md-nav__item">
+      <a href="api/molfeat.trans.pretrained.base.html" class="md-nav__link">
+        Base Pretrained Models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="api/molfeat.trans.pretrained.hf_transformers.html" class="md-nav__link">
         HuggingFace
       </a>
@@ -1150,6 +1219,61 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#faq" class="md-nav__link">
+    FAQ
+  </a>
+  
+    <nav class="md-nav" aria-label="FAQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-molecular-featurizer" class="md-nav__link">
+    What is a molecular featurizer ?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-so-many-molecular-featurizers-in-molfeat" class="md-nav__link">
+    Why so many molecular featurizers in molfeat?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-a-calculator-and-a-featurizer-in-molfeat" class="md-nav__link">
+    What is the difference between a calculator and a featurizer in molfeat?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-functions-should-i-be-familiar-with-when-using-the-featurizer-classes" class="md-nav__link">
+    What functions should I be familiar with when using the featurizer classes ?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-am-getting-an-error-and-i-am-not-sure-what-to-do" class="md-nav__link">
+    I am getting an error and I am not sure what to do ?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-are-the-base-featurizers-class-in-molfeat-and-how-to-use-them" class="md-nav__link">
+    What are the base featurizers class in molfeat and how to use them ?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1215,6 +1339,95 @@ It provides a good overview of the different types of featurizers and has pointe
 <span class="n">model_card</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ChemBERTa-77M-MLM&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">model_card</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span>
 </code></pre></div>
+<h2 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h2>
+<h4 id="what-is-a-molecular-featurizer">What is a molecular featurizer ?<a class="headerlink" href="#what-is-a-molecular-featurizer" title="Permanent link">&para;</a></h4>
+<p>A molecular featurizer is a function or model that provides numerical representations for molecular structures. These numerical features serve as inputs for machine learning models, enabling them to predict molecular properties and activities, design novel molecules, perform molecular analyses, or conduct searches for similar molecules.</p>
+<h4 id="why-so-many-molecular-featurizers-in-molfeat">Why so many molecular featurizers in <code>molfeat</code>?<a class="headerlink" href="#why-so-many-molecular-featurizers-in-molfeat" title="Permanent link">&para;</a></h4>
+<p>The reason for providing a diverse range of molecular featurizers in <code>molfeat</code> is to address the inherent uncertainty in determining which molecular representation performs best for a given task. Different featurization methods exist, such as using physico-chemical descriptors, molecular structure fingerprints, deep learning embeddings, and more. The effectiveness of these representations varies depending on the specific application. Therefore, the availability of multiple featurizers in <code>molfeat</code> ensures that users can access the most suitable featurizer for their unique needs.</p>
+<h4 id="what-is-the-difference-between-a-calculator-and-a-featurizer-in-molfeat">What is the difference between a calculator and a featurizer in <code>molfeat</code>?<a class="headerlink" href="#what-is-the-difference-between-a-calculator-and-a-featurizer-in-molfeat" title="Permanent link">&para;</a></h4>
+<p>In <code>molfeat</code>,</p>
+<ul>
+<li>a <code>calculator</code> operates on individual molecules and specifies the process of transforming an input molecule into a numerical representation.</li>
+<li>a <code>featurizer</code>  works with batches of molecules, leveraging the efficiency of deep learning models on batch processing. Some  <code>featurizers</code> uses a <code>calculator</code> internally to feature each molecule individually and then stitch their outputs together. Additionally, <code>featurizers</code> offer convenient tools, such as parallelism and caching, to optimize the computation of molecular representations efficiently.</li>
+</ul>
+<p><code>molfeat</code> has been designed with utmost flexibility, recognizing that the actions users wish to perform with molecular data can be vast and diverse, and there often isn't a single "right" way to approach them.</p>
+<h4 id="what-functions-should-i-be-familiar-with-when-using-the-featurizer-classes">What functions should I be familiar with when using the featurizer classes ?<a class="headerlink" href="#what-functions-should-i-be-familiar-with-when-using-the-featurizer-classes" title="Permanent link">&para;</a></h4>
+<p>When using a <code>featurizer</code> in <code>molfeat</code>, you should be familiar with the following functions:</p>
+<ul>
+<li><code>preprocess()</code>: This method performs preprocessing of your input molecules to ensure compatibility with the expected featurizer class you are using. It's essential to note that the preprocessing steps <strong>are not automatically applied to your inputs</strong> to maintain independence from the molecular transformation. The preprocess function takes your molecule inputs, along with optional labels, and can be redefined when creating a custom featurizer.</li>
+</ul>
+<ul>
+<li><code>transform()</code>: This method operates on a batch of molecules and returns a list of representations, where the actual featurization occurs. In cases where featurization fails, the position can be denoted as <code>None</code>, especially when you choose to <code>ignore_errors</code>.</li>
+<li><code>_transform()</code>: This method operates on a single input molecule, performing the actual featurization.</li>
+<li><code>__call__()</code>: This method uses <code>transform()</code> under the hood and provides convenient arguments, such as enforcing the datatype defined during the initialization of your model, to the outputs. If you specify <code>ignore_errors</code>, a vector of indexes where featurization did not fail will also be returned.</li>
+</ul>
+<p>In addition to the methods described above, PretrainedMolTransformer introduces the following functions:</p>
+<ul>
+<li><code>_embed()</code>: For pre-trained models that benefit from batched featurization, this method is internally called during transform instead of an internal calculator.</li>
+<li><code>_convert()</code>: This method is called by the transformer to convert the molecule input into the expected format of the underlying ML model. For example, for a pre-trained language model expecting SELFIES strings, we will perform the conversion to SELFIES strings here.</li>
+</ul>
+<h4 id="i-am-getting-an-error-and-i-am-not-sure-what-to-do">I am getting an error and I am not sure what to do ?<a class="headerlink" href="#i-am-getting-an-error-and-i-am-not-sure-what-to-do" title="Permanent link">&para;</a></h4>
+<p>When encountering an error during the featurization process, you have a couple of options to handle it:</p>
+<ul>
+<li>Ignore Errors: You can choose to set the <code>ignore_errors</code> parameter to <code>True</code> when using the featurizer. This allows the featurizer to continue processing even if it encounters errors on some molecules in your dataset. The featurizer will still attempt to calculate representations for all molecules, and any molecules that failed featurization will have their position in the output list marked as <code>None</code>.</li>
+</ul>
+<ul>
+<li>Increase Verbosity: If you're unsure about the specific errors occurring during featurization, you can set the verbosity of the featurizer to True. This will enable the featurizer to log all errors encountered during the process, providing more detailed information about the cause of the issue, since because of the above features, some silent errors are often caught but not propagated.</li>
+</ul>
+<p>For example, the following will ensure that all errors are logged.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">molfeat.trans.concat</span> <span class="kn">import</span> <span class="n">FeatConcat</span>
+<span class="kn">from</span> <span class="nn">molfeat.trans.fp</span> <span class="kn">import</span> <span class="n">FPVecTransformer</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">featurizer</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">featurizer</span><span class="p">([</span><span class="s2">&quot;CSc1nc2cc3c(cc2[nH]1)N(Cc1ccc(S(=O)(=O)c2ccccc2)cc1)CCC3&quot;</span><span class="p">],</span> <span class="n">enforce_dtype</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="what-are-the-base-featurizers-class-in-molfeat-and-how-to-use-them">What are the base featurizers class in molfeat and how to use them ?<a class="headerlink" href="#what-are-the-base-featurizers-class-in-molfeat-and-how-to-use-them" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Module</th>
+<th>Why?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://molfeat-docs.datamol.io/stable/api/molfeat.trans.base.html#molfeat.trans.base.BaseFeaturizer">BaseFeaturizer</a></td>
+<td><code>molfeat.trans.base</code></td>
+<td>Lowest level featurizer class. All featurizers (even if not molecular) inherit from this class. It's recommended to use <code>MoleculeTransformer</code> as the root class instead.</td>
+</tr>
+<tr>
+<td><a href="https://molfeat-docs.datamol.io/stable/api/molfeat.trans.base.html#molfeat.trans.base.MoleculeTransformer">MoleculeTransformer</a></td>
+<td><code>molfeat.trans.base</code></td>
+<td><ul><li> Base class for all molecule featurizers. This is where you start if you want to implement a new featurizer.</li><li> You can provide either an existing <code>calculator</code> or your own (a <strong>python callable</strong>) directly to define a new <code>featurizer</code>.</li></ul></td>
+</tr>
+<tr>
+<td><a href="https://molfeat-docs.datamol.io/stable/api/molfeat.trans.base.html#molfeat.trans.base.PrecomputedMolTransformer">PrecomputedMolTransformer</a></td>
+<td><code>molfeat.trans.base</code></td>
+<td>Class for dealing with precomputed features. You can leverage this class to compute features, save them in a file, and reload them after for other tasks efficiently. <a href="https://molfeat-docs.datamol.io/stable/tutorials/datacache.html#using-a-cache-with-a-precomputed-transformer">See this tutorial!</a></td>
+</tr>
+<tr>
+<td><a href="https://molfeat-docs.datamol.io/stable/api/molfeat.trans.concat.html#molfeat.trans.concat.FeatConcat">FeatConcat</a></td>
+<td><code>molfeat.trans.concat</code></td>
+<td>Convenient class for concatenating multiple vector-featurizers automatically. If you want to combine multiple 'fingerprints' and descriptors, this is the class you use. <a href="https://molfeat-docs.datamol.io/stable/tutorials/types_of_featurizers.html#concatenate-featurizers">See example!</a></td>
+</tr>
+<tr>
+<td><a href="https://molfeat-docs.datamol.io/stable/api/molfeat.trans.pretrained.base.html">PretrainedMolTransformer</a></td>
+<td><code>molfeat.trans.pretrained.base</code></td>
+<td>Base class for all <code>pretrained featurizers</code>. A <code>pretrained featurizer</code> is a <code>featurizer</code> that is derived from a pretrained machine learning model. Implement a subclass of this to define your new pretrained featurizer. <a href="https://molfeat-docs.datamol.io/stable/tutorials/add_your_own.html#define-your-own-transformer">See example!</a></td>
+</tr>
+<tr>
+<td><a href="https://molfeat-docs.datamol.io/stable/api/molfeat.trans.pretrained.dgl_pretrained.html#molfeat.trans.pretrained.dgl_pretrained.PretrainedDGLTransformer">PretrainedDGLTransformer</a></td>
+<td><code>molfeat.trans.pretrained.dgl_pretrained</code></td>
+<td>Base class for all <code>dgl pretrained featurizers</code>. You can initialize a new dgl/dgllife pretrained model as a <code>molfeat featurizer</code> easily using this class. You only need to add the dgl model object to a store. <a href="https://github.com/datamol-io/molfeat/blob/main/nb/etl/dgl-etl.ipynb">See this example!</a></td>
+</tr>
+<tr>
+<td><a href="https://molfeat-docs.datamol.io/stable/api/molfeat.trans.pretrained.hf_transformers.html#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer">PretrainedHFTransformer</a></td>
+<td><code>molfeat.trans.pretrained.hf_transformer</code></td>
+<td>Base class for all <code>huggingface pretrained featurizers</code>. You can initialize a new 🤗 Transformers pretrained model as a <code>molfeat featurizer</code> easily using this class. <a href="https://github.com/datamol-io/molfeat/blob/main/nb/etl/molt5-etl.ipynb">See this example!</a></td>
+</tr>
+</tbody>
+</table>
 
 
 
