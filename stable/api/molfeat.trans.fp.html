@@ -17,7 +17,7 @@
         <link rel="next" href="molfeat.trans.graph.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+      <meta name="generator" content="mkdocs-1.5.0, mkdocs-material-9.1.20">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.eebd395e.min.css">
       
       
 
@@ -1106,6 +1106,20 @@
   
   
     <li class="md-nav__item">
+      <a href="molfeat.trans.pretrained.base.html" class="md-nav__link">
+        Base Pretrained Models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="molfeat.trans.pretrained.hf_transformers.html" class="md-nav__link">
         HuggingFace
       </a>
@@ -1436,23 +1450,22 @@
 
 
 <h3 id="molfeat.trans.fp.FPVecFilteredTransformer" class="doc doc-heading">
-        <code>FPVecFilteredTransformer</code>
+          <code>FPVecFilteredTransformer</code>
 
 
 <a href="#molfeat.trans.fp.FPVecFilteredTransformer" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.fp.FPVecTransformer" href="#molfeat.trans.fp.FPVecTransformer">FPVecTransformer</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.fp.FPVecTransformer" href="#molfeat.trans.fp.FPVecTransformer">FPVecTransformer</a></code></p>
 
   
       <p>Fingerprint molecule transformer with columns filters applying to the featurized vector when <code>fit</code> is called</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">170</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">170</span>
 <span class="normal">171</span>
 <span class="normal">172</span>
 <span class="normal">173</span>
@@ -1652,7 +1665,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_fitted</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="bp">self</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -1704,6 +1717,7 @@
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -1717,6 +1731,8 @@
   <div class="doc doc-contents ">
   
       <p>Molecular to vector featurization with filtering applied</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1824,7 +1840,7 @@
             </div>
           </td>
           <td>
-                <code>np.float32</code>
+                <code><span title="numpy">np</span>.<span title="numpy.float32">float32</span></code>
           </td>
         </tr>
         <tr>
@@ -1844,9 +1860,9 @@
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">175</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">175</span>
 <span class="normal">176</span>
 <span class="normal">177</span>
 <span class="normal">178</span>
@@ -1916,10 +1932,11 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">del_invariant</span> <span class="o">=</span> <span class="n">del_invariant</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_input_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">occ_threshold</span><span class="o">=</span><span class="n">occ_threshold</span><span class="p">,</span> <span class="n">del_invariant</span><span class="o">=</span><span class="n">del_invariant</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1933,9 +1950,9 @@
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">223</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">223</span>
 <span class="normal">224</span>
 <span class="normal">225</span>
 <span class="normal">226</span>
@@ -1953,10 +1970,11 @@
         <span class="n">_parse_to_evaluable_str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1973,6 +1991,8 @@
       <p>Fit the current transformer on given dataset.</p>
 <p>The goal of fitting is for example to identify nan columns values
 that needs to be removed from the dataset</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2016,6 +2036,8 @@ that needs to be removed from the dataset</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -2037,9 +2059,9 @@ that needs to be removed from the dataset</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">233</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">233</span>
 <span class="normal">234</span>
 <span class="normal">235</span>
 <span class="normal">236</span>
@@ -2113,7 +2135,7 @@ that needs to be removed from the dataset</p>
     <span class="bp">self</span><span class="o">.</span><span class="n">_fitted</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="k">return</span> <span class="bp">self</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -2131,15 +2153,15 @@ that needs to be removed from the dataset</p>
 
 
 <h3 id="molfeat.trans.fp.FPVecTransformer" class="doc doc-heading">
-        <code>FPVecTransformer</code>
+          <code>FPVecTransformer</code>
 
 
 <a href="#molfeat.trans.fp.FPVecTransformer" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.base.MoleculeTransformer" href="molfeat.trans.base.html#molfeat.trans.base.MoleculeTransformer">MoleculeTransformer</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.base.MoleculeTransformer" href="molfeat.trans.base.html#molfeat.trans.base.MoleculeTransformer">MoleculeTransformer</a></code></p>
 
   
       <p>Molecular fingerprinter that computes various fingerprints and descriptors regularly used in QSAR modeling.</p>
@@ -2152,10 +2174,9 @@ are equated with the proper radius/diameter adjustment.</p>
 "morgan-count:2"</p>
 </div>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 19</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 19</span>
 <span class="normal"> 20</span>
 <span class="normal"> 21</span>
 <span class="normal"> 22</span>
@@ -2453,7 +2474,7 @@ are equated with the proper radius/diameter adjustment.</p>
     <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -2525,6 +2546,7 @@ are equated with the proper radius/diameter adjustment.</p>
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -2537,9 +2559,9 @@ are equated with the proper radius/diameter adjustment.</p>
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">157</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">157</span>
 <span class="normal">158</span>
 <span class="normal">159</span>
 <span class="normal">160</span>
@@ -2549,10 +2571,11 @@ are equated with the proper radius/diameter adjustment.</p>
         <span class="p">[</span><span class="nb">getattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">==</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">callable</span><span class="p">(</span><span class="n">v</span><span class="p">)]</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2566,16 +2589,17 @@ are equated with the proper radius/diameter adjustment.</p>
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">166</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">166</span>
 <span class="normal">167</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2590,6 +2614,8 @@ are equated with the proper radius/diameter adjustment.</p>
   <div class="doc doc-contents ">
   
       <p>Molecular to vector fingerprinter</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2669,7 +2695,7 @@ are equated with the proper radius/diameter adjustment.</p>
             </div>
           </td>
           <td>
-                <code>np.float32</code>
+                <code><span title="numpy">np</span>.<span title="numpy.float32">float32</span></code>
           </td>
         </tr>
         <tr>
@@ -2703,9 +2729,9 @@ are equated with the proper radius/diameter adjustment.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">46</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">46</span>
 <span class="normal">47</span>
 <span class="normal">48</span>
 <span class="normal">49</span>
@@ -2801,10 +2827,11 @@ are equated with the proper radius/diameter adjustment.</p>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">kind</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">_UNSERIALIZABLE_FPS</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parallel_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">scheduler</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2820,9 +2847,9 @@ are equated with the proper radius/diameter adjustment.</p>
   
       <p>Compute featurizer length</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">95</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">95</span>
 <span class="normal">96</span>
 <span class="normal">97</span>
 <span class="normal">98</span>
@@ -2832,10 +2859,11 @@ are equated with the proper radius/diameter adjustment.</p>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_length</span>
     <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2849,16 +2877,17 @@ are equated with the proper radius/diameter adjustment.</p>
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">163</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">163</span>
 <span class="normal">164</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
     <span class="k">return</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span> <span class="o">==</span> <span class="n">other</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2872,9 +2901,9 @@ are equated with the proper radius/diameter adjustment.</p>
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">145</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">145</span>
 <span class="normal">146</span>
 <span class="normal">147</span>
 <span class="normal">148</span>
@@ -2888,10 +2917,11 @@ are equated with the proper radius/diameter adjustment.</p>
         <span class="n">_parse_to_evaluable_str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2905,15 +2935,15 @@ are equated with the proper radius/diameter adjustment.</p>
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">153</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/fp.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">153</span>
 <span class="normal">154</span>
 <span class="normal">155</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="c1"># The output for the print function</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

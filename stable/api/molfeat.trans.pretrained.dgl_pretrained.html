@@ -17,7 +17,7 @@
         <link rel="next" href="molfeat.trans.pretrained.fcd.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+      <meta name="generator" content="mkdocs-1.5.0, mkdocs-material-9.1.20">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.eebd395e.min.css">
       
       
 
@@ -940,6 +940,20 @@
   
   
     <li class="md-nav__item">
+      <a href="molfeat.trans.pretrained.base.html" class="md-nav__link">
+        Base Pretrained Models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="molfeat.trans.pretrained.hf_transformers.html" class="md-nav__link">
         HuggingFace
       </a>
@@ -1453,23 +1467,22 @@
 
 
 <h3 id="molfeat.trans.pretrained.dgl_pretrained.DGLModel" class="doc doc-heading">
-        <code>DGLModel</code>
+          <code>DGLModel</code>
 
 
 <a href="#molfeat.trans.pretrained.dgl_pretrained.DGLModel" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="molfeat.store.loader.PretrainedStoreModel" href="molfeat.store.html#molfeat.store.loader.PretrainedStoreModel">PretrainedStoreModel</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="molfeat.store.loader.PretrainedStoreModel" href="molfeat.store.html#molfeat.store.loader.PretrainedStoreModel">PretrainedStoreModel</a></code></p>
 
   
       <p>Load one of the pretrained DGL models for molecular embedding:</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">36</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">36</span>
 <span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
@@ -1583,7 +1596,7 @@
         <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">model</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -1617,6 +1630,7 @@
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -1629,9 +1643,9 @@
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">48</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">48</span>
 <span class="normal">49</span>
 <span class="normal">50</span>
 <span class="normal">51</span>
@@ -1647,10 +1661,11 @@
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">cache_path</span><span class="o">=</span><span class="n">cache_path</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="n">store</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1669,6 +1684,8 @@
   <div class="doc doc-contents ">
   
       <p>List available models</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1698,9 +1715,9 @@
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">57</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">57</span>
 <span class="normal">58</span>
 <span class="normal">59</span>
 <span class="normal">60</span>
@@ -1720,10 +1737,11 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">AVAILABLE_MODELS</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)]</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1743,9 +1761,9 @@
   
       <p>Load pretrained model using the dgllife API and not the store</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">68</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
 <span class="normal">71</span>
@@ -1769,10 +1787,11 @@
     <span class="n">model</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">base_model</span>
     <span class="k">return</span> <span class="n">model</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1788,9 +1807,9 @@
   
       <p>Load GIN model</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">81</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">81</span>
 <span class="normal">82</span>
 <span class="normal">83</span>
 <span class="normal">84</span>
@@ -1814,7 +1833,7 @@
     <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">model</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -1832,18 +1851,20 @@
 
 
 <h3 id="molfeat.trans.pretrained.dgl_pretrained.PretrainedDGLTransformer" class="doc doc-heading">
-        <code>PretrainedDGLTransformer</code>
+          <code>PretrainedDGLTransformer</code>
 
 
 <a href="#molfeat.trans.pretrained.dgl_pretrained.PretrainedDGLTransformer" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><span title="molfeat.trans.pretrained.base.PretrainedMolTransformer">PretrainedMolTransformer</span></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.pretrained.base.PretrainedMolTransformer" href="molfeat.trans.pretrained.base.html#molfeat.trans.pretrained.base.PretrainedMolTransformer">PretrainedMolTransformer</a></code></p>
 
   
       <p>DGL Pretrained transformer</p>
+
+
 
   <p><strong>Attributes:</strong></p>
   <table>
@@ -1902,10 +1923,9 @@
     </tbody>
   </table>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 95</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 95</span>
 <span class="normal"> 96</span>
 <span class="normal"> 97</span>
 <span class="normal"> 98</span>
@@ -2289,7 +2309,7 @@
                     <span class="n">success</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">graphs</span><span class="p">,</span> <span class="n">success</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -2398,6 +2418,7 @@
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -2411,6 +2432,8 @@
   <div class="doc doc-contents ">
   
       <p>DGL pretrained featurizer</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2448,7 +2471,7 @@
             </div>
           </td>
           <td>
-                <code>np.float32</code>
+                <code><span title="numpy">np</span>.<span title="numpy.float32">float32</span></code>
           </td>
         </tr>
         <tr>
@@ -2496,9 +2519,9 @@
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">106</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">106</span>
 <span class="normal">107</span>
 <span class="normal">108</span>
 <span class="normal">109</span>
@@ -2580,10 +2603,11 @@
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">preload</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_preload</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2597,9 +2621,9 @@
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">148</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">148</span>
 <span class="normal">149</span>
 <span class="normal">150</span>
 <span class="normal">151</span>
@@ -2613,10 +2637,11 @@
         <span class="n">_parse_to_evaluable_str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2635,6 +2660,8 @@
   <div class="doc doc-contents ">
   
       <p>Get pooling method from name</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2664,9 +2691,9 @@
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">162</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">162</span>
 <span class="normal">163</span>
 <span class="normal">164</span>
 <span class="normal">165</span>
@@ -2698,10 +2725,11 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pooling: </span><span class="si">{</span><span class="n">pooling</span><span class="si">}</span><span class="s2"> not supported !&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2720,6 +2748,8 @@
   <div class="doc doc-contents ">
   
       <p>Construct graphs from SMILES and featurize them</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2748,6 +2778,8 @@
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -2779,9 +2811,9 @@
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">239</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/dgl_pretrained.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">239</span>
 <span class="normal">240</span>
 <span class="normal">241</span>
 <span class="normal">242</span>
@@ -2877,7 +2909,7 @@
                 <span class="n">success</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">graphs</span><span class="p">,</span> <span class="n">success</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

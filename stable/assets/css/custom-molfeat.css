@@ -1,20 +1,20 @@
 :root {
-  --datamol-primary: #217EBB;
-  --datamol-secondary: #343a40;
+  --molfeat-primary: #217EBB;
+  --molfeat-secondary: #5f6d7a;
 
   /* Primary color shades */
-  --md-primary-fg-color: var(--datamol-primary);
-  --md-primary-fg-color--light: var(--datamol-primary);
-  --md-primary-fg-color--dark: var(--datamol-primary);
-  --md-primary-bg-color: var(--datamol-secondary);
-  --md-primary-bg-color--light: var(--datamol-secondary);
-  --md-text-link-color: var(--datamol-secondary);
+  --md-primary-fg-color: var(--molfeat-primary);
+  --md-primary-fg-color--light: var(--molfeat-primary);
+  --md-primary-fg-color--dark: var(--molfeat-primary);
+  --md-primary-bg-color: var(--molfeat-secondary);
+  --md-primary-bg-color--light: var(--molfeat-secondary);
+  --md-text-link-color: var(--molfeat-secondary);
 
   /* Accent color shades */
-  --md-accent-fg-color: var(--datamol-secondary);
-  --md-accent-fg-color--transparent: var(--datamol-secondary);
-  --md-accent-bg-color: var(--datamol-secondary);
-  --md-accent-bg-color--light: var(--datamol-secondary);
+  --md-accent-fg-color: var(--molfeat-secondary);
+  --md-accent-fg-color--transparent: var(--molfeat-secondary);
+  --md-accent-bg-color: var(--molfeat-secondary);
+  --md-accent-bg-color--light: var(--molfeat-secondary);
 }
 
 :root>* {
@@ -23,11 +23,11 @@
   --md-code-fg-color: hsla(200, 18%, 26%, 1);
 
   /* Footer */
-  --md-footer-bg-color: var(--datamol-primary);
+  --md-footer-bg-color: var(--molfeat-primary);
   /* --md-footer-bg-color--dark: hsla(0, 0%, 0%, 0.32); */
-  --md-footer-fg-color: var(--datamol-secondary);
-  --md-footer-fg-color--light: var(--datamol-secondary);
-  --md-footer-fg-color--lighter: var(--datamol-secondary);
+  --md-footer-fg-color: var(--molfeat-secondary);
+  --md-footer-fg-color--light: var(--molfeat-secondary);
+  --md-footer-fg-color--lighter: var(--molfeat-secondary);
 
 }
 
@@ -40,7 +40,7 @@
 }
 
 .md-tabs {
-  background-image: linear-gradient(to right, #F4F6F9, #C3CFE2);
+  background-image: linear-gradient(to right, #F4F6F9, #CCE3f8);
 }
 
 .md-header__topic {
@@ -63,7 +63,16 @@
 }
 
 .md-search__form {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.md-search-result__article:hover {
+  background-color: #CCE3f8;
+}
+
+.md-search-result__more:hover,
+.md-search-result__more:focus {
+  background-color: #CCE3f8 !important;
 }
 
 .md-search__input {

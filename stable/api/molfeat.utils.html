@@ -17,7 +17,7 @@
         <link rel="next" href="molfeat.viz.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+      <meta name="generator" content="mkdocs-1.5.0, mkdocs-material-9.1.20">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.eebd395e.min.css">
       
       
 
@@ -936,6 +936,20 @@
   
   
     <li class="md-nav__item">
+      <a href="molfeat.trans.pretrained.base.html" class="md-nav__link">
+        Base Pretrained Models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="molfeat.trans.pretrained.hf_transformers.html" class="md-nav__link">
         HuggingFace
       </a>
@@ -1493,6 +1507,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#molfeat.utils.commons.FUNCTYPES" class="md-nav__link">
+    FUNCTYPES
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#molfeat.utils.commons.align_conformers" class="md-nav__link">
     align_conformers()
   </a>
@@ -1544,6 +1565,13 @@
         <li class="md-nav__item">
   <a href="#molfeat.utils.commons.hex_to_fn" class="md-nav__link">
     hex_to_fn()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#molfeat.utils.commons.is_callable" class="md-nav__link">
+    is_callable()
   </a>
   
 </li>
@@ -2501,6 +2529,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#molfeat.utils.commons.FUNCTYPES" class="md-nav__link">
+    FUNCTYPES
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#molfeat.utils.commons.align_conformers" class="md-nav__link">
     align_conformers()
   </a>
@@ -2552,6 +2587,13 @@
         <li class="md-nav__item">
   <a href="#molfeat.utils.commons.hex_to_fn" class="md-nav__link">
     hex_to_fn()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#molfeat.utils.commons.is_callable" class="md-nav__link">
+    is_callable()
   </a>
   
 </li>
@@ -3071,7 +3113,7 @@
 
 
 <h3 id="molfeat.utils.cache.CacheList" class="doc doc-heading">
-        <code>CacheList</code>
+          <code>CacheList</code>
 
 
 <a href="#molfeat.utils.cache.CacheList" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -3082,10 +3124,9 @@
   
       <p>Proxy for supporting search using a list of cache</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">689</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">689</span>
 <span class="normal">690</span>
 <span class="normal">691</span>
 <span class="normal">692</span>
@@ -3279,7 +3320,7 @@
             <span class="n">mols</span> <span class="o">=</span> <span class="p">[</span><span class="n">mols</span><span class="p">]</span>
         <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span> <span class="k">for</span> <span class="n">mol</span> <span class="ow">in</span> <span class="n">mols</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -3312,6 +3353,7 @@
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -3326,9 +3368,9 @@
   
       <p>Compute the features for a list of molecules and save them to the cache</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">728</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">728</span>
 <span class="normal">729</span>
 <span class="normal">730</span>
 <span class="normal">731</span>
@@ -3344,10 +3386,11 @@
         <span class="s2">&quot;Dynamic updating of a cache list using a featurizer is not supported!&quot;</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3362,6 +3405,8 @@
   <div class="doc doc-contents ">
   
       <p>Check whether a key is in the cache</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3391,9 +3436,9 @@
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">702</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">702</span>
 <span class="normal">703</span>
 <span class="normal">704</span>
 <span class="normal">705</span>
@@ -3405,10 +3450,11 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">key</span> <span class="ow">in</span> <span class="n">cache</span> <span class="k">for</span> <span class="n">cache</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">caches</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3422,9 +3468,9 @@
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">695</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">695</span>
 <span class="normal">696</span>
 <span class="normal">697</span>
 <span class="normal">698</span>
@@ -3436,10 +3482,11 @@
             <span class="k">return</span> <span class="n">val</span>
     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> not found in any cache&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3453,16 +3500,17 @@
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">692</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">692</span>
 <span class="normal">693</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">caches</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">caches</span> <span class="o">=</span> <span class="n">caches</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3478,18 +3526,19 @@
   
       <p>Iterate over all the caches</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">713</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">713</span>
 <span class="normal">714</span>
 <span class="normal">715</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Iterate over all the caches&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3505,18 +3554,19 @@
   
       <p>Return the length of the cache</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">709</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">709</span>
 <span class="normal">710</span>
 <span class="normal">711</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the length of the cache&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">caches</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3531,6 +3581,8 @@
   <div class="doc doc-contents ">
   
       <p>Add an item to the cache</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3574,9 +3626,9 @@
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">717</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">717</span>
 <span class="normal">718</span>
 <span class="normal">719</span>
 <span class="normal">720</span>
@@ -3596,10 +3648,11 @@
     <span class="n">cache</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">caches</span><span class="p">)</span>
     <span class="n">cache</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">key</span><span class="p">:</span> <span class="n">item</span><span class="p">})</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3615,9 +3668,9 @@
   
       <p>Clear all the caches and make them inaccesible</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">737</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">737</span>
 <span class="normal">738</span>
 <span class="normal">739</span>
 <span class="normal">740</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -3625,10 +3678,11 @@
     <span class="k">for</span> <span class="n">cache</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">caches</span><span class="p">:</span>
         <span class="n">cache</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3643,6 +3697,8 @@
   <div class="doc doc-contents ">
   
       <p>Get the representation for a single</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3672,9 +3728,9 @@
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">774</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">774</span>
 <span class="normal">775</span>
 <span class="normal">776</span>
 <span class="normal">777</span>
@@ -3698,10 +3754,11 @@
         <span class="n">mols</span> <span class="o">=</span> <span class="p">[</span><span class="n">mols</span><span class="p">]</span>
     <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span> <span class="k">for</span> <span class="n">mol</span> <span class="ow">in</span> <span class="n">mols</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3716,6 +3773,8 @@
   <div class="doc doc-contents ">
   
       <p>Get the cached value for a specific key</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3758,9 +3817,9 @@
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">746</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">746</span>
 <span class="normal">747</span>
 <span class="normal">748</span>
 <span class="normal">749</span>
@@ -3782,10 +3841,11 @@
             <span class="k">return</span> <span class="n">val</span>
     <span class="k">return</span> <span class="n">default</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3801,18 +3861,19 @@
   
       <p>Return iterator of key, values in the cache</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">766</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">766</span>
 <span class="normal">767</span>
 <span class="normal">768</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return iterator of key, values in the cache&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">caches</span><span class="p">)))</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3828,18 +3889,19 @@
   
       <p>Get list of keys in the cache</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">758</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">758</span>
 <span class="normal">759</span>
 <span class="normal">760</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get list of keys in the cache&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">caches</span><span class="p">)))</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3855,18 +3917,19 @@
   
       <p>Convert current cache to a dictionary</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">770</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">770</span>
 <span class="normal">771</span>
 <span class="normal">772</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert current cache to a dictionary&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3880,18 +3943,19 @@
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">742</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">742</span>
 <span class="normal">743</span>
 <span class="normal">744</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_cache</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
     <span class="n">cache</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">caches</span><span class="p">)</span>
     <span class="n">cache</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">new_cache</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -3907,15 +3971,15 @@
   
       <p>Get list of values in the cache</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">762</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">762</span>
 <span class="normal">763</span>
 <span class="normal">764</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get list of values in the cache&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">caches</span><span class="p">)))</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -3933,23 +3997,22 @@
 
 
 <h3 id="molfeat.utils.cache.DataCache" class="doc doc-heading">
-        <code>DataCache</code>
+          <code>DataCache</code>
 
 
 <a href="#molfeat.utils.cache.DataCache" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><span title="molfeat.utils.cache._Cache">_Cache</span></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><span title="molfeat.utils.cache._Cache">_Cache</span></code></p>
 
   
       <p>Molecular features caching system that cache computed values in memory for reuse later</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">291</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">291</span>
 <span class="normal">292</span>
 <span class="normal">293</span>
 <span class="normal">294</span>
@@ -4139,7 +4202,7 @@
                 <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_file</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span><span class="p">):</span>
                     <span class="k">try</span><span class="p">:</span>
                         <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-                    <span class="k">except</span><span class="p">:</span>
+                    <span class="k">except</span><span class="p">:</span>  <span class="c1"># noqa</span>
                         <span class="k">pass</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_cache</span><span class="p">()</span>
@@ -4193,7 +4256,7 @@
         <span class="k">with</span> <span class="n">fsspec</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">information</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -4283,6 +4346,7 @@
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -4296,6 +4360,8 @@
   <div class="doc doc-contents ">
   
       <p>Precomputed fingerprint caching callback</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -4409,9 +4475,9 @@
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">296</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">296</span>
 <span class="normal">297</span>
 <span class="normal">298</span>
 <span class="normal">299</span>
@@ -4483,10 +4549,11 @@
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">clear_on_exit</span><span class="p">:</span>
         <span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">,</span> <span class="n">delete</span><span class="o">=</span><span class="n">delete_on_exit</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -4502,6 +4569,8 @@
   
       <p>Clear cache memory if needed.
 Note that a cleared cache cannot be used anymore</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -4531,9 +4600,9 @@ Note that a cleared cache cannot be used anymore</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">342</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">342</span>
 <span class="normal">343</span>
 <span class="normal">344</span>
 <span class="normal">345</span>
@@ -4572,15 +4641,16 @@ Note that a cleared cache cannot be used anymore</p>
             <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_file</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span><span class="p">):</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-                <span class="k">except</span><span class="p">:</span>
+                <span class="k">except</span><span class="p">:</span>  <span class="c1"># noqa</span>
                     <span class="k">pass</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_cache</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -4599,6 +4669,8 @@ Note that a cleared cache cannot be used anymore</p>
   <div class="doc doc-contents ">
   
       <p>Load a datache from a file (including remote file)</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -4628,9 +4700,9 @@ Note that a cleared cache cannot be used anymore</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">381</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">381</span>
 <span class="normal">382</span>
 <span class="normal">383</span>
 <span class="normal">384</span>
@@ -4658,10 +4730,11 @@ Note that a cleared cache cannot be used anymore</p>
     <span class="n">new_cache</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">new_cache</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -4676,6 +4749,8 @@ Note that a cleared cache cannot be used anymore</p>
   <div class="doc doc-contents ">
   
       <p>Save the cache to a file</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -4705,9 +4780,9 @@ Note that a cleared cache cannot be used anymore</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">396</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">396</span>
 <span class="normal">397</span>
 <span class="normal">398</span>
 <span class="normal">399</span>
@@ -4741,10 +4816,11 @@ Note that a cleared cache cannot be used anymore</p>
     <span class="k">with</span> <span class="n">fsspec</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">information</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -4759,6 +4835,8 @@ Note that a cleared cache cannot be used anymore</p>
   <div class="doc doc-contents ">
   
       <p>Update the cache with new values</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -4788,9 +4866,9 @@ Note that a cleared cache cannot be used anymore</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">365</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">365</span>
 <span class="normal">366</span>
 <span class="normal">367</span>
 <span class="normal">368</span>
@@ -4810,7 +4888,7 @@ Note that a cleared cache cannot be used anymore</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
     <span class="k">return</span> <span class="bp">self</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -4828,25 +4906,24 @@ Note that a cleared cache cannot be used anymore</p>
 
 
 <h3 id="molfeat.utils.cache.FileCache" class="doc doc-heading">
-        <code>FileCache</code>
+          <code>FileCache</code>
 
 
 <a href="#molfeat.utils.cache.FileCache" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><span title="molfeat.utils.cache._Cache">_Cache</span></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><span title="molfeat.utils.cache._Cache">_Cache</span></code></p>
 
   
       <p>Read only cache that holds in precomputed data in a pickle, csv or h5py file.</p>
 <p>The convention used requires the 'keys' and  'values' columns when
 the input file needs to be loaded as a dataframe.</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">451</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">451</span>
 <span class="normal">452</span>
 <span class="normal">453</span>
 <span class="normal">454</span>
@@ -5318,7 +5395,7 @@ the input file needs to be loaded as a dataframe.</p>
 
         <span class="k">return</span> <span class="n">FileCache</span><span class="p">(</span><span class="o">**</span><span class="n">state</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -5447,6 +5524,7 @@ the input file needs to be loaded as a dataframe.</p>
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -5464,6 +5542,8 @@ the input file needs to be loaded as a dataframe.</p>
 <p class="admonition-title">Note</p>
 <p>Do not pickle this object, instead use the provided saving methods.</p>
 </div>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -5593,9 +5673,9 @@ For a pickle, we expect either a mapping or a dataframe with "keys" and "values"
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">462</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">462</span>
 <span class="normal">463</span>
 <span class="normal">464</span>
 <span class="normal">465</span>
@@ -5689,10 +5769,11 @@ For a pickle, we expect either a mapping or a dataframe with "keys" and "values"
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">clear_on_exit</span><span class="p">:</span>
         <span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -5709,9 +5790,9 @@ For a pickle, we expect either a mapping or a dataframe with "keys" and "values"
       <p>Clear cache memory at exit and close any open file
 Note that a cleared cache cannot be used anymore !</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">510</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">510</span>
 <span class="normal">511</span>
 <span class="normal">512</span>
 <span class="normal">513</span>
@@ -5731,10 +5812,11 @@ Note that a cleared cache cannot be used anymore !</p>
     <span class="c1"># reset cache to empty</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -5752,9 +5834,9 @@ Note that a cleared cache cannot be used anymore !</p>
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">670</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">670</span>
 <span class="normal">671</span>
 <span class="normal">672</span>
 <span class="normal">673</span>
@@ -5788,10 +5870,11 @@ Note that a cleared cache cannot be used anymore !</p>
 
     <span class="k">return</span> <span class="n">FileCache</span><span class="p">(</span><span class="o">**</span><span class="n">state</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -5807,9 +5890,9 @@ Note that a cleared cache cannot be used anymore !</p>
   
       <p>Return iterator of key, values in the cache</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">521</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">521</span>
 <span class="normal">522</span>
 <span class="normal">523</span>
 <span class="normal">524</span>
@@ -5819,10 +5902,11 @@ Note that a cleared cache cannot be used anymore !</p>
         <span class="k">return</span> <span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
     <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -5841,6 +5925,8 @@ Note that a cleared cache cannot be used anymore !</p>
   <div class="doc doc-contents ">
   
       <p>Load a FileCache from a file</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -5883,9 +5969,9 @@ Note that a cleared cache cannot be used anymore !</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">578</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">578</span>
 <span class="normal">579</span>
 <span class="normal">580</span>
 <span class="normal">581</span>
@@ -5905,10 +5991,11 @@ Note that a cleared cache cannot be used anymore !</p>
     <span class="n">new_cache</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">cache_file</span><span class="o">=</span><span class="n">filepath</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">new_cache</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -5923,6 +6010,8 @@ Note that a cleared cache cannot be used anymore !</p>
   <div class="doc doc-contents ">
   
       <p>Save the cache to a file</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -5980,9 +6069,9 @@ If None, the original file type is used.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">605</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">605</span>
 <span class="normal">606</span>
 <span class="normal">607</span>
 <span class="normal">608</span>
@@ -6064,10 +6153,11 @@ If None, the original file type is used.</p>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unsupported output protocol: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_type</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -6082,6 +6172,8 @@ If None, the original file type is used.</p>
   <div class="doc doc-contents ">
   
       <p>Convert the cache to a dataframe. The converted dataframe would have <code>keys</code> and <code>values</code> columns</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -6112,9 +6204,9 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">589</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">589</span>
 <span class="normal">590</span>
 <span class="normal">591</span>
 <span class="normal">592</span>
@@ -6144,10 +6236,11 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">loaded_items</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;keys&quot;</span><span class="p">,</span> <span class="s2">&quot;values&quot;</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">df</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -6162,6 +6255,8 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
   <div class="doc doc-contents ">
   
       <p>Serialize the cache to a state dict.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -6191,9 +6286,9 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">647</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">647</span>
 <span class="normal">648</span>
 <span class="normal">649</span>
 <span class="normal">650</span>
@@ -6237,10 +6332,11 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
 
     <span class="k">return</span> <span class="n">state</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -6255,6 +6351,8 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
   <div class="doc doc-contents ">
   
       <p>Update the cache with new values</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -6284,9 +6382,9 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">564</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">564</span>
 <span class="normal">565</span>
 <span class="normal">566</span>
 <span class="normal">567</span>
@@ -6312,7 +6410,7 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
             <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
     <span class="k">return</span> <span class="bp">self</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -6330,23 +6428,22 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
 
 
 <h3 id="molfeat.utils.cache.MPDataCache" class="doc doc-heading">
-        <code>MPDataCache</code>
+          <code>MPDataCache</code>
 
 
 <a href="#molfeat.utils.cache.MPDataCache" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="molfeat.utils.cache.DataCache" href="#molfeat.utils.cache.DataCache">DataCache</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="molfeat.utils.cache.DataCache" href="#molfeat.utils.cache.DataCache">DataCache</a></code></p>
 
   
       <p>A datacache that supports multiprocessing natively</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">415</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">415</span>
 <span class="normal">416</span>
 <span class="normal">417</span>
 <span class="normal">418</span>
@@ -6414,11 +6511,12 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
         <span class="n">manager</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Manager</span><span class="p">()</span>  <span class="c1"># this might not be a great idea to initialize everytime...</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
   <div class="doc doc-children">
+
 
 
 
@@ -6441,6 +6539,8 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
   <div class="doc doc-contents ">
   
       <p>Multiprocessing datacache that save cache into a shared memory</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -6526,9 +6626,9 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">418</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">418</span>
 <span class="normal">419</span>
 <span class="normal">420</span>
 <span class="normal">421</span>
@@ -6580,7 +6680,7 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
         <span class="n">clear_on_exit</span><span class="o">=</span><span class="n">clear_on_exit</span><span class="p">,</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -6598,7 +6698,7 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
 
 
 <h3 id="molfeat.utils.cache.MolToKey" class="doc doc-heading">
-        <code>MolToKey</code>
+          <code>MolToKey</code>
 
 
 <a href="#molfeat.utils.cache.MolToKey" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -6609,10 +6709,9 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
   
       <p>Convert a molecule to a key</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">35</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">35</span>
 <span class="normal">36</span>
 <span class="normal">37</span>
 <span class="normal">38</span>
@@ -6736,7 +6835,7 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Load a MolToKey object from a state dict.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">MolToKey</span><span class="p">(</span><span class="n">hash_fn</span><span class="o">=</span><span class="n">state</span><span class="p">[</span><span class="s2">&quot;hash_name&quot;</span><span class="p">])</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -6808,6 +6907,7 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -6821,6 +6921,8 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
   <div class="doc doc-contents ">
   
       <p>Convert a molecule object to a key that can be used for the cache system</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -6850,9 +6952,9 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">68</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
 <span class="normal">71</span>
@@ -6874,10 +6976,11 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hash_fn</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">mol</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -6892,6 +6995,8 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
   <div class="doc doc-contents ">
   
       <p>Init function for molecular key generator.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -6921,9 +7026,9 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">43</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span>
 <span class="normal">46</span>
@@ -6971,10 +7076,11 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
             <span class="bp">self</span><span class="o">.</span><span class="n">hash_fn</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">unique_id</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">hash_name</span> <span class="o">=</span> <span class="s2">&quot;dm.unique_id&quot;</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -6994,9 +7100,9 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
   
       <p>Load a MolToKey object from a state dict.</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">93</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">93</span>
 <span class="normal">94</span>
 <span class="normal">95</span>
 <span class="normal">96</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
@@ -7004,10 +7110,11 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Load a MolToKey object from a state dict.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">MolToKey</span><span class="p">(</span><span class="n">hash_fn</span><span class="o">=</span><span class="n">state</span><span class="p">[</span><span class="s2">&quot;hash_name&quot;</span><span class="p">])</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -7023,9 +7130,9 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
   
       <p>Serialize MolToKey to a state dict.</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">80</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/cache.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">80</span>
 <span class="normal">81</span>
 <span class="normal">82</span>
 <span class="normal">83</span>
@@ -7049,7 +7156,7 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
     <span class="n">state</span><span class="p">[</span><span class="s2">&quot;hash_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hash_name</span>
     <span class="k">return</span> <span class="n">state</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -7091,6 +7198,26 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
 
 
 
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="molfeat.utils.commons.FUNCTYPES" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">FUNCTYPES</span> <span class="o">=</span> <span class="p">(</span><span class="n">types</span><span class="o">.</span><span class="n">FunctionType</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">,</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#molfeat.utils.commons.FUNCTYPES" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+
 
 
 <div class="doc doc-object doc-function">
@@ -7107,6 +7234,8 @@ By using molfeat.utils.commons.unpack_bits, the values column can be reloaded as
   
       <p>Align a list of molecules to a reference molecule.</p>
 <p>Note: consider adding me to <code>datamol</code>.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -7179,6 +7308,8 @@ will be used as reference.</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -7209,20 +7340,9 @@ will be used as reference.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">367</span>
-<span class="normal">368</span>
-<span class="normal">369</span>
-<span class="normal">370</span>
-<span class="normal">371</span>
-<span class="normal">372</span>
-<span class="normal">373</span>
-<span class="normal">374</span>
-<span class="normal">375</span>
-<span class="normal">376</span>
-<span class="normal">377</span>
-<span class="normal">378</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">378</span>
 <span class="normal">379</span>
 <span class="normal">380</span>
 <span class="normal">381</span>
@@ -7268,7 +7388,18 @@ will be used as reference.</p>
 <span class="normal">421</span>
 <span class="normal">422</span>
 <span class="normal">423</span>
-<span class="normal">424</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">align_conformers</span><span class="p">(</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">align_conformers</span><span class="p">(</span>
     <span class="n">mols</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">dm</span><span class="o">.</span><span class="n">Mol</span><span class="p">],</span>
     <span class="n">ref_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="n">copy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -7327,10 +7458,11 @@ will be used as reference.</p>
 
     <span class="k">return</span> <span class="n">mols</span><span class="p">,</span> <span class="n">scores</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -7345,6 +7477,8 @@ will be used as reference.</p>
   <div class="doc doc-contents ">
   
       <p>Concat properties in dict into a single key dict</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -7402,6 +7536,8 @@ will be used as reference.</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -7423,26 +7559,26 @@ will be used as reference.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">293</span>
-<span class="normal">294</span>
-<span class="normal">295</span>
-<span class="normal">296</span>
-<span class="normal">297</span>
-<span class="normal">298</span>
-<span class="normal">299</span>
-<span class="normal">300</span>
-<span class="normal">301</span>
-<span class="normal">302</span>
-<span class="normal">303</span>
-<span class="normal">304</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">304</span>
 <span class="normal">305</span>
 <span class="normal">306</span>
 <span class="normal">307</span>
 <span class="normal">308</span>
 <span class="normal">309</span>
-<span class="normal">310</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">concat_dict</span><span class="p">(</span><span class="n">prop_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">new_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">concat_dict</span><span class="p">(</span><span class="n">prop_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">new_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Concat properties in dict into a single key dict</span>
 
 <span class="sd">    Args:</span>
@@ -7461,10 +7597,11 @@ will be used as reference.</p>
         <span class="n">output_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">new_name</span><span class="p">:</span> <span class="n">concatenated_val</span><span class="p">}</span>
     <span class="k">return</span> <span class="n">output_dict</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -7479,6 +7616,8 @@ will be used as reference.</p>
   <div class="doc doc-contents ">
   
       <p>Ensure a function is picklable</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -7508,17 +7647,17 @@ will be used as reference.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">ensure_picklable</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">ensure_picklable</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Ensure a function is picklable</span>
 
 <span class="sd">    Args:</span>
@@ -7528,10 +7667,11 @@ will be used as reference.</p>
         <span class="k">return</span> <span class="n">wrap_non_picklable_objects</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">fn</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -7546,6 +7686,8 @@ will be used as reference.</p>
   <div class="doc doc-contents ">
   
       <p>Filter the argument of a function to only retain the valid ones</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -7589,6 +7731,8 @@ will be used as reference.</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -7611,26 +7755,26 @@ will be used as reference.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">179</span>
 <span class="normal">180</span>
 <span class="normal">181</span>
 <span class="normal">182</span>
 <span class="normal">183</span>
 <span class="normal">184</span>
-<span class="normal">185</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">filter_arguments</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">filter_arguments</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Filter the argument of a function to only retain the valid ones</span>
 
 <span class="sd">    Args:</span>
@@ -7649,10 +7793,11 @@ will be used as reference.</p>
     <span class="n">params_filtered</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">accepted_list</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">keys</span><span class="p">()))}</span>
     <span class="k">return</span> <span class="n">params_filtered</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -7667,6 +7812,8 @@ will be used as reference.</p>
   <div class="doc doc-contents ">
   
       <p>Pickle an object and return its hex representation</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -7695,6 +7842,8 @@ will be used as reference.</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -7716,19 +7865,19 @@ will be used as reference.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span>
-<span class="normal">92</span>
-<span class="normal">93</span>
-<span class="normal">94</span>
-<span class="normal">95</span>
-<span class="normal">96</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">fn_to_hex</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">fn_to_hex</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Pickle an object and return its hex representation</span>
 
 <span class="sd">    Args:</span>
@@ -7740,10 +7889,11 @@ will be used as reference.</p>
     <span class="n">bytes_str</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">ensure_picklable</span><span class="p">(</span><span class="n">fn</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">bytes_str</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -7758,6 +7908,8 @@ will be used as reference.</p>
   <div class="doc doc-contents ">
   
       <p>Fast folding of a count fingerprint to the specified dimension</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -7815,6 +7967,8 @@ will be used as reference.</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -7836,20 +7990,9 @@ will be used as reference.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">199</span>
 <span class="normal">200</span>
 <span class="normal">201</span>
 <span class="normal">202</span>
@@ -7870,7 +8013,18 @@ will be used as reference.</p>
 <span class="normal">217</span>
 <span class="normal">218</span>
 <span class="normal">219</span>
-<span class="normal">220</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">fold_count_fp</span><span class="p">(</span><span class="n">fp</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">10</span><span class="p">,</span> <span class="n">binary</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">fold_count_fp</span><span class="p">(</span><span class="n">fp</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">10</span><span class="p">,</span> <span class="n">binary</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Fast folding of a count fingerprint to the specified dimension</span>
 
 <span class="sd">    Args:</span>
@@ -7904,10 +8058,11 @@ will be used as reference.</p>
         <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">a_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">a_max</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">out</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -7922,6 +8077,8 @@ will be used as reference.</p>
   <div class="doc doc-contents ">
   
       <p>Get class full name</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -7951,19 +8108,19 @@ will be used as reference.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_class_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">):</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_class_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get class full name</span>
 
 <span class="sd">    Args:</span>
@@ -7975,10 +8132,11 @@ will be used as reference.</p>
         <span class="n">name</span> <span class="o">=</span> <span class="n">module</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">name</span>
     <span class="k">return</span> <span class="n">name</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -7993,6 +8151,8 @@ will be used as reference.</p>
   <div class="doc doc-contents ">
   
       <p>Load a hex string as a callable. Raise error on fail</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -8022,6 +8182,8 @@ will be used as reference.</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -8043,20 +8205,20 @@ will be used as reference.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">hex_to_fn</span><span class="p">(</span><span class="nb">hex</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">hex_to_fn</span><span class="p">(</span><span class="nb">hex</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Load a hex string as a callable. Raise error on fail</span>
 
 <span class="sd">    Args:</span>
@@ -8069,10 +8231,43 @@ will be used as reference.</p>
     <span class="n">fn</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="nb">hex</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">fn</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h3 id="molfeat.utils.commons.is_callable" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">is_callable</span><span class="p">(</span><span class="n">func</span><span class="p">)</span></code>
+
+<a href="#molfeat.utils.commons.is_callable" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Check if func is a function or a callable</p>
+
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">is_callable</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check if func is a function or a callable</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">func</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">FUNCTYPES</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">callable</span><span class="p">(</span><span class="n">func</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -8087,6 +8282,8 @@ will be used as reference.</p>
   <div class="doc doc-contents ">
   
       <p>Converts a single value to a one-hot vector.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -8158,6 +8355,8 @@ will be used as reference.</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -8179,20 +8378,9 @@ will be used as reference.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">124</span>
 <span class="normal">125</span>
 <span class="normal">126</span>
 <span class="normal">127</span>
@@ -8207,7 +8395,18 @@ will be used as reference.</p>
 <span class="normal">136</span>
 <span class="normal">137</span>
 <span class="normal">138</span>
-<span class="normal">139</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">one_hot_encoding</span><span class="p">(</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">one_hot_encoding</span><span class="p">(</span>
     <span class="n">val</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">allowable_set</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span>
     <span class="n">encode_unknown</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -8235,10 +8434,11 @@ will be used as reference.</p>
         <span class="n">encoding</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">encoding</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -8253,6 +8453,8 @@ will be used as reference.</p>
   <div class="doc doc-contents ">
   
       <p>Pack an object into a bits representation</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -8281,6 +8483,8 @@ will be used as reference.</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -8302,18 +8506,18 @@ will be used as reference.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">343</span>
-<span class="normal">344</span>
-<span class="normal">345</span>
-<span class="normal">346</span>
-<span class="normal">347</span>
-<span class="normal">348</span>
-<span class="normal">349</span>
-<span class="normal">350</span>
-<span class="normal">351</span>
-<span class="normal">352</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pack_bits</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pack_bits</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Pack an object into a bits representation</span>
 
 <span class="sd">    Args:</span>
@@ -8324,10 +8528,11 @@ will be used as reference.</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">protocol</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -8342,6 +8547,8 @@ will be used as reference.</p>
   <div class="doc doc-contents ">
   
       <p>Pack a batch of graph and atom features into a single graph</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -8385,6 +8592,8 @@ will be used as reference.</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -8409,20 +8618,9 @@ while new_batch_x has size (N,D)</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">313</span>
-<span class="normal">314</span>
-<span class="normal">315</span>
-<span class="normal">316</span>
-<span class="normal">317</span>
-<span class="normal">318</span>
-<span class="normal">319</span>
-<span class="normal">320</span>
-<span class="normal">321</span>
-<span class="normal">322</span>
-<span class="normal">323</span>
-<span class="normal">324</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">324</span>
 <span class="normal">325</span>
 <span class="normal">326</span>
 <span class="normal">327</span>
@@ -8438,7 +8636,18 @@ while new_batch_x has size (N,D)</p>
 <span class="normal">337</span>
 <span class="normal">338</span>
 <span class="normal">339</span>
-<span class="normal">340</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pack_graph</span><span class="p">(</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pack_graph</span><span class="p">(</span>
     <span class="n">batch_G</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">],</span>
     <span class="n">batch_x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">],</span>
 <span class="p">):</span>
@@ -8467,10 +8676,11 @@ while new_batch_x has size (N,D)</p>
         <span class="n">cur_ind</span> <span class="o">=</span> <span class="n">g_size</span>
     <span class="k">return</span> <span class="n">new_batch_G</span><span class="p">,</span> <span class="n">new_batch_x</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -8486,20 +8696,9 @@ while new_batch_x has size (N,D)</p>
   
       <p>Decorator for any descriptor calculator that requires conformers</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">234</span>
 <span class="normal">235</span>
 <span class="normal">236</span>
 <span class="normal">237</span>
@@ -8510,7 +8709,18 @@ while new_batch_x has size (N,D)</p>
 <span class="normal">242</span>
 <span class="normal">243</span>
 <span class="normal">244</span>
-<span class="normal">245</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">requires_conformer</span><span class="p">(</span><span class="n">calculator</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">requires_conformer</span><span class="p">(</span><span class="n">calculator</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorator for any descriptor calculator that requires conformers&quot;&quot;&quot;</span>
 
     <span class="c1"># this is a method or __call__</span>
@@ -8534,10 +8744,11 @@ while new_batch_x has size (N,D)</p>
 
     <span class="k">return</span> <span class="n">calculator_wrapper</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -8552,6 +8763,8 @@ while new_batch_x has size (N,D)</p>
   <div class="doc doc-contents ">
   
       <p>Decorator for any descriptor calculator that required standardization of the molecules</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -8609,20 +8822,9 @@ while new_batch_x has size (N,D)</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">248</span>
-<span class="normal">249</span>
-<span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span>
-<span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">259</span>
 <span class="normal">260</span>
 <span class="normal">261</span>
 <span class="normal">262</span>
@@ -8653,7 +8855,18 @@ while new_batch_x has size (N,D)</p>
 <span class="normal">287</span>
 <span class="normal">288</span>
 <span class="normal">289</span>
-<span class="normal">290</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">requires_standardization</span><span class="p">(</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">requires_standardization</span><span class="p">(</span>
     <span class="n">calculator</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">disconnect_metals</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -8697,10 +8910,11 @@ while new_batch_x has size (N,D)</p>
         <span class="k">return</span> <span class="n">_standardize_mol</span><span class="p">(</span><span class="n">calculator</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">_standardize_mol</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -8715,6 +8929,8 @@ while new_batch_x has size (N,D)</p>
   <div class="doc doc-contents ">
   
       <p>Return the sha256 sum hash of a file or a directory</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -8744,24 +8960,24 @@ while new_batch_x has size (N,D)</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
 <span class="normal">42</span>
-<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">sha256sum</span><span class="p">(</span><span class="n">filepath</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]):</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">sha256sum</span><span class="p">(</span><span class="n">filepath</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the sha256 sum hash of a file or a directory</span>
 
 <span class="sd">    Args:</span>
@@ -8778,10 +8994,11 @@ while new_batch_x has size (N,D)</p>
     <span class="n">file_hash</span> <span class="o">=</span> <span class="n">file_hash</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">file_hash</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -8796,6 +9013,8 @@ while new_batch_x has size (N,D)</p>
   <div class="doc doc-contents ">
   
       <p>Pack an object into a bits representation</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -8824,6 +9043,8 @@ while new_batch_x has size (N,D)</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -8845,18 +9066,18 @@ while new_batch_x has size (N,D)</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">355</span>
-<span class="normal">356</span>
-<span class="normal">357</span>
-<span class="normal">358</span>
-<span class="normal">359</span>
-<span class="normal">360</span>
-<span class="normal">361</span>
-<span class="normal">362</span>
-<span class="normal">363</span>
-<span class="normal">364</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">unpack_bits</span><span class="p">(</span><span class="n">bvalues</span><span class="p">):</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/commons.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">unpack_bits</span><span class="p">(</span><span class="n">bvalues</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Pack an object into a bits representation</span>
 
 <span class="sd">    Args:</span>
@@ -8867,7 +9088,7 @@ while new_batch_x has size (N,D)</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">bvalues</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -8900,6 +9121,7 @@ while new_batch_x has size (N,D)</p>
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -8917,6 +9139,8 @@ while new_batch_x has size (N,D)</p>
   <div class="doc doc-contents ">
   
       <p>Check if module is available for import</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -8974,9 +9198,9 @@ while new_batch_x has size (N,D)</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/requires.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/requires.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
@@ -9032,10 +9256,11 @@ while new_batch_x has size (N,D)</p>
         <span class="ow">and</span> <span class="p">(</span><span class="n">max_version</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">version</span> <span class="o">&lt;=</span> <span class="n">max_version</span><span class="p">)</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -9050,6 +9275,8 @@ while new_batch_x has size (N,D)</p>
   <div class="doc doc-contents ">
   
       <p>Mock a function to raise an error</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -9079,9 +9306,9 @@ while new_batch_x has size (N,D)</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/requires.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">38</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/requires.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
@@ -9097,7 +9324,7 @@ while new_batch_x has size (N,D)</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="k">lambda</span><span class="p">:</span> <span class="p">(</span><span class="n">_</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="p">())</span><span class="o">.</span><span class="n">throw</span><span class="p">(</span><span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> is not available&quot;</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -9130,6 +9357,7 @@ while new_batch_x has size (N,D)</p>
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -9143,6 +9371,8 @@ while new_batch_x has size (N,D)</p>
   <div class="doc doc-contents ">
   
       <p>Change the datatype of a list of input array</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -9200,9 +9430,9 @@ while new_batch_x has size (N,D)</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">217</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">217</span>
 <span class="normal">218</span>
 <span class="normal">219</span>
 <span class="normal">220</span>
@@ -9280,10 +9510,11 @@ while new_batch_x has size (N,D)</p>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The type </span><span class="si">{}</span><span class="s2"> is not supported&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dtype</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">fp</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -9298,6 +9529,8 @@ while new_batch_x has size (N,D)</p>
   <div class="doc doc-contents ">
   
       <p>Ensure that the input vector is not a sparse bit vector</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -9327,6 +9560,8 @@ while new_batch_x has size (N,D)</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -9348,9 +9583,9 @@ while new_batch_x has size (N,D)</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">18</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
@@ -9374,10 +9609,11 @@ while new_batch_x has size (N,D)</p>
         <span class="n">x</span> <span class="o">=</span> <span class="n">ConvertToExplicit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -9392,6 +9628,8 @@ while new_batch_x has size (N,D)</p>
   <div class="doc doc-contents ">
   
       <p>Verify if the dtype is a bitvect type</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -9421,6 +9659,8 @@ while new_batch_x has size (N,D)</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -9442,9 +9682,9 @@ while new_batch_x has size (N,D)</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">168</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">168</span>
 <span class="normal">169</span>
 <span class="normal">170</span>
 <span class="normal">171</span>
@@ -9470,10 +9710,11 @@ while new_batch_x has size (N,D)</p>
         <span class="n">dtype</span><span class="p">,</span> <span class="p">(</span><span class="n">ExplicitBitVect</span><span class="p">,</span> <span class="n">SparseBitVect</span><span class="p">)</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -9488,6 +9729,8 @@ while new_batch_x has size (N,D)</p>
   <div class="doc doc-contents ">
   
       <p>Verify if the dtype is a numpy dtype</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -9519,9 +9762,9 @@ while new_batch_x has size (N,D)</p>
       <p>Returns
     A boolean saying if the dtype is a numpy dtype</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">183</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">183</span>
 <span class="normal">184</span>
 <span class="normal">185</span>
 <span class="normal">186</span>
@@ -9553,10 +9796,11 @@ while new_batch_x has size (N,D)</p>
         <span class="n">is_numpy</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">is_num</span> <span class="ow">or</span> <span class="n">is_numpy</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">is_torch</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -9571,6 +9815,8 @@ while new_batch_x has size (N,D)</p>
   <div class="doc doc-contents ">
   
       <p>Verify if the dtype is a torch dtype</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -9600,6 +9846,8 @@ while new_batch_x has size (N,D)</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -9621,9 +9869,9 @@ while new_batch_x has size (N,D)</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">155</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">155</span>
 <span class="normal">156</span>
 <span class="normal">157</span>
 <span class="normal">158</span>
@@ -9645,10 +9893,11 @@ while new_batch_x has size (N,D)</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -9664,9 +9913,9 @@ while new_batch_x has size (N,D)</p>
   
       <p>Check if an obj is null (nan, None or array of nan)</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">201</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">201</span>
 <span class="normal">202</span>
 <span class="normal">203</span>
 <span class="normal">204</span>
@@ -9694,10 +9943,11 @@ while new_batch_x has size (N,D)</p>
         <span class="k">pass</span>
     <span class="k">return</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">all_none</span> <span class="ow">or</span> <span class="n">array_nan</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -9712,6 +9962,8 @@ while new_batch_x has size (N,D)</p>
   <div class="doc doc-contents ">
   
       <p>Convert numpy array to fingerprint</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -9769,6 +10021,8 @@ while new_batch_x has size (N,D)</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -9790,9 +10044,9 @@ while new_batch_x has size (N,D)</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">127</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">127</span>
 <span class="normal">128</span>
 <span class="normal">129</span>
 <span class="normal">130</span>
@@ -9844,10 +10098,11 @@ while new_batch_x has size (N,D)</p>
         <span class="n">fp</span> <span class="o">=</span> <span class="n">CreateFromBitString</span><span class="p">(</span><span class="n">bitstring</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">fp</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -9862,6 +10117,8 @@ while new_batch_x has size (N,D)</p>
   <div class="doc doc-contents ">
   
       <p>Convert a tensor to numpy array.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -9921,6 +10178,8 @@ Numpy array will be a view of the tensor.</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -9951,9 +10210,9 @@ Numpy array will be a view of the tensor.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 85</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 85</span>
 <span class="normal"> 86</span>
 <span class="normal"> 87</span>
 <span class="normal"> 88</span>
@@ -10033,10 +10292,11 @@ Numpy array will be a view of the tensor.</p>
         <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -10051,6 +10311,8 @@ Numpy array will be a view of the tensor.</p>
   <div class="doc doc-contents ">
   
       <p>Converts dense tensor x to sparse format</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -10095,6 +10357,8 @@ If None, it keeps the same datatype as x (Default: None)</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -10116,9 +10380,9 @@ If None, it keeps the same datatype as x (Default: None)</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">32</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span>
@@ -10166,10 +10430,11 @@ If None, it keeps the same datatype as x (Default: None)</p>
     <span class="n">values</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">indices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))]</span>
     <span class="k">return</span> <span class="n">sparse_tensortype</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -10185,6 +10450,8 @@ If None, it keeps the same datatype as x (Default: None)</p>
   
       <p>Convert a numpy array to tensor. The tensor type will be
 the same as the original array, unless specify otherwise</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -10242,6 +10509,8 @@ the same as the original array, unless specify otherwise</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -10263,9 +10532,9 @@ the same as the original array, unless specify otherwise</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">58</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/datatype.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">58</span>
 <span class="normal">59</span>
 <span class="normal">60</span>
 <span class="normal">61</span>
@@ -10315,7 +10584,7 @@ the same as the original array, unless specify otherwise</p>
         <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">x</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -10352,24 +10621,23 @@ the same as the original array, unless specify otherwise</p>
 
 
 <h3 id="molfeat.utils.pooler.BartPooler" class="doc doc-heading">
-        <code>BartPooler</code>
+          <code>BartPooler</code>
 
 
 <a href="#molfeat.utils.pooler.BartPooler" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><span title="torch.nn">nn</span>.<span title="torch.nn.Module">Module</span></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><span title="torch.nn">nn</span>.<span title="torch.nn.Module">Module</span></code></p>
 
   
       <p>Default Bart pooler as implemented in huggingface transformers
 The Bart pooling function focusing on the eos token ([EOS]) to get a sentence representation.</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">157</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">157</span>
 <span class="normal">158</span>
 <span class="normal">159</span>
 <span class="normal">160</span>
@@ -10423,7 +10691,7 @@ The Bart pooling function focusing on the eos token ([EOS]) to get a sentence re
         <span class="n">pooled_output</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="n">eos_mask</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
         <span class="k">return</span> <span class="n">pooled_output</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -10456,6 +10724,7 @@ The Bart pooling function focusing on the eos token ([EOS]) to get a sentence re
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -10468,18 +10737,19 @@ The Bart pooling function focusing on the eos token ([EOS]) to get a sentence re
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">163</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">163</span>
 <span class="normal">164</span>
 <span class="normal">165</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -10494,6 +10764,8 @@ The Bart pooling function focusing on the eos token ([EOS]) to get a sentence re
   <div class="doc doc-contents ">
   
       <p>Forward pass of the pooling layer</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -10537,6 +10809,8 @@ The Bart pooling function focusing on the eos token ([EOS]) to get a sentence re
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -10559,9 +10833,9 @@ The Bart pooling function focusing on the eos token ([EOS]) to get a sentence re
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">167</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">167</span>
 <span class="normal">168</span>
 <span class="normal">169</span>
 <span class="normal">170</span>
@@ -10595,7 +10869,7 @@ The Bart pooling function focusing on the eos token ([EOS]) to get a sentence re
     <span class="n">pooled_output</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="n">eos_mask</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
     <span class="k">return</span> <span class="n">pooled_output</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -10613,24 +10887,23 @@ The Bart pooling function focusing on the eos token ([EOS]) to get a sentence re
 
 
 <h3 id="molfeat.utils.pooler.BertPooler" class="doc doc-heading">
-        <code>BertPooler</code>
+          <code>BertPooler</code>
 
 
 <a href="#molfeat.utils.pooler.BertPooler" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><span title="torch.nn">nn</span>.<span title="torch.nn.Module">Module</span></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><span title="torch.nn">nn</span>.<span title="torch.nn.Module">Module</span></code></p>
 
   
       <p>Default Bert pooler as implemented in huggingface transformers
 The bert pooling function focuses on a projection of the first token ([CLS]) to get a sentence representation.</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">115</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">115</span>
 <span class="normal">116</span>
 <span class="normal">117</span>
 <span class="normal">118</span>
@@ -10710,7 +10983,7 @@ The bert pooling function focuses on a projection of the first token ([CLS]) to 
         <span class="n">pooled_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">(</span><span class="n">pooled_output</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">pooled_output</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -10800,6 +11073,7 @@ The bert pooling function focuses on a projection of the first token ([CLS]) to 
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -10812,9 +11086,9 @@ The bert pooling function focuses on a projection of the first token ([CLS]) to 
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">121</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">121</span>
 <span class="normal">122</span>
 <span class="normal">123</span>
 <span class="normal">124</span>
@@ -10844,10 +11118,11 @@ The bert pooling function focuses on a projection of the first token ([CLS]) to 
     <span class="bp">self</span><span class="o">.</span><span class="n">dense</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">activation</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">()</span> <span class="k">if</span> <span class="n">activation</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">activation</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -10862,6 +11137,8 @@ The bert pooling function focuses on a projection of the first token ([CLS]) to 
   <div class="doc doc-contents ">
   
       <p>Forward pass of the pooling layer</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -10905,6 +11182,8 @@ The bert pooling function focuses on a projection of the first token ([CLS]) to 
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -10927,9 +11206,9 @@ The bert pooling function focuses on a projection of the first token ([CLS]) to 
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">137</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">137</span>
 <span class="normal">138</span>
 <span class="normal">139</span>
 <span class="normal">140</span>
@@ -10965,7 +11244,7 @@ The bert pooling function focuses on a projection of the first token ([CLS]) to 
     <span class="n">pooled_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">(</span><span class="n">pooled_output</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">pooled_output</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -10983,24 +11262,23 @@ The bert pooling function focuses on a projection of the first token ([CLS]) to 
 
 
 <h3 id="molfeat.utils.pooler.GPTPooler" class="doc doc-heading">
-        <code>GPTPooler</code>
+          <code>GPTPooler</code>
 
 
 <a href="#molfeat.utils.pooler.GPTPooler" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><span title="torch.nn">nn</span>.<span title="torch.nn.Module">Module</span></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><span title="torch.nn">nn</span>.<span title="torch.nn.Module">Module</span></code></p>
 
   
       <p>Default GPT pooler as implemented in huggingface transformers
 The GPT pooling function focusing on the last non-padding token given sequence length to get a sentence representation.</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">186</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">186</span>
 <span class="normal">187</span>
 <span class="normal">188</span>
 <span class="normal">189</span>
@@ -11076,7 +11354,7 @@ The GPT pooling function focusing on the last non-padding token given sequence l
         <span class="n">pooled_output</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">batch_size</span><span class="p">),</span> <span class="n">sequence_lengths</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">pooled_output</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -11128,6 +11406,7 @@ The GPT pooling function focusing on the last non-padding token given sequence l
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -11140,9 +11419,9 @@ The GPT pooling function focusing on the last non-padding token given sequence l
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">192</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">192</span>
 <span class="normal">193</span>
 <span class="normal">194</span>
 <span class="normal">195</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -11150,10 +11429,11 @@ The GPT pooling function focusing on the last non-padding token given sequence l
     <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">pad_token_id</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pad_token_id&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -11168,6 +11448,8 @@ The GPT pooling function focusing on the last non-padding token given sequence l
   <div class="doc doc-contents ">
   
       <p>Forward pass of the pooling layer</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -11211,6 +11493,8 @@ The GPT pooling function focusing on the last non-padding token given sequence l
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -11233,9 +11517,9 @@ The GPT pooling function focusing on the last non-padding token given sequence l
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">197</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">197</span>
 <span class="normal">198</span>
 <span class="normal">199</span>
 <span class="normal">200</span>
@@ -11289,7 +11573,7 @@ The GPT pooling function focusing on the last non-padding token given sequence l
     <span class="n">pooled_output</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">batch_size</span><span class="p">),</span> <span class="n">sequence_lengths</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">pooled_output</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -11307,23 +11591,22 @@ The GPT pooling function focusing on the last non-padding token given sequence l
 
 
 <h3 id="molfeat.utils.pooler.HFPooler" class="doc doc-heading">
-        <code>HFPooler</code>
+          <code>HFPooler</code>
 
 
 <a href="#molfeat.utils.pooler.HFPooler" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><span title="torch.nn">nn</span>.<span title="torch.nn.Module">Module</span></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><span title="torch.nn">nn</span>.<span title="torch.nn.Module">Module</span></code></p>
 
   
       <p>Default Pooler based on Molfeat Pooling layer</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 81</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 81</span>
 <span class="normal"> 82</span>
 <span class="normal"> 83</span>
 <span class="normal"> 84</span>
@@ -11387,7 +11670,7 @@ The GPT pooling function focusing on the last non-padding token given sequence l
             <span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># B, S, 1</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pooling</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -11439,6 +11722,7 @@ The GPT pooling function focusing on the last non-padding token given sequence l
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -11451,9 +11735,9 @@ The GPT pooling function focusing on the last non-padding token given sequence l
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">84</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">84</span>
 <span class="normal">85</span>
 <span class="normal">86</span>
 <span class="normal">87</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -11461,10 +11745,11 @@ The GPT pooling function focusing on the last non-padding token given sequence l
     <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">pooling</span> <span class="o">=</span> <span class="n">Pooling</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -11479,6 +11764,8 @@ The GPT pooling function focusing on the last non-padding token given sequence l
   <div class="doc doc-contents ">
   
       <p>Forward pass of the pooling layer</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -11550,6 +11837,8 @@ The GPT pooling function focusing on the last non-padding token given sequence l
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -11572,9 +11861,9 @@ The GPT pooling function focusing on the last non-padding token given sequence l
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 89</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 89</span>
 <span class="normal"> 90</span>
 <span class="normal"> 91</span>
 <span class="normal"> 92</span>
@@ -11622,7 +11911,7 @@ The GPT pooling function focusing on the last non-padding token given sequence l
         <span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># B, S, 1</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pooling</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -11640,23 +11929,22 @@ The GPT pooling function focusing on the last non-padding token given sequence l
 
 
 <h3 id="molfeat.utils.pooler.Pooling" class="doc doc-heading">
-        <code>Pooling</code>
+          <code>Pooling</code>
 
 
 <a href="#molfeat.utils.pooler.Pooling" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><span title="torch.nn">nn</span>.<span title="torch.nn.Module">Module</span></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><span title="torch.nn">nn</span>.<span title="torch.nn.Module">Module</span></code></p>
 
   
       <p>Perform simple pooling on a tensor over one dimension</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">33</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span>
 <span class="normal">36</span>
@@ -11748,7 +12036,7 @@ The GPT pooling function focusing on the last non-padding token given sequence l
             <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">mask</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">x</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -11820,6 +12108,7 @@ The GPT pooling function focusing on the last non-padding token given sequence l
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -11833,6 +12122,8 @@ The GPT pooling function focusing on the last non-padding token given sequence l
   <div class="doc doc-contents ">
   
       <p>Pooling for embeddings</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -11876,9 +12167,9 @@ The GPT pooling function focusing on the last non-padding token given sequence l
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">40</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">40</span>
 <span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
@@ -11900,10 +12191,11 @@ The GPT pooling function focusing on the last non-padding token given sequence l
     <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">=</span> <span class="n">dim</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -11918,6 +12210,8 @@ The GPT pooling function focusing on the last non-padding token given sequence l
   <div class="doc doc-contents ">
   
       <p>Perform a pooling operation on the input tensor</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -11975,9 +12269,9 @@ If mask is provided it takes precedence over indices.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">52</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">52</span>
 <span class="normal">53</span>
 <span class="normal">54</span>
 <span class="normal">55</span>
@@ -12031,7 +12325,7 @@ If mask is provided it takes precedence over indices.</p>
         <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">mask</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -12043,6 +12337,7 @@ If mask is provided it takes precedence over indices.</p>
   </div>
 
 </div>
+
 
 
 <div class="doc doc-object doc-function">
@@ -12058,6 +12353,8 @@ If mask is provided it takes precedence over indices.</p>
   <div class="doc doc-contents ">
   
       <p>Get default HuggingFace pooler based on the model name</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -12112,9 +12409,9 @@ If mask is provided it takes precedence over indices.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/pooler.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
@@ -12154,7 +12451,7 @@ If mask is provided it takes precedence over indices.</p>
         <span class="k">return</span> <span class="n">BartPooler</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -12191,7 +12488,7 @@ If mask is provided it takes precedence over indices.</p>
 
 
 <h3 id="molfeat.utils.converters.SmilesConverter" class="doc doc-heading">
-        <code>SmilesConverter</code>
+          <code>SmilesConverter</code>
 
 
 <a href="#molfeat.utils.converters.SmilesConverter" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -12202,10 +12499,9 @@ If mask is provided it takes precedence over indices.</p>
   
       <p>Molecule line notation conversion from smiles to selfies or inchi</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/utils/converters.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/utils/converters.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
 <span class="normal"> 6</span>
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
@@ -12325,7 +12621,7 @@ If mask is provided it takes precedence over indices.</p>
             <span class="k">except</span><span class="p">:</span>
                 <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -12397,6 +12693,7 @@ If mask is provided it takes precedence over indices.</p>
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -12410,6 +12707,8 @@ If mask is provided it takes precedence over indices.</p>
   <div class="doc doc-contents ">
   
       <p>Convert input smiles to a target line notation</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -12439,9 +12738,9 @@ If mask is provided it takes precedence over indices.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/converters.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/converters.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
@@ -12481,10 +12780,11 @@ If mask is provided it takes precedence over indices.</p>
     <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">target</span> <span class="o">==</span> <span class="s2">&quot;selfies&quot;</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">converter</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">SimpleNamespace</span><span class="p">(</span><span class="n">decode</span><span class="o">=</span><span class="n">dm</span><span class="o">.</span><span class="n">from_selfies</span><span class="p">,</span> <span class="n">encode</span><span class="o">=</span><span class="n">dm</span><span class="o">.</span><span class="n">to_selfies</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -12499,6 +12799,8 @@ If mask is provided it takes precedence over indices.</p>
   <div class="doc doc-contents ">
   
       <p>Decode inputs into smiles</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -12528,9 +12830,9 @@ If mask is provided it takes precedence over indices.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/converters.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">36</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/converters.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">36</span>
 <span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
@@ -12558,10 +12860,11 @@ If mask is provided it takes precedence over indices.</p>
         <span class="k">except</span><span class="p">:</span>  <span class="c1"># (deepsmiles.DecodeError, ValueError, AttributeError, IndexError):</span>
             <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -12576,6 +12879,8 @@ If mask is provided it takes precedence over indices.</p>
   <div class="doc doc-contents ">
   
       <p>Encode a input smiles into target line notation</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -12605,9 +12910,9 @@ If mask is provided it takes precedence over indices.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/utils/converters.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">51</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/utils/converters.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">51</span>
 <span class="normal">52</span>
 <span class="normal">53</span>
 <span class="normal">54</span>
@@ -12635,7 +12940,7 @@ If mask is provided it takes precedence over indices.</p>
         <span class="k">except</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

@@ -14,10 +14,10 @@
         <link rel="prev" href="molfeat.trans.struct.html">
       
       
-        <link rel="next" href="molfeat.trans.pretrained.hf_transformers.html">
+        <link rel="next" href="molfeat.trans.pretrained.base.html">
       
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+      <meta name="generator" content="mkdocs-1.5.0, mkdocs-material-9.1.20">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.eebd395e.min.css">
       
       
 
@@ -1100,6 +1100,20 @@
   
   
     <li class="md-nav__item">
+      <a href="molfeat.trans.pretrained.base.html" class="md-nav__link">
+        Base Pretrained Models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="molfeat.trans.pretrained.hf_transformers.html" class="md-nav__link">
         HuggingFace
       </a>
@@ -1424,15 +1438,15 @@
 
 
 <h3 id="molfeat.trans.concat.FeatConcat" class="doc doc-heading">
-        <code>FeatConcat</code>
+          <code>FeatConcat</code>
 
 
 <a href="#molfeat.trans.concat.FeatConcat" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code>list</code>, <code><span title="sklearn.base.BaseEstimator">BaseEstimator</span></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code>list</code>, <code><span title="sklearn.base.BaseEstimator">BaseEstimator</span></code></p>
 
   
       <p>Concatenation container for <code>FPVecTransformer</code>. This class allows
@@ -1448,10 +1462,9 @@ on a list of transformers and concatenate the results.</p>
 <code>len()</code> will return the number of base featurizer.</p>
 </div>
 
-
-        <details class="quote">
-          <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 19</span>
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 19</span>
 <span class="normal"> 20</span>
 <span class="normal"> 21</span>
 <span class="normal"> 22</span>
@@ -1933,7 +1946,7 @@ on a list of transformers and concatenate the results.</p>
             <span class="n">fp_trans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -1981,6 +1994,8 @@ on a list of transformers and concatenate the results.</p>
   <div class="doc doc-contents ">
   
       <p>Get the list of columns for the concatenated molecules</p>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -2069,6 +2084,7 @@ Note that <strong>len</strong> returns the number of base featurizer here instea
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -2083,9 +2099,9 @@ Note that <strong>len</strong> returns the number of base featurizer here instea
   
       <p>Override the <code>__add__</code> method</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">75</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">75</span>
 <span class="normal">76</span>
 <span class="normal">77</span>
 <span class="normal">78</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
@@ -2093,10 +2109,11 @@ Note that <strong>len</strong> returns the number of base featurizer here instea
     <span class="bp">self</span><span class="o">.</span><span class="n">_check_supported</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2111,6 +2128,8 @@ Note that <strong>len</strong> returns the number of base featurizer here instea
   <div class="doc doc-contents ">
   
       <p>Calls each of the internal transformer and concatenate results only on valid indices.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2181,6 +2200,8 @@ Note that <strong>len</strong> returns the number of base featurizer here instea
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -2215,9 +2236,9 @@ Indices of successful featurization given the original molecule input.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">176</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">176</span>
 <span class="normal">177</span>
 <span class="normal">178</span>
 <span class="normal">179</span>
@@ -2297,10 +2318,11 @@ Indices of successful featurization given the original molecule input.</p>
         <span class="k">return</span> <span class="n">fps</span>
     <span class="k">return</span> <span class="n">fps</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">valid_idx</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2315,6 +2337,8 @@ Indices of successful featurization given the original molecule input.</p>
   <div class="doc doc-contents ">
   
       <p>Featurizer concatenator</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2387,9 +2411,9 @@ By default the collate function will be None, which will use the torch default</
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">36</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">36</span>
 <span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
@@ -2445,10 +2469,11 @@ By default the collate function will be None, which will use the torch default</
     <span class="bp">self</span><span class="o">.</span><span class="n">_length</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">collate_fn</span> <span class="o">=</span> <span class="n">collate_fn</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2464,9 +2489,9 @@ By default the collate function will be None, which will use the torch default</
   
       <p>Override the <code>__setitem__</code>  method</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">80</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">80</span>
 <span class="normal">81</span>
 <span class="normal">82</span>
 <span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
@@ -2474,10 +2499,11 @@ By default the collate function will be None, which will use the torch default</
     <span class="bp">self</span><span class="o">.</span><span class="n">_check_supported</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2493,9 +2519,9 @@ By default the collate function will be None, which will use the torch default</
   
       <p>Override the <code>append</code> to accept only <code>FPVecTransformer</code></p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">65</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">65</span>
 <span class="normal">66</span>
 <span class="normal">67</span>
 <span class="normal">68</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
@@ -2503,10 +2529,11 @@ By default the collate function will be None, which will use the torch default</
     <span class="bp">self</span><span class="o">.</span><span class="n">_check_supported</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2521,6 +2548,8 @@ By default the collate function will be None, which will use the torch default</
   <div class="doc doc-contents ">
   
       <p>Calls the <code>FPVecTransformer.fit</code> for each transformer in the current list.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2564,6 +2593,8 @@ By default the collate function will be None, which will use the torch default</
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -2585,9 +2616,9 @@ By default the collate function will be None, which will use the torch default</
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">245</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">245</span>
 <span class="normal">246</span>
 <span class="normal">247</span>
 <span class="normal">248</span>
@@ -2617,10 +2648,11 @@ By default the collate function will be None, which will use the torch default</
         <span class="n">fp_trans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2636,6 +2668,8 @@ By default the collate function will be None, which will use the torch default</
   
       <p>Calls the <code>self.fit</code> followed by the <code>fit.transform</code> for each transfomer in
 the current list, and concatenates the resulting fingerprints.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2707,6 +2741,8 @@ the current list, and concatenates the resulting fingerprints.</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -2730,9 +2766,9 @@ molecules that have been successfully featurized.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">217</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">217</span>
 <span class="normal">218</span>
 <span class="normal">219</span>
 <span class="normal">220</span>
@@ -2786,10 +2822,11 @@ molecules that have been successfully featurized.</p>
     <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">mols</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">fit_kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">mols</span><span class="p">,</span> <span class="o">**</span><span class="n">trans_kwargs</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2805,6 +2842,8 @@ molecules that have been successfully featurized.</p>
   
       <p>Get collate function of this featurizer. The FeatConcat featurizer use the default
 collate function which does not do anything.</p>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -2827,9 +2866,9 @@ collate function which does not do anything.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">106</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">106</span>
 <span class="normal">107</span>
 <span class="normal">108</span>
 <span class="normal">109</span>
@@ -2847,10 +2886,11 @@ collate function which does not do anything.</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;collate_fn&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2866,9 +2906,9 @@ collate function which does not do anything.</p>
   
       <p>Override the <code>insert</code> to accept only <code>BaseFeaturizer</code></p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">70</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">70</span>
 <span class="normal">71</span>
 <span class="normal">72</span>
 <span class="normal">73</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
@@ -2876,10 +2916,11 @@ collate function which does not do anything.</p>
     <span class="bp">self</span><span class="o">.</span><span class="n">_check_suported</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2894,6 +2935,8 @@ collate function which does not do anything.</p>
   <div class="doc doc-contents ">
   
       <p>Allow the <code>FeatConcat</code> to be indexed using a list, or any other iterable.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2925,9 +2968,9 @@ collate function which does not do anything.</p>
       <p>Returns
     indexed_fpconcat: A new FeatConcat object with the indexed element</p>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">116</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">116</span>
 <span class="normal">117</span>
 <span class="normal">118</span>
 <span class="normal">119</span>
@@ -2959,10 +3002,11 @@ collate function which does not do anything.</p>
             <span class="n">indexes</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexes</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">FeatConcat</span><span class="p">([</span><span class="bp">self</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">indexes</span><span class="p">])</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2978,6 +3022,8 @@ collate function which does not do anything.</p>
   
       <p>Calls the <code>FPVecTransformer.transform</code> for each transformer in
 the current list, and concatenates the resulting fingerprints.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3020,6 +3066,8 @@ the current list, and concatenates the resulting fingerprints.</p>
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -3043,9 +3091,9 @@ molecules that have been successfully featurized.</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">152</span>
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">152</span>
 <span class="normal">153</span>
 <span class="normal">154</span>
 <span class="normal">155</span>
@@ -3091,7 +3139,7 @@ molecules that have been successfully featurized.</p>
     <span class="n">fps</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span>
     <span class="k">return</span> <span class="n">fps</span><span class="o">.</span><span class="n">values</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
