@@ -1,0 +1,4048 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An all in one package for molecule featurization">
+      
+      
+      
+      
+        <link rel="prev" href="molfeat.trans.pretrained.base.html">
+      
+      
+        <link rel="next" href="molfeat.trans.pretrained.graphormer.html">
+      
+      <link rel="icon" href="../images/logo-black.png">
+      <meta name="generator" content="mkdocs-1.5.0, mkdocs-material-9.1.20">
+    
+    
+      
+        <title>HuggingFace - molfeat</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.eebd395e.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="../assets/css/custom-molfeat.css">
+    
+      <link rel="stylesheet" href="../assets/css/tweak-width.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#transformer-pretrained-models" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="molfeat" class="md-header__button md-logo" aria-label="molfeat" data-md-component="logo">
+      
+  <img src="../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            molfeat
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              HuggingFace
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/datamol-io/molfeat" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    datamol-io/molfeat
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        Getting started
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tutorials/types_of_featurizers.html" class="md-tabs__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../developers/contribute.html" class="md-tabs__link">
+        Developers
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../community/get_involved.html" class="md-tabs__link">
+        Community
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="molfeat.calc.html" class="md-tabs__link md-tabs__link--active">
+        API
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="molfeat" class="md-nav__button md-logo" aria-label="molfeat" data-md-component="logo">
+      
+  <img src="../images/logo.svg" alt="logo">
+
+    </a>
+    molfeat
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/datamol-io/molfeat" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    datamol-io/molfeat
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+          Getting started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        What is molfeat?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage.html" class="md-nav__link">
+        How to use molfeat?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../benchmark.html" class="md-nav__link">
+        Why should you care?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../license.html" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/types_of_featurizers.html" class="md-nav__link">
+        Types of featurizers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          Add your own
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Add your own
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/add_your_own.html" class="md-nav__link">
+        Create your own featurizers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/custom_model_store.html" class="md-nav__link">
+        Create a custom modelstore
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/graphs.html" class="md-nav__link">
+        Featurizing graphs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          Integrations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Integrations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/integrations.html" class="md-nav__link">
+        Integration with scikit-learn and PyTorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/pyg_integration.html" class="md-nav__link">
+        Training a GNN with PyG
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/transformer_finetuning.html" class="md-nav__link">
+        Finetuning a pretrained transformer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/save_and_load.html" class="md-nav__link">
+        Save and Load
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/datacache.html" class="md-nav__link">
+        The Data Cache
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Developers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Developers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/contribute.html" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/create-plugin.html" class="md-nav__link">
+        Extending molfeat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/register-plugin.html" class="md-nav__link">
+        Registering your Plugin
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Community
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Community
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../community/get_involved.html" class="md-nav__link">
+        Get involved
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../community/contributions.html" class="md-nav__link">
+        Community contributions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="molfeat.calc.html" class="md-nav__link">
+        molfeat.calc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+          molfeat.trans
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          molfeat.trans
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="molfeat.trans.base.html" class="md-nav__link">
+        molfeat.trans.base
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="molfeat.trans.fp.html" class="md-nav__link">
+        molfeat.trans.fp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="molfeat.trans.graph.html" class="md-nav__link">
+        molfeat.trans.graph
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="molfeat.trans.struct.html" class="md-nav__link">
+        molfeat.trans.struct
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="molfeat.trans.concat.html" class="md-nav__link">
+        molfeat.trans.concat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_6" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2_6" id="__nav_5_2_6_label" tabindex="0">
+          molfeat.trans.pretrained
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_6_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_5_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          molfeat.trans.pretrained
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="molfeat.trans.pretrained.base.html" class="md-nav__link">
+        Base Pretrained Models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          HuggingFace
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="molfeat.trans.pretrained.hf_transformers.html" class="md-nav__link md-nav__link--active">
+        HuggingFace
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#transformer-pretrained-models" class="md-nav__link">
+    Transformer pretrained models
+  </a>
+  
+    <nav class="md-nav" aria-label="Transformer pretrained models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#huggingface-transformers" class="md-nav__link">
+    HuggingFace Transformers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers" class="md-nav__link">
+    molfeat.trans.pretrained.hf_transformers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFExperiment" class="md-nav__link">
+    HFExperiment
+  </a>
+  
+    <nav class="md-nav" aria-label="HFExperiment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFExperiment.model" class="md-nav__link">
+    model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFExperiment.notation" class="md-nav__link">
+    notation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFExperiment.tokenizer" class="md-nav__link">
+    tokenizer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFExperiment.load" class="md-nav__link">
+    load()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFExperiment.save" class="md-nav__link">
+    save()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFModel" class="md-nav__link">
+    HFModel
+  </a>
+  
+    <nav class="md-nav" aria-label="HFModel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFModel.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFModel.from_pretrained" class="md-nav__link">
+    from_pretrained()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFModel.get_notation" class="md-nav__link">
+    get_notation()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFModel.load" class="md-nav__link">
+    load()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFModel.register_pretrained" class="md-nav__link">
+    register_pretrained()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer" class="md-nav__link">
+    PretrainedHFTransformer
+  </a>
+  
+    <nav class="md-nav" aria-label="PretrainedHFTransformer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.NEEDS_RANDOM_SEED" class="md-nav__link">
+    NEEDS_RANDOM_SEED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.concat_layers" class="md-nav__link">
+    concat_layers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.converter" class="md-nav__link">
+    converter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.featurizer" class="md-nav__link">
+    featurizer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.ignore_padding" class="md-nav__link">
+    ignore_padding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.kind" class="md-nav__link">
+    kind
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.max_length" class="md-nav__link">
+    max_length
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.notation" class="md-nav__link">
+    notation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.pooling" class="md-nav__link">
+    pooling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.prefer_encoder" class="md-nav__link">
+    prefer_encoder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.preload" class="md-nav__link">
+    preload
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.random_seed" class="md-nav__link">
+    random_seed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.set_max_length" class="md-nav__link">
+    set_max_length()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="molfeat.trans.pretrained.graphormer.html" class="md-nav__link">
+        Graphormer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="molfeat.trans.pretrained.dgl_pretrained.html" class="md-nav__link">
+        DGL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="molfeat.trans.pretrained.fcd.html" class="md-nav__link">
+        FCD
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="molfeat.store.html" class="md-nav__link">
+        molfeat.store
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="molfeat.plugins.html" class="md-nav__link">
+        molfeat.plugins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="molfeat.utils.html" class="md-nav__link">
+        molfeat.utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="molfeat.viz.html" class="md-nav__link">
+        molfeat.viz
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#transformer-pretrained-models" class="md-nav__link">
+    Transformer pretrained models
+  </a>
+  
+    <nav class="md-nav" aria-label="Transformer pretrained models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#huggingface-transformers" class="md-nav__link">
+    HuggingFace Transformers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers" class="md-nav__link">
+    molfeat.trans.pretrained.hf_transformers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFExperiment" class="md-nav__link">
+    HFExperiment
+  </a>
+  
+    <nav class="md-nav" aria-label="HFExperiment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFExperiment.model" class="md-nav__link">
+    model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFExperiment.notation" class="md-nav__link">
+    notation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFExperiment.tokenizer" class="md-nav__link">
+    tokenizer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFExperiment.load" class="md-nav__link">
+    load()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFExperiment.save" class="md-nav__link">
+    save()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFModel" class="md-nav__link">
+    HFModel
+  </a>
+  
+    <nav class="md-nav" aria-label="HFModel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFModel.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFModel.from_pretrained" class="md-nav__link">
+    from_pretrained()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFModel.get_notation" class="md-nav__link">
+    get_notation()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFModel.load" class="md-nav__link">
+    load()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.HFModel.register_pretrained" class="md-nav__link">
+    register_pretrained()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer" class="md-nav__link">
+    PretrainedHFTransformer
+  </a>
+  
+    <nav class="md-nav" aria-label="PretrainedHFTransformer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.NEEDS_RANDOM_SEED" class="md-nav__link">
+    NEEDS_RANDOM_SEED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.concat_layers" class="md-nav__link">
+    concat_layers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.converter" class="md-nav__link">
+    converter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.featurizer" class="md-nav__link">
+    featurizer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.ignore_padding" class="md-nav__link">
+    ignore_padding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.kind" class="md-nav__link">
+    kind
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.max_length" class="md-nav__link">
+    max_length
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.notation" class="md-nav__link">
+    notation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.pooling" class="md-nav__link">
+    pooling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.prefer_encoder" class="md-nav__link">
+    prefer_encoder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.preload" class="md-nav__link">
+    preload
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.random_seed" class="md-nav__link">
+    random_seed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.set_max_length" class="md-nav__link">
+    set_max_length()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>HuggingFace</h1>
+
+<h2 id="transformer-pretrained-models">Transformer pretrained models<a class="headerlink" href="#transformer-pretrained-models" title="Permanent link">&para;</a></h2>
+<h3 id="huggingface-transformers">HuggingFace Transformers<a class="headerlink" href="#huggingface-transformers" title="Permanent link">&para;</a></h3>
+
+
+<div class="doc doc-object doc-module">
+
+
+<a id="molfeat.trans.pretrained.hf_transformers"></a>
+  <div class="doc doc-contents first">
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="molfeat.trans.pretrained.hf_transformers.HFExperiment" class="doc doc-heading">
+          <code>HFExperiment</code>
+
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.HFExperiment" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+  <div class="doc doc-contents ">
+
+
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">HFExperiment</span><span class="p">:</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">PreTrainedModel</span>
+    <span class="n">tokenizer</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">PreTrainedTokenizer</span><span class="p">,</span> <span class="n">PreTrainedTokenizerFast</span><span class="p">]</span>
+    <span class="n">notation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;smiles&quot;</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">HFExperiment</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">clean_up</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save a hugging face model to a specific path</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            model: model to save</span>
+<span class="sd">            path: path to the folder root where to save the model</span>
+<span class="sd">            clean_up: whether to clean up the local path after saving</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">local_path</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+        <span class="c1"># we can save both the tokenizer and the model to the same path</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">save_pretrained</span><span class="p">(</span><span class="n">local_path</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">save_pretrained</span><span class="p">(</span><span class="n">local_path</span><span class="p">)</span>
+        <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">copy_dir</span><span class="p">(</span><span class="n">local_path</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">leave_progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model saved to </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1"># clean up now</span>
+        <span class="k">if</span> <span class="n">clean_up</span><span class="p">:</span>
+            <span class="n">mapper</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">get_mapper</span><span class="p">(</span><span class="n">local_path</span><span class="p">)</span>
+            <span class="n">mapper</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">local_path</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">path</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model_class</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load a model from the given path</span>
+<span class="sd">        Args:</span>
+<span class="sd">            path: Path to the model to load</span>
+<span class="sd">            model_class: optional model class to provide if the model should be loaded with a specific class</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">is_local_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="n">local_path</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+            <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">copy_dir</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">local_path</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">leave_progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">local_path</span> <span class="o">=</span> <span class="n">path</span>
+
+        <span class="k">if</span> <span class="n">model_class</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">model_config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">local_path</span><span class="p">)</span>
+            <span class="n">architectures</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">model_config</span><span class="p">,</span> <span class="s2">&quot;architectures&quot;</span><span class="p">,</span> <span class="p">[])</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">architectures</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">model_class</span> <span class="o">=</span> <span class="n">MODEL_MAPPING</span><span class="o">.</span><span class="n">_load_attr_from_module</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">model_type</span><span class="p">,</span> <span class="n">architectures</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">model_class</span> <span class="o">=</span> <span class="n">AutoModel</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">model_class</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">local_path</span><span class="p">)</span>
+        <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">local_path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.HFExperiment.model" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">model</span><span class="p">:</span> <span class="n">PreTrainedModel</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.HFExperiment.model" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.HFExperiment.notation" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">notation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;smiles&#39;</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.HFExperiment.notation" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.HFExperiment.tokenizer" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">tokenizer</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">PreTrainedTokenizer</span><span class="p">,</span> <span class="n">PreTrainedTokenizerFast</span><span class="p">]</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.HFExperiment.tokenizer" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.HFExperiment.load" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">model_class</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.HFExperiment.load" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Load a model from the given path</p>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>path</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Path to the model to load</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>model_class</code></td>
+          <td>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>optional model class to provide if the model should be loaded with a specific class</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model_class</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load a model from the given path</span>
+<span class="sd">    Args:</span>
+<span class="sd">        path: Path to the model to load</span>
+<span class="sd">        model_class: optional model class to provide if the model should be loaded with a specific class</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">is_local_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">local_path</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+        <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">copy_dir</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">local_path</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">leave_progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">local_path</span> <span class="o">=</span> <span class="n">path</span>
+
+    <span class="k">if</span> <span class="n">model_class</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">model_config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">local_path</span><span class="p">)</span>
+        <span class="n">architectures</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">model_config</span><span class="p">,</span> <span class="s2">&quot;architectures&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">architectures</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">model_class</span> <span class="o">=</span> <span class="n">MODEL_MAPPING</span><span class="o">.</span><span class="n">_load_attr_from_module</span><span class="p">(</span>
+                <span class="n">model_config</span><span class="o">.</span><span class="n">model_type</span><span class="p">,</span> <span class="n">architectures</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">model_class</span> <span class="o">=</span> <span class="n">AutoModel</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">model_class</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">local_path</span><span class="p">)</span>
+    <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">local_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.HFExperiment.save" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">clean_up</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.HFExperiment.save" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Save a hugging face model to a specific path</p>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>model</code></td>
+          <td>
+                <code><a class="autorefs autorefs-internal" title="molfeat.trans.pretrained.hf_transformers.HFExperiment" href="#molfeat.trans.pretrained.hf_transformers.HFExperiment">HFExperiment</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>model to save</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>path</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>path to the folder root where to save the model</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>clean_up</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to clean up the local path after saving</p>
+            </div>
+          </td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">HFExperiment</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">clean_up</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Save a hugging face model to a specific path</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model: model to save</span>
+<span class="sd">        path: path to the folder root where to save the model</span>
+<span class="sd">        clean_up: whether to clean up the local path after saving</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">local_path</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+    <span class="c1"># we can save both the tokenizer and the model to the same path</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">save_pretrained</span><span class="p">(</span><span class="n">local_path</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">save_pretrained</span><span class="p">(</span><span class="n">local_path</span><span class="p">)</span>
+    <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">copy_dir</span><span class="p">(</span><span class="n">local_path</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">leave_progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model saved to </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># clean up now</span>
+    <span class="k">if</span> <span class="n">clean_up</span><span class="p">:</span>
+        <span class="n">mapper</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">get_mapper</span><span class="p">(</span><span class="n">local_path</span><span class="p">)</span>
+        <span class="n">mapper</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">local_path</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">path</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="molfeat.trans.pretrained.hf_transformers.HFModel" class="doc doc-heading">
+          <code>HFModel</code>
+
+
+<a href="#molfeat.trans.pretrained.hf_transformers.HFModel" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+  <div class="doc doc-contents ">
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="molfeat.store.loader.PretrainedStoreModel" href="molfeat.store.html#molfeat.store.loader.PretrainedStoreModel">PretrainedStoreModel</a></code></p>
+
+  
+      <p>Transformer model loading model loading</p>
+
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">HFModel</span><span class="p">(</span><span class="n">PretrainedStoreModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transformer model loading model loading&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">cache_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">store</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ModelStore</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Model loader initializer</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name (str, optional): Name of the model for ada.</span>
+<span class="sd">            cache_path (os.PathLike, optional): Local cache path for faster loading. This is the cache_path parameter for ADA loading !</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">cache_path</span><span class="o">=</span><span class="n">cache_path</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="n">store</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_ensure_local</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">object_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Make sure the input path is a local path otherwise download it</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            object_path: Path to the object</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">is_local_path</span><span class="p">(</span><span class="n">object_path</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">object_path</span>
+        <span class="n">local_path</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">is_file</span><span class="p">(</span><span class="n">object_path</span><span class="p">):</span>
+            <span class="n">local_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">local_path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">object_path</span><span class="p">))</span>
+            <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">copy_file</span><span class="p">(</span><span class="n">object_path</span><span class="p">,</span> <span class="n">local_path</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">copy_dir</span><span class="p">(</span><span class="n">object_path</span><span class="p">,</span> <span class="n">local_path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">local_path</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_pretrained</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">PreTrainedModel</span><span class="p">],</span>
+        <span class="n">tokenizer</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">PreTrainedTokenizer</span><span class="p">,</span> <span class="n">PreTrainedTokenizerFast</span><span class="p">],</span>
+        <span class="n">model_class</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">model_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load model using huggingface pretrained model loader hook</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            model: Model to load. Can also be the name on the hub or the path to the model</span>
+<span class="sd">            tokenizer: Tokenizer to load. Can also be the name on the hub or the path to the tokenizer</span>
+<span class="sd">            model_class: optional model class to provide if the model should be loaded with a specific class</span>
+<span class="sd">            model_name: optional model name to give to this model.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># load the model</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">PreTrainedModel</span><span class="p">):</span>
+            <span class="n">model_obj</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+                <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_ensure_local</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">model_class</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">model_config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+                <span class="n">architectures</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">model_config</span><span class="p">,</span> <span class="s2">&quot;architectures&quot;</span><span class="p">,</span> <span class="p">[])</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">architectures</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">model_class</span> <span class="o">=</span> <span class="n">MODEL_MAPPING</span><span class="o">.</span><span class="n">_load_attr_from_module</span><span class="p">(</span>
+                        <span class="n">model_config</span><span class="o">.</span><span class="n">model_type</span><span class="p">,</span> <span class="n">architectures</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">model_class</span> <span class="o">=</span> <span class="n">AutoModel</span>
+            <span class="n">model_obj</span> <span class="o">=</span> <span class="n">model_class</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">,</span> <span class="p">(</span><span class="n">PreTrainedTokenizer</span><span class="p">,</span> <span class="n">PreTrainedTokenizerFast</span><span class="p">)):</span>
+            <span class="n">tokenizer_obj</span> <span class="o">=</span> <span class="n">tokenizer</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">):</span>
+                <span class="n">tokenizer</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_ensure_local</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">)</span>
+            <span class="n">tokenizer_obj</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">model_name</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;hf_model_</span><span class="si">{</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">HFModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="n">ModelStore</span><span class="p">())</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">HFExperiment</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model_obj</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer_obj</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">model</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">register_pretrained</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">PreTrainedModel</span><span class="p">],</span>
+        <span class="n">tokenizer</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">PreTrainedTokenizer</span><span class="p">,</span> <span class="n">PreTrainedTokenizerFast</span><span class="p">],</span>
+        <span class="n">model_card</span><span class="p">:</span> <span class="n">ModelInfo</span><span class="p">,</span>
+        <span class="n">model_class</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Register a pretrained huggingface model to the model store</span>
+<span class="sd">        Args:</span>
+<span class="sd">            model: Model to load. Can also be the name on the hub or the path to the model</span>
+<span class="sd">            tokenizer: Tokenizer to load. Can also be the name on the hub or the path to the tokenizer</span>
+<span class="sd">            model_class: optional model class to provide if the model should be loaded with a specific class</span>
+<span class="sd">            model_card: optional model card to provide for registering this model</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">model_class</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="n">model_card</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">store</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">model_card</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">_model</span><span class="p">,</span> <span class="n">save_fn</span><span class="o">=</span><span class="n">HFExperiment</span><span class="o">.</span><span class="n">save</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">model</span>
+
+    <span class="k">def</span> <span class="nf">get_notation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_notation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the notation of the model&quot;&quot;&quot;</span>
+        <span class="n">notation</span> <span class="o">=</span> <span class="n">default_notation</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">modelcard</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">store</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">notation</span> <span class="o">=</span> <span class="n">modelcard</span><span class="o">.</span><span class="n">inputs</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">return</span> <span class="n">notation</span>
+
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load Transformer Pretrained featurizer model&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span>
+        <span class="n">download_output_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_artifact_load</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">download_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_path</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">store</span>
+        <span class="p">)</span>
+        <span class="n">model_path</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">download_output_dir</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">store</span><span class="o">.</span><span class="n">MODEL_PATH_NAME</span><span class="p">)</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">HFExperiment</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">model</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.HFModel.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">cache_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.HFModel.__init__" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Model loader initializer</p>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>name</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Name of the model for ada.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cache_path</code></td>
+          <td>
+                <code>os.<span title="os.PathLike">PathLike</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Local cache path for faster loading. This is the cache_path parameter for ADA loading !</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">cache_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">store</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ModelStore</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Model loader initializer</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        name (str, optional): Name of the model for ada.</span>
+<span class="sd">        cache_path (os.PathLike, optional): Local cache path for faster loading. This is the cache_path parameter for ADA loading !</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">cache_path</span><span class="o">=</span><span class="n">cache_path</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="n">store</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.HFModel.from_pretrained" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">model_class</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.HFModel.from_pretrained" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Load model using huggingface pretrained model loader hook</p>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>model</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[str, <span title="transformers.PreTrainedModel">PreTrainedModel</span>]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Model to load. Can also be the name on the hub or the path to the model</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>tokenizer</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[str, <span title="transformers.PreTrainedTokenizer">PreTrainedTokenizer</span>, <span title="transformers.PreTrainedTokenizerFast">PreTrainedTokenizerFast</span>]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Tokenizer to load. Can also be the name on the hub or the path to the tokenizer</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>model_class</code></td>
+          <td>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>optional model class to provide if the model should be loaded with a specific class</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>model_name</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>optional model name to give to this model.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">from_pretrained</span><span class="p">(</span>
+    <span class="bp">cls</span><span class="p">,</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">PreTrainedModel</span><span class="p">],</span>
+    <span class="n">tokenizer</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">PreTrainedTokenizer</span><span class="p">,</span> <span class="n">PreTrainedTokenizerFast</span><span class="p">],</span>
+    <span class="n">model_class</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">model_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load model using huggingface pretrained model loader hook</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model: Model to load. Can also be the name on the hub or the path to the model</span>
+<span class="sd">        tokenizer: Tokenizer to load. Can also be the name on the hub or the path to the tokenizer</span>
+<span class="sd">        model_class: optional model class to provide if the model should be loaded with a specific class</span>
+<span class="sd">        model_name: optional model name to give to this model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># load the model</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">PreTrainedModel</span><span class="p">):</span>
+        <span class="n">model_obj</span> <span class="o">=</span> <span class="n">model</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_ensure_local</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">model_class</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">model_config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+            <span class="n">architectures</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">model_config</span><span class="p">,</span> <span class="s2">&quot;architectures&quot;</span><span class="p">,</span> <span class="p">[])</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">architectures</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">model_class</span> <span class="o">=</span> <span class="n">MODEL_MAPPING</span><span class="o">.</span><span class="n">_load_attr_from_module</span><span class="p">(</span>
+                    <span class="n">model_config</span><span class="o">.</span><span class="n">model_type</span><span class="p">,</span> <span class="n">architectures</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">model_class</span> <span class="o">=</span> <span class="n">AutoModel</span>
+        <span class="n">model_obj</span> <span class="o">=</span> <span class="n">model_class</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">,</span> <span class="p">(</span><span class="n">PreTrainedTokenizer</span><span class="p">,</span> <span class="n">PreTrainedTokenizerFast</span><span class="p">)):</span>
+        <span class="n">tokenizer_obj</span> <span class="o">=</span> <span class="n">tokenizer</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">):</span>
+            <span class="n">tokenizer</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_ensure_local</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">)</span>
+        <span class="n">tokenizer_obj</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">model_name</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;hf_model_</span><span class="si">{</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">HFModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="n">ModelStore</span><span class="p">())</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">HFExperiment</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model_obj</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer_obj</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.HFModel.get_notation" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_notation</span><span class="p">(</span><span class="n">default_notation</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.HFModel.get_notation" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Get the notation of the model</p>
+
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_notation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_notation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the notation of the model&quot;&quot;&quot;</span>
+    <span class="n">notation</span> <span class="o">=</span> <span class="n">default_notation</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">modelcard</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">store</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">notation</span> <span class="o">=</span> <span class="n">modelcard</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">notation</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.HFModel.load" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">load</span><span class="p">()</span></code>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.HFModel.load" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Load Transformer Pretrained featurizer model</p>
+
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load Transformer Pretrained featurizer model&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span>
+    <span class="n">download_output_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_artifact_load</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">download_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_path</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">store</span>
+    <span class="p">)</span>
+    <span class="n">model_path</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">download_output_dir</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">store</span><span class="o">.</span><span class="n">MODEL_PATH_NAME</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">HFExperiment</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.HFModel.register_pretrained" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">register_pretrained</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">model_card</span><span class="p">,</span> <span class="n">model_class</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.HFModel.register_pretrained" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Register a pretrained huggingface model to the model store</p>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>model</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[str, <span title="transformers.PreTrainedModel">PreTrainedModel</span>]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Model to load. Can also be the name on the hub or the path to the model</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>tokenizer</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[str, <span title="transformers.PreTrainedTokenizer">PreTrainedTokenizer</span>, <span title="transformers.PreTrainedTokenizerFast">PreTrainedTokenizerFast</span>]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Tokenizer to load. Can also be the name on the hub or the path to the tokenizer</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>model_class</code></td>
+          <td>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>optional model class to provide if the model should be loaded with a specific class</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>model_card</code></td>
+          <td>
+                <code><a class="autorefs autorefs-internal" title="molfeat.store.ModelInfo" href="molfeat.store.html#molfeat.store.modelcard.ModelInfo">ModelInfo</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>optional model card to provide for registering this model</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">register_pretrained</span><span class="p">(</span>
+    <span class="bp">cls</span><span class="p">,</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">PreTrainedModel</span><span class="p">],</span>
+    <span class="n">tokenizer</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">PreTrainedTokenizer</span><span class="p">,</span> <span class="n">PreTrainedTokenizerFast</span><span class="p">],</span>
+    <span class="n">model_card</span><span class="p">:</span> <span class="n">ModelInfo</span><span class="p">,</span>
+    <span class="n">model_class</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Register a pretrained huggingface model to the model store</span>
+<span class="sd">    Args:</span>
+<span class="sd">        model: Model to load. Can also be the name on the hub or the path to the model</span>
+<span class="sd">        tokenizer: Tokenizer to load. Can also be the name on the hub or the path to the tokenizer</span>
+<span class="sd">        model_class: optional model class to provide if the model should be loaded with a specific class</span>
+<span class="sd">        model_card: optional model card to provide for registering this model</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">model_class</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="n">model_card</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">store</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">model_card</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">_model</span><span class="p">,</span> <span class="n">save_fn</span><span class="o">=</span><span class="n">HFExperiment</span><span class="o">.</span><span class="n">save</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer" class="doc doc-heading">
+          <code>PretrainedHFTransformer</code>
+
+
+<a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+  <div class="doc doc-contents ">
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="molfeat.trans.pretrained.base.PretrainedMolTransformer" href="molfeat.trans.pretrained.base.html#molfeat.trans.pretrained.base.PretrainedMolTransformer">PretrainedMolTransformer</a></code></p>
+
+  
+      <p>HuggingFace Transformer for feature extraction.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For convenience and consistency, this featurizer only accepts as inputs
+smiles and molecules, then perform the internal conversion, based on the notation provided.</p>
+</div>
+
+            <details class="quote">
+              <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">PretrainedHFTransformer</span><span class="p">(</span><span class="n">PretrainedMolTransformer</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    HuggingFace Transformer for feature extraction.</span>
+
+<span class="sd">    !!! note</span>
+<span class="sd">        For convenience and consistency, this featurizer only accepts as inputs</span>
+<span class="sd">        smiles and molecules, then perform the internal conversion, based on the notation provided.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">NEEDS_RANDOM_SEED</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;bert&quot;</span><span class="p">,</span> <span class="s2">&quot;roberta&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">kind</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">HFModel</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ChemBERTa-77M-MLM&quot;</span><span class="p">,</span>
+        <span class="n">notation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="n">pooling</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span>
+        <span class="n">concat_layers</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">prefer_encoder</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+        <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+        <span class="n">max_length</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span><span class="p">,</span>
+        <span class="n">ignore_padding</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">preload</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">random_seed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">params</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        HuggingFace Transformer for featurizer extraction</span>
+<span class="sd">        The default behaviour of this feature extractor is to return the last hidden state of the encoder</span>
+<span class="sd">        similar to what is performed by the pipeline &#39;feature-extraction&#39; in hugging face.</span>
+
+<span class="sd">        !!! warning</span>
+<span class="sd">            For bert models, the default pooling layers is a neural network. Therefore, do not use the default</span>
+<span class="sd">            Or provide a random seed for reproducibility (in this case pooling will act as random projection to the same manifold)</span>
+
+<span class="sd">        !!! note</span>
+<span class="sd">            The pooling module of this featurizer is accessible through the `_pooling_obj` attribute.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            kind: name of the featurizer as available in the model store</span>
+<span class="sd">            notation: optional line notation to use. Only use if it cannot be found from the model card.</span>
+<span class="sd">            pooling: type of pooling to use. One of [&#39;default&#39;, &#39;mean&#39;, &#39;max&#39;, &#39;sum&#39;, &#39;clf&#39;, ]. The value &quot;default&quot; corresponds to the default litterature pooling for each model type.</span>
+<span class="sd">                See `molfeat.utils.pooler.get_default_hf_pooler` for more details.</span>
+<span class="sd">            concat_layers: Layer to concat to get the representation. By default the last hidden layer is returned.</span>
+<span class="sd">            prefer_encoder: For an encoder-decoder model, prefer the embeddings provided by the encoder.</span>
+<span class="sd">            dtype: Data type to output</span>
+<span class="sd">            device: Torch device on which to run the featurizer.</span>
+<span class="sd">            max_length: Maximum length of the input sequence to consider. Please update this for large sequences</span>
+<span class="sd">            ignore_padding: Whether to ignore padding in the representation (default: True) to avoid effect of batching</span>
+<span class="sd">            preload: Whether to preload the model into memory or not</span>
+<span class="sd">            n_jobs: number of jobs to use</span>
+<span class="sd">            random_seed: random seed to use for reproducibility whenever a DNN pooler is used (e.g bert/roberta)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+            <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+            <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">params</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">concat_layers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">concat_layers</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">concat_layers</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">concat_layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">concat_layers</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">concat_layers</span> <span class="o">=</span> <span class="n">concat_layers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span> <span class="o">=</span> <span class="n">max_length</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ignore_padding</span> <span class="o">=</span> <span class="n">ignore_padding</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_require_mols</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">random_seed</span> <span class="o">=</span> <span class="n">random_seed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">preload</span> <span class="o">=</span> <span class="n">preload</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pooling</span> <span class="o">=</span> <span class="n">pooling</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prefer_encoder</span> <span class="o">=</span> <span class="n">prefer_encoder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pooling_obj</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">kind</span><span class="p">,</span> <span class="n">HFModel</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="n">kind</span><span class="o">.</span><span class="n">name</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span> <span class="o">=</span> <span class="n">kind</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="n">kind</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span> <span class="o">=</span> <span class="n">HFModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kind</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">get_notation</span><span class="p">(</span><span class="n">notation</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;none&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">converter</span> <span class="o">=</span> <span class="n">SmilesConverter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">notation</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">preload</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_preload</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_update_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the parameters of this model&quot;&quot;&quot;</span>
+        <span class="c1"># pylint: disable=no-member</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_update_params</span><span class="p">()</span>
+
+        <span class="n">hf_model</span> <span class="o">=</span> <span class="n">HFModel</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kind</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span> <span class="o">=</span> <span class="n">hf_model</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pooling_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pooling_obj</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">get_default_hgf_pooler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pooling</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">random_seed</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pooling_obj</span> <span class="ow">is</span> <span class="kc">None</span>
+            <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pooling_obj</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_preload</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform preloading of the model from the store&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_preload</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">max_length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span>
+
+        <span class="c1"># we can be confident that the model has been loaded here</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pooling_obj</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">preload</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+        <span class="n">cur_tokenizer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">tokenizer</span>
+        <span class="k">for</span> <span class="n">special_token_id_name</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="s2">&quot;pad_token_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;bos_token_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;eos_token_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;unk_token_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sep_token_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;mask_token_id&quot;</span><span class="p">,</span>
+        <span class="p">]:</span>
+            <span class="n">token_id</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">cur_tokenizer</span><span class="p">,</span> <span class="n">special_token_id_name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">token_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">config</span><span class="p">[</span><span class="n">special_token_id_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">token_id</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pooling_obj</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">get_default_hgf_pooler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pooling</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">random_seed</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pooling_obj</span> <span class="ow">is</span> <span class="kc">None</span>
+            <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pooling_obj</span>
+        <span class="p">)</span>
+        <span class="c1"># pooling layer is still none, that means we could not fetch it properly</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pooling_obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s2">&quot;Cannot confidently find the pooling layer and therefore will not apply pooling&quot;</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert the list of molecules to the right format for embedding</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            inputs: inputs to preprocess</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            processed: pre-processed input list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_preload</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">dm</span><span class="o">.</span><span class="n">Mol</span><span class="p">)):</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">inputs</span><span class="p">]</span>
+
+        <span class="k">def</span> <span class="nf">_to_smiles</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">dm</span><span class="o">.</span><span class="n">to_smiles</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span>
+
+        <span class="n">parallel_kwargs</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;parallel_kwargs&quot;</span><span class="p">,</span> <span class="p">{})</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">smiles</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">parallelized</span><span class="p">(</span>
+                <span class="n">_to_smiles</span><span class="p">,</span>
+                <span class="n">inputs</span><span class="p">,</span>
+                <span class="n">n_jobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">parallel_kwargs</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">parallelized</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">converter</span><span class="o">.</span><span class="n">encode</span><span class="p">,</span>
+                <span class="n">smiles</span><span class="p">,</span>
+                <span class="n">n_jobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">parallel_kwargs</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">converter</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">_to_smiles</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="c1"># this check is necessary for some tokenizers</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">inputs</span><span class="p">]</span>
+        <span class="n">encoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">tokenizer</span><span class="p">(</span>
+            <span class="nb">list</span><span class="p">(</span><span class="n">inputs</span><span class="p">),</span>
+            <span class="n">truncation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">padding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">max_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_length</span><span class="p">,</span>
+            <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">encoded</span>
+
+    <span class="k">def</span> <span class="nf">_embed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Perform embedding of inputs using the pretrained model</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            inputs: smiles or seqs</span>
+<span class="sd">            kwargs: any additional parameters</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_preload</span><span class="p">()</span>
+
+        <span class="n">attention_mask</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;attention_mask&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">attention_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">ignore_padding</span><span class="p">:</span>
+            <span class="n">attention_mask</span> <span class="o">=</span> <span class="n">attention_mask</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># B, S, 1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">attention_mask</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">EncoderDecoderModel</span><span class="p">)</span>
+                <span class="ow">or</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;encoder&quot;</span><span class="p">)</span>
+            <span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefer_encoder</span><span class="p">:</span>
+                <span class="n">out_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">output_hidden_states</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">inputs</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">out_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">output_hidden_states</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">inputs</span><span class="p">)</span>
+            <span class="n">hidden_state</span> <span class="o">=</span> <span class="n">out_dict</span><span class="p">[</span><span class="s2">&quot;hidden_states&quot;</span><span class="p">]</span>
+            <span class="n">emb_layers</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">concat_layers</span><span class="p">:</span>
+                <span class="n">emb</span> <span class="o">=</span> <span class="n">hidden_state</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>  <span class="c1"># B, S, D</span>
+                <span class="n">emb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pooling_obj</span><span class="p">(</span>
+                    <span class="n">emb</span><span class="p">,</span>
+                    <span class="n">inputs</span><span class="p">[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">],</span>
+                    <span class="n">mask</span><span class="o">=</span><span class="n">attention_mask</span><span class="p">,</span>
+                    <span class="n">ignore_padding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ignore_padding</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">emb_layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">emb</span><span class="p">)</span>
+            <span class="n">emb</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">emb_layers</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">emb</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">set_max_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_length</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the maximum length for this featurizer&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span> <span class="o">=</span> <span class="n">max_length</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_preload</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.NEEDS_RANDOM_SEED" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">NEEDS_RANDOM_SEED</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bert&#39;</span><span class="p">,</span> <span class="s1">&#39;roberta&#39;</span><span class="p">]</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.NEEDS_RANDOM_SEED" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.concat_layers" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">concat_layers</span> <span class="o">=</span> <span class="n">concat_layers</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.concat_layers" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.converter" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">converter</span> <span class="o">=</span> <span class="n">SmilesConverter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">notation</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.converter" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.featurizer" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">featurizer</span> <span class="o">=</span> <span class="n">kind</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.featurizer" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.ignore_padding" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">ignore_padding</span> <span class="o">=</span> <span class="n">ignore_padding</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.ignore_padding" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.kind" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">kind</span> <span class="o">=</span> <span class="n">kind</span><span class="o">.</span><span class="n">name</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.kind" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.max_length" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">max_length</span> <span class="o">=</span> <span class="n">max_length</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.max_length" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.notation" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">notation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">get_notation</span><span class="p">(</span><span class="n">notation</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;none&#39;</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.notation" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.pooling" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">pooling</span> <span class="o">=</span> <span class="n">pooling</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.pooling" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.prefer_encoder" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">prefer_encoder</span> <span class="o">=</span> <span class="n">prefer_encoder</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.prefer_encoder" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.preload" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">preload</span> <span class="o">=</span> <span class="n">preload</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.preload" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.random_seed" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">random_seed</span> <span class="o">=</span> <span class="n">random_seed</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.random_seed" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;ChemBERTa-77M-MLM&#39;</span><span class="p">,</span> <span class="n">notation</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">pooling</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">concat_layers</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">prefer_encoder</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">ignore_padding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span></code>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.__init__" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>HuggingFace Transformer for featurizer extraction
+The default behaviour of this feature extractor is to return the last hidden state of the encoder
+similar to what is performed by the pipeline 'feature-extraction' in hugging face.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>For bert models, the default pooling layers is a neural network. Therefore, do not use the default
+Or provide a random seed for reproducibility (in this case pooling will act as random projection to the same manifold)</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The pooling module of this featurizer is accessible through the <code>_pooling_obj</code> attribute.</p>
+</div>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>kind</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[str, <a class="autorefs autorefs-internal" title="molfeat.trans.pretrained.hf_transformers.HFModel" href="#molfeat.trans.pretrained.hf_transformers.HFModel">HFModel</a>]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>name of the featurizer as available in the model store</p>
+            </div>
+          </td>
+          <td>
+                <code>&#39;ChemBERTa-77M-MLM&#39;</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>notation</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>optional line notation to use. Only use if it cannot be found from the model card.</p>
+            </div>
+          </td>
+          <td>
+                <code>&#39;none&#39;</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>pooling</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>type of pooling to use. One of ['default', 'mean', 'max', 'sum', 'clf', ]. The value "default" corresponds to the default litterature pooling for each model type.
+See <code>molfeat.utils.pooler.get_default_hf_pooler</code> for more details.</p>
+            </div>
+          </td>
+          <td>
+                <code>&#39;mean&#39;</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>concat_layers</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[<span title="typing.List">List</span>[int], int]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Layer to concat to get the representation. By default the last hidden layer is returned.</p>
+            </div>
+          </td>
+          <td>
+                <code>-1</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>prefer_encoder</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>For an encoder-decoder model, prefer the embeddings provided by the encoder.</p>
+            </div>
+          </td>
+          <td>
+                <code>True</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>dtype</code></td>
+          <td>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Data type to output</p>
+            </div>
+          </td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.float32">float32</span></code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>device</code></td>
+          <td>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Torch device on which to run the featurizer.</p>
+            </div>
+          </td>
+          <td>
+                <code>&#39;cpu&#39;</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>max_length</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Maximum length of the input sequence to consider. Please update this for large sequences</p>
+            </div>
+          </td>
+          <td>
+                <code>128</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>ignore_padding</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to ignore padding in the representation (default: True) to avoid effect of batching</p>
+            </div>
+          </td>
+          <td>
+                <code>True</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>preload</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to preload the model into memory or not</p>
+            </div>
+          </td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>n_jobs</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>number of jobs to use</p>
+            </div>
+          </td>
+          <td>
+                <code>0</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>random_seed</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>random seed to use for reproducibility whenever a DNN pooler is used (e.g bert/roberta)</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">kind</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">HFModel</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ChemBERTa-77M-MLM&quot;</span><span class="p">,</span>
+    <span class="n">notation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+    <span class="n">pooling</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span>
+    <span class="n">concat_layers</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">prefer_encoder</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+    <span class="n">max_length</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span><span class="p">,</span>
+    <span class="n">ignore_padding</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">preload</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">random_seed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">params</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    HuggingFace Transformer for featurizer extraction</span>
+<span class="sd">    The default behaviour of this feature extractor is to return the last hidden state of the encoder</span>
+<span class="sd">    similar to what is performed by the pipeline &#39;feature-extraction&#39; in hugging face.</span>
+
+<span class="sd">    !!! warning</span>
+<span class="sd">        For bert models, the default pooling layers is a neural network. Therefore, do not use the default</span>
+<span class="sd">        Or provide a random seed for reproducibility (in this case pooling will act as random projection to the same manifold)</span>
+
+<span class="sd">    !!! note</span>
+<span class="sd">        The pooling module of this featurizer is accessible through the `_pooling_obj` attribute.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        kind: name of the featurizer as available in the model store</span>
+<span class="sd">        notation: optional line notation to use. Only use if it cannot be found from the model card.</span>
+<span class="sd">        pooling: type of pooling to use. One of [&#39;default&#39;, &#39;mean&#39;, &#39;max&#39;, &#39;sum&#39;, &#39;clf&#39;, ]. The value &quot;default&quot; corresponds to the default litterature pooling for each model type.</span>
+<span class="sd">            See `molfeat.utils.pooler.get_default_hf_pooler` for more details.</span>
+<span class="sd">        concat_layers: Layer to concat to get the representation. By default the last hidden layer is returned.</span>
+<span class="sd">        prefer_encoder: For an encoder-decoder model, prefer the embeddings provided by the encoder.</span>
+<span class="sd">        dtype: Data type to output</span>
+<span class="sd">        device: Torch device on which to run the featurizer.</span>
+<span class="sd">        max_length: Maximum length of the input sequence to consider. Please update this for large sequences</span>
+<span class="sd">        ignore_padding: Whether to ignore padding in the representation (default: True) to avoid effect of batching</span>
+<span class="sd">        preload: Whether to preload the model into memory or not</span>
+<span class="sd">        n_jobs: number of jobs to use</span>
+<span class="sd">        random_seed: random seed to use for reproducibility whenever a DNN pooler is used (e.g bert/roberta)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+        <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+        <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">params</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">concat_layers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">concat_layers</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">concat_layers</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">concat_layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">concat_layers</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">concat_layers</span> <span class="o">=</span> <span class="n">concat_layers</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span> <span class="o">=</span> <span class="n">max_length</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ignore_padding</span> <span class="o">=</span> <span class="n">ignore_padding</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_require_mols</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">random_seed</span> <span class="o">=</span> <span class="n">random_seed</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">preload</span> <span class="o">=</span> <span class="n">preload</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pooling</span> <span class="o">=</span> <span class="n">pooling</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">prefer_encoder</span> <span class="o">=</span> <span class="n">prefer_encoder</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_pooling_obj</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">kind</span><span class="p">,</span> <span class="n">HFModel</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="n">kind</span><span class="o">.</span><span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span> <span class="o">=</span> <span class="n">kind</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="n">kind</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span> <span class="o">=</span> <span class="n">HFModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kind</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">notation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">get_notation</span><span class="p">(</span><span class="n">notation</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;none&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">converter</span> <span class="o">=</span> <span class="n">SmilesConverter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">notation</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">preload</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_preload</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.set_max_length" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">set_max_length</span><span class="p">(</span><span class="n">max_length</span><span class="p">)</span></code>
+
+<a href="#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer.set_max_length" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Set the maximum length for this featurizer</p>
+
+          <details class="quote">
+            <summary>Source code in <code>molfeat/trans/pretrained/hf_transformers.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_max_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_length</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set the maximum length for this featurizer&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span> <span class="o">=</span> <span class="n">max_length</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_preload</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright 2020 - 2023 datamol.io
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.top"], "search": "../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+        
+          <script src="../assets/js/google-analytics.js"></script>
+        
+      
+    
+  </body>
+</html>
