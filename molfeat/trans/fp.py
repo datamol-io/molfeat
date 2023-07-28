@@ -157,7 +157,9 @@ class FPVecTransformer(MoleculeTransformer):
 
     def __eq__(self, other):
         same_type = type(self) == type(other)
-        return same_type and all([getattr(other, k) == v for k, v in self.get_params() if not callable(v)])
+        return same_type and all(
+            [getattr(other, k) == v for k, v in self.get_params() if not callable(v)]
+        )
 
     def __ne__(self, other):
         return not (self == other)
@@ -258,7 +260,9 @@ class FPVecFilteredTransformer(FPVecTransformer):
             # not nan
             unwanted_columns.append(~np.any(np.isnan(feats), axis=0))
             # not enough set bits
-            unwanted_columns.append((np.count_nonzero(feats, axis=0) / feats.shape[0]) > occ_threshold)
+            unwanted_columns.append(
+                (np.count_nonzero(feats, axis=0) / feats.shape[0]) > occ_threshold
+            )
             if self.del_invariant:
                 unwanted_columns.append(~np.all(feats == feats[0, :], axis=0))
             self.cols_to_keep = (np.logical_and.reduce(unwanted_columns)).nonzero()[0]

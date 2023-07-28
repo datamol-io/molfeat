@@ -68,7 +68,9 @@ class TestMolTransformer(ut.TestCase):
         fps = transf.transform(smiles)
         for cache in [DataCache(name="atompair"), MPDataCache(name="atompair")]:
             precomp = PrecomputedMolTransformer(cache, featurizer=transf)
-            batched_fps = precomp.batch_transform(precomp, smiles, n_jobs=-1, batch_size=100, concatenate=True)
+            batched_fps = precomp.batch_transform(
+                precomp, smiles, n_jobs=-1, batch_size=100, concatenate=True
+            )
             self.assertTrue(smiles[0] in cache)
             self.assertTrue(len(cache) == len(fps))
             np.testing.assert_array_equal(cache[smiles[0]], fps[0])
@@ -171,7 +173,9 @@ class TestMolTransformer(ut.TestCase):
     def test_fp_filtering(self):
         data = dm.data.freesolv().sample(n=100)
         smiles = data["smiles"].values
-        transf = FPVecFilteredTransformer("rdkit", length=4000, del_invariant=True, occ_threshold=0.1)
+        transf = FPVecFilteredTransformer(
+            "rdkit", length=4000, del_invariant=True, occ_threshold=0.1
+        )
         transf.fit(smiles)
         out, ids = transf(smiles, ignore_errors=True)
         out2, ids2 = transf(self.smiles + ["fakemol"], ignore_errors=True)

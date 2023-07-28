@@ -308,7 +308,9 @@ class MordredDescriptors(SerializableCalculator):
             do_not_standardize: Whether to force standardize molecules or keep it the same
         """
         if not requires.check("mordred"):
-            logger.error("`mordred` is not available, please install it `pip install 'mordred[full]'`")
+            logger.error(
+                "`mordred` is not available, please install it `pip install 'mordred[full]'`"
+            )
             raise ImportError("Cannot import `mordred`")
         self.replace_nan = replace_nan
         self.ignore_3D = ignore_3D
