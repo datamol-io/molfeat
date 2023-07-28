@@ -1,6 +1,6 @@
 from .base import SerializableCalculator, _CALCULATORS
 from .cats import CATS
-from .descriptors import RDKitDescriptors2D, RDKitDescriptors3D
+from .descriptors import RDKitDescriptors2D, RDKitDescriptors3D, MordredDescriptors
 from .fingerprints import FPCalculator, FP_FUNCS
 from .pharmacophore import Pharmacophore2D, Pharmacophore3D
 from .shape import ElectroShapeDescriptors, USRDescriptors
@@ -31,6 +31,8 @@ def get_calculator(name: str, **params):
         featurizer = RDKitDescriptors3D(**params)
     elif name == "desc2d":
         featurizer = RDKitDescriptors2D(**params)
+    elif name == "mordred":
+        featurizer = MordredDescriptors(**params)
     elif name == "cats":
         featurizer = CATS(**params)
     elif name == "cats2d":

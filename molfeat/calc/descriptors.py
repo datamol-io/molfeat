@@ -14,6 +14,15 @@ from rdkit.Chem import (
 )
 from rdkit.Chem.QED import properties
 
+from molfeat.utils import requires
+
+if requires.check("mordred"):
+    from mordred import Calculator as MordredCalculator
+    from mordred import descriptors as mordred_descriptors
+
+else:
+    MordredCalculator = requires.mock("mordred")
+
 from molfeat.calc.base import SerializableCalculator
 from molfeat.utils.commons import requires_conformer, requires_standardization
 from molfeat.utils.datatype import to_numpy
@@ -273,3 +282,80 @@ class RDKitDescriptors3D(SerializableCalculator):
         if self.replace_nan:
             desc_val = np.nan_to_num(desc_val)
         return desc_val
+
+
+class MordredDescriptors(SerializableCalculator):
+    r"""
+    Compute mordred descriptors.
+    The descriptor calculator does not mask errors in featurization and will propagate them.
+    !!! note
+        Mordred descriptors can results in undefined or nan behaviour depending on your input molecule.
+        It is recommended that the user handles those nan values themself by either removing the descriptor
+        or imputing the missing values.
+    """
+
+    def __init__(
+        self,
+        ignore_3D: bool = True,
+        replace_nan: bool = False,
+        do_not_standardize: bool = False,
+        **kwargs,
+    ):
+        """Mordred descriptor computation
+        Args:
+            ignore_3D (bool, optional): Whether to ignore 3D descriptors or include them
+            replace_nan (bool, optional): Whether to replace nan or infinite values. Defaults to False.
+            do_not_standardize: Whether to force standardize molecules or keep it the same
+        """
+        if not requires.check("mordred"):
+            logger.error("`mordred` is not available, please install it `pip install 'mordred[full]'`")
+            raise ImportError("Cannot import `mordred`")
+        self.replace_nan = replace_nan
+        self.ignore_3D = ignore_3D
+        self.do_not_standardize = do_not_standardize
+        self._calc = None
+        self._init_calc()
+
+    def _init_calc(self):
+        """Initialize mordred calculator"""
+        self._calc = MordredCalculator(mordred_descriptors, ignore_3D=self.ignore_3D)
+
+    @property
+    def columns(self):
+        """
+        Get the name of all the descriptors of this calculator
+        """
+        return [str(x) for x in self._calc.descriptors]
+
+    def __len__(self):
+        """Return the length of the calculator"""
+        return len(self._calc)
+
+    def __getstate__(self):
+        """Serialize the class for pickling."""
+        state = {}
+        state["ignore_3D"] = self.ignore_3D
+        state["replace_nan"] = self.replace_nan
+        state["do_not_standardize"] = getattr(self, "do_not_standardize", False)
+        return state
+
+    def __setstate__(self, state: dict):
+        """Reload the class from pickling."""
+        self.__dict__.update(state)
+        self._init_calc()
+
+    def __call__(self, mol: Union[dm.Mol, str], conformer_id: Optional[int] = -1):
+        r"""
+        Get rdkit basic descriptors for a molecule
+        Args:
+            mol: the molecule of interest
+            conformer_id (int, optional): Optional
+        Returns:
+            props (np.ndarray): list of computed mordred molecular descriptors
+        """
+        mol = dm.to_mol(mol)
+        vals = self._calc(mol, conformer_id).fill_missing()
+        vals = to_numpy(vals)
+        if self.replace_nan:
+            vals = np.nan_to_num(vals)
+        return vals

@@ -6,9 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "molfeat"
 description = "molfeat - the hub for all your molecular featurizers"
 dynamic = ["version"]
-authors = [
-    { name = "Emmanuel Noutahi", email = "emmanuel.noutahi@hotmail.ca" },
-]
+authors = [{ name = "Emmanuel Noutahi", email = "emmanuel.noutahi@hotmail.ca" }]
 readme = "README.md"
 license = { text = "Apache" }
 requires-python = ">=3.8"
@@ -53,33 +51,19 @@ dependencies = [
     "scikit-learn",
     "packaging",
     "pmapper",
-
+    "mordredcommunity",
 ]
 
 [project.optional-dependencies]
-dgl = [
-    "dgl",
-    "dgllife",
-]
+dgl = ["dgl", "dgllife"]
 
-graphormer = [
-    "graphormer-pretrained",
-]
+graphormer = ["graphormer-pretrained"]
 
-transformer = [
-    "tokenizers <0.13.2",
-    "transformers",
-    "sentencepiece",
-]
+transformer = ["tokenizers <0.13.2", "transformers", "sentencepiece"]
 
-fcd = [
-    "fcd_torch"
-]
+fcd = ["fcd_torch"]
 
-viz = [
-    "nglview",
-    "ipywidgets"
-]
+viz = ["nglview", "ipywidgets"]
 
 all = [
     "dgl",

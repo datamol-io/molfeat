@@ -14,6 +14,7 @@ from rdkit.DataStructs.cDataStructs import ExplicitBitVect
 from molfeat.calc import RDKitDescriptors2D, SerializableCalculator
 from molfeat.calc.fingerprints import FPCalculator
 from molfeat.calc.pharmacophore import Pharmacophore2D
+from molfeat.calc.descriptors import MordredDescriptors
 from molfeat.trans import MoleculeTransformer
 from molfeat.trans.base import PrecomputedMolTransformer
 from molfeat.trans.concat import FeatConcat
@@ -67,9 +68,7 @@ class TestMolTransformer(ut.TestCase):
         fps = transf.transform(smiles)
         for cache in [DataCache(name="atompair"), MPDataCache(name="atompair")]:
             precomp = PrecomputedMolTransformer(cache, featurizer=transf)
-            batched_fps = precomp.batch_transform(
-                precomp, smiles, n_jobs=-1, batch_size=100, concatenate=True
-            )
+            batched_fps = precomp.batch_transform(precomp, smiles, n_jobs=-1, batch_size=100, concatenate=True)
             self.assertTrue(smiles[0] in cache)
             self.assertTrue(len(cache) == len(fps))
             np.testing.assert_array_equal(cache[smiles[0]], fps[0])
@@ -172,9 +171,7 @@ class TestMolTransformer(ut.TestCase):
     def test_fp_filtering(self):
         data = dm.data.freesolv().sample(n=100)
         smiles = data["smiles"].values
-        transf = FPVecFilteredTransformer(
-            "rdkit", length=4000, del_invariant=True, occ_threshold=0.1
-        )
+        transf = FPVecFilteredTransformer("rdkit", length=4000, del_invariant=True, occ_threshold=0.1)
         transf.fit(smiles)
         out, ids = transf(smiles, ignore_errors=True)
         out2, ids2 = transf(self.smiles + ["fakemol"], ignore_errors=True)
@@ -233,9 +230,9 @@ class TestMolTransformer(ut.TestCase):
     def test_caching(self):
         # check performance when cache is added from existing cache
         smiles = dm.data.freesolv().smiles.values[:50]
-        desc = RDKitDescriptors2D(replace_nan=False, ignore_3D=True)
+        desc = MordredDescriptors(replace_nan=False, ignore_3D=True)
         transff = MoleculeTransformer(desc, verbose=True)
-        cache = DataCache(name="rdkit2d")
+        cache = DataCache(name="mordred")
 
         t1 = time.time()
         out1 = transff(smiles)
