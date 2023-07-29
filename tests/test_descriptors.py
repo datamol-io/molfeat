@@ -13,8 +13,11 @@ from molfeat.calc import (
     RDKitDescriptors3D,
     ScaffoldKeyCalculator,
     USRDescriptors,
+    MordredDescriptors,
 )
 from molfeat.calc.skeys import skdistance
+
+from molfeat.utils import requires
 
 
 class TestDescPharm(ut.TestCase):
@@ -25,6 +28,12 @@ class TestDescPharm(ut.TestCase):
         "C[C@@H]([NH3+])Cc1c2ccoc2c(Br)c2ccoc12",
     ]
     EXTRA_LARGE_MOL = "CC(C)CC(NCCNC(=O)C(CCC(O)=O)NC(C)=O)C(=O)NC(Cc1ccc(O)cc1)C(=O)NC(CC(C)C)C(=O)NC(C(C)C)C(=O)NC(C)C(=O)NCC(=O)NC(CCC(O)=O)C(=O)NC(CCCNC(N)=N)C(=O)NCC(=O)NC(Cc1ccccc1)C(=O)NC(Cc1ccccc1)C(=O)NC(Cc1ccc(O)cc1)C(=O)NC(C(C)O)C(=O)N1CCCC1C(=O)NC(C)C(O)=O"
+
+    @pytest.mark.xfail(not requires.check("mordred"), reason="3rd party module mordred is missing")
+    def test_mordred(self):
+        calc = MordredDescriptors()
+        fps = calc(self.smiles[0])
+        self.assertEqual(len(fps), len(calc))
 
     def test_rdkit2d(self):
         calc = RDKitDescriptors2D()

@@ -14,6 +14,7 @@ from rdkit.DataStructs.cDataStructs import ExplicitBitVect
 from molfeat.calc import RDKitDescriptors2D, SerializableCalculator
 from molfeat.calc.fingerprints import FPCalculator
 from molfeat.calc.pharmacophore import Pharmacophore2D
+from molfeat.calc.descriptors import MordredDescriptors
 from molfeat.trans import MoleculeTransformer
 from molfeat.trans.base import PrecomputedMolTransformer
 from molfeat.trans.concat import FeatConcat
@@ -233,9 +234,9 @@ class TestMolTransformer(ut.TestCase):
     def test_caching(self):
         # check performance when cache is added from existing cache
         smiles = dm.data.freesolv().smiles.values[:50]
-        desc = RDKitDescriptors2D(replace_nan=False, ignore_3D=True)
+        desc = MordredDescriptors(replace_nan=False, ignore_3D=True)
         transff = MoleculeTransformer(desc, verbose=True)
-        cache = DataCache(name="rdkit2d")
+        cache = DataCache(name="mordred")
 
         t1 = time.time()
         out1 = transff(smiles)
