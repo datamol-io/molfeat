@@ -19,7 +19,6 @@ from molfeat.utils import requires
 from molfeat.utils.commons import requires_conformer
 from molfeat.utils.commons import pack_graph
 from molfeat.calc.atom import AtomCalculator
-from molfeat.calc.bond import BondCalculator
 from molfeat.calc.bond import EdgeMatCalculator
 
 if requires.check("dgl"):

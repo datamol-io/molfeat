@@ -3,7 +3,6 @@ from typing import Union, List, Optional
 import datamol as dm
 import numpy as np
 
-from loguru import logger
 from numpy.linalg import norm
 from scipy.special import cbrt
 from rdkit.Chem import rdPartialCharges, rdForceFieldHelpers

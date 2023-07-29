@@ -86,7 +86,7 @@ class TestGraphCalculator(ut.TestCase):
         dgl_atom_calc = DGLCanonicalAtomCalculator()
         true_dgl_atom_calc = CanonicalAtomFeaturizer(atom_data_field="hv")
         for mol in self.mols:
-            a1 = atom_calc(mol)
+            atom_calc(mol)
             a2 = dgl_atom_calc(mol)
             a3 = true_dgl_atom_calc(mol)
             np.testing.assert_allclose(a2["hv"], a3["hv"])
@@ -96,7 +96,7 @@ class TestGraphCalculator(ut.TestCase):
         dgl_bond_calc = DGLCanonicalBondCalculator()
         true_dgl_bond_calc = CanonicalBondFeaturizer(bond_data_field="he")
         for mol in self.mols:
-            b1 = bond_calc(mol)
+            bond_calc(mol)
             b2 = dgl_bond_calc(mol)
             b3 = true_dgl_bond_calc(mol)
             if "he" in b3:

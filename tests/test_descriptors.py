@@ -117,7 +117,7 @@ class TestDescPharm(ut.TestCase):
 
     def test_shape_descriptors(self):
         calc = USRDescriptors("usrcat")
-        with self.assertRaises(ValueError) as context:
+        with self.assertRaises(ValueError):
             calc(self.smiles[0])
         mol_with_conf = dm.conformers.generate(dm.to_mol(self.smiles[0]))
         out = calc(mol_with_conf)

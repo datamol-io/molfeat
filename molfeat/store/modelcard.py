@@ -19,7 +19,7 @@ def get_model_init(card):
         import_statement = "from molfeat.trans import MoleculeTransformer"
         loader_statement = f"MoleculeTransformer(featurizer='{card.name}', dtype=float)"
     elif card.group in ["rdkit", "fp", "shape"]:
-        import_statement = f"from molfeat.trans.fp import FPVecTransformer"
+        import_statement = "from molfeat.trans.fp import FPVecTransformer"
         loader_statement = f"FPVecTransformer(kind='{card.name}', dtype=float)"
     elif card.group == "dgllife":
         import_statement = "from molfeat.trans.pretrained import PretrainedDGLTransformer"
@@ -29,7 +29,7 @@ def get_model_init(card):
         loader_statement = f"GraphormerTransformer(kind='{card.name}', dtype=float)"
     elif card.group == "fcd":
         import_statement = "from molfeat.trans.pretrained import FCDTransformer"
-        loader_statement = f"FCDTransformer()"
+        loader_statement = "FCDTransformer()"
     elif card.group == "pharmacophore":
         name = card.name.split("-")[-1]
         if card.require_3D:

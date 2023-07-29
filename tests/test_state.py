@@ -159,7 +159,7 @@ def test_state_atom_bond_pickle(featurizer_builder, tmp_path):
     featurizer2 = MoleculeTransformer.from_state_dict(state2)
     to_remove = []
     for key in state["args"]:
-        if key.endswith("is_pickled") and state["args"][key] == True:
+        if key.endswith("is_pickled") and state["args"][key] is True:
             to_remove.append(key.replace("is_pickled", "").strip("_"))
     for key_val in to_remove:
         state["args"].pop(key_val, None)
@@ -171,7 +171,7 @@ def test_state_atom_bond_pickle(featurizer_builder, tmp_path):
     assert len(out) == len(out2) == len(mols)
     for o1, o2 in zip(out, out2):
         if isinstance(o1, (list, tuple)):
-            assert np.all([np.allclose(i, j, atol=2) for i, j in zip(o1, o2)]) == True
+            assert np.all([np.allclose(i, j, atol=2) for i, j in zip(o1, o2)]) is True
         else:
             np.testing.assert_array_equal(o1, o2)
 
@@ -184,7 +184,7 @@ def test_PrecomputedMolTransformer_state(tmp_path):
     cache = FileCache(cache_file=cache_path, file_type="parquet", n_jobs=-1)
 
     featurizer_cache = PrecomputedMolTransformer(cache=cache, featurizer=featurizer)
-    fps = featurizer_cache(smiles_list)
+    featurizer_cache(smiles_list)
 
     # sanity check
     assert len(featurizer_cache.cache.cache) == 2
@@ -216,7 +216,7 @@ def test_PrecomputedMolTransformer_init_from_state_file(tmp_path):
     cache = FileCache(cache_file=cache_path, file_type="parquet", n_jobs=-1)
 
     featurizer_cache = PrecomputedMolTransformer(cache=cache, featurizer=featurizer)
-    fps = featurizer_cache(smiles_list)
+    featurizer_cache(smiles_list)
 
     # sanity check
     assert len(featurizer_cache.cache.cache) == 2

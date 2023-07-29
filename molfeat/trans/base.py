@@ -34,8 +34,6 @@ from molfeat.utils.commons import hex_to_fn
 from molfeat.utils.parsing import get_input_args
 from molfeat.utils.parsing import import_from_string
 from molfeat.utils.state import map_dtype
-from molfeat.utils.state import ATOM_FEATURIZER_MAPPING
-from molfeat.utils.state import BOND_FEATURIZER_MAPPING
 from molfeat.utils.state import ATOM_FEATURIZER_MAPPING_REVERSE
 from molfeat.utils.state import BOND_FEATURIZER_MAPPING_REVERSE
 

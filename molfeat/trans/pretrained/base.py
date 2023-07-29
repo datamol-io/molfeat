@@ -3,7 +3,6 @@ from typing import Union
 from typing import Callable
 from typing import List
 from collections.abc import Iterable
-from functools import lru_cache
 
 import copy
 import datamol as dm

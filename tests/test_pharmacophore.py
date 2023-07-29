@@ -63,15 +63,15 @@ def test_pharmacophore_2d_override():
         includeBondOrder=True,
     )
 
-    assert featurizer.useCounts == True
+    assert featurizer.useCounts is True
     assert featurizer.minPointCount == 3
     assert featurizer.maxPointCount == 4
-    assert featurizer.trianglePruneBins == True
-    assert featurizer.shortestPathsOnly == False
+    assert featurizer.trianglePruneBins is True
+    assert featurizer.shortestPathsOnly is False
     assert featurizer.skipFeats == [
         "A",
     ]
-    assert featurizer.includeBondOrder == True
+    assert featurizer.includeBondOrder is True
 
     assert featurizer.useCounts == featurizer.sig_factory.useCounts
     assert featurizer.minPointCount == featurizer.sig_factory.minPointCount

@@ -98,7 +98,7 @@ class PretrainedStoreModel(PretrainedModel):
         try:
             modelcard = store.search(name=name)[0]
             artifact_dir = store.download(modelcard, download_path, **kwargs)
-        except Exception as e:
+        except Exception:
             mess = f"Can't retrieve model {name} from the store !"
             raise ModelStoreError(mess)
         return artifact_dir
