@@ -46,6 +46,7 @@ nav:
           - molfeat.trans.struct: api/molfeat.trans.struct.md
           - molfeat.trans.concat: api/molfeat.trans.concat.md
           - molfeat.trans.pretrained:
+              - Base Pretrained Models: api/molfeat.trans.pretrained.base.md
               - HuggingFace: api/molfeat.trans.pretrained.hf_transformers.md
               - Graphormer: api/molfeat.trans.pretrained.graphormer.md
               - DGL: api/molfeat.trans.pretrained.dgl_pretrained.md

@@ -1,12 +1,8 @@
-from typing import Optional
-from typing import List
-from typing import Union
-
 from datetime import datetime
-from pydantic.typing import Literal
-from pydantic import BaseModel
-from pydantic import Field
+from typing import List, Literal, Optional, Union
+
 import datamol as dm
+from pydantic import BaseModel, ConfigDict, Field
 
 
 def get_model_init(card):
@@ -53,6 +49,12 @@ def get_model_init(card):
 
 
 class ModelInfo(BaseModel):
+    model_config = ConfigDict(
+        protected_namespaces=(
+            "protected_",
+        )  # Prevents warning from usage of model_ prefix in fields
+    )
+
     name: str
     inputs: str = "smiles"
     type: Literal["pretrained", "hand-crafted", "hashed", "count"]
@@ -62,12 +64,12 @@ class ModelInfo(BaseModel):
     description: str
     representation: Literal["graph", "line-notation", "vector", "tensor", "other"]
     require_3D: Optional[bool] = False
-    tags: Optional[List[str]]
+    tags: Optional[List[str]] = []
     authors: Optional[List[str]]
-    reference: Optional[str]
+    reference: Optional[str] = None
     created_at: datetime = Field(default_factory=datetime.now)
-    sha256sum: Optional[str]
-    model_usage: Optional[str]
+    sha256sum: Optional[str] = None
+    model_usage: Optional[str] = None
 
     def path(self, root_path: str):
         """Generate the folder path where to save this model
@@ -86,9 +88,9 @@ class ModelInfo(BaseModel):
             match_only: list of minimum attribute that should match between the two model information
         """
 
-        self_content = self.dict().copy()
+        self_content = self.model_dump().copy()
         if not isinstance(new_card, dict):
-            new_card = new_card.dict()
+            new_card = new_card.model_dump()
         new_content = new_card.copy()
         # we always remove the datetime field
         self_content.pop("created_at", None)

@@ -1,24 +1,23 @@
-import time
 import os
 import shutil
-import unittest as ut
-import torch
-import datamol as dm
-import pandas as pd
-import numpy as np
 import tempfile
-import joblib
+import time
+import unittest as ut
 
+import datamol as dm
+import joblib
+import numpy as np
+import pandas as pd
+import torch
 from rdkit.DataStructs.cDataStructs import ExplicitBitVect
-from molfeat.calc import SerializableCalculator
-from molfeat.calc.descriptors import MordredDescriptors
+
+from molfeat.calc import RDKitDescriptors2D, SerializableCalculator
 from molfeat.calc.fingerprints import FPCalculator
 from molfeat.calc.pharmacophore import Pharmacophore2D
 from molfeat.trans import MoleculeTransformer
 from molfeat.trans.base import PrecomputedMolTransformer
-from molfeat.trans.fp import FPVecTransformer
-from molfeat.trans.fp import FPVecFilteredTransformer
 from molfeat.trans.concat import FeatConcat
+from molfeat.trans.fp import FPVecFilteredTransformer, FPVecTransformer
 from molfeat.utils.cache import DataCache, FileCache, MPDataCache
 
 
@@ -231,13 +230,12 @@ class TestMolTransformer(ut.TestCase):
         out2, ids = concat_transf1(self.smiles, enforce_dtype=True, ignore_errors=True)
         np.testing.assert_allclose(out1, out2)
 
-    # @pytest.mark.xfail
     def test_caching(self):
-        ## check performance when cache is added from existing cache
+        # check performance when cache is added from existing cache
         smiles = dm.data.freesolv().smiles.values[:50]
-        desc = MordredDescriptors(replace_nan=False, ignore_3D=True)
+        desc = RDKitDescriptors2D(replace_nan=False, ignore_3D=True)
         transff = MoleculeTransformer(desc, verbose=True)
-        cache = DataCache(name="mordred")
+        cache = DataCache(name="rdkit2d")
 
         t1 = time.time()
         out1 = transff(smiles)
@@ -264,7 +262,7 @@ class TestMolTransformer(ut.TestCase):
         self.assertTrue(elapsed3 <= elapsed1 or elapsed1 < 1.5)
         np.testing.assert_array_equal(out1, out3)
 
-        ## check when cache is build on the fly from a
+        # check when cache is build on the fly from a
         transff = MoleculeTransformer("desc2d")
         cache = DataCache(name="desc2d_transformer1")
         t1 = time.time()
@@ -280,7 +278,7 @@ class TestMolTransformer(ut.TestCase):
         np.testing.assert_array_equal(out1, out2)
         np.testing.assert_array_equal(out1, out3)
 
-        ## check when cache is build on the fly while the transformer name is not defined
+        # check when cache is build on the fly while the transformer name is not defined
         cache = DataCache(name="desc2d_transformer2")
         t1 = time.time()
         out1 = cache(smiles, transff)

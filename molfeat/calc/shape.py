@@ -1,12 +1,11 @@
-from typing import Union, List, Optional
+from typing import List, Optional, Union
 
 import datamol as dm
 import numpy as np
-
 from numpy.linalg import norm
+from rdkit.Chem import rdForceFieldHelpers, rdMolDescriptors, rdPartialCharges
 from scipy.special import cbrt
-from rdkit.Chem import rdPartialCharges, rdForceFieldHelpers
-from rdkit.Chem import rdMolDescriptors
+
 from molfeat.calc.base import SerializableCalculator
 from molfeat.utils.commons import requires_conformer
 
@@ -57,16 +56,16 @@ class USRDescriptors(SerializableCalculator):
         return len(self.columns)
 
     @requires_conformer
-    def __call__(self, mol: Union[dm.Mol, str], conformer_id: Optional[int] = -1):
+    def __call__(self, mol: Union[dm.Mol, str], conformer_id: Optional[int] = -1) -> np.ndarray:
         r"""
         Get rdkit 3D descriptors for a molecule
 
         Args:
             mol: the molecule of interest
-            conformer_id (int, optional): Optional conformer id. Defaults to -1.
+            conformer_id: Optional conformer id. Defaults to -1.
 
         Returns:
-            shape_descriptors (np.ndarray): list of computed mordred molecular descriptors
+            shape_descriptors: list of computed molecular descriptors
         """
         if self.method == "USR":
             shape_descr = rdMolDescriptors.GetUSR(mol, confId=conformer_id)

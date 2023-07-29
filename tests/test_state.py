@@ -1,35 +1,33 @@
+import datamol as dm
+import numpy as np
 import pytest
 
-import numpy as np
-import datamol as dm
-
 from molfeat._version import __version__ as MOLFEAT_VERSION
-from molfeat.trans.fp import FPVecTransformer
-from molfeat.trans.fp import FPVecFilteredTransformer
-from molfeat.trans.base import MoleculeTransformer
-from molfeat.trans.base import PrecomputedMolTransformer
-from molfeat.trans.graph import AdjGraphTransformer
-from molfeat.trans.graph import DGLGraphTransformer
-from molfeat.trans.graph import TopoDistGraphTransformer
-from molfeat.trans.graph import PYGGraphTransformer
-from molfeat.trans.pretrained import PretrainedDGLTransformer
-from molfeat.trans.pretrained import GraphormerTransformer
-from molfeat.trans.pretrained import PretrainedHFTransformer
-
-from molfeat.calc.atom import AtomCalculator
+from molfeat.calc import (
+    CATS,
+    FPCalculator,
+    Pharmacophore2D,
+    RDKitDescriptors2D,
+    ScaffoldKeyCalculator,
+)
+from molfeat.calc._atom_bond_features import atom_chiral_tag_one_hot, atom_one_hot
+from molfeat.calc.atom import AtomCalculator, AtomMaterialCalculator
 from molfeat.calc.bond import BondCalculator
-from molfeat.calc.atom import AtomMaterialCalculator
-from molfeat.calc import FPCalculator
-from molfeat.calc import ScaffoldKeyCalculator
-from molfeat.calc import RDKitDescriptors2D
-from molfeat.calc import CATS
-from molfeat.calc import Pharmacophore2D
-from molfeat.calc._atom_bond_features import atom_chiral_tag_one_hot
-from molfeat.calc._atom_bond_features import atom_one_hot
-from molfeat.trans.graph import MolTreeDecompositionTransformer
-
-from molfeat.utils.cache import MolToKey
-from molfeat.utils.cache import FileCache
+from molfeat.trans.base import MoleculeTransformer, PrecomputedMolTransformer
+from molfeat.trans.fp import FPVecFilteredTransformer, FPVecTransformer
+from molfeat.trans.graph import (
+    AdjGraphTransformer,
+    DGLGraphTransformer,
+    MolTreeDecompositionTransformer,
+    PYGGraphTransformer,
+    TopoDistGraphTransformer,
+)
+from molfeat.trans.pretrained import (
+    GraphormerTransformer,
+    PretrainedDGLTransformer,
+    PretrainedHFTransformer,
+)
+from molfeat.utils.cache import FileCache, MolToKey
 from molfeat.utils.state import compare_state
 
 

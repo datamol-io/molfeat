@@ -1,23 +1,19 @@
-from typing import Optional
-from typing import Any
-from typing import Union
-from typing import Callable
-
-import yaml
-import joblib
-import pathlib
 import os
-import fsspec
+import pathlib
 import tempfile
-import platformdirs
-import filelock
+from typing import Any, Callable, Optional, Union
+
 import datamol as dm
+import filelock
+import fsspec
+import joblib
+import platformdirs
+import yaml
 from dotenv import load_dotenv
 from loguru import logger
 
 from molfeat.store.modelcard import ModelInfo
 from molfeat.utils import commons
-
 
 load_dotenv()
 

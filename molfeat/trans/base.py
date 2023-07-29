@@ -1,3 +1,4 @@
+from pathlib import Path
 from typing import Mapping
 from typing import Union
 from typing import List
@@ -31,6 +32,7 @@ from molfeat.utils.cache import _Cache, FileCache, MPDataCache
 from molfeat.utils.cache import CacheList
 from molfeat.utils.commons import fn_to_hex
 from molfeat.utils.commons import hex_to_fn
+from molfeat.utils.commons import is_callable
 from molfeat.utils.parsing import get_input_args
 from molfeat.utils.parsing import import_from_string
 from molfeat.utils.state import map_dtype
@@ -195,6 +197,10 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
         self._fitted = False
 
         self._save_input_args()
+        if self.featurizer and not (
+            isinstance(self.featurizer, str) or is_callable(self.featurizer)
+        ):
+            raise AttributeError(f"Featurizer {self.featurizer} must be a callable or a string")
 
     def _save_input_args(self):
         """Save the input arguments of a transformer to the attribute
@@ -316,7 +322,9 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
         if not ignore_errors:
             for ind, feat in enumerate(features):
                 if feat is None:
-                    raise ValueError(f"Cannot transform molecule at index {ind}")
+                    raise ValueError(
+                        f"Cannot transform molecule at index {ind}. Please check logs (set verbose to True) to see errors!"
+                    )
 
         return features
 
@@ -573,11 +581,11 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
     def to_state_yaml(self) -> str:
         return yaml.dump(self.to_state_dict(), Dumper=yaml.SafeDumper)
 
-    def to_state_json_file(self, filepath: str):
+    def to_state_json_file(self, filepath: Union[str, Path]):
         with fsspec.open(filepath, "w") as f:
             f.write(self.to_state_json())  # type: ignore
 
-    def to_state_yaml_file(self, filepath: str):
+    def to_state_yaml_file(self, filepath: Union[str, Path]):
         with fsspec.open(filepath, "w") as f:
             f.write(self.to_state_yaml())  # type: ignore
 
@@ -672,7 +680,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
 
     @staticmethod
     def from_state_json_file(
-        filepath: str,
+        filepath: Union[str, Path],
         override_args: Optional[dict] = None,
     ) -> "MoleculeTransformer":
         with fsspec.open(filepath, "r") as f:
@@ -681,7 +689,7 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
 
     @staticmethod
     def from_state_yaml_file(
-        filepath: str,
+        filepath: Union[str, Path],
         override_args: Optional[dict] = None,
     ) -> "MoleculeTransformer":
         with fsspec.open(filepath, "r") as f:
