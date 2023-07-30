@@ -92,6 +92,10 @@ all = [
     "ipywidgets",
 ]
 
+test = ["pytest >=6.0", "black >=22", "ruff"]
+docs = ["mkdocs", "mkdocs-material >=7.1.1", "mkdocs-jupyter", "mkdocstrings", "mkdocstrings-python", "markdown-include"]
+dev = ["molfeat[test]", "molfeat[all]", "molfeat[docs]"]
+
 [project.urls]
 Website = "https://molfeat.datamol.io"
 "Source Code" = "https://github.com/datamol-io/molfeat"
