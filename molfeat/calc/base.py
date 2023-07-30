@@ -6,7 +6,6 @@ import json
 import joblib
 import yaml
 import fsspec
-import importlib
 from loguru import logger
 from molfeat._version import __version__ as MOLFEAT_VERSION
 

@@ -169,7 +169,7 @@ def test_state_atom_bond_pickle(featurizer_builder, tmp_path):
     assert len(out) == len(out2) == len(mols)
     for o1, o2 in zip(out, out2):
         if isinstance(o1, (list, tuple)):
-            assert np.all([np.allclose(i, j, atol=2) for i, j in zip(o1, o2)]) is True
+            assert bool(np.all([np.allclose(i, j, atol=2) for i, j in zip(o1, o2)])) is True
         else:
             np.testing.assert_array_equal(o1, o2)
 

@@ -57,7 +57,7 @@ class ESMProteinFingerprint(MoleculeTransformer):
         self._max_layers = int(max_layer_pattern.match(featurizer).group(1))
         if layers is None:
             self.repr_layers = [self._max_layers]
-        if any(l > self._max_layers for l in self.repr_layers):
+        if any(lay > self._max_layers for lay in self.repr_layers):
             raise ValueError(
                 "You are requesting more layers than available for this pretrained model"
             )

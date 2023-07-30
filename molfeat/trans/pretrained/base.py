@@ -130,7 +130,7 @@ class PretrainedMolTransformer(MoleculeTransformer):
         if self.precompute_cache not in [False, None]:
             try:
                 self.transform(inputs)
-            except:
+            except Exception:
                 pass
         return out
 

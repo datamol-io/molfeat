@@ -11,7 +11,7 @@ import pandas as pd
 import torch
 from rdkit.DataStructs.cDataStructs import ExplicitBitVect
 
-from molfeat.calc import RDKitDescriptors2D, SerializableCalculator
+from molfeat.calc import SerializableCalculator
 from molfeat.calc.fingerprints import FPCalculator
 from molfeat.calc.pharmacophore import Pharmacophore2D
 from molfeat.calc.descriptors import MordredDescriptors
@@ -310,7 +310,7 @@ class TestMolTransformer(ut.TestCase):
 
             try:
                 os.unlink(parquet_out)
-            except:
+            except Exception:
                 shutil.rmtree(parquet_out)
 
 

@@ -72,7 +72,7 @@ def to_tensor(x, gpu=False, dtype=None):
         try:
             if torch.is_tensor(x[0]):
                 x = torch.stack(x)
-        except:
+        except Exception:
             pass
         x = torch.as_tensor(x)
     if dtype is not None:
@@ -205,11 +205,11 @@ def is_null(obj):
     try:
         tmp = to_numpy(obj)
         array_nan = np.all(np.isnan(tmp))
-    except:
+    except Exception:
         pass
     try:
         all_none = all(x is None for x in obj)
-    except:
+    except Exception:
         pass
     return obj is None or all_none or array_nan
 

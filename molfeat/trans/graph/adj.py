@@ -102,7 +102,7 @@ class GraphTransformer(MoleculeTransformer):
                 mol = dm.to_mol(
                     m, add_hs=self.explicit_hydrogens, ordered=self.canonical_atom_order
                 )
-            except:
+            except Exception:
                 mol = None
             new_inputs.append(mol)
 
@@ -125,7 +125,7 @@ class GraphTransformer(MoleculeTransformer):
         if self._atom_dim is None:
             try:
                 self._atom_dim = len(self.atom_featurizer)
-            except:
+            except Exception:
                 _toy_mol = dm.to_mol("C")
                 out = self.atom_featurizer(_toy_mol)
                 self._atom_dim = sum([x.shape[-1] for x in out.values()])
@@ -144,7 +144,7 @@ class GraphTransformer(MoleculeTransformer):
         if self._bond_dim is None:
             try:
                 self._bond_dim = len(self.bond_featurizer)
-            except:
+            except Exception:
                 _toy_mol = dm.to_mol("CO")
                 out = self.bond_featurizer(_toy_mol)
                 self._bond_dim = sum([x.shape[-1] for x in out.values()])

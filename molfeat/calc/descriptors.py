@@ -55,6 +55,13 @@ class RDKitDescriptors2D(SerializableCalculator):
     r"""
     Compute a list of available  rdkit 2D descriptors for a molecule.
     The descriptor calculator does not mask errors in featurization and will propagate them
+
+    !!! note
+        Due to recent RDKit changes, this calculator could hang for a while for large molecules (>900).
+        The main culprit is the `Ipc` descriptor which requires some computation on the full adjacency matrix.
+        You may also consider using `ignore_descrs=['AvgIpc', 'Ipc']` as a workaround when you have large molecules.
+        Alternatively, You may wish to use an alternative featurizer
+
     """
 
     DESCRIPTORS_FN = {name: fn for (name, fn) in Descriptors.descList}
@@ -66,6 +73,7 @@ class RDKitDescriptors2D(SerializableCalculator):
         descrs: List = None,
         avg_ipc: Optional[bool] = True,
         do_not_standardize: Optional[bool] = False,
+        ignore_descrs: Optional[List] = None,
         **kwargs,
     ):
         """RDKit descriptor computation
@@ -75,6 +83,8 @@ class RDKitDescriptors2D(SerializableCalculator):
             augment: Whether to augment the descriptors with some additional custom features
             descrs: Subset of available features to consider if not None
             avg_ipc: Whether to average IPC values or to use rdkit original
+            ignore_descrs: optional list of descriptors to ignore. You can get the full list of default descriptors
+                by calling `calculator.columns`.
             do_not_standardize: Whether to force standardization of molecule before computation of the descriptor.
                 Set to True if you want molfeat<=0.5.3 behaviour
         """
@@ -84,6 +94,7 @@ class RDKitDescriptors2D(SerializableCalculator):
         self.avg_ipc = avg_ipc
         self.do_not_standardize = do_not_standardize
         all_features = [d[0] for d in Descriptors.descList]
+        self.ignore_descrs = ignore_descrs or []
         if self.augment:
             all_features += [
                 "NumAtomStereoCenters",
@@ -100,6 +111,8 @@ class RDKitDescriptors2D(SerializableCalculator):
                 logger.warning(f"Following features are not supported: {unknown_descrs}")
         else:
             self._columns = all_features
+
+        self._columns = [x for x in self._columns if x not in self.ignore_descrs]
 
     def __getstate__(self):
         """Serialize the class for pickling."""
@@ -266,7 +279,7 @@ class RDKitDescriptors3D(SerializableCalculator):
             if desc not in self.ignore_descrs:
                 try:
                     val = getattr(Descriptors3D.rdMolDescriptors, desc)(mol, confId=conformer_id)
-                except:
+                except Exception:
                     pass
                 desc_val.append(val)
         for i, desc in enumerate(self._vec_descr):
@@ -274,7 +287,7 @@ class RDKitDescriptors3D(SerializableCalculator):
             if desc not in self.ignore_descrs:
                 try:
                     val = getattr(Descriptors3D.rdMolDescriptors, desc)(mol, confId=conformer_id)
-                except:
+                except Exception:
                     pass
                 desc_val.extend(val)
 
