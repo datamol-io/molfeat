@@ -11,7 +11,7 @@ import pandas as pd
 import torch
 from rdkit.DataStructs.cDataStructs import ExplicitBitVect
 
-from molfeat.calc import RDKitDescriptors2D, SerializableCalculator
+from molfeat.calc import SerializableCalculator
 from molfeat.calc.fingerprints import FPCalculator
 from molfeat.calc.pharmacophore import Pharmacophore2D
 from molfeat.calc.descriptors import MordredDescriptors
@@ -95,11 +95,11 @@ class TestMolTransformer(ut.TestCase):
             transf1 = MoleculeTransformer(featurizer=fpkind, n_jobs=1)
             transf2 = MoleculeTransformer(featurizer=fpkind, n_jobs=-1)
             smiles = dm.freesolv()["smiles"].sample(n=2000, replace=True).values
-            t0 = time.time()
+            time.time()
             out1 = transf1.transform(smiles)
-            t1 = time.time()
+            time.time()
             out2 = transf2.transform(smiles)
-            t2 = time.time()
+            time.time()
             np.testing.assert_allclose(out1, out2)
             # we should be technically saving time with parallelization
             # self.assertLessEqual(t2 - t1, t1 - t0)
@@ -132,13 +132,13 @@ class TestMolTransformer(ut.TestCase):
 
     def test_unknown_kind_exception(self):
         with self.assertRaises(ValueError) as context:
-            transf = FPVecTransformer(kind="notakind", length=300)
+            FPVecTransformer(kind="notakind", length=300)
             self.assertTrue("is not a valid" in str(context.exception))
 
     def test_none_mol_exception(self):
         transf = MoleculeTransformer("rdkit")
         with self.assertRaises(ValueError) as context:
-            fps = transf.transform([None])
+            transf.transform([None])
             self.assertTrue("transform molecule at" in str(context.exception))
         feat = transf.transform([None], ignore_errors=True)
         self.assertEqual(feat[0], None)
@@ -167,7 +167,7 @@ class TestMolTransformer(ut.TestCase):
     def test_3d_exception(self):
         with self.assertRaises(ValueError) as context:
             transf = MoleculeTransformer("desc3D", verbose=True)
-            fp = transf.transform(self.smiles, ignore_errors=False)
+            transf.transform(self.smiles, ignore_errors=False)
             self.assertTrue("molecule with conformer" in str(context.exception))
 
     def test_fp_filtering(self):
@@ -310,7 +310,7 @@ class TestMolTransformer(ut.TestCase):
 
             try:
                 os.unlink(parquet_out)
-            except:
+            except Exception:
                 shutil.rmtree(parquet_out)
 
 

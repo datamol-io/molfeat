@@ -45,7 +45,7 @@ class SmilesConverter:
             try:
                 decoded = self.converter.decode(inp)
                 return decoded.strip()
-            except:  # (deepsmiles.DecodeError, ValueError, AttributeError, IndexError):
+            except Exception:  # (deepsmiles.DecodeError, ValueError, AttributeError, IndexError):
                 return None
 
     def encode(self, smiles: str):
@@ -60,5 +60,5 @@ class SmilesConverter:
             try:
                 encoded = self.converter.encode(smiles)
                 return encoded.strip()
-            except:
+            except Exception:
                 return None

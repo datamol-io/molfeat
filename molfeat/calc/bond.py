@@ -19,7 +19,6 @@ from molfeat.calc._atom_bond_features import bond_is_in_ring
 from molfeat.calc._atom_bond_features import bond_direction_one_hot
 from molfeat.calc._atom_bond_features import bond_stereo_one_hot
 from molfeat.calc._atom_bond_features import pairwise_ring_membership
-from molfeat.calc._atom_bond_features import pairwise_3D_dist
 from molfeat.calc._atom_bond_features import pairwise_2D_dist
 from molfeat.calc._atom_bond_features import pairwise_bond_indicator
 from molfeat.calc._atom_bond_features import pairwise_dist_indicator

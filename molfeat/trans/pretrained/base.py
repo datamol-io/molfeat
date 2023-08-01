@@ -3,7 +3,6 @@ from typing import Union
 from typing import Callable
 from typing import List
 from collections.abc import Iterable
-from functools import lru_cache
 
 import copy
 import datamol as dm
@@ -131,7 +130,7 @@ class PretrainedMolTransformer(MoleculeTransformer):
         if self.precompute_cache not in [False, None]:
             try:
                 self.transform(inputs)
-            except:
+            except Exception:
                 pass
         return out
 

@@ -21,12 +21,12 @@ def check(module: str, min_version: Optional[str] = None, max_version: Optional[
     try:
         imported_module = importlib.import_module(module)
         version = getattr(imported_module, "__version__", None)
-    except ImportError as _:
+    except ImportError:
         return False
     if version is not None:
         try:
             version = pkg_version.parse(version)
-        except pkg_version.InvalidVersion as _:
+        except pkg_version.InvalidVersion:
             # EN: packaging v22 removed LegacyVersion which has consequences
             version = None
     return version is None or (

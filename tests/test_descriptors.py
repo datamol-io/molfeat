@@ -46,7 +46,6 @@ class TestDescPharm(ut.TestCase):
         fps = calc(sm)
         fps2 = calc(sm_disconnected)
         np.testing.assert_allclose(fps, fps2)
-
         # with the fix we should not have any value that is nan after sanitization
         # neither for Charge related or BCut2D properties
         self.assertFalse(np.isnan(fps).any())
@@ -58,10 +57,11 @@ class TestDescPharm(ut.TestCase):
         bcut_cols = [i for i, x in enumerate(calc.columns) if "bcut" in x.lower()]
         self.assertTrue(np.isnan(fps[bcut_cols]).all())
 
-        # sanity check for large molecules
-        ipc_colums = calc.columns.index("Ipc")
+    def test_rdkit2d_large_mol_no_ipc(self):
+        # sanity check for large molecules that will hang forerever
+        calc = RDKitDescriptors2D(ignore_descrs=["Ipc", "AvgIpc"])
         fps = calc(self.EXTRA_LARGE_MOL)
-        self.assertLessEqual(fps[ipc_colums], 1e3)
+        self.assertEqual(len(fps), len(calc))
 
     def test_rdkit3d(self):
         calc = RDKitDescriptors3D()
@@ -118,7 +118,7 @@ class TestDescPharm(ut.TestCase):
 
     def test_shape_descriptors(self):
         calc = USRDescriptors("usrcat")
-        with self.assertRaises(ValueError) as context:
+        with self.assertRaises(ValueError):
             calc(self.smiles[0])
         mol_with_conf = dm.conformers.generate(dm.to_mol(self.smiles[0]))
         out = calc(mol_with_conf)

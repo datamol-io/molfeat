@@ -221,7 +221,7 @@ class FPCalculator(SerializableCalculator):
         """
         self.method = method.lower()
         self.counting = counting or "-count" in self.method
-        if self.counting and not "-count" in self.method:
+        if self.counting and "-count" not in self.method:
             self.method = self.method + "-count"
         self.input_length = length
         if self.method not in FP_FUNCS:

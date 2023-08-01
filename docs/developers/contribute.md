@@ -10,14 +10,54 @@ The rest of this page details the development lifecycle of molfeat.
 
 ## Setup a dev environment
 
-First you'll need to fork and clone the repository. Once you have a local copy, install the dependencies.
-It is strongly recommended that you do so in a new conda environment.
+To contribute, you will first need to setup a dev environment. Follow the steps below:
 
-```bash
-mamba env create -n molfeat -f env.yml
-mamba activate molfeat
-pip install -e .
-```
+1. Fork the [repository](https://github.com/datamol-io/molfeat) by
+   clicking on the **[Fork](https://github.com/datamol-io/molfeat/fork)** button on the repository's page. This creates a copy of the code under your GitHub user account.
+
+2. Clone your fork to your local disk, and add the base repository as a remote:
+
+   ```bash
+   git clone git@github.com:<your Github handle>/molfeat.git
+   cd molfeat
+   git remote add upstream https://github.com/datamol-io/molfeat.git
+   ```
+
+3. Create a new branch to hold your development changes:
+
+   ```bash
+   git checkout -b useful-branch-name
+   ```
+
+   **Do not** work on the `main` branch!
+
+4. Once you have a local copy, setup a development environment and install the dependencies. 
+   
+   It is strongly recommended that you do so in a new **conda environment**. 
+
+    ```bash
+    mamba env create -n molfeat -f env.yml
+    conda activate molfeat
+    pip install -e . --no-deps
+    ```
+
+    If you absolutely cannot use `conda/mamba`, please use the following pip install command in your virtual environment:
+
+    ```bash
+    pip install -e ".[dev]"
+    ```
+
+   If molfeat was already installed in the virtual environment, remove it with `pip uninstall molfeat` first, before reinstalling it in editable mode with the `-e` flag.
+   
+5. Make your changes and modifications on your branch.
+
+   As you work on your code, you should make sure the test suite passes. Run the tests impacted by your changes like this:
+
+   ```bash
+   pytest tests/<TEST_TO_RUN>.py
+   ```
+
+6. Commit your code, push it to your forked repository and open a pull request with a detailed description of your changes and why they are valuable. 
 
 ## Continuous Integration
 
@@ -27,7 +67,7 @@ molfeat uses Github Actions to:
 - **Check code formating** the code: `black`.
 - **Documentation**: build and deploy the documentation on `main` and for every new git tag.
 
-## Run tests
+## Run tests globally
 
 ```bash
 pytest

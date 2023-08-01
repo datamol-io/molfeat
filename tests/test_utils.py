@@ -112,7 +112,7 @@ class TestCache(ut.TestCase):
         np.testing.assert_array_equal(new_cache[first_smiles], first_smiles_val)
         try:
             os.unlink(save_file)
-        except:
+        except Exception:
             pass
 
     def test_filecache(self):
@@ -196,7 +196,7 @@ class TestCache(ut.TestCase):
             for path in [parquet_out, csv_out]:
                 try:
                     os.unlink(path)
-                except:
+                except Exception:
                     shutil.rmtree(path)
 
     def test_cache_list(self):

@@ -123,7 +123,7 @@ class ModelStore:
         if save_fn is None:
             if not isinstance(model, (pathlib.Path, os.PathLike)):
                 local_model_path = tempfile.NamedTemporaryFile(delete=False)
-                with local_model_path as f:
+                with local_model_path:
                     joblib.dump(model, local_model_path)
                 model_path = local_model_path.name
             # Upload the artifact to the bucket
@@ -152,10 +152,10 @@ class ModelStore:
         lock_path = dm.fs.join(
             str(platformdirs.user_cache_dir("molfeat")), "_lock_files", lock_name
         )
-        mapper = dm.fs.get_mapper(lock_path)
+        dm.fs.get_mapper(lock_path)
         # ensure file is created
         # out = mapper.fs.touch(lock_path) # does not work  -_-
-        with fsspec.open(lock_path, "w", auto_mkdir=True) as f:
+        with fsspec.open(lock_path, "w", auto_mkdir=True):
             pass
 
         return filelock.FileLock(lock_path)
