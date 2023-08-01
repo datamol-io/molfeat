@@ -4202,7 +4202,7 @@
                 <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_file</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span><span class="p">):</span>
                     <span class="k">try</span><span class="p">:</span>
                         <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-                    <span class="k">except</span><span class="p">:</span>  <span class="c1"># noqa</span>
+                    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>  <span class="c1"># noqa</span>
                         <span class="k">pass</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_cache</span><span class="p">()</span>
@@ -4641,7 +4641,7 @@ Note that a cleared cache cannot be used anymore</p>
             <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_file</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span><span class="p">):</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-                <span class="k">except</span><span class="p">:</span>  <span class="c1"># noqa</span>
+                <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>  <span class="c1"># noqa</span>
                     <span class="k">pass</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_cache</span><span class="p">()</span>
@@ -9243,12 +9243,12 @@ while new_batch_x has size (N,D)</p>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">imported_module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
         <span class="n">version</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">imported_module</span><span class="p">,</span> <span class="s2">&quot;__version__&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">_</span><span class="p">:</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="n">version</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">version</span> <span class="o">=</span> <span class="n">pkg_version</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
-        <span class="k">except</span> <span class="n">pkg_version</span><span class="o">.</span><span class="n">InvalidVersion</span> <span class="k">as</span> <span class="n">_</span><span class="p">:</span>
+        <span class="k">except</span> <span class="n">pkg_version</span><span class="o">.</span><span class="n">InvalidVersion</span><span class="p">:</span>
             <span class="c1"># EN: packaging v22 removed LegacyVersion which has consequences</span>
             <span class="n">version</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">return</span> <span class="n">version</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="p">(</span>
@@ -9935,11 +9935,11 @@ while new_batch_x has size (N,D)</p>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">tmp</span> <span class="o">=</span> <span class="n">to_numpy</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
         <span class="n">array_nan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">tmp</span><span class="p">))</span>
-    <span class="k">except</span><span class="p">:</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
         <span class="k">pass</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">all_none</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span><span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
         <span class="k">pass</span>
     <span class="k">return</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">all_none</span> <span class="ow">or</span> <span class="n">array_nan</span>
 </code></pre></div></td></tr></table></div>
@@ -10575,7 +10575,7 @@ the same as the original array, unless specify otherwise</p>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">is_tensor</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
                 <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">except</span><span class="p">:</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="k">pass</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -12603,7 +12603,7 @@ If mask is provided it takes precedence over indices.</p>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">decoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">converter</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
                 <span class="k">return</span> <span class="n">decoded</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-            <span class="k">except</span><span class="p">:</span>  <span class="c1"># (deepsmiles.DecodeError, ValueError, AttributeError, IndexError):</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>  <span class="c1"># (deepsmiles.DecodeError, ValueError, AttributeError, IndexError):</span>
                 <span class="k">return</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">smiles</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
@@ -12618,7 +12618,7 @@ If mask is provided it takes precedence over indices.</p>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">encoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">converter</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
                 <span class="k">return</span> <span class="n">encoded</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-            <span class="k">except</span><span class="p">:</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
                 <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -12857,7 +12857,7 @@ If mask is provided it takes precedence over indices.</p>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">decoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">converter</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">decoded</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-        <span class="k">except</span><span class="p">:</span>  <span class="c1"># (deepsmiles.DecodeError, ValueError, AttributeError, IndexError):</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>  <span class="c1"># (deepsmiles.DecodeError, ValueError, AttributeError, IndexError):</span>
             <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
           </details>
@@ -12937,7 +12937,7 @@ If mask is provided it takes precedence over indices.</p>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">encoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">converter</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">encoded</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-        <span class="k">except</span><span class="p">:</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
           </details>

@@ -706,8 +706,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#run-tests" class="md-nav__link">
-    Run tests
+  <a href="#run-tests-globally" class="md-nav__link">
+    Run tests globally
   </a>
   
 </li>
@@ -1200,8 +1200,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#run-tests" class="md-nav__link">
-    Run tests
+  <a href="#run-tests-globally" class="md-nav__link">
+    Run tests globally
   </a>
   
 </li>
@@ -1261,12 +1261,47 @@ Visit <a href="../community/contributions.html">Community Contribitons</a> to le
 </div>
 <p>The rest of this page details the development lifecycle of molfeat.</p>
 <h2 id="setup-a-dev-environment">Setup a dev environment<a class="headerlink" href="#setup-a-dev-environment" title="Permanent link">&para;</a></h2>
-<p>First you'll need to fork and clone the repository. Once you have a local copy, install the dependencies.
-It is strongly recommended that you do so in a new conda environment.</p>
-<div class="highlight"><pre><span></span><code>mamba<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>molfeat<span class="w"> </span>-f<span class="w"> </span>env.yml
-mamba<span class="w"> </span>activate<span class="w"> </span>molfeat
-pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+<p>To contribute, you will first need to setup a dev environment. Follow the steps below:</p>
+<ol>
+<li>
+<p>Fork the <a href="https://github.com/datamol-io/molfeat">repository</a> by
+   clicking on the <strong><a href="https://github.com/datamol-io/molfeat/fork">Fork</a></strong> button on the repository's page. This creates a copy of the code under your GitHub user account.</p>
+</li>
+<li>
+<p>Clone your fork to your local disk, and add the base repository as a remote:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:&lt;your<span class="w"> </span>Github<span class="w"> </span>handle&gt;/molfeat.git
+<span class="nb">cd</span><span class="w"> </span>molfeat
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/datamol-io/molfeat.git
 </code></pre></div>
+</li>
+<li>
+<p>Create a new branch to hold your development changes:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>useful-branch-name
+</code></pre></div>
+<p><strong>Do not</strong> work on the <code>main</code> branch!</p>
+</li>
+<li>
+<p>Once you have a local copy, setup a development environment and install the dependencies. </p>
+<p>It is strongly recommended that you do so in a new <strong>conda environment</strong>. </p>
+<div class="highlight"><pre><span></span><code>mamba<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>molfeat<span class="w"> </span>-f<span class="w"> </span>env.yml
+conda<span class="w"> </span>activate<span class="w"> </span>molfeat
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.<span class="w"> </span>--no-deps
+</code></pre></div>
+<p>If you absolutely cannot use <code>conda/mamba</code>, please use the following pip install command in your virtual environment:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
+</code></pre></div>
+<p>If molfeat was already installed in the virtual environment, remove it with <code>pip uninstall molfeat</code> first, before reinstalling it in editable mode with the <code>-e</code> flag.</p>
+</li>
+<li>
+<p>Make your changes and modifications on your branch.</p>
+<p>As you work on your code, you should make sure the test suite passes. Run the tests impacted by your changes like this:</p>
+<div class="highlight"><pre><span></span><code>pytest<span class="w"> </span>tests/&lt;TEST_TO_RUN&gt;.py
+</code></pre></div>
+</li>
+<li>
+<p>Commit your code, push it to your forked repository and open a pull request with a detailed description of your changes and why they are valuable. </p>
+</li>
+</ol>
 <h2 id="continuous-integration">Continuous Integration<a class="headerlink" href="#continuous-integration" title="Permanent link">&para;</a></h2>
 <p>molfeat uses Github Actions to:</p>
 <ul>
@@ -1274,7 +1309,7 @@ pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </s
 <li><strong>Check code formating</strong> the code: <code>black</code>.</li>
 <li><strong>Documentation</strong>: build and deploy the documentation on <code>main</code> and for every new git tag.</li>
 </ul>
-<h2 id="run-tests">Run tests<a class="headerlink" href="#run-tests" title="Permanent link">&para;</a></h2>
+<h2 id="run-tests-globally">Run tests globally<a class="headerlink" href="#run-tests-globally" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>pytest
 </code></pre></div>
 <h2 id="build-the-documentation">Build the documentation<a class="headerlink" href="#build-the-documentation" title="Permanent link">&para;</a></h2>

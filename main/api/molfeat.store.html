@@ -2837,7 +2837,7 @@
         <span class="n">import_statement</span> <span class="o">=</span> <span class="s2">&quot;from molfeat.trans import MoleculeTransformer&quot;</span>
         <span class="n">loader_statement</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;MoleculeTransformer(featurizer=&#39;</span><span class="si">{</span><span class="n">card</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;, dtype=float)&quot;</span>
     <span class="k">elif</span> <span class="n">card</span><span class="o">.</span><span class="n">group</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;rdkit&quot;</span><span class="p">,</span> <span class="s2">&quot;fp&quot;</span><span class="p">,</span> <span class="s2">&quot;shape&quot;</span><span class="p">]:</span>
-        <span class="n">import_statement</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;from molfeat.trans.fp import FPVecTransformer&quot;</span>
+        <span class="n">import_statement</span> <span class="o">=</span> <span class="s2">&quot;from molfeat.trans.fp import FPVecTransformer&quot;</span>
         <span class="n">loader_statement</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;FPVecTransformer(kind=&#39;</span><span class="si">{</span><span class="n">card</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;, dtype=float)&quot;</span>
     <span class="k">elif</span> <span class="n">card</span><span class="o">.</span><span class="n">group</span> <span class="o">==</span> <span class="s2">&quot;dgllife&quot;</span><span class="p">:</span>
         <span class="n">import_statement</span> <span class="o">=</span> <span class="s2">&quot;from molfeat.trans.pretrained import PretrainedDGLTransformer&quot;</span>
@@ -2847,7 +2847,7 @@
         <span class="n">loader_statement</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;GraphormerTransformer(kind=&#39;</span><span class="si">{</span><span class="n">card</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;, dtype=float)&quot;</span>
     <span class="k">elif</span> <span class="n">card</span><span class="o">.</span><span class="n">group</span> <span class="o">==</span> <span class="s2">&quot;fcd&quot;</span><span class="p">:</span>
         <span class="n">import_statement</span> <span class="o">=</span> <span class="s2">&quot;from molfeat.trans.pretrained import FCDTransformer&quot;</span>
-        <span class="n">loader_statement</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;FCDTransformer()&quot;</span>
+        <span class="n">loader_statement</span> <span class="o">=</span> <span class="s2">&quot;FCDTransformer()&quot;</span>
     <span class="k">elif</span> <span class="n">card</span><span class="o">.</span><span class="n">group</span> <span class="o">==</span> <span class="s2">&quot;pharmacophore&quot;</span><span class="p">:</span>
         <span class="n">name</span> <span class="o">=</span> <span class="n">card</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">card</span><span class="o">.</span><span class="n">require_3D</span><span class="p">:</span>
@@ -3346,7 +3346,7 @@ but also help in listing model availability and registering models.</p>
         <span class="k">if</span> <span class="n">save_fn</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">)):</span>
                 <span class="n">local_model_path</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-                <span class="k">with</span> <span class="n">local_model_path</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="k">with</span> <span class="n">local_model_path</span><span class="p">:</span>
                     <span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">local_model_path</span><span class="p">)</span>
                 <span class="n">model_path</span> <span class="o">=</span> <span class="n">local_model_path</span><span class="o">.</span><span class="n">name</span>
             <span class="c1"># Upload the artifact to the bucket</span>
@@ -3375,10 +3375,10 @@ but also help in listing model availability and registering models.</p>
         <span class="n">lock_path</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
             <span class="nb">str</span><span class="p">(</span><span class="n">platformdirs</span><span class="o">.</span><span class="n">user_cache_dir</span><span class="p">(</span><span class="s2">&quot;molfeat&quot;</span><span class="p">)),</span> <span class="s2">&quot;_lock_files&quot;</span><span class="p">,</span> <span class="n">lock_name</span>
         <span class="p">)</span>
-        <span class="n">mapper</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">get_mapper</span><span class="p">(</span><span class="n">lock_path</span><span class="p">)</span>
+        <span class="n">dm</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">get_mapper</span><span class="p">(</span><span class="n">lock_path</span><span class="p">)</span>
         <span class="c1"># ensure file is created</span>
         <span class="c1"># out = mapper.fs.touch(lock_path) # does not work  -_-</span>
-        <span class="k">with</span> <span class="n">fsspec</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">lock_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">auto_mkdir</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">fsspec</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">lock_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">auto_mkdir</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
             <span class="k">pass</span>
 
         <span class="k">return</span> <span class="n">filelock</span><span class="o">.</span><span class="n">FileLock</span><span class="p">(</span><span class="n">lock_path</span><span class="p">)</span>
@@ -4615,7 +4615,7 @@ but also help in listing model availability and registering models.</p>
     <span class="k">if</span> <span class="n">save_fn</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">)):</span>
             <span class="n">local_model_path</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-            <span class="k">with</span> <span class="n">local_model_path</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">local_model_path</span><span class="p">:</span>
                 <span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">local_model_path</span><span class="p">)</span>
             <span class="n">model_path</span> <span class="o">=</span> <span class="n">local_model_path</span><span class="o">.</span><span class="n">name</span>
         <span class="c1"># Upload the artifact to the bucket</span>
@@ -5081,7 +5081,7 @@ but also help in listing model availability and registering models.</p>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">modelcard</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">artifact_dir</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">modelcard</span><span class="p">,</span> <span class="n">download_path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="n">mess</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Can&#39;t retrieve model </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> from the store !&quot;</span>
             <span class="k">raise</span> <span class="n">ModelStoreError</span><span class="p">(</span><span class="n">mess</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">artifact_dir</span>
