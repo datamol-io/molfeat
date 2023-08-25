@@ -296,8 +296,8 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
             features: a list of features for each molecule in the input set
         """
         # Convert single mol to iterable format
-        if isistance(mols, pd.DataFrame):
-            mols = mols[mols.column[0]]
+        if isinstance(mols, pd.DataFrame):
+            mols = mols[mols.columns[0]]
         if isinstance(mols, (str, dm.Mol)) or not isinstance(mols, Iterable):
             mols = [mols]
 
