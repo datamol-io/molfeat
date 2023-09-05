@@ -30,7 +30,7 @@ def mols(request, smiles):
 
 
 def test_list_series_dataframe(mols):
-    transformer_ecfp = MoleculeTransformer(featurizer="ecfp")
+    transformer_ecfp = MoleculeTransformer(featurizer="ecfp", dtype=float)
     results = transformer_ecfp.fit_transform(mols)
 
     assert results.shape == (4, 2048)
@@ -42,7 +42,7 @@ def test_with_pipeline_column_transformer(smiles):
     mols = pd.DataFrame({"smiles": smiles, "column_2": [1, 0, 1, 1]})
 
     # setup pipeline
-    transformer_ecfp = MoleculeTransformer(featurizer="ecfp")
+    transformer_ecfp = MoleculeTransformer(featurizer="ecfp", dtype=float)
     column_preprocessor = ColumnTransformer(
         transformers=[
             ("ecfp_trans", transformer_ecfp, ["smiles"]),

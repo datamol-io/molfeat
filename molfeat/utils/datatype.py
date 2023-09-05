@@ -193,7 +193,8 @@ def is_dtype_numpy(dtype):
     """
     # special case where user provides a type
     if isinstance(dtype, str):
-        dtype = np.dtype(dtype).type
+        with suppress(Exception):
+            dtype = np.dtype(dtype).type
     is_torch = is_dtype_tensor(dtype)
     is_num = dtype in (int, float, complex)
     if hasattr(dtype, "__module__"):
