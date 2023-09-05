@@ -274,9 +274,11 @@ def as_numpy_array_if_possible(arr, dtype: Optional[None]):
         ):
             # skip any non compatible type
             # meaning it should be a list of list or a list of numpy array or a 2D numpy array.
-            if isinstance(
-                arr, (list, np.ndarray) and isinstance(arr[0], np.ndarray, list)
-            ) and np.isscalar(arr[0][0]):
+            if (
+                isinstance(arr, (list, np.ndarray))
+                and isinstance(arr[0], (np.ndarray, list))
+                and np.isscalar(arr[0][0])
+            ):
                 return sk_utils.check_array(
                     arr, accept_sparse=True, force_all_finite=False, ensure_2d=False, allow_nd=True
                 )
