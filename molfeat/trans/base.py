@@ -19,7 +19,6 @@ import pandas as pd
 import datamol as dm
 import numpy as np
 
-from sklearn import utils
 from sklearn.base import TransformerMixin
 from sklearn.base import BaseEstimator
 from loguru import logger
@@ -329,9 +328,8 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
                         f"Cannot transform molecule at index {ind}. Please check logs (set verbose to True) to see errors!"
                     )
 
-        # sklearn feature validation
-        return utils.check_array(features)
-
+        # sklearn feature validation for sklearn pipeline
+        return datatype.as_numpy_array_if_possible(features, self.dtype)
 
     def __len__(self):
         """Compute featurizer length"""
