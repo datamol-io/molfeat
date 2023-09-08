@@ -295,6 +295,8 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
             features: a list of features for each molecule in the input set
         """
         # Convert single mol to iterable format
+        if isinstance(mols, pd.DataFrame):
+            mols = mols[mols.columns[0]]
         if isinstance(mols, (str, dm.Mol)) or not isinstance(mols, Iterable):
             mols = [mols]
 
@@ -326,7 +328,8 @@ class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_Transform
                         f"Cannot transform molecule at index {ind}. Please check logs (set verbose to True) to see errors!"
                     )
 
-        return features
+        # sklearn feature validation for sklearn pipeline
+        return datatype.as_numpy_array_if_possible(features, self.dtype)
 
     def __len__(self):
         """Compute featurizer length"""

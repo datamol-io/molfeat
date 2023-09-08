@@ -8,6 +8,7 @@ import copy
 import datamol as dm
 
 from loguru import logger
+from molfeat.utils import datatype
 from molfeat.utils.commons import _parse_to_evaluable_str
 from molfeat.trans.base import MoleculeTransformer
 from molfeat.utils.cache import DataCache
@@ -216,7 +217,7 @@ class PretrainedMolTransformer(MoleculeTransformer):
             out[ind_to_compute[i]] if i in ind_to_compute else pre_computed[i]
             for i in range(n_mols)
         ]
-        return out
+        return datatype.as_numpy_array_if_possible(out, self.dtype)
 
     def __eq__(self, other):
         if isinstance(other, self.__class__):

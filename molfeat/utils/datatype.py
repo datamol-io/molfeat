@@ -8,11 +8,13 @@ import numpy as np
 import datamol as dm
 import pandas as pd
 
+from contextlib import suppress
 from rdkit.DataStructs.cDataStructs import ConvertToExplicit
 from rdkit.DataStructs.cDataStructs import SparseBitVect
 from rdkit.DataStructs.cDataStructs import UIntSparseIntVect
 from rdkit.DataStructs.cDataStructs import ExplicitBitVect
 from rdkit.DataStructs.cDataStructs import CreateFromBitString
+from sklearn import utils as sk_utils
 
 
 def ensure_explicit(x: Union[SparseBitVect, ExplicitBitVect]):
@@ -189,6 +191,10 @@ def is_dtype_numpy(dtype):
     Returns
         A boolean saying if the dtype is a numpy dtype
     """
+    # special case where user provides a type
+    if isinstance(dtype, str):
+        with suppress(Exception):
+            dtype = np.dtype(dtype).type
     is_torch = is_dtype_tensor(dtype)
     is_num = dtype in (int, float, complex)
     if hasattr(dtype, "__module__"):
@@ -253,3 +259,28 @@ def cast(fp, dtype: Optional[Callable] = None, columns: Optional[Iterable] = Non
     else:
         raise TypeError("The type {} is not supported".format(dtype))
     return fp
+
+
+def as_numpy_array_if_possible(arr, dtype: Optional[None]):
+    """Convert an input array to a numpy datatype if possible
+    Args:
+        arr: input array
+        dtype: optional numpy datatype
+    """
+    with suppress(Exception):
+        # we only consider auto casting to numpu
+        # when the user requests 'a numpy datatype'.
+        if (dtype is not None and is_dtype_numpy(dtype)) or (
+            dtype in [pd.DataFrame, "dataframe", "pandas", "df"]
+        ):
+            # skip any non compatible type
+            # meaning it should be a list of list or a list of numpy array or a 2D numpy array.
+            if (
+                isinstance(arr, (list, np.ndarray))
+                and isinstance(arr[0], (np.ndarray, list))
+                and np.isscalar(arr[0][0])
+            ):
+                return sk_utils.check_array(
+                    arr, accept_sparse=True, force_all_finite=False, ensure_2d=False, allow_nd=True
+                )
+    return arr
