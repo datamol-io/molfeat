@@ -92,11 +92,13 @@ markdown_extensions:
   - toc:
       permalink: true
 
+watch:
+  - molfeat/
+
 plugins:
   - search
+  
   - mkdocstrings:
-      watch:
-        - molfeat/
       handlers:
         python:
           setup_commands:
