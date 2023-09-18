@@ -13,19 +13,22 @@ import datamol as dm
 
 from dataclasses import dataclass
 from loguru import logger
-from transformers import EncoderDecoderModel
-from transformers import AutoTokenizer
-from transformers import AutoModel
-from transformers import AutoConfig
-from transformers import MODEL_MAPPING
-from transformers import PreTrainedModel
-from transformers import PreTrainedTokenizer, PreTrainedTokenizerFast
+from molfeat.utils import requires
 from molfeat.trans.pretrained.base import PretrainedMolTransformer
 from molfeat.store.loader import PretrainedStoreModel
 from molfeat.store import ModelStore
 from molfeat.store import ModelInfo
 from molfeat.utils.converters import SmilesConverter
 from molfeat.utils.pooler import get_default_hgf_pooler
+
+if requires.check("transformers"):
+    from transformers import EncoderDecoderModel
+    from transformers import AutoTokenizer
+    from transformers import AutoModel
+    from transformers import AutoConfig
+    from transformers import MODEL_MAPPING
+    from transformers import PreTrainedModel
+    from transformers import PreTrainedTokenizer, PreTrainedTokenizerFast
 
 
 @dataclass
@@ -259,6 +262,11 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
             n_jobs: number of jobs to use
             random_seed: random seed to use for reproducibility whenever a DNN pooler is used (e.g bert/roberta)
         """
+
+        if not requires.check("transformers"):
+            raise ValueError(
+                "Cannot find transformers and/or tokenizers. It's required for this featurizer !"
+            )
 
         super().__init__(
             dtype=dtype,
