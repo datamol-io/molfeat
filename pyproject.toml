@@ -52,6 +52,7 @@ dependencies = [
     "packaging",
     "pmapper",
     "mordredcommunity",
+    "python-dotenv",
 ]
 
 [project.optional-dependencies]
