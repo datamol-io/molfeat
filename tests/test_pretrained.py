@@ -124,7 +124,9 @@ class TestDGLTransformer(ut.TestCase):
         # add buffers
         self.assertLessEqual(cached_run, ori_run + time_buffer)
 
-
+@pytest.mark.xfail(
+    not requires.check("transformers"), reason="3rd party module transformers is missing"
+)
 class TestHGFTransformer(ut.TestCase):
     r"""Test cases for FingerprintsTransformer"""
     smiles = [
