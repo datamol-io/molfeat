@@ -47,7 +47,7 @@ def sha256sum(filepath: Union[str, os.PathLike]):
     else:
         files = [filepath]
     file_hash = hashlib.sha256()
-    for filepath in files:
+    for filepath in sorted(files):
         with fsspec.open(filepath) as f:
             file_hash.update(f.read())  # type: ignore
     file_hash = file_hash.hexdigest()
