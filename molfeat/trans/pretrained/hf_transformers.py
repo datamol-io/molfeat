@@ -51,10 +51,10 @@ class HFExperiment:
         model.model.save_pretrained(local_path)
         model.tokenizer.save_pretrained(local_path)
 
-        # With transformers>=4.35.0, models are by default saved as safetensors. 
-        # For backwards compatibility, we also save the model as the older pickle-based format. 
+        # With transformers>=4.35.0, models are by default saved as safetensors.
+        # For backwards compatibility, we also save the model as the older pickle-based format.
         model.model.save_pretrained(local_path, safe_serialization=False)
-        
+
         dm.fs.copy_dir(local_path, path, force=True, progress=True, leave_progress=False)
         logger.info(f"Model saved to {path}")
         # clean up now
