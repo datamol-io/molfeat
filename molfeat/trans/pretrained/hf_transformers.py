@@ -210,8 +210,8 @@ class HFModel(PretrainedStoreModel):
             name=self.name, download_path=self.cache_path, store=self.store
         )
         model_path = dm.fs.join(download_output_dir, self.store.MODEL_PATH_NAME)
-        model = HFExperiment.load(model_path)
-        return model
+        self._model = HFExperiment.load(model_path)
+        return self._model
 
 
 class PretrainedHFTransformer(PretrainedMolTransformer):
@@ -300,7 +300,6 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
         else:
             self.kind = kind
             self.featurizer = HFModel(name=self.kind)
-        self.featurizer._model.model.to(self.device)
         self.notation = self.featurizer.get_notation(notation) or "none"
         self.converter = SmilesConverter(self.notation)
         if self.preload:
