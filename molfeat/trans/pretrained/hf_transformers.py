@@ -430,7 +430,7 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
             hidden_state = out_dict["hidden_states"]
             emb_layers = []
             for layer in self.concat_layers:
-                emb = hidden_state[layer].detach().to(self.device)  # B, S, D
+                emb = hidden_state[layer].detach()  # B, S, D
                 emb = self._pooling_obj(
                     emb,
                     inputs["input_ids"],
