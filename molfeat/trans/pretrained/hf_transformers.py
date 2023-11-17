@@ -64,11 +64,12 @@ class HFExperiment:
         return path
 
     @classmethod
-    def load(cls, path: str, model_class=None):
+    def load(cls, path: str, model_class=None, device: str = "cpu"):
         """Load a model from the given path
         Args:
             path: Path to the model to load
             model_class: optional model class to provide if the model should be loaded with a specific class
+            device: the device to load the model on ("cpu" or "cuda")
         """
         if not dm.fs.is_local_path(path):
             local_path = tempfile.mkdtemp()
@@ -85,7 +86,7 @@ class HFExperiment:
                 )
             else:
                 model_class = AutoModel
-        model = model_class.from_pretrained(local_path)
+        model = model_class.from_pretrained(local_path).to(device)
         tokenizer = AutoTokenizer.from_pretrained(local_path)
         return cls(model, tokenizer)
 
@@ -291,6 +292,7 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
         self.preload = preload
         self.pooling = pooling
         self.prefer_encoder = prefer_encoder
+        self.device = torch.device(device)
         self._pooling_obj = None
         if isinstance(kind, HFModel):
             self.kind = kind.name
@@ -298,6 +300,7 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
         else:
             self.kind = kind
             self.featurizer = HFModel(name=self.kind)
+        self.featurizer._model.model.to(self.device)
         self.notation = self.featurizer.get_notation(notation) or "none"
         self.converter = SmilesConverter(self.notation)
         if self.preload:
@@ -322,6 +325,7 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
     def _preload(self):
         """Perform preloading of the model from the store"""
         super()._preload()
+        self.featurizer.model.to(self.device)
         self.featurizer.max_length = self.max_length
 
         # we can be confident that the model has been loaded here
@@ -408,9 +412,12 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
         """
         self._preload()
 
+        # Move inputs to the correct device
+        inputs = {key: value.to(self.device) for key, value in inputs.items()}
+
         attention_mask = inputs.get("attention_mask", None)
         if attention_mask is not None and self.ignore_padding:
-            attention_mask = attention_mask.unsqueeze(-1)  # B, S, 1
+            attention_mask = attention_mask.unsqueeze(-1).to(self.device)  # B, S, 1
         else:
             attention_mask = None
         with torch.no_grad():
@@ -424,7 +431,7 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
             hidden_state = out_dict["hidden_states"]
             emb_layers = []
             for layer in self.concat_layers:
-                emb = hidden_state[layer].detach().cpu()  # B, S, D
+                emb = hidden_state[layer].detach().to(self.device)  # B, S, D
                 emb = self._pooling_obj(
                     emb,
                     inputs["input_ids"],
@@ -433,7 +440,7 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
                 )
                 emb_layers.append(emb)
             emb = torch.cat(emb_layers, dim=1)
-        return emb.numpy()
+        return emb.cpu().numpy()  # Move the final tensor to CPU before converting to numpy array
 
     def set_max_length(self, max_length: int):
         """Set the maximum length for this featurizer"""
