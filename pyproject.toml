@@ -66,6 +66,8 @@ fcd = ["fcd_torch"]
 
 viz = ["nglview", "ipywidgets"]
 
+pyg = ["pytorch_geometric >=2.4.0"]
+
 all = [
     "dgl",
     "dgllife",
@@ -75,6 +77,7 @@ all = [
     "fcd_torch",
     "nglview",
     "ipywidgets",
+    "pytorch_geometric"
 ]
 
 test = ["pytest >=6.0","pytest-dotenv", "pytest-cov", "pytest-xdist", "black >=22", "ruff"]
