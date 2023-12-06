@@ -3,6 +3,7 @@ from typing import Optional
 from typing import Callable
 from typing import List
 from typing import Union
+from typing import Sequence
 
 import torch
 import datamol as dm
@@ -28,7 +29,9 @@ if requires.check("dgllife"):
     from dgllife import utils as dgllife_utils
 
 if requires.check("torch_geometric"):
-    from torch_geometric.data import Data
+    from torch_geometric.data import Data, Dataset
+    from torch_geometric.data.data import BaseData
+    from torch_geometric.data.datapipes import DatasetAdapter
     from torch_geometric.loader.dataloader import Collater
 
 
@@ -727,6 +730,7 @@ class PYGGraphTransformer(AdjGraphTransformer):
 
     def get_collate_fn(
         self,
+        dataset: Union[Dataset, Sequence[BaseData], DatasetAdapter],
         follow_batch: Optional[List[str]] = None,
         exclude_keys: Optional[List[str]] = None,
         return_pair: Optional[bool] = True,
@@ -736,6 +740,7 @@ class PYGGraphTransformer(AdjGraphTransformer):
         Get collate function for pyg graphs
 
         Args:
+            dataset: The dataset from which to load the data and apply the collate function.
             follow_batch: Creates assignment batch vectors for each key in the list. (default: :obj:`None`)
             exclude_keys: Will exclude each key in the list. (default: :obj:`None`)
             return_pair: whether to return a pair of X,y or a databatch (default: :obj:`True`)
@@ -743,7 +748,7 @@ class PYGGraphTransformer(AdjGraphTransformer):
         Returns:
             Collated samples.
         """
-        collator = Collater(follow_batch=follow_batch, exclude_keys=exclude_keys)
+        collator = Collater(dataset=dataset, follow_batch=follow_batch, exclude_keys=exclude_keys)
         return partial(self._collate_batch, collator=collator, return_pair=return_pair)
 
     @staticmethod
