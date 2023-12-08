@@ -730,23 +730,29 @@ class PYGGraphTransformer(AdjGraphTransformer):
 
     def get_collate_fn(
         self,
-        dataset: Union[Dataset, Sequence[BaseData], DatasetAdapter],
+        dataset: Optional[Union[Dataset, Sequence[BaseData], DatasetAdapter]] = None,
         follow_batch: Optional[List[str]] = None,
         exclude_keys: Optional[List[str]] = None,
         return_pair: Optional[bool] = True,
         **kwargs,
     ):
         """
-        Get collate function for pyg graphs
+        Get collate function for pyg graphs.
+        Note: The `collate_fn` is not required when using `torch_geometric.loader.dataloader.DataLoader`.
 
         Args:
             dataset: The dataset from which to load the data and apply the collate function.
+                This is required if the dataset is <torch_geometric.data.on_disk_dataset.OnDiskDataset>.
             follow_batch: Creates assignment batch vectors for each key in the list. (default: :obj:`None`)
             exclude_keys: Will exclude each key in the list. (default: :obj:`None`)
             return_pair: whether to return a pair of X,y or a databatch (default: :obj:`True`)
 
         Returns:
             Collated samples.
+
+        See Also:
+            <torch_geometric.loader.dataloader.Collator>
+            <torch_geometric.loader.dataloader.DataLoader>
         """
         collator = Collater(dataset=dataset, follow_batch=follow_batch, exclude_keys=exclude_keys)
         return partial(self._collate_batch, collator=collator, return_pair=return_pair)
