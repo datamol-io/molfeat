@@ -4,6 +4,7 @@ from typing import Callable
 from typing import List
 from typing import Union
 from typing import Sequence
+from typing import TYPE_CHECKING
 
 import torch
 import datamol as dm
@@ -28,11 +29,17 @@ if requires.check("dgl"):
 if requires.check("dgllife"):
     from dgllife import utils as dgllife_utils
 
+
 if requires.check("torch_geometric"):
-    from torch_geometric.data import Data, Dataset
-    from torch_geometric.data.data import BaseData
-    from torch_geometric.data.datapipes import DatasetAdapter
+    from torch_geometric.data import Data
     from torch_geometric.loader.dataloader import Collater
+
+    if TYPE_CHECKING:
+        from torch_geometric.data import Dataset as PygDataset
+        from torch_geometric.data.data import BaseData
+        from torch_geometric.data.datapipes import DatasetAdapter
+    else:
+        PygDataset, BaseData, DatasetAdapter = None, None, None
 
 
 class GraphTransformer(MoleculeTransformer):
@@ -732,7 +739,7 @@ class PYGGraphTransformer(AdjGraphTransformer):
 
     def get_collate_fn(
         self,
-        dataset: Optional[Union[Dataset, Sequence[BaseData], DatasetAdapter]] = None,
+        dataset: Optional[Union[PygDataset, Sequence["BaseData"], DatasetAdapter]] = None,
         follow_batch: Optional[List[str]] = None,
         exclude_keys: Optional[List[str]] = None,
         return_pair: Optional[bool] = True,
