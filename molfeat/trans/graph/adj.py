@@ -662,7 +662,9 @@ class DGLGraphTransformer(GraphTransformer):
 
 
 class PYGGraphTransformer(AdjGraphTransformer):
-    """Graph transformer for the PYG models"""
+    """
+    Graph transformer for the PYG models
+    """
 
     def _graph_featurizer(self, mol: dm.Mol):
         # we have used bond_calculator, therefore we need to
