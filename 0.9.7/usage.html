@@ -1,0 +1,1893 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An all in one package for molecule featurization">
+      
+      
+      
+      
+        <link rel="prev" href="index.html">
+      
+      
+        <link rel="next" href="benchmark.html">
+      
+      
+      <link rel="icon" href="images/logo-black.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.1">
+    
+    
+      
+        <title>How to use molfeat? - molfeat</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.45e1311d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="assets/css/custom.css">
+    
+      <link rel="stylesheet" href="assets/css/custom-molfeat.css">
+    
+      <link rel="stylesheet" href="assets/css/tweak-width.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#usage" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="molfeat" class="md-header__button md-logo" aria-label="molfeat" data-md-component="logo">
+      
+  <img src="images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            molfeat
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              How to use molfeat?
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/datamol-io/molfeat" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    datamol-io/molfeat
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+  Getting started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="tutorials/types_of_featurizers.html" class="md-tabs__link">
+          
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="developers/contribute.html" class="md-tabs__link">
+          
+  
+  Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="community/get_involved.html" class="md-tabs__link">
+          
+  
+  Community
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="api/molfeat.calc.html" class="md-tabs__link">
+          
+  
+  API
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="molfeat" class="md-nav__button md-logo" aria-label="molfeat" data-md-component="logo">
+      
+  <img src="images/logo.svg" alt="logo">
+
+    </a>
+    molfeat
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/datamol-io/molfeat" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    datamol-io/molfeat
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Getting started
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Getting started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is molfeat?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    How to use molfeat?
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="usage.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    How to use molfeat?
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-api-tour" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick API Tour
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      FAQ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FAQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-molecular-featurizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a molecular featurizer ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-so-many-molecular-featurizers-in-molfeat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why so many molecular featurizers in molfeat?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-a-calculator-and-a-featurizer-in-molfeat" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the difference between a calculator and a featurizer in molfeat?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-functions-should-i-be-familiar-with-when-using-the-featurizer-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      What functions should I be familiar with when using the featurizer classes ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-am-getting-an-error-and-i-am-not-sure-what-to-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      I am getting an error and I am not sure what to do ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-are-the-base-featurizers-class-in-molfeat-and-how-to-use-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are the base featurizers class in molfeat and how to use them ?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="benchmark.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Why should you care?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="license.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/types_of_featurizers.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Types of featurizers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Add your own
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Add your own
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/add_your_own.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create your own featurizers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/custom_model_store.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create a custom modelstore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/graphs.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Featurizing graphs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Integrations
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Integrations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/integrations.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integration with scikit-learn and PyTorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/pyg_integration.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Training a GNN with PyG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/transformer_finetuning.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Finetuning a pretrained transformer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/save_and_load.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Save and Load
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/datacache.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The Data Cache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Developers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="developers/contribute.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="developers/create-plugin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Extending molfeat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="developers/register-plugin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Registering your Plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Community
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Community
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="community/get_involved.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Get involved
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="community/contributions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Community contributions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/molfeat.calc.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    molfeat.calc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    molfeat.trans
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            molfeat.trans
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/molfeat.trans.base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    molfeat.trans.base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/molfeat.trans.fp.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    molfeat.trans.fp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/molfeat.trans.graph.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    molfeat.trans.graph
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/molfeat.trans.struct.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    molfeat.trans.struct
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/molfeat.trans.concat.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    molfeat.trans.concat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_6" id="__nav_5_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    molfeat.trans.pretrained
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            molfeat.trans.pretrained
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/molfeat.trans.pretrained.base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base Pretrained Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/molfeat.trans.pretrained.hf_transformers.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HuggingFace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/molfeat.trans.pretrained.graphormer.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graphormer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/molfeat.trans.pretrained.dgl_pretrained.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DGL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/molfeat.trans.pretrained.fcd.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FCD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/molfeat.store.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    molfeat.store
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/molfeat.plugins.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    molfeat.plugins
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/molfeat.utils.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    molfeat.utils
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/molfeat.viz.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    molfeat.viz
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-api-tour" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick API Tour
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      FAQ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FAQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-molecular-featurizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a molecular featurizer ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-so-many-molecular-featurizers-in-molfeat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why so many molecular featurizers in molfeat?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-difference-between-a-calculator-and-a-featurizer-in-molfeat" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the difference between a calculator and a featurizer in molfeat?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-functions-should-i-be-familiar-with-when-using-the-featurizer-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      What functions should I be familiar with when using the featurizer classes ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-am-getting-an-error-and-i-am-not-sure-what-to-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      I am getting an error and I am not sure what to do ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-are-the-base-featurizers-class-in-molfeat-and-how-to-use-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are the base featurizers class in molfeat and how to use them ?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h1>
+<h2 id="structure">Structure<a class="headerlink" href="#structure" title="Permanent link">&para;</a></h2>
+<p>Molfeat is organized in three main modules:</p>
+<ul>
+<li><code>molfeat.store</code>: The model store loads, lists and registers all featurizers.</li>
+<li><code>molfeat.calc</code>: A calculator is a callable that featurizes a single molecule. </li>
+<li><code>molfeat.trans</code>: A transformer is a scikit-learn compatible class that wraps a calculator in a featurization pipeline.</li>
+</ul>
+<div class="admonition note annotate">
+<p class="admonition-title">Learn more about the different types of featurizers</p>
+<p>Consult <a href="tutorials/types_of_featurizers.html">this tutorial</a> to dive deeper into the differences between the calculator and transformer.
+It provides a good overview of the different types of featurizers and has pointers for learning about more advanced features. </p>
+</div>
+<h2 id="quick-api-tour">Quick API Tour<a class="headerlink" href="#quick-api-tour" title="Permanent link">&para;</a></h2>
+<div class="admonition note tip">
+<p class="admonition-title">Community contribution</p>
+<p>Curious how molfeat can simplify training QSAR models? See this tutorial contributed by <a href="https://github.com/PatWalters">@PatWalters</a>: <a href="https://colab.research.google.com/github/PatWalters/practical_cheminformatics_tutorials/blob/main/ml_models/QSAR_in_8_lines.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>  </p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">datamol</span> <span class="k">as</span> <span class="nn">dm</span>
+<span class="kn">from</span> <span class="nn">molfeat.calc</span> <span class="kn">import</span> <span class="n">FPCalculator</span>
+<span class="kn">from</span> <span class="nn">molfeat.trans</span> <span class="kn">import</span> <span class="n">MoleculeTransformer</span>
+<span class="kn">from</span> <span class="nn">molfeat.store.modelstore</span> <span class="kn">import</span> <span class="n">ModelStore</span>
+
+<span class="c1"># Load some dummy data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">freesolv</span><span class="p">()</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">smiles</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># Featurize a single molecule</span>
+<span class="n">calc</span> <span class="o">=</span> <span class="n">FPCalculator</span><span class="p">(</span><span class="s2">&quot;ecfp&quot;</span><span class="p">)</span>
+<span class="n">calc</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Define a parallelized featurization pipeline</span>
+<span class="n">mol_transf</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="n">calc</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">mol_transf</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Easily save and load featurizers</span>
+<span class="n">mol_transf</span><span class="o">.</span><span class="n">to_state_yaml_file</span><span class="p">(</span><span class="s2">&quot;state_dict.yml&quot;</span><span class="p">)</span>
+<span class="n">mol_transf</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="o">.</span><span class="n">from_state_yaml_file</span><span class="p">(</span><span class="s2">&quot;state_dict.yml&quot;</span><span class="p">)</span>
+<span class="n">mol_transf</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># List all available featurizers</span>
+<span class="n">store</span> <span class="o">=</span> <span class="n">ModelStore</span><span class="p">()</span>
+<span class="n">store</span><span class="o">.</span><span class="n">available_models</span>
+
+<span class="c1"># Find a featurizer and learn how to use it</span>
+<span class="n">model_card</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ChemBERTa-77M-MLM&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">model_card</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h2>
+<h4 id="what-is-a-molecular-featurizer">What is a molecular featurizer ?<a class="headerlink" href="#what-is-a-molecular-featurizer" title="Permanent link">&para;</a></h4>
+<p>A molecular featurizer is a function or model that provides numerical representations for molecular structures. These numerical features serve as inputs for machine learning models, enabling them to predict molecular properties and activities, design novel molecules, perform molecular analyses, or conduct searches for similar molecules.</p>
+<h4 id="why-so-many-molecular-featurizers-in-molfeat">Why so many molecular featurizers in <code>molfeat</code>?<a class="headerlink" href="#why-so-many-molecular-featurizers-in-molfeat" title="Permanent link">&para;</a></h4>
+<p>The reason for providing a diverse range of molecular featurizers in <code>molfeat</code> is to address the inherent uncertainty in determining which molecular representation performs best for a given task. Different featurization methods exist, such as using physico-chemical descriptors, molecular structure fingerprints, deep learning embeddings, and more. The effectiveness of these representations varies depending on the specific application. Therefore, the availability of multiple featurizers in <code>molfeat</code> ensures that users can access the most suitable featurizer for their unique needs.</p>
+<h4 id="what-is-the-difference-between-a-calculator-and-a-featurizer-in-molfeat">What is the difference between a calculator and a featurizer in <code>molfeat</code>?<a class="headerlink" href="#what-is-the-difference-between-a-calculator-and-a-featurizer-in-molfeat" title="Permanent link">&para;</a></h4>
+<p>In <code>molfeat</code>,</p>
+<ul>
+<li>a <code>calculator</code> operates on individual molecules and specifies the process of transforming an input molecule into a numerical representation.</li>
+<li>a <code>featurizer</code>  works with batches of molecules, leveraging the efficiency of deep learning models on batch processing. Some  <code>featurizers</code> uses a <code>calculator</code> internally to feature each molecule individually and then stitch their outputs together. Additionally, <code>featurizers</code> offer convenient tools, such as parallelism and caching, to optimize the computation of molecular representations efficiently.</li>
+</ul>
+<p><code>molfeat</code> has been designed with utmost flexibility, recognizing that the actions users wish to perform with molecular data can be vast and diverse, and there often isn't a single "right" way to approach them.</p>
+<h4 id="what-functions-should-i-be-familiar-with-when-using-the-featurizer-classes">What functions should I be familiar with when using the featurizer classes ?<a class="headerlink" href="#what-functions-should-i-be-familiar-with-when-using-the-featurizer-classes" title="Permanent link">&para;</a></h4>
+<p>When using a <code>featurizer</code> in <code>molfeat</code>, you should be familiar with the following functions:</p>
+<ul>
+<li><code>preprocess()</code>: This method performs preprocessing of your input molecules to ensure compatibility with the expected featurizer class you are using. It's essential to note that the preprocessing steps <strong>are not automatically applied to your inputs</strong> to maintain independence from the molecular transformation. The preprocess function takes your molecule inputs, along with optional labels, and can be redefined when creating a custom featurizer.</li>
+</ul>
+<ul>
+<li><code>transform()</code>: This method operates on a batch of molecules and returns a list of representations, where the actual featurization occurs. In cases where featurization fails, the position can be denoted as <code>None</code>, especially when you choose to <code>ignore_errors</code>.</li>
+<li><code>_transform()</code>: This method operates on a single input molecule, performing the actual featurization.</li>
+<li><code>__call__()</code>: This method uses <code>transform()</code> under the hood and provides convenient arguments, such as enforcing the datatype defined during the initialization of your model, to the outputs. If you specify <code>ignore_errors</code>, a vector of indexes where featurization did not fail will also be returned.</li>
+</ul>
+<p>In addition to the methods described above, PretrainedMolTransformer introduces the following functions:</p>
+<ul>
+<li><code>_embed()</code>: For pre-trained models that benefit from batched featurization, this method is internally called during transform instead of an internal calculator.</li>
+<li><code>_convert()</code>: This method is called by the transformer to convert the molecule input into the expected format of the underlying ML model. For example, for a pre-trained language model expecting SELFIES strings, we will perform the conversion to SELFIES strings here.</li>
+</ul>
+<h4 id="i-am-getting-an-error-and-i-am-not-sure-what-to-do">I am getting an error and I am not sure what to do ?<a class="headerlink" href="#i-am-getting-an-error-and-i-am-not-sure-what-to-do" title="Permanent link">&para;</a></h4>
+<p>When encountering an error during the featurization process, you have a couple of options to handle it:</p>
+<ul>
+<li>Ignore Errors: You can choose to set the <code>ignore_errors</code> parameter to <code>True</code> when using the featurizer. This allows the featurizer to continue processing even if it encounters errors on some molecules in your dataset. The featurizer will still attempt to calculate representations for all molecules, and any molecules that failed featurization will have their position in the output list marked as <code>None</code>.</li>
+</ul>
+<ul>
+<li>Increase Verbosity: If you're unsure about the specific errors occurring during featurization, you can set the verbosity of the featurizer to True. This will enable the featurizer to log all errors encountered during the process, providing more detailed information about the cause of the issue, since because of the above features, some silent errors are often caught but not propagated.</li>
+</ul>
+<p>For example, the following will ensure that all errors are logged.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">molfeat.trans.concat</span> <span class="kn">import</span> <span class="n">FeatConcat</span>
+<span class="kn">from</span> <span class="nn">molfeat.trans.fp</span> <span class="kn">import</span> <span class="n">FPVecTransformer</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">featurizer</span> <span class="o">=</span> <span class="n">MoleculeTransformer</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">featurizer</span><span class="p">([</span><span class="s2">&quot;CSc1nc2cc3c(cc2[nH]1)N(Cc1ccc(S(=O)(=O)c2ccccc2)cc1)CCC3&quot;</span><span class="p">],</span> <span class="n">enforce_dtype</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="what-are-the-base-featurizers-class-in-molfeat-and-how-to-use-them">What are the base featurizers class in molfeat and how to use them ?<a class="headerlink" href="#what-are-the-base-featurizers-class-in-molfeat-and-how-to-use-them" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Module</th>
+<th>Why?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://molfeat-docs.datamol.io/stable/api/molfeat.trans.base.html#molfeat.trans.base.BaseFeaturizer">BaseFeaturizer</a></td>
+<td><code>molfeat.trans.base</code></td>
+<td>Lowest level featurizer class. All featurizers (even if not molecular) inherit from this class. It's recommended to use <code>MoleculeTransformer</code> as the root class instead.</td>
+</tr>
+<tr>
+<td><a href="https://molfeat-docs.datamol.io/stable/api/molfeat.trans.base.html#molfeat.trans.base.MoleculeTransformer">MoleculeTransformer</a></td>
+<td><code>molfeat.trans.base</code></td>
+<td><ul><li> Base class for all molecule featurizers. This is where you start if you want to implement a new featurizer.</li><li> You can provide either an existing <code>calculator</code> or your own (a <strong>python callable</strong>) directly to define a new <code>featurizer</code>.</li></ul></td>
+</tr>
+<tr>
+<td><a href="https://molfeat-docs.datamol.io/stable/api/molfeat.trans.base.html#molfeat.trans.base.PrecomputedMolTransformer">PrecomputedMolTransformer</a></td>
+<td><code>molfeat.trans.base</code></td>
+<td>Class for dealing with precomputed features. You can leverage this class to compute features, save them in a file, and reload them after for other tasks efficiently. <a href="https://molfeat-docs.datamol.io/stable/tutorials/datacache.html#using-a-cache-with-a-precomputed-transformer">See this tutorial!</a></td>
+</tr>
+<tr>
+<td><a href="https://molfeat-docs.datamol.io/stable/api/molfeat.trans.concat.html#molfeat.trans.concat.FeatConcat">FeatConcat</a></td>
+<td><code>molfeat.trans.concat</code></td>
+<td>Convenient class for concatenating multiple vector-featurizers automatically. If you want to combine multiple 'fingerprints' and descriptors, this is the class you use. <a href="https://molfeat-docs.datamol.io/stable/tutorials/types_of_featurizers.html#concatenate-featurizers">See example!</a></td>
+</tr>
+<tr>
+<td><a href="https://molfeat-docs.datamol.io/stable/api/molfeat.trans.pretrained.base.html">PretrainedMolTransformer</a></td>
+<td><code>molfeat.trans.pretrained.base</code></td>
+<td>Base class for all <code>pretrained featurizers</code>. A <code>pretrained featurizer</code> is a <code>featurizer</code> that is derived from a pretrained machine learning model. Implement a subclass of this to define your new pretrained featurizer. <a href="https://molfeat-docs.datamol.io/stable/tutorials/add_your_own.html#define-your-own-transformer">See example!</a></td>
+</tr>
+<tr>
+<td><a href="https://molfeat-docs.datamol.io/stable/api/molfeat.trans.pretrained.dgl_pretrained.html#molfeat.trans.pretrained.dgl_pretrained.PretrainedDGLTransformer">PretrainedDGLTransformer</a></td>
+<td><code>molfeat.trans.pretrained.dgl_pretrained</code></td>
+<td>Base class for all <code>dgl pretrained featurizers</code>. You can initialize a new dgl/dgllife pretrained model as a <code>molfeat featurizer</code> easily using this class. You only need to add the dgl model object to a store. <a href="https://github.com/datamol-io/molfeat/blob/main/nb/etl/dgl-etl.ipynb">See this example!</a></td>
+</tr>
+<tr>
+<td><a href="https://molfeat-docs.datamol.io/stable/api/molfeat.trans.pretrained.hf_transformers.html#molfeat.trans.pretrained.hf_transformers.PretrainedHFTransformer">PretrainedHFTransformer</a></td>
+<td><code>molfeat.trans.pretrained.hf_transformer</code></td>
+<td>Base class for all <code>huggingface pretrained featurizers</code>. You can initialize a new 🤗 Transformers pretrained model as a <code>molfeat featurizer</code> easily using this class. <a href="https://github.com/datamol-io/molfeat/blob/main/nb/etl/molt5-etl.ipynb">See this example!</a></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright 2020 - 2023 datamol.io
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.tracking", "navigation.top"], "search": "assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="assets/js/google-analytics.js"></script>
+      
+    
+  </body>
+</html>
