@@ -739,7 +739,7 @@ class PYGGraphTransformer(AdjGraphTransformer):
 
     def get_collate_fn(
         self,
-        dataset: Optional[Union[PygDataset, Sequence["BaseData"], DatasetAdapter]] = None,
+        dataset: Optional[Union["PygDataset", Sequence["BaseData"], "DatasetAdapter"]] = None,
         follow_batch: Optional[List[str]] = None,
         exclude_keys: Optional[List[str]] = None,
         return_pair: Optional[bool] = True,
