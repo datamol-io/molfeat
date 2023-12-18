@@ -1,4 +1,5 @@
 from functools import partial
+from typing import Any
 from typing import Optional
 from typing import Callable
 from typing import List
@@ -39,7 +40,7 @@ if requires.check("torch_geometric"):
         from torch_geometric.data.data import BaseData
         from torch_geometric.data.datapipes import DatasetAdapter
     else:
-        PygDataset, BaseData, DatasetAdapter = None, None, None
+        PygDataset, BaseData, DatasetAdapter = Any, Any, Any
 
 
 class GraphTransformer(MoleculeTransformer):
@@ -739,7 +740,7 @@ class PYGGraphTransformer(AdjGraphTransformer):
 
     def get_collate_fn(
         self,
-        dataset: Optional[Union["PygDataset", Sequence["BaseData"], "DatasetAdapter"]] = None,
+        dataset: Optional[Union[PygDataset, Sequence[BaseData], DatasetAdapter]] = None,
         follow_batch: Optional[List[str]] = None,
         exclude_keys: Optional[List[str]] = None,
         return_pair: Optional[bool] = True,
