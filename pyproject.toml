@@ -9,7 +9,7 @@ dynamic = ["version"]
 authors = [{ name = "Emmanuel Noutahi", email = "emmanuel.noutahi@hotmail.ca" }]
 readme = "README.md"
 license = { text = "Apache" }
-requires-python = ">=3.8"
+requires-python = ">3.8"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
