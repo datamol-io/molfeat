@@ -78,7 +78,7 @@ all = [
     "fcd_torch",
     "nglview",
     "ipywidgets",
-    "pytorch_geometric"
+    "pytorch_geometric >=2.4.0"
 ]
 
 test = ["pytest >=6.0","pytest-dotenv", "pytest-cov", "pytest-xdist", "black >=22", "ruff"]
