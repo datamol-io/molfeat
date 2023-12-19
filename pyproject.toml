@@ -39,7 +39,7 @@ dependencies = [
     "pandas",
     "numpy",
     "scipy",
-    "torch",
+    "torch>=1.13",
     "datamol >=0.8.0",
     "pyyaml",
     "platformdirs",
@@ -57,7 +57,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dgl = ["dgl", "dgllife"]
+dgl = ["dgl>=1.1.1", "dgllife>=0.3.2"]
 
 graphormer = ["graphormer-pretrained"]
 
