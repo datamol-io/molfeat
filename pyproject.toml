@@ -9,7 +9,7 @@ dynamic = ["version"]
 authors = [{ name = "Emmanuel Noutahi", email = "emmanuel.noutahi@hotmail.ca" }]
 readme = "README.md"
 license = { text = "Apache" }
-requires-python = ">=3.8"
+requires-python = ">3.8"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
@@ -39,7 +39,7 @@ dependencies = [
     "pandas",
     "numpy",
     "scipy",
-    "torch",
+    "torch>=1.13",
     "datamol >=0.8.0",
     "pyyaml",
     "platformdirs",
@@ -57,7 +57,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dgl = ["dgl", "dgllife"]
+dgl = ["dgl>=1.1.1", "dgllife>=0.3.2"]
 
 graphormer = ["graphormer-pretrained"]
 
@@ -66,6 +66,8 @@ transformer = ["tokenizers <0.13.2", "transformers", "sentencepiece"]
 fcd = ["fcd_torch"]
 
 viz = ["nglview", "ipywidgets"]
+
+pyg = ["pytorch_geometric >=2.4.0"]
 
 all = [
     "dgl",
@@ -76,6 +78,7 @@ all = [
     "fcd_torch",
     "nglview",
     "ipywidgets",
+    "pytorch_geometric >=2.4.0"
 ]
 
 test = ["pytest >=6.0","pytest-dotenv", "pytest-cov", "pytest-xdist", "black >=22", "ruff"]

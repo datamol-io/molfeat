@@ -1,8 +1,11 @@
 from functools import partial
+from typing import Any
 from typing import Optional
 from typing import Callable
 from typing import List
 from typing import Union
+from typing import Sequence
+from typing import TYPE_CHECKING
 
 import torch
 import datamol as dm
@@ -27,9 +30,17 @@ if requires.check("dgl"):
 if requires.check("dgllife"):
     from dgllife import utils as dgllife_utils
 
+
 if requires.check("torch_geometric"):
     from torch_geometric.data import Data
     from torch_geometric.loader.dataloader import Collater
+
+    if TYPE_CHECKING:
+        from torch_geometric.data import Dataset as PygDataset
+        from torch_geometric.data.data import BaseData
+        from torch_geometric.data.datapipes import DatasetAdapter
+    else:
+        PygDataset, BaseData, DatasetAdapter = Any, Any, Any
 
 
 class GraphTransformer(MoleculeTransformer):
@@ -659,7 +670,9 @@ class DGLGraphTransformer(GraphTransformer):
 
 
 class PYGGraphTransformer(AdjGraphTransformer):
-    """Graph transformer for the PYG models"""
+    """
+    Graph transformer for the PYG models
+    """
 
     def _graph_featurizer(self, mol: dm.Mol):
         # we have used bond_calculator, therefore we need to
@@ -727,23 +740,31 @@ class PYGGraphTransformer(AdjGraphTransformer):
 
     def get_collate_fn(
         self,
+        dataset: Optional[Union[PygDataset, Sequence[BaseData], DatasetAdapter]] = None,
         follow_batch: Optional[List[str]] = None,
         exclude_keys: Optional[List[str]] = None,
         return_pair: Optional[bool] = True,
         **kwargs,
     ):
         """
-        Get collate function for pyg graphs
+        Get collate function for pyg graphs.
+        Note: The `collate_fn` is not required when using `torch_geometric.loader.dataloader.DataLoader`.
 
         Args:
+            dataset: The dataset from which to load the data and apply the collate function.
+                This is required if the dataset is <torch_geometric.data.on_disk_dataset.OnDiskDataset>.
             follow_batch: Creates assignment batch vectors for each key in the list. (default: :obj:`None`)
             exclude_keys: Will exclude each key in the list. (default: :obj:`None`)
             return_pair: whether to return a pair of X,y or a databatch (default: :obj:`True`)
 
         Returns:
             Collated samples.
+
+        See Also:
+            <torch_geometric.loader.dataloader.Collator>
+            <torch_geometric.loader.dataloader.DataLoader>
         """
-        collator = Collater(follow_batch=follow_batch, exclude_keys=exclude_keys)
+        collator = Collater(dataset=dataset, follow_batch=follow_batch, exclude_keys=exclude_keys)
         return partial(self._collate_batch, collator=collator, return_pair=return_pair)
 
     @staticmethod
