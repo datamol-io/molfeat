@@ -6,6 +6,7 @@ from functools import partial
 import copy
 import datamol as dm
 from rdkit.Avalon import pyAvalonTools
+from rdkit.Chem import rdFingerprintGenerator
 from rdkit.Chem import rdMolDescriptors
 from rdkit.Chem import rdReducedGraphs
 from rdkit.Chem import rdmolops
@@ -19,14 +20,22 @@ from molfeat.utils.datatype import to_numpy, to_fp
 from molfeat.utils.commons import fold_count_fp
 
 
+FP_GENERATORS = {
+    "ecfp": rdFingerprintGenerator.GetMorganGenerator,
+    "fcfp": rdFingerprintGenerator.GetMorganGenerator,
+    "topological": rdFingerprintGenerator.GetTopologicalTorsionGenerator,
+    "atompair": rdFingerprintGenerator.GetAtomPairGenerator,
+    "rdkit": rdFingerprintGenerator.GetRDKitFPGenerator,
+    "ecfp-count": rdFingerprintGenerator.GetMorganGenerator,
+    "fcfp-count": rdFingerprintGenerator.GetMorganGenerator,
+    "topological-count": rdFingerprintGenerator.GetTopologicalTorsionGenerator,
+    "atompair-count": rdFingerprintGenerator.GetAtomPairGenerator,
+    "rdkit-count": rdFingerprintGenerator.GetRDKitFPGenerator,
+}
+
 FP_FUNCS = {
     "maccs": rdMolDescriptors.GetMACCSKeysFingerprint,
     "avalon": pyAvalonTools.GetAvalonFP,
-    "ecfp": rdMolDescriptors.GetMorganFingerprintAsBitVect,
-    "fcfp": partial(rdMolDescriptors.GetMorganFingerprintAsBitVect, useFeatures=True),
-    "topological": rdMolDescriptors.GetHashedTopologicalTorsionFingerprintAsBitVect,
-    "atompair": rdMolDescriptors.GetHashedAtomPairFingerprintAsBitVect,
-    "rdkit": rdmolops.RDKFingerprint,
     "pattern": rdmolops.PatternFingerprint,
     "layered": rdmolops.LayeredFingerprint,
     "map4": MAP4,
@@ -34,11 +43,7 @@ FP_FUNCS = {
     "erg": rdReducedGraphs.GetErGFingerprint,
     "estate": lambda x, **params: EStateFingerprinter.FingerprintMol(x)[0],
     "avalon-count": pyAvalonTools.GetAvalonCountFP,
-    "rdkit-count": rdmolops.UnfoldedRDKFingerprintCountBased,
-    "ecfp-count": rdMolDescriptors.GetHashedMorganFingerprint,
-    "fcfp-count": rdMolDescriptors.GetHashedMorganFingerprint,
-    "topological-count": rdMolDescriptors.GetHashedTopologicalTorsionFingerprint,
-    "atompair-count": rdMolDescriptors.GetHashedAtomPairFingerprint,
+    **FP_GENERATORS,
 }
 
 
@@ -52,59 +57,60 @@ FP_DEF_PARAMS = {
     },
     "ecfp": {
         "radius": 2,  # ECFP4
-        "nBits": 2048,
-        "invariants": [],
-        "fromAtoms": [],
-        "useChirality": False,
+        "fpSize": 2048,
+        "includeChirality": False,
         "useBondTypes": True,
-        "useFeatures": False,
+        "countSimulation": False,
+        "countBounds": None,
+        "atomInvariantsGenerator": None,
+        "bondInvariantsGenerator": None,
     },
     "fcfp": {
-        "radius": 2,  # FCFP4
-        "nBits": 2048,
-        "invariants": [],  # you may want to provide features invariance
-        "fromAtoms": [],
-        "useChirality": False,
+        "radius": 2,
+        "fpSize": 2048,
+        "includeChirality": False,
         "useBondTypes": True,
-        "useFeatures": True,
+        "countSimulation": False,
+        "countBounds": None,
+        "atomInvariantsGenerator": rdFingerprintGenerator.GetMorganFeatureAtomInvGen(),
+        "bondInvariantsGenerator": None,
     },
     "topological": {
-        "nBits": 2048,
-        "targetSize": 4,
-        "fromAtoms": 0,
-        "ignoreAtoms": 0,
-        "atomInvariants": 0,
-        "nBitsPerEntry": 4,
         "includeChirality": False,
+        "torsionAtomCount": 4,
+        "countSimulation": True,
+        "countBounds": None,
+        "fpSize": 2048,
+        "atomInvariantsGenerator": None,
     },
     "atompair": {
-        "nBits": 2048,
-        "minLength": 1,
-        "maxLength": 30,
-        "fromAtoms": 0,
-        "ignoreAtoms": 0,
-        "atomInvariants": 0,
-        "nBitsPerEntry": 4,
+        "minDistance": 1,
+        "maxDistance": 30,
         "includeChirality": False,
         "use2D": True,
-        "confId": -1,
+        "countSimulation": True,
+        "countBounds": None,
+        "fpSize": 2048,
+        "atomInvariantsGenerator": None,
     },
     "rdkit": {
         "minPath": 1,
         "maxPath": 7,
-        "fpSize": 2048,
-        "nBitsPerHash": 2,
         "useHs": True,
-        "tgtDensity": 0.0,
-        "minSize": 128,
         "branchedPaths": True,
         "useBondOrder": True,
-        "atomInvariants": 0,
-        "fromAtoms": 0,
-        "atomBits": None,
-        "bitInfo": None,
+        "countSimulation": False,
+        "countBounds": None,
+        "fpSize": 2048,
+        "numBitsPerFeature": 2,
+        "atomInvariantsGenerator": None,
     },
-    "pattern": {"fpSize": 2048, "atomCounts": [], "setOnlyBits": None},
+    "pattern": {
+        "fpSize": 2048,
+        "atomCounts": [],
+        "setOnlyBits": None,
+        "tautomerFingerprints": False,
+    },
     "layered": {
         "fpSize": 2048,
         "minPath": 1,
@@ -139,36 +145,41 @@ FP_DEF_PARAMS = {
     # COUNTING FP
     "ecfp-count": {
         "radius": 2,  # ECFP4
-        "nBits": 2048,
-        "invariants": [],
-        "fromAtoms": [],
-        "useChirality": False,
+        "fpSize": 2048,
+        "includeChirality": False,
         "useBondTypes": True,
-        "useFeatures": False,
-        "includeRedundantEnvironments": False,
+        "countSimulation": False,
+        "countBounds": None,
+        "atomInvariantsGenerator": None,
+        "bondInvariantsGenerator": None,
     },
     "fcfp-count": {
-        "radius": 2,  # FCFP4
-        "nBits": 2048,
-        "invariants": [],  # you may want to provide features invariance
-        "fromAtoms": [],
-        "useChirality": False,
+        "radius": 2,
+        "fpSize": 2048,
+        "includeChirality": False,
         "useBondTypes": True,
-        "useFeatures": True,
-        "includeRedundantEnvironments": False,
+        "countSimulation": False,
+        "countBounds": None,
+        "atomInvariantsGenerator": rdFingerprintGenerator.GetMorganFeatureAtomInvGen(),
+        "bondInvariantsGenerator": None,
     },
     "topological-count": {
-        "nBits": 2048,
-        "targetSize": 4,
-        "fromAtoms": 0,
-        "ignoreAtoms": 0,
-        "atomInvariants": 0,
         "includeChirality": False,
+        "torsionAtomCount": 4,
+        "countSimulation": True,
+        "countBounds": None,
+        "fpSize": 2048,
+        "atomInvariantsGenerator": None,
     },
-    "avalon-count": {
-        "nBits": 512,
-        "isQuery": False,
-        "bitFlags": pyAvalonTools.avalonSimilarityBits,
+    "atompair-count": {
+        "minDistance": 1,
+        "maxDistance": 30,
+        "includeChirality": False,
+        "use2D": True,
+        "countSimulation": True,
+        "countBounds": None,
+        "fpSize": 2048,
+        "atomInvariantsGenerator": None,
     },
     "rdkit-count": {
         "minPath": 1,
@@ -176,21 +187,11 @@ FP_DEF_PARAMS = {
         "useHs": True,
         "branchedPaths": True,
         "useBondOrder": True,
-        "atomInvariants": 0,
-        "fromAtoms": 0,
-        "atomBits": None,
-        "bitInfo": None,
-    },
-    "atompair-count": {
-        "nBits": 2048,
-        "minLength": 1,
-        "maxLength": 30,
-        "fromAtoms": 0,
-        "ignoreAtoms": 0,
-        "atomInvariants": 0,
-        "includeChirality": False,
-        "use2D": True,
-        "confId": -1,
+        "countSimulation": False,
+        "countBounds": None,
+        "fpSize": 2048,
+        "numBitsPerFeature": 1,
+        "atomInvariantsGenerator": None,
     },
 }
 
@@ -231,9 +232,7 @@ class FPCalculator(SerializableCalculator):
         if unknown_params:
             logger.error(f"Params: {unknown_params} are not valid for {method}")
         self.params = default_params
-        self.params.update(
-            {k: method_params[k] for k in method_params if k in default_params.keys()}
-        )
+        self.params.update({k: method_params[k] for k in method_params if k in default_params.keys()})
         self._length = self._set_length(length)
 
     @staticmethod
@@ -303,7 +302,16 @@ class FPCalculator(SerializableCalculator):
             props (np.ndarray): list of computed rdkit molecular descriptors
         """
         mol = dm.to_mol(mol)
-        fp_val = FP_FUNCS[self.method](mol, **self.params)
+
+        fp_func = FP_FUNCS[self.method]
+        if self.method in FP_GENERATORS:
+            fp_func = fp_func(**self.params)
+            if self.method.endswith("-count"):
+                fp_val = fp_func.GetCountFingerprint(mol)
+            else:
+                fp_val = fp_func.GetFingerprint(mol)
+        else:
+            fp_val = fp_func(mol, **self.params)
         if self.counting:
             fp_val = fold_count_fp(fp_val, self._length)
         if not raw:
@@ -334,12 +342,10 @@ class FPCalculator(SerializableCalculator):
         state_dict = super().to_state_dict()
         cur_params = self.params
         default_params = copy.deepcopy(FP_DEF_PARAMS[state_dict["args"]["method"]])
-        state_dict["args"].update(
-            {
-                k: cur_params[k]
-                for k in cur_params
-                if (cur_params[k] != default_params[k] and cur_params[k] is not None)
-            }
-        )
+        state_dict["args"].update({
+            k: cur_params[k]
+            for k in cur_params
+            if (cur_params[k] != default_params[k] and cur_params[k] is not None)
+        })
         # we want to keep all the additional parameters in the state dict
         return state_dict
