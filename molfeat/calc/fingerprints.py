@@ -1,8 +1,6 @@
 from typing import Union
 from typing import Optional
 
-from functools import partial
-
 import copy
 import datamol as dm
 from rdkit.Avalon import pyAvalonTools
@@ -15,6 +13,10 @@ from rdkit.Chem.EState import Fingerprinter as EStateFingerprinter
 from loguru import logger
 from molfeat.calc._mhfp import SECFP
 from molfeat.calc._map4 import MAP4
+from molfeat.calc._serializable_classes import (
+    SerializableMorganFeatureAtomInvGen,
+    SERIALIZABLE_CLASSES,
+)
 from molfeat.calc.base import SerializableCalculator
 from molfeat.utils.datatype import to_numpy, to_fp
 from molfeat.utils.commons import fold_count_fp
@@ -72,7 +74,7 @@ FP_DEF_PARAMS = {
         "useBondTypes": True,
         "countSimulation": False,
         "countBounds": None,
-        "atomInvariantsGenerator": rdFingerprintGenerator.GetMorganFeatureAtomInvGen(),
+        "atomInvariantsGenerator": SerializableMorganFeatureAtomInvGen(),
         "bondInvariantsGenerator": None,
     },
     "topological": {
@@ -160,7 +162,7 @@ FP_DEF_PARAMS = {
         "useBondTypes": True,
         "countSimulation": False,
         "countBounds": None,
-        "atomInvariantsGenerator": rdFingerprintGenerator.GetMorganFeatureAtomInvGen(),
+        "atomInvariantsGenerator": SerializableMorganFeatureAtomInvGen(),
         "bondInvariantsGenerator": None,
     },
     "topological-count": {
@@ -232,7 +234,9 @@ class FPCalculator(SerializableCalculator):
         if unknown_params:
             logger.error(f"Params: {unknown_params} are not valid for {method}")
         self.params = default_params
-        self.params.update({k: method_params[k] for k in method_params if k in default_params.keys()})
+        self.params.update(
+            {k: method_params[k] for k in method_params if k in default_params.keys()}
+        )
         self._length = self._set_length(length)
 
     @staticmethod
@@ -329,12 +333,19 @@ class FPCalculator(SerializableCalculator):
         state["input_length"] = self.input_length
         state["method"] = self.method
         state["counting"] = self.counting
-        state["params"] = self.params
+        state["params"] = {
+            k: (v if v.__class__.__name__ not in SERIALIZABLE_CLASSES else v.__class__.__name__)
+            for k, v in self.params.items()
+        }
         return state
 
     def __setstate__(self, state: dict):
         """Set the state of the featurizer"""
         self.__dict__.update(state)
+        self.params = {
+            k: (v if v not in SERIALIZABLE_CLASSES else SERIALIZABLE_CLASSES[v]())
+            for k, v in self.params.items()
+        }
         self._length = self._set_length(self.input_length)
 
     def to_state_dict(self):
@@ -342,10 +353,17 @@ class FPCalculator(SerializableCalculator):
         state_dict = super().to_state_dict()
         cur_params = self.params
         default_params = copy.deepcopy(FP_DEF_PARAMS[state_dict["args"]["method"]])
-        state_dict["args"].update({
-            k: cur_params[k]
-            for k in cur_params
-            if (cur_params[k] != default_params[k] and cur_params[k] is not None)
-        })
+
+        state_dict["args"].update(
+            {
+                k: (
+                    cur_params[k]
+                    if cur_params[k].__class__.__name__ not in SERIALIZABLE_CLASSES
+                    else cur_params[k].__class__.__name__
+                )
+                for k in cur_params
+                if (cur_params[k] != default_params[k] and cur_params[k] is not None)
+            }
+        )
         # we want to keep all the additional parameters in the state dict
         return state_dict
