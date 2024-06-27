@@ -97,7 +97,6 @@ class MolToKey:
 
 
 class _Cache(abc.ABC):
-
     """Implementation of a cache interface"""
 
     def __init__(
@@ -209,12 +208,10 @@ class _Cache(abc.ABC):
             self._sync_cache()
         return self.fetch(mols)
 
-    def clear(self, *args, **kwargs):
-        ...
+    def clear(self, *args, **kwargs): ...
 
     @abc.abstractmethod
-    def update(self, new_cache: Mapping[Any, Any]):
-        ...
+    def update(self, new_cache: Mapping[Any, Any]): ...
 
     def get(self, key, default: Optional[Any] = None):
         """Get the cached value for a specific key
@@ -241,8 +238,7 @@ class _Cache(abc.ABC):
         """Convert current cache to a dictionary"""
         return dict(self.items())
 
-    def _sync_cache(self):
-        ...
+    def _sync_cache(self): ...
 
     def fetch(
         self,
