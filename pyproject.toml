@@ -57,7 +57,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dgl = ["dgl>=1.1.1", "dgllife>=0.3.2"]
+dgl = ["dgl>=1.1.1,<=2.0.0", "dgllife>=0.3.2"]
 
 graphormer = ["graphormer-pretrained"]
 
