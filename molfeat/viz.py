@@ -29,7 +29,7 @@ def colors_from_feature_factory(
     """
     cmap_name = "Set1"
 
-    cmap = matplotlib.cm.get_cmap(cmap_name)
+    cmap = matplotlib.colormaps[cmap_name]
     cmap_n = cmap.N  # type: ignore
 
     colors = {}
