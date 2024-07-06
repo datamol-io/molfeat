@@ -72,6 +72,7 @@ def test_to_from_state(calculator_builder):
 @pytest.mark.xfail(not requires.check("dgllife"), reason="3rd party module dgllife is missing")
 class TestGraphCalculator(ut.TestCase):
     r"""Test cases for basic graph featurizer vs dgl generation"""
+
     smiles = [
         "CCOc1c(OC)cc(CCN)cc1OC",
         "COc1cc(CCN)cc(OC)c1OC",

@@ -22,6 +22,7 @@ from molfeat.utils import requires
 
 class TestDescPharm(ut.TestCase):
     r"""Test cases for descriptors and pharmacophore generation"""
+
     smiles = [
         "CCOc1c(OC)cc(CCN)cc1OC",
         "COc1cc(CCN)cc(OC)c1OC",

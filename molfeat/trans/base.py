@@ -146,7 +146,6 @@ class BaseFeaturizer(BaseEstimator):
 
 
 class MoleculeTransformer(TransformerMixin, BaseFeaturizer, metaclass=_TransformerMeta):
-
     """
     Base class for molecular data transformer such as Fingerprinter etc.
     If you create a subclass of this featurizer, you will need to make sure that the

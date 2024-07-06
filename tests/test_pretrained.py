@@ -16,6 +16,7 @@ from molfeat.utils import requires
 )
 class TestGraphormerTransformer(ut.TestCase):
     r"""Test cases for FingerprintsTransformer"""
+
     smiles = [
         "CCOc1c(OC)cc(CCN)cc1OC",
         "COc1cc(CCN)cc(OC)c1OC",
@@ -86,6 +87,7 @@ class TestGraphormerTransformer(ut.TestCase):
 
 class TestDGLTransformer(ut.TestCase):
     r"""Test cases for FingerprintsTransformer"""
+
     smiles = [
         "CCOc1c(OC)cc(CCN)cc1OC",
         "COc1cc(CCN)cc(OC)c1OC",
@@ -130,6 +132,7 @@ class TestDGLTransformer(ut.TestCase):
 )
 class TestHGFTransformer(ut.TestCase):
     r"""Test cases for FingerprintsTransformer"""
+
     smiles = [
         "CCOc1c(OC)cc(CCN)cc1OC",
         "COc1cc(CCN)cc(OC)c1OC",
