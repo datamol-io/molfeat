@@ -1,4 +1,5 @@
 """Common utility functions"""
+
 from typing import Type
 from typing import Callable
 from typing import Iterable

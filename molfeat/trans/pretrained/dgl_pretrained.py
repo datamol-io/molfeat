@@ -37,6 +37,7 @@ class DGLModel(PretrainedStoreModel):
     r"""
     Load one of the pretrained DGL models for molecular embedding:
     """
+
     AVAILABLE_MODELS = [
         "gin_supervised_contextpred",
         "gin_supervised_infomax",
