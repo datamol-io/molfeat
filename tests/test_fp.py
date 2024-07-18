@@ -40,6 +40,7 @@ class CustomBatchCalculator(SerializableCalculator):
 
 class TestMolTransformer(ut.TestCase):
     r"""Test cases for FingerprintsTransformer"""
+
     smiles = [
         "CCOc1c(OC)cc(CCN)cc1OC",
         "COc1cc(CCN)cc(OC)c1OC",
@@ -51,6 +52,7 @@ class TestMolTransformer(ut.TestCase):
         "avalon",
         "rdkit",
         "ecfp",
+        "ecfp-count",
         "pharm2D",
         "desc2D",
     ]

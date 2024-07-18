@@ -150,7 +150,7 @@ FP_DEF_PARAMS = {
         "fpSize": 2048,
         "includeChirality": False,
         "useBondTypes": True,
-        "countSimulation": False,
+        "includeRedundantEnvironments": False,
         "countBounds": None,
         "atomInvariantsGenerator": None,
         "bondInvariantsGenerator": None,
@@ -160,8 +160,7 @@ FP_DEF_PARAMS = {
         "fpSize": 2048,
         "includeChirality": False,
         "useBondTypes": True,
-        "countSimulation": False,
-        "countBounds": None,
+        "includeRedundantEnvironments": False,
         "atomInvariantsGenerator": SerializableMorganFeatureAtomInvGen(),
         "bondInvariantsGenerator": None,
     },
@@ -310,7 +309,7 @@ class FPCalculator(SerializableCalculator):
         fp_func = FP_FUNCS[self.method]
         if self.method in FP_GENERATORS:
             fp_func = fp_func(**self.params)
-            if self.method.endswith("-count"):
+            if self.counting:
                 fp_val = fp_func.GetCountFingerprint(mol)
             else:
                 fp_val = fp_func.GetFingerprint(mol)
