@@ -52,6 +52,7 @@ class TestMolTransformer(ut.TestCase):
         "avalon",
         "rdkit",
         "ecfp",
+        "ecfp-count",
         "pharm2D",
         "desc2D",
     ]
