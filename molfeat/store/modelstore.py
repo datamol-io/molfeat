@@ -337,7 +337,7 @@ class ModelStore:
 
 
 class InMemoryModelStore(ModelStore):
-    """A class for loading models directly into memory from S3"""
+    """A class for loading models directly into memory from ModelStore"""
 
     def download(
         self,
