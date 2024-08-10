@@ -335,6 +335,7 @@ class ModelStore:
                 found.append(model)
         return found
 
+
 class InMemoryModelStore(ModelStore):
     """A class for loading models directly into memory from S3"""
 
@@ -405,4 +406,3 @@ class InMemoryModelStore(ModelStore):
         model_info_dict = yaml.safe_load(model_data[self.METADATA_PATH_NAME])
         model_info = ModelInfo(**model_info_dict)
         return model, model_info
-    
