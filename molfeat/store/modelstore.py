@@ -1,7 +1,8 @@
 import os
 import pathlib
 import tempfile
-from typing import Any, Callable, Optional, Union
+from typing import Any, Callable, Dict, Optional, Union
+import io
 
 import datamol as dm
 import filelock
@@ -333,3 +334,75 @@ class ModelStore:
             if model.match(search_infos, match_only=list(search_infos.keys())):
                 found.append(model)
         return found
+
+class InMemoryModelStore(ModelStore):
+    """A class for loading models directly into memory from S3"""
+
+    def download(
+        self,
+        modelcard: ModelInfo,
+    ) -> Dict[str, io.BytesIO]:
+        """Download an artifact into memory
+
+        Args:
+            modelcard: information on the model to download
+
+        Returns:
+            A dictionary with file names as keys and file-like objects as values.
+        """
+        remote_dir = modelcard.path(self.model_store_bucket)
+        model_name = modelcard.name
+        if not self.exists(modelcard, check_remote=True):
+            raise ModelStoreError(f"Model {model_name} does not exist in the model store!")
+
+        model_remote_path = dm.fs.join(remote_dir, self.MODEL_PATH_NAME)
+        metadata_remote_path = dm.fs.join(remote_dir, self.METADATA_PATH_NAME)
+
+        model_data = {}
+
+        # Download metadata
+        with fsspec.open(metadata_remote_path, "rb") as IN:
+            model_data[self.METADATA_PATH_NAME] = io.BytesIO(IN.read())
+
+        # Download model
+        with fsspec.open(model_remote_path, "rb") as IN:
+            model_data[self.MODEL_PATH_NAME] = io.BytesIO(IN.read())
+
+        return model_data
+
+    def load(
+        self,
+        model_name: Union[str, dict, ModelInfo],
+        load_fn: Optional[Callable] = None,
+        load_fn_kwargs: Optional[dict] = None,
+    ):
+        """
+        Load a model by its name
+
+        Args:
+            model_name: name of the model to load
+            load_fn: Custom loading function to load the model
+            load_fn_kwargs: Optional dict of additional kwargs to provide to the loading function
+
+        Returns:
+            model: Optional model, if the model requires download or loading weights
+            model_info: model information card
+        """
+        if isinstance(model_name, str):
+            modelcard = self.search(name=model_name)[0]
+        else:
+            modelcard = model_name
+
+        model_data = self.download(
+            modelcard=modelcard,
+        )
+        if load_fn is None:
+            load_fn = joblib.load
+        model = None
+        load_fn_kwargs = load_fn_kwargs or {}
+        if self.MODEL_PATH_NAME in model_data:
+            model = load_fn(model_data[self.MODEL_PATH_NAME], **load_fn_kwargs)
+        model_info_dict = yaml.safe_load(model_data[self.METADATA_PATH_NAME])
+        model_info = ModelInfo(**model_info_dict)
+        return model, model_info
+    
