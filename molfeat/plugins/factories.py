@@ -84,13 +84,15 @@ def CalculatorFactory(
     entry_point_name: str,
     load: Literal[True] = True,
     entry_point_group: Optional[str] = None,
-) -> Union[Type["SerializableCalculator"], Callable]: ...
+) -> Union[Type["SerializableCalculator"], Callable]:
+    ...
 
 
 @overload
 def CalculatorFactory(
     entry_point_name: str, load: Literal[False], entry_point_group: Optional[str] = None
-) -> EntryPoint: ...
+) -> EntryPoint:
+    ...
 
 
 def CalculatorFactory(
@@ -132,13 +134,15 @@ def TransformerFactory(
     entry_point_name: str,
     load: Literal[True] = True,
     entry_point_group: Optional[str] = None,
-) -> Union[Type["MoleculeTransformer"], Callable]: ...
+) -> Union[Type["MoleculeTransformer"], Callable]:
+    ...
 
 
 @overload
 def TransformerFactory(
     entry_point_name: str, load: Literal[False], entry_point_group: Optional[str] = None
-) -> EntryPoint: ...
+) -> EntryPoint:
+    ...
 
 
 def TransformerFactory(
@@ -184,11 +188,13 @@ def PretrainedTransformerFactory(
     entry_point_name: str,
     load: Literal[True] = True,
     entry_point_group: Optional[str] = None,
-) -> Union[Type["PretrainedMolTransformer"], Callable]: ...
+) -> Union[Type["PretrainedMolTransformer"], Callable]:
+    ...
 
 
 @overload
-def PretrainedTransformerFactory(entry_point_name: str, load: Literal[False]) -> EntryPoint: ...
+def PretrainedTransformerFactory(entry_point_name: str, load: Literal[False]) -> EntryPoint:
+    ...
 
 
 def PretrainedTransformerFactory(
@@ -233,13 +239,15 @@ def DefaultFactory(
     entry_point_name: str,
     load: Literal[True] = True,
     entry_point_group: str = None,
-) -> Union[Type["PretrainedMolTransformer"], Callable]: ...
+) -> Union[Type["PretrainedMolTransformer"], Callable]:
+    ...
 
 
 @overload
 def DefaultFactory(
     entry_point_name: str, load: Literal[False], entry_point_group: str = None
-) -> EntryPoint: ...
+) -> EntryPoint:
+    ...
 
 
 def DefaultFactory(

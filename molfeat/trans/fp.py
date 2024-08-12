@@ -156,7 +156,7 @@ class FPVecTransformer(MoleculeTransformer):
         return self.__repr__()
 
     def __eq__(self, other):
-        same_type = type(self) == type(other)
+        same_type = isinstance(self, type(other))
         return same_type and all(
             [getattr(other, k) == v for k, v in self.get_params() if not callable(v)]
         )
