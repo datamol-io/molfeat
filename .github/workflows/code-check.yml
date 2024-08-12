@@ -23,7 +23,7 @@ jobs:
 
       - name: Install black
         run: |
-          pip install black>=23
+          pip install black>=24
 
       - name: Lint
         run: black --check .
@@ -45,4 +45,4 @@ jobs:
           pip install ruff
 
       - name: Lint
-        run: ruff .
+        run: ruff check .

@@ -164,7 +164,7 @@ class TestMolTransformer(ut.TestCase):
         transf2 = MoleculeTransformer("rdkit", dtype=ExplicitBitVect)
 
         fp, ids = transf2(self.smiles, enforce_dtype=True, ignore_errors=True)
-        self.assertTrue(type(fp[0]) == ExplicitBitVect)
+        self.assertTrue(type(fp[0]) is ExplicitBitVect)
 
     def test_3d_exception(self):
         with self.assertRaises(ValueError) as context:

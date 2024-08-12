@@ -57,7 +57,7 @@ _**Note:** We highly recommend using a [Conda Python distribution](https://githu
 
 Not all featurizers in the Molfeat core package are supported by default. Some featurizers require additional dependencies. If you try to use a featurizer that requires additional dependencies, Molfeat will raise an error and tell you which dependencies are missing and how to install them.
 
-- To install `dgl`: run `mamba install -c dglteam dgl`
+- To install `dgl`: run `mamba install -c dglteam "dgl<=2.0"` # there is some issue with "dgl>2.0.0" related to graphbolt
 - To install `dgllife`: run `mamba install -c conda-forge dgllife`
 - To install `fcd_torch`: run `mamba install -c conda-forge fcd_torch`
 - To install `pyg`: run `mamba install -c conda-forge pytorch_geometric`
