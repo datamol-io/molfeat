@@ -83,7 +83,7 @@ all = [
 
 test = ["pytest >=6.0","pytest-dotenv", "pytest-cov", "pytest-xdist", "black >=22", "ruff"]
 docs = ["mkdocs", "mike", "mdx_truly_sane_lists", "mkdocs-material >=7.1.1", "mkdocs-jupyter >=0.24.8", "mkdocstrings", "mkdocstrings-python", "markdown-include"]
-dev = ["molfeat[test]", "molfeat[all]", "molfeat[docs]"]
+dev = ["molfeat[test]", "molfeat[all]", "molfeat[docs]", "pre-commit"]
 
 [project.urls]
 Website = "https://molfeat.datamol.io"
