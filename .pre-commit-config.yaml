@@ -1,0 +1,21 @@
+repos:
+- repo: https://github.com/psf/black
+  rev: "24.8.0" # run `pre-commit autoupdate`
+  hooks:
+    -   id: black
+        name: black
+        entry: black
+        args: 
+          - --check
+        language: system
+        types: [python]
+
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: "v0.5.7"
+  hooks:
+    -   id: ruff
+        name: ruff
+        entry: ruff
+        args: ["check"] 
+        language: system
+        types: [python]
