@@ -1,14 +1,11 @@
-from typing import Callable
-from typing import List
-from typing import Optional
-from typing import Union
-
-import re
 import copy
-import numpy as np
-import datamol as dm
+import re
+from typing import Callable, List, Optional, Union
 
-from molfeat.calc import get_calculator, FP_FUNCS
+import datamol as dm
+import numpy as np
+
+from molfeat.calc import FP_FUNCS, get_calculator
 from molfeat.trans.base import MoleculeTransformer
 from molfeat.utils import datatype
 from molfeat.utils.commons import _parse_to_evaluable_str
