@@ -27,6 +27,8 @@ nav:
           - Finetuning a pretrained transformer: tutorials/transformer_finetuning.ipynb
       - Save and Load: tutorials/save_and_load.ipynb
       - The Data Cache: tutorials/datacache.ipynb
+      - Model Handling:
+          - Loading Models Without Disk Storage: tutorials/loading_models_without_disk_storage.ipynb
 
   - Developers:
       - Contributing: developers/contribute.md
@@ -97,7 +99,7 @@ watch:
 
 plugins:
   - search
-  
+
   - mkdocstrings:
       handlers:
         python:
