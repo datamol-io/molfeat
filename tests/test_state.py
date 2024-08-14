@@ -259,7 +259,7 @@ def test_fp_state():
         {
             "name": "FPCalculator",
             "module": "molfeat.calc.fingerprints",
-            "args": {"length": 512, "method": "ecfp", "counting": False, "nBits": 512},
+            "args": {"length": 512, "method": "ecfp", "counting": False, "fpSize": 512},
             "_molfeat_version": MOLFEAT_VERSION,
         },
         {
@@ -269,7 +269,8 @@ def test_fp_state():
                 "length": 241,
                 "method": "fcfp-count",
                 "counting": True,
-                "nBits": 241,
+                "fpSize": 241,
+                "atomInvariantsGenerator": "SerializableMorganFeatureAtomInvGen",
             },
             "_molfeat_version": MOLFEAT_VERSION,
         },
