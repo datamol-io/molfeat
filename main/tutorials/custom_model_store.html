@@ -3542,13 +3542,13 @@ echo "export MOLFEAT_MODEL_STORE_BUCKET=$1" &gt; .env</div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># we reimport to reload the store information without restarting the kernel</span>
 <span class="kn">import</span> <span class="nn">dotenv</span>
 <span class="n">dotenv</span><span class="o">.</span><span class="n">load_dotenv</span><span class="p">(</span><span class="n">override</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">molfeat.store</span> <span class="kn">import</span> <span class="n">ModelStore</span>
+<span class="kn">from</span> <span class="nn">molfeat.store</span> <span class="kn">import</span> <span class="n">ModelStore</span> <span class="c1"># noqa: E402</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">PretrainedDGLTransformer</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"tmp_gin_supervised_infomax"</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-26"># we reimport to reload the store information without restarting the kernel
 import dotenv
 dotenv.load_dotenv(override=True)
-from molfeat.store import ModelStore
+from molfeat.store import ModelStore # noqa: E402
 model = PretrainedDGLTransformer(kind="tmp_gin_supervised_infomax", dtype=float)</div>
 </div>
 </div>

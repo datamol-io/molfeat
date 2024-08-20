@@ -2206,11 +2206,9 @@ from tqdm.auto import tqdm</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">molfeat.utils.converters</span> <span class="kn">import</span> <span class="n">SmilesConverter</span>
-<span class="kn">from</span> <span class="nn">molfeat.trans.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedHFTransformer</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">molfeat.trans.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedHFTransformer</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-2">from molfeat.utils.converters import SmilesConverter
-from molfeat.trans.pretrained import PretrainedHFTransformer</div>
+<div class="clipboard-copy-txt" id="cell-2">from molfeat.trans.pretrained import PretrainedHFTransformer</div>
 </div>
 </div>
 </div>
@@ -2441,7 +2439,6 @@ from molfeat.trans.pretrained import PretrainedHFTransformer</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span>
 <span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
-<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">default_data_collator</span>
 
 
 <span class="k">class</span> <span class="nc">DTset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
@@ -2479,7 +2476,6 @@ from molfeat.trans.pretrained import PretrainedHFTransformer</div>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-6">from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
-from transformers import default_data_collator
 
 
 class DTset(Dataset):
@@ -2925,7 +2921,6 @@ with tqdm(range(NUM_EPOCHS)) as pbar:
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
 <span class="n">test_y_hat</span> <span class="o">=</span> <span class="p">[]</span>
@@ -2944,7 +2939,6 @@ with tqdm(range(NUM_EPOCHS)) as pbar:
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Test ROC AUC: </span><span class="si">{</span><span class="n">roc_auc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="se">\n</span><span class="s2">Test Accuracy: </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-13">from sklearn.metrics import accuracy_score, roc_auc_score
-from matplotlib import pyplot as plt
 
 model.eval()
 test_y_hat = []

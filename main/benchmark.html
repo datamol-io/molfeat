@@ -2440,7 +2440,7 @@ dm.disable_rdkit_log()</div>
     <span class="n">mol</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">to_mol</span><span class="p">(</span><span class="n">smi</span><span class="p">,</span> <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sanitize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>    
     <span class="k">try</span><span class="p">:</span> 
         <span class="n">mol</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">sanitize_mol</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span>
+    <span class="k">except</span><span class="p">:</span> <span class="c1"># noqa: E722</span>
         <span class="n">mol</span> <span class="o">=</span> <span class="kc">None</span>
             
     <span class="k">if</span> <span class="n">mol</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> 
@@ -2472,7 +2472,7 @@ def preprocess_smiles(smi):
     mol = dm.to_mol(smi, ordered=True, sanitize=False)    
     try: 
         mol = dm.sanitize_mol(mol)
-    except:
+    except: # noqa: E722
         mol = None
             
     if mol is None: 
