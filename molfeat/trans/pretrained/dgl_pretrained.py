@@ -74,8 +74,8 @@ class DGLModel(PretrainedStoreModel):
         import dgllife
 
         base_model = dgllife.model.load_pretrained(model_name)
+        base_model.eval()
         model = DGLModel(name=model_name)
-        model.eval()
         model._model = base_model
         return model
 
