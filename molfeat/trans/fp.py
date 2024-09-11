@@ -122,7 +122,7 @@ class FPVecTransformer(MoleculeTransformer):
                 radius = max(radius // 2, 1)
             params["radius"] = radius
         if any(x in kind for x in ["morgan", "morgan_circular", "morgan-circular"]):
-            kind.replace("_circular", "").replace("-circular", "").replace("morgan", "ecfp")
+            kind = kind.replace("_circular", "").replace("-circular", "").replace("morgan", "ecfp")
         if kind not in cls.AVAILABLE_FPS:
             raise ValueError(f"{kind} is not a valid featurizer")
         params["length"] = length
