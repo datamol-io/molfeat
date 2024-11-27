@@ -176,7 +176,7 @@ FP_DEF_PARAMS = {
         "nBits": 512,
         "isQuery": False,
         "bitFlags": pyAvalonTools.avalonSimilarityBits,
-    },    
+    },
     "atompair-count": {
         "minDistance": 1,
         "maxDistance": 30,
