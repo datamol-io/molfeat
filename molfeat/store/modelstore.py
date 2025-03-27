@@ -50,20 +50,25 @@ class ModelStore:
 
     # EN: be careful not to recreate ada
     # EN: should we just use modelstore ?
-    MODEL_STORE_BUCKET = "gs://molfeat-store-prod/artifacts/"
+    MODEL_STORE_ROOT = "https://fs.molfeat.datamol.io/artifacts/"
     MODEL_PATH_NAME = "model.save"
     METADATA_PATH_NAME = "metadata.json"
 
-    def __init__(self, model_store_bucket: Optional[str] = None):
-        if model_store_bucket is None:
-            model_store_bucket = os.getenv("MOLFEAT_MODEL_STORE_BUCKET", self.MODEL_STORE_BUCKET)
-        self.model_store_bucket = model_store_bucket
+    def __init__(self, model_store_root: Optional[str] = None):
+        if model_store_root is None:
+            model_store_root = os.getenv("MOLFEAT_MODEL_STORE_BUCKET", self.MODEL_STORE_ROOT)
+        self.model_store_root = (
+            model_store_root
+            or os.getenv("MOLFEAT_MODEL_STORE_ROOT")
+            or os.getenv("MOLFEAT_MODEL_STORE_BUCKET")
+            or self.MODEL_STORE_ROOT
+        )
         self._available_models = []
         self._update_store()
 
     def _update_store(self):
         """Initialize the store with all available models"""
-        all_metadata = dm.fs.glob(dm.fs.join(self.model_store_bucket, "**/metadata.json"))
+        all_metadata = dm.fs.glob(dm.fs.join(self.model_store_root, "**", self.METADATA_PATH_NAME))
         self._available_models = []
         for mtd_file in all_metadata:
             with fsspec.open(mtd_file, "r") as IN:
@@ -115,7 +120,7 @@ class ModelStore:
             if not force:
                 return
 
-        model_root_dir = modelcard.path(self.model_store_bucket)
+        model_root_dir = modelcard.path(self.model_store_root)
         model_path = model
         model_upload_path = dm.fs.join(model_root_dir, self.MODEL_PATH_NAME)
         model_metadata_upload_path = dm.fs.join(model_root_dir, self.METADATA_PATH_NAME)
@@ -145,7 +150,7 @@ class ModelStore:
         with fsspec.open(model_metadata_upload_path, "w") as OUT:
             OUT.write(modelcard.json())
         self._update_store()
-        logger.info(f"Successfuly registered model {modelcard.name} !")
+        logger.info(f"Successfully registered model {modelcard.name} !")
 
     def _filelock(self, lock_name: str):
         """Create an empty lock file into `cache_dir_path/locks/lock_name`"""
@@ -177,7 +182,7 @@ class ModelStore:
             force: whether to force download even if the file exists already
         """
 
-        remote_dir = modelcard.path(self.model_store_bucket)
+        remote_dir = modelcard.path(self.model_store_root)
         model_name = modelcard.name
         if not self.exists(modelcard, check_remote=True):
             raise ModelStoreError(f"Model {model_name} does not exist in the model store !")
@@ -316,7 +321,7 @@ class ModelStore:
             if model_info.match(card, **match_params):
                 found = True
                 break
-        return found and (not check_remote or dm.fs.exists(card.path(self.model_store_bucket)))
+        return found and (not check_remote or dm.fs.exists(card.path(self.model_store_root)))
 
     def search(self, modelcard: Optional[ModelInfo] = None, **search_kwargs):
         """ "Return all model card that match the required search parameters
@@ -351,7 +356,7 @@ class InMemoryModelStore(ModelStore):
         Returns:
             A dictionary with file names as keys and file-like objects as values.
         """
-        remote_dir = modelcard.path(self.model_store_bucket)
+        remote_dir = modelcard.path(self.model_store_root)
         model_name = modelcard.name
         if not self.exists(modelcard, check_remote=True):
             raise ModelStoreError(f"Model {model_name} does not exist in the model store!")

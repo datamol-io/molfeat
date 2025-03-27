@@ -48,7 +48,7 @@ class TestUtils(ut.TestCase):
 
     def test_null(self):
         self.assertTrue(datatype.is_null(None))
-        self.assertTrue(datatype.is_null([float("nan"), np.NAN]))
+        self.assertTrue(datatype.is_null([float("nan"), np.nan]))
         self.assertFalse(datatype.is_null([float("nan"), 1.0]))
 
     def test_cast(self):
