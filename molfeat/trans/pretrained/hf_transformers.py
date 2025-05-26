@@ -97,7 +97,7 @@ class HFModel(PretrainedStoreModel):
     def __init__(
         self,
         name: str,
-        cache_path: Optional[os.PathLike] = None,
+        cache_path: Optional[str] = None,
         store: Optional[ModelStore] = None,
     ):
         """Model loader initializer
@@ -202,7 +202,7 @@ class HFModel(PretrainedStoreModel):
             pass
         return notation
 
-    def load(self):
+    def load(self) -> HFExperiment:
         """Load Transformer Pretrained featurizer model"""
         if self._model is not None:
             return self._model

@@ -169,7 +169,7 @@ class ModelStore:
     def download(
         self,
         modelcard: ModelInfo,
-        output_dir: Optional[Union[os.PathLike, pathlib.Path]] = None,
+        output_dir: Optional[Union[os.PathLike, pathlib.Path, str]] = None,
         chunk_size: int = 2048,
         force: bool = False,
     ):

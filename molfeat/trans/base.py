@@ -49,8 +49,7 @@ class _TransformerMeta(abc.ABCMeta):
         type.__init__(cls, name, bases, attrs)
         if name in _TRANSFORMERS.keys():
             logger.warning(
-                f"The {name!r} interaction has been superseded by a "
-                f"new class with id {id(cls):#x}"
+                f"The {name!r} interaction has been superseded by a new class with id {id(cls):#x}"
             )
         # ignore private classes
         if name not in ["BaseFeaturizer"] and not name.startswith("_"):
@@ -833,8 +832,7 @@ class PrecomputedMolTransformer(MoleculeTransformer):
 
         if self.base_featurizer is None:
             raise ValueError(
-                "You can't serialize a PrecomputedMolTransformer that does not contain a"
-                " featurizer."
+                "You can't serialize a PrecomputedMolTransformer that does not contain a featurizer."
             )
 
         if not isinstance(self.cache, FileCache):

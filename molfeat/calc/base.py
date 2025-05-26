@@ -20,8 +20,7 @@ class _CalculatorMeta(abc.ABCMeta):
         type.__init__(cls, name, bases, attrs)
         if name in _CALCULATORS.keys():
             logger.warning(
-                f"The {name!r} interaction has been superseded by a "
-                f"new class with id {id(cls):#x}"
+                f"The {name!r} interaction has been superseded by a new class with id {id(cls):#x}"
             )
         if name != "SerializableCalculator":
             # do not register the base class
