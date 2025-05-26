@@ -103,16 +103,16 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
-          setup_commands:
-            - import sys
-            - sys.path.append("docs")
-            - sys.path.append("molfeat")
-          selection:
-            new_path_syntax: true
-          rendering:
+          paths: ["docs", "molfeat"]
+          options:
+            docstring_style: google
+            docstring_section_style: table
             show_root_heading: false
             heading_level: 3
             show_if_no_docstring: true
+            show_source: true
+            members_order: source
+            show_signature_annotations: true
 
   - mkdocs-jupyter:
       execute: false
