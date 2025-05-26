@@ -83,9 +83,7 @@ class DGLModel(PretrainedStoreModel):
         """Load GIN model"""
         if self._model is not None:
             return self._model
-        download_output_dir = self._artifact_load(
-            name=self.name, download_path=self.cache_path, store=self.store
-        )
+        download_output_dir = self._artifact_load()
         model_path = dm.fs.join(download_output_dir, self.store.MODEL_PATH_NAME)
         with fsspec.open(model_path, "rb") as f:
             model = joblib.load(f)

@@ -14,12 +14,11 @@ class PretrainedModel(abc.ABC):
     """
 
     @abc.abstractmethod
-    def _artifact_load(self, name: str, download_path: Optional[str] = None, **kwargs) -> str:
+    def _artifact_load(self, **kwargs) -> str:
         """Load an artifact based on its name
 
         Args:
             name: name of the model to load
-            download_path: path to a directory where to save the downloaded files
         """
         ...
 
@@ -44,29 +43,22 @@ class PretrainedStoreModel(PretrainedModel):
 
         Args:
             name: name of the pretrained transformer in the model store
-            cache_path: optional local cache path.
-            store: ModelStore to use for loading the pretrained model
         """
-        if store is None:
-            store = ModelStore()
-
         self.name = name
-        self.cache_path = cache_path if cache_path else platformdirs.user_cache_dir("molfeat")
-        self.store = store
+        self.cache_path = cache_path or dm.fs.join(platformdirs.user_cache_dir("molfeat"), name)
+        self.store = store or ModelStore()
 
-    def _artifact_load(self, name: str, download_path: Optional[str] = None, **kwargs) -> str:
+    def _artifact_load(self, **kwargs) -> str:
         """Load internal artifact from the model store
 
         Args:
             name: name of the model to load
             download_path: path to a directory where to save the downloaded files
         """
-        path = download_path if download_path else dm.fs.join(self.cache_path, name)
-
-        if not dm.fs.exists(path):
+        if not dm.fs.exists(self.cache_path):
             try:
-                modelcard = self.store.search(name=name)[0]
-                self.store.download(modelcard, download_path, **kwargs)
+                modelcard = self.store.search(name=self.name)[0]
+                self.store.download(modelcard, self.cache_path, **kwargs)
             except Exception as e:
-                raise ModelStoreError(f"Can't retrieve model {name} from the store !") from e
-        return path
+                raise ModelStoreError(f"Can't retrieve model {self.name} from the store !") from e
+        return self.cache_path

@@ -281,6 +281,6 @@ def as_numpy_array_if_possible(arr, dtype: Optional[None]):
                 and np.isscalar(arr[0][0])
             ):
                 return sk_utils.check_array(
-                    arr, accept_sparse=True, force_all_finite=False, ensure_2d=False, allow_nd=True
+                    arr, accept_sparse=True, ensure_all_finite=False, ensure_2d=False, allow_nd=True
                 )
     return arr

@@ -206,9 +206,7 @@ class HFModel(PretrainedStoreModel):
         """Load Transformer Pretrained featurizer model"""
         if self._model is not None:
             return self._model
-        download_output_dir = self._artifact_load(
-            name=self.name, download_path=self.cache_path, store=self.store
-        )
+        download_output_dir = self._artifact_load()
         model_path = dm.fs.join(download_output_dir, self.store.MODEL_PATH_NAME)
         self._model = HFExperiment.load(model_path)
         return self._model

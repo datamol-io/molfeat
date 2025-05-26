@@ -55,8 +55,6 @@ class ModelStore:
     METADATA_PATH_NAME = "metadata.json"
 
     def __init__(self, model_store_root: Optional[str] = None):
-        if model_store_root is None:
-            model_store_root = os.getenv("MOLFEAT_MODEL_STORE_BUCKET", self.MODEL_STORE_ROOT)
         self.model_store_root = (
             model_store_root
             or os.getenv("MOLFEAT_MODEL_STORE_ROOT")
@@ -198,14 +196,8 @@ class ModelStore:
         metadata_dest_path = dm.fs.join(output_dir, self.METADATA_PATH_NAME)
 
         # avoid downloading if the file exists already
-        if (
-            not (
-                dm.fs.exists(metadata_dest_path)
-                and (dm.fs.exists(model_dest_path) == dm.fs.exists(model_remote_path))
-            )
-            or force
-        ):
-            # metadata should exists if the model exists
+        if force or not dm.fs.exists(metadata_dest_path) or not dm.fs.exists(model_dest_path):
+            # metadata should exists if the model existsgit st
             with self._filelock(f"{model_name}.metadata.json.lock"):
                 dm.fs.copy_file(
                     metadata_remote_path,
