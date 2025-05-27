@@ -41,6 +41,8 @@ if requires.check("torch_geometric"):
         from torch_geometric.data.datapipes import DatasetAdapter
     else:
         PygDataset, BaseData, DatasetAdapter = Any, Any, Any
+else:
+    PygDataset, BaseData, DatasetAdapter = Any, Any, Any
 
 
 class GraphTransformer(MoleculeTransformer):

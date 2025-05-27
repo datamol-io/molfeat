@@ -628,7 +628,7 @@ class Pharmacophore3D(SerializableCalculator):
 
 
 def get_feature_factory(
-    factory: Union[str, MolChemicalFeatureFactory]
+    factory: Union[str, MolChemicalFeatureFactory],
 ) -> MolChemicalFeatureFactory:
     """Build a feature factory."""
 

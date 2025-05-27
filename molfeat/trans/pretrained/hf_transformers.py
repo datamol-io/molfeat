@@ -97,7 +97,7 @@ class HFModel(PretrainedStoreModel):
     def __init__(
         self,
         name: str,
-        cache_path: Optional[os.PathLike] = None,
+        cache_path: Optional[str] = None,
         store: Optional[ModelStore] = None,
     ):
         """Model loader initializer
@@ -202,13 +202,11 @@ class HFModel(PretrainedStoreModel):
             pass
         return notation
 
-    def load(self):
+    def load(self) -> HFExperiment:
         """Load Transformer Pretrained featurizer model"""
         if self._model is not None:
             return self._model
-        download_output_dir = self._artifact_load(
-            name=self.name, download_path=self.cache_path, store=self.store
-        )
+        download_output_dir = self._artifact_load()
         model_path = dm.fs.join(download_output_dir, self.store.MODEL_PATH_NAME)
         self._model = HFExperiment.load(model_path)
         return self._model
