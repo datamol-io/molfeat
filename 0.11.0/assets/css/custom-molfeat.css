@@ -1,0 +1,103 @@
+:root {
+  --molfeat-primary: #217EBB;
+  --molfeat-secondary: #5f6d7a;
+
+  /* Primary color shades */
+  --md-primary-fg-color: var(--molfeat-primary);
+  --md-primary-fg-color--light: var(--molfeat-primary);
+  --md-primary-fg-color--dark: var(--molfeat-primary);
+  --md-primary-bg-color: var(--molfeat-secondary);
+  --md-primary-bg-color--light: var(--molfeat-secondary);
+  --md-text-link-color: var(--molfeat-secondary);
+
+  /* Accent color shades */
+  --md-accent-fg-color: var(--molfeat-secondary);
+  --md-accent-fg-color--transparent: var(--molfeat-secondary);
+  --md-accent-bg-color: var(--molfeat-secondary);
+  --md-accent-bg-color--light: var(--molfeat-secondary);
+}
+
+:root>* {
+  /* Code block color shades */
+  --md-code-bg-color: hsla(0, 0%, 96%, 1);
+  --md-code-fg-color: hsla(200, 18%, 26%, 1);
+
+  /* Footer */
+  --md-footer-bg-color: var(--molfeat-primary);
+  /* --md-footer-bg-color--dark: hsla(0, 0%, 0%, 0.32); */
+  --md-footer-fg-color: var(--molfeat-secondary);
+  --md-footer-fg-color--light: var(--molfeat-secondary);
+  --md-footer-fg-color--lighter: var(--molfeat-secondary);
+
+}
+
+.md-header {
+  background-image: linear-gradient(to right, #1E2F6C, #217EBB);
+}
+
+.md-footer {
+  background-image: linear-gradient(to right, #1E2F6C, #217EBB);
+}
+
+.md-tabs {
+  background-image: linear-gradient(to right, #F4F6F9, #CCE3f8);
+}
+
+.md-header__topic {
+  color: rgb(255, 255, 255);
+}
+
+.md-source__repository,
+.md-source__icon,
+.md-header__button,
+.md-nav__title,
+.md-search__input,
+.md-search__input::placeholder,
+.md-search__input~.md-search__icon,
+.md-footer__inner.md-grid,
+.md-copyright__highlight,
+.md-copyright,
+.md-footer-meta.md-typeset a,
+.md-version {
+  color: rgb(255, 255, 255) !important;
+}
+
+.md-search__form {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.md-search-result__article:hover {
+  background-color: #CCE3f8;
+}
+
+.md-search-result__more:hover,
+.md-search-result__more:focus {
+  background-color: #CCE3f8 !important;
+}
+
+.md-search__input {
+  color: #222222 !important;
+}
+
+.md-header__topic {
+  color: rgb(255, 255, 255);
+  font-size: 1.4em;
+}
+
+/* Increase the size of the logo */
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 2rem !important;
+}
+
+/* Reduce the margin around the logo */
+.md-header__button.md-logo {
+  margin: 0.4em;
+  padding: 0.4em;
+}
+
+/* Remove the `In` and `Out` block in rendered Jupyter notebooks */
+.md-container .jp-Cell-outputWrapper .jp-OutputPrompt.jp-OutputArea-prompt,
+.md-container .jp-Cell-inputWrapper .jp-InputPrompt.jp-InputArea-prompt {
+  display: none !important;
+}
