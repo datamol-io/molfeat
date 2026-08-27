@@ -105,9 +105,7 @@ class TestMolTransformer(ut.TestCase):
                 fpSize=2048,
                 atomInvariantsGenerator=rdFingerprintGenerator.GetMorganFeatureAtomInvGen(),
             )
-            fingerprint = (
-                generator.GetCountFingerprint if counting else generator.GetFingerprint
-            )
+            fingerprint = generator.GetCountFingerprint if counting else generator.GetFingerprint
             expected = []
             for mol in mols:
                 values = np.zeros(2048, dtype=int)
@@ -116,9 +114,13 @@ class TestMolTransformer(ut.TestCase):
             expected = np.vstack(expected)
 
             ecfp = np.vstack([FPCalculator(ecfp_method)(mol) for mol in mols])
-            fcfp = np.vstack([FPCalculator(fcfp_method)(mol) for mol in mols])
+            calculator = FPCalculator(fcfp_method)
+            fcfp = np.vstack([calculator(mol) for mol in mols])
+            restored = FPCalculator.from_state_dict(calculator.to_state_dict())
+            restored_fcfp = np.vstack([restored(mol) for mol in mols])
             self.assertFalse(np.array_equal(ecfp, expected))
             np.testing.assert_array_equal(fcfp, expected)
+            np.testing.assert_array_equal(restored_fcfp, expected)
 
     def test_transformer_parallel_mol(self):
         for fpkind in ["atompair", "pharm2D"]:
