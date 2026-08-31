@@ -21,7 +21,6 @@ from molfeat.calc.base import SerializableCalculator
 from molfeat.utils.datatype import to_numpy, to_fp
 from molfeat.utils.commons import fold_count_fp
 
-
 FP_GENERATORS = {
     "ecfp": rdFingerprintGenerator.GetMorganGenerator,
     "fcfp": rdFingerprintGenerator.GetMorganGenerator,

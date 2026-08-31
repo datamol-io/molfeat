@@ -437,7 +437,7 @@ class Pharmacophore3D(SerializableCalculator):
                 on_bits.add(random.randrange(self.length))
 
         if raw:
-            return np.array(on_bits)
+            return np.asarray(sorted(on_bits), dtype=int)
 
         fp = np.zeros(self.length, dtype=int)
         fp[list(on_bits)] = 1

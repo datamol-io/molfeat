@@ -12,7 +12,6 @@ from molfeat.calc.bond import EdgeMatCalculator
 from molfeat.calc.bond import DGLCanonicalBondCalculator
 from molfeat.calc.bond import DGLWeaveEdgeCalculator
 
-
 DTYPES_MAPPING = {
     None: None,
     torch.float16: "torch.float16",

@@ -7,6 +7,7 @@ repo_name: "datamol-io/molfeat"
 remote_branch: "gh-pages"
 use_directory_urls: false
 copyright: Copyright 2020 - 2023 datamol.io
+strict: true
 
 nav:
   - Getting started:
@@ -34,6 +35,7 @@ nav:
       - Contributing: developers/contribute.md
       - Extending molfeat: developers/create-plugin.md
       - Registering your Plugin: developers/register-plugin.md
+      - Migrating to 1.x: migration.md
 
   - Community:
       - Get involved: community/get_involved.md
@@ -106,6 +108,9 @@ plugins:
           paths: ["docs", "molfeat"]
           options:
             docstring_style: google
+            docstring_options:
+              warn_missing_types: false
+              warn_unknown_params: false
             docstring_section_style: table
             show_root_heading: false
             heading_level: 3

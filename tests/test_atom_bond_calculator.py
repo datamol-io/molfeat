@@ -27,7 +27,6 @@ from molfeat.calc._atom_bond_features import atom_implicit_valence_one_hot
 
 from molfeat.utils import requires
 
-
 CUSTOM_BOND_FEATURIZER = {
     "bond_type_one_hot": bond_type_one_hot,
     "bond_is_in_ring": bond_is_in_ring,
@@ -69,7 +68,7 @@ def test_to_from_state(calculator_builder):
     assert state == state2
 
 
-@pytest.mark.xfail(not requires.check("dgllife"), reason="3rd party module dgllife is missing")
+@pytest.mark.skipif(not requires.check("dgllife"), reason="3rd party module dgllife is missing")
 class TestGraphCalculator(ut.TestCase):
     r"""Test cases for basic graph featurizer vs dgl generation"""
 

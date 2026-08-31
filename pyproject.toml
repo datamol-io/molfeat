@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools", "setuptools-scm"]
+requires = ["setuptools>=77", "setuptools-scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -8,8 +8,9 @@ description = "molfeat - the hub for all your molecular featurizers"
 dynamic = ["version"]
 authors = [{ name = "Emmanuel Noutahi", email = "emmanuel.noutahi@hotmail.ca" }]
 readme = "README.md"
-license = { text = "Apache" }
-requires-python = ">=3.9,<3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
@@ -23,69 +24,88 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
 ]
 
 dependencies = [
-    "tqdm",
-    "loguru",
-    "joblib",
-    "filelock",
-    "fsspec >=2021.9",
-    "s3fs >=2021.9",
-    "gcsfs >=2021.9",
-    "pandas",
-    "numpy",
-    "scipy",
-    "torch>=1.13",
-    "datamol >=0.8.0",
-    "pyyaml",
-    "platformdirs",
-    "matplotlib",
-    "h5py",
-    "pyarrow",
-    "pydantic >=2.0.0",
-    "platformdirs",
-    "scikit-learn",
-    "packaging",
-    "pmapper",
-    "mordredcommunity",
-    "python-dotenv",
-    "rdkit",
+    "tqdm>=4.66",
+    "loguru>=0.7",
+    "joblib>=1.3",
+    "filelock>=3.13",
+    "fsspec>=2024.3",
+    "s3fs>=2024.3",
+    "gcsfs>=2024.3",
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "torch>=2.5",
+    "datamol>=0.12.5",
+    "pyyaml>=6",
+    "platformdirs>=4",
+    "matplotlib>=3.8",
+    "h5py>=3.10",
+    "pyarrow>=15",
+    "pydantic>=2.7",
+    "scikit-learn>=1.6",
+    "packaging>=23.2",
+    "pmapper>=1.1",
+    "mordredcommunity>=2.0.7",
+    "python-dotenv>=1",
+    "rdkit>=2024.9.1",
 ]
 
 [project.optional-dependencies]
-dgl = ["dgl>=1.1.1,<=2.0.0", "dgllife>=0.3.2"]
-
-graphormer = ["graphormer-pretrained"]
-
-transformer = ["tokenizers <0.13.2", "transformers", "sentencepiece"]
-
-fcd = ["fcd_torch"]
-
-viz = ["nglview", "ipywidgets"]
-
-pyg = ["torch_geometric >=2.4.0"]
-
-bioembeddings = [ "bio-embeddings[all]" ]
-
-all = [
-    "dgl",
-    "dgllife",
-    "graphormer-pretrained",
-    "tokenizers <0.13.2",
-    "transformers",
-    "fcd_torch",
-    "nglview",
-    "ipywidgets",
-    "torch_geometric >=2.4.0",
-    "bioembeddings"
+dgl = [
+    "dgl>=1.1.3,<2; python_version < '3.12'",
+    "dgllife>=0.3.2; python_version < '3.12'",
 ]
 
-test = ["pytest >=6.0","pytest-dotenv", "pytest-cov", "pytest-xdist", "black[jupyter] >=22", "ruff"]
-docs = ["mkdocs", "mike", "mdx_truly_sane_lists", "mkdocs-material >=7.1.1", "mkdocs-jupyter >=0.24.8", "mkdocstrings", "mkdocstrings-python", "markdown-include"]
-dev = ["molfeat[test]", "molfeat[all]", "molfeat[docs]", "pre-commit"]
+transformer = ["transformers>=5,<6", "sentencepiece>=0.2"]
+
+fcd = ["fcd_torch>=1.0.7"]
+
+viz = ["nglview>=3.1", "ipywidgets>=8.1"]
+
+pyg = ["torch_geometric>=2.6"]
+
+all = [
+    "dgl>=1.1.3,<2; python_version < '3.12'",
+    "dgllife>=0.3.2; python_version < '3.12'",
+    "transformers>=5,<6",
+    "sentencepiece>=0.2",
+    "fcd_torch>=1.0.7",
+    "nglview>=3.1",
+    "ipywidgets>=8.1",
+    "torch_geometric>=2.6",
+]
+
+test = [
+    "pytest>=8",
+    "pytest-dotenv>=0.5",
+    "pytest-cov>=6",
+    "pytest-timeout>=2.3",
+    "pytest-xdist>=3.6",
+]
+docs = [
+    "markdown-include>=0.8.1",
+    "mdx-truly-sane-lists>=1.3",
+    "mike>=2",
+    "mkdocs>=1.6",
+    "mkdocs-jupyter>=0.25",
+    "mkdocs-material>=9.5",
+    "mkdocs-material-extensions>=1.3",
+    "mkdocstrings[python]>=0.30",
+]
+dev = [
+    "black[jupyter]>=25",
+    "build>=1.2",
+    "pre-commit>=4",
+    "ruff>=0.11",
+    "twine>=6",
+]
 
 [project.urls]
 Website = "https://molfeat.datamol.io"
@@ -96,10 +116,9 @@ Documentation = "https://molfeat-docs.datamol.io/"
 [tool.setuptools]
 include-package-data = true
 zip-safe = false
-license-files = ["LICENSE"]
 
-# [tool.setuptools_scm]
-# fallback_version = "dev"
+[tool.setuptools_scm]
+fallback_version = "0.0.0"
 
 [tool.setuptools.packages.find]
 where = ["."]
@@ -110,16 +129,20 @@ namespaces = true
 [tool.setuptools.package-data]
 "molfeat.data" = ["**/*"]
 
+[tool.setuptools.exclude-package-data]
+"*" = ["**/__pycache__/*", "**/*.py[cod]"]
+
 [tool.black]
 line-length = 100
-target-version = ['py39', 'py310']
+target-version = ['py311']
 include = '\.pyi?$'
 
 [tool.ruff]
 line-length = 110
-target-version = "py310"
+target-version = "py311"
 
 [tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
 ignore = [
     "E501", # Never enforce `E501` (line length violations).
     "E731", # Do not assign a lambda expression, use a def
@@ -135,8 +158,8 @@ ignore = [
 max-doc-length = 150
 
 [tool.pytest.ini_options]
-minversion = "6.0"
-addopts = "--verbose --cov-report xml --cov-report term --color yes"
+minversion = "8.0"
+addopts = "--verbose --cov=molfeat --cov-report xml --cov-report term --color yes --durations=10"
 testpaths = ["tests"]
 norecursedirs = "tests/helpers"
 

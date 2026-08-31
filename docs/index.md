@@ -21,7 +21,10 @@ mamba install -c conda-forge molfeat
 
 _**Tips:** You can replace `mamba` by `conda`._
 
-_**Note:** We highly recommend using a [Conda Python distribution](https://github.com/conda-forge/miniforge) to install Molfeat. The package is also pip installable if you need it: `pip install molfeat`._
+_**Note:** We highly recommend using a [Conda Python distribution](https://github.com/conda-forge/miniforge) to install Molfeat. The package is also pip installable: `python -m pip install molfeat`._
+
+The next major release requires Python 3.11 or newer, RDKit 2024.09 or newer,
+and PyTorch 2.5 or newer.
 
 ### Installing Plugins
 
@@ -33,15 +36,26 @@ However, this does imply that the installation of a plugin is plugin-dependent: 
 
 Not all featurizers in Molfeat core package are supported by default. Some featurizers require additional dependencies. If you try to use a featurizer that requires additional dependencies, Molfeat will raise an error and tell you which dependencies are missing and how to install them.
 
-- To install `dgl`: run `mamba install -c dglteam "dgl<=2.0"` # there is some issue with "dgl>2.0.0" related to graphbolt
-- To install `dgllife`: run `mamba install -c conda-forge dgllife`
-- To install `fcd_torch`: run `mamba install -c conda-forge fcd_torch`
-- To install `pyg`: run `mamba install -c conda-forge pytorch_geometric`
-- To install `graphormer-pretrained`: run `mamba install -c conda-forge graphormer-pretrained`
-- To install `map4`: see https://github.com/reymond-group/map4
-- To install `bio-embeddings`: run `mamba install -c conda-forge 'bio-embeddings >=0.2.2'`
+- To install Hugging Face Transformers support: `python -m pip install "molfeat[transformer]"`.
+- To install PyTorch Geometric support: `python -m pip install "molfeat[pyg]"`.
+- To install FCD support: `python -m pip install "molfeat[fcd]"`.
+- To install DGL and DGLLife support on Python 3.11: `python -m pip install "molfeat[dgl]"`.
+- To install `map4`: see <https://github.com/reymond-group/map4>.
 
-If you install Molfeat using pip, there are optional dependencies that can be installed with the main package. For example, `pip install "molfeat[all]"` allows installing all the compatible optional dependencies for small molecule featurization. There are other options such as `molfeat[dgl]`, `molfeat[graphormer]`, `molfeat[transformer]`, `molfeat[viz]`, and `molfeat[fcd]`.
+`python -m pip install "molfeat[all]"` installs every maintained optional
+dependency compatible with the current interpreter. DGL 1.x and DGLLife are
+kept in a Python 3.11 compatibility lane. Graphormer and `bio-embeddings` are
+not maintained installation extras in 1.x because their upstream releases are
+incompatible with the supported stack. Their existing adapters remain available
+to users who manage a compatible legacy environment. See the
+[migration guide](migration.md) for details.
+
+### Compatibility
+
+| Molfeat | Python | RDKit | PyTorch |
+| --- | --- | --- | --- |
+| `1.x` (development) | `3.11–3.14` | `2024.09+` | `2.5+` |
+| `0.x` | See the release metadata | See the release metadata | See the release metadata |
 
 ## How to cite
 

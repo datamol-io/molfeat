@@ -9,7 +9,6 @@ import fsspec
 from loguru import logger
 from molfeat._version import __version__ as MOLFEAT_VERSION
 
-
 _CALCULATORS = {}
 
 

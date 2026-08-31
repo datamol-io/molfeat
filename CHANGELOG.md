@@ -2,6 +2,35 @@
 
 _Only changelogs previous to 0.8.10. See the GitHub releases for new changelogs._
 
+## Next major release
+
+**Changed:**
+
+- Require Python 3.11+, RDKit 2024.09+, PyTorch 2.5+, NumPy 1.26+ and
+  scikit-learn 1.6+.
+- Support the current Transformers 5 and PyTorch Geometric stacks.
+- Make model-store discovery lazy so constructing a featurizer does not perform
+  an unnecessary network request.
+- Separate core, pretrained-model, PyG and DGL compatibility tests in CI.
+- Publish releases through PyPI Trusted Publishing.
+- Apply the serialization defaults from PR #112, scikit-learn compatibility
+  from PR #118, delivery updates from PR #121 and FCFP invariants from PR #123.
+
+**Fixed:**
+
+- Use current RDKit valence APIs in atom and bond feature calculation.
+- Handle boolean masks correctly for max, mean and sum pooling on current
+  PyTorch, including two-dimensional ESM embeddings.
+- Return a one-dimensional, deterministic index array from
+  `Pharmacophore3D(..., raw=True)`.
+- Download HTTP-backed model directories whose listing endpoint also appears as
+  a file through the corresponding Datamol fix.
+
+**Removed:**
+
+- Remove Graphormer and `bio-embeddings` from maintained installation extras;
+  their upstream releases are incompatible with the supported modern stack.
+
 ## v0.8.9
 
 **Added:**

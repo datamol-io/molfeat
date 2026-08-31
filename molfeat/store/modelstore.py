@@ -61,8 +61,7 @@ class ModelStore:
             or os.getenv("MOLFEAT_MODEL_STORE_BUCKET")
             or self.MODEL_STORE_ROOT
         )
-        self._available_models = []
-        self._update_store()
+        self._available_models = None
 
     def _update_store(self):
         """Initialize the store with all available models"""
@@ -77,6 +76,8 @@ class ModelStore:
     @property
     def available_models(self):
         """Return a list of all models that have been serialized in molfeat"""
+        if self._available_models is None:
+            self._update_store()
         return self._available_models
 
     def __len__(self):

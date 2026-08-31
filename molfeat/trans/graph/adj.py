@@ -684,7 +684,7 @@ class PYGGraphTransformer(AdjGraphTransformer):
             or hasattr(self.bond_featurizer, "pairwise_atom_funcs")
         ):
             graph = super()._graph_featurizer(mol)
-            (rows, cols) = np.nonzero(graph)
+            rows, cols = np.nonzero(graph)
             return np.vstack((rows, cols))
 
         # we have a regular bond calculator here instead of all pairwise atoms

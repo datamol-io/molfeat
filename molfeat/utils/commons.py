@@ -26,7 +26,6 @@ from rdkit.Chem import rdMolAlign
 from rdkit.Chem import SaltRemover
 from molfeat.utils import datatype
 
-
 FUNCTYPES = (types.FunctionType, types.MethodType, functools.partial)
 
 

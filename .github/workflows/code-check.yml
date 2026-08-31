@@ -1,48 +1,44 @@
-name: code-check
+name: code-quality
 
 on:
   push:
-    branches:
-      - "main"
+    branches: [main, dev]
   pull_request:
-    branches:
-      - "*"
+    branches: [main, dev]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: code-quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  python-format-black:
-    name: Python format [black]
+  quality:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - name: Checkout the code
-        uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
-          python-version: "3.9"
+          python-version: "3.14"
+          cache: pip
 
-      - name: Install black
-        run: |
-          pip install black[jupyter]>=24
+      - name: Install quality tools
+        run: python -m pip install --upgrade black build ruff twine
+
+      - name: Check formatting
+        run: black --check molfeat tests
 
       - name: Lint
-        run: black --check .
+        run: ruff check molfeat tests
 
-  python-lint-ruff:
-    name: Python lint [ruff]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the code
-        uses: actions/checkout@v3
+      - name: Build distributions
+        run: python -m build
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.9"
-
-      - name: Install ruff
-        run: |
-          pip install ruff
-
-      - name: Lint
-        run: ruff check .
+      - name: Validate distributions
+        run: twine check dist/*

@@ -1,5 +1,4 @@
 import unittest as ut
-import time
 import numpy as np
 import datamol as dm
 import pytest
@@ -11,7 +10,7 @@ from molfeat.trans.pretrained import PretrainedHFTransformer
 from molfeat.utils import requires
 
 
-@pytest.mark.xfail(
+@pytest.mark.skipif(
     not requires.check("graphormer_pretrained"), reason="3rd party module graphormer is missing"
 )
 class TestGraphormerTransformer(ut.TestCase):
@@ -74,17 +73,16 @@ class TestGraphormerTransformer(ut.TestCase):
         transf = GraphormerTransformer(
             dtype=np.float32, pooling="mean", max_length=25, precompute_cache=True
         )
-        t0 = time.time()
-        time_buffer = 1
         fps = transf.transform(self.smiles)
-        ori_run = time.time() - t0
         fps2 = transf.transform(self.smiles)
-        cached_run = time.time() - t0 - ori_run
         np.testing.assert_allclose(fps, fps2, atol=1e-5)
-        # add buffers
-        self.assertLessEqual(cached_run, ori_run + time_buffer)
+        self.assertEqual(len(transf.precompute_cache), len(self.smiles))
 
 
+@pytest.mark.skipif(
+    not requires.check("dgl") or not requires.check("dgllife"),
+    reason="optional dependencies dgl and dgllife are required",
+)
 class TestDGLTransformer(ut.TestCase):
     r"""Test cases for FingerprintsTransformer"""
 
@@ -111,23 +109,17 @@ class TestDGLTransformer(ut.TestCase):
         self.assertEqual(len(transf), fps[0].shape[-1])
         np.testing.assert_array_equal(fps, fps2)
 
-    @pytest.mark.xfail(reason="Cache might not be faster")
     def test_dgl_pretrained_cache(self):
         transf = PretrainedDGLTransformer(
             dtype=np.float32, pooling="mean", max_length=25, precompute_cache=True
         )
-        t0 = time.time()
-        time_buffer = 1
         fps = transf.transform(self.smiles)
-        ori_run = time.time() - t0
         fps2 = transf.transform(self.smiles)
-        cached_run = time.time() - t0 - ori_run
         np.testing.assert_array_equal(fps, fps2)
-        # add buffers
-        self.assertLessEqual(cached_run, ori_run + time_buffer)
+        self.assertEqual(len(transf.precompute_cache), len(self.smiles))
 
 
-@pytest.mark.xfail(
+@pytest.mark.skipif(
     not requires.check("transformers"), reason="3rd party module transformers is missing"
 )
 class TestHGFTransformer(ut.TestCase):
@@ -156,18 +148,12 @@ class TestHGFTransformer(ut.TestCase):
         self.assertEqual(len(transf), fps[0].shape[-1])
         np.testing.assert_array_equal(fps, fps2)
 
-    @pytest.mark.xfail(reason="Cache might not be faster")
     def test_hgf_pretrained_cache(self):
         transf = PretrainedHFTransformer(dtype=np.float32, pooling="mean", precompute_cache=True)
-        t0 = time.time()
-        time_buffer = 1
         fps = transf.transform(self.smiles)
-        ori_run = time.time() - t0
         fps2 = transf.transform(self.smiles)
-        cached_run = time.time() - t0 - ori_run
         np.testing.assert_array_equal(fps, fps2)
-        # add buffers
-        self.assertLessEqual(cached_run, ori_run + time_buffer)
+        self.assertEqual(len(transf.precompute_cache), len(self.smiles))
 
 
 if __name__ == "__main__":

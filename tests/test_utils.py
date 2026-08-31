@@ -13,6 +13,7 @@ from molfeat.utils import datatype
 from molfeat.utils import commons
 from molfeat.utils.cache import CacheList, DataCache
 from molfeat.utils.cache import FileCache
+from molfeat.utils.pooler import Pooling
 from molfeat.trans.fp import FPVecTransformer
 
 
@@ -59,6 +60,25 @@ class TestUtils(ut.TestCase):
         arr2 = None
         self.assertIsNone(datatype.cast(arr2, int))
         self.assertListEqual(list(datatype.cast(dict1, list)["test"]), list(dict1["test"]))
+
+    def test_pooling_masks(self):
+        values = torch.tensor([[[1.0, 5.0], [9.0, 2.0], [3.0, 7.0]]])
+        mask = torch.tensor([[1, 0, 1]])
+
+        torch.testing.assert_close(
+            Pooling(dim=1, name="max")(values, mask=mask), torch.tensor([[3.0, 7.0]])
+        )
+        torch.testing.assert_close(
+            Pooling(dim=1, name="mean")(values, mask=mask), torch.tensor([[2.0, 6.0]])
+        )
+        torch.testing.assert_close(
+            Pooling(dim=1, name="sum")(values, mask=mask), torch.tensor([[4.0, 12.0]])
+        )
+
+    def test_pooling_without_mask(self):
+        values = torch.tensor([[1.0, 5.0], [9.0, 2.0], [3.0, 7.0]])
+
+        torch.testing.assert_close(Pooling(dim=0, name="max")(values), torch.tensor([9.0, 7.0]))
 
     def test_one_hot(self):
         val1 = 1

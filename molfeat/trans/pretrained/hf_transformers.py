@@ -298,7 +298,7 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
         else:
             self.kind = kind
             self.featurizer = HFModel(name=self.kind)
-        self.notation = self.featurizer.get_notation(notation) or "none"
+        self.notation = notation or "none"
         self.converter = SmilesConverter(self.notation)
         if self.preload:
             self._preload()
@@ -321,6 +321,9 @@ class PretrainedHFTransformer(PretrainedMolTransformer):
 
     def _preload(self):
         """Perform preloading of the model from the store"""
+        if isinstance(self.featurizer, HFModel) and self.notation == "none":
+            self.notation = self.featurizer.get_notation(self.notation) or "none"
+            self.converter = SmilesConverter(self.notation)
         super()._preload()
         self.featurizer.model.to(self.device)
         self.featurizer.max_length = self.max_length

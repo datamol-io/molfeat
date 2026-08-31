@@ -128,10 +128,8 @@ class MolTreeDecompositionTransformer(MoleculeTransformer):
 
         """
         if not self._fitted:
-            raise ValueError(
-                "Need to call the fit function before any transformation. \
-                Or provide the fragments vocabulary at the object construction"
-            )
+            raise ValueError("Need to call the fit function before any transformation. \
+                Or provide the fragments vocabulary at the object construction")
 
         try:
             _, edges, fragments = self.featurizer(mol)

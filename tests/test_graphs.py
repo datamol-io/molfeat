@@ -1,6 +1,5 @@
 import unittest as ut
 import datamol as dm
-import dgl
 import torch
 import pytest
 from molfeat.trans.graph.adj import AdjGraphTransformer
@@ -8,6 +7,9 @@ from molfeat.trans.graph.adj import DGLGraphTransformer
 from molfeat.trans.graph.tree import MolTreeDecompositionTransformer
 from molfeat.calc.tree import TreeDecomposer
 from molfeat.utils import requires
+
+if requires.check("dgl"):
+    import dgl
 
 
 class TestMolTreeDecomposition(ut.TestCase):
@@ -40,6 +42,7 @@ class TestMolTreeDecomposition(ut.TestCase):
         # let's standardize the expected frags notation
         self.assertTrue(set(frags).issubset(expected_frags))
 
+    @pytest.mark.skipif(not requires.check("dgl"), reason="optional dependency dgl is missing")
     def test_moltree_transformer(self):
         transf = MolTreeDecompositionTransformer()
         transf.fit(self.mols)
@@ -48,7 +51,6 @@ class TestMolTreeDecomposition(ut.TestCase):
         self.assertTrue(isinstance(tree[0], dgl.DGLGraph))
 
 
-@pytest.mark.xfail(not requires.check("dgllife"), reason="3rd party module dgllife is missing")
 class TestGraphTransformer(ut.TestCase):
     r"""Test cases for AdjGraphTransformer"""
 
@@ -66,12 +68,16 @@ class TestGraphTransformer(ut.TestCase):
         # graphs and node features tuple
         self.assertEqual(len(data[0]), 2)
         self.assertEqual(ids, [0, 1, 2])
-        (graphs, node_feats) = zip(*data)
+        graphs, node_feats = zip(*data)
         self.assertTrue(torch.is_tensor(graphs[0]))
         # get graph and node feat
         mat_sum = self.mols[0].GetNumBonds() * 2 + self.mols[0].GetNumAtoms()
         self.assertAlmostEqual(graphs[0].sum().item(), mat_sum)
 
+    @pytest.mark.skipif(
+        not requires.check("dgl") or not requires.check("dgllife"),
+        reason="optional dependencies dgl and dgllife are required",
+    )
     def test_dgl_transformer(self):
         transf = DGLGraphTransformer()
         graphs, ids = transf(self.smiles, ignore_errors=True)

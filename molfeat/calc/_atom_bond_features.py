@@ -17,6 +17,18 @@ from molfeat.data import get_df as get_data
 from molfeat.utils.commons import one_hot_encoding
 
 
+def _get_explicit_valence(atom: rdchem.Atom) -> int:
+    if hasattr(atom, "GetValence"):
+        return atom.GetValence(rdchem.ValenceType.EXPLICIT)
+    return atom.GetExplicitValence()
+
+
+def _get_implicit_valence(atom: rdchem.Atom) -> int:
+    if hasattr(atom, "GetValence"):
+        return atom.GetValence(rdchem.ValenceType.IMPLICIT)
+    return atom.GetImplicitValence()
+
+
 ATOM_LIST = [
     "C",
     "N",
@@ -253,7 +265,7 @@ def atom_explicit_valence_one_hot(
     """
     if allowable_set is None:
         allowable_set = EXPLICIT_VALENCE_LIST
-    return one_hot_encoding(atom.GetExplicitValence(), allowable_set, encode_unknown)
+    return one_hot_encoding(_get_explicit_valence(atom), allowable_set, encode_unknown)
 
 
 def atom_explicit_valence(atom: dm.Atom):
@@ -264,7 +276,7 @@ def atom_explicit_valence(atom: dm.Atom):
     Returns:
         list: List containing one int only.
     """
-    return [atom.GetExplicitValence()]
+    return [_get_explicit_valence(atom)]
 
 
 def atom_implicit_valence_one_hot(
@@ -284,7 +296,7 @@ def atom_implicit_valence_one_hot(
     """
     if allowable_set is None:
         allowable_set = IMPLICIT_VALENCE_LIST
-    return one_hot_encoding(atom.GetImplicitValence(), allowable_set, encode_unknown)
+    return one_hot_encoding(_get_implicit_valence(atom), allowable_set, encode_unknown)
 
 
 def atom_implicit_valence(atom: dm.Atom):
@@ -295,7 +307,7 @@ def atom_implicit_valence(atom: dm.Atom):
     Returns:
         list: List containing one int only.
     """
-    return [atom.GetImplicitValence()]
+    return [_get_implicit_valence(atom)]
 
 
 def atom_hybridization_one_hot(
