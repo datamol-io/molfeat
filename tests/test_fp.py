@@ -9,6 +9,8 @@ import joblib
 import numpy as np
 import pandas as pd
 import torch
+from rdkit import DataStructs
+from rdkit.Chem import rdFingerprintGenerator
 from rdkit.DataStructs.cDataStructs import ExplicitBitVect
 
 from molfeat.calc import SerializableCalculator
@@ -91,6 +93,34 @@ class TestMolTransformer(ut.TestCase):
             fps = transf.transform(self.smiles)
             unique_len = set([len(x) for x in fps])
             self.assertEqual(len(unique_len), 1)
+
+    def test_fcfp_uses_feature_atom_invariants(self):
+        mols = [dm.to_mol(smiles) for smiles in ["CCO", "CCN", "c1ccccc1O", "CC(=O)N"]]
+        for counting, ecfp_method, fcfp_method in [
+            (False, "ecfp", "fcfp"),
+            (True, "ecfp-count", "fcfp-count"),
+        ]:
+            generator = rdFingerprintGenerator.GetMorganGenerator(
+                radius=2,
+                fpSize=2048,
+                atomInvariantsGenerator=rdFingerprintGenerator.GetMorganFeatureAtomInvGen(),
+            )
+            fingerprint = generator.GetCountFingerprint if counting else generator.GetFingerprint
+            expected = []
+            for mol in mols:
+                values = np.zeros(2048, dtype=int)
+                DataStructs.ConvertToNumpyArray(fingerprint(mol), values)
+                expected.append(values)
+            expected = np.vstack(expected)
+
+            ecfp = np.vstack([FPCalculator(ecfp_method)(mol) for mol in mols])
+            calculator = FPCalculator(fcfp_method)
+            fcfp = np.vstack([calculator(mol) for mol in mols])
+            restored = FPCalculator.from_state_dict(calculator.to_state_dict())
+            restored_fcfp = np.vstack([restored(mol) for mol in mols])
+            self.assertFalse(np.array_equal(ecfp, expected))
+            np.testing.assert_array_equal(fcfp, expected)
+            np.testing.assert_array_equal(restored_fcfp, expected)
 
     def test_transformer_parallel_mol(self):
         for fpkind in ["atompair", "pharm2D"]:

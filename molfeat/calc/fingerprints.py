@@ -241,6 +241,12 @@ class FPCalculator(SerializableCalculator):
         self.params.update(
             {k: method_params[k] for k in method_params if k in default_params.keys()}
         )
+        self.params = {
+            k: (
+                SERIALIZABLE_CLASSES[v]() if isinstance(v, str) and v in SERIALIZABLE_CLASSES else v
+            )
+            for k, v in self.params.items()
+        }
         self._length = self._set_length(length)
 
     @staticmethod
@@ -313,7 +319,11 @@ class FPCalculator(SerializableCalculator):
 
         fp_func = FP_FUNCS[self.method]
         if self.method in FP_GENERATORS:
-            fp_func = fp_func(**self.params)
+            params = self.params
+            atom_invariants = params.get("atomInvariantsGenerator")
+            if isinstance(atom_invariants, SerializableMorganFeatureAtomInvGen):
+                params = {**params, "atomInvariantsGenerator": atom_invariants._generator}
+            fp_func = fp_func(**params)
             if self.counting:
                 fp_val = fp_func.GetCountFingerprint(mol)
             else:
