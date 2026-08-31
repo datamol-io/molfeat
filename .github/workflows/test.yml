@@ -48,7 +48,7 @@ jobs:
             pytorch=${{ matrix.pytorch-version }}
 
       - name: Install library
-        run: python -m pip install --no-deps .
+        run: python -m pip install --no-deps ".[dev]"
 
       - name: Run pytest
         run: pytest

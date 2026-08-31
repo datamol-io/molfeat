@@ -12,8 +12,17 @@ from molfeat.utils.pooler import Pooling
 from molfeat.trans.pretrained.base import PretrainedMolTransformer
 
 if requires.check("graphormer_pretrained"):
+
+    import graphormer_pretrained
     from graphormer_pretrained.embeddings import GraphormerEmbeddingsExtractor
     from graphormer_pretrained.data.smiles_dataset import GraphormerInferenceDataset
+
+    graphormer_pretrained.utils.loader.PRETRAINED_MODEL_URLS = {
+        "pcqm4mv1_graphormer_base": "https://fs.molfeat.datamol.io/checkpoints/graphormer/pcqm4mv1/checkpoint_best_pcqm4mv1.pt",
+        "pcqm4mv2_graphormer_base": "https://fs.molfeat.datamol.io/checkpoints/graphormer/pcqm4mv2/checkpoint_best_pcqm4mv2.pt",
+        "oc20is2re_graphormer3d_base": "https://fs.molfeat.datamol.io/checkpoints/graphormer/oc20is2re/checkpoint_last_oc20_is2re.pt",
+        "pcqm4mv1_graphormer_base_for_molhiv": "https://fs.molfeat.datamol.io/checkpoints/graphormer/pcqm4mv1/checkpoint_base_preln_pcqm4mv1_for_hiv.pt",
+    }
 
 
 class GraphormerTransformer(PretrainedMolTransformer):

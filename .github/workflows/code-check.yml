@@ -23,7 +23,7 @@ jobs:
 
       - name: Install black
         run: |
-          pip install black>=24
+          pip install black[jupyter]>=24
 
       - name: Lint
         run: black --check .

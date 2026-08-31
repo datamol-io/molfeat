@@ -36,7 +36,7 @@ class ModelStore:
         * Only a single store is supported per model store instance
 
     !!! note "Building a New Model Store"
-        To create a new model store, you will mainly need a model store bucket path. The default model store bucket, located at `gs://molfeat-store-prod/artifacts/`, is **read-only**.
+        To create a new model store, you will mainly need a model store bucket path. The default model store bucket, located at `https://fs.molfeat.datamol.io/artifacts/`, is **read-only**.
 
         To build your own model store bucket, follow the instructions below:
 

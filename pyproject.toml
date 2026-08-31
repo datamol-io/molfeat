@@ -68,6 +68,8 @@ viz = ["nglview", "ipywidgets"]
 
 pyg = ["torch_geometric >=2.4.0"]
 
+bioembeddings = [ "bio-embeddings[all]" ]
+
 all = [
     "dgl",
     "dgllife",
@@ -77,10 +79,11 @@ all = [
     "fcd_torch",
     "nglview",
     "ipywidgets",
-    "torch_geometric >=2.4.0"
+    "torch_geometric >=2.4.0",
+    "bioembeddings"
 ]
 
-test = ["pytest >=6.0","pytest-dotenv", "pytest-cov", "pytest-xdist", "black >=22", "ruff"]
+test = ["pytest >=6.0","pytest-dotenv", "pytest-cov", "pytest-xdist", "black[jupyter] >=22", "ruff"]
 docs = ["mkdocs", "mike", "mdx_truly_sane_lists", "mkdocs-material >=7.1.1", "mkdocs-jupyter >=0.24.8", "mkdocstrings", "mkdocstrings-python", "markdown-include"]
 dev = ["molfeat[test]", "molfeat[all]", "molfeat[docs]", "pre-commit"]
 
@@ -95,8 +98,8 @@ include-package-data = true
 zip-safe = false
 license-files = ["LICENSE"]
 
-[tool.setuptools_scm]
-fallback_version = "dev"
+# [tool.setuptools_scm]
+# fallback_version = "dev"
 
 [tool.setuptools.packages.find]
 where = ["."]
