@@ -109,7 +109,7 @@ FP_DEF_PARAMS = {
     },
     "pattern": {
         "fpSize": 2048,
-        "atomCounts": [],
+        # "atomCounts": [],
         "setOnlyBits": None,
         "tautomerFingerprints": False,
     },
@@ -117,7 +117,7 @@ FP_DEF_PARAMS = {
         "fpSize": 2048,
         "minPath": 1,
         "maxPath": 7,
-        "atomCounts": [],
+        # "atomCounts": [],
         "setOnlyBits": None,
         "branchedPaths": True,
         "fromAtoms": 0,
