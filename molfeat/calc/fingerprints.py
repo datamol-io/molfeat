@@ -201,6 +201,15 @@ FP_DEF_PARAMS = {
 }
 
 
+def normalize_fingerprint_name(method: str) -> str:
+    """Normalize common Morgan fingerprint aliases to their ECFP names."""
+    method = method.lower()
+    if any(alias in method for alias in ["morgan", "morgan_circular", "morgan-circular"]):
+        method = method.replace("_circular", "").replace("-circular", "")
+        method = method.replace("morgan", "ecfp")
+    return method
+
+
 class FPCalculator(SerializableCalculator):
     """Fingerprint bit calculator for a molecule"""
 
@@ -225,17 +234,17 @@ class FPCalculator(SerializableCalculator):
             method_params (dict): any parameters to the fingerprint algorithm.
                 See FPCalculator.default_parameters(method) for all the parameters required by a given method.
         """
-        self.method = method.lower()
+        self.method = normalize_fingerprint_name(method)
         self.counting = counting or "-count" in self.method
         if self.counting and "-count" not in self.method:
             self.method = self.method + "-count"
         self.input_length = length
         if self.method not in FP_FUNCS:
             raise ValueError(f"Method {self.method} is not a supported featurizer")
-        default_params = copy.deepcopy(FP_DEF_PARAMS[method])
+        default_params = copy.deepcopy(FP_DEF_PARAMS[self.method])
         unknown_params = set(method_params.keys()).difference(set(default_params.keys()))
         if unknown_params:
-            logger.error(f"Params: {unknown_params} are not valid for {method}")
+            logger.error(f"Params: {unknown_params} are not valid for {self.method}")
         self.params = default_params
         self.params.update(
             {k: method_params[k] for k in method_params if k in default_params.keys()}
@@ -260,7 +269,7 @@ class FPCalculator(SerializableCalculator):
         Args:
             method: name of the fingerprint method
         """
-        return FP_DEF_PARAMS[method].copy()
+        return FP_DEF_PARAMS[normalize_fingerprint_name(method)].copy()
 
     @property
     def columns(self):

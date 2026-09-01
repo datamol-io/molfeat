@@ -46,7 +46,7 @@ class PretrainedStoreModel(PretrainedModel):
         """
         self.name = name
         self.cache_path = cache_path or dm.fs.join(platformdirs.user_cache_dir("molfeat"), name)
-        self.store = store or ModelStore()
+        self.store = store if store is not None else ModelStore()
 
     def _artifact_load(self, **kwargs) -> str:
         """Load internal artifact from the model store
@@ -55,10 +55,16 @@ class PretrainedStoreModel(PretrainedModel):
             name: name of the model to load
             download_path: path to a directory where to save the downloaded files
         """
-        if not dm.fs.exists(self.cache_path):
-            try:
-                modelcard = self.store.search(name=self.name)[0]
-                self.store.download(modelcard, self.cache_path, **kwargs)
-            except Exception as e:
-                raise ModelStoreError(f"Can't retrieve model {self.name} from the store !") from e
+        try:
+            matches = self.store.search(name=self.name)
+            if not matches:
+                raise ModelStoreError(f"Model {self.name} is not registered in the model store.")
+            # ``download`` validates both files and checksums, while avoiding
+            # network transfers for an already complete cache. Calling it even
+            # when the cache directory exists also repairs interrupted downloads.
+            self.store.download(matches[0], self.cache_path, **kwargs)
+        except ModelStoreError:
+            raise
+        except Exception as e:
+            raise ModelStoreError(f"Can't retrieve model {self.name} from the store !") from e
         return self.cache_path

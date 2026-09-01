@@ -3,6 +3,7 @@ import pathlib
 import tempfile
 from typing import Any, Callable, Dict, Optional, Union
 import io
+import hashlib
 
 import datamol as dm
 import filelock
@@ -53,6 +54,7 @@ class ModelStore:
     MODEL_STORE_ROOT = "https://fs.molfeat.datamol.io/artifacts/"
     MODEL_PATH_NAME = "model.save"
     METADATA_PATH_NAME = "metadata.json"
+    EMPTY_SHA256 = hashlib.sha256(b"").hexdigest()
 
     def __init__(self, model_store_root: Optional[str] = None):
         self.model_store_root = (
@@ -232,7 +234,18 @@ class ModelStore:
                         )
 
         cache_sha256sum = commons.sha256sum(model_dest_path)
-        if modelcard.sha256sum is not None and cache_sha256sum != modelcard.sha256sum:
+        # A few legacy directory artifacts were registered with the checksum
+        # of an empty file. Keep those downloadable, but never silently accept
+        # another non-matching checksum.
+        legacy_empty_directory_checksum = modelcard.sha256sum == self.EMPTY_SHA256 and dm.fs.is_dir(
+            model_dest_path
+        )
+        if legacy_empty_directory_checksum and cache_sha256sum != modelcard.sha256sum:
+            logger.warning(
+                f"Model {model_name} has a legacy empty-directory checksum; "
+                "the downloaded directory cannot be verified against its metadata."
+            )
+        elif modelcard.sha256sum is not None and cache_sha256sum != modelcard.sha256sum:
             mapper = dm.fs.get_mapper(output_dir)
             mapper.fs.delete(output_dir, recursive=True)
             raise ModelStoreError(

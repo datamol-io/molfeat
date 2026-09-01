@@ -94,6 +94,19 @@ class TestMolTransformer(ut.TestCase):
             unique_len = set([len(x) for x in fps])
             self.assertEqual(len(unique_len), 1)
 
+    def test_morgan_aliases_match_ecfp(self):
+        expected = FPCalculator("ecfp")(self.smiles[0])
+        for alias in ["morgan", "morgan_circular", "morgan-circular", "MORGAN"]:
+            np.testing.assert_array_equal(FPCalculator(alias)(self.smiles[0]), expected)
+            np.testing.assert_array_equal(
+                MoleculeTransformer(featurizer=alias)([self.smiles[0]])[0], expected
+            )
+
+        np.testing.assert_array_equal(
+            FPCalculator("morgan", counting=True)(self.smiles[0]),
+            FPCalculator("ecfp-count")(self.smiles[0]),
+        )
+
     def test_fcfp_uses_feature_atom_invariants(self):
         mols = [dm.to_mol(smiles) for smiles in ["CCO", "CCN", "c1ccccc1O", "CC(=O)N"]]
         for counting, ecfp_method, fcfp_method in [
