@@ -47,3 +47,26 @@ def test_moljepa_official_checkpoint_representation():
     assert first.shape == (1, 512)
     assert np.isfinite(first).all()
     np.testing.assert_array_equal(first, second)
+    np.testing.assert_allclose(
+        first[0, [0, 1, 2, 13, 127, 255, 511]],
+        np.asarray(
+            [
+                0.0545312725,
+                -0.0020755976,
+                -0.0356405340,
+                -0.0531620234,
+                -0.0529748611,
+                0.1173758656,
+                0.0882600695,
+            ],
+            dtype=np.float32,
+        ),
+        rtol=1e-5,
+        atol=1e-6,
+    )
+    np.testing.assert_allclose(
+        np.linalg.norm(first, axis=1),
+        np.asarray([3.1669044], dtype=np.float32),
+        rtol=1e-5,
+        atol=1e-6,
+    )
