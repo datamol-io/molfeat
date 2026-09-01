@@ -5,6 +5,26 @@ models when they can be supported without making the default installation
 heavier. Protein and nucleotide models are deliberately outside this scope. The
 model authors' weights and licences remain authoritative.
 
+## Third-party licensing policy
+
+Molfeat's source and its required or optional Python dependencies must remain
+compatible with the Apache-2.0 project. New integrations must not copy or add a
+runtime dependency on GPL, LGPL or AGPL software. A restrictively licensed
+external model can only be exposed when Molfeat redistributes neither its code
+nor its weights, the download comes from the publisher, and the caller must
+explicitly accept the external terms. Mol-JEPA follows this isolated opt-in
+pattern.
+
+Every newly registered pretrained artifact must declare both its checkpoint
+licence and, when available, the authoritative licence URL. A permissive code
+repository licence is not assumed to cover separately published model weights.
+
+[CLAMP](https://github.com/ml-jku/clamp) is deliberately not integrated. Its
+authoritative licence file places the software under GPL-3.0 and adds separate
+model terms, while its package metadata claims BSD-2-Clause. Molfeat will not
+depend on, copy or redistribute CLAMP until the publisher provides consistent,
+explicitly compatible terms.
+
 ## CheMeleon
 
 [CheMeleon](https://arxiv.org/abs/2506.15792) is a 2025 descriptor-prediction
@@ -75,8 +95,13 @@ store does not.
 
 ## Models evaluated but not bundled
 
-SMI-TED, MuMo and Uni-Mol2 were reviewed for this release. They are not added
-yet because their current reference implementations require custom or
-substantially heavier stacks. Keeping them out preserves a small, predictable
-dependency surface; a future adapter should first provide a stable inference
-contract and independently verifiable representations.
+SMI-TED, MuMo and Uni-Mol2 were reviewed for this release. SMI-TED's official
+Hugging Face repository is Apache-2.0, but its current `config.json` declares an
+unregistered `SMI-TED` model type without an `auto_map`. The existing generic
+Hugging Face adapter was tested against revision
+`414c3ea0a8603ef49d1c5bb3db336e09877c01ce` and cannot load it with
+Transformers 5. Molfeat will use the generic adapter if the upstream repository
+adopts a standard Transformers inference contract; it will not duplicate the
+large custom implementation in the meantime. MuMo and Uni-Mol2 likewise remain
+out because their current reference implementations require custom or
+substantially heavier stacks.

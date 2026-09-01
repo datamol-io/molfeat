@@ -47,8 +47,19 @@ def _model_card(name="test-model", sha256sum=None):
         description="Test model",
         representation="vector",
         authors=["Molfeat"],
+        license="Apache-2.0",
+        license_url="https://www.apache.org/licenses/LICENSE-2.0",
         sha256sum=sha256sum,
     )
+
+
+def test_pretrained_registration_requires_declared_license():
+    card = _model_card()
+    card.license = None
+    store = ModelStore("memory://models")
+
+    with pytest.raises(ModelStoreError, match="must declare the checkpoint license"):
+        store.register(card, model={"weights": []})
 
 
 def test_pretrained_loader_repairs_partial_cache(tmp_path, monkeypatch):

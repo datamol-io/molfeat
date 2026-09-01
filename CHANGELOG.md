@@ -19,6 +19,8 @@ _Only changelogs previous to 0.8.10. See the GitHub releases for new changelogs.
   retain conda-forge as a bot-updated downstream channel.
 - Apply the serialization defaults from PR #112, scikit-learn compatibility
   from PR #118, delivery updates from PR #121 and FCFP invariants from PR #123.
+- Require newly registered pretrained model cards to declare the checkpoint
+  licence, and document the permissive-dependency policy for external models.
 
 **Fixed:**
 

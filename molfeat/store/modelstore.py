@@ -112,6 +112,10 @@ class ModelStore:
         """
         if not isinstance(modelcard, ModelInfo):
             modelcard = ModelInfo(**modelcard)
+        if modelcard.type == "pretrained" and not modelcard.license:
+            raise ModelStoreError(
+                "Pretrained model cards must declare the checkpoint license before registration."
+            )
         # we save the model first
         if self.exists(card=modelcard):
             logger.warning(f"Model {modelcard.name} exists already ...")

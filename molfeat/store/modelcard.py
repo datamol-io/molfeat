@@ -66,6 +66,8 @@ class ModelInfo(BaseModel):
     tags: Optional[List[str]] = []
     authors: Optional[List[str]]
     reference: Optional[str] = None
+    license: Optional[str] = None
+    license_url: Optional[str] = None
     created_at: datetime = Field(default_factory=datetime.now)
     sha256sum: Optional[str] = None
     model_usage: Optional[str] = None
