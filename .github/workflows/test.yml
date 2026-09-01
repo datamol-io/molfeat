@@ -40,87 +40,59 @@ jobs:
           - os: macos-latest
             python-version: "3.13"
             rdkit-version: "2026.3.*"
+          - os: macos-15-intel
+            python-version: "3.13"
+            rdkit-version: "2026.3.*"
           - os: windows-latest
             python-version: "3.13"
             rdkit-version: "2026.3.*"
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Set up Python
-        uses: actions/setup-python@v6
+      - name: Set up uv and Python
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
         with:
+          version: "0.12.8"
           python-version: ${{ matrix.python-version }}
-          cache: pip
+          activate-environment: true
+          enable-cache: true
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install "rdkit==${{ matrix.rdkit-version }}"
-          python -m pip install --editable ".[test]"
+          uv pip install "rdkit==${{ matrix.rdkit-version }}"
+          uv pip install --editable ".[test]"
 
       - name: Run core tests
-        run: >-
-          python -m pytest
-          --ignore=tests/test_pretrained.py
-          --ignore=tests/test_foundation_integration.py
+        run: python -m pytest -m "not integration"
 
       - name: Upload coverage
         if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.14'
-        uses: codecov/codecov-action@v7
+        uses: codecov/codecov-action@a99c28d3f0da835de33ff2feb2e15691c7b9641f # v7
         with:
           files: cov.xml
           fail_ci_if_error: false
           flags: core
 
   integrations:
-    name: Transformers and PyG
+    name: All maintained extras and published models
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 60
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Set up Python
-        uses: actions/setup-python@v6
+      - name: Set up uv and Python
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
         with:
-          python-version: "3.14"
-          cache: pip
+          version: "0.12.8"
+          python-version: "3.13"
+          activate-environment: true
+          enable-cache: true
 
-      - name: Install integration dependencies
-        run: python -m pip install --upgrade --editable ".[test,transformer,pyg]"
+      - name: Install every maintained extra
+        run: uv pip install --editable ".[test,all]"
 
-      - name: Run integration tests
-        run: >-
-          python -m pytest
-          tests/test_foundation_integration.py
-          tests/test_pretrained.py
-          tests/test_graphs.py
-          tests/test_state.py
-          --no-cov -n 0
-
-  dgl:
-    name: DGL compatibility / Python 3.11
-    runs-on: ubuntu-latest
-    timeout-minutes: 35
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: "3.11"
-          cache: pip
-
-      - name: Install DGL dependencies
-        run: python -m pip install --upgrade --editable ".[test,dgl]"
-
-      - name: Run DGL tests
-        run: >-
-          python -m pytest
-          tests/test_atom_bond_calculator.py
-          tests/test_graphs.py
-          tests/test_pretrained.py::TestDGLTransformer
-          --no-cov -n 0
+      - name: Run the complete feature suite
+        run: python -m pytest --no-cov -n 0

@@ -13,16 +13,14 @@ import inspect
 import hashlib
 import pickle
 import functools
+import warnings
 import torch
 import numpy as np
 import datamol as dm
 import fsspec
 
 from joblib import wrap_non_picklable_objects
-from scipy.sparse import coo_matrix
 
-from rdkit.Chem import rdMolDescriptors
-from rdkit.Chem import rdMolAlign
 from rdkit.Chem import SaltRemover
 from molfeat.utils import datatype
 
@@ -197,7 +195,7 @@ def filter_arguments(fn: Callable, params: dict):
 
 
 def fold_count_fp(fp: Iterable, dim: int = 2**10, binary: bool = False):
-    """Fast folding of a count fingerprint to the specified dimension
+    """Fold an RDKit fingerprint with Datamol's canonical implementation.
 
     Args:
         fp: iterable fingerprint
@@ -207,28 +205,14 @@ def fold_count_fp(fp: Iterable, dim: int = 2**10, binary: bool = False):
     Returns:
         folded: returns folded array to the provided dimension
     """
-    if hasattr(fp, "GetNonzeroElements"):
-        tmp = fp.GetNonzeroElements()
-    elif hasattr(fp, "GetOnBits"):
-        # try to get the dict of onbit
-        on_bits = fp.GetOnBits()
-        tmp = dict(zip(on_bits, np.ones(len(on_bits))))
-    else:
-        raise ValueError(f"Format {type(fp)} is not supported")
-    out = (
-        coo_matrix(
-            (
-                list(tmp.values()),
-                (np.repeat(0, len(tmp)), [i % dim for i in tmp.keys()]),
-            ),
-            shape=(1, dim),
-        )
-        .toarray()
-        .flatten()
+    warnings.warn(
+        "molfeat.utils.commons.fold_count_fp is deprecated; use datamol.fold_count_fp instead.",
+        DeprecationWarning,
+        stacklevel=2,
     )
-    if binary:
-        out = np.clip(out, a_min=0, a_max=1)
-    return out
+    # Keep Molfeat's historical floating-point output while centralizing the
+    # molecular primitive in Datamol.
+    return dm.fold_count_fp(fp, dim=dim, binary=binary).astype(float, copy=False)
 
 
 def requires_conformer(calculator: Callable):
@@ -381,9 +365,7 @@ def align_conformers(
     copy: bool = True,
     conformer_id: int = -1,
 ):
-    """Align a list of molecules to a reference molecule.
-
-    Note: consider adding me to `datamol`.
+    """Align molecules with Datamol's canonical Crippen O3A implementation.
 
     Args:
         mols: List of molecules to align. All the molecules must have a conformer.
@@ -397,39 +379,16 @@ def align_conformers(
         scores: The score of the alignement.
     """
 
-    # Check all input molecules has a conformer
-    if not all([mol.GetNumConformers() >= 1 for mol in mols]):
-        raise ValueError("One or more input molecules is missing a conformer.")
-
-    # Make a copy of the molecules since they are going to be modified
-    if copy:
-        mols = [dm.copy_mol(mol) for mol in mols]
-
-    # Compute Crippen contributions for every atoms and molecules
-    crippen_contribs = [rdMolDescriptors._CalcCrippenContribs(mol) for mol in mols]
-
-    # Split reference and probe molecules
-    crippen_contrib_ref = crippen_contribs[ref_id]
-    crippen_contrib_probes = crippen_contribs
-    mol_ref = mols[ref_id]
-    mol_probes = mols
-
-    # Loop and align
-    scores = []
-    for i, mol in enumerate(mol_probes):
-        crippenO3A = rdMolAlign.GetCrippenO3A(
-            prbMol=mol,
-            refMol=mol_ref,
-            prbCrippenContribs=crippen_contrib_probes[i],
-            refCrippenContribs=crippen_contrib_ref,
-            prbCid=conformer_id,
-            refCid=conformer_id,
-            maxIters=50,
-        )
-        crippenO3A.Align()
-
-        scores.append(crippenO3A.Score())
-
-    scores = np.array(scores)
-
-    return mols, scores
+    warnings.warn(
+        "molfeat.utils.commons.align_conformers is deprecated; "
+        "use datamol.conformers.align_conformers instead.",
+        DeprecationWarning,
+        stacklevel=2,
+    )
+    return dm.conformers.align_conformers(
+        mols,
+        ref_id=ref_id,
+        copy=copy,
+        conformer_id=conformer_id,
+        backend="crippenO3A",
+    )

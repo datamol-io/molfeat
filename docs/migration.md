@@ -24,15 +24,21 @@ python -m pip install --upgrade pip
 python -m pip install "molfeat[transformer,pyg]"
 ```
 
+In PowerShell, activate the environment with
+`.venv\Scripts\Activate.ps1`; the remaining commands are unchanged.
+
 ## Optional dependency changes
 
 `molfeat[all]` now means all maintained extras compatible with the current
-interpreter. DGL 1.x and DGLLife are restricted to Python 3.11 and tested in a
-separate compatibility job:
+interpreter. DGL, DGLLife, their atom/bond calculators, DGL graph and tree
+transformers, pretrained DGL models, and the legacy Graphormer adapter have
+been removed. Their old binary and build constraints prevent a coherent modern
+Python, PyTorch and cross-platform matrix. Use `molfeat[pyg]` for graph tensors
+or one of the maintained foundation-model adapters.
 
-```bash
-python -m pip install "molfeat[dgl]"
-```
+Published DGL and Graphormer cards remain discoverable in the historical model
+store, but Molfeat now raises an explicit error instead of generating import
+code for APIs that no longer exist.
 
 The default installation no longer pulls in cloud filesystem clients,
 Matplotlib, Mordred, HDF5 or Parquet engines. Install only the capability you
@@ -41,11 +47,6 @@ need with `molfeat[cloud]`, `molfeat[viz]`, `molfeat[mordred]` or
 the core installation. `.env` files are no longer loaded as an import side
 effect; export `MOLFEAT_MODEL_STORE_ROOT` explicitly or load a dotenv file in
 the application before constructing `ModelStore`.
-
-The `graphormer` extra has been removed. The latest
-`graphormer-pretrained` source release does not build with the supported Python
-and Cython toolchain. Its adapter class remains for controlled legacy
-environments.
 
 Molfeat 1.x is now explicitly scoped to small molecules. The
 `molfeat.trans.struct` protein adapters (`ESMProteinFingerprint` and
@@ -67,6 +68,10 @@ than pulling unrelated model stacks into Molfeat.
   releases, and atom/bond calculations use the current valence API.
 - Scikit-learn calls use `ensure_all_finite`, replacing the removed
   `force_all_finite` keyword.
+- General RDKit fingerprint folding and conformer alignment now delegate to
+  Datamol. The Molfeat compatibility functions remain available with a
+  deprecation warning and preserve their previous signatures and floating-point
+  fingerprint output. New code should call Datamol directly.
 
 ## Serialization
 
@@ -75,3 +80,11 @@ constructor defaults. Existing state files remain supported where their
 calculator and optional dependencies are available. Re-save important models
 after validating them in 1.x so future environments record the current package
 metadata.
+
+## CI portability
+
+The dependency-light core suite runs on Linux x86-64, Windows x86-64, macOS
+Apple Silicon and macOS Intel. Published-model and PyG integrations have a
+separate Linux lane because they download external artifacts or depend on
+framework-specific binary wheels. Platform-neutral adapters and imports remain
+covered by the four-platform core matrix.

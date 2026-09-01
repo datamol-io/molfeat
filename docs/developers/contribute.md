@@ -31,47 +31,47 @@ To contribute, you will first need to setup a dev environment. Follow the steps 
 
    **Do not** work on the `main` branch!
 
-4. Once you have a local copy, setup a development environment and install the dependencies. 
-   
-   It is strongly recommended that you do so in a new **conda environment**. 
+4. Once you have a local copy, create the complete development environment:
 
-    ```bash
-    mamba env create -n molfeat -f env.yml
-    conda activate molfeat
-    pip install -e . --no-deps
-    ```
+   ```bash
+   uv sync --all-extras
+   ```
 
-    If you absolutely cannot use `conda/mamba`, please use the following pip install command in your virtual environment:
-
-    ```bash
-    pip install -e ".[dev]"
-    ```
-
-   If molfeat was already installed in the virtual environment, remove it with `pip uninstall molfeat` first, before reinstalling it in editable mode with the `-e` flag.
+   This creates an isolated `.venv` and installs every maintained Molfeat extra
+   in editable mode. The checked-in `env.yml` remains available when a Conda
+   environment is required.
    
 5. Make your changes and modifications on your branch.
 
    As you work on your code, you should make sure the test suite passes. Run the tests impacted by your changes like this:
 
    ```bash
-   pytest tests/<TEST_TO_RUN>.py
+   uv run pytest tests/<TEST_TO_RUN>.py
    ```
 
 6. Commit your code, push it to your forked repository and open a pull request with a detailed description of your changes and why they are valuable. 
 
 ## Continuous Integration
 
-molfeat uses Github Actions to:
+Molfeat uses GitHub Actions to:
 
-- **Build and test** `molfeat`.
-- **Check code formating** the code: `black`.
-- **Documentation**: build and deploy the documentation on `main` and for every new git tag.
+- **Build and test** Molfeat across the supported Python, RDKit and operating-system matrix.
+- **Validate every maintained extra** and the published foundation-model artifacts on every push, pull request and weekly schedule.
+- **Check** formatting with Black, linting with Ruff, and both package distributions.
+- **Build documentation** on every change and deploy it from `main` and published releases.
 
 ## Run tests globally
 
 ```bash
-pytest
+uv run python -m pytest -m "not integration"
+uv run python -m pytest -m integration --no-cov -n 0
 ```
+
+The second command downloads and validates the maintained public model
+artifacts. GitHub Actions additionally installs `molfeat[all]` and runs the
+complete suite in that environment. The fast core suite runs on Linux x86-64,
+Windows x86-64, macOS Apple Silicon and macOS Intel; network-backed model
+integrations run separately on Linux so failures remain diagnosable.
 
 ## Build the documentation
 
@@ -79,7 +79,7 @@ You can build and serve the documentation locally with:
 
 ```bash
 # Build and serve the doc
-mkdocs serve
+uv run mkdocs serve
 ```
 
 ## Submitting Pull Requests
@@ -99,6 +99,11 @@ By documenting your process in the ETL notebook, you help ensure that the regist
 
 ## Releasing a New Version
 
-To release a new version, code maintainers can use the `release` GitHub action. However, before releasing a new version, it is important to coordinate with the code owners to ensure that the release roadmap is followed and any critical pull requests have been merged.
+To release a new version, code maintainers publish a GitHub Release after
+coordinating with the code owners. The workflow builds and smoke-tests both
+distributions with uv, generates PEP 740 attestations, and publishes to PyPI
+through Trusted Publishing. The conda-forge feedstock remains supported: its
+update bot opens the version change after PyPI publication, and maintainers
+review the feedstock dependency and test changes separately.
 
 The release roadmap should be followed to ensure that the new version is stable, functional, and meets the requirements of the release. This includes proper testing, documentation, and ensuring backward compatibility where necessary. By following these guidelines, we can ensure that new versions are released smoothly and efficiently, with clear communication to our users and contributors.

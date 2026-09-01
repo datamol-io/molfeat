@@ -53,8 +53,6 @@ nav:
               - Base Pretrained Models: api/molfeat.trans.pretrained.base.md
               - HuggingFace: api/molfeat.trans.pretrained.hf_transformers.md
               - Recent foundation models: api/molfeat.trans.pretrained.foundation.md
-              - Graphormer: api/molfeat.trans.pretrained.graphormer.md
-              - DGL: api/molfeat.trans.pretrained.dgl_pretrained.md
               - FCD: api/molfeat.trans.pretrained.fcd.md
       - molfeat.store: api/molfeat.store.md
       - molfeat.plugins: api/molfeat.plugins.md

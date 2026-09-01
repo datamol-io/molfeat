@@ -37,7 +37,8 @@ existing Transformer and PyTorch Geometric extras, an immutable revision, and
 two explicit acknowledgements:
 
 ```bash
-python -m pip install "molfeat[transformer,pyg]"
+uv add "molfeat[transformer,pyg]"
+# or: python -m pip install "molfeat[transformer,pyg]"
 ```
 
 ```python
@@ -56,6 +57,11 @@ Inspect the pinned remote repository before enabling `trust_remote_code`, and
 confirm that the intended use is compatible with the upstream licence. The
 `predictions` and `embeddings` outputs are available as flattened vectors of
 6,144 and 6,656 values respectively.
+
+Transformers 5 currently exposes a meta-device initialization defect in the
+upstream custom model constructor. Molfeat detects that exact failure, builds
+the pinned model on CPU, and strictly loads the pinned `model.safetensors`
+checkpoint before moving it to the requested device.
 
 ## Where existing pretrained models are stored
 

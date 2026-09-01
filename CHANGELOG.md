@@ -8,11 +8,15 @@ _Only changelogs previous to 0.8.10. See the GitHub releases for new changelogs.
 
 - Require Python 3.11+, RDKit 2024.09+, PyTorch 2.5+, NumPy 1.26+ and
   scikit-learn 1.6+.
-- Support the current Transformers 5 and PyTorch Geometric stacks.
+- Support the current Transformers 5 and PyTorch Geometric stacks, including a
+  strict safetensors fallback for Mol-JEPA's upstream meta-device initialization issue.
 - Make model-store discovery lazy so constructing a featurizer does not perform
   an unnecessary network request.
-- Separate core, pretrained-model, PyG and DGL compatibility tests in CI.
-- Publish releases through PyPI Trusted Publishing.
+- Separate the cross-platform core matrix from a complete all-extras and
+  published-model validation lane in CI.
+- Use uv for development, CI, isolated wheel/source smoke tests and publishing.
+- Publish releases through PyPI Trusted Publishing with PEP 740 attestations;
+  retain conda-forge as a bot-updated downstream channel.
 - Apply the serialization defaults from PR #112, scikit-learn compatibility
   from PR #118, delivery updates from PR #121 and FCFP invariants from PR #123.
 
@@ -28,8 +32,11 @@ _Only changelogs previous to 0.8.10. See the GitHub releases for new changelogs.
 
 **Removed:**
 
-- Remove Graphormer and `bio-embeddings` from maintained installation extras;
-  their upstream releases are incompatible with the supported modern stack.
+- Remove DGL, DGLLife, Graphormer, `bio-embeddings` and their adapters; their
+  upstream releases and binary constraints are incompatible with the supported
+  modern stack. PyTorch Geometric is the maintained graph backend.
+- Remove protein featurizers and their plugin entry-point group to focus the
+  package on small molecules.
 
 ## v0.8.9
 

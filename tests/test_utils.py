@@ -9,6 +9,7 @@ import shelve
 import tempfile
 import h5py
 import joblib
+import pytest
 from molfeat.utils import datatype
 from molfeat.utils import commons
 from molfeat.utils.cache import CacheList, DataCache
@@ -51,6 +52,15 @@ class TestUtils(ut.TestCase):
         self.assertTrue(datatype.is_null(None))
         self.assertTrue(datatype.is_null([float("nan"), np.nan]))
         self.assertFalse(datatype.is_null([float("nan"), 1.0]))
+
+    def test_fingerprint_folding_delegates_to_datamol(self):
+        fingerprint = dm.to_fp("CCO", fp_type="ecfp-count", as_array=False)
+        expected = dm.fold_count_fp(fingerprint, dim=64, binary=True)
+        with pytest.warns(DeprecationWarning, match="datamol.fold_count_fp"):
+            folded = commons.fold_count_fp(fingerprint, dim=64, binary=True)
+
+        np.testing.assert_array_equal(folded, expected)
+        self.assertEqual(folded.dtype, np.dtype(float))
 
     def test_cast(self):
         arr1 = np.random.randn(5, 1)
@@ -265,7 +275,8 @@ class TestCache(ut.TestCase):
         dummy_pos_averages = [dm.conformers.get_coords(mol).mean() for mol in mols]
 
         # Align conformers
-        mols, scores = commons.align_conformers(mols)
+        with pytest.warns(DeprecationWarning, match="datamol.conformers.align_conformers"):
+            mols, scores = commons.align_conformers(mols)
 
         # Get the average coordinates after aligning
         dummy_pos_averages_aligned = [dm.conformers.get_coords(mol).mean() for mol in mols]

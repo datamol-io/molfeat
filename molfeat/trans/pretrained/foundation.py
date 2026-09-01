@@ -16,6 +16,8 @@ from typing import Literal, Optional
 import hashlib
 import os
 import shutil
+import time
+import urllib.error
 import urllib.request
 import uuid
 
@@ -270,16 +272,29 @@ class CheMeleonTransformer(PretrainedMolTransformer):
             if self._checkpoint_is_valid(checkpoint):
                 return checkpoint
 
-            temporary = checkpoint.with_name(f".{checkpoint.name}.{uuid.uuid4().hex}.part")
-            try:
-                with urllib.request.urlopen(self.download_url, timeout=120) as source:
-                    with temporary.open("wb") as destination:
-                        shutil.copyfileobj(source, destination)
-                if not self._checkpoint_is_valid(temporary):
-                    raise ValueError("Downloaded CheMeleon checkpoint failed checksum validation.")
-                temporary.replace(checkpoint)
-            finally:
-                temporary.unlink(missing_ok=True)
+            for attempt in range(3):
+                temporary = checkpoint.with_name(f".{checkpoint.name}.{uuid.uuid4().hex}.part")
+                try:
+                    with urllib.request.urlopen(self.download_url, timeout=120) as source:
+                        with temporary.open("wb") as destination:
+                            shutil.copyfileobj(source, destination)
+                    if not self._checkpoint_is_valid(temporary):
+                        raise ValueError(
+                            "Downloaded CheMeleon checkpoint failed checksum validation."
+                        )
+                    temporary.replace(checkpoint)
+                    break
+                except (TimeoutError, urllib.error.URLError, ValueError) as error:
+                    retryable_http_error = (
+                        not isinstance(error, urllib.error.HTTPError)
+                        or error.code == 429
+                        or error.code >= 500
+                    )
+                    if attempt == 2 or not retryable_http_error:
+                        raise
+                    time.sleep(2**attempt)
+                finally:
+                    temporary.unlink(missing_ok=True)
         return checkpoint
 
     def _preload(self):
@@ -409,7 +424,7 @@ class MolJEPATransformer(PretrainedMolTransformer):
                 'python -m pip install "molfeat[transformer,pyg]"'
             )
 
-        from transformers import AutoModel
+        from transformers import AutoConfig, AutoModel
 
         reserved = {"trust_remote_code", "revision", "code_revision"}.intersection(
             self.model_kwargs
@@ -428,12 +443,50 @@ class MolJEPATransformer(PretrainedMolTransformer):
             )
         except RuntimeError as error:
             if "expected device meta" in str(error):
-                raise RuntimeError(
-                    "The pinned Mol-JEPA checkpoint is incompatible with this Transformers "
-                    "initialization path. Use Transformers 4.57 or a newer verified Mol-JEPA revision."
-                ) from error
-            raise
+                model = self._load_without_meta_initialization(AutoConfig, AutoModel)
+            else:
+                raise
         self.featurizer = model.to(self.device).eval()
+
+    def _load_without_meta_initialization(self, auto_config, auto_model):
+        """Load the pinned checkpoint after constructing the custom model on CPU.
+
+        Transformers 5 initializes ``from_pretrained`` models on the meta device.
+        Mol-JEPA's pinned custom constructor currently combines meta and CPU
+        buffers, so this narrowly scoped fallback constructs the model normally
+        and then performs a strict safetensors load.
+        """
+        from huggingface_hub import snapshot_download
+        from safetensors.torch import load_model
+
+        snapshot = Path(
+            snapshot_download(
+                repo_id=self.model_name,
+                revision=self.revision,
+                allow_patterns=["*.json", "*.py", "model.safetensors"],
+            )
+        )
+        checkpoint = snapshot / "model.safetensors"
+        if not checkpoint.is_file():
+            raise RuntimeError(
+                f"The pinned Mol-JEPA snapshot does not contain {checkpoint.name!r}."
+            )
+
+        config = auto_config.from_pretrained(
+            self.model_name,
+            revision=self.revision,
+            code_revision=self.revision,
+            trust_remote_code=True,
+            local_files_only=True,
+        )
+        model = auto_model.from_config(config, trust_remote_code=True)
+        missing, unexpected = load_model(model, checkpoint, strict=True, device="cpu")
+        if missing or unexpected:
+            raise RuntimeError(
+                "The pinned Mol-JEPA checkpoint does not match its model definition: "
+                f"missing={missing}, unexpected={unexpected}."
+            )
+        return model
 
     def _embed(self, inputs, **kwargs):
         self._preload()

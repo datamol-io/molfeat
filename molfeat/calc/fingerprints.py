@@ -19,7 +19,6 @@ from molfeat.calc._serializable_classes import (
 )
 from molfeat.calc.base import SerializableCalculator
 from molfeat.utils.datatype import to_numpy, to_fp
-from molfeat.utils.commons import fold_count_fp
 
 FP_GENERATORS = {
     "ecfp": rdFingerprintGenerator.GetMorganGenerator,
@@ -339,7 +338,7 @@ class FPCalculator(SerializableCalculator):
         else:
             fp_val = fp_func(mol, **self.params)
         if self.counting:
-            fp_val = fold_count_fp(fp_val, self._length)
+            fp_val = dm.fold_count_fp(fp_val, self._length)
         if not raw:
             fp_val = to_numpy(fp_val)
         if self.counting and raw:

@@ -74,8 +74,6 @@ ATOM_LIST = [
     "Hg",
     "Pb",
 ]
-DGLLIFE_WEAVE_ATOMS = ["H", "C", "N", "O", "F", "P", "S", "Cl", "Br", "I"]
-
 ATOM_DEGREE_LIST = list(range(11))
 ATOM_TOTAL_DEGREE_LIST = list(range(6))
 EXPLICIT_VALENCE_LIST = list(range(1, 7))
@@ -94,13 +92,6 @@ HYBRIDIZATION_LIST = [
 ]
 
 
-DGLLIFE_HYBRIDIZATION_LIST = [
-    rdchem.HybridizationType.SP,
-    rdchem.HybridizationType.SP2,
-    rdchem.HybridizationType.SP3,
-    rdchem.HybridizationType.SP3D,
-    rdchem.HybridizationType.SP3D2,
-]
 ATOM_NUM_H_LIST = [0, 1, 2, 3, 4]
 CHARGE_LIST = [-3, -2, -1, 0, 1, 2, 3]
 RADICAL_ELECTRON_LIST = list(range(5))
@@ -109,11 +100,6 @@ CHIRAL_TYPES = [
     rdchem.ChiralType.CHI_TETRAHEDRAL_CW,
     rdchem.ChiralType.CHI_TETRAHEDRAL_CCW,
     rdchem.ChiralType.CHI_OTHER,
-]
-
-DGLLIFE_WEAVE_CHIRAL_TYPES = [
-    rdchem.ChiralType.CHI_TETRAHEDRAL_CW,
-    rdchem.ChiralType.CHI_TETRAHEDRAL_CCW,
 ]
 
 BOND_TYPES = [

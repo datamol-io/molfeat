@@ -1,15 +1,8 @@
 import unittest as ut
 import datamol as dm
 import torch
-import pytest
 from molfeat.trans.graph.adj import AdjGraphTransformer
-from molfeat.trans.graph.adj import DGLGraphTransformer
-from molfeat.trans.graph.tree import MolTreeDecompositionTransformer
 from molfeat.calc.tree import TreeDecomposer
-from molfeat.utils import requires
-
-if requires.check("dgl"):
-    import dgl
 
 
 class TestMolTreeDecomposition(ut.TestCase):
@@ -42,14 +35,6 @@ class TestMolTreeDecomposition(ut.TestCase):
         # let's standardize the expected frags notation
         self.assertTrue(set(frags).issubset(expected_frags))
 
-    @pytest.mark.skipif(not requires.check("dgl"), reason="optional dependency dgl is missing")
-    def test_moltree_transformer(self):
-        transf = MolTreeDecompositionTransformer()
-        transf.fit(self.mols)
-        tree, ids = transf(self.smiles, ignore_errors=True)
-        self.assertIsInstance(tree, list)
-        self.assertTrue(isinstance(tree[0], dgl.DGLGraph))
-
 
 class TestGraphTransformer(ut.TestCase):
     r"""Test cases for AdjGraphTransformer"""
@@ -73,18 +58,3 @@ class TestGraphTransformer(ut.TestCase):
         # get graph and node feat
         mat_sum = self.mols[0].GetNumBonds() * 2 + self.mols[0].GetNumAtoms()
         self.assertAlmostEqual(graphs[0].sum().item(), mat_sum)
-
-    @pytest.mark.skipif(
-        not requires.check("dgl") or not requires.check("dgllife"),
-        reason="optional dependencies dgl and dgllife are required",
-    )
-    def test_dgl_transformer(self):
-        transf = DGLGraphTransformer()
-        graphs, ids = transf(self.smiles, ignore_errors=True)
-        self.assertEqual(ids, [0, 1, 2])
-        self.assertTrue(isinstance(graphs[0], dgl.DGLGraph))
-        self.assertTrue(graphs[0].number_of_nodes(), self.mols[0].GetNumAtoms())
-
-        with self.assertRaises(ValueError) as context:
-            _ = transf(self.smiles, ignore_errors=False)
-            self.assertTrue("transform molecule at index 3" in str(context.exception))

@@ -1,11 +1,15 @@
 import numpy as np
 
-from molfeat.trans.pretrained import CheMeleonTransformer
+import pytest
+
+from molfeat.trans.pretrained import CheMeleonTransformer, MolJEPATransformer
+
+pytestmark = pytest.mark.integration
 
 
-def test_chemeleon_official_checkpoint_representation(tmp_path):
+def test_chemeleon_official_checkpoint_representation():
     """Keep the dependency-free adapter aligned with the official Chemprop path."""
-    transformer = CheMeleonTransformer(checkpoint_path=tmp_path / "chemeleon_mp.pt")
+    transformer = CheMeleonTransformer()
     features = transformer(["CCO", "c1ccccc1", "[Na+]"])
 
     assert features.shape == (3, 2048)
@@ -28,3 +32,18 @@ def test_chemeleon_official_checkpoint_representation(tmp_path):
         rtol=1e-5,
         atol=1e-6,
     )
+
+
+@pytest.mark.timeout(600)
+def test_moljepa_official_checkpoint_representation():
+    """Exercise the pinned custom code and checkpoint as an explicit opt-in."""
+    transformer = MolJEPATransformer(
+        trust_remote_code=True,
+        accept_noncommercial_license=True,
+    )
+    first = transformer(["CCO"])
+    second = transformer(["CCO"])
+
+    assert first.shape == (1, 512)
+    assert np.isfinite(first).all()
+    np.testing.assert_array_equal(first, second)

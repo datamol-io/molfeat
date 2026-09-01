@@ -2,6 +2,8 @@ from types import SimpleNamespace
 
 import hashlib
 import sys
+import urllib.error
+import urllib.request
 
 import datamol as dm
 import numpy as np
@@ -54,6 +56,36 @@ def test_chemeleon_download_is_checksum_verified(tmp_path):
     assert transformer._ensure_checkpoint() == destination
     assert destination.read_bytes() == content
 
+
+def test_chemeleon_download_retries_transient_server_errors(tmp_path, monkeypatch):
+    content = b"test checkpoint contents"
+    source = tmp_path / "source.pt"
+    source.write_bytes(content)
+    destination = tmp_path / "cache" / "chemeleon.pt"
+    checksum = hashlib.md5(content, usedforsecurity=False).hexdigest()
+    attempts = []
+    sleeps = []
+    real_urlopen = urllib.request.urlopen
+
+    def flaky_urlopen(url, timeout):
+        attempts.append((url, timeout))
+        if len(attempts) == 1:
+            raise urllib.error.HTTPError(url, 504, "Gateway Timeout", {}, None)
+        return real_urlopen(source.as_uri(), timeout=timeout)
+
+    monkeypatch.setattr("molfeat.trans.pretrained.foundation.urllib.request.urlopen", flaky_urlopen)
+    monkeypatch.setattr("molfeat.trans.pretrained.foundation.time.sleep", sleeps.append)
+
+    transformer = CheMeleonTransformer(
+        checkpoint_path=destination,
+        download_url="https://example.test/chemeleon.pt",
+        checksum=checksum,
+    )
+    assert transformer._ensure_checkpoint() == destination
+    assert destination.read_bytes() == content
+    assert len(attempts) == 2
+    assert sleeps == [1]
+
     destination.write_bytes(b"corrupt")
     assert transformer._ensure_checkpoint() == destination
     assert destination.read_bytes() == content
@@ -87,7 +119,11 @@ def test_moljepa_pins_remote_code_and_flattens_output(monkeypatch):
         "molfeat.trans.pretrained.foundation.requires.check",
         lambda dependency: dependency in {"transformers", "torch_geometric"},
     )
-    monkeypatch.setitem(sys.modules, "transformers", SimpleNamespace(AutoModel=FakeAutoModel))
+    monkeypatch.setitem(
+        sys.modules,
+        "transformers",
+        SimpleNamespace(AutoConfig=object(), AutoModel=FakeAutoModel),
+    )
 
     transformer = MolJEPATransformer(
         output="embeddings",
@@ -103,3 +139,77 @@ def test_moljepa_pins_remote_code_and_flattens_output(monkeypatch):
     assert calls["kwargs"]["code_revision"] == transformer.revision
     assert calls["kwargs"]["trust_remote_code"] is True
     assert calls["kwargs"]["low_cpu_mem_usage"] is False
+
+
+def test_moljepa_transformers5_meta_initialization_fallback(tmp_path, monkeypatch):
+    calls = {}
+    checkpoint = tmp_path / "model.safetensors"
+    checkpoint.write_bytes(b"checkpoint")
+
+    class FakeModel(torch.nn.Module):
+        pass
+
+    class FakeAutoConfig:
+        @staticmethod
+        def from_pretrained(model_name, **kwargs):
+            calls["config"] = (model_name, kwargs)
+            return SimpleNamespace()
+
+    class FakeAutoModel:
+        @staticmethod
+        def from_pretrained(*args, **kwargs):
+            raise RuntimeError("Tensor on device cpu is not on expected device meta!")
+
+        @staticmethod
+        def from_config(config, **kwargs):
+            calls["from_config"] = (config, kwargs)
+            return FakeModel()
+
+    def fake_snapshot_download(**kwargs):
+        calls["snapshot"] = kwargs
+        return tmp_path
+
+    def fake_load_model(model, filename, **kwargs):
+        calls["load"] = (model, filename, kwargs)
+        return [], []
+
+    monkeypatch.setattr(
+        "molfeat.trans.pretrained.foundation.requires.check",
+        lambda dependency: dependency in {"transformers", "torch_geometric"},
+    )
+    monkeypatch.setitem(
+        sys.modules,
+        "transformers",
+        SimpleNamespace(AutoConfig=FakeAutoConfig, AutoModel=FakeAutoModel),
+    )
+    monkeypatch.setitem(
+        sys.modules,
+        "huggingface_hub",
+        SimpleNamespace(snapshot_download=fake_snapshot_download),
+    )
+    monkeypatch.setitem(sys.modules, "safetensors", SimpleNamespace())
+    monkeypatch.setitem(
+        sys.modules,
+        "safetensors.torch",
+        SimpleNamespace(load_model=fake_load_model),
+    )
+
+    transformer = MolJEPATransformer(
+        trust_remote_code=True,
+        accept_noncommercial_license=True,
+    )
+    transformer._preload()
+
+    assert calls["snapshot"] == {
+        "repo_id": transformer.model_name,
+        "revision": transformer.revision,
+        "allow_patterns": ["*.json", "*.py", "model.safetensors"],
+    }
+    assert calls["config"][1]["revision"] == transformer.revision
+    assert calls["config"][1]["code_revision"] == transformer.revision
+    assert calls["config"][1]["trust_remote_code"] is True
+    assert calls["config"][1]["local_files_only"] is True
+    assert calls["from_config"][1] == {"trust_remote_code": True}
+    assert calls["load"][1] == checkpoint
+    assert calls["load"][2] == {"strict": True, "device": "cpu"}
+    assert transformer.featurizer.training is False

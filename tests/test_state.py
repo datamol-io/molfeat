@@ -17,16 +17,12 @@ from molfeat.trans.base import MoleculeTransformer, PrecomputedMolTransformer
 from molfeat.trans.fp import FPVecFilteredTransformer, FPVecTransformer
 from molfeat.trans.graph import (
     AdjGraphTransformer,
-    DGLGraphTransformer,
-    MolTreeDecompositionTransformer,
     PYGGraphTransformer,
     TopoDistGraphTransformer,
 )
 from molfeat.trans.pretrained import (
     CheMeleonTransformer,
-    GraphormerTransformer,
     MolJEPATransformer,
-    PretrainedDGLTransformer,
     PretrainedHFTransformer,
 )
 from molfeat.utils.cache import FileCache, MolToKey
@@ -54,8 +50,6 @@ FEATURIZERS_SPEC = {
     # base
     "MoleculeTransformer": lambda: MoleculeTransformer(featurizer=_dummy_featurizer_fn),
     # pretrained
-    "PretrainedDGLTransformer": lambda: PretrainedDGLTransformer(),
-    "GraphormerTransformer": lambda: GraphormerTransformer(),
     "PretrainedHFTransformer": lambda: PretrainedHFTransformer(),
     "CheMeleonTransformer": lambda: CheMeleonTransformer(),
     "MolJEPATransformer": lambda: MolJEPATransformer(),
@@ -74,20 +68,14 @@ FEATURIZERS_SPEC = {
         bond_featurizer=BondCalculator(),
     ),
     "AdjGraphTransformer": lambda: AdjGraphTransformer(atom_featurizer=AtomCalculator()),
-    "DGLGraphTransformer": lambda: DGLGraphTransformer(),
     "TopoDistGraphTransformer": lambda: TopoDistGraphTransformer(),
     "PYGGraphTransformer": lambda: PYGGraphTransformer(),
-    "MolTreeDecompositionTransformer": lambda: MolTreeDecompositionTransformer(verbose=False),
 }
 FEATURIZERS_ATOM_PICKLES = ["AdjGraphTransformer_with_bonds_custom_atom"]
 FEATURIZERS_BUILDER_ATOM_PICKLES = [FEATURIZERS_SPEC[k] for k in FEATURIZERS_ATOM_PICKLES]
 FEATURIZER_REQUIREMENTS = {
-    "PretrainedDGLTransformer": ("dgl", "dgllife"),
-    "GraphormerTransformer": ("graphormer_pretrained",),
     "PretrainedHFTransformer": ("transformers",),
-    "DGLGraphTransformer": ("dgl", "dgllife"),
     "PYGGraphTransformer": ("torch_geometric",),
-    "MolTreeDecompositionTransformer": ("dgl",),
 }
 
 

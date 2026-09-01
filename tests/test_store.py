@@ -5,6 +5,7 @@ import fsspec
 import pytest
 
 from molfeat.store import ModelInfo, ModelStore, ModelStoreError
+from molfeat.store.modelcard import get_model_init
 from molfeat.store.loader import PretrainedStoreModel
 
 
@@ -26,6 +27,15 @@ def test_model_store_loads_index_lazily(monkeypatch):
 
     assert store.available_models == []
     assert len(calls) == 1
+
+
+@pytest.mark.parametrize("group", ["dgllife", "graphormer"])
+def test_legacy_model_cards_fail_with_migration_guidance(group):
+    card = _model_card()
+    card.group = group
+
+    with pytest.raises(ValueError, match="not supported by Molfeat 1.x"):
+        get_model_init(card)
 
 
 def _model_card(name="test-model", sha256sum=None):
