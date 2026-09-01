@@ -342,13 +342,12 @@ class FPCalculator(SerializableCalculator):
         if not raw:
             fp_val = to_numpy(fp_val)
         if self.counting and raw:
-            # converint the counted values to SparseInt again
+            # Convert counted values back to an RDKit SparseIntVect.
             fp_val = to_fp(fp_val, bitvect=False)
         return fp_val
 
     def __getstate__(self):
-        # EN: note that the state is standardized with all the parameter
-        # because of the possibility of default changing after
+        # Persist every parameter so future default changes do not alter the state.
         state = {}
         state["length"] = self.input_length
         state["input_length"] = self.input_length

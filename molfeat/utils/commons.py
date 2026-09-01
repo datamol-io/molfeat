@@ -114,7 +114,6 @@ def hex_to_fn(hex: str):
     Returns:
         callable: callable loaded from the hex string
     """
-    # EN: pickling with pickle is probably faster
     fn = pickle.loads(bytes.fromhex(hex))
     return fn
 

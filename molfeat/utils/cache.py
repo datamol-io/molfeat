@@ -450,7 +450,8 @@ class MPDataCache(DataCache):
 
     def _initialize_cache(self):
         """Initialize empty cache using a shared dict"""
-        manager = mp.Manager()  # this might not be a great idea to initialize everytime...
+        # The manager owns the shared dictionary used by worker processes.
+        manager = mp.Manager()
         self.cache = manager.dict()
 
 

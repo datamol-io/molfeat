@@ -22,16 +22,17 @@ class ModelStoreError(Exception):
 
 
 class ModelStore:
-    """A class for artefact serializing from any url
+    """Register, list, download and load model artifacts from an fsspec URL.
 
-    This class not only allow pretrained model serializing and loading,
-    but also help in listing model availability and registering models.
+    A store contains one artifact per model name and does not provide artifact
+    versioning. The default public store is read-only.
 
-    For simplicity.
+    For simplicity:
+
         * There is no versioning.
-        * Only one model should match a given name
-        * Model deletion is not allowed (on the read-only default store)
-        * Only a single store is supported per model store instance
+        * Only one model matches a given name.
+        * Model deletion is unavailable on the default store.
+        * Each ``ModelStore`` instance addresses one store.
 
     !!! note "Building a New Model Store"
         To create a new model store, you will mainly need a model store bucket path. The default model store bucket, located at `https://fs.molfeat.datamol.io/artifacts/`, is **read-only**.
@@ -46,8 +47,6 @@ class ModelStore:
 
     """
 
-    # EN: be careful not to recreate ada
-    # EN: should we just use modelstore ?
     MODEL_STORE_ROOT = "https://fs.molfeat.datamol.io/artifacts/"
     MODEL_PATH_NAME = "model.save"
     METADATA_PATH_NAME = "metadata.json"
@@ -63,7 +62,7 @@ class ModelStore:
         self._available_models = None
 
     def _update_store(self):
-        """Initialize the store with all available models"""
+        """Refresh the list of models available in the store."""
         all_metadata = dm.fs.glob(dm.fs.join(self.model_store_root, "**", self.METADATA_PATH_NAME))
         self._available_models = []
         for mtd_file in all_metadata:
@@ -74,13 +73,13 @@ class ModelStore:
 
     @property
     def available_models(self):
-        """Return a list of all models that have been serialized in molfeat"""
+        """Return metadata for every model registered in the store."""
         if self._available_models is None:
             self._update_store()
         return self._available_models
 
     def __len__(self):
-        """Return the length of the model store"""
+        """Return the number of registered models."""
         return len(self.available_models)
 
     def register(
@@ -92,8 +91,7 @@ class ModelStore:
         save_fn_kwargs: Optional[dict] = None,
         force: bool = True,
     ):
-        """
-        Register a new model to the store
+        """Register a model in the store.
 
         !!! note `save_fn`
             You can pass additional kwargs for your `save_fn` through the `save_fn_kwargs` argument.
@@ -116,7 +114,6 @@ class ModelStore:
             raise ModelStoreError(
                 "Pretrained model cards must declare the checkpoint license before registration."
             )
-        # we save the model first
         if self.exists(card=modelcard):
             logger.warning(f"Model {modelcard.name} exists already ...")
             if not force:
@@ -145,7 +142,7 @@ class ModelStore:
             )
         else:
             model_path = save_fn(model, model_upload_path, **save_fn_kwargs)
-            # we reset to None if the save_fn has not returned anything
+            # A serializer may upload directly and return no local path.
             model_path = model_path or model_upload_path
         modelcard.sha256sum = commons.sha256sum(model_path)
         # then we save the metadata as json
