@@ -12,7 +12,7 @@ actively maintained and available on current Python releases.
 - NumPy 1.26 or newer
 - pandas 2.2 or newer
 - scikit-learn 1.6 or newer
-- Transformers 5.x for the `transformer` extra
+- Transformers 4.57 through 5.x for the `transformer` extra. The lower bound keeps the extra co-installable with SAFE, whose constrained-generation API still requires Transformers 4.x.
 
 Create a fresh environment rather than upgrading a long-lived 0.x environment
 in place:
