@@ -41,7 +41,7 @@ jobs:
             python-version: "3.13"
             rdkit-version: "2026.3.*"
           - os: macos-15-intel
-            python-version: "3.13"
+            python-version: "3.12"
             rdkit-version: "2025.9.*"
           - os: windows-latest
             python-version: "3.13"

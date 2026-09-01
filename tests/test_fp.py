@@ -1,5 +1,4 @@
 import os
-import shutil
 import tempfile
 import time
 import unittest as ut
@@ -193,9 +192,10 @@ class TestMolTransformer(ut.TestCase):
             transf = FPVecTransformer(fpkind, length=1024, n_jobs=2)
             smiles = dm.data.freesolv()["smiles"].values[:50]
             fps = transf.transform(smiles)
-            with tempfile.NamedTemporaryFile(delete=True, suffix=f"{fpkind}.pkl") as OUT:
-                joblib.dump(transf, OUT.name)
-                reloaded_transf = joblib.load(OUT.name)
+            with tempfile.TemporaryDirectory() as temp_dir:
+                output_path = os.path.join(temp_dir, f"{fpkind}.pkl")
+                joblib.dump(transf, output_path)
+                reloaded_transf = joblib.load(output_path)
                 reloaded_fps = reloaded_transf.transform(smiles)
                 np.testing.assert_allclose(fps, reloaded_fps)
 
@@ -338,25 +338,21 @@ class TestMolTransformer(ut.TestCase):
         featurizer = FPVecTransformer(kind="desc2D")
         smiles_list = dm.data.freesolv()["smiles"].values[:50]
         feats = featurizer(smiles_list)
-        with tempfile.NamedTemporaryFile(delete=True, suffix="pkl") as temp_file:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            pickle_path = os.path.join(temp_dir, "transformer.pkl")
             cache = FileCache(None, file_type="pkl")
             _ = cache(smiles_list, featurizer)
-            parquet_out = temp_file.name + ".parquet"
+            parquet_out = os.path.join(temp_dir, "cache.parquet")
             cache.save_to_file(parquet_out, file_type="parquet")
             reloaded_cache = FileCache.load_from_file(parquet_out, file_type="parquet")
             transff = PrecomputedMolTransformer(cache=reloaded_cache, featurizer=featurizer)
             feat_cache = transff(smiles_list)
-            joblib.dump(transff, temp_file.name)
-            transf_reloaded = joblib.load(temp_file.name)
+            joblib.dump(transff, pickle_path)
+            transf_reloaded = joblib.load(pickle_path)
             self.assertEqual(len(transf_reloaded.cache), len(smiles_list))
             feat_cache_reloaded = transf_reloaded(smiles_list)
             np.testing.assert_array_equal(feat_cache_reloaded, feats)
             np.testing.assert_array_equal(feat_cache_reloaded, feat_cache)
-
-            try:
-                os.unlink(parquet_out)
-            except Exception:
-                shutil.rmtree(parquet_out)
 
 
 if __name__ == "__main__":

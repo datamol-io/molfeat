@@ -1,5 +1,4 @@
 import os
-import shutil
 import unittest as ut
 import datamol as dm
 import pandas as pd
@@ -133,16 +132,12 @@ class TestCache(ut.TestCase):
         np.testing.assert_array_equal(disk_cache[first_mol], first_smiles_val)
 
         # test saving and reloading cache
-        save_file = tempfile.NamedTemporaryFile(delete=False, suffix=".pkl")
-        save_file = save_file.name
-        disk_cache.save_to_file(save_file)
-        new_cache = DataCache.load_from_file(save_file)
-        self.assertTrue(first_smiles in new_cache)
-        np.testing.assert_array_equal(new_cache[first_smiles], first_smiles_val)
-        try:
-            os.unlink(save_file)
-        except Exception:
-            pass
+        with tempfile.TemporaryDirectory() as temp_dir:
+            save_file = os.path.join(temp_dir, "cache.pkl")
+            disk_cache.save_to_file(save_file)
+            new_cache = DataCache.load_from_file(save_file)
+            self.assertTrue(first_smiles in new_cache)
+            np.testing.assert_array_equal(new_cache[first_smiles], first_smiles_val)
 
     def test_filecache(self):
         mol_data = dm.data.freesolv().iloc[:100]
@@ -161,38 +156,42 @@ class TestCache(ut.TestCase):
         # TEST USING A DATAFRAME
         df = pd.DataFrame(precomputed_data.items(), columns=["keys", "feats"])
         df["values"] = df["feats"].apply(commons.pack_bits)
-        with tempfile.NamedTemporaryFile(delete=True, suffix="csv") as temp_file:
-            df.to_csv(temp_file, index=False)
-            cache = FileCache(temp_file.name, mol_hasher=hash_fn, file_type="csv")
+        with tempfile.TemporaryDirectory() as temp_dir:
+            cache_path = os.path.join(temp_dir, "cache.csv")
+            df.to_csv(cache_path, index=False)
+            cache = FileCache(cache_path, mol_hasher=hash_fn, file_type="csv")
             # check data
             self.assertTrue(first_smiles in cache)
             self.assertFalse("FAKE" in cache)
             np.testing.assert_array_equal(cache[first_smiles], first_smiles_val)
 
-        with tempfile.NamedTemporaryFile(delete=True, suffix=".pkl") as temp_file:
-            joblib.dump(precomputed_data, temp_file.name)
-            cache_pkl = FileCache(temp_file.name, mol_hasher=hash_fn, file_type="pickle")
+        with tempfile.TemporaryDirectory() as temp_dir:
+            cache_path = os.path.join(temp_dir, "cache.pkl")
+            joblib.dump(precomputed_data, cache_path)
+            cache_pkl = FileCache(cache_path, mol_hasher=hash_fn, file_type="pickle")
             # check data
             self.assertTrue(first_mol in cache_pkl)
             self.assertFalse("FAKE" in cache_pkl)
             np.testing.assert_array_equal(cache_pkl[first_smiles], first_smiles_val)
 
-        with tempfile.NamedTemporaryFile(delete=True, suffix=".parquet") as temp_file:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            cache_path = os.path.join(temp_dir, "cache.parquet")
             df_parquet = pd.DataFrame(precomputed_data.items(), columns=["keys", "feats"])
             df_parquet["values"] = df_parquet["feats"]
-            df_parquet.to_parquet(temp_file.name)
-            cache = FileCache(temp_file.name, mol_hasher=hash_fn, file_type="parquet")
+            df_parquet.to_parquet(cache_path)
+            cache = FileCache(cache_path, mol_hasher=hash_fn, file_type="parquet")
             # check data
             self.assertTrue(first_mol in cache)
             self.assertFalse("FAKE" in cache)
             np.testing.assert_array_equal(cache[first_smiles], first_smiles_val)
 
-        with tempfile.NamedTemporaryFile(delete=True, suffix=".h5") as temp_file:
-            with h5py.File(temp_file, "w") as f:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            cache_path = os.path.join(temp_dir, "cache.h5")
+            with h5py.File(cache_path, "w") as f:
                 for k, v in precomputed_data.items():
                     f.create_dataset(k, data=v)
 
-            cache = FileCache(temp_file.name, mol_hasher=hash_fn, file_type="hdf5")
+            cache = FileCache(cache_path, mol_hasher=hash_fn, file_type="hdf5")
             # check data
             self.assertTrue(first_smiles in cache)
             self.assertFalse("FAKE" in cache)
@@ -205,16 +204,17 @@ class TestCache(ut.TestCase):
             np.testing.assert_array_equal(vals, refetched_data)
 
         # check cache updating and reloading reloading of cache
-        with tempfile.NamedTemporaryFile(delete=True, suffix=".pkl") as temp_file:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            pickle_path = os.path.join(temp_dir, "cache.pkl")
             smiles_list2 = dm.data.freesolv()["smiles"].iloc[50:150].values
             _ = cache(smiles_list2, featurizer)
             self.assertEqual(len(cache), 150)
-            cache.save_to_file(temp_file.name, file_type="pickle")
-            parquet_out = temp_file.name + ".parquet"
-            csv_out = temp_file.name + ".csv"
+            cache.save_to_file(pickle_path, file_type="pickle")
+            parquet_out = os.path.join(temp_dir, "cache.parquet")
+            csv_out = os.path.join(temp_dir, "cache.csv")
             cache.save_to_file(parquet_out, file_type="parquet")
             cache.save_to_file(csv_out, file_type="csv")
-            reloaded_cache = FileCache.load_from_file(temp_file.name, file_type="pickle")
+            reloaded_cache = FileCache.load_from_file(pickle_path, file_type="pickle")
             reloaded_cache_parquet = FileCache.load_from_file(parquet_out, file_type="parquet")
             reloaded_cache_csv = FileCache.load_from_file(csv_out, file_type="csv")
             self.assertTrue(first_smiles in reloaded_cache, msg=reloaded_cache)
@@ -222,11 +222,6 @@ class TestCache(ut.TestCase):
             np.testing.assert_array_equal(reloaded_cache[first_smiles], first_smiles_val)
             np.testing.assert_array_equal(reloaded_cache_parquet[first_smiles], first_smiles_val)
             np.testing.assert_array_equal(reloaded_cache_csv[first_smiles], first_smiles_val)
-            for path in [parquet_out, csv_out]:
-                try:
-                    os.unlink(path)
-                except Exception:
-                    shutil.rmtree(path)
 
     def test_cache_list(self):
         # Test multiple cache simultaneously
@@ -235,8 +230,8 @@ class TestCache(ut.TestCase):
         featurizer = FPVecTransformer(kind="rdkit", length=10)
         vals = datatype.to_numpy(featurizer.transform(smiles_list))
 
-        with tempfile.NamedTemporaryFile(delete=True, suffix="csv") as temp_file:
-            cache1 = FileCache(temp_file.name, file_type="csv")
+        with tempfile.TemporaryDirectory() as temp_dir:
+            cache1 = FileCache(os.path.join(temp_dir, "cache.csv"), file_type="csv")
             cache1(smiles_list[:50], featurizer)
 
             cache2 = DataCache(name="test2", cache_file=True, delete_on_exit=True)
