@@ -40,14 +40,18 @@ Not all featurizers in Molfeat core package are supported by default. Some featu
 - To install PyTorch Geometric support: `python -m pip install "molfeat[pyg]"`.
 - To install FCD support: `python -m pip install "molfeat[fcd]"`.
 - To install DGL and DGLLife support on Python 3.11: `python -m pip install "molfeat[dgl]"`.
+- To install HDF5 and Parquet cache support: `python -m pip install "molfeat[cache]"`.
+- To install S3 and Google Cloud model stores: `python -m pip install "molfeat[cloud]"`.
+- To install Mordred descriptors: `python -m pip install "molfeat[mordred]"`.
 - To install `map4`: see <https://github.com/reymond-group/map4>.
 
 `python -m pip install "molfeat[all]"` installs every maintained optional
 dependency compatible with the current interpreter. DGL 1.x and DGLLife are
-kept in a Python 3.11 compatibility lane. Graphormer and `bio-embeddings` are
-not maintained installation extras in 1.x because their upstream releases are
-incompatible with the supported stack. Their existing adapters remain available
-to users who manage a compatible legacy environment. See the
+kept in a Python 3.11 compatibility lane. Graphormer is not a maintained
+installation extra in 1.x because its upstream release is incompatible with the
+supported stack; its existing adapter remains available to users who manage a
+compatible legacy environment. Protein featurizers have been removed so Molfeat
+1.x has a precise small-molecule scope. See the
 [migration guide](migration.md) for details.
 
 ### Compatibility

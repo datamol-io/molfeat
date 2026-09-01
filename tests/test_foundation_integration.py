@@ -1,0 +1,30 @@
+import numpy as np
+
+from molfeat.trans.pretrained import CheMeleonTransformer
+
+
+def test_chemeleon_official_checkpoint_representation(tmp_path):
+    """Keep the dependency-free adapter aligned with the official Chemprop path."""
+    transformer = CheMeleonTransformer(checkpoint_path=tmp_path / "chemeleon_mp.pt")
+    features = transformer(["CCO", "c1ccccc1", "[Na+]"])
+
+    assert features.shape == (3, 2048)
+    np.testing.assert_allclose(
+        features[:, [13, 19, 26, 30]],
+        np.asarray(
+            [
+                [0.2620092928, 1.3849297762, 0.0301855858, 1.0129538774],
+                [0.0, 0.0, 0.1095901355, 0.7540491223],
+                [0.3380137682, 0.2504425049, 0.0653740093, 0.0],
+            ],
+            dtype=np.float32,
+        ),
+        rtol=1e-5,
+        atol=1e-6,
+    )
+    np.testing.assert_allclose(
+        np.linalg.norm(features, axis=1),
+        np.asarray([5.3112206, 3.6752324, 4.5894136], dtype=np.float32),
+        rtol=1e-5,
+        atol=1e-6,
+    )

@@ -1,0 +1,76 @@
+# Recent foundation models
+
+Molfeat includes focused adapters for recent small-molecule representation
+models when they can be supported without making the default installation
+heavier. Protein and nucleotide models are deliberately outside this scope. The
+model authors' weights and licences remain authoritative.
+
+## CheMeleon
+
+[CheMeleon](https://arxiv.org/abs/2506.15792) is a 2025 descriptor-prediction
+foundation model. Molfeat reproduces the inference path of the authors'
+Chemprop D-MPNN with its existing RDKit and PyTorch dependencies, so Chemprop
+is not installed at runtime. The official 2,048-dimensional checkpoint is
+downloaded from the authors' [Zenodo record](https://doi.org/10.5281/zenodo.15460715)
+and verified against its published MD5 checksum.
+
+```python
+from molfeat.trans.pretrained import CheMeleonTransformer
+
+featurizer = CheMeleonTransformer()
+features = featurizer(["CCO", "c1ccccc1"])
+assert features.shape == (2, 2048)
+```
+
+By default the checkpoint is cached in the platform-specific Molfeat cache
+directory under `chemeleon/chemeleon_mp.pt`. Pass `checkpoint_path` to use a
+controlled cache or an already downloaded checkpoint.
+
+## Mol-JEPA
+
+[Mol-JEPA](https://arxiv.org/abs/2608.22642) is a 2026 joint-embedding model
+with sequence, graph and fingerprint views. Its
+[official implementation](https://github.com/Boehringer-Ingelheim/mol-jepa)
+and Hugging Face checkpoint use custom Python code and are licensed CC BY-NC
+4.0. Molfeat does not redistribute either one. Loading therefore requires the
+existing Transformer and PyTorch Geometric extras, an immutable revision, and
+two explicit acknowledgements:
+
+```bash
+python -m pip install "molfeat[transformer,pyg]"
+```
+
+```python
+from molfeat.trans.pretrained import MolJEPATransformer
+
+featurizer = MolJEPATransformer(
+    output="cls",
+    trust_remote_code=True,
+    accept_noncommercial_license=True,
+)
+features = featurizer(["CCO", "c1ccccc1"])
+assert features.shape == (2, 512)
+```
+
+Inspect the pinned remote repository before enabling `trust_remote_code`, and
+confirm that the intended use is compatible with the upstream licence. The
+`predictions` and `embeddings` outputs are available as flattened vectors of
+6,144 and 6,656 values respectively.
+
+## Where existing pretrained models are stored
+
+`ModelStore` discovers model cards from
+`https://fs.molfeat.datamol.io/artifacts/` by default. Downloaded artifacts are
+placed in the operating system's Molfeat user cache (for example,
+`~/Library/Caches/molfeat` on macOS). A `PretrainedModel` can override this with
+`cache_path`, while `MOLFEAT_MODEL_STORE_ROOT` selects another remote or local
+store. S3 and Google Cloud paths require `molfeat[cloud]`; the public HTTPS
+store does not.
+
+## Models evaluated but not bundled
+
+SMI-TED, MuMo and Uni-Mol2 were reviewed for this release. They are not added
+yet because their current reference implementations require custom or
+substantially heavier stacks. Keeping them out preserves a small, predictable
+dependency surface; a future adapter should first provide a stable inference
+contract and independently verifiable representations.

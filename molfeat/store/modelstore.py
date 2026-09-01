@@ -11,13 +11,10 @@ import fsspec
 import joblib
 import platformdirs
 import yaml
-from dotenv import load_dotenv
 from loguru import logger
 
 from molfeat.store.modelcard import ModelInfo
 from molfeat.utils import commons
-
-load_dotenv()
 
 
 class ModelStoreError(Exception):

@@ -1,18 +1,19 @@
 site_name: "molfeat"
 site_description: "An all in one package for molecule featurization"
-site_url: ""
+site_url: "https://molfeat-docs.datamol.io/"
 repo_url: "https://github.com/datamol-io/molfeat"
 repo_name: "datamol-io/molfeat"
 
 remote_branch: "gh-pages"
 use_directory_urls: false
-copyright: Copyright 2020 - 2023 datamol.io
+copyright: Copyright 2020 - 2026 datamol.io
 strict: true
 
 nav:
   - Getting started:
       - What is molfeat?: index.md
       - How to use molfeat?: usage.md
+      - Recent foundation models: foundation_models.md
       - Why should you care?: benchmark.ipynb
       - License: license.md
 
@@ -47,11 +48,11 @@ nav:
           - molfeat.trans.base: api/molfeat.trans.base.md
           - molfeat.trans.fp: api/molfeat.trans.fp.md
           - molfeat.trans.graph: api/molfeat.trans.graph.md
-          - molfeat.trans.struct: api/molfeat.trans.struct.md
           - molfeat.trans.concat: api/molfeat.trans.concat.md
           - molfeat.trans.pretrained:
               - Base Pretrained Models: api/molfeat.trans.pretrained.base.md
               - HuggingFace: api/molfeat.trans.pretrained.hf_transformers.md
+              - Recent foundation models: api/molfeat.trans.pretrained.foundation.md
               - Graphormer: api/molfeat.trans.pretrained.graphormer.md
               - DGL: api/molfeat.trans.pretrained.dgl_pretrained.md
               - FCD: api/molfeat.trans.pretrained.fcd.md

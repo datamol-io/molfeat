@@ -35,9 +35,7 @@ dependencies = [
     "loguru>=0.7",
     "joblib>=1.3",
     "filelock>=3.13",
-    "fsspec>=2024.3",
-    "s3fs>=2024.3",
-    "gcsfs>=2024.3",
+    "fsspec[http]>=2024.3",
     "pandas>=2.2",
     "numpy>=1.26",
     "scipy>=1.11",
@@ -45,15 +43,10 @@ dependencies = [
     "datamol>=0.12.5",
     "pyyaml>=6",
     "platformdirs>=4",
-    "matplotlib>=3.8",
-    "h5py>=3.10",
-    "pyarrow>=15",
     "pydantic>=2.7",
     "scikit-learn>=1.6",
     "packaging>=23.2",
     "pmapper>=1.1",
-    "mordredcommunity>=2.0.7",
-    "python-dotenv>=1",
     "rdkit>=2024.9.1",
 ]
 
@@ -67,7 +60,13 @@ transformer = ["transformers>=4.57,<6", "sentencepiece>=0.2"]
 
 fcd = ["fcd_torch>=1.0.7"]
 
-viz = ["nglview>=3.1", "ipywidgets>=8.1"]
+viz = ["matplotlib>=3.8", "nglview>=3.1", "ipywidgets>=8.1"]
+
+cache = ["h5py>=3.10", "pyarrow>=15"]
+
+cloud = ["s3fs>=2024.3", "gcsfs>=2024.3"]
+
+mordred = ["mordredcommunity>=2.0.7"]
 
 pyg = ["torch_geometric>=2.6"]
 
@@ -77,6 +76,12 @@ all = [
     "transformers>=4.57,<6",
     "sentencepiece>=0.2",
     "fcd_torch>=1.0.7",
+    "h5py>=3.10",
+    "pyarrow>=15",
+    "s3fs>=2024.3",
+    "gcsfs>=2024.3",
+    "mordredcommunity>=2.0.7",
+    "matplotlib>=3.8",
     "nglview>=3.1",
     "ipywidgets>=8.1",
     "torch_geometric>=2.6",
@@ -84,10 +89,13 @@ all = [
 
 test = [
     "pytest>=8",
-    "pytest-dotenv>=0.5",
     "pytest-cov>=6",
     "pytest-timeout>=2.3",
     "pytest-xdist>=3.6",
+    "h5py>=3.10",
+    "pyarrow>=15",
+    "mordredcommunity>=2.0.7",
+    "matplotlib>=3.8",
 ]
 docs = [
     "markdown-include>=0.8.1",

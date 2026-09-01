@@ -34,12 +34,24 @@ separate compatibility job:
 python -m pip install "molfeat[dgl]"
 ```
 
+The default installation no longer pulls in cloud filesystem clients,
+Matplotlib, Mordred, HDF5 or Parquet engines. Install only the capability you
+need with `molfeat[cloud]`, `molfeat[viz]`, `molfeat[mordred]` or
+`molfeat[cache]`. HTTP access to Molfeat's public model store remains part of
+the core installation. `.env` files are no longer loaded as an import side
+effect; export `MOLFEAT_MODEL_STORE_ROOT` explicitly or load a dotenv file in
+the application before constructing `ModelStore`.
+
 The `graphormer` extra has been removed. The latest
 `graphormer-pretrained` source release does not build with the supported Python
-and Cython toolchain. `bio-embeddings` is likewise no longer a maintained extra
-because its dependency stack predates the supported runtime. The corresponding
-adapter classes have not been deleted, so controlled legacy environments can
-still provide those dependencies themselves.
+and Cython toolchain. Its adapter class remains for controlled legacy
+environments.
+
+Molfeat 1.x is now explicitly scoped to small molecules. The
+`molfeat.trans.struct` protein adapters (`ESMProteinFingerprint` and
+`ProtBioFingerprint`) and their plugin entry-point group have been removed.
+Protein workflows should use a dedicated protein-representation package rather
+than pulling unrelated model stacks into Molfeat.
 
 ## Observable behavior corrections
 

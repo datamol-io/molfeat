@@ -23,7 +23,9 @@ from molfeat.trans.graph import (
     TopoDistGraphTransformer,
 )
 from molfeat.trans.pretrained import (
+    CheMeleonTransformer,
     GraphormerTransformer,
+    MolJEPATransformer,
     PretrainedDGLTransformer,
     PretrainedHFTransformer,
 )
@@ -55,6 +57,8 @@ FEATURIZERS_SPEC = {
     "PretrainedDGLTransformer": lambda: PretrainedDGLTransformer(),
     "GraphormerTransformer": lambda: GraphormerTransformer(),
     "PretrainedHFTransformer": lambda: PretrainedHFTransformer(),
+    "CheMeleonTransformer": lambda: CheMeleonTransformer(),
+    "MolJEPATransformer": lambda: MolJEPATransformer(),
     # graph
     "AdjGraphTransformer_with_bonds": lambda: AdjGraphTransformer(
         atom_featurizer=AtomMaterialCalculator(),

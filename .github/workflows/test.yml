@@ -61,7 +61,10 @@ jobs:
           python -m pip install --editable ".[test]"
 
       - name: Run core tests
-        run: python -m pytest --ignore=tests/test_pretrained.py --ignore=tests/test_prot_embed.py
+        run: >-
+          python -m pytest
+          --ignore=tests/test_pretrained.py
+          --ignore=tests/test_foundation_integration.py
 
       - name: Upload coverage
         if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.14'
@@ -72,7 +75,7 @@ jobs:
           flags: core
 
   integrations:
-    name: Transformers, ESM and PyG
+    name: Transformers and PyG
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
@@ -91,8 +94,8 @@ jobs:
       - name: Run integration tests
         run: >-
           python -m pytest
+          tests/test_foundation_integration.py
           tests/test_pretrained.py
-          tests/test_prot_embed.py
           tests/test_graphs.py
           tests/test_state.py
           --no-cov -n 0
