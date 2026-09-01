@@ -35,13 +35,12 @@ class TestUtils(ut.TestCase):
         r_fn2 = commons.hex_to_fn(hex2)
         r_fn3 = commons.hex_to_fn(hex3)
         self.assertListEqual([fn1(inp), fn2(inp), fn3(inp)], [r_fn1(inp), r_fn2(inp), r_fn3(inp)])
-        with self.assertRaises(AttributeError):
-            # we cannot pickle local function
-            # this is impossible by design
-            def fn2(x):
-                return x**2
 
-            hex2 = commons.fn_to_hex(fn2)
+        def local_fn(x):
+            return x**2
+
+        restored_local_fn = commons.hex_to_fn(commons.fn_to_hex(local_fn))
+        self.assertEqual(restored_local_fn(inp), local_fn(inp))
 
     def test_dtype(self):
         self.assertTrue(datatype.is_dtype_tensor(torch.int))

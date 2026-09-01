@@ -113,10 +113,17 @@ class Pharmacophore2D(SerializableCalculator):
         # Generate the fingerprint
         fp = Generate.Gen2DFingerprint(mol, self.sig_factory, dMat=d_mat)
 
-        # Posprocessing
+        # Postprocessing
         if self.length and self._should_fold:
             # refold the fingerprint
-            fp = dm.fold_count_fp(fp, dim=self.length, binary=not (self.useCounts or False))
+            if hasattr(fp, "GetNonzeroElements"):
+                is_empty = not fp.GetNonzeroElements()
+            else:
+                is_empty = fp.GetNumOnBits() == 0
+            if is_empty:
+                fp = np.zeros(self.length, dtype=int)
+            else:
+                fp = dm.fold_count_fp(fp, dim=self.length, binary=not (self.useCounts or False))
             if raw:
                 fp = to_fp(fp, bitvect=True)
 

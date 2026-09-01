@@ -42,7 +42,7 @@ jobs:
             rdkit-version: "2026.3.*"
           - os: macos-15-intel
             python-version: "3.13"
-            rdkit-version: "2026.3.*"
+            rdkit-version: "2025.9.*"
           - os: windows-latest
             python-version: "3.13"
             rdkit-version: "2026.3.*"
@@ -92,7 +92,9 @@ jobs:
           enable-cache: true
 
       - name: Install every maintained extra
-        run: uv pip install --editable ".[test,all]"
+        run: |
+          uv pip install --editable ".[test,all]"
+          uv pip install "datamol @ git+https://github.com/datamol-io/datamol.git@dev"
 
       - name: Run the complete feature suite
         run: python -m pytest --no-cov -n 0

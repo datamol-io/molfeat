@@ -38,6 +38,15 @@ def test_pharm2d_binary_output():
     assert len(np.unique(fp)) == 2 or len(np.unique(fp)) == 1
 
 
+@pytest.mark.parametrize("use_counts", [False, True])
+def test_pharm2d_empty_fingerprint(use_counts):
+    featurizer = Pharmacophore2D(length=128, useCounts=use_counts)
+
+    fp = featurizer("[He]")
+
+    np.testing.assert_array_equal(fp, np.zeros(128, dtype=int))
+
+
 def test_pharmacophore_2d_invalid_mol():
     featurizer = Pharmacophore2D()
 

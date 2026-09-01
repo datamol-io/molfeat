@@ -87,7 +87,7 @@ def ensure_picklable(fn: Callable):
     Args:
         fn: function to be pickled
     """
-    if inspect.isfunction(fn) and fn.__name__ == "<lambda>":
+    if inspect.isfunction(fn) and (fn.__name__ == "<lambda>" or "<locals>" in fn.__qualname__):
         return wrap_non_picklable_objects(fn)
     return fn
 
