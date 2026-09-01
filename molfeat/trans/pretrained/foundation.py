@@ -31,7 +31,6 @@ from torch import nn
 from molfeat.trans.pretrained.base import PretrainedMolTransformer
 from molfeat.utils import requires
 
-
 _CHEMELEON_URL = "https://zenodo.org/records/15460715/files/chemeleon_mp.pt"
 _CHEMELEON_MD5 = "6a80b54fdb7de37ef0374d302f01e8ce"
 _MOLJEPA_REPOSITORY = "Flogrammer/Mol-JEPA"
@@ -242,7 +241,9 @@ class CheMeleonTransformer(PretrainedMolTransformer):
         **params,
     ):
         super().__init__(dtype=dtype, preload=preload, n_jobs=n_jobs, **params)
-        default_path = Path(platformdirs.user_cache_dir("molfeat")) / "chemeleon" / "chemeleon_mp.pt"
+        default_path = (
+            Path(platformdirs.user_cache_dir("molfeat")) / "chemeleon" / "chemeleon_mp.pt"
+        )
         self.checkpoint_path = str(checkpoint_path or default_path)
         self.download_url = download_url
         self.checksum = checksum

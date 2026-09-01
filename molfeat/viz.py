@@ -2,13 +2,20 @@ from typing import List
 from typing import Union
 from typing import Dict
 
-import matplotlib.cm
-import matplotlib.colors
-
 import datamol as dm
 import pandas as pd
 
 from rdkit.Chem import rdMolChemicalFeatures
+
+from molfeat.utils import requires
+
+
+def _import_matplotlib():
+    if not requires.check("matplotlib"):
+        raise ImportError('Molfeat visualization requires: python -m pip install "molfeat[viz]"')
+    import matplotlib
+
+    return matplotlib
 
 
 def colors_from_feature_factory(
@@ -27,8 +34,7 @@ def colors_from_feature_factory(
     Returns:
         colors: Dict of feature_name as keys and colors as values.
     """
-    cmap_name = "Set1"
-
+    matplotlib = _import_matplotlib()
     cmap = matplotlib.colormaps[cmap_name]
     cmap_n = cmap.N  # type: ignore
 
@@ -121,6 +127,8 @@ def show_pharm_features(
 
 def _build_colors_widget(colors: Dict[str, list]):
     import ipywidgets as ipy
+
+    matplotlib = _import_matplotlib()
 
     box_layout = ipy.Layout(
         display="flex",

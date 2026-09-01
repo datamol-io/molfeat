@@ -18,8 +18,8 @@ from molfeat.trans.pretrained.foundation import (
 
 def test_chemeleon_graph_and_inference_shapes():
     molecules = [dm.to_mol("CCO"), dm.to_mol("[Na+]")]
-    atom_features, bond_features, edge_index, reverse_edge_index, batch = (
-        _batch_chemeleon_graphs(molecules)
+    atom_features, bond_features, edge_index, reverse_edge_index, batch = _batch_chemeleon_graphs(
+        molecules
     )
 
     assert atom_features.shape == (4, 72)
