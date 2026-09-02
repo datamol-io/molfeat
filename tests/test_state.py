@@ -17,17 +17,16 @@ from molfeat.trans.base import MoleculeTransformer, PrecomputedMolTransformer
 from molfeat.trans.fp import FPVecFilteredTransformer, FPVecTransformer
 from molfeat.trans.graph import (
     AdjGraphTransformer,
-    DGLGraphTransformer,
-    MolTreeDecompositionTransformer,
     PYGGraphTransformer,
     TopoDistGraphTransformer,
 )
 from molfeat.trans.pretrained import (
-    GraphormerTransformer,
-    PretrainedDGLTransformer,
+    CheMeleonTransformer,
+    MolJEPATransformer,
     PretrainedHFTransformer,
 )
 from molfeat.utils.cache import FileCache, MolToKey
+from molfeat.utils import requires
 from molfeat.utils.state import compare_state
 
 
@@ -51,9 +50,9 @@ FEATURIZERS_SPEC = {
     # base
     "MoleculeTransformer": lambda: MoleculeTransformer(featurizer=_dummy_featurizer_fn),
     # pretrained
-    "PretrainedDGLTransformer": lambda: PretrainedDGLTransformer(),
-    "GraphormerTransformer": lambda: GraphormerTransformer(),
     "PretrainedHFTransformer": lambda: PretrainedHFTransformer(),
+    "CheMeleonTransformer": lambda: CheMeleonTransformer(),
+    "MolJEPATransformer": lambda: MolJEPATransformer(),
     # graph
     "AdjGraphTransformer_with_bonds": lambda: AdjGraphTransformer(
         atom_featurizer=AtomMaterialCalculator(),
@@ -69,22 +68,36 @@ FEATURIZERS_SPEC = {
         bond_featurizer=BondCalculator(),
     ),
     "AdjGraphTransformer": lambda: AdjGraphTransformer(atom_featurizer=AtomCalculator()),
-    "DGLGraphTransformer": lambda: DGLGraphTransformer(),
     "TopoDistGraphTransformer": lambda: TopoDistGraphTransformer(),
     "PYGGraphTransformer": lambda: PYGGraphTransformer(),
-    "MolTreeDecompositionTransformer": lambda: MolTreeDecompositionTransformer(verbose=False),
 }
 FEATURIZERS_ATOM_PICKLES = ["AdjGraphTransformer_with_bonds_custom_atom"]
 FEATURIZERS_BUILDER_ATOM_PICKLES = [FEATURIZERS_SPEC[k] for k in FEATURIZERS_ATOM_PICKLES]
-FEATURIZERS_NAMES, FEATURIZERS_BUILDER = zip(
-    *[(k, v) for k, v in FEATURIZERS_SPEC.items() if k not in FEATURIZERS_ATOM_PICKLES]
-)
+FEATURIZER_REQUIREMENTS = {
+    "PretrainedHFTransformer": ("transformers",),
+    "PYGGraphTransformer": ("torch_geometric",),
+}
+
+
+def _state_test_params():
+    for name, builder in FEATURIZERS_SPEC.items():
+        if name in FEATURIZERS_ATOM_PICKLES:
+            continue
+        missing = [dep for dep in FEATURIZER_REQUIREMENTS.get(name, ()) if not requires.check(dep)]
+        marks = (
+            pytest.mark.skip(reason=f"missing optional dependencies: {', '.join(missing)}")
+            if missing
+            else ()
+        )
+        yield pytest.param(builder, id=name, marks=marks)
+
+
+FEATURIZERS_BUILDER = list(_state_test_params())
 
 
 @pytest.mark.parametrize(
     "featurizer_builder",
     FEATURIZERS_BUILDER,
-    ids=FEATURIZERS_NAMES,
 )
 def test_to_from_state(featurizer_builder):
     featurizer: MoleculeTransformer = featurizer_builder()
@@ -104,7 +117,6 @@ def test_to_from_state(featurizer_builder):
 @pytest.mark.parametrize(
     "featurizer_builder",
     FEATURIZERS_BUILDER,
-    ids=FEATURIZERS_NAMES,
 )
 def test_to_from_state_yaml(featurizer_builder, tmp_path):
     featurizer: MoleculeTransformer = featurizer_builder()
@@ -122,7 +134,6 @@ def test_to_from_state_yaml(featurizer_builder, tmp_path):
 @pytest.mark.parametrize(
     "featurizer_builder",
     FEATURIZERS_BUILDER,
-    ids=FEATURIZERS_NAMES,
 )
 def test_to_from_state_json(featurizer_builder, tmp_path):
     featurizer: MoleculeTransformer = featurizer_builder()

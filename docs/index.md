@@ -9,19 +9,32 @@ Molfeat is a hub of molecular featurizers. It supports a wide variety of out-of-
 
 Visit our website at https://molfeat.datamol.io.
 
+## Updates
+
+The upcoming 1.x release focuses on small molecules, replaces legacy DGL and
+protein adapters, and adds CheMeleon and Mol-JEPA integrations. See the
+[changelog](https://github.com/datamol-io/molfeat/blob/dev/CHANGELOG.md) and
+[migration guide](migration.md) for changes, model licensing and upgrade details.
+These changes are not yet a published release.
+
 ## Installation
 
 ### Installing Molfeat
 
-Use mamba:
+Add Molfeat to a uv-managed project:
 
 ```bash
-mamba install -c conda-forge molfeat
+uv add molfeat
 ```
 
-_**Tips:** You can replace `mamba` by `conda`._
+Pip and conda-forge remain supported: `python -m pip install molfeat` or
+`mamba install -c conda-forge molfeat`.
 
-_**Note:** We highly recommend using a [Conda Python distribution](https://github.com/conda-forge/miniforge) to install Molfeat. The package is also pip installable if you need it: `pip install molfeat`._
+The next major release requires Python 3.11 or newer, RDKit 2024.09 or newer,
+and PyTorch 2.5 or newer. macOS Intel uses the final PyTorch 2.2 wheel series
+with NumPy 1.26 and Transformers 4.57, and is tested on Python 3.12.
+See the [migration guide](migration.md) for checkpoint-format restrictions and
+co-installation with SAFE.
 
 ### Installing Plugins
 
@@ -33,15 +46,28 @@ However, this does imply that the installation of a plugin is plugin-dependent: 
 
 Not all featurizers in Molfeat core package are supported by default. Some featurizers require additional dependencies. If you try to use a featurizer that requires additional dependencies, Molfeat will raise an error and tell you which dependencies are missing and how to install them.
 
-- To install `dgl`: run `mamba install -c dglteam "dgl<=2.0"` # there is some issue with "dgl>2.0.0" related to graphbolt
-- To install `dgllife`: run `mamba install -c conda-forge dgllife`
-- To install `fcd_torch`: run `mamba install -c conda-forge fcd_torch`
-- To install `pyg`: run `mamba install -c conda-forge pytorch_geometric`
-- To install `graphormer-pretrained`: run `mamba install -c conda-forge graphormer-pretrained`
-- To install `map4`: see https://github.com/reymond-group/map4
-- To install `bio-embeddings`: run `mamba install -c conda-forge 'bio-embeddings >=0.2.2'`
+- To install Hugging Face Transformers support: `python -m pip install "molfeat[transformer]"`.
+- To convert SELFIES without Transformers: `python -m pip install "molfeat[selfies]"`.
+- To install PyTorch Geometric support: `python -m pip install "molfeat[pyg]"`.
+- To install FCD support: `python -m pip install "molfeat[fcd]"`.
+- To install HDF5 and Parquet cache support: `python -m pip install "molfeat[cache]"`.
+- To install S3 and Google Cloud model stores: `python -m pip install "molfeat[cloud]"`.
+- To install Mordred descriptors: `python -m pip install "molfeat[mordred]"`.
+- To install `map4`: see <https://github.com/reymond-group/map4>.
 
-If you install Molfeat using pip, there are optional dependencies that can be installed with the main package. For example, `pip install "molfeat[all]"` allows installing all the compatible optional dependencies for small molecule featurization. There are other options such as `molfeat[dgl]`, `molfeat[graphormer]`, `molfeat[transformer]`, `molfeat[viz]`, and `molfeat[fcd]`.
+`python -m pip install "molfeat[all]"` installs every maintained optional
+dependency compatible with the current interpreter. DGL, DGLLife and the
+legacy Graphormer adapter have been removed because they conflict with the
+supported modern stack. PyTorch Geometric is the maintained graph backend.
+Protein featurizers have also been removed so Molfeat 1.x has a precise
+small-molecule scope. See the [migration guide](migration.md) for details.
+
+### Compatibility
+
+| Molfeat | Python | RDKit | PyTorch |
+| --- | --- | --- | --- |
+| `1.x` (development) | `3.11–3.14` | `2024.09+` | `2.5+` (`2.2.x` on macOS Intel) |
+| `0.x` | See the release metadata | See the release metadata | See the release metadata |
 
 ## How to cite
 

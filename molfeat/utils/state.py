@@ -5,13 +5,8 @@ import numpy as np
 from packaging import version
 from molfeat.calc.atom import AtomCalculator
 from molfeat.calc.atom import AtomMaterialCalculator
-from molfeat.calc.atom import DGLWeaveAtomCalculator
-from molfeat.calc.atom import DGLCanonicalAtomCalculator
 from molfeat.calc.bond import BondCalculator
 from molfeat.calc.bond import EdgeMatCalculator
-from molfeat.calc.bond import DGLCanonicalBondCalculator
-from molfeat.calc.bond import DGLWeaveEdgeCalculator
-
 
 DTYPES_MAPPING = {
     None: None,
@@ -45,8 +40,6 @@ DTYPES_MAPPING_REVERSE = {v: k for k, v in DTYPES_MAPPING.items()}
 ATOM_FEATURIZER_MAPPING = {
     AtomCalculator: "AtomCalculator",
     AtomMaterialCalculator: "AtomMaterialCalculator",
-    DGLCanonicalAtomCalculator: "DGLCanonicalAtomCalculator",
-    DGLWeaveAtomCalculator: "DGLWeaveAtomCalculator",
 }
 
 ATOM_FEATURIZER_MAPPING_REVERSE = {v: k for k, v in ATOM_FEATURIZER_MAPPING.items()}
@@ -54,8 +47,6 @@ ATOM_FEATURIZER_MAPPING_REVERSE = {v: k for k, v in ATOM_FEATURIZER_MAPPING.item
 BOND_FEATURIZER_MAPPING = {
     BondCalculator: "BondCalculator",
     EdgeMatCalculator: "EdgeMatCalculator",
-    DGLCanonicalBondCalculator: "DGLCanonicalBondCalculator",
-    DGLWeaveEdgeCalculator: "DGLWeaveEdgeCalculator",
 }
 
 BOND_FEATURIZER_MAPPING_REVERSE = {v: k for k, v in BOND_FEATURIZER_MAPPING.items()}

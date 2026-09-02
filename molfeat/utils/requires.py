@@ -27,7 +27,7 @@ def check(module: str, min_version: Optional[str] = None, max_version: Optional[
         try:
             version = pkg_version.parse(version)
         except pkg_version.InvalidVersion:
-            # EN: packaging v22 removed LegacyVersion which has consequences
+            # Unparseable versions cannot be compared reliably against bounds.
             version = None
     return version is None or (
         (min_version is None or version >= min_version)

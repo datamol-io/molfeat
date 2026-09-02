@@ -17,6 +17,18 @@ from molfeat.data import get_df as get_data
 from molfeat.utils.commons import one_hot_encoding
 
 
+def _get_explicit_valence(atom: rdchem.Atom) -> int:
+    if hasattr(atom, "GetValence"):
+        return atom.GetValence(rdchem.ValenceType.EXPLICIT)
+    return atom.GetExplicitValence()
+
+
+def _get_implicit_valence(atom: rdchem.Atom) -> int:
+    if hasattr(atom, "GetValence"):
+        return atom.GetValence(rdchem.ValenceType.IMPLICIT)
+    return atom.GetImplicitValence()
+
+
 ATOM_LIST = [
     "C",
     "N",
@@ -62,8 +74,6 @@ ATOM_LIST = [
     "Hg",
     "Pb",
 ]
-DGLLIFE_WEAVE_ATOMS = ["H", "C", "N", "O", "F", "P", "S", "Cl", "Br", "I"]
-
 ATOM_DEGREE_LIST = list(range(11))
 ATOM_TOTAL_DEGREE_LIST = list(range(6))
 EXPLICIT_VALENCE_LIST = list(range(1, 7))
@@ -82,13 +92,6 @@ HYBRIDIZATION_LIST = [
 ]
 
 
-DGLLIFE_HYBRIDIZATION_LIST = [
-    rdchem.HybridizationType.SP,
-    rdchem.HybridizationType.SP2,
-    rdchem.HybridizationType.SP3,
-    rdchem.HybridizationType.SP3D,
-    rdchem.HybridizationType.SP3D2,
-]
 ATOM_NUM_H_LIST = [0, 1, 2, 3, 4]
 CHARGE_LIST = [-3, -2, -1, 0, 1, 2, 3]
 RADICAL_ELECTRON_LIST = list(range(5))
@@ -97,11 +100,6 @@ CHIRAL_TYPES = [
     rdchem.ChiralType.CHI_TETRAHEDRAL_CW,
     rdchem.ChiralType.CHI_TETRAHEDRAL_CCW,
     rdchem.ChiralType.CHI_OTHER,
-]
-
-DGLLIFE_WEAVE_CHIRAL_TYPES = [
-    rdchem.ChiralType.CHI_TETRAHEDRAL_CW,
-    rdchem.ChiralType.CHI_TETRAHEDRAL_CCW,
 ]
 
 BOND_TYPES = [
@@ -253,7 +251,7 @@ def atom_explicit_valence_one_hot(
     """
     if allowable_set is None:
         allowable_set = EXPLICIT_VALENCE_LIST
-    return one_hot_encoding(atom.GetExplicitValence(), allowable_set, encode_unknown)
+    return one_hot_encoding(_get_explicit_valence(atom), allowable_set, encode_unknown)
 
 
 def atom_explicit_valence(atom: dm.Atom):
@@ -264,7 +262,7 @@ def atom_explicit_valence(atom: dm.Atom):
     Returns:
         list: List containing one int only.
     """
-    return [atom.GetExplicitValence()]
+    return [_get_explicit_valence(atom)]
 
 
 def atom_implicit_valence_one_hot(
@@ -284,7 +282,7 @@ def atom_implicit_valence_one_hot(
     """
     if allowable_set is None:
         allowable_set = IMPLICIT_VALENCE_LIST
-    return one_hot_encoding(atom.GetImplicitValence(), allowable_set, encode_unknown)
+    return one_hot_encoding(_get_implicit_valence(atom), allowable_set, encode_unknown)
 
 
 def atom_implicit_valence(atom: dm.Atom):
@@ -295,7 +293,7 @@ def atom_implicit_valence(atom: dm.Atom):
     Returns:
         list: List containing one int only.
     """
-    return [atom.GetImplicitValence()]
+    return [_get_implicit_valence(atom)]
 
 
 def atom_hybridization_one_hot(

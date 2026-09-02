@@ -9,7 +9,6 @@ import fsspec
 from loguru import logger
 from molfeat._version import __version__ as MOLFEAT_VERSION
 
-
 _CALCULATORS = {}
 
 
@@ -73,7 +72,7 @@ class SerializableCalculator(abc.ABC, metaclass=_CalculatorMeta):
 
         Args:
             state: dictionary to use to create the the calculator
-            overrride_args: optional dictionary of arguments to override the ones in the state dict
+            override_args: optional dictionary of arguments to override the ones in the state dict
                 at construction of the new object
         """
         cls_name = state.get("name", cls.__name__)

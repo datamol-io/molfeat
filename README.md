@@ -22,7 +22,7 @@
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/molfeat)](https://pypi.org/project/molfeat/)
 [![Conda](https://img.shields.io/conda/dn/conda-forge/molfeat)](https://anaconda.org/conda-forge/molfeat)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/molfeat)](https://pypi.org/project/molfeat/)
-[![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/datamol-io/molfeat/blob/main/LICENSE)
+[![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![GitHub Repo stars](https://img.shields.io/github/stars/datamol-io/molfeat)](https://github.com/datamol-io/molfeat/stargazers)
 [![GitHub Repo stars](https://img.shields.io/github/forks/datamol-io/molfeat)](https://github.com/datamol-io/molfeat/network/members)
 [![test](https://github.com/datamol-io/molfeat/actions/workflows/test.yml/badge.svg)](https://github.com/datamol-io/molfeat/actions/workflows/test.yml)
@@ -39,33 +39,73 @@ Molfeat is a hub of molecular featurizers. It supports a wide variety of out-of-
 
 Visit our website at <https://molfeat.datamol.io>.
 
+## Updates
+
+Molfeat 1.x narrows the project to small-molecule featurization and a modern,
+maintainable stack. It removes the legacy DGL, DGLLife, Graphormer and protein
+adapters, keeps PyTorch Geometric as the graph backend, and adds maintained
+foundation-model integrations including CheMeleon and Mol-JEPA. Model loading
+is lazy, external checkpoint licences are explicit, and official
+representations are covered by integration tests.
+
+HTTP model downloads work with published Datamol 0.12.5; they no longer require
+an unreleased dependency. SELFIES support is explicit, and InChI decoding now
+returns SMILES instead of silently failing.
+
+See the [complete changelog](CHANGELOG.md) and the
+[1.x migration guide](docs/migration.md). These notes describe the upcoming
+major release; PyPI and conda-forge still provide the published stable versions.
+
+Release maintainers: see the [manual release guide](docs/releasing.md).
+
 ## Installation
 
 ### Installing Molfeat
 
-Use mamba:
+Add Molfeat to a uv-managed project:
 
 ```bash
-mamba install -c conda-forge molfeat
+uv add molfeat
 ```
 
-_**Tips:** You can replace `mamba` by `conda`._
+Pip and conda-forge remain supported: `python -m pip install molfeat` or
+`mamba install -c conda-forge molfeat`.
 
-_**Note:** We highly recommend using a [Conda Python distribution](https://github.com/conda-forge/miniforge) to install Molfeat. The package is also pip installable if you need it: `pip install molfeat`._
+The next major release requires Python 3.11 or newer and RDKit 2024.09 or
+newer. PyTorch 2.5 or newer is used on maintained platforms; macOS Intel uses
+the final available 2.2 wheel series with NumPy 1.26 and is tested on Python 3.12.
+On Mac Intel, the `transformer` extra selects Transformers 4.57 rather than 5.
+Use safetensors checkpoints there: current Transformers blocks pickle-based
+weight loading with PyTorch below 2.6. SAFE's notation core can share this
+environment, but its Transformers 5 model/training extras cannot.
 
 ### Optional dependencies
 
 Not all featurizers in the Molfeat core package are supported by default. Some featurizers require additional dependencies. If you try to use a featurizer that requires additional dependencies, Molfeat will raise an error and tell you which dependencies are missing and how to install them.
 
-- To install `dgl`: run `mamba install -c dglteam "dgl<=2.0"` # there is some issue with "dgl>2.0.0" related to graphbolt
-- To install `dgllife`: run `mamba install -c conda-forge dgllife`
-- To install `fcd_torch`: run `mamba install -c conda-forge fcd_torch`
-- To install `pyg`: run `mamba install -c conda-forge pytorch_geometric`
-- To install `graphormer-pretrained`: run `mamba install -c conda-forge graphormer-pretrained`
+- To install Hugging Face Transformers support: `python -m pip install "molfeat[transformer]"`.
+- To convert SELFIES without Transformers: `python -m pip install "molfeat[selfies]"`.
+- To install PyTorch Geometric support: `python -m pip install "molfeat[pyg]"`.
+- To install FCD support: `python -m pip install "molfeat[fcd]"`.
+- To install HDF5 and Parquet cache support: `python -m pip install "molfeat[cache]"`.
+- To install S3 and Google Cloud model stores: `python -m pip install "molfeat[cloud]"`.
+- To install Mordred descriptors: `python -m pip install "molfeat[mordred]"`.
 - To install `map4`: see <https://github.com/reymond-group/map4>
-- To install `bio-embeddings`: run `mamba install -c conda-forge 'bio-embeddings >=0.2.2'`
 
-If you install Molfeat using pip, there are optional dependencies that can be installed with the main package. For example, `pip install "molfeat[all]"` allows installing all the compatible optional dependencies for small molecule featurization. There are other options such as `molfeat[dgl]`, `molfeat[graphormer]`, `molfeat[transformer]`, `molfeat[viz]`, and `molfeat[fcd]`. See the [optional-dependencies](https://github.com/datamol-io/molfeat/blob/main/pyproject.toml#L60) for more information.
+`python -m pip install "molfeat[all]"` installs every maintained optional
+dependency compatible with the current interpreter. DGL, DGLLife and the
+legacy Graphormer adapter have been removed: their binary and build constraints
+conflict with the supported modern stack. PyTorch Geometric is the maintained
+graph backend. Protein featurizers have also been removed so Molfeat 1.x has a
+precise small-molecule scope. See the [migration guide](docs/migration.md) for
+details.
+
+### Compatibility
+
+| Molfeat | Python | RDKit | PyTorch |
+| --- | --- | --- | --- |
+| `1.x` (development) | `3.11–3.14` | `2024.09+` | `2.5+` (`2.2.x` on macOS Intel) |
+| `0.x` | See the release metadata | See the release metadata | See the release metadata |
 
 ### Installing Plugins
 
@@ -124,4 +164,10 @@ To learn more about the community and [datamol.io](https://datamol.io/) ecosyste
 
 ## License
 
-Under the Apache-2.0 license. See [LICENSE](LICENSE).
+Molfeat's code is licensed under Apache-2.0. See [LICENSE](LICENSE).
+The CheMeleon adapter retains the [Chemprop MIT notice](molfeat/data/CHEMPROP_NOTICE).
+Distribution metadata records both as `Apache-2.0 AND MIT`; this is not a choice
+of licence for Molfeat's own code.
+Downloaded model weights and custom Hub code have their own terms; Mol-JEPA
+requires explicit acceptance of its non-commercial licence. See the
+[model licensing policy](docs/foundation_models.md#third-party-licensing-policy).

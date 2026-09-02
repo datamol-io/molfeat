@@ -1,5 +1,4 @@
 import os
-import shutil
 import tempfile
 import time
 import unittest as ut
@@ -9,6 +8,8 @@ import joblib
 import numpy as np
 import pandas as pd
 import torch
+from rdkit import DataStructs
+from rdkit.Chem import rdFingerprintGenerator
 from rdkit.DataStructs.cDataStructs import ExplicitBitVect
 
 from molfeat.calc import SerializableCalculator
@@ -92,6 +93,57 @@ class TestMolTransformer(ut.TestCase):
             unique_len = set([len(x) for x in fps])
             self.assertEqual(len(unique_len), 1)
 
+    def test_morgan_aliases_match_ecfp(self):
+        expected = FPCalculator("ecfp")(self.smiles[0])
+        for alias in ["morgan", "morgan_circular", "morgan-circular", "MORGAN"]:
+            np.testing.assert_array_equal(FPCalculator(alias)(self.smiles[0]), expected)
+            np.testing.assert_array_equal(
+                MoleculeTransformer(featurizer=alias)([self.smiles[0]])[0], expected
+            )
+
+        np.testing.assert_array_equal(
+            FPCalculator("morgan", counting=True)(self.smiles[0]),
+            FPCalculator("ecfp-count")(self.smiles[0]),
+        )
+        np.testing.assert_array_equal(
+            FPVecTransformer("morgan")(self.smiles),
+            FPVecTransformer("ecfp")(self.smiles),
+        )
+
+    def test_pattern_and_layered_parallel_state(self):
+        for kind in ("pattern", "layered"):
+            sequential = FPVecTransformer(kind, n_jobs=1, length=None)(self.smiles)
+            parallel = FPVecTransformer(kind, n_jobs=2, length=None)(self.smiles)
+            np.testing.assert_array_equal(parallel, sequential)
+
+    def test_fcfp_uses_feature_atom_invariants(self):
+        mols = [dm.to_mol(smiles) for smiles in ["CCO", "CCN", "c1ccccc1O", "CC(=O)N"]]
+        for counting, ecfp_method, fcfp_method in [
+            (False, "ecfp", "fcfp"),
+            (True, "ecfp-count", "fcfp-count"),
+        ]:
+            generator = rdFingerprintGenerator.GetMorganGenerator(
+                radius=2,
+                fpSize=2048,
+                atomInvariantsGenerator=rdFingerprintGenerator.GetMorganFeatureAtomInvGen(),
+            )
+            fingerprint = generator.GetCountFingerprint if counting else generator.GetFingerprint
+            expected = []
+            for mol in mols:
+                values = np.zeros(2048, dtype=int)
+                DataStructs.ConvertToNumpyArray(fingerprint(mol), values)
+                expected.append(values)
+            expected = np.vstack(expected)
+
+            ecfp = np.vstack([FPCalculator(ecfp_method)(mol) for mol in mols])
+            calculator = FPCalculator(fcfp_method)
+            fcfp = np.vstack([calculator(mol) for mol in mols])
+            restored = FPCalculator.from_state_dict(calculator.to_state_dict())
+            restored_fcfp = np.vstack([restored(mol) for mol in mols])
+            self.assertFalse(np.array_equal(ecfp, expected))
+            np.testing.assert_array_equal(fcfp, expected)
+            np.testing.assert_array_equal(restored_fcfp, expected)
+
     def test_transformer_parallel_mol(self):
         for fpkind in ["atompair", "pharm2D"]:
             transf1 = MoleculeTransformer(featurizer=fpkind, n_jobs=1)
@@ -150,9 +202,10 @@ class TestMolTransformer(ut.TestCase):
             transf = FPVecTransformer(fpkind, length=1024, n_jobs=2)
             smiles = dm.data.freesolv()["smiles"].values[:50]
             fps = transf.transform(smiles)
-            with tempfile.NamedTemporaryFile(delete=True, suffix=f"{fpkind}.pkl") as OUT:
-                joblib.dump(transf, OUT.name)
-                reloaded_transf = joblib.load(OUT.name)
+            with tempfile.TemporaryDirectory() as temp_dir:
+                output_path = os.path.join(temp_dir, f"{fpkind}.pkl")
+                joblib.dump(transf, output_path)
+                reloaded_transf = joblib.load(output_path)
                 reloaded_fps = reloaded_transf.transform(smiles)
                 np.testing.assert_allclose(fps, reloaded_fps)
 
@@ -256,14 +309,15 @@ class TestMolTransformer(ut.TestCase):
         # should be faster now.
         # disable check on very fast run
         self.assertTrue(elapsed2 <= elapsed1 or elapsed1 < 1.5)
-        np.testing.assert_array_equal(out1, out2)
+        # Independent Mordred calculations can differ at floating-point precision.
+        np.testing.assert_allclose(out1, out2, rtol=1e-12, atol=1e-10, equal_nan=True)
 
         # should be even faster now that the full dataset is cached
         t3 = time.time()
         out3 = precomp(smiles)
         elapsed3 = time.time() - t3
         self.assertTrue(elapsed3 <= elapsed1 or elapsed1 < 1.5)
-        np.testing.assert_array_equal(out1, out3)
+        np.testing.assert_array_equal(out2, out3)
 
         # check when cache is build on the fly from a
         transff = MoleculeTransformer("desc2d")
@@ -295,25 +349,21 @@ class TestMolTransformer(ut.TestCase):
         featurizer = FPVecTransformer(kind="desc2D")
         smiles_list = dm.data.freesolv()["smiles"].values[:50]
         feats = featurizer(smiles_list)
-        with tempfile.NamedTemporaryFile(delete=True, suffix="pkl") as temp_file:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            pickle_path = os.path.join(temp_dir, "transformer.pkl")
             cache = FileCache(None, file_type="pkl")
             _ = cache(smiles_list, featurizer)
-            parquet_out = temp_file.name + ".parquet"
+            parquet_out = os.path.join(temp_dir, "cache.parquet")
             cache.save_to_file(parquet_out, file_type="parquet")
             reloaded_cache = FileCache.load_from_file(parquet_out, file_type="parquet")
             transff = PrecomputedMolTransformer(cache=reloaded_cache, featurizer=featurizer)
             feat_cache = transff(smiles_list)
-            joblib.dump(transff, temp_file.name)
-            transf_reloaded = joblib.load(temp_file.name)
+            joblib.dump(transff, pickle_path)
+            transf_reloaded = joblib.load(pickle_path)
             self.assertEqual(len(transf_reloaded.cache), len(smiles_list))
             feat_cache_reloaded = transf_reloaded(smiles_list)
             np.testing.assert_array_equal(feat_cache_reloaded, feats)
             np.testing.assert_array_equal(feat_cache_reloaded, feat_cache)
-
-            try:
-                os.unlink(parquet_out)
-            except Exception:
-                shutil.rmtree(parquet_out)
 
 
 if __name__ == "__main__":

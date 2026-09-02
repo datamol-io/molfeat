@@ -5,19 +5,10 @@ from typing import Iterable
 from typing import Optional
 
 from collections import defaultdict
-from functools import partial
-from functools import lru_cache
-
 import inspect
 import importlib
-import os
 import datamol as dm
 import numpy as np
-
-from rdkit import RDConfig
-from rdkit.Chem import AllChem
-from rdkit.Chem import ChemicalFeatures
-from rdkit.Chem import GetSymmSSSR
 
 from molfeat._version import __version__ as MOLFEAT_VERSION
 from molfeat.calc.base import SerializableCalculator
@@ -33,10 +24,6 @@ from molfeat.calc._atom_bond_features import atom_formal_charge
 from molfeat.calc._atom_bond_features import atom_total_num_H_one_hot
 from molfeat.calc._atom_bond_features import atom_is_chiral_center
 from molfeat.calc._atom_bond_features import atom_chiral_tag_one_hot
-from molfeat.calc._atom_bond_features import atom_partial_charge
-from molfeat.calc._atom_bond_features import DGLLIFE_HYBRIDIZATION_LIST
-from molfeat.calc._atom_bond_features import DGLLIFE_WEAVE_ATOMS
-from molfeat.calc._atom_bond_features import DGLLIFE_WEAVE_CHIRAL_TYPES
 from molfeat.utils import datatype
 from molfeat.utils.commons import concat_dict
 from molfeat.utils.commons import hex_to_fn
@@ -45,7 +32,7 @@ from molfeat.utils.commons import fn_to_hex
 
 class AtomCalculator(SerializableCalculator):
     """
-    Base class for computing atom properties compatible with DGLLife
+    Base class for computing atom properties.
     """
 
     DEFAULT_FEATURIZER = {
@@ -248,127 +235,3 @@ class AtomMaterialCalculator(AtomCalculator):
         "atom_chiral_tag_one_hot": atom_chiral_tag_one_hot,
         "atom_is_chiral_center": atom_is_chiral_center,
     }
-
-
-class DGLCanonicalAtomCalculator(AtomCalculator):
-    """Default canonical featurizer for atoms used by dgllife"""
-
-    DEFAULT_FEATURIZER = {
-        "atom_one_hot": atom_one_hot,
-        "atom_degree_one_hot": atom_degree_one_hot,
-        "atom_implicit_valence_one_hot": atom_implicit_valence_one_hot,
-        "atom_formal_charge": atom_formal_charge,
-        "atom_num_radical_electrons": atom_num_radical_electrons,
-        "atom_hybridization_one_hot": partial(
-            atom_hybridization_one_hot, allowable_set=DGLLIFE_HYBRIDIZATION_LIST
-        ),
-        "atom_is_aromatic": atom_is_aromatic,
-        "atom_total_num_H_one_hot": atom_total_num_H_one_hot,
-    }
-
-    def _concat(self, data_dict: Dict[str, Iterable]):
-        """Concatenate the data into a single value
-
-        Args:
-            data_dict: mapping of feature names to tensor/arrays
-        Returns:
-            concatenated_dict: a dict with a single key where all array have been concatenated
-        """
-        out = concat_dict(data_dict, new_name=self.name, order=list(self.featurizer_funcs.keys()))
-        return out
-
-
-class DGLWeaveAtomCalculator(DGLCanonicalAtomCalculator):
-    """Default atom featurizer used by WeaveNet in DGLLife"""
-
-    DEFAULT_FEATURIZER = {
-        "atom_one_hot": partial(
-            atom_one_hot, allowable_set=DGLLIFE_WEAVE_ATOMS, encode_unknown=True
-        ),
-        "atom_chiral_tag_one_hot": partial(
-            atom_chiral_tag_one_hot, allowable_set=DGLLIFE_WEAVE_CHIRAL_TYPES
-        ),
-        "atom_formal_charge": atom_formal_charge,
-        "atom_partial_charge": atom_partial_charge,
-        "atom_is_aromatic": atom_is_aromatic,
-        "atom_hybridization_one_hot": partial(
-            atom_hybridization_one_hot, allowable_set=DGLLIFE_HYBRIDIZATION_LIST[:3]
-        ),
-    }
-
-    def __init__(self, concat: bool = True, name: str = "hv"):
-        featurizer_funcs = self.DEFAULT_FEATURIZER
-        featurizer_funcs["atom_weavenet_props"] = self.atom_weave_props
-        super().__init__(concat=concat, name=name, featurizer_funcs=featurizer_funcs)
-
-    def _get_atom_state_info(self, feats):
-        """Get atom Donor/Acceptor state information from chemical pharmacophore features
-
-        Args:
-            feats: computed chemical features
-        """
-        is_donor = defaultdict(bool)
-        is_acceptor = defaultdict(bool)
-        # Get hydrogen bond donor/acceptor information
-        for feats in feats:
-            if feats.GetFamily() == "Donor":
-                nodes = feats.GetAtomIds()
-                for u in nodes:
-                    is_donor[u] = True
-            elif feats.GetFamily() == "Acceptor":
-                nodes = feats.GetAtomIds()
-                for u in nodes:
-                    is_acceptor[u] = True
-        return is_donor, is_acceptor
-
-    @staticmethod
-    @lru_cache(maxsize=None)
-    def _feat_factory_cache():
-        """Build and cache chemical features caching for speed"""
-        fdef_name = os.path.join(RDConfig.RDDataDir, "BaseFeatures.fdef")
-        chem_feats = ChemicalFeatures.BuildFeatureFactory(fdef_name)
-        return chem_feats
-
-    @lru_cache
-    def _compute_weave_net_properties(self, mol: dm.Mol):
-        # Get information for donor and acceptor
-        chem_feats = self._feat_factory_cache()
-        mol_feats = chem_feats.GetFeaturesForMol(mol)
-        is_donor, is_acceptor = self._get_atom_state_info(mol_feats)
-        sssr = GetSymmSSSR(mol)
-        num_atoms = mol.GetNumAtoms()
-        atom_features = []
-        for i in range(num_atoms):
-            cur_atom_props = [float(is_donor[i]), float(is_acceptor[i])]
-            # Count the number of rings the atom belongs to for ring size between 3 and 8
-            count = [0 for _ in range(3, 9)]
-            for ring in sssr:
-                ring_size = len(ring)
-                if i in ring and 3 <= ring_size <= 8:
-                    count[ring_size - 3] += 1
-            cur_atom_props.extend(count)
-            atom_features.append(cur_atom_props)
-        return atom_features
-
-    def atom_weave_props(self, atom: dm.Atom):
-        """Get the WeaveNet properties for an atom"""
-        mol = atom.GetOwningMol()
-        feats = self._compute_weave_net_properties(mol)
-        return feats[atom.GetIdx()]
-
-    def __call__(self, mol: Union[dm.Mol, str], dtype: Callable = None):
-        """
-        Get rdkit basic descriptors for a molecule
-
-        Args:
-            mol: the molecule of interest
-            dtype: requested data type
-
-        Returns:
-            dict:  For each function in self.featurizer_funcs with the key ``k``, store the computed feature under the key ``k``.
-        """
-        AllChem.ComputeGasteigerCharges(mol)
-        return super().__call__(
-            mol,
-            dtype,
-        )

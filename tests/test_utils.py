@@ -1,5 +1,4 @@
 import os
-import shutil
 import unittest as ut
 import datamol as dm
 import pandas as pd
@@ -9,10 +8,12 @@ import shelve
 import tempfile
 import h5py
 import joblib
+import pytest
 from molfeat.utils import datatype
 from molfeat.utils import commons
 from molfeat.utils.cache import CacheList, DataCache
 from molfeat.utils.cache import FileCache
+from molfeat.utils.pooler import Pooling
 from molfeat.trans.fp import FPVecTransformer
 
 
@@ -33,13 +34,12 @@ class TestUtils(ut.TestCase):
         r_fn2 = commons.hex_to_fn(hex2)
         r_fn3 = commons.hex_to_fn(hex3)
         self.assertListEqual([fn1(inp), fn2(inp), fn3(inp)], [r_fn1(inp), r_fn2(inp), r_fn3(inp)])
-        with self.assertRaises(AttributeError):
-            # we cannot pickle local function
-            # this is impossible by design
-            def fn2(x):
-                return x**2
 
-            hex2 = commons.fn_to_hex(fn2)
+        def local_fn(x):
+            return x**2
+
+        restored_local_fn = commons.hex_to_fn(commons.fn_to_hex(local_fn))
+        self.assertEqual(restored_local_fn(inp), local_fn(inp))
 
     def test_dtype(self):
         self.assertTrue(datatype.is_dtype_tensor(torch.int))
@@ -51,6 +51,15 @@ class TestUtils(ut.TestCase):
         self.assertTrue(datatype.is_null([float("nan"), np.nan]))
         self.assertFalse(datatype.is_null([float("nan"), 1.0]))
 
+    def test_fingerprint_folding_delegates_to_datamol(self):
+        fingerprint = dm.to_fp("CCO", fp_type="ecfp-count", as_array=False)
+        expected = dm.fold_count_fp(fingerprint, dim=64, binary=True)
+        with pytest.warns(DeprecationWarning, match="datamol.fold_count_fp"):
+            folded = commons.fold_count_fp(fingerprint, dim=64, binary=True)
+
+        np.testing.assert_array_equal(folded, expected)
+        self.assertEqual(folded.dtype, np.dtype(float))
+
     def test_cast(self):
         arr1 = np.random.randn(5, 1)
         dict1 = dict(test=np.array([2, 3, 1]))
@@ -59,6 +68,25 @@ class TestUtils(ut.TestCase):
         arr2 = None
         self.assertIsNone(datatype.cast(arr2, int))
         self.assertListEqual(list(datatype.cast(dict1, list)["test"]), list(dict1["test"]))
+
+    def test_pooling_masks(self):
+        values = torch.tensor([[[1.0, 5.0], [9.0, 2.0], [3.0, 7.0]]])
+        mask = torch.tensor([[1, 0, 1]])
+
+        torch.testing.assert_close(
+            Pooling(dim=1, name="max")(values, mask=mask), torch.tensor([[3.0, 7.0]])
+        )
+        torch.testing.assert_close(
+            Pooling(dim=1, name="mean")(values, mask=mask), torch.tensor([[2.0, 6.0]])
+        )
+        torch.testing.assert_close(
+            Pooling(dim=1, name="sum")(values, mask=mask), torch.tensor([[4.0, 12.0]])
+        )
+
+    def test_pooling_without_mask(self):
+        values = torch.tensor([[1.0, 5.0], [9.0, 2.0], [3.0, 7.0]])
+
+        torch.testing.assert_close(Pooling(dim=0, name="max")(values), torch.tensor([9.0, 7.0]))
 
     def test_one_hot(self):
         val1 = 1
@@ -104,16 +132,12 @@ class TestCache(ut.TestCase):
         np.testing.assert_array_equal(disk_cache[first_mol], first_smiles_val)
 
         # test saving and reloading cache
-        save_file = tempfile.NamedTemporaryFile(delete=False, suffix=".pkl")
-        save_file = save_file.name
-        disk_cache.save_to_file(save_file)
-        new_cache = DataCache.load_from_file(save_file)
-        self.assertTrue(first_smiles in new_cache)
-        np.testing.assert_array_equal(new_cache[first_smiles], first_smiles_val)
-        try:
-            os.unlink(save_file)
-        except Exception:
-            pass
+        with tempfile.TemporaryDirectory() as temp_dir:
+            save_file = os.path.join(temp_dir, "cache.pkl")
+            disk_cache.save_to_file(save_file)
+            new_cache = DataCache.load_from_file(save_file)
+            self.assertTrue(first_smiles in new_cache)
+            np.testing.assert_array_equal(new_cache[first_smiles], first_smiles_val)
 
     def test_filecache(self):
         mol_data = dm.data.freesolv().iloc[:100]
@@ -132,38 +156,42 @@ class TestCache(ut.TestCase):
         # TEST USING A DATAFRAME
         df = pd.DataFrame(precomputed_data.items(), columns=["keys", "feats"])
         df["values"] = df["feats"].apply(commons.pack_bits)
-        with tempfile.NamedTemporaryFile(delete=True, suffix="csv") as temp_file:
-            df.to_csv(temp_file, index=False)
-            cache = FileCache(temp_file.name, mol_hasher=hash_fn, file_type="csv")
+        with tempfile.TemporaryDirectory() as temp_dir:
+            cache_path = os.path.join(temp_dir, "cache.csv")
+            df.to_csv(cache_path, index=False)
+            cache = FileCache(cache_path, mol_hasher=hash_fn, file_type="csv")
             # check data
             self.assertTrue(first_smiles in cache)
             self.assertFalse("FAKE" in cache)
             np.testing.assert_array_equal(cache[first_smiles], first_smiles_val)
 
-        with tempfile.NamedTemporaryFile(delete=True, suffix=".pkl") as temp_file:
-            joblib.dump(precomputed_data, temp_file.name)
-            cache_pkl = FileCache(temp_file.name, mol_hasher=hash_fn, file_type="pickle")
+        with tempfile.TemporaryDirectory() as temp_dir:
+            cache_path = os.path.join(temp_dir, "cache.pkl")
+            joblib.dump(precomputed_data, cache_path)
+            cache_pkl = FileCache(cache_path, mol_hasher=hash_fn, file_type="pickle")
             # check data
             self.assertTrue(first_mol in cache_pkl)
             self.assertFalse("FAKE" in cache_pkl)
             np.testing.assert_array_equal(cache_pkl[first_smiles], first_smiles_val)
 
-        with tempfile.NamedTemporaryFile(delete=True, suffix=".parquet") as temp_file:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            cache_path = os.path.join(temp_dir, "cache.parquet")
             df_parquet = pd.DataFrame(precomputed_data.items(), columns=["keys", "feats"])
             df_parquet["values"] = df_parquet["feats"]
-            df_parquet.to_parquet(temp_file.name)
-            cache = FileCache(temp_file.name, mol_hasher=hash_fn, file_type="parquet")
+            df_parquet.to_parquet(cache_path)
+            cache = FileCache(cache_path, mol_hasher=hash_fn, file_type="parquet")
             # check data
             self.assertTrue(first_mol in cache)
             self.assertFalse("FAKE" in cache)
             np.testing.assert_array_equal(cache[first_smiles], first_smiles_val)
 
-        with tempfile.NamedTemporaryFile(delete=True, suffix=".h5") as temp_file:
-            with h5py.File(temp_file, "w") as f:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            cache_path = os.path.join(temp_dir, "cache.h5")
+            with h5py.File(cache_path, "w") as f:
                 for k, v in precomputed_data.items():
                     f.create_dataset(k, data=v)
 
-            cache = FileCache(temp_file.name, mol_hasher=hash_fn, file_type="hdf5")
+            cache = FileCache(cache_path, mol_hasher=hash_fn, file_type="hdf5")
             # check data
             self.assertTrue(first_smiles in cache)
             self.assertFalse("FAKE" in cache)
@@ -176,16 +204,17 @@ class TestCache(ut.TestCase):
             np.testing.assert_array_equal(vals, refetched_data)
 
         # check cache updating and reloading reloading of cache
-        with tempfile.NamedTemporaryFile(delete=True, suffix=".pkl") as temp_file:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            pickle_path = os.path.join(temp_dir, "cache.pkl")
             smiles_list2 = dm.data.freesolv()["smiles"].iloc[50:150].values
             _ = cache(smiles_list2, featurizer)
             self.assertEqual(len(cache), 150)
-            cache.save_to_file(temp_file.name, file_type="pickle")
-            parquet_out = temp_file.name + ".parquet"
-            csv_out = temp_file.name + ".csv"
+            cache.save_to_file(pickle_path, file_type="pickle")
+            parquet_out = os.path.join(temp_dir, "cache.parquet")
+            csv_out = os.path.join(temp_dir, "cache.csv")
             cache.save_to_file(parquet_out, file_type="parquet")
             cache.save_to_file(csv_out, file_type="csv")
-            reloaded_cache = FileCache.load_from_file(temp_file.name, file_type="pickle")
+            reloaded_cache = FileCache.load_from_file(pickle_path, file_type="pickle")
             reloaded_cache_parquet = FileCache.load_from_file(parquet_out, file_type="parquet")
             reloaded_cache_csv = FileCache.load_from_file(csv_out, file_type="csv")
             self.assertTrue(first_smiles in reloaded_cache, msg=reloaded_cache)
@@ -193,11 +222,6 @@ class TestCache(ut.TestCase):
             np.testing.assert_array_equal(reloaded_cache[first_smiles], first_smiles_val)
             np.testing.assert_array_equal(reloaded_cache_parquet[first_smiles], first_smiles_val)
             np.testing.assert_array_equal(reloaded_cache_csv[first_smiles], first_smiles_val)
-            for path in [parquet_out, csv_out]:
-                try:
-                    os.unlink(path)
-                except Exception:
-                    shutil.rmtree(path)
 
     def test_cache_list(self):
         # Test multiple cache simultaneously
@@ -206,8 +230,8 @@ class TestCache(ut.TestCase):
         featurizer = FPVecTransformer(kind="rdkit", length=10)
         vals = datatype.to_numpy(featurizer.transform(smiles_list))
 
-        with tempfile.NamedTemporaryFile(delete=True, suffix="csv") as temp_file:
-            cache1 = FileCache(temp_file.name, file_type="csv")
+        with tempfile.TemporaryDirectory() as temp_dir:
+            cache1 = FileCache(os.path.join(temp_dir, "cache.csv"), file_type="csv")
             cache1(smiles_list[:50], featurizer)
 
             cache2 = DataCache(name="test2", cache_file=True, delete_on_exit=True)
@@ -245,7 +269,8 @@ class TestCache(ut.TestCase):
         dummy_pos_averages = [dm.conformers.get_coords(mol).mean() for mol in mols]
 
         # Align conformers
-        mols, scores = commons.align_conformers(mols)
+        with pytest.warns(DeprecationWarning, match="datamol.conformers.align_conformers"):
+            mols, scores = commons.align_conformers(mols)
 
         # Get the average coordinates after aligning
         dummy_pos_averages_aligned = [dm.conformers.get_coords(mol).mean() for mol in mols]

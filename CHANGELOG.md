@@ -1,6 +1,93 @@
 # Molfeat Changelogs
 
-_Only changelogs previous to 0.8.10. See the GitHub releases for new changelogs._
+This file records user-visible changes. See the [migration guide](docs/migration.md)
+for upgrade instructions and [GitHub releases](https://github.com/datamol-io/molfeat/releases)
+for earlier release notes.
+
+## Next major release (unreleased)
+
+### Highlights
+
+- Focus Molfeat 1.x on small molecules and remove incompatible legacy model
+  stacks.
+- Support current PyTorch, Transformers and PyTorch Geometric releases while
+  keeping optional dependencies isolated from the core package.
+- Add tested foundation-model adapters with explicit checkpoint provenance and
+  licensing.
+
+### Changed
+
+- Require Python 3.11+, RDKit 2024.09+, NumPy 1.26+ and scikit-learn 1.6+.
+  PyTorch 2.5+ is used on maintained platforms; macOS Intel remains on the
+  final available 2.2 wheel series.
+- Support the current Transformers 5 and PyTorch Geometric stacks, including a
+  strict safetensors fallback for Mol-JEPA's upstream meta-device initialization issue.
+- Make model-store discovery lazy so constructing a featurizer does not perform
+  an unnecessary network request.
+- Apply the serialization defaults from PR #112, scikit-learn compatibility
+  from PR #118, delivery updates from PR #121 and FCFP invariants from PR #123.
+- Require newly registered pretrained model cards to declare the checkpoint
+  licence, and document the permissive-dependency policy for external models.
+- Keep historical DGL and Graphormer cards discoverable, but report that their
+  removed runtimes are unsupported instead of generating invalid import code.
+
+### Added
+
+- Add CheMeleon using core RDKit and PyTorch operations, without a Chemprop
+  dependency. Mol-JEPA uses the existing `transformer` and `pyg` extras.
+- Pin external custom-code revisions and require explicit trust and
+  non-commercial licence acknowledgement for Mol-JEPA. No external code or
+  weights are redistributed by Molfeat.
+- Add official-checkpoint integration tests that lock the expected embedding
+  shape and numerical representation.
+
+### Fixed
+
+- Use current RDKit valence APIs in atom and bond feature calculation.
+- Handle boolean masks correctly for max, mean and sum pooling on current
+  PyTorch, including two-dimensional token embeddings.
+- Return a one-dimensional, deterministic index array from
+  `Pharmacophore3D(..., raw=True)`.
+- Download HTTP-backed model directories, including nested files, without
+  requiring an unreleased Datamol. Ignore directories when hashing model files
+  and read large weights in chunks, preserving the existing checksum format.
+- Return SMILES from InChI decoding instead of silently returning `None`.
+- Declare SELFIES in its own extra and in `transformer`/`all`, independently of
+  Datamol's extras. Report missing dependencies without changing the `None`
+  result for invalid molecules.
+- Preserve FCFP aliases, radii and count/binary output invariants.
+- Serialize transformer state without unserializable list parameters and use
+  the current scikit-learn validation API.
+- Resolve portable test and cache paths on Windows and macOS Intel.
+- Keep NumPy below 2 on macOS Intel for compatibility with its PyTorch 2.2
+  wheels and select Transformers 4.57 there. Other platforms retain current
+  NumPy and Transformers 5 support.
+
+### Deprecated
+
+- Delegate `molfeat.utils.commons.fold_count_fp` and `align_conformers` to
+  Datamol. The compatibility wrappers keep their signatures and output types;
+  new code should use `datamol.fold_count_fp` and
+  `datamol.conformers.align_conformers` directly.
+
+### Removed
+
+- Remove DGL, DGLLife, Graphormer, `bio-embeddings` and their adapters; their
+  upstream releases and binary constraints are incompatible with the supported
+  modern stack. PyTorch Geometric is the maintained graph backend.
+- Remove protein featurizers and their plugin entry-point group to focus the
+  package on small molecules.
+
+### Compatibility and delivery
+
+- Validate the core on Linux, Windows, macOS Apple Silicon and macOS Intel;
+  run `molfeat[all]` and published-checkpoint integration tests in a separate
+  Linux job.
+- Keep publication manual through the `release` action and `PYPI_API_TOKEN`,
+  with PEP 740 attestations. Release tests and isolated wheel/source checks
+  gate publication; prereleases never replace the stable documentation.
+- Add a non-publishing dry run and a [release guide](docs/releasing.md).
+  Conda-forge remains a separate channel requiring recipe updates.
 
 ## v0.8.9
 
