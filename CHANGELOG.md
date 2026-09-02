@@ -1,44 +1,85 @@
 # Molfeat Changelogs
 
-_Only changelogs previous to 0.8.10. See the GitHub releases for new changelogs._
+This file records user-visible changes. See the [migration guide](docs/migration.md)
+for upgrade instructions and [GitHub releases](https://github.com/datamol-io/molfeat/releases)
+for earlier release notes.
 
-## Next major release
+## Next major release (unreleased)
 
-**Changed:**
+### Highlights
 
-- Require Python 3.11+, RDKit 2024.09+, PyTorch 2.5+, NumPy 1.26+ and
-  scikit-learn 1.6+.
+- Focus Molfeat 1.x on small molecules and remove incompatible legacy model
+  stacks.
+- Support current PyTorch, Transformers and PyTorch Geometric releases while
+  keeping optional dependencies isolated from the core package.
+- Add tested foundation-model adapters with explicit checkpoint provenance and
+  licensing.
+
+### Changed
+
+- Require Python 3.11+, RDKit 2024.09+, NumPy 1.26+ and scikit-learn 1.6+.
+  PyTorch 2.5+ is used on maintained platforms; macOS Intel remains on the
+  final available 2.2 wheel series.
 - Support the current Transformers 5 and PyTorch Geometric stacks, including a
   strict safetensors fallback for Mol-JEPA's upstream meta-device initialization issue.
 - Make model-store discovery lazy so constructing a featurizer does not perform
   an unnecessary network request.
-- Separate the cross-platform core matrix from a complete all-extras and
-  published-model validation lane in CI.
-- Use uv for development, CI, isolated wheel/source smoke tests and publishing.
-- Publish releases through PyPI Trusted Publishing with PEP 740 attestations;
-  retain conda-forge as a bot-updated downstream channel.
 - Apply the serialization defaults from PR #112, scikit-learn compatibility
   from PR #118, delivery updates from PR #121 and FCFP invariants from PR #123.
 - Require newly registered pretrained model cards to declare the checkpoint
   licence, and document the permissive-dependency policy for external models.
+- Keep historical DGL and Graphormer cards discoverable, but report that their
+  removed runtimes are unsupported instead of generating invalid import code.
 
-**Fixed:**
+### Added
+
+- Add CheMeleon using core RDKit and PyTorch operations, without a Chemprop
+  dependency. Mol-JEPA uses the existing `transformer` and `pyg` extras.
+- Pin external custom-code revisions and require explicit trust and
+  non-commercial licence acknowledgement for Mol-JEPA. No external code or
+  weights are redistributed by Molfeat.
+- Add official-checkpoint integration tests that lock the expected embedding
+  shape and numerical representation.
+
+### Fixed
 
 - Use current RDKit valence APIs in atom and bond feature calculation.
 - Handle boolean masks correctly for max, mean and sum pooling on current
-  PyTorch, including two-dimensional ESM embeddings.
+  PyTorch, including two-dimensional token embeddings.
 - Return a one-dimensional, deterministic index array from
   `Pharmacophore3D(..., raw=True)`.
 - Download HTTP-backed model directories whose listing endpoint also appears as
   a file through the corresponding Datamol fix.
+- Preserve FCFP aliases, radii and count/binary output invariants.
+- Serialize transformer state without unserializable list parameters and use
+  the current scikit-learn validation API.
+- Resolve portable test and cache paths on Windows and macOS Intel.
+- Keep NumPy below 2 on macOS Intel for compatibility with its PyTorch 2.2
+  wheels; other platforms retain current NumPy support.
 
-**Removed:**
+### Deprecated
+
+- Delegate `molfeat.utils.commons.fold_count_fp` and `align_conformers` to
+  Datamol. The compatibility wrappers keep their signatures and output types;
+  new code should use `datamol.fold_count_fp` and
+  `datamol.conformers.align_conformers` directly.
+
+### Removed
 
 - Remove DGL, DGLLife, Graphormer, `bio-embeddings` and their adapters; their
   upstream releases and binary constraints are incompatible with the supported
   modern stack. PyTorch Geometric is the maintained graph backend.
 - Remove protein featurizers and their plugin entry-point group to focus the
   package on small molecules.
+
+### Compatibility and delivery
+
+- Validate the core on Linux, Windows, macOS Apple Silicon and macOS Intel;
+  run `molfeat[all]` and published-checkpoint integration tests in a separate
+  Linux job.
+- Keep conda-forge as a supported downstream channel while using uv for local
+  development and CI, and PyPI Trusted Publishing with attestations for
+  releases.
 
 ## v0.8.9
 

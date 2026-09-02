@@ -39,6 +39,20 @@ Molfeat is a hub of molecular featurizers. It supports a wide variety of out-of-
 
 Visit our website at <https://molfeat.datamol.io>.
 
+## Updates
+
+Molfeat 1.x narrows the project to small-molecule featurization and a modern,
+maintainable stack. It removes the legacy DGL, DGLLife, Graphormer and protein
+adapters, keeps PyTorch Geometric as the graph backend, and adds maintained
+foundation-model integrations including CheMeleon and Mol-JEPA. Model loading
+is lazy, external checkpoint licences are explicit, and official
+representations are covered by integration tests.
+
+See the [complete changelog](CHANGELOG.md) and the
+[1.x migration guide](docs/migration.md). The 1.x work is currently on the
+`dev` branch; the published PyPI and conda-forge packages remain the stable
+releases.
+
 ## Installation
 
 ### Installing Molfeat
@@ -52,8 +66,9 @@ uv add molfeat
 Pip and conda-forge remain supported: `python -m pip install molfeat` or
 `mamba install -c conda-forge molfeat`.
 
-The next major release requires Python 3.11 or newer, RDKit 2024.09 or newer,
-and PyTorch 2.5 or newer.
+The next major release requires Python 3.11 or newer and RDKit 2024.09 or
+newer. PyTorch 2.5 or newer is used on maintained platforms; macOS Intel uses
+the final available 2.2 wheel series with NumPy 1.26 and is tested on Python 3.12.
 
 ### Optional dependencies
 
@@ -79,7 +94,7 @@ details.
 
 | Molfeat | Python | RDKit | PyTorch |
 | --- | --- | --- | --- |
-| `1.x` (development) | `3.11–3.14` | `2024.09+` | `2.5+` |
+| `1.x` (development) | `3.11–3.14` | `2024.09+` | `2.5+` (`2.2.x` on macOS Intel) |
 | `0.x` | See the release metadata | See the release metadata | See the release metadata |
 
 ### Installing Plugins
