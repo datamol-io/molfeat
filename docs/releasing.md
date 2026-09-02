@@ -12,8 +12,8 @@ GitHub Release does not upload a package to PyPI.
 3. Confirm that the repository secret `PYPI_API_TOKEN` contains a valid PyPI
    token authorized for `molfeat`. The workflow checks that the secret is
    present but cannot validate its scope without contacting PyPI.
-4. Publish the Datamol dependency first. Release validation uses published
-   dependencies, not the Datamol `dev` override used by development CI.
+4. Confirm tests pass with published dependencies. Datamol 0.12.5 is sufficient;
+   Molfeat does not need to wait for the Datamol maintenance release.
 
 ## Run the release action
 
@@ -52,7 +52,8 @@ The package release action does not publish to conda-forge.
 
 Remove the old Python 3.10 upper bound, require Python 3.11+, and align the
 core and optional dependencies with `pyproject.toml`. Preserve the macOS Intel
-PyTorch 2.2 / NumPy 1.26 exception. A version-only bot update is insufficient.
+PyTorch 2.2 / NumPy 1.26 / Transformers 4.57 exception and the SELFIES extras.
+A version-only bot update is insufficient.
 
 Do not merge a version-only feedstock update for this major release. Its
 dependency metadata and import/CLI tests must reflect the new installation

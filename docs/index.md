@@ -32,7 +32,9 @@ Pip and conda-forge remain supported: `python -m pip install molfeat` or
 
 The next major release requires Python 3.11 or newer, RDKit 2024.09 or newer,
 and PyTorch 2.5 or newer. macOS Intel uses the final PyTorch 2.2 wheel series
-with NumPy 1.26 and is tested on Python 3.12.
+with NumPy 1.26 and Transformers 4.57, and is tested on Python 3.12.
+See the [migration guide](migration.md) for checkpoint-format restrictions and
+co-installation with SAFE.
 
 ### Installing Plugins
 
@@ -45,6 +47,7 @@ However, this does imply that the installation of a plugin is plugin-dependent: 
 Not all featurizers in Molfeat core package are supported by default. Some featurizers require additional dependencies. If you try to use a featurizer that requires additional dependencies, Molfeat will raise an error and tell you which dependencies are missing and how to install them.
 
 - To install Hugging Face Transformers support: `python -m pip install "molfeat[transformer]"`.
+- To convert SELFIES without Transformers: `python -m pip install "molfeat[selfies]"`.
 - To install PyTorch Geometric support: `python -m pip install "molfeat[pyg]"`.
 - To install FCD support: `python -m pip install "molfeat[fcd]"`.
 - To install HDF5 and Parquet cache support: `python -m pip install "molfeat[cache]"`.

@@ -18,6 +18,7 @@ from molfeat.trans.pretrained.base import PretrainedMolTransformer
 from molfeat.store.loader import PretrainedStoreModel
 from molfeat.store import ModelStore
 from molfeat.store import ModelInfo
+from molfeat.store.modelstore import _download_directory
 from molfeat.utils.converters import SmilesConverter
 from molfeat.utils.pooler import get_default_hgf_pooler
 
@@ -73,7 +74,7 @@ class HFExperiment:
         """
         if not dm.fs.is_local_path(path):
             local_path = tempfile.mkdtemp()
-            dm.fs.copy_dir(path, local_path, force=True, progress=True, leave_progress=False)
+            _download_directory(path, local_path)
         else:
             local_path = path
 
@@ -121,11 +122,11 @@ class HFModel(PretrainedStoreModel):
         if dm.fs.is_local_path(object_path):
             return object_path
         local_path = tempfile.mkdtemp()
-        if dm.fs.is_file(object_path):
+        if dm.fs.is_dir(object_path):
+            _download_directory(object_path, local_path)
+        else:
             local_path = os.path.join(local_path, os.path.basename(object_path))
             dm.fs.copy_file(object_path, local_path)
-        else:
-            dm.fs.copy_dir(object_path, local_path)
         return local_path
 
     @classmethod

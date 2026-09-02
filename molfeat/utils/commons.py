@@ -38,16 +38,19 @@ def sha256sum(filepath: Union[str, os.PathLike]):
     """Return the sha256 sum hash of a file or a directory
 
     Args:
-        filepath: The path to the file to compute the MD5 hash on.
+        filepath: File or directory to hash, with directory files ordered by path.
     """
     if dm.fs.is_dir(filepath):
-        files = list(dm.fs.glob(os.path.join(filepath, "**", "*")))
+        files = [
+            path for path in dm.fs.glob(os.path.join(filepath, "**", "*")) if dm.fs.is_file(path)
+        ]
     else:
         files = [filepath]
     file_hash = hashlib.sha256()
     for filepath in sorted(files):
-        with fsspec.open(filepath) as f:
-            file_hash.update(f.read())  # type: ignore
+        with fsspec.open(filepath, "rb") as f:
+            for chunk in iter(lambda: f.read(1024 * 1024), b""):
+                file_hash.update(chunk)
     file_hash = file_hash.hexdigest()
     return file_hash
 

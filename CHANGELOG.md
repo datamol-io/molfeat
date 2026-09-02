@@ -48,14 +48,20 @@ for earlier release notes.
   PyTorch, including two-dimensional token embeddings.
 - Return a one-dimensional, deterministic index array from
   `Pharmacophore3D(..., raw=True)`.
-- Download HTTP-backed model directories whose listing endpoint also appears as
-  a file through the corresponding Datamol fix.
+- Download HTTP-backed model directories, including nested files, without
+  requiring an unreleased Datamol. Ignore directories when hashing model files
+  and read large weights in chunks, preserving the existing checksum format.
+- Return SMILES from InChI decoding instead of silently returning `None`.
+- Declare SELFIES in its own extra and in `transformer`/`all`, independently of
+  Datamol's extras. Report missing dependencies without changing the `None`
+  result for invalid molecules.
 - Preserve FCFP aliases, radii and count/binary output invariants.
 - Serialize transformer state without unserializable list parameters and use
   the current scikit-learn validation API.
 - Resolve portable test and cache paths on Windows and macOS Intel.
 - Keep NumPy below 2 on macOS Intel for compatibility with its PyTorch 2.2
-  wheels; other platforms retain current NumPy support.
+  wheels and select Transformers 4.57 there. Other platforms retain current
+  NumPy and Transformers 5 support.
 
 ### Deprecated
 

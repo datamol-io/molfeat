@@ -14,7 +14,11 @@ actively maintained and available on current Python releases.
 - pandas 2.2 or newer
 - scikit-learn 1.6 or newer
 - Transformers 4.57 through 5.x for the `transformer` extra, including
-  co-installation with SAFE's Transformers 5 model stack
+  co-installation with SAFE's Transformers 5 model stack outside Mac Intel.
+  Mac Intel uses Transformers 4.57 with PyTorch 2.2 and Python 3.11 or 3.12;
+  use safetensors checkpoints because current Transformers blocks pickle-based
+  weights on PyTorch below 2.6. SAFE's notation core remains compatible there,
+  but its model/training extras require a newer PyTorch build.
 
 Create a fresh environment rather than upgrading a long-lived 0.x environment
 in place:
@@ -30,6 +34,11 @@ In PowerShell, activate the environment with
 `.venv\Scripts\Activate.ps1`; the remaining commands are unchanged.
 
 ## Optional dependency changes
+
+SELFIES conversion requires `molfeat[selfies]`, also included in `transformer`
+and `all`. It no longer relies on Datamol installing SELFIES transitively.
+Missing optional dependencies raise `ImportError`; invalid molecular inputs
+still return `None` from `SmilesConverter`.
 
 `molfeat[all]` now means all maintained extras compatible with the current
 interpreter. DGL, DGLLife, their atom/bond calculators, DGL graph and tree
@@ -60,6 +69,11 @@ than pulling unrelated model stacks into Molfeat.
 
 - Creating `ModelStore` or a Hugging Face transformer no longer fetches the
   remote model index. The first operation that needs discovery loads it.
+- HTTP model directories download correctly with published Datamol 0.12.5,
+  including nested files. Directory checksums ignore folders and stream file
+  contents while preserving the existing sorted-content hash format.
+- InChI decoding returns SMILES, converting the molecule returned by Datamol.
+  Previously, calling a string method on that molecule silently returned `None`.
 - `Pharmacophore3D(..., raw=True)` now returns a sorted one-dimensional integer
   array. Earlier releases returned a zero-dimensional object array containing a
   Python set.

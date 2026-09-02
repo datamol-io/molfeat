@@ -11,6 +11,7 @@ import fsspec
 import joblib
 import platformdirs
 import yaml
+from fsspec.callbacks import TqdmCallback
 from loguru import logger
 
 from molfeat.store.modelcard import ModelInfo
@@ -19,6 +20,31 @@ from molfeat.utils import commons
 
 class ModelStoreError(Exception):
     pass
+
+
+def _download_directory(source, destination, chunk_size=None):
+    """Download directory contents without copying HTTP index pages as files."""
+    if not dm.fs.is_local_path(destination):
+        raise ValueError("Model downloads require a local destination.")
+    fs, root = fsspec.core.url_to_fs(str(source))
+    _, local_root = fsspec.core.url_to_fs(str(destination))
+    local_root = pathlib.Path(local_root).resolve()
+    prefix = root.rstrip("/") + "/"
+    sources, targets = [], []
+    for path, info in fs.find(root, detail=True).items():
+        if info["type"] != "file" or not path.startswith(prefix) or path == prefix:
+            continue
+        relative = pathlib.PurePosixPath(path[len(prefix) :])
+        target = local_root.joinpath(*relative.parts).resolve()
+        if not target.is_relative_to(local_root):
+            raise ValueError(f"Model artifact escapes its directory: {path}")
+        sources.append(path)
+        targets.append(str(target))
+    local_root.mkdir(parents=True, exist_ok=True)
+    if sources:
+        kwargs = {} if chunk_size is None else {"chunk_size": chunk_size}
+        with TqdmCallback(tqdm_kwargs={"leave": False}) as callback:
+            fs.get(sources, targets, callback=callback, **kwargs)
 
 
 class ModelStore:
@@ -198,7 +224,6 @@ class ModelStore:
 
         # avoid downloading if the file exists already
         if force or not dm.fs.exists(metadata_dest_path) or not dm.fs.exists(model_dest_path):
-            # metadata should exists if the model existsgit st
             with self._filelock(f"{model_name}.metadata.json.lock"):
                 dm.fs.copy_file(
                     metadata_remote_path,
@@ -211,17 +236,12 @@ class ModelStore:
             if dm.fs.exists(model_remote_path):
                 with self._filelock(f"{model_name}.lock"):
                     if dm.fs.is_dir(model_remote_path):
-                        # we copy the model dir
-                        dm.fs.copy_dir(
+                        _download_directory(
                             model_remote_path,
                             model_dest_path,
-                            progress=True,
-                            leave_progress=False,
                             chunk_size=chunk_size,
-                            force=force,
                         )
                     else:
-                        # we copy the model dir
                         dm.fs.copy_file(
                             model_remote_path,
                             model_dest_path,

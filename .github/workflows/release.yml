@@ -42,9 +42,6 @@ jobs:
   tests:
     needs: validate
     uses: ./.github/workflows/test.yml
-    with:
-      published-dependencies: true
-
   quality:
     needs: validate
     uses: ./.github/workflows/code-check.yml

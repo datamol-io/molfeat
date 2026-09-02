@@ -57,11 +57,15 @@ dependencies = [
 
 [project.optional-dependencies]
 transformer = [
-    "transformers>=4.57,<6",
+    "transformers>=4.57,<5; platform_system == 'Darwin' and platform_machine == 'x86_64'",
+    "transformers>=4.57,<6; platform_system != 'Darwin' or platform_machine != 'x86_64'",
     "huggingface-hub>=0.34",
     "safetensors>=0.6",
     "sentencepiece>=0.2",
+    "selfies>=2.1",
 ]
+
+selfies = ["selfies>=2.1"]
 
 fcd = ["fcd_torch>=1.0.7"]
 
@@ -76,10 +80,12 @@ mordred = ["mordredcommunity>=2.0.7"]
 pyg = ["torch_geometric>=2.6"]
 
 all = [
-    "transformers>=4.57,<6",
+    "transformers>=4.57,<5; platform_system == 'Darwin' and platform_machine == 'x86_64'",
+    "transformers>=4.57,<6; platform_system != 'Darwin' or platform_machine != 'x86_64'",
     "huggingface-hub>=0.34",
     "safetensors>=0.6",
     "sentencepiece>=0.2",
+    "selfies>=2.1",
     "fcd_torch>=1.0.7",
     "h5py>=3.10",
     "pyarrow>=15",
@@ -93,6 +99,7 @@ all = [
 ]
 
 test = [
+    "selfies>=2.1",
     "pytest>=8",
     "pytest-cov>=6",
     "pytest-timeout>=2.3",

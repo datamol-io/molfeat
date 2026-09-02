@@ -48,6 +48,10 @@ foundation-model integrations including CheMeleon and Mol-JEPA. Model loading
 is lazy, external checkpoint licences are explicit, and official
 representations are covered by integration tests.
 
+HTTP model downloads work with published Datamol 0.12.5; they no longer require
+an unreleased dependency. SELFIES support is explicit, and InChI decoding now
+returns SMILES instead of silently failing.
+
 See the [complete changelog](CHANGELOG.md) and the
 [1.x migration guide](docs/migration.md). These notes describe the upcoming
 major release; PyPI and conda-forge still provide the published stable versions.
@@ -70,12 +74,17 @@ Pip and conda-forge remain supported: `python -m pip install molfeat` or
 The next major release requires Python 3.11 or newer and RDKit 2024.09 or
 newer. PyTorch 2.5 or newer is used on maintained platforms; macOS Intel uses
 the final available 2.2 wheel series with NumPy 1.26 and is tested on Python 3.12.
+On Mac Intel, the `transformer` extra selects Transformers 4.57 rather than 5.
+Use safetensors checkpoints there: current Transformers blocks pickle-based
+weight loading with PyTorch below 2.6. SAFE's notation core can share this
+environment, but its Transformers 5 model/training extras cannot.
 
 ### Optional dependencies
 
 Not all featurizers in the Molfeat core package are supported by default. Some featurizers require additional dependencies. If you try to use a featurizer that requires additional dependencies, Molfeat will raise an error and tell you which dependencies are missing and how to install them.
 
 - To install Hugging Face Transformers support: `python -m pip install "molfeat[transformer]"`.
+- To convert SELFIES without Transformers: `python -m pip install "molfeat[selfies]"`.
 - To install PyTorch Geometric support: `python -m pip install "molfeat[pyg]"`.
 - To install FCD support: `python -m pip install "molfeat[fcd]"`.
 - To install HDF5 and Parquet cache support: `python -m pip install "molfeat[cache]"`.
