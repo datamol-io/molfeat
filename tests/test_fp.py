@@ -299,14 +299,15 @@ class TestMolTransformer(ut.TestCase):
         # should be faster now.
         # disable check on very fast run
         self.assertTrue(elapsed2 <= elapsed1 or elapsed1 < 1.5)
-        np.testing.assert_array_equal(out1, out2)
+        # Independent Mordred calculations can differ at floating-point precision.
+        np.testing.assert_allclose(out1, out2, rtol=1e-12, atol=1e-10, equal_nan=True)
 
         # should be even faster now that the full dataset is cached
         t3 = time.time()
         out3 = precomp(smiles)
         elapsed3 = time.time() - t3
         self.assertTrue(elapsed3 <= elapsed1 or elapsed1 < 1.5)
-        np.testing.assert_array_equal(out1, out3)
+        np.testing.assert_array_equal(out2, out3)
 
         # check when cache is build on the fly from a
         transff = MoleculeTransformer("desc2d")
