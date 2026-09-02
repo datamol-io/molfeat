@@ -105,6 +105,16 @@ class TestMolTransformer(ut.TestCase):
             FPCalculator("morgan", counting=True)(self.smiles[0]),
             FPCalculator("ecfp-count")(self.smiles[0]),
         )
+        np.testing.assert_array_equal(
+            FPVecTransformer("morgan")(self.smiles),
+            FPVecTransformer("ecfp")(self.smiles),
+        )
+
+    def test_pattern_and_layered_parallel_state(self):
+        for kind in ("pattern", "layered"):
+            sequential = FPVecTransformer(kind, n_jobs=1, length=None)(self.smiles)
+            parallel = FPVecTransformer(kind, n_jobs=2, length=None)(self.smiles)
+            np.testing.assert_array_equal(parallel, sequential)
 
     def test_fcfp_uses_feature_atom_invariants(self):
         mols = [dm.to_mol(smiles) for smiles in ["CCO", "CCN", "c1ccccc1O", "CC(=O)N"]]

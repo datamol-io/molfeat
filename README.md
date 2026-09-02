@@ -22,7 +22,7 @@
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/molfeat)](https://pypi.org/project/molfeat/)
 [![Conda](https://img.shields.io/conda/dn/conda-forge/molfeat)](https://anaconda.org/conda-forge/molfeat)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/molfeat)](https://pypi.org/project/molfeat/)
-[![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/datamol-io/molfeat/blob/main/LICENSE)
+[![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![GitHub Repo stars](https://img.shields.io/github/stars/datamol-io/molfeat)](https://github.com/datamol-io/molfeat/stargazers)
 [![GitHub Repo stars](https://img.shields.io/github/forks/datamol-io/molfeat)](https://github.com/datamol-io/molfeat/network/members)
 [![test](https://github.com/datamol-io/molfeat/actions/workflows/test.yml/badge.svg)](https://github.com/datamol-io/molfeat/actions/workflows/test.yml)
@@ -49,9 +49,10 @@ is lazy, external checkpoint licences are explicit, and official
 representations are covered by integration tests.
 
 See the [complete changelog](CHANGELOG.md) and the
-[1.x migration guide](docs/migration.md). The 1.x work is currently on the
-`dev` branch; the published PyPI and conda-forge packages remain the stable
-releases.
+[1.x migration guide](docs/migration.md). These notes describe the upcoming
+major release; PyPI and conda-forge still provide the published stable versions.
+
+Release maintainers: see the [manual release guide](docs/releasing.md).
 
 ## Installation
 
@@ -154,4 +155,10 @@ To learn more about the community and [datamol.io](https://datamol.io/) ecosyste
 
 ## License
 
-Under the Apache-2.0 license. See [LICENSE](LICENSE).
+Molfeat's code is licensed under Apache-2.0. See [LICENSE](LICENSE).
+The CheMeleon adapter retains the [Chemprop MIT notice](molfeat/data/CHEMPROP_NOTICE).
+Distribution metadata records both as `Apache-2.0 AND MIT`; this is not a choice
+of licence for Molfeat's own code.
+Downloaded model weights and custom Hub code have their own terms; Mol-JEPA
+requires explicit acceptance of its non-commercial licence. See the
+[model licensing policy](docs/foundation_models.md#third-party-licensing-policy).

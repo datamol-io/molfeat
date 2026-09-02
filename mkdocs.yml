@@ -37,6 +37,7 @@ nav:
       - Extending molfeat: developers/create-plugin.md
       - Registering your Plugin: developers/register-plugin.md
       - Migrating to 1.x: migration.md
+      - Releasing: releasing.md
 
   - Community:
       - Get involved: community/get_involved.md

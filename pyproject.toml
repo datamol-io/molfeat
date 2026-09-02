@@ -11,8 +11,8 @@ description = "molfeat - the hub for all your molecular featurizers"
 dynamic = ["version"]
 authors = [{ name = "Emmanuel Noutahi", email = "emmanuel.noutahi@hotmail.ca" }]
 readme = "README.md"
-license = "Apache-2.0"
-license-files = ["LICENSE"]
+license = "Apache-2.0 AND MIT"
+license-files = ["LICENSE", "molfeat/data/CHEMPROP_NOTICE"]
 requires-python = ">=3.11"
 classifiers = [
     "Development Status :: 5 - Production/Stable",

@@ -77,9 +77,11 @@ for earlier release notes.
 - Validate the core on Linux, Windows, macOS Apple Silicon and macOS Intel;
   run `molfeat[all]` and published-checkpoint integration tests in a separate
   Linux job.
-- Keep conda-forge as a supported downstream channel while using uv for local
-  development and CI, and PyPI Trusted Publishing with attestations for
-  releases.
+- Keep publication manual through the `release` action and `PYPI_API_TOKEN`,
+  with PEP 740 attestations. Release tests and isolated wheel/source checks
+  gate publication; prereleases never replace the stable documentation.
+- Add a non-publishing dry run and a [release guide](docs/releasing.md).
+  Conda-forge remains a separate channel requiring recipe updates.
 
 ## v0.8.9
 

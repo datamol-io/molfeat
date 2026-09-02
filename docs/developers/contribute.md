@@ -58,7 +58,7 @@ Molfeat uses GitHub Actions to:
 - **Build and test** Molfeat across the supported Python, RDKit and operating-system matrix.
 - **Validate every maintained extra** and the published foundation-model artifacts on every push, pull request and weekly schedule.
 - **Check** formatting with Black, linting with Ruff, and both package distributions.
-- **Build documentation** on every change and deploy it from `main` and published releases.
+- **Build documentation** on every change and deploy it from `main` and successful manual releases.
 
 ## Run tests globally
 
@@ -99,11 +99,8 @@ By documenting your process in the ETL notebook, you help ensure that the regist
 
 ## Releasing a New Version
 
-To release a new version, code maintainers publish a GitHub Release after
-coordinating with the code owners. The workflow builds and smoke-tests both
-distributions with uv, generates PEP 740 attestations, and publishes to PyPI
-through Trusted Publishing. The conda-forge feedstock remains supported: its
-update bot opens the version change after PyPI publication, and maintainers
-review the feedstock dependency and test changes separately.
-
-The release roadmap should be followed to ensure that the new version is stable, functional, and meets the requirements of the release. This includes proper testing, documentation, and ensuring backward compatibility where necessary. By following these guidelines, we can ensure that new versions are released smoothly and efficiently, with clear communication to our users and contributors.
+Run the `release` action manually from `main`. It validates the selected version,
+reruns tests with published dependencies, checks both installed distributions,
+and uses `PYPI_API_TOKEN` for the upload. GitHub Releases and versioned
+documentation are created only after publication succeeds. See the
+[release guide](../releasing.md) for dry runs, prereleases and conda-forge updates.
