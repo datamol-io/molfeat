@@ -10,15 +10,20 @@
       
       
       
+        <link rel="canonical" href="https://molfeat-docs.datamol.io/main/api/molfeat.trans.concat.html">
       
-        <link rel="prev" href="molfeat.trans.struct.html">
+      
+        <link rel="prev" href="molfeat.trans.graph.html">
       
       
         <link rel="next" href="molfeat.trans.pretrained.base.html">
       
       
+        
+      
+      
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -26,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -57,7 +62,6 @@
     
       
 
-    
     
     
   </head>
@@ -166,7 +170,7 @@
         <a href="https://github.com/datamol-io/molfeat" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     datamol-io/molfeat
@@ -324,7 +328,7 @@
       <a href="https://github.com/datamol-io/molfeat" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     datamol-io/molfeat
@@ -360,9 +364,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Getting started
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -371,7 +380,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
-            Getting started
+            
+  
+    Getting started
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -387,9 +400,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     What is molfeat?
+  
+
     
   </span>
+  
   
 
       </a>
@@ -410,9 +428,42 @@
   
   
   <span class="md-ellipsis">
+    
+  
     How to use molfeat?
+  
+
     
   </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../foundation_models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recent foundation models
+  
+
+    
+  </span>
+  
   
 
       </a>
@@ -433,9 +484,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Why should you care?
+  
+
     
   </span>
+  
   
 
       </a>
@@ -456,9 +512,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     License
+  
+
     
   </span>
+  
   
 
       </a>
@@ -500,9 +561,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Tutorials
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -511,7 +577,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            Tutorials
+            
+  
+    Tutorials
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -527,9 +597,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Types of featurizers
+  
+
     
   </span>
+  
   
 
       </a>
@@ -564,9 +639,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Add your own
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -575,7 +655,11 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
-            Add your own
+            
+  
+    Add your own
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -591,9 +675,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Create your own featurizers
+  
+
     
   </span>
+  
   
 
       </a>
@@ -614,9 +703,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Create a custom modelstore
+  
+
     
   </span>
+  
   
 
       </a>
@@ -645,9 +739,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Featurizing graphs
+  
+
     
   </span>
+  
   
 
       </a>
@@ -682,9 +781,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Integrations
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -693,7 +797,11 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
-            Integrations
+            
+  
+    Integrations
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -709,9 +817,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Integration with scikit-learn and PyTorch
+  
+
     
   </span>
+  
   
 
       </a>
@@ -732,9 +845,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Training a GNN with PyG
+  
+
     
   </span>
+  
   
 
       </a>
@@ -755,9 +873,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Finetuning a pretrained transformer
+  
+
     
   </span>
+  
   
 
       </a>
@@ -786,9 +909,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Save and Load
+  
+
     
   </span>
+  
   
 
       </a>
@@ -809,9 +937,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     The Data Cache
+  
+
     
   </span>
+  
   
 
       </a>
@@ -846,9 +979,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Model Handling
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -857,7 +995,11 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_7">
             <span class="md-nav__icon md-icon"></span>
-            Model Handling
+            
+  
+    Model Handling
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -873,9 +1015,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Loading Models Without Disk Storage Using
+  
+
     
   </span>
+  
   
 
       </a>
@@ -925,9 +1072,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Developers
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -936,7 +1088,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Developers
+            
+  
+    Developers
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -952,9 +1108,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Contributing
+  
+
     
   </span>
+  
   
 
       </a>
@@ -975,9 +1136,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Extending molfeat
+  
+
     
   </span>
+  
   
 
       </a>
@@ -998,9 +1164,70 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Registering your Plugin
+  
+
     
   </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrating to 1.x
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releasing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Releasing
+  
+
+    
+  </span>
+  
   
 
       </a>
@@ -1042,9 +1269,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Community
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1053,7 +1285,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Community
+            
+  
+    Community
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1069,9 +1305,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Get involved
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1092,9 +1333,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Community contributions
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1141,9 +1387,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     API
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1152,7 +1403,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            API
+            
+  
+    API
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1168,9 +1423,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.calc
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1207,9 +1467,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.trans
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1218,7 +1483,11 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
-            molfeat.trans
+            
+  
+    molfeat.trans
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1234,9 +1503,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.trans.base
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1257,9 +1531,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.trans.fp
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1280,32 +1559,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.trans.graph
+  
+
     
   </span>
   
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="molfeat.trans.struct.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    molfeat.trans.struct
-    
-  </span>
   
 
       </a>
@@ -1333,9 +1594,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.trans.concat
+  
+
     
   </span>
+  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -1346,9 +1612,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.trans.concat
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1369,7 +1640,9 @@
         <li class="md-nav__item">
   <a href="#molfeat.trans.concat" class="md-nav__link">
     <span class="md-ellipsis">
-      concat
+      
+        concat
+      
     </span>
   </a>
   
@@ -1378,7 +1651,9 @@
         <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat" class="md-nav__link">
     <span class="md-ellipsis">
-      FeatConcat
+      
+        FeatConcat
+      
     </span>
   </a>
   
@@ -1388,7 +1663,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.params" class="md-nav__link">
     <span class="md-ellipsis">
-      params
+      
+        params
+      
     </span>
   </a>
   
@@ -1397,7 +1674,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.dtype" class="md-nav__link">
     <span class="md-ellipsis">
-      dtype
+      
+        dtype
+      
     </span>
   </a>
   
@@ -1406,7 +1685,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.collate_fn" class="md-nav__link">
     <span class="md-ellipsis">
-      collate_fn
+      
+        collate_fn
+      
     </span>
   </a>
   
@@ -1415,7 +1696,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.length" class="md-nav__link">
     <span class="md-ellipsis">
-      length
+      
+        length
+      
     </span>
   </a>
   
@@ -1424,7 +1707,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.columns" class="md-nav__link">
     <span class="md-ellipsis">
-      columns
+      
+        columns
+      
     </span>
   </a>
   
@@ -1433,7 +1718,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.__init__" class="md-nav__link">
     <span class="md-ellipsis">
-      __init__
+      
+        __init__
+      
     </span>
   </a>
   
@@ -1442,7 +1729,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.append" class="md-nav__link">
     <span class="md-ellipsis">
-      append
+      
+        append
+      
     </span>
   </a>
   
@@ -1451,7 +1740,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.insert" class="md-nav__link">
     <span class="md-ellipsis">
-      insert
+      
+        insert
+      
     </span>
   </a>
   
@@ -1460,7 +1751,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.__add__" class="md-nav__link">
     <span class="md-ellipsis">
-      __add__
+      
+        __add__
+      
     </span>
   </a>
   
@@ -1469,7 +1762,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.__setitem__" class="md-nav__link">
     <span class="md-ellipsis">
-      __setitem__
+      
+        __setitem__
+      
     </span>
   </a>
   
@@ -1478,7 +1773,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.get_collate_fn" class="md-nav__link">
     <span class="md-ellipsis">
-      get_collate_fn
+      
+        get_collate_fn
+      
     </span>
   </a>
   
@@ -1487,7 +1784,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.iter_index" class="md-nav__link">
     <span class="md-ellipsis">
-      iter_index
+      
+        iter_index
+      
     </span>
   </a>
   
@@ -1496,7 +1795,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.transform" class="md-nav__link">
     <span class="md-ellipsis">
-      transform
+      
+        transform
+      
     </span>
   </a>
   
@@ -1505,7 +1806,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.__call__" class="md-nav__link">
     <span class="md-ellipsis">
-      __call__
+      
+        __call__
+      
     </span>
   </a>
   
@@ -1514,7 +1817,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.fit_transform" class="md-nav__link">
     <span class="md-ellipsis">
-      fit_transform
+      
+        fit_transform
+      
     </span>
   </a>
   
@@ -1523,7 +1828,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.fit" class="md-nav__link">
     <span class="md-ellipsis">
-      fit
+      
+        fit
+      
     </span>
   </a>
   
@@ -1561,26 +1868,35 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_5" >
         
           
-          <label class="md-nav__link" for="__nav_5_2_6" id="__nav_5_2_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_2_5" id="__nav_5_2_5_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.trans.pretrained
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_2_6">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_5">
             <span class="md-nav__icon md-icon"></span>
-            molfeat.trans.pretrained
+            
+  
+    molfeat.trans.pretrained
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1596,9 +1912,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Base Pretrained Models
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1619,9 +1940,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     HuggingFace
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1637,37 +1963,19 @@
   
   
     <li class="md-nav__item">
-      <a href="molfeat.trans.pretrained.graphormer.html" class="md-nav__link">
+      <a href="molfeat.trans.pretrained.foundation.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Graphormer
+    
+  
+    Recent foundation models
+  
+
     
   </span>
   
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="molfeat.trans.pretrained.dgl_pretrained.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    DGL
-    
-  </span>
   
 
       </a>
@@ -1688,9 +1996,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     FCD
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1727,9 +2040,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.store
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1750,9 +2068,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.plugins
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1773,9 +2096,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.utils
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1796,9 +2124,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.viz
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1841,7 +2174,9 @@
         <li class="md-nav__item">
   <a href="#molfeat.trans.concat" class="md-nav__link">
     <span class="md-ellipsis">
-      concat
+      
+        concat
+      
     </span>
   </a>
   
@@ -1850,7 +2185,9 @@
         <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat" class="md-nav__link">
     <span class="md-ellipsis">
-      FeatConcat
+      
+        FeatConcat
+      
     </span>
   </a>
   
@@ -1860,7 +2197,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.params" class="md-nav__link">
     <span class="md-ellipsis">
-      params
+      
+        params
+      
     </span>
   </a>
   
@@ -1869,7 +2208,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.dtype" class="md-nav__link">
     <span class="md-ellipsis">
-      dtype
+      
+        dtype
+      
     </span>
   </a>
   
@@ -1878,7 +2219,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.collate_fn" class="md-nav__link">
     <span class="md-ellipsis">
-      collate_fn
+      
+        collate_fn
+      
     </span>
   </a>
   
@@ -1887,7 +2230,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.length" class="md-nav__link">
     <span class="md-ellipsis">
-      length
+      
+        length
+      
     </span>
   </a>
   
@@ -1896,7 +2241,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.columns" class="md-nav__link">
     <span class="md-ellipsis">
-      columns
+      
+        columns
+      
     </span>
   </a>
   
@@ -1905,7 +2252,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.__init__" class="md-nav__link">
     <span class="md-ellipsis">
-      __init__
+      
+        __init__
+      
     </span>
   </a>
   
@@ -1914,7 +2263,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.append" class="md-nav__link">
     <span class="md-ellipsis">
-      append
+      
+        append
+      
     </span>
   </a>
   
@@ -1923,7 +2274,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.insert" class="md-nav__link">
     <span class="md-ellipsis">
-      insert
+      
+        insert
+      
     </span>
   </a>
   
@@ -1932,7 +2285,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.__add__" class="md-nav__link">
     <span class="md-ellipsis">
-      __add__
+      
+        __add__
+      
     </span>
   </a>
   
@@ -1941,7 +2296,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.__setitem__" class="md-nav__link">
     <span class="md-ellipsis">
-      __setitem__
+      
+        __setitem__
+      
     </span>
   </a>
   
@@ -1950,7 +2307,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.get_collate_fn" class="md-nav__link">
     <span class="md-ellipsis">
-      get_collate_fn
+      
+        get_collate_fn
+      
     </span>
   </a>
   
@@ -1959,7 +2318,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.iter_index" class="md-nav__link">
     <span class="md-ellipsis">
-      iter_index
+      
+        iter_index
+      
     </span>
   </a>
   
@@ -1968,7 +2329,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.transform" class="md-nav__link">
     <span class="md-ellipsis">
-      transform
+      
+        transform
+      
     </span>
   </a>
   
@@ -1977,7 +2340,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.__call__" class="md-nav__link">
     <span class="md-ellipsis">
-      __call__
+      
+        __call__
+      
     </span>
   </a>
   
@@ -1986,7 +2351,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.fit_transform" class="md-nav__link">
     <span class="md-ellipsis">
-      fit_transform
+      
+        fit_transform
+      
     </span>
   </a>
   
@@ -1995,7 +2362,9 @@
           <li class="md-nav__item">
   <a href="#molfeat.trans.concat.FeatConcat.fit" class="md-nav__link">
     <span class="md-ellipsis">
-      fit
+      
+        fit
+      
     </span>
   </a>
   
@@ -2016,6 +2385,7 @@
           
           
             <div class="md-content" data-md-component="content">
+              
               <article class="md-content__inner md-typeset">
                 
                   
@@ -2042,7 +2412,9 @@
 
 
 
-  <div class="doc doc-children">
+
+<div class="doc doc-children">
+
 
 
 
@@ -2067,6 +2439,7 @@
               Bases: <code><span title="list">list</span></code>, <code><span title="sklearn.base.BaseEstimator">BaseEstimator</span></code></p>
 
 
+
         <p>Concatenation container for <code>FPVecTransformer</code>. This class allows
 merging multiple fingerprints into a single one.
 It gives the ability to call the following methods
@@ -2086,7 +2459,8 @@ on a list of transformers and concatenate the results.</p>
 
 
 
-              <details class="quote">
+
+              <details class="mkdocstrings-source">
                 <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
                 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 19</span>
 <span class="normal"> 20</span>
@@ -2329,7 +2703,7 @@ on a list of transformers and concatenate the results.</p>
 <span class="normal">257</span>
 <span class="normal">258</span>
 <span class="normal">259</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">FeatConcat</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="n">BaseEstimator</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Concatenation container for `FPVecTransformer`. This class allows</span>
 <span class="sd">    merging multiple fingerprints into a single one.</span>
 <span class="sd">    It gives the ability to call the following methods</span>
@@ -2341,9 +2715,9 @@ on a list of transformers and concatenate the results.</p>
 <span class="sd">    !!! note</span>
 <span class="sd">        The featurization length of this featurizer is accessible via the `length` property.</span>
 <span class="sd">        `len()` will return the number of base featurizer.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
-    <span class="n">_STR_DELIMITER</span> <span class="o">=</span> <span class="s2">&quot;||&quot;</span>
+    <span class="n">_STR_DELIMITER</span> <span class="o">=</span> <span class="s2">"||"</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -2352,7 +2726,7 @@ on a list of transformers and concatenate the results.</p>
         <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">collate_fn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Featurizer concatenator</span>
+<span class="w">        </span><span class="sd">"""Featurizer concatenator</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            iterable: List of featurizer to concatenate.</span>
@@ -2360,7 +2734,7 @@ on a list of transformers and concatenate the results.</p>
 <span class="sd">            params: Optional dictionary of parameters for the featurizers when there is a need for initializing them</span>
 <span class="sd">            collate_fn: optional function to provide for custom collating.</span>
 <span class="sd">                By default the collate function will be None, which will use the torch default</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span> <span class="ow">or</span> <span class="p">{}</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
@@ -2375,31 +2749,31 @@ on a list of transformers and concatenate the results.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">collate_fn</span> <span class="o">=</span> <span class="n">collate_fn</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Override the ``append`` to accept only ``FPVecTransformer``&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">"""Override the ``append`` to accept only ``FPVecTransformer``"""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_supported</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Override the ``insert`` to accept only ``BaseFeaturizer``&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">"""Override the ``insert`` to accept only ``BaseFeaturizer``"""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_suported</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Override the `__add__` method&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Override the `__add__` method"""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_supported</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Override the `__setitem__`  method&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Override the `__setitem__`  method"""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_supported</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Length property for Feat concatenation.  This is the sum of the length of each transformer.</span>
 <span class="sd">        Note that __len__ returns the number of base featurizer here instead.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_length</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">full_length</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
@@ -2411,22 +2785,22 @@ on a list of transformers and concatenate the results.</p>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_length</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_check_supported</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Check if the item is the right type&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">"""Check if the item is the right type"""</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">FPVecTransformer</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;FPVecTransformer allowed only, provided </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">item</span><span class="p">)))</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"FPVecTransformer allowed only, provided </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">item</span><span class="p">)))</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_collate_fn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get collate function of this featurizer. The FeatConcat featurizer use the default</span>
 <span class="sd">        collate function which does not do anything.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            fn: Collate function for pytorch or None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;collate_fn&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"collate_fn"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">iter_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indexes</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">int</span><span class="p">]]):</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Allow the `FeatConcat` to be indexed using a list, or any other iterable.</span>
 
 <span class="sd">        Args:</span>
@@ -2434,7 +2808,7 @@ on a list of transformers and concatenate the results.</p>
 
 <span class="sd">        Returns</span>
 <span class="sd">            indexed_fpconcat: A new FeatConcat object with the indexed element</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">indexes</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">indexes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">indexes</span><span class="p">)</span>
@@ -2444,25 +2818,25 @@ on a list of transformers and concatenate the results.</p>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">columns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the list of columns for the concatenated molecules</span>
+<span class="w">        </span><span class="sd">"""Get the list of columns for the concatenated molecules</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            columns (list): Name of the columns of the descriptor</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">tmp_mol</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">to_mol</span><span class="p">(</span><span class="s2">&quot;CC(C)O&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="n">tmp_mol</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">to_mol</span><span class="p">(</span><span class="s2">"CC(C)O"</span><span class="p">)</span>
         <span class="n">columns</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">fp</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
-            <span class="n">fp_columns</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s2">&quot;columns&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">fp_columns</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s2">"columns"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
             <span class="n">fp_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">fp_columns</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">fp_out</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">fp</span><span class="p">([</span><span class="n">tmp_mol</span><span class="p">])</span>
                 <span class="n">fp_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">fp_out</span><span class="p">)</span>
-                <span class="n">fp_columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">fp_name</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">ind</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">fp_out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])]</span>
+                <span class="n">fp_columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">fp_name</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">ind</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">fp_out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])]</span>
             <span class="n">columns</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">fp_columns</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">columns</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mols</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dm</span><span class="o">.</span><span class="n">Mol</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Calls the ``FPVecTransformer.transform`` for each transformer in</span>
 <span class="sd">        the current list, and concatenates the resulting fingerprints.</span>
 
@@ -2474,12 +2848,12 @@ on a list of transformers and concatenate the results.</p>
 <span class="sd">            fps: Computed fingerprints of size NxD, where D is the</span>
 <span class="sd">                sum of the length of each transformer and N is the number of input</span>
 <span class="sd">                molecules that have been successfully featurized.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">fps</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">fp_trans</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="n">out</span> <span class="o">=</span> <span class="n">fp_trans</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">mols</span><span class="p">,</span> <span class="n">enforce_dtype</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-            <span class="n">out</span> <span class="o">=</span> <span class="n">datatype</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;pandas&quot;</span><span class="p">)</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">datatype</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"pandas"</span><span class="p">)</span>
             <span class="n">fps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
         <span class="n">fps</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">fps</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">fps</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span>
@@ -2492,7 +2866,7 @@ on a list of transformers and concatenate the results.</p>
         <span class="n">ignore_errors</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Calls each of the internal transformer and concatenate results only on valid indices.</span>
 
 <span class="sd">        Args:</span>
@@ -2509,7 +2883,7 @@ on a list of transformers and concatenate the results.</p>
 <span class="sd">                molecules that have been successfully featurized.</span>
 <span class="sd">            idx: array</span>
 <span class="sd">                Indices of successful featurization given the original molecule input.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">fps</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">valid_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mols</span><span class="p">))</span>
@@ -2533,7 +2907,7 @@ on a list of transformers and concatenate the results.</p>
         <span class="n">fit_kwargs</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">trans_kwargs</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Calls the ``self.fit`` followed by the ``fit.transform`` for each transfomer in</span>
 <span class="sd">        the current list, and concatenates the resulting fingerprints.</span>
 
@@ -2548,14 +2922,14 @@ on a list of transformers and concatenate the results.</p>
 <span class="sd">            fp: computed fingerprints of size NxD, where D is the</span>
 <span class="sd">                sum of the length of each transformer and N is the number of input</span>
 <span class="sd">                molecules that have been successfully featurized.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">fit_kwargs</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">fit_kwargs</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">fit_kwargs</span>
         <span class="n">trans_kwargs</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">trans_kwargs</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">trans_kwargs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">mols</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">fit_kwargs</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">mols</span><span class="p">,</span> <span class="o">**</span><span class="n">trans_kwargs</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dm</span><span class="o">.</span><span class="n">Mol</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Calls the ``FPVecTransformer.fit`` for each transformer in the current list.</span>
 
 <span class="sd">        Args:</span>
@@ -2564,7 +2938,7 @@ on a list of transformers and concatenate the results.</p>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            self: FeatConcat instance after fitting</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">fp_trans</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="n">fp_trans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -2574,7 +2948,7 @@ on a list of transformers and concatenate the results.</p>
 
 
 
-  <div class="doc doc-children">
+<div class="doc doc-children">
 
 
 
@@ -2712,6 +3086,7 @@ Note that <strong>len</strong> returns the number of base featurizer here instea
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -2806,7 +3181,7 @@ By default the collate function will be None, which will use the torch default</
     </table>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">36</span>
 <span class="normal">37</span>
@@ -2842,7 +3217,7 @@ By default the collate function will be None, which will use the torch default</
     <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">collate_fn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Featurizer concatenator</span>
+<span class="w">    </span><span class="sd">"""Featurizer concatenator</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        iterable: List of featurizer to concatenate.</span>
@@ -2850,7 +3225,7 @@ By default the collate function will be None, which will use the torch default</
 <span class="sd">        params: Optional dictionary of parameters for the featurizers when there is a need for initializing them</span>
 <span class="sd">        collate_fn: optional function to provide for custom collating.</span>
 <span class="sd">            By default the collate function will be None, which will use the torch default</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span> <span class="ow">or</span> <span class="p">{}</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
@@ -2883,13 +3258,13 @@ By default the collate function will be None, which will use the torch default</
         <p>Override the <code>append</code> to accept only <code>FPVecTransformer</code></p>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">65</span>
 <span class="normal">66</span>
 <span class="normal">67</span>
 <span class="normal">68</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Override the ``append`` to accept only ``FPVecTransformer``&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Override the ``append`` to accept only ``FPVecTransformer``"""</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_check_supported</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2912,13 +3287,13 @@ By default the collate function will be None, which will use the torch default</
         <p>Override the <code>insert</code> to accept only <code>BaseFeaturizer</code></p>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">70</span>
 <span class="normal">71</span>
 <span class="normal">72</span>
 <span class="normal">73</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Override the ``insert`` to accept only ``BaseFeaturizer``&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Override the ``insert`` to accept only ``BaseFeaturizer``"""</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_check_suported</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2941,13 +3316,13 @@ By default the collate function will be None, which will use the torch default</
         <p>Override the <code>__add__</code> method</p>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">75</span>
 <span class="normal">76</span>
 <span class="normal">77</span>
 <span class="normal">78</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Override the `__add__` method&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Override the `__add__` method"""</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_check_supported</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2970,13 +3345,13 @@ By default the collate function will be None, which will use the torch default</
         <p>Override the <code>__setitem__</code>  method</p>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">80</span>
 <span class="normal">81</span>
 <span class="normal">82</span>
 <span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Override the `__setitem__`  method&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Override the `__setitem__`  method"""</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_check_supported</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -3022,7 +3397,7 @@ collate function which does not do anything.</p>
     </table>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">106</span>
 <span class="normal">107</span>
@@ -3033,14 +3408,14 @@ collate function which does not do anything.</p>
 <span class="normal">112</span>
 <span class="normal">113</span>
 <span class="normal">114</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_collate_fn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Get collate function of this featurizer. The FeatConcat featurizer use the default</span>
 <span class="sd">    collate function which does not do anything.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        fn: Collate function for pytorch or None</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;collate_fn&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"collate_fn"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -3094,7 +3469,7 @@ collate function which does not do anything.</p>
     indexed_fpconcat: A new FeatConcat object with the indexed element</p>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">116</span>
 <span class="normal">117</span>
@@ -3112,7 +3487,7 @@ collate function which does not do anything.</p>
 <span class="normal">129</span>
 <span class="normal">130</span>
 <span class="normal">131</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">iter_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indexes</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">int</span><span class="p">]]):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Allow the `FeatConcat` to be indexed using a list, or any other iterable.</span>
 
 <span class="sd">    Args:</span>
@@ -3120,7 +3495,7 @@ collate function which does not do anything.</p>
 
 <span class="sd">    Returns</span>
 <span class="sd">        indexed_fpconcat: A new FeatConcat object with the indexed element</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">indexes</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">indexes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">indexes</span><span class="p">)</span>
@@ -3218,7 +3593,7 @@ molecules that have been successfully featurized.</p>
     </table>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">152</span>
 <span class="normal">153</span>
@@ -3243,7 +3618,7 @@ molecules that have been successfully featurized.</p>
 <span class="normal">172</span>
 <span class="normal">173</span>
 <span class="normal">174</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mols</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dm</span><span class="o">.</span><span class="n">Mol</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Calls the ``FPVecTransformer.transform`` for each transformer in</span>
 <span class="sd">    the current list, and concatenates the resulting fingerprints.</span>
 
@@ -3255,12 +3630,12 @@ molecules that have been successfully featurized.</p>
 <span class="sd">        fps: Computed fingerprints of size NxD, where D is the</span>
 <span class="sd">            sum of the length of each transformer and N is the number of input</span>
 <span class="sd">            molecules that have been successfully featurized.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">fps</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">fp_trans</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">out</span> <span class="o">=</span> <span class="n">fp_trans</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">mols</span><span class="p">,</span> <span class="n">enforce_dtype</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="n">datatype</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;pandas&quot;</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">datatype</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"pandas"</span><span class="p">)</span>
         <span class="n">fps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
     <span class="n">fps</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">fps</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">fps</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span>
@@ -3371,7 +3746,7 @@ idx: array
 </code></pre></div>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">176</span>
 <span class="normal">177</span>
@@ -3419,7 +3794,7 @@ idx: array
     <span class="n">ignore_errors</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Calls each of the internal transformer and concatenate results only on valid indices.</span>
 
 <span class="sd">    Args:</span>
@@ -3436,7 +3811,7 @@ idx: array
 <span class="sd">            molecules that have been successfully featurized.</span>
 <span class="sd">        idx: array</span>
 <span class="sd">            Indices of successful featurization given the original molecule input.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">fps</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">valid_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mols</span><span class="p">))</span>
@@ -3557,7 +3932,7 @@ the current list, and concatenates the resulting fingerprints.</p>
 </code></pre></div>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">217</span>
 <span class="normal">218</span>
@@ -3592,7 +3967,7 @@ the current list, and concatenates the resulting fingerprints.</p>
     <span class="n">fit_kwargs</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">trans_kwargs</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Calls the ``self.fit`` followed by the ``fit.transform`` for each transfomer in</span>
 <span class="sd">    the current list, and concatenates the resulting fingerprints.</span>
 
@@ -3607,7 +3982,7 @@ the current list, and concatenates the resulting fingerprints.</p>
 <span class="sd">        fp: computed fingerprints of size NxD, where D is the</span>
 <span class="sd">            sum of the length of each transformer and N is the number of input</span>
 <span class="sd">            molecules that have been successfully featurized.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">fit_kwargs</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">fit_kwargs</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">fit_kwargs</span>
     <span class="n">trans_kwargs</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">trans_kwargs</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">trans_kwargs</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">mols</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">fit_kwargs</span><span class="p">)</span>
@@ -3701,7 +4076,7 @@ the current list, and concatenates the resulting fingerprints.</p>
     </table>
 
 
-            <details class="quote">
+            <details class="mkdocstrings-source">
               <summary>Source code in <code>molfeat/trans/concat.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">245</span>
 <span class="normal">246</span>
@@ -3718,7 +4093,7 @@ the current list, and concatenates the resulting fingerprints.</p>
 <span class="normal">257</span>
 <span class="normal">258</span>
 <span class="normal">259</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dm</span><span class="o">.</span><span class="n">Mol</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Calls the ``FPVecTransformer.fit`` for each transformer in the current list.</span>
 
 <span class="sd">    Args:</span>
@@ -3727,7 +4102,7 @@ the current list, and concatenates the resulting fingerprints.</p>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        self: FeatConcat instance after fitting</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">fp_trans</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">fp_trans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -3789,7 +4164,7 @@ the current list, and concatenates the resulting fingerprints.</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright 2020 - 2023 datamol.io
+      Copyright 2020 - 2026 datamol.io
     </div>
   
   
@@ -3812,10 +4187,11 @@ the current list, and concatenates the resulting fingerprints.</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.top"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.top"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/js/google-analytics.js"></script>
       

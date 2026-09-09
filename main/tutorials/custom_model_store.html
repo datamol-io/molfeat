@@ -10,6 +10,8 @@
       
       
       
+        <link rel="canonical" href="https://molfeat-docs.datamol.io/main/tutorials/custom_model_store.html">
+      
       
         <link rel="prev" href="add_your_own.html">
       
@@ -17,8 +19,11 @@
         <link rel="next" href="graphs.html">
       
       
+        
+      
+      
       <link rel="icon" href="../images/logo-black.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -26,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -57,7 +62,6 @@
     
       
 
-    
     
     
   </head>
@@ -166,7 +170,7 @@
         <a href="https://github.com/datamol-io/molfeat" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     datamol-io/molfeat
@@ -324,7 +328,7 @@
       <a href="https://github.com/datamol-io/molfeat" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     datamol-io/molfeat
@@ -360,9 +364,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Getting started
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -371,7 +380,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
-            Getting started
+            
+  
+    Getting started
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -387,9 +400,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     What is molfeat?
+  
+
     
   </span>
+  
   
 
       </a>
@@ -410,9 +428,42 @@
   
   
   <span class="md-ellipsis">
+    
+  
     How to use molfeat?
+  
+
     
   </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../foundation_models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recent foundation models
+  
+
+    
+  </span>
+  
   
 
       </a>
@@ -433,9 +484,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Why should you care?
+  
+
     
   </span>
+  
   
 
       </a>
@@ -456,9 +512,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     License
+  
+
     
   </span>
+  
   
 
       </a>
@@ -505,9 +566,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Tutorials
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -516,7 +582,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            Tutorials
+            
+  
+    Tutorials
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -532,9 +602,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Types of featurizers
+  
+
     
   </span>
+  
   
 
       </a>
@@ -571,9 +646,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Add your own
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -582,7 +662,11 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
-            Add your own
+            
+  
+    Add your own
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -598,9 +682,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Create your own featurizers
+  
+
     
   </span>
+  
   
 
       </a>
@@ -628,9 +717,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Create a custom modelstore
+  
+
     
   </span>
+  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -641,9 +735,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Create a custom modelstore
+  
+
     
   </span>
+  
   
 
       </a>
@@ -664,7 +763,9 @@
         <li class="md-nav__item">
   <a href="#modelstore" class="md-nav__link">
     <span class="md-ellipsis">
-      Modelstore
+      
+        Modelstore
+      
     </span>
   </a>
   
@@ -674,7 +775,9 @@
           <li class="md-nav__item">
   <a href="#introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction
+      
+        Introduction
+      
     </span>
   </a>
   
@@ -684,7 +787,9 @@
           <li class="md-nav__item">
   <a href="#key-concepts-of-the" class="md-nav__link">
     <span class="md-ellipsis">
-      Key concepts of the
+      
+        Key concepts of the
+      
     </span>
   </a>
   
@@ -693,7 +798,9 @@
           <li class="md-nav__item">
   <a href="#model-info-card" class="md-nav__link">
     <span class="md-ellipsis">
-      Model Info Card
+      
+        Model Info Card
+      
     </span>
   </a>
   
@@ -707,7 +814,9 @@
           <li class="md-nav__item">
   <a href="#creating-an-instance-of-modelstore" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating an instance of ModelStore
+      
+        Creating an instance of ModelStore
+      
     </span>
   </a>
   
@@ -716,7 +825,9 @@
           <li class="md-nav__item">
   <a href="#creating-a-custom-model-store" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating a Custom Model Store
+      
+        Creating a Custom Model Store
+      
     </span>
   </a>
   
@@ -726,7 +837,9 @@
           <li class="md-nav__item">
   <a href="#model-store-bucket" class="md-nav__link">
     <span class="md-ellipsis">
-      Model Store Bucket
+      
+        Model Store Bucket
+      
     </span>
   </a>
   
@@ -740,7 +853,9 @@
           <li class="md-nav__item">
   <a href="#loading-model-from-a-custom-model-store" class="md-nav__link">
     <span class="md-ellipsis">
-      Loading model from a custom model store
+      
+        Loading model from a custom model store
+      
     </span>
   </a>
   
@@ -749,7 +864,9 @@
           <li class="md-nav__item">
   <a href="#going-a-bit-further-serializing-a-custom-pretrained-model-into-a-private-model-store" class="md-nav__link">
     <span class="md-ellipsis">
-      Going a bit further: serializing a custom pretrained model into a private model store
+      
+        Going a bit further: serializing a custom pretrained model into a private model store
+      
     </span>
   </a>
   
@@ -789,9 +906,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Featurizing graphs
+  
+
     
   </span>
+  
   
 
       </a>
@@ -826,9 +948,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Integrations
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -837,7 +964,11 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
-            Integrations
+            
+  
+    Integrations
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -853,9 +984,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Integration with scikit-learn and PyTorch
+  
+
     
   </span>
+  
   
 
       </a>
@@ -876,9 +1012,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Training a GNN with PyG
+  
+
     
   </span>
+  
   
 
       </a>
@@ -899,9 +1040,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Finetuning a pretrained transformer
+  
+
     
   </span>
+  
   
 
       </a>
@@ -930,9 +1076,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Save and Load
+  
+
     
   </span>
+  
   
 
       </a>
@@ -953,9 +1104,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     The Data Cache
+  
+
     
   </span>
+  
   
 
       </a>
@@ -990,9 +1146,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Model Handling
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1001,7 +1162,11 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_7">
             <span class="md-nav__icon md-icon"></span>
-            Model Handling
+            
+  
+    Model Handling
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1017,9 +1182,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Loading Models Without Disk Storage Using
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1069,9 +1239,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Developers
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1080,7 +1255,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Developers
+            
+  
+    Developers
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1096,9 +1275,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Contributing
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1119,9 +1303,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Extending molfeat
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1142,9 +1331,70 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Registering your Plugin
+  
+
     
   </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrating to 1.x
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releasing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Releasing
+  
+
+    
+  </span>
+  
   
 
       </a>
@@ -1186,9 +1436,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Community
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1197,7 +1452,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Community
+            
+  
+    Community
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1213,9 +1472,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Get involved
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1236,9 +1500,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Community contributions
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1280,9 +1549,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     API
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1291,7 +1565,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            API
+            
+  
+    API
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1307,9 +1585,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.calc
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1344,9 +1627,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.trans
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1355,7 +1643,11 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
-            molfeat.trans
+            
+  
+    molfeat.trans
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1371,9 +1663,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.trans.base
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1394,9 +1691,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.trans.fp
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1417,32 +1719,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.trans.graph
+  
+
     
   </span>
   
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/molfeat.trans.struct.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    molfeat.trans.struct
-    
-  </span>
   
 
       </a>
@@ -1463,9 +1747,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.trans.concat
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1492,26 +1781,35 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_5" >
         
           
-          <label class="md-nav__link" for="__nav_5_2_6" id="__nav_5_2_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_2_5" id="__nav_5_2_5_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.trans.pretrained
+  
+
     
   </span>
+  
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_2_6">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_5">
             <span class="md-nav__icon md-icon"></span>
-            molfeat.trans.pretrained
+            
+  
+    molfeat.trans.pretrained
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1527,9 +1825,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Base Pretrained Models
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1550,9 +1853,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     HuggingFace
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1568,37 +1876,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../api/molfeat.trans.pretrained.graphormer.html" class="md-nav__link">
+      <a href="../api/molfeat.trans.pretrained.foundation.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Graphormer
+    
+  
+    Recent foundation models
+  
+
     
   </span>
   
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api/molfeat.trans.pretrained.dgl_pretrained.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    DGL
-    
-  </span>
   
 
       </a>
@@ -1619,9 +1909,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     FCD
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1658,9 +1953,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.store
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1681,9 +1981,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.plugins
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1704,9 +2009,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.utils
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1727,9 +2037,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     molfeat.viz
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1772,7 +2087,9 @@
         <li class="md-nav__item">
   <a href="#modelstore" class="md-nav__link">
     <span class="md-ellipsis">
-      Modelstore
+      
+        Modelstore
+      
     </span>
   </a>
   
@@ -1782,7 +2099,9 @@
           <li class="md-nav__item">
   <a href="#introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction
+      
+        Introduction
+      
     </span>
   </a>
   
@@ -1792,7 +2111,9 @@
           <li class="md-nav__item">
   <a href="#key-concepts-of-the" class="md-nav__link">
     <span class="md-ellipsis">
-      Key concepts of the
+      
+        Key concepts of the
+      
     </span>
   </a>
   
@@ -1801,7 +2122,9 @@
           <li class="md-nav__item">
   <a href="#model-info-card" class="md-nav__link">
     <span class="md-ellipsis">
-      Model Info Card
+      
+        Model Info Card
+      
     </span>
   </a>
   
@@ -1815,7 +2138,9 @@
           <li class="md-nav__item">
   <a href="#creating-an-instance-of-modelstore" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating an instance of ModelStore
+      
+        Creating an instance of ModelStore
+      
     </span>
   </a>
   
@@ -1824,7 +2149,9 @@
           <li class="md-nav__item">
   <a href="#creating-a-custom-model-store" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating a Custom Model Store
+      
+        Creating a Custom Model Store
+      
     </span>
   </a>
   
@@ -1834,7 +2161,9 @@
           <li class="md-nav__item">
   <a href="#model-store-bucket" class="md-nav__link">
     <span class="md-ellipsis">
-      Model Store Bucket
+      
+        Model Store Bucket
+      
     </span>
   </a>
   
@@ -1848,7 +2177,9 @@
           <li class="md-nav__item">
   <a href="#loading-model-from-a-custom-model-store" class="md-nav__link">
     <span class="md-ellipsis">
-      Loading model from a custom model store
+      
+        Loading model from a custom model store
+      
     </span>
   </a>
   
@@ -1857,7 +2188,9 @@
           <li class="md-nav__item">
   <a href="#going-a-bit-further-serializing-a-custom-pretrained-model-into-a-private-model-store" class="md-nav__link">
     <span class="md-ellipsis">
-      Going a bit further: serializing a custom pretrained model into a private model store
+      
+        Going a bit further: serializing a custom pretrained model into a private model store
+      
     </span>
   </a>
   
@@ -1878,6 +2211,7 @@
           
           
             <div class="md-content" data-md-component="content">
+              
               <article class="md-content__inner md-typeset">
                 
                   
@@ -2147,7 +2481,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     if (!diagrams.length) {
       return;
     }
-    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs")).default;
+    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.0/mermaid.esm.min.mjs")).default;
+    const elkUrl = "https://cdnjs.cloudflare.com/ajax/libs/mermaid-layout-elk/0.1.9/mermaid-layout-elk.esm.min.mjs";
+    if(elkUrl) {
+      const elkLayouts = (await import(elkUrl)).default;
+      mermaid.registerLayoutLoaders(elkLayouts);
+    }
     const parser = new DOMParser();
 
     mermaid.initialize({
@@ -2244,7 +2583,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
      * Post-process to ensure mermaid diagrams contain only valid SVG and XHTML.
      */
     function cleanMermaidSvg(svg) {
-      return svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      svg = svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      return `${SVG_XML_HEADER}${svg}`;
     }
 
 
@@ -2270,6 +2610,285 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
       }
       return `<${tag} ${rest}>`;
     }
+
+
+  /**
+   * Named HTML entities with their decimal equivalent codes.
+   *
+   * @see https://www.w3.org/TR/WD-html40-970708/sgml/entities.html
+   * */
+  const HTML_ENTITIES = `<!ENTITY Aacute "&#193;">
+<!ENTITY aacute "&#225;">
+<!ENTITY Acirc "&#194;">
+<!ENTITY acirc "&#226;">
+<!ENTITY acute "&#180;">
+<!ENTITY AElig "&#198;">
+<!ENTITY aelig "&#230;">
+<!ENTITY Agrave "&#192;">
+<!ENTITY agrave "&#224;">
+<!ENTITY alefsym "&#8501;">
+<!ENTITY Alpha "&#913;">
+<!ENTITY alpha "&#945;">
+<!ENTITY amp "&#38;">
+<!ENTITY and "&#8869;">
+<!ENTITY ang "&#8736;">
+<!ENTITY Aring "&#197;">
+<!ENTITY aring "&#229;">
+<!ENTITY asymp "&#8776;">
+<!ENTITY Atilde "&#195;">
+<!ENTITY atilde "&#227;">
+<!ENTITY Auml "&#196;">
+<!ENTITY auml "&#228;">
+<!ENTITY bdquo "&#8222;">
+<!ENTITY Beta "&#914;">
+<!ENTITY beta "&#946;">
+<!ENTITY brvbar "&#166;">
+<!ENTITY bull "&#8226;">
+<!ENTITY cap "&#8745;">
+<!ENTITY Ccedil "&#199;">
+<!ENTITY ccedil "&#231;">
+<!ENTITY cedil "&#184;">
+<!ENTITY cent "&#162;">
+<!ENTITY Chi "&#935;">
+<!ENTITY chi "&#967;">
+<!ENTITY circ "&#710;">
+<!ENTITY clubs "&#9827;">
+<!ENTITY cong "&#8773;">
+<!ENTITY copy "&#169;">
+<!ENTITY crarr "&#8629;">
+<!ENTITY cup "&#8746;">
+<!ENTITY curren "&#164;">
+<!ENTITY dagger "&#8224;">
+<!ENTITY Dagger "&#8225;">
+<!ENTITY darr "&#8595;">
+<!ENTITY dArr "&#8659;">
+<!ENTITY deg "&#176;">
+<!ENTITY Delta "&#916;">
+<!ENTITY delta "&#948;">
+<!ENTITY diams "&#9830;">
+<!ENTITY divide "&#247;">
+<!ENTITY Eacute "&#201;">
+<!ENTITY eacute "&#233;">
+<!ENTITY Ecirc "&#202;">
+<!ENTITY ecirc "&#234;">
+<!ENTITY Egrave "&#200;">
+<!ENTITY egrave "&#232;">
+<!ENTITY empty "&#8709;">
+<!ENTITY emsp "&#8195;">
+<!ENTITY ensp "&#8194;">
+<!ENTITY epsilon "&#949;">
+<!ENTITY Epsilon "&#917;">
+<!ENTITY equiv "&#8801;">
+<!ENTITY Eta "&#919;">
+<!ENTITY eta "&#951;">
+<!ENTITY ETH "&#208;">
+<!ENTITY eth "&#240;">
+<!ENTITY Euml "&#203;">
+<!ENTITY euml "&#235;">
+<!ENTITY exist "&#8707;">
+<!ENTITY fnof "&#402;">
+<!ENTITY forall "&#8704;">
+<!ENTITY frac12 "&#189;">
+<!ENTITY frac14 "&#188;">
+<!ENTITY frac34 "&#190;">
+<!ENTITY frasl "&#8260;">
+<!ENTITY Gamma "&#915;">
+<!ENTITY gamma "&#947;">
+<!ENTITY ge "&#8805;">
+<!ENTITY gt "&#62;">
+<!ENTITY harr "&#8596;">
+<!ENTITY hArr "&#8660;">
+<!ENTITY hearts "&#9829;">
+<!ENTITY hellip "&#8230;">
+<!ENTITY Iacute "&#205;">
+<!ENTITY iacute "&#237;">
+<!ENTITY Icirc "&#206;">
+<!ENTITY icirc "&#238;">
+<!ENTITY iexcl "&#161;">
+<!ENTITY Igrave "&#204;">
+<!ENTITY igrave "&#236;">
+<!ENTITY image "&#8465;">
+<!ENTITY infin "&#8734;">
+<!ENTITY int "&#8747;">
+<!ENTITY Iota "&#921;">
+<!ENTITY iota "&#953;">
+<!ENTITY iquest "&#191;">
+<!ENTITY isin "&#8712;">
+<!ENTITY Iuml "&#207;">
+<!ENTITY iuml "&#239;">
+<!ENTITY Kappa "&#922;">
+<!ENTITY kappa "&#954;">
+<!ENTITY Lambda "&#923;">
+<!ENTITY lambda "&#955;">
+<!ENTITY lang "&#9001;">
+<!ENTITY laquo "&#171;">
+<!ENTITY larr "&#8592;">
+<!ENTITY lArr "&#8656;">
+<!ENTITY lceil "&#8968;">
+<!ENTITY ldquo "&#8220;">
+<!ENTITY le "&#8804;">
+<!ENTITY lfloor "&#8970;">
+<!ENTITY lowast "&#8727;">
+<!ENTITY loz "&#9674;">
+<!ENTITY lrm "&#8206;">
+<!ENTITY lsaquo "&#8249;">
+<!ENTITY lsquo "&#8216;">
+<!ENTITY lt "&#60;">
+<!ENTITY macr "&#175;">
+<!ENTITY mdash "&#8212;">
+<!ENTITY micro "&#181;">
+<!ENTITY middot "&#183;">
+<!ENTITY minus "&#8722;">
+<!ENTITY Mu "&#924;">
+<!ENTITY mu "&#956;">
+<!ENTITY nabla "&#8711;">
+<!ENTITY nbsp "&#160;">
+<!ENTITY ndash "&#8211;">
+<!ENTITY ne "&#8800;">
+<!ENTITY ni "&#8715;">
+<!ENTITY not "&#172;">
+<!ENTITY notin "&#8713;">
+<!ENTITY nsub "&#8836;">
+<!ENTITY Ntilde "&#209;">
+<!ENTITY ntilde "&#241;">
+<!ENTITY Nu "&#925;">
+<!ENTITY nu "&#957;">
+<!ENTITY Oacute "&#211;">
+<!ENTITY oacute "&#243;">
+<!ENTITY Ocirc "&#212;">
+<!ENTITY ocirc "&#244;">
+<!ENTITY OElig "&#338;">
+<!ENTITY oelig "&#339;">
+<!ENTITY Ograve "&#210;">
+<!ENTITY ograve "&#242;">
+<!ENTITY oline "&#8254;">
+<!ENTITY Omega "&#937;">
+<!ENTITY omega "&#969;">
+<!ENTITY Omicron "&#927;">
+<!ENTITY omicron "&#959;">
+<!ENTITY oplus "&#8853;">
+<!ENTITY or "&#8870;">
+<!ENTITY ordf "&#170;">
+<!ENTITY ordm "&#186;">
+<!ENTITY Oslash "&#216;">
+<!ENTITY oslash "&#248;">
+<!ENTITY Otilde "&#213;">
+<!ENTITY otilde "&#245;">
+<!ENTITY otimes "&#8855;">
+<!ENTITY Ouml "&#214;">
+<!ENTITY ouml "&#246;">
+<!ENTITY para "&#182;">
+<!ENTITY part "&#8706;">
+<!ENTITY permil "&#8240;">
+<!ENTITY perp "&#8869;">
+<!ENTITY Phi "&#934;">
+<!ENTITY phi "&#966;">
+<!ENTITY Pi "&#928;">
+<!ENTITY pi "&#960;">
+<!ENTITY piv "&#982;">
+<!ENTITY plusmn "&#177;">
+<!ENTITY pound "&#163;">
+<!ENTITY prime "&#8242;">
+<!ENTITY Prime "&#8243;">
+<!ENTITY prod "&#8719;">
+<!ENTITY prop "&#8733;">
+<!ENTITY Psi "&#936;">
+<!ENTITY psi "&#968;">
+<!ENTITY quot "&#34;">
+<!ENTITY radic "&#8730;">
+<!ENTITY rang "&#9002;">
+<!ENTITY raquo "&#187;">
+<!ENTITY rarr "&#8594;">
+<!ENTITY rArr "&#8658;">
+<!ENTITY rceil "&#8969;">
+<!ENTITY rdquo "&#8221;">
+<!ENTITY real "&#8476;">
+<!ENTITY reg "&#174;">
+<!ENTITY rfloor "&#8971;">
+<!ENTITY Rho "&#929;">
+<!ENTITY rho "&#961;">
+<!ENTITY rlm "&#8207;">
+<!ENTITY rsaquo "&#8250;">
+<!ENTITY rsquo "&#8217;">
+<!ENTITY sbquo "&#8218;">
+<!ENTITY Scaron "&#352;">
+<!ENTITY scaron "&#353;">
+<!ENTITY sdot "&#8901;">
+<!ENTITY sect "&#167;">
+<!ENTITY shy "&#173;">
+<!ENTITY Sigma "&#931;">
+<!ENTITY sigma "&#963;">
+<!ENTITY sigmaf "&#962;">
+<!ENTITY sim "&#8764;">
+<!ENTITY spades "&#9824;">
+<!ENTITY sub "&#8834;">
+<!ENTITY sube "&#8838;">
+<!ENTITY sum "&#8721;">
+<!ENTITY sup "&#8835;">
+<!ENTITY sup1 "&#185;">
+<!ENTITY sup2 "&#178;">
+<!ENTITY sup3 "&#179;">
+<!ENTITY supe "&#8839;">
+<!ENTITY szlig "&#223;">
+<!ENTITY Tau "&#932;">
+<!ENTITY tau "&#964;">
+<!ENTITY there4 "&#8756;">
+<!ENTITY Theta "&#920;">
+<!ENTITY theta "&#952;">
+<!ENTITY thetasym "&#977;">
+<!ENTITY thinsp "&#8201;">
+<!ENTITY THORN "&#222;">
+<!ENTITY thorn "&#254;">
+<!ENTITY tilde "&#732;">
+<!ENTITY times "&#215;">
+<!ENTITY trade "&#8482;">
+<!ENTITY Uacute "&#218;">
+<!ENTITY uacute "&#250;">
+<!ENTITY uarr "&#8593;">
+<!ENTITY uArr "&#8657;">
+<!ENTITY Ucirc "&#219;">
+<!ENTITY ucirc "&#251;">
+<!ENTITY Ugrave "&#217;">
+<!ENTITY ugrave "&#249;">
+<!ENTITY uml "&#168;">
+<!ENTITY upsih "&#978;">
+<!ENTITY Upsilon "&#933;">
+<!ENTITY upsilon "&#965;">
+<!ENTITY Uuml "&#220;">
+<!ENTITY uuml "&#252;">
+<!ENTITY weierp "&#8472;">
+<!ENTITY Xi "&#926;">
+<!ENTITY xi "&#958;">
+<!ENTITY Yacute "&#221;">
+<!ENTITY yacute "&#253;">
+<!ENTITY yen "&#165;">
+<!ENTITY Yuml "&#376;">
+<!ENTITY yuml "&#255;">
+<!ENTITY Zeta "&#918;">
+<!ENTITY zeta "&#950;">
+<!ENTITY zwj "&#8205;">
+<!ENTITY zwnj "&#8204;">`.replace(/\n/g, ' ');
+
+  /**
+   * A reasonably strict xml declaration.
+   */
+  const XML_DECL = '<?xml version="1.0" standalone="no"?>';
+
+  /**
+   * The beginning of the XML doctype declaration.
+   */
+  const DOCTYPE_START = `<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [`;
+
+  /**
+   * The end of the XML docype declaration.
+   */
+  const DOCTYPE_END = ']>';
+
+  /**
+   * A full header for an SVG XML document.
+   */
+  const SVG_XML_HEADER = `${XML_DECL}
+    ${DOCTYPE_START}${HTML_ENTITIES}${DOCTYPE_END}`;
 
     void Promise.all([...diagrams].map(renderOneMarmaid));
   });
@@ -2331,7 +2950,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -2380,7 +2999,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -2438,13 +3057,13 @@ from molfeat.store import ModelInfo</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
@@ -2460,38 +3079,6 @@ from molfeat.store import ModelInfo</div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">ModelInfo</span><span class="o">.</span><span class="n">schema</span><span class="p">()[</span><span class="s2">"properties"</span><span class="p">]</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-3">ModelInfo.schema()["properties"]</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>{'name': {'title': 'Name', 'type': 'string'},
- 'inputs': {'title': 'Inputs', 'default': 'smiles', 'type': 'string'},
- 'type': {'title': 'Type',
-  'enum': ['pretrained', 'hand-crafted', 'hashed', 'count'],
-  'type': 'string'},
- 'version': {'title': 'Version', 'default': 0, 'type': 'integer'},
- 'group': {'title': 'Group', 'default': 'all', 'type': 'string'},
- 'submitter': {'title': 'Submitter', 'type': 'string'},
- 'description': {'title': 'Description', 'type': 'string'},
- 'representation': {'title': 'Representation',
-  'enum': ['graph', 'line-notation', 'vector', 'tensor', 'other'],
-  'type': 'string'},
- 'require_3D': {'title': 'Require 3D', 'default': False, 'type': 'boolean'},
- 'tags': {'title': 'Tags', 'type': 'array', 'items': {'type': 'string'}},
- 'authors': {'title': 'Authors', 'type': 'array', 'items': {'type': 'string'}},
- 'reference': {'title': 'Reference', 'type': 'string'},
- 'created_at': {'title': 'Created At',
-  'type': 'string',
-  'format': 'date-time'},
- 'sha256sum': {'title': 'Sha256Sum', 'type': 'string'},
- 'model_usage': {'title': 'Model Usage', 'type': 'string'}}</pre>
 </div>
 </div>
 </div>
@@ -2528,13 +3115,13 @@ from molfeat.store import ModelInfo</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
@@ -2554,18 +3141,6 @@ from molfeat.store import ModelInfo</div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>'/var/folders/zt/ck4vrp4n4vsb0v16tnlh9h9m0000gn/T/tmp4dqvgaqh'</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
@@ -2573,7 +3148,7 @@ from molfeat.store import ModelInfo</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
@@ -2594,13 +3169,13 @@ from molfeat.store import ModelInfo</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
@@ -2620,26 +3195,14 @@ from molfeat.store import ModelInfo</div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>'gs://molfeat-store-prod/artifacts/'</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
@@ -2661,26 +3224,14 @@ len(default_store)</div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>45</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-8">
@@ -2700,27 +3251,6 @@ len(default_store)</div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>[ModelInfo(name='cats2d', inputs='smiles', type='hashed', version=0, group='all', submitter='Datamol', description='2D version of the 6 Potential Pharmacophore Points CATS (Chemically Advanced Template Search) pharmacophore. This version differs from `pharm2D-cats` on the process to make the descriptors fuzzy, which is closer to the original paper implementation. Implementation is based on work by Rajarshi Guha (08/26/07) and Chris Arthur (1/11/2015)', representation='vector', require_3D=False, tags=['CATS', 'hashed', '2D', 'pharmacophore', 'search'], authors=['Michael Reutlinger', 'Christian P Koch', 'Daniel Reker', 'Nickolay Todoroff', 'Petra Schneider', 'Tiago Rodrigues', 'Gisbert Schneider', 'Rajarshi Guha', 'Chris Arthur'], reference='https://doi.org/10.1021/ci050413p', created_at=datetime.datetime(2023, 5, 3, 0, 7, 6, 534648), sha256sum='9c298d589a2158eb513cb52191144518a2acab2cb0c04f1df14fca0f712fa4a1', model_usage=None),
- ModelInfo(name='cats3d', inputs='mol', type='hashed', version=0, group='all', submitter='Datamol', description='3D version of the 6 Potential Pharmacophore Points CATS (Chemically Advanced Template Search) pharmacophore. This version differs from `pharm3D-cats` on the process to make the descriptors fuzzy, which is closer to the original paper implementation. This version uses the 3D distance matrix between pharmacophoric points', representation='vector', require_3D=True, tags=['CATS', 'hashed', '3D', 'pharmacophore', 'search'], authors=['Michael Reutlinger', 'Christian Koch', 'Daniel Reker', 'Nickolay Todoroff', 'Petra Schneider', 'Tiago Rodrigues', 'Gisbert Schneider', 'Rajarshi Guha', 'Chris Arthur'], reference='https://doi.org/10.1021/ci050413p', created_at=datetime.datetime(2023, 5, 3, 0, 7, 9, 952490), sha256sum='9c298d589a2158eb513cb52191144518a2acab2cb0c04f1df14fca0f712fa4a1', model_usage=None),
- ModelInfo(name='mordred', inputs='mol', type='hand-crafted', version=0, group='all', submitter='Datamol', description='Mordred calculates over 1800 molecular descriptors, including constitutional, topological, electronic, and geometrical descriptors, among others. Both 2D and 3D descriptors are supported and optional.', representation='vector', require_3D=False, tags=['topological', 'physchem', 'mordred'], authors=['Hirotomo Moriwaki', 'Yu-Shi Tian', 'Norihito Kawashita', 'Tatsuya Takagi'], reference='https://jcheminf.biomedcentral.com/articles/10.1186/s13321-018-0258-y', created_at=datetime.datetime(2023, 5, 3, 0, 7, 26, 38783), sha256sum='9c298d589a2158eb513cb52191144518a2acab2cb0c04f1df14fca0f712fa4a1', model_usage=None),
- ModelInfo(name='scaffoldkeys', inputs='smiles', type='hand-crafted', version=0, group='all', submitter='Datamol', description='Scaffold Keys are a method for representing scaffold using substructure features and were proposed by Peter Ertl in: Identification of Bioisosteric Scaffolds using Scaffold Keys', representation='vector', require_3D=False, tags=['scaffold', 'bioisosters', 'search'], authors=['Peter Ertl'], reference='https://chemrxiv.org/engage/chemrxiv/article-details/60c7558aee301c5479c7b1be', created_at=datetime.datetime(2023, 5, 3, 0, 7, 22, 832077), sha256sum='9c298d589a2158eb513cb52191144518a2acab2cb0c04f1df14fca0f712fa4a1', model_usage=None),
- ModelInfo(name='gin_supervised_contextpred', inputs='smiles', type='pretrained', version=0, group='dgllife', submitter='Datamol', description='GIN neural network model pre-trained with supervised learning and context prediction on molecules from ChEMBL.', representation='graph', require_3D=False, tags=['GIN', 'dgl', 'pytorch', 'graph'], authors=['Weihua Hu', 'Bowen Liu', 'Joseph Gomes', 'Marinka Zitnik', 'Percy Liang', 'Vijay Pande', 'Jure Leskovec'], reference='https://arxiv.org/abs/1905.12265', created_at=datetime.datetime(2023, 2, 2, 19, 51, 17, 228390), sha256sum='72dc062936b78b515ed5d0989f909ab7612496d698415d73826b974c9171504a', model_usage=None),
- ModelInfo(name='gin_supervised_edgepred', inputs='smiles', type='pretrained', version=0, group='dgllife', submitter='Datamol', description='GIN neural network model pre-trained with supervised learning and edge prediction on molecules from ChEMBL.', representation='graph', require_3D=False, tags=['GIN', 'dgl', 'pytorch', 'graph'], authors=['Weihua Hu', 'Bowen Liu', 'Joseph Gomes', 'Marinka Zitnik', 'Percy Liang', 'Vijay Pande', 'Jure Leskovec'], reference='https://arxiv.org/abs/1905.12265', created_at=datetime.datetime(2023, 2, 14, 17, 42, 4, 710823), sha256sum='c1198b37239c3b733f5b48cf265af4c3a1e8c448e2e26cb53e3517fd096213de', model_usage=None),
- ModelInfo(name='gin_supervised_infomax', inputs='smiles', type='pretrained', version=0, group='dgllife', submitter='Datamol', description='GIN neural network model pre-trained with mutual information maximisation on molecules from ChEMBL.', representation='graph', require_3D=False, tags=['GIN', 'dgl', 'pytorch', 'graph'], authors=['Weihua Hu', 'Bowen Liu', 'Joseph Gomes', 'Marinka Zitnik', 'Percy Liang', 'Vijay Pande', 'Jure Leskovec'], reference='https://arxiv.org/abs/1905.12265', created_at=datetime.datetime(2023, 2, 14, 17, 42, 6, 967631), sha256sum='78dc0f76cde2151f5aa403cbbffead0f24aeac4ce0b48dbfa2689e1a87b95216', model_usage=None),
- ModelInfo(name='gin_supervised_masking', inputs='smiles', type='pretrained', version=0, group='dgllife', submitter='Datamol', description='GIN neural network model pre-trained with masked modelling on molecules from ChEMBL.', representation='graph', require_3D=False, tags=['GIN', 'dgl', 'pytorch', 'graph'], authors=['Weihua Hu', 'Bowen Liu', 'Joseph Gomes', 'Marinka Zitnik', 'Percy Liang', 'Vijay Pande', 'Jure Leskovec'], reference='https://arxiv.org/abs/1905.12265', created_at=datetime.datetime(2023, 2, 14, 17, 42, 9, 221083), sha256sum='c1c797e18312ad44ff089159cb1ed79fd4c67b3d5673c562f61621d95a5d7632', model_usage=None),
- ModelInfo(name='jtvae_zinc_no_kl', inputs='smiles', type='pretrained', version=0, group='dgllife', submitter='Datamol', description='A JTVAE pre-trained on ZINC for molecule generation, without KL regularization', representation='other', require_3D=False, tags=['JTNN', 'JTVAE', 'dgl', 'pytorch', 'junction-tree', 'graph'], authors=['Wengong Jin', 'Regina Barzilay', 'Tommi Jaakkola'], reference='https://arxiv.org/abs/1802.04364v4', created_at=datetime.datetime(2023, 2, 2, 19, 51, 20, 468939), sha256sum='eab8ecb8a7542a8cdf97410cb27f72aaf374fefef6a1f53642cc5b310cf2b7f6', model_usage=None),
- ModelInfo(name='map4', inputs='smiles', type='hashed', version=0, group='fp', submitter='Datamol', description='MinHashed atom-pair fingerprint up to a diameter of four bonds (MAP4) is suitable for both small and large molecules by combining substructure and atom-pair concepts. In this fingerprint the circular substructures with radii of r\u2009=\u20091 and r\u2009=\u20092 bonds around each atom in an atom-pair are written as two pairs of SMILES, each pair being combined with the topological distance separating the two central atoms. These so-called atom-pair molecular shingles are hashed, and the resulting set of hashes is MinHashed to form the MAP4 fingerprint.', representation='vector', require_3D=False, tags=['minhashed', 'map4', 'atompair', 'substructure', 'morgan'], authors=['Alice Capecchi', 'Daniel Probst', 'Jean-Louis Reymond'], reference='https://doi.org/10.1186/s13321-020-00445-4', created_at=datetime.datetime(2023, 2, 16, 10, 29, 8, 550063), sha256sum='9c298d589a2158eb513cb52191144518a2acab2cb0c04f1df14fca0f712fa4a1', model_usage=None)]</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
@@ -2733,13 +3263,13 @@ len(default_store)</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
@@ -2763,26 +3293,14 @@ default_store.search(my_model_card)</div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>[ModelInfo(name='cats2d', inputs='smiles', type='hashed', version=0, group='all', submitter='Datamol', description='2D version of the 6 Potential Pharmacophore Points CATS (Chemically Advanced Template Search) pharmacophore. This version differs from `pharm2D-cats` on the process to make the descriptors fuzzy, which is closer to the original paper implementation. Implementation is based on work by Rajarshi Guha (08/26/07) and Chris Arthur (1/11/2015)', representation='vector', require_3D=False, tags=['CATS', 'hashed', '2D', 'pharmacophore', 'search'], authors=['Michael Reutlinger', 'Christian P Koch', 'Daniel Reker', 'Nickolay Todoroff', 'Petra Schneider', 'Tiago Rodrigues', 'Gisbert Schneider', 'Rajarshi Guha', 'Chris Arthur'], reference='https://doi.org/10.1021/ci050413p', created_at=datetime.datetime(2023, 5, 3, 0, 7, 6, 534648), sha256sum='9c298d589a2158eb513cb52191144518a2acab2cb0c04f1df14fca0f712fa4a1', model_usage=None)]</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-10">
@@ -2804,26 +3322,14 @@ default_store.search(name="jtvae_zinc_no_kl")</div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>[ModelInfo(name='jtvae_zinc_no_kl', inputs='smiles', type='pretrained', version=0, group='dgllife', submitter='Datamol', description='A JTVAE pre-trained on ZINC for molecule generation, without KL regularization', representation='other', require_3D=False, tags=['JTNN', 'JTVAE', 'dgl', 'pytorch', 'junction-tree', 'graph'], authors=['Wengong Jin', 'Regina Barzilay', 'Tommi Jaakkola'], reference='https://arxiv.org/abs/1802.04364v4', created_at=datetime.datetime(2023, 2, 2, 19, 51, 20, 468939), sha256sum='eab8ecb8a7542a8cdf97410cb27f72aaf374fefef6a1f53642cc5b310cf2b7f6', model_usage=None)]</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
@@ -2841,22 +3347,6 @@ default_store.search(name="jtvae_zinc_no_kl")</div>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-11"># Assume you forgot the name of the model, but know it is one of the pretrained models that uses graph as representation
 default_store.search(type="pretrained", representation="graph")</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>[ModelInfo(name='gin_supervised_contextpred', inputs='smiles', type='pretrained', version=0, group='dgllife', submitter='Datamol', description='GIN neural network model pre-trained with supervised learning and context prediction on molecules from ChEMBL.', representation='graph', require_3D=False, tags=['GIN', 'dgl', 'pytorch', 'graph'], authors=['Weihua Hu', 'Bowen Liu', 'Joseph Gomes', 'Marinka Zitnik', 'Percy Liang', 'Vijay Pande', 'Jure Leskovec'], reference='https://arxiv.org/abs/1905.12265', created_at=datetime.datetime(2023, 2, 2, 19, 51, 17, 228390), sha256sum='72dc062936b78b515ed5d0989f909ab7612496d698415d73826b974c9171504a', model_usage=None),
- ModelInfo(name='gin_supervised_edgepred', inputs='smiles', type='pretrained', version=0, group='dgllife', submitter='Datamol', description='GIN neural network model pre-trained with supervised learning and edge prediction on molecules from ChEMBL.', representation='graph', require_3D=False, tags=['GIN', 'dgl', 'pytorch', 'graph'], authors=['Weihua Hu', 'Bowen Liu', 'Joseph Gomes', 'Marinka Zitnik', 'Percy Liang', 'Vijay Pande', 'Jure Leskovec'], reference='https://arxiv.org/abs/1905.12265', created_at=datetime.datetime(2023, 2, 14, 17, 42, 4, 710823), sha256sum='c1198b37239c3b733f5b48cf265af4c3a1e8c448e2e26cb53e3517fd096213de', model_usage=None),
- ModelInfo(name='gin_supervised_infomax', inputs='smiles', type='pretrained', version=0, group='dgllife', submitter='Datamol', description='GIN neural network model pre-trained with mutual information maximisation on molecules from ChEMBL.', representation='graph', require_3D=False, tags=['GIN', 'dgl', 'pytorch', 'graph'], authors=['Weihua Hu', 'Bowen Liu', 'Joseph Gomes', 'Marinka Zitnik', 'Percy Liang', 'Vijay Pande', 'Jure Leskovec'], reference='https://arxiv.org/abs/1905.12265', created_at=datetime.datetime(2023, 2, 14, 17, 42, 6, 967631), sha256sum='78dc0f76cde2151f5aa403cbbffead0f24aeac4ce0b48dbfa2689e1a87b95216', model_usage=None),
- ModelInfo(name='gin_supervised_masking', inputs='smiles', type='pretrained', version=0, group='dgllife', submitter='Datamol', description='GIN neural network model pre-trained with masked modelling on molecules from ChEMBL.', representation='graph', require_3D=False, tags=['GIN', 'dgl', 'pytorch', 'graph'], authors=['Weihua Hu', 'Bowen Liu', 'Joseph Gomes', 'Marinka Zitnik', 'Percy Liang', 'Vijay Pande', 'Jure Leskovec'], reference='https://arxiv.org/abs/1905.12265', created_at=datetime.datetime(2023, 2, 14, 17, 42, 9, 221083), sha256sum='c1c797e18312ad44ff089159cb1ed79fd4c67b3d5673c562f61621d95a5d7632', model_usage=None),
- ModelInfo(name='pcqm4mv2_graphormer_base', inputs='smiles', type='pretrained', version=0, group='graphormer', submitter='Datamol', description='Pretrained Graph Transformer on PCQM4Mv2 Homo-Lumo energy gap prediction using 2D molecular graphs.', representation='graph', require_3D=False, tags=['Graphormer', 'PCQM4Mv2', 'graph', 'pytorch', 'Microsoft'], authors=['Chengxuan Ying', 'Tianle Cai', 'Shengjie Luo', 'Shuxin Zheng', 'Guolin Ke', 'Di He', 'Yanming Shen', 'Tie-Yan Liu'], reference='https://arxiv.org/abs/2106.05234', created_at=datetime.datetime(2023, 2, 2, 19, 51, 19, 330147), sha256sum='9c298d589a2158eb513cb52191144518a2acab2cb0c04f1df14fca0f712fa4a1', model_usage=None)]</pre>
 </div>
 </div>
 </div>
@@ -2879,7 +3369,7 @@ default_store.search(type="pretrained", representation="graph")</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-12">
@@ -2900,13 +3390,13 @@ default_store.search(type="pretrained", representation="graph")</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-13">
@@ -2926,18 +3416,6 @@ default_store.search(type="pretrained", representation="graph")</div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>ModelInfo(name='gin_supervised_infomax', inputs='smiles', type='pretrained', version=0, group='dgllife', submitter='Datamol', description='GIN neural network model pre-trained with mutual information maximisation on molecules from ChEMBL.', representation='graph', require_3D=False, tags=['GIN', 'dgl', 'pytorch', 'graph'], authors=['Weihua Hu', 'Bowen Liu', 'Joseph Gomes', 'Marinka Zitnik', 'Percy Liang', 'Vijay Pande', 'Jure Leskovec'], reference='https://arxiv.org/abs/1905.12265', created_at=datetime.datetime(2023, 2, 14, 17, 42, 6, 967631), sha256sum='78dc0f76cde2151f5aa403cbbffead0f24aeac4ce0b48dbfa2689e1a87b95216', model_usage=None)</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
@@ -2946,7 +3424,7 @@ default_store.search(type="pretrained", representation="graph")</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="creating-a-custom-model-store">Creating a Custom Model Store<a class="anchor-link" href="#creating-a-custom-model-store">¶</a></h3><h4 id="model-store-bucket">Model Store Bucket<a class="anchor-link" href="#model-store-bucket">¶</a></h4><p>To create a custom model store, you need to specify a model store bucket path. By default, the code uses the read-only model store bucket located at <code>gs://molfeat-store-prod/artifacts/</code>. If you want to create a custom <code>modelstore</code> that includes the content of the default bucket, you can copy its contents to your custom bucket.</p>
+<h3 id="creating-a-custom-model-store">Creating a Custom Model Store<a class="anchor-link" href="#creating-a-custom-model-store">¶</a></h3><h4 id="model-store-bucket">Model Store Bucket<a class="anchor-link" href="#model-store-bucket">¶</a></h4><p>To create a custom model store, you need to specify a model store bucket path. By default, the code uses the read-only model store bucket located at <code>https://fs.molfeat.datamol.io/artifacts/</code>. If you want to create a custom <code>modelstore</code> that includes the content of the default bucket, you can copy its contents to your custom bucket.</p>
 <p>There are two key concepts to understand when building a custom <code>modelstore</code>:</p>
 <ol>
 <li><p>Readable and Writable Path: You need to provide a local or remote folder path that is compatible with <a href="https://github.com/fsspec/filesystem_spec">fsspec</a>. This path will serve as your model store bucket, allowing you to store and access models.</p>
@@ -2964,7 +3442,7 @@ default_store.search(type="pretrained", representation="graph")</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-14">
@@ -2998,13 +3476,13 @@ import os</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-15">
@@ -3028,18 +3506,6 @@ temp_model_store.available_models</div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>[]</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
@@ -3052,13 +3518,13 @@ temp_model_store.available_models</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-16">
@@ -3077,21 +3543,6 @@ temp_model_store.available_models</div>
 <div class="clipboard-copy-txt" id="cell-16">%%bash -s "$temp_dir.name"
 tree $1
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/var/folders/zt/ck4vrp4n4vsb0v16tnlh9h9m0000gn/T/tmp5k07n15a
-
-0 directories, 0 files
-</pre>
 </div>
 </div>
 </div>
@@ -3131,7 +3582,7 @@ tree $1
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-17">
@@ -3154,13 +3605,13 @@ tmp_gin_model_info.name = "tmp_gin_supervised_infomax"</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-18">
@@ -3180,33 +3631,14 @@ tmp_gin_model_info.name = "tmp_gin_supervised_infomax"</div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  0%|          | 0.00/7.12M [00:00&lt;?, ?B/s]</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre><span class="ansi-green-fg">2023-05-19 15:14:52.082</span> | <span class="ansi-bold">INFO    </span> | <span class="ansi-cyan-fg">molfeat.store.modelstore</span>:<span class="ansi-cyan-fg">register</span>:<span class="ansi-cyan-fg">150</span> - <span class="ansi-bold">Successfuly registered model tmp_gin_supervised_infomax !</span>
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-19">
@@ -3226,26 +3658,14 @@ tmp_gin_model_info.name = "tmp_gin_supervised_infomax"</div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>[ModelInfo(name='tmp_gin_supervised_infomax', inputs='smiles', type='pretrained', version=0, group='dgllife', submitter='Datamol', description='GIN neural network model pre-trained with mutual information maximisation on molecules from ChEMBL.', representation='graph', require_3D=False, tags=['GIN', 'dgl', 'pytorch', 'graph'], authors=['Weihua Hu', 'Bowen Liu', 'Joseph Gomes', 'Marinka Zitnik', 'Percy Liang', 'Vijay Pande', 'Jure Leskovec'], reference='https://arxiv.org/abs/1905.12265', created_at=datetime.datetime(2023, 2, 14, 17, 42, 6, 967631), sha256sum='7a100a7eb680e62d98b0e1d3a906bf740f140dceda55b69a86ddf3fd78ace245', model_usage=None)]</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-20">
@@ -3261,99 +3681,6 @@ tmp_gin_model_info.name = "tmp_gin_supervised_infomax"</div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">temp_model_store</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"tmp_gin_supervised_infomax"</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-20">temp_model_store.load("tmp_gin_supervised_infomax")</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  0%|          | 0.00/663 [00:00&lt;?, ?B/s]</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  0%|          | 0.00/7.12M [00:00&lt;?, ?B/s]</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>(GIN(
-   (dropout): Dropout(p=0.5, inplace=False)
-   (node_embeddings): ModuleList(
-     (0): Embedding(120, 300)
-     (1): Embedding(3, 300)
-   )
-   (gnn_layers): ModuleList(
-     (0): GINLayer(
-       (mlp): Sequential(
-         (0): Linear(in_features=300, out_features=600, bias=True)
-         (1): ReLU()
-         (2): Linear(in_features=600, out_features=300, bias=True)
-       )
-       (edge_embeddings): ModuleList(
-         (0): Embedding(6, 300)
-         (1): Embedding(3, 300)
-       )
-       (bn): BatchNorm1d(300, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-     )
-     (1): GINLayer(
-       (mlp): Sequential(
-         (0): Linear(in_features=300, out_features=600, bias=True)
-         (1): ReLU()
-         (2): Linear(in_features=600, out_features=300, bias=True)
-       )
-       (edge_embeddings): ModuleList(
-         (0): Embedding(6, 300)
-         (1): Embedding(3, 300)
-       )
-       (bn): BatchNorm1d(300, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-     )
-     (2): GINLayer(
-       (mlp): Sequential(
-         (0): Linear(in_features=300, out_features=600, bias=True)
-         (1): ReLU()
-         (2): Linear(in_features=600, out_features=300, bias=True)
-       )
-       (edge_embeddings): ModuleList(
-         (0): Embedding(6, 300)
-         (1): Embedding(3, 300)
-       )
-       (bn): BatchNorm1d(300, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-     )
-     (3): GINLayer(
-       (mlp): Sequential(
-         (0): Linear(in_features=300, out_features=600, bias=True)
-         (1): ReLU()
-         (2): Linear(in_features=600, out_features=300, bias=True)
-       )
-       (edge_embeddings): ModuleList(
-         (0): Embedding(6, 300)
-         (1): Embedding(3, 300)
-       )
-       (bn): BatchNorm1d(300, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-     )
-     (4): GINLayer(
-       (mlp): Sequential(
-         (0): Linear(in_features=300, out_features=600, bias=True)
-         (1): ReLU()
-         (2): Linear(in_features=600, out_features=300, bias=True)
-       )
-       (edge_embeddings): ModuleList(
-         (0): Embedding(6, 300)
-         (1): Embedding(3, 300)
-       )
-       (bn): BatchNorm1d(300, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-     )
-   )
- ),
- ModelInfo(name='tmp_gin_supervised_infomax', inputs='smiles', type='pretrained', version=0, group='dgllife', submitter='Datamol', description='GIN neural network model pre-trained with mutual information maximisation on molecules from ChEMBL.', representation='graph', require_3D=False, tags=['GIN', 'dgl', 'pytorch', 'graph'], authors=['Weihua Hu', 'Bowen Liu', 'Joseph Gomes', 'Marinka Zitnik', 'Percy Liang', 'Vijay Pande', 'Jure Leskovec'], reference='https://arxiv.org/abs/1905.12265', created_at=datetime.datetime(2023, 2, 14, 17, 42, 6, 967631), sha256sum='7a100a7eb680e62d98b0e1d3a906bf740f140dceda55b69a86ddf3fd78ace245', model_usage=None))</pre>
 </div>
 </div>
 </div>
@@ -3377,7 +3704,7 @@ tmp_gin_model_info.name = "tmp_gin_supervised_infomax"</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-21">
@@ -3406,7 +3733,7 @@ tmp_gin_model_info.name = "tmp_gin_supervised_infomax"</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-22">
@@ -3435,13 +3762,13 @@ model = PretrainedDGLTransformer(kind="tmp_gin_supervised_infomax", dtype=float)
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-23">
@@ -3461,26 +3788,14 @@ model = PretrainedDGLTransformer(kind="tmp_gin_supervised_infomax", dtype=float)
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[24]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>'gs://molfeat-store-prod/artifacts/'</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-24">
@@ -3496,102 +3811,6 @@ model = PretrainedDGLTransformer(kind="tmp_gin_supervised_infomax", dtype=float)
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">model</span><span class="p">([</span><span class="s2">"CCO"</span><span class="p">,</span> <span class="s2">"CCN"</span><span class="p">])</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-24">model(["CCO", "CCN"])</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">IndexError</span>                                Traceback (most recent call last)
-File <span class="ansi-green-fg">~/Code/datamol-org/molfeat-core/molfeat/store/loader.py:99</span>, in <span class="ansi-cyan-fg">PretrainedStoreModel._load_or_raise</span><span class="ansi-blue-fg">(cls, name, download_path, store, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">     98</span> try:
-<span class="ansi-green-fg">---&gt; 99</span>     modelcard = store.search(name=name)[0]
-<span class="ansi-green-intense-fg ansi-bold">    100</span>     artifact_dir = store.download(modelcard, download_path, **kwargs)
-
-<span class="ansi-red-fg">IndexError</span>: list index out of range
-
-During handling of the above exception, another exception occurred:
-
-<span class="ansi-red-fg">ModelStoreError</span>                           Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">/Users/manu/Code/datamol-org/molfeat-core/docs/tutorials/custom_model_store.ipynb Cell 35</span> in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; &lt;a href='vscode-notebook-cell:/Users/manu/Code/datamol-org/molfeat-core/docs/tutorials/custom_model_store.ipynb#Y111sZmlsZQ%3D%3D?line=0'&gt;1&lt;/a&gt;</span> model(["CCO", "CCN"])
-
-File <span class="ansi-green-fg">~/Code/datamol-org/molfeat-core/molfeat/trans/base.py:376</span>, in <span class="ansi-cyan-fg">MoleculeTransformer.__call__</span><span class="ansi-blue-fg">(self, mols, enforce_dtype, ignore_errors, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    351</span> def __call__(
-<span class="ansi-green-intense-fg ansi-bold">    352</span>     self,
-<span class="ansi-green-intense-fg ansi-bold">    353</span>     mols: List[Union[dm.Mol, str]],
-<span class="ansi-green-fg">   (...)</span>
-<span class="ansi-green-intense-fg ansi-bold">    356</span>     **kwargs,
-<span class="ansi-green-intense-fg ansi-bold">    357</span> ):
-<span class="ansi-green-intense-fg ansi-bold">    358</span>     r"""
-<span class="ansi-green-intense-fg ansi-bold">    359</span>     Calculate features for molecules. Using __call__, instead of transform.
-<span class="ansi-green-intense-fg ansi-bold">    360</span>     If ignore_error is True, a list of features and valid ids are returned.
-<span class="ansi-green-fg">   (...)</span>
-<span class="ansi-green-intense-fg ansi-bold">    374</span> 
-<span class="ansi-green-intense-fg ansi-bold">    375</span>     """
-<span class="ansi-green-fg">--&gt; 376</span>     features = self.transform(mols, ignore_errors=ignore_errors, enforce_dtype=False, **kwargs)
-<span class="ansi-green-intense-fg ansi-bold">    377</span>     ids = np.arange(len(features))
-<span class="ansi-green-intense-fg ansi-bold">    378</span>     if ignore_errors:
-
-File <span class="ansi-green-fg">~/.miniconda/envs/molfeat-dev/lib/python3.10/site-packages/sklearn/utils/_set_output.py:140</span>, in <span class="ansi-cyan-fg">_wrap_method_output.&lt;locals&gt;.wrapped</span><span class="ansi-blue-fg">(self, X, *args, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    138</span> @wraps(f)
-<span class="ansi-green-intense-fg ansi-bold">    139</span> def wrapped(self, X, *args, **kwargs):
-<span class="ansi-green-fg">--&gt; 140</span>     data_to_wrap = f(self, X, *args, **kwargs)
-<span class="ansi-green-intense-fg ansi-bold">    141</span>     if isinstance(data_to_wrap, tuple):
-<span class="ansi-green-intense-fg ansi-bold">    142</span>         # only wrap the first output for cross decomposition
-<span class="ansi-green-intense-fg ansi-bold">    143</span>         return (
-<span class="ansi-green-intense-fg ansi-bold">    144</span>             _wrap_data_with_container(method, data_to_wrap[0], X, self),
-<span class="ansi-green-intense-fg ansi-bold">    145</span>             *data_to_wrap[1:],
-<span class="ansi-green-intense-fg ansi-bold">    146</span>         )
-
-File <span class="ansi-green-fg">~/Code/datamol-org/molfeat-core/molfeat/trans/pretrained/base.py:208</span>, in <span class="ansi-cyan-fg">PretrainedMolTransformer.transform</span><span class="ansi-blue-fg">(self, smiles, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    206</span> if len(mols) &gt; 0:
-<span class="ansi-green-intense-fg ansi-bold">    207</span>     converted_mols = self._convert(mols, **kwargs)
-<span class="ansi-green-fg">--&gt; 208</span>     out = self._embed(converted_mols, **kwargs)
-<span class="ansi-green-intense-fg ansi-bold">    210</span>     if not isinstance(out, list):
-<span class="ansi-green-intense-fg ansi-bold">    211</span>         out = list(out)
-
-File <span class="ansi-green-fg">~/Code/datamol-org/molfeat-core/molfeat/trans/pretrained/dgl_pretrained.py:221</span>, in <span class="ansi-cyan-fg">PretrainedDGLTransformer._embed</span><span class="ansi-blue-fg">(self, smiles, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    219</span> def _embed(self, smiles: List[str], **kwargs):
-<span class="ansi-green-intense-fg ansi-bold">    220</span>     """Embed molecules into a latent space"""
-<span class="ansi-green-fg">--&gt; 221</span>     self._preload()
-<span class="ansi-green-intense-fg ansi-bold">    222</span>     dataset, successes = self.graph_featurizer(smiles, kind=self.kind)
-<span class="ansi-green-intense-fg ansi-bold">    223</span>     if self.kind in DGLModel.available_models(query="^jtvae"):
-
-File <span class="ansi-green-fg">~/Code/datamol-org/molfeat-core/molfeat/trans/pretrained/base.py:90</span>, in <span class="ansi-cyan-fg">PretrainedMolTransformer._preload</span><span class="ansi-blue-fg">(self)</span>
-<span class="ansi-green-intense-fg ansi-bold">     88</span> """Preload the pretrained model for later queries"""
-<span class="ansi-green-intense-fg ansi-bold">     89</span> if self.featurizer is not None and isinstance(self.featurizer, PretrainedModel):
-<span class="ansi-green-fg">---&gt; 90</span>     self.featurizer = self.featurizer.load()
-<span class="ansi-green-intense-fg ansi-bold">     91</span>     self.preload = True
-
-File <span class="ansi-green-fg">~/Code/datamol-org/molfeat-core/molfeat/trans/pretrained/dgl_pretrained.py:85</span>, in <span class="ansi-cyan-fg">DGLModel.load</span><span class="ansi-blue-fg">(self)</span>
-<span class="ansi-green-intense-fg ansi-bold">     83</span> if self._model is not None:
-<span class="ansi-green-intense-fg ansi-bold">     84</span>     return self._model
-<span class="ansi-green-fg">---&gt; 85</span> download_output_dir = self._artifact_load(
-<span class="ansi-green-intense-fg ansi-bold">     86</span>     name=self.name, download_path=self.cache_path, store=self.store
-<span class="ansi-green-intense-fg ansi-bold">     87</span> )
-<span class="ansi-green-intense-fg ansi-bold">     88</span> model_path = dm.fs.join(download_output_dir, self.store.MODEL_PATH_NAME)
-<span class="ansi-green-intense-fg ansi-bold">     89</span> with fsspec.open(model_path, "rb") as f:
-
-File <span class="ansi-green-fg">~/Code/datamol-org/molfeat-core/molfeat/store/loader.py:81</span>, in <span class="ansi-cyan-fg">PretrainedStoreModel._artifact_load</span><span class="ansi-blue-fg">(cls, name, download_path, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">     79</span> if not dm.fs.exists(download_path):
-<span class="ansi-green-intense-fg ansi-bold">     80</span>     cls._load_or_raise.cache_clear()
-<span class="ansi-green-fg">---&gt; 81</span> return cls._load_or_raise(name, download_path, **kwargs)
-
-File <span class="ansi-green-fg">~/Code/datamol-org/molfeat-core/molfeat/store/loader.py:103</span>, in <span class="ansi-cyan-fg">PretrainedStoreModel._load_or_raise</span><span class="ansi-blue-fg">(cls, name, download_path, store, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    101</span> except Exception as e:
-<span class="ansi-green-intense-fg ansi-bold">    102</span>     mess = f"Can't retrieve model {name} from the store !"
-<span class="ansi-green-fg">--&gt; 103</span>     raise ModelStoreError(mess)
-<span class="ansi-green-intense-fg ansi-bold">    104</span> return artifact_dir
-
-<span class="ansi-red-fg">ModelStoreError</span>: Can't retrieve model tmp_gin_supervised_infomax from the store !</pre>
 </div>
 </div>
 </div>
@@ -3614,7 +3833,7 @@ File <span class="ansi-green-fg">~/Code/datamol-org/molfeat-core/molfeat/store/l
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-25">
@@ -3643,7 +3862,7 @@ echo "export MOLFEAT_MODEL_STORE_BUCKET=$1" &gt; .env</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-26">
@@ -3676,13 +3895,13 @@ model = PretrainedDGLTransformer(kind="tmp_gin_supervised_infomax", dtype=float)
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-27">
@@ -3702,18 +3921,6 @@ model = PretrainedDGLTransformer(kind="tmp_gin_supervised_infomax", dtype=float)
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>'/var/folders/zt/ck4vrp4n4vsb0v16tnlh9h9m0000gn/T/tmp5k07n15a'</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
@@ -3725,13 +3932,13 @@ model = PretrainedDGLTransformer(kind="tmp_gin_supervised_infomax", dtype=float)
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-28">
@@ -3747,18 +3954,6 @@ model = PretrainedDGLTransformer(kind="tmp_gin_supervised_infomax", dtype=float)
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">model</span><span class="p">([</span><span class="s2">"CCO"</span><span class="p">,</span> <span class="s2">"CCN"</span><span class="p">])</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-28">model(["CCO", "CCN"]).shape</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>(2, 300)</pre>
 </div>
 </div>
 </div>
@@ -3807,7 +4002,7 @@ It's recommended to inherit from <code>PretrainedStoreModel</code> if you have a
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-29">
@@ -3880,7 +4075,7 @@ class AstroPretrainedStoreModel(PretrainedStoreModel):
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-30">
@@ -3927,13 +4122,13 @@ class MyAstroChemFeaturizer(PretrainedMolTransformer):
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [38]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-31">
@@ -4001,45 +4196,26 @@ info = ModelInfo(
 usage_string = """
 import torch
 import datamol as dm
-# <how if="" import="" myastrochemfeaturizer="" needed="" to="">
+# &lt;how to import MyAstroChemFeaturizer if needed&gt;
 transformer = MyAstroChemFeaturizer(dtype=torch.float)
 transformer(dm.freesolv()["smiles"][:10]).shape
 """
 info.set_usage(usage_string)
 
 # we register the model, this is a simple model that we can just pickle to the store bucket.
-temp_model_store.register(info, model=model)</how></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  0%|          | 0.00/509k [00:00&lt;?, ?B/s]</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre><span class="ansi-green-fg">2023-05-19 15:16:59.293</span> | <span class="ansi-bold">INFO    </span> | <span class="ansi-cyan-fg">molfeat.store.modelstore</span>:<span class="ansi-cyan-fg">register</span>:<span class="ansi-cyan-fg">150</span> - <span class="ansi-bold">Successfuly registered model astrochem_embedding !</span>
-</pre>
+temp_model_store.register(info, model=model)</div>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [39]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-32">
@@ -4059,33 +4235,14 @@ temp_model_store.register(info, model=model)</how></div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
-import torch
-import datamol as dm
-# &lt;how to import MyAstroChemFeaturizer if needed&gt;
-transformer = MyAstroChemFeaturizer(dtype=torch.float)
-transformer(dm.freesolv()["smiles"][:10]).shape
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [40]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-33">
@@ -4109,30 +4266,6 @@ transformer(dm.freesolv()["smiles"][:10]).shape</div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  0%|          | 0.00/882 [00:00&lt;?, ?B/s]</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  0%|          | 0.00/509k [00:00&lt;?, ?B/s]</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[40]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>torch.Size([10, 32])</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
@@ -4140,7 +4273,7 @@ transformer(dm.freesolv()["smiles"][:10]).shape</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [41]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-34">
@@ -4169,7 +4302,7 @@ temp_dir.cleanup()</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [42]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-35">
@@ -4244,7 +4377,7 @@ temp_dir.cleanup()</div>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright 2020 - 2023 datamol.io
+      Copyright 2020 - 2026 datamol.io
     </div>
   
   
@@ -4267,10 +4400,11 @@ temp_dir.cleanup()</div>
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.top"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.top"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../assets/js/google-analytics.js"></script>
       

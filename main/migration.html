@@ -10,11 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://molfeat-docs.datamol.io/main/index.html">
+        <link rel="canonical" href="https://molfeat-docs.datamol.io/main/migration.html">
       
       
+        <link rel="prev" href="developers/register-plugin.html">
       
-        <link rel="next" href="usage.html">
+      
+        <link rel="next" href="releasing.html">
       
       
         
@@ -25,7 +27,7 @@
     
     
       
-        <title>What is molfeat? - molfeat</title>
+        <title>Migrating to 1.x - molfeat</title>
       
     
     
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#what-is-molfeat" class="md-skip">
+        <a href="#migrating-to-molfeat-1x" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              What is molfeat?
+              Migrating to 1.x
             
           </span>
         </div>
@@ -194,12 +196,10 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="index.html" class="md-tabs__link">
           
   
@@ -236,10 +236,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="developers/contribute.html" class="md-tabs__link">
           
   
@@ -340,29 +342,24 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
         
           
-          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
             
   
   
@@ -380,7 +377,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -395,37 +392,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    What is molfeat?
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="index.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
         
   
   
@@ -441,109 +411,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#updates" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Updates
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#installing-molfeat" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing Molfeat
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing-plugins" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing Plugins
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#optional-dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Optional dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#compatibility" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Compatibility
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-cite" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How to cite
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1183,24 +1050,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -1218,7 +1090,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1317,10 +1189,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="migration.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrating to 1.x
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="migration.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1336,6 +1235,81 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#supported-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported runtime
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-dependency-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional dependency changes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#observable-behavior-corrections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observable behavior corrections
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Serialization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ci-portability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI portability
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2053,10 +2027,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#updates" class="md-nav__link">
+  <a href="#supported-runtime" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Updates
+        Supported runtime
       
     </span>
   </a>
@@ -2064,71 +2038,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
+  <a href="#optional-dependency-changes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installation
+        Optional dependency changes
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#installing-molfeat" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing Molfeat
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing-plugins" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing Plugins
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#optional-dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Optional dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#compatibility" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Compatibility
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-cite" class="md-nav__link">
+  <a href="#observable-behavior-corrections" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How to cite
+        Observable behavior corrections
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Serialization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ci-portability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI portability
       
     </span>
   </a>
@@ -2155,81 +2101,97 @@
   
 
 
-<h1 id="what-is-molfeat">What is molfeat ?<a class="headerlink" href="#what-is-molfeat" title="Permanent link">&para;</a></h1>
-<p>Molfeat is a hub of molecular featurizers. It supports a wide variety of out-of-the-box molecular featurizers and can be easily extended to include your own custom featurizers.</p>
+<h1 id="migrating-to-molfeat-1x">Migrating to Molfeat 1.x<a class="headerlink" href="#migrating-to-molfeat-1x" title="Permanent link">&para;</a></h1>
+<p>Molfeat 1.x is a deliberate platform reset. It keeps the established
+featurization APIs while moving the supported environment to versions that are
+actively maintained and available on current Python releases.</p>
+<h2 id="supported-runtime">Supported runtime<a class="headerlink" href="#supported-runtime" title="Permanent link">&para;</a></h2>
 <ul>
-<li>🚀 Fast, with a simple and efficient API.</li>
-<li>🔄 Unify pre-trained molecular embeddings and hand-crafted featurizers in a single package.</li>
-<li>➕ Easily add your own featurizers through plugins.</li>
-<li>📈 Benefit from increased performance through a trouble-free caching system.</li>
+<li>Python 3.11 through 3.14</li>
+<li>RDKit 2024.09 or newer</li>
+<li>PyTorch 2.5 or newer, except on macOS Intel where the final available 2.2
+  wheel series remains supported</li>
+<li>NumPy 1.26 or newer; macOS Intel requires NumPy below 2 for PyTorch 2.2</li>
+<li>pandas 2.2 or newer</li>
+<li>scikit-learn 1.6 or newer</li>
+<li>Transformers 4.57 through 5.x for the <code>transformer</code> extra, including
+  co-installation with SAFE's Transformers 5 model stack outside Mac Intel.
+  Mac Intel uses Transformers 4.57 with PyTorch 2.2 and Python 3.11 or 3.12;
+  use safetensors checkpoints because current Transformers blocks pickle-based
+  weights on PyTorch below 2.6. SAFE's notation core remains compatible there,
+  but its model/training extras require a newer PyTorch build.</li>
 </ul>
-<p>Visit our website at <a href="https://molfeat.datamol.io">https://molfeat.datamol.io</a>.</p>
-<h2 id="updates">Updates<a class="headerlink" href="#updates" title="Permanent link">&para;</a></h2>
-<p>The upcoming 1.x release focuses on small molecules, replaces legacy DGL and
-protein adapters, and adds CheMeleon and Mol-JEPA integrations. See the
-<a href="https://github.com/datamol-io/molfeat/blob/dev/CHANGELOG.md">changelog</a> and
-<a href="migration.html">migration guide</a> for changes, model licensing and upgrade details.
-These changes are not yet a published release.</p>
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<h3 id="installing-molfeat">Installing Molfeat<a class="headerlink" href="#installing-molfeat" title="Permanent link">&para;</a></h3>
-<p>Add Molfeat to a uv-managed project:</p>
-<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>add<span class="w"> </span>molfeat
+<p>Create a fresh environment rather than upgrading a long-lived 0.x environment
+in place:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+.<span class="w"> </span>.venv/bin/activate
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"molfeat[transformer,pyg]"</span>
 </code></pre></div>
-<p>Pip and conda-forge remain supported: <code>python -m pip install molfeat</code> or
-<code>mamba install -c conda-forge molfeat</code>.</p>
-<p>The next major release requires Python 3.11 or newer, RDKit 2024.09 or newer,
-and PyTorch 2.5 or newer. macOS Intel uses the final PyTorch 2.2 wheel series
-with NumPy 1.26 and Transformers 4.57, and is tested on Python 3.12.
-See the <a href="migration.html">migration guide</a> for checkpoint-format restrictions and
-co-installation with SAFE.</p>
-<h3 id="installing-plugins">Installing Plugins<a class="headerlink" href="#installing-plugins" title="Permanent link">&para;</a></h3>
-<p>The functionality of molfeat can be extended through plugins. The use of a plugin system ensures that the core package remains easy to install and as light as possible, while making it easy to extend its functionality with plug-and-play components. Additionally, it ensures that plugins can be developed independently from the core package, removing the bottleneck of a central party that reviews and approves new plugins. Consult the molfeat documentation for more details on how to <a href="developers/create-plugin.html">create</a> your own plugins.</p>
-<p>However, this does imply that the installation of a plugin is plugin-dependent: please consult the relevant documentation to learn more.</p>
-<h3 id="optional-dependencies">Optional dependencies<a class="headerlink" href="#optional-dependencies" title="Permanent link">&para;</a></h3>
-<p>Not all featurizers in Molfeat core package are supported by default. Some featurizers require additional dependencies. If you try to use a featurizer that requires additional dependencies, Molfeat will raise an error and tell you which dependencies are missing and how to install them.</p>
+<p>In PowerShell, activate the environment with
+<code>.venv\Scripts\Activate.ps1</code>; the remaining commands are unchanged.</p>
+<h2 id="optional-dependency-changes">Optional dependency changes<a class="headerlink" href="#optional-dependency-changes" title="Permanent link">&para;</a></h2>
+<p>SELFIES conversion requires <code>molfeat[selfies]</code>, also included in <code>transformer</code>
+and <code>all</code>. It no longer relies on Datamol installing SELFIES transitively.
+Missing optional dependencies raise <code>ImportError</code>; invalid molecular inputs
+still return <code>None</code> from <code>SmilesConverter</code>.</p>
+<p><code>molfeat[all]</code> now means all maintained extras compatible with the current
+interpreter. DGL, DGLLife, their atom/bond calculators, DGL graph and tree
+transformers, pretrained DGL models, and the legacy Graphormer adapter have
+been removed. Their old binary and build constraints prevent a coherent modern
+Python, PyTorch and cross-platform matrix. Use <code>molfeat[pyg]</code> for graph tensors
+or one of the maintained foundation-model adapters.</p>
+<p>Published DGL and Graphormer cards remain discoverable in the historical model
+store, but Molfeat now raises an explicit error instead of generating import
+code for APIs that no longer exist.</p>
+<p>The default installation no longer pulls in cloud filesystem clients,
+Matplotlib, Mordred, HDF5 or Parquet engines. Install only the capability you
+need with <code>molfeat[cloud]</code>, <code>molfeat[viz]</code>, <code>molfeat[mordred]</code> or
+<code>molfeat[cache]</code>. HTTP access to Molfeat's public model store remains part of
+the core installation. <code>.env</code> files are no longer loaded as an import side
+effect; export <code>MOLFEAT_MODEL_STORE_ROOT</code> explicitly or load a dotenv file in
+the application before constructing <code>ModelStore</code>.</p>
+<p>Molfeat 1.x is now explicitly scoped to small molecules. The
+<code>molfeat.trans.struct</code> protein adapters (<code>ESMProteinFingerprint</code> and
+<code>ProtBioFingerprint</code>) and their plugin entry-point group have been removed.
+Protein workflows should use a dedicated protein-representation package rather
+than pulling unrelated model stacks into Molfeat.</p>
+<h2 id="observable-behavior-corrections">Observable behavior corrections<a class="headerlink" href="#observable-behavior-corrections" title="Permanent link">&para;</a></h2>
 <ul>
-<li>To install Hugging Face Transformers support: <code>python -m pip install "molfeat[transformer]"</code>.</li>
-<li>To convert SELFIES without Transformers: <code>python -m pip install "molfeat[selfies]"</code>.</li>
-<li>To install PyTorch Geometric support: <code>python -m pip install "molfeat[pyg]"</code>.</li>
-<li>To install FCD support: <code>python -m pip install "molfeat[fcd]"</code>.</li>
-<li>To install HDF5 and Parquet cache support: <code>python -m pip install "molfeat[cache]"</code>.</li>
-<li>To install S3 and Google Cloud model stores: <code>python -m pip install "molfeat[cloud]"</code>.</li>
-<li>To install Mordred descriptors: <code>python -m pip install "molfeat[mordred]"</code>.</li>
-<li>To install <code>map4</code>: see <a href="https://github.com/reymond-group/map4">https://github.com/reymond-group/map4</a>.</li>
+<li>Creating <code>ModelStore</code> or a Hugging Face transformer no longer fetches the
+  remote model index. The first operation that needs discovery loads it.</li>
+<li>HTTP model directories download correctly with the required Datamol 0.13 series,
+  including nested files. Directory checksums ignore folders and stream file
+  contents while preserving the existing sorted-content hash format.</li>
+<li>InChI decoding returns SMILES, converting the molecule returned by Datamol.
+  Previously, calling a string method on that molecule silently returned <code>None</code>.</li>
+<li><code>Pharmacophore3D(..., raw=True)</code> now returns a sorted one-dimensional integer
+  array. Earlier releases returned a zero-dimensional object array containing a
+  Python set.</li>
+<li>Pooling masks consistently use true values for elements included in max, mean
+  and sum pooling. Max pooling previously inverted this meaning and failed on
+  current PyTorch because it passed a floating-point mask to <code>masked_fill</code>.</li>
+<li>FCFP fingerprints retain the same feature invariants across supported RDKit
+  releases, and atom/bond calculations use the current valence API.</li>
+<li>Scikit-learn calls use <code>ensure_all_finite</code>, replacing the removed
+  <code>force_all_finite</code> keyword.</li>
+<li>General RDKit fingerprint folding and conformer alignment now delegate to
+  Datamol. The Molfeat compatibility functions remain available with a
+  deprecation warning and preserve their previous signatures and floating-point
+  fingerprint output. New code should call Datamol directly.</li>
 </ul>
-<p><code>python -m pip install "molfeat[all]"</code> installs every maintained optional
-dependency compatible with the current interpreter. DGL, DGLLife and the
-legacy Graphormer adapter have been removed because they conflict with the
-supported modern stack. PyTorch Geometric is the maintained graph backend.
-Protein featurizers have also been removed so Molfeat 1.x has a precise
-small-molecule scope. See the <a href="migration.html">migration guide</a> for details.</p>
-<h3 id="compatibility">Compatibility<a class="headerlink" href="#compatibility" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Molfeat</th>
-<th>Python</th>
-<th>RDKit</th>
-<th>PyTorch</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>1.x</code> (development)</td>
-<td><code>3.11–3.14</code></td>
-<td><code>2024.09+</code></td>
-<td><code>2.5+</code> (<code>2.2.x</code> on macOS Intel)</td>
-</tr>
-<tr>
-<td><code>0.x</code></td>
-<td>See the release metadata</td>
-<td>See the release metadata</td>
-<td>See the release metadata</td>
-</tr>
-</tbody>
-</table>
-<h2 id="how-to-cite">How to cite<a class="headerlink" href="#how-to-cite" title="Permanent link">&para;</a></h2>
-<p>Please cite Molfeat if you use it in your research: <a href="https://zenodo.org/badge/latestdoi/613548667"><img alt="DOI" src="https://zenodo.org/badge/613548667.svg" /></a>.</p>
+<h2 id="serialization">Serialization<a class="headerlink" href="#serialization" title="Permanent link">&para;</a></h2>
+<p>The default values included in serialized transformer state now match the
+constructor defaults. Existing state files remain supported where their
+calculator and optional dependencies are available. Re-save important models
+after validating them in 1.x so future environments record the current package
+metadata.</p>
+<h2 id="ci-portability">CI portability<a class="headerlink" href="#ci-portability" title="Permanent link">&para;</a></h2>
+<p>The dependency-light core suite runs on Linux x86-64, Windows x86-64, macOS
+Apple Silicon and macOS Intel. Published-model and PyG integrations have a
+separate Linux lane because they download external artifacts or depend on
+framework-specific binary wheels. Platform-neutral adapters and imports remain
+covered by the four-platform core matrix.</p>
 
 
 
