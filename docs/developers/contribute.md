@@ -101,6 +101,6 @@ By documenting your process in the ETL notebook, you help ensure that the regist
 
 Run the `release` action manually from `main`. It validates the selected version,
 reruns tests with published dependencies, checks both installed distributions,
-and uses `PYPI_API_TOKEN` for the upload. GitHub Releases and versioned
+and uses PyPI Trusted Publishing for the upload. GitHub Releases and versioned
 documentation are created only after publication succeeds. See the
 [release guide](../releasing.md) for dry runs, prereleases and conda-forge updates.
