@@ -17,7 +17,8 @@ for earlier release notes.
 
 ### Changed
 
-- Require Python 3.11+, RDKit 2024.09+, NumPy 1.26+ and scikit-learn 1.6+.
+- Require Python 3.11+, RDKit 2024.09+, NumPy 1.26+, scikit-learn 1.6+ and
+  Datamol 0.13.0+.
   PyTorch 2.5+ is used on maintained platforms; macOS Intel remains on the
   final available 2.2 wheel series.
 - Support the current Transformers 5 and PyTorch Geometric stacks, including a

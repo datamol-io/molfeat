@@ -45,7 +45,7 @@ dependencies = [
     "scipy>=1.11",
     "torch>=2.2.2,<2.3; platform_system == 'Darwin' and platform_machine == 'x86_64'",
     "torch>=2.5; platform_system != 'Darwin' or platform_machine != 'x86_64'",
-    "datamol>=0.12.5",
+    "datamol>=0.13.0",
     "pyyaml>=6",
     "platformdirs>=4",
     "pydantic>=2.7",

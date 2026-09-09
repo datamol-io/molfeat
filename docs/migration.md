@@ -69,7 +69,7 @@ than pulling unrelated model stacks into Molfeat.
 
 - Creating `ModelStore` or a Hugging Face transformer no longer fetches the
   remote model index. The first operation that needs discovery loads it.
-- HTTP model directories download correctly with published Datamol 0.12.5,
+- HTTP model directories download correctly with the required Datamol 0.13 series,
   including nested files. Directory checksums ignore folders and stream file
   contents while preserving the existing sorted-content hash format.
 - InChI decoding returns SMILES, converting the molecule returned by Datamol.

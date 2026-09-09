@@ -48,7 +48,7 @@ foundation-model integrations including CheMeleon and Mol-JEPA. Model loading
 is lazy, external checkpoint licences are explicit, and official
 representations are covered by integration tests.
 
-HTTP model downloads work with published Datamol 0.12.5; they no longer require
+HTTP model downloads use the required Datamol 0.13 series; they no longer require
 an unreleased dependency. SELFIES support is explicit, and InChI decoding now
 returns SMILES instead of silently failing.
 

@@ -12,8 +12,8 @@ GitHub Release does not upload a package to PyPI.
 3. Confirm that the repository secret `PYPI_API_TOKEN` contains a valid PyPI
    token authorized for `molfeat`. The workflow checks that the secret is
    present but cannot validate its scope without contacting PyPI.
-4. Confirm tests pass with published dependencies. Datamol 0.12.5 is sufficient;
-   Molfeat does not need to wait for the Datamol maintenance release.
+4. Confirm tests pass with published dependencies. Datamol 0.13.0 or newer is
+   required and is available from PyPI.
 
 ## Run the release action
 
