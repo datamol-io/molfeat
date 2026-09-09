@@ -20,8 +20,6 @@ from molfeat.calc._atom_bond_features import bond_direction_one_hot
 from molfeat.calc._atom_bond_features import bond_stereo_one_hot
 from molfeat.calc._atom_bond_features import pairwise_ring_membership
 from molfeat.calc._atom_bond_features import pairwise_2D_dist
-from molfeat.calc._atom_bond_features import pairwise_bond_indicator
-from molfeat.calc._atom_bond_features import pairwise_dist_indicator
 from molfeat.utils import datatype
 from molfeat.utils.commons import concat_dict
 from molfeat.utils.commons import hex_to_fn
@@ -399,59 +397,3 @@ class EdgeMatCalculator(BondCalculator):
         if dtype is not None:
             edge_matrix = datatype.cast(edge_matrix, dtype=dtype)
         return {self.name: edge_matrix}
-
-
-class DGLCanonicalBondCalculator(BondCalculator):
-    DEFAULT_FEATURIZER = {
-        "bond_type_one_hot": bond_type_one_hot,
-        "bond_is_conjugated": bond_is_conjugated,
-        "bond_is_in_ring": bond_is_in_ring,
-        "bond_stereo_one_hot": bond_stereo_one_hot,
-    }
-
-    def _concat(self, data_dict: Dict[str, Iterable]):
-        """Concatenate the data into a single value
-
-        Args:
-            data_dict: mapping of feature names to tensor/arrays
-        Returns:
-            concatenated_dict: a dict with a single key where all array have been concatenated
-        """
-        return concat_dict(data_dict, new_name=self.name, order=list(self.featurizer_funcs.keys()))
-
-
-class DGLWeaveEdgeCalculator(EdgeMatCalculator):
-    """Edge featurizer used by WeaveNets
-
-    The edge featurization is introduced in `Molecular Graph Convolutions:
-    Moving Beyond Fingerprints <https://arxiv.org/abs/1603.00856>`__.
-
-    This featurization is performed for a complete graph of atoms with self loops added,
-    which considers the following default:
-
-    * Number of bonds between each pairs of atoms
-    * One-hot encoding of bond type if a bond exists between a pair of atoms
-    * Whether a pair of atoms belongs to a same ring
-
-    """
-
-    DEFAULT_FEATURIZER = {}
-    DEFAULT_PAIRWISE_FEATURIZER = {
-        "pairwise_dist_indicator": pairwise_dist_indicator,
-        "pairwise_bond_indicator": pairwise_bond_indicator,
-        "pairwise_ring_membership": pairwise_ring_membership,
-    }
-
-    def _concat(self, data_dict: Dict[str, Iterable]):
-        """Concatenate the data into a single value
-
-        Args:
-            data_dict: mapping of feature names to tensor/arrays
-        Returns:
-            concatenated_dict: a dict with a single key where all array have been concatenated
-        """
-
-        # To reproduce DGLDefault, we need to keep the order of dict insertion
-        return concat_dict(
-            data_dict, new_name=self.name, order=list(self.pairwise_atom_funcs.keys())
-        )

@@ -14,7 +14,6 @@ import pathlib
 import uuid
 import shelve
 import platformdirs
-import h5py
 import os
 import fsspec
 import numpy as np
@@ -30,6 +29,17 @@ import pandas.errors
 from functools import partial
 from molfeat.utils import commons
 from molfeat.utils import datatype
+from molfeat.utils import requires
+
+
+def _import_h5py():
+    if not requires.check("h5py"):
+        raise ImportError(
+            'HDF5 caches require the cache extra: python -m pip install "molfeat[cache]"'
+        )
+    import h5py
+
+    return h5py
 
 
 class MolToKey:
@@ -440,7 +450,8 @@ class MPDataCache(DataCache):
 
     def _initialize_cache(self):
         """Initialize empty cache using a shared dict"""
-        manager = mp.Manager()  # this might not be a great idea to initialize everytime...
+        # The manager owns the shared dictionary used by worker processes.
+        manager = mp.Manager()
         self.cache = manager.dict()
 
 
@@ -526,6 +537,7 @@ class FileCache(_Cache):
         file_exists = dm.utils.fs.exists(self.cache_file)
 
         if self.file_type in ["hdf5", "h5"]:
+            h5py = _import_h5py()
             f = fsspec.open("simplecache::" + self.cache_file, "rb+").open()
             self.cache = h5py.File(f, "r+")
 
@@ -633,6 +645,7 @@ class FileCache(_Cache):
                 df.to_parquet(filepath, index=False, **kwargs)
 
         elif file_type in ["hdf5", "h5"]:
+            h5py = _import_h5py()
             with fsspec.open(filepath, "wb") as IN:
                 with h5py.File(IN, "w") as f:
                     for k, v in self.items():

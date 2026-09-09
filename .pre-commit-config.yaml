@@ -1,21 +1,11 @@
 repos:
-  - repo: https://github.com/psf/black
-    rev: "24.8.0" # run `pre-commit autoupdate`
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 26.5.1
     hooks:
       - id: black
-        name: black
-        entry: black
-        args:
-          - --check
-        language: system
-        types: [python]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: "v0.5.7"
+    rev: v0.16.5
     hooks:
-      - id: ruff
-        name: ruff
-        entry: ruff
-        args: ["check"]
-        language: system
-        types: [python]
+      - id: ruff-check
+        types_or: [python, pyi]

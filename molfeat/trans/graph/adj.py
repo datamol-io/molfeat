@@ -24,13 +24,6 @@ from molfeat.utils.commons import pack_graph
 from molfeat.calc.atom import AtomCalculator
 from molfeat.calc.bond import EdgeMatCalculator
 
-if requires.check("dgl"):
-    import dgl
-
-if requires.check("dgllife"):
-    from dgllife import utils as dgllife_utils
-
-
 if requires.check("torch_geometric"):
     from torch_geometric.data import Data
     from torch_geometric.loader.dataloader import Collater
@@ -47,7 +40,7 @@ else:
 
 class GraphTransformer(MoleculeTransformer):
     """
-    Base class for all graph transformers including DGL
+    Base class for molecular graph transformers.
     """
 
     def __init__(
@@ -465,212 +458,6 @@ class DistGraphTransformer3D(AdjGraphTransformer):
         return Get3DDistanceMatrix(mol)
 
 
-class DGLGraphTransformer(GraphTransformer):
-    r"""
-    Transforms a molecule into a molecular graph representation formed by an
-    adjacency matrix of atoms and a set of features for each atom (and potentially bond).
-    """
-
-    def __init__(
-        self,
-        atom_featurizer: Optional[Callable] = None,
-        bond_featurizer: Optional[Callable] = None,
-        self_loop: bool = False,
-        explicit_hydrogens: bool = False,
-        canonical_atom_order: bool = True,
-        complete_graph: bool = False,
-        num_virtual_nodes: int = 0,
-        n_jobs: int = 1,
-        verbose: bool = False,
-        dtype: Optional[Callable] = None,
-        **params,
-    ):
-        """
-        Adjacency graph transformer
-
-        Args:
-           atom_featurizer: atom featurizer to use
-           bond_featurizer: atom featurizer to use
-           self_loop: whether to use self loop or not
-           explicit_hydrogens: Whether to use explicit hydrogen in preprocessing of the input molecule
-           canonical_atom_order: Whether to use a canonical ordering of the atoms
-           complete_graph: Whether to use a complete graph constructor or not
-           num_virtual_nodes: number of virtual nodes to add
-           n_jobs: Number of job to run in parallel. Defaults to 1.
-           verbose: Verbosity level. Defaults to True.
-           dtype: Output data type. Defaults to None, where numpy arrays are returned.
-        """
-
-        super().__init__(
-            atom_featurizer=atom_featurizer,
-            bond_featurizer=bond_featurizer,
-            n_jobs=n_jobs,
-            self_loop=self_loop,
-            num_virtual_nodes=num_virtual_nodes,
-            complete_graph=complete_graph,
-            verbose=verbose,
-            dtype=dtype,
-            canonical_atom_order=canonical_atom_order,
-            explicit_hydrogens=explicit_hydrogens,
-            **params,
-        )
-
-        if not requires.check("dgllife"):
-            logger.error(
-                "Cannot find dgllife. It's required for some features. Please install it first !"
-            )
-        if not requires.check("dgl"):
-            raise ValueError("Cannot find dgl, please install it first !")
-        if self.dtype is not None and not datatype.is_dtype_tensor(self.dtype):
-            raise ValueError("DGL featurizer only supports torch tensors currently")
-
-    def auto_self_loop(self):
-        """Patch the featurizer to auto support self loop based on the bond featurizer characteristics"""
-        super().auto_self_loop()
-        if isinstance(self.bond_featurizer, EdgeMatCalculator):
-            self.self_loop = True
-
-    def get_collate_fn(self, *args, **kwargs):
-        """Return DGL collate function for a batch of molecular graph"""
-        return self._dgl_collate
-
-    @staticmethod
-    def _dgl_collate(batch):
-        """
-        Batch of samples to be used with the featurizer. A sample of the batch is expected to
-        be of the form (graph, label) or simply a graph.
-
-        Args:
-         batch: list
-            batch of samples.
-
-        returns:
-            Batched lists of graphs and labels
-        """
-        if isinstance(batch[0], (list, tuple)):
-            graphs, labels = map(list, zip(*batch))
-            batched_graph = dgl.batch(graphs)
-
-            if torch.is_tensor(labels[0]):
-                return batched_graph, torch.stack(labels)
-            else:
-                return batched_graph, labels
-
-        # Otherwise we assume the batch is composed of single graphs.
-        return dgl.batch(batch)
-
-    def _graph_featurizer(self, mol: dm.Mol):
-        """Convert a molecule to a DGL graph.
-
-        This only supports the bigraph and not any virtual nodes or complete graph.
-
-        Args:
-            mol (dm.Mol): molecule to transform into features
-
-        Returns:
-            graph (dgl.DGLGraph): graph built with dgl
-        """
-
-        n_atoms = mol.GetNumAtoms()
-        num_bonds = mol.GetNumBonds()
-        graph = dgl.graph()
-        graph.add_nodes(n_atoms)
-        bond_src = []
-        bond_dst = []
-        for i in range(num_bonds):
-            bond = mol.GetBondWithIdx(i)
-            begin_idx = bond.GetBeginAtom().GetIdx()
-            end_idx = bond.GetEndAtom().GetIdx()
-            bond_src.append(begin_idx)
-            bond_dst.append(end_idx)
-            # set up the reverse direction
-            bond_src.append(end_idx)
-            bond_dst.append(begin_idx)
-
-        if self.self_loop:
-            nodes = graph.nodes().tolist()
-            bond_src.extend(nodes)
-            bond_dst.extend(nodes)
-
-        graph.add_edges(bond_src, bond_dst)
-        return graph
-
-    @property
-    def atom_dim(self):
-        return super(DGLGraphTransformer, self).atom_dim + int(self.num_virtual_nodes > 0)
-
-    @property
-    def bond_dim(self):
-        return super(DGLGraphTransformer, self).bond_dim + int(self.num_virtual_nodes > 0)
-
-    def _transform(self, mol: dm.Mol):
-        r"""
-        Transforms a molecule into an Adjacency graph with a set of atom and bond features
-
-        Args:
-            mol (dm.Mol): molecule to transform into features
-
-        Returns
-            graph (dgl.DGLGraph): a dgl graph containing atoms and bond data
-
-        """
-        if mol is None:
-            return None
-
-        graph = None
-        if requires.check("dgllife"):
-            graph_featurizer = dgllife_utils.mol_to_bigraph
-
-            if self.complete_graph:
-                graph_featurizer = dgllife_utils.mol_to_complete_graph
-            try:
-                graph = graph_featurizer(
-                    mol,
-                    add_self_loop=self.self_loop,
-                    node_featurizer=self.__recast(self.atom_featurizer),
-                    edge_featurizer=self.__recast(self.bond_featurizer),
-                    canonical_atom_order=self.canonical_atom_order,
-                    explicit_hydrogens=self.explicit_hydrogens,
-                    num_virtual_nodes=self.num_virtual_nodes,
-                )
-            except Exception as e:
-                if self.verbose:
-                    logger.error(e)
-                graph = None
-
-        elif requires.check("dgl") and not self.complete_graph:
-            # we need to build the graph ourselves.
-            graph = self._graph_featurizer(mol)
-            if self.atom_featurizer is not None:
-                graph.ndata.update(self.atom_featurizer(mol, dtype=self.dtype))
-
-            if self.bond_featurizer is not None:
-                graph.edata.update(self.bond_featurizer(mol, dtype=self.dtype))
-
-        else:
-            raise ValueError(
-                "Incorrect setup, please install missing packages (dgl, dgllife) for more features"
-            )
-        return graph
-
-    def __recast(self, featurizer: Callable):
-        """Recast the output of a featurizer to the transformer underlying type
-
-        Args:
-            featurizer: featurizer to patch
-        """
-        if featurizer is None:
-            return None
-        dtype = self.dtype or torch.float
-
-        def patch_feats(*args, **kwargs):
-            out_dict = featurizer(*args, **kwargs)
-            out_dict = {k: datatype.cast(val, dtype=dtype) for k, val in out_dict.items()}
-            return out_dict
-
-        return patch_feats
-
-
 class PYGGraphTransformer(AdjGraphTransformer):
     """
     Graph transformer for the PYG models
@@ -684,7 +471,7 @@ class PYGGraphTransformer(AdjGraphTransformer):
             or hasattr(self.bond_featurizer, "pairwise_atom_funcs")
         ):
             graph = super()._graph_featurizer(mol)
-            (rows, cols) = np.nonzero(graph)
+            rows, cols = np.nonzero(graph)
             return np.vstack((rows, cols))
 
         # we have a regular bond calculator here instead of all pairwise atoms

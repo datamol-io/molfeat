@@ -30,8 +30,6 @@ from loguru import logger
 from molfeat.calc.base import SerializableCalculator
 from molfeat.utils.datatype import to_numpy
 from molfeat.utils.datatype import to_fp
-from molfeat.utils.commons import fold_count_fp
-from molfeat.utils import commons
 from molfeat import viz
 
 from pmapper.pharmacophore import Pharmacophore as Pharm
@@ -115,10 +113,17 @@ class Pharmacophore2D(SerializableCalculator):
         # Generate the fingerprint
         fp = Generate.Gen2DFingerprint(mol, self.sig_factory, dMat=d_mat)
 
-        # Posprocessing
+        # Postprocessing
         if self.length and self._should_fold:
             # refold the fingerprint
-            fp = fold_count_fp(fp, dim=self.length, binary=not (self.useCounts or False))
+            if hasattr(fp, "GetNonzeroElements"):
+                is_empty = not fp.GetNonzeroElements()
+            else:
+                is_empty = fp.GetNumOnBits() == 0
+            if is_empty:
+                fp = np.zeros(self.length, dtype=int)
+            else:
+                fp = dm.fold_count_fp(fp, dim=self.length, binary=not (self.useCounts or False))
             if raw:
                 fp = to_fp(fp, bitvect=True)
 
@@ -386,7 +391,12 @@ class Pharmacophore3D(SerializableCalculator):
 
         # Align the conformers
         if align:
-            mols, _ = commons.align_conformers(mols, copy=False, conformer_id=conformer_id)
+            mols, _ = dm.conformers.align_conformers(
+                mols,
+                copy=False,
+                conformer_id=conformer_id,
+                backend="crippenO3A",
+            )
 
         all_features = pd.DataFrame()
 
@@ -437,7 +447,7 @@ class Pharmacophore3D(SerializableCalculator):
                 on_bits.add(random.randrange(self.length))
 
         if raw:
-            return np.array(on_bits)
+            return np.asarray(sorted(on_bits), dtype=int)
 
         fp = np.zeros(self.length, dtype=int)
         fp[list(on_bits)] = 1

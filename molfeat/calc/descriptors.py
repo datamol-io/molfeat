@@ -122,7 +122,7 @@ class RDKitDescriptors2D(SerializableCalculator):
         state["descrs"] = self.descrs
         state["_columns"] = self._columns
 
-        # EN: set `avg_ipc` and `standardize`` default value to False for compat until next release
+        # Supply defaults for states created before these fields were persisted.
         state["avg_ipc"] = getattr(self, "avg_ipc", False)
         state["do_not_standardize"] = getattr(self, "do_not_standardize", False)
         return state

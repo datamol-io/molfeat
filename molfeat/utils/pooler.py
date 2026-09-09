@@ -54,27 +54,33 @@ class Pooling(nn.Module):
 
         Args:
             x: input tensor to pull over
-            indices: Subset of indices to pool over. Defaults to None for all indices.
-            mask: binary mask to apply when pooling. Defaults to None, which is a matrix of 1.
-                If mask is provided it takes precedence over indices.
+            indices: Indices to exclude from pooling. Defaults to None.
+            mask: Boolean or binary mask where true values are included in pooling.
+                Defaults to a mask that includes every value. If provided, it
+                takes precedence over indices.
         """
         x = torch.as_tensor(x)
         if mask is None:
-            mask = torch.ones_like(x)
-        if indices is not None:
-            mask[:, indices] = 0
+            mask = torch.ones_like(x, dtype=torch.bool)
+            if indices is not None:
+                index = [slice(None)] * mask.ndim
+                index[self.dim] = indices
+                mask[tuple(index)] = False
+        else:
+            mask = torch.as_tensor(mask, dtype=torch.bool, device=x.device)
         neg_inf = torch.finfo(x.dtype).min
-        if mask.ndim == 2:
+        if x.ndim == 3 and mask.ndim == 2:
             mask = mask.unsqueeze(-1)  # B, S, 1
         if self.name == "clf":
             return x[:, 0, :]
         if self.name == "max":
-            tmp = x.masked_fill(mask, neg_inf)
+            tmp = x.masked_fill(~mask, neg_inf)
             return torch.max(tmp, dim=self.dim)[0]
         elif self.name in ["mean", "avg"]:
-            return torch.sum(x * mask, dim=self.dim) / mask.sum(self.dim)
+            numeric_mask = mask.to(dtype=x.dtype)
+            return torch.sum(x * numeric_mask, dim=self.dim) / numeric_mask.sum(self.dim)
         elif self.name == "sum":
-            return torch.sum(x * mask, dim=self.dim)
+            return torch.sum(x * mask.to(dtype=x.dtype), dim=self.dim)
         return x
 
 

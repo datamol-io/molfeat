@@ -17,12 +17,11 @@ def get_model_init(card):
     elif card.group in ["rdkit", "fp", "shape"]:
         import_statement = "from molfeat.trans.fp import FPVecTransformer"
         loader_statement = f"FPVecTransformer(kind='{card.name}', dtype=float)"
-    elif card.group == "dgllife":
-        import_statement = "from molfeat.trans.pretrained import PretrainedDGLTransformer"
-        loader_statement = f"PretrainedDGLTransformer(kind='{card.name}', dtype=float)"
-    elif card.group == "graphormer":
-        import_statement = "from molfeat.trans.pretrained import GraphormerTransformer"
-        loader_statement = f"GraphormerTransformer(kind='{card.name}', dtype=float)"
+    elif card.group in {"dgllife", "graphormer"}:
+        raise ValueError(
+            f"The legacy {card.group!r} model group is not supported by Molfeat 1.x. "
+            "Use a maintained PyTorch Geometric or foundation-model featurizer instead."
+        )
     elif card.group == "fcd":
         import_statement = "from molfeat.trans.pretrained import FCDTransformer"
         loader_statement = "FCDTransformer()"
@@ -67,6 +66,8 @@ class ModelInfo(BaseModel):
     tags: Optional[List[str]] = []
     authors: Optional[List[str]]
     reference: Optional[str] = None
+    license: Optional[str] = None
+    license_url: Optional[str] = None
     created_at: datetime = Field(default_factory=datetime.now)
     sha256sum: Optional[str] = None
     model_usage: Optional[str] = None

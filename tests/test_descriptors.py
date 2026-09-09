@@ -30,7 +30,7 @@ class TestDescPharm(ut.TestCase):
     ]
     EXTRA_LARGE_MOL = "CC(C)CC(NCCNC(=O)C(CCC(O)=O)NC(C)=O)C(=O)NC(Cc1ccc(O)cc1)C(=O)NC(CC(C)C)C(=O)NC(C(C)C)C(=O)NC(C)C(=O)NCC(=O)NC(CCC(O)=O)C(=O)NC(CCCNC(N)=N)C(=O)NCC(=O)NC(Cc1ccccc1)C(=O)NC(Cc1ccccc1)C(=O)NC(Cc1ccc(O)cc1)C(=O)NC(C(C)O)C(=O)N1CCCC1C(=O)NC(C)C(O)=O"
 
-    @pytest.mark.xfail(not requires.check("mordred"), reason="3rd party module mordred is missing")
+    @pytest.mark.skipif(not requires.check("mordred"), reason="3rd party module mordred is missing")
     def test_mordred(self):
         calc = MordredDescriptors()
         fps = calc(self.smiles[0])

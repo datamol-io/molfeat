@@ -44,8 +44,12 @@ class SmilesConverter:
         with dm.without_rdkit_log():
             try:
                 decoded = self.converter.decode(inp)
+                if isinstance(decoded, dm.Mol):
+                    decoded = dm.to_smiles(decoded)
                 return decoded.strip()
-            except Exception:  # (deepsmiles.DecodeError, ValueError, AttributeError, IndexError):
+            except ImportError:
+                raise
+            except Exception:
                 return None
 
     def encode(self, smiles: str):
@@ -60,5 +64,7 @@ class SmilesConverter:
             try:
                 encoded = self.converter.encode(smiles)
                 return encoded.strip()
+            except ImportError:
+                raise
             except Exception:
                 return None

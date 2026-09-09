@@ -1,7 +1,7 @@
 from .base import SerializableCalculator, _CALCULATORS
 from .cats import CATS
 from .descriptors import RDKitDescriptors2D, RDKitDescriptors3D, MordredDescriptors
-from .fingerprints import FPCalculator, FP_FUNCS
+from .fingerprints import FPCalculator, FP_FUNCS, normalize_fingerprint_name
 from .pharmacophore import Pharmacophore2D, Pharmacophore3D
 from .shape import ElectroShapeDescriptors, USRDescriptors
 from .skeys import ScaffoldKeyCalculator
@@ -25,8 +25,9 @@ def get_calculator(name: str, **params):
 
     CALC_MAP = {k.lower(): v for k, v in _CALCULATORS.items()}
     name = name.lower()
-    if name in FP_FUNCS.keys():
-        featurizer = FPCalculator(name, **params)
+    fingerprint_name = normalize_fingerprint_name(name)
+    if fingerprint_name in FP_FUNCS.keys():
+        featurizer = FPCalculator(fingerprint_name, **params)
     elif name == "desc3d":
         featurizer = RDKitDescriptors3D(**params)
     elif name == "desc2d":

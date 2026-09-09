@@ -19,8 +19,6 @@ from molfeat.calc._serializable_classes import (
 )
 from molfeat.calc.base import SerializableCalculator
 from molfeat.utils.datatype import to_numpy, to_fp
-from molfeat.utils.commons import fold_count_fp
-
 
 FP_GENERATORS = {
     "ecfp": rdFingerprintGenerator.GetMorganGenerator,
@@ -109,7 +107,7 @@ FP_DEF_PARAMS = {
     },
     "pattern": {
         "fpSize": 2048,
-        "atomCounts": [],
+        # "atomCounts": [],
         "setOnlyBits": None,
         "tautomerFingerprints": False,
     },
@@ -117,7 +115,7 @@ FP_DEF_PARAMS = {
         "fpSize": 2048,
         "minPath": 1,
         "maxPath": 7,
-        "atomCounts": [],
+        # "atomCounts": [],
         "setOnlyBits": None,
         "branchedPaths": True,
         "fromAtoms": 0,
@@ -202,6 +200,15 @@ FP_DEF_PARAMS = {
 }
 
 
+def normalize_fingerprint_name(method: str) -> str:
+    """Normalize common Morgan fingerprint aliases to their ECFP names."""
+    method = method.lower()
+    if any(alias in method for alias in ["morgan", "morgan_circular", "morgan-circular"]):
+        method = method.replace("_circular", "").replace("-circular", "")
+        method = method.replace("morgan", "ecfp")
+    return method
+
+
 class FPCalculator(SerializableCalculator):
     """Fingerprint bit calculator for a molecule"""
 
@@ -226,21 +233,27 @@ class FPCalculator(SerializableCalculator):
             method_params (dict): any parameters to the fingerprint algorithm.
                 See FPCalculator.default_parameters(method) for all the parameters required by a given method.
         """
-        self.method = method.lower()
+        self.method = normalize_fingerprint_name(method)
         self.counting = counting or "-count" in self.method
         if self.counting and "-count" not in self.method:
             self.method = self.method + "-count"
         self.input_length = length
         if self.method not in FP_FUNCS:
             raise ValueError(f"Method {self.method} is not a supported featurizer")
-        default_params = copy.deepcopy(FP_DEF_PARAMS[method])
+        default_params = copy.deepcopy(FP_DEF_PARAMS[self.method])
         unknown_params = set(method_params.keys()).difference(set(default_params.keys()))
         if unknown_params:
-            logger.error(f"Params: {unknown_params} are not valid for {method}")
+            logger.error(f"Params: {unknown_params} are not valid for {self.method}")
         self.params = default_params
         self.params.update(
             {k: method_params[k] for k in method_params if k in default_params.keys()}
         )
+        self.params = {
+            k: (
+                SERIALIZABLE_CLASSES[v]() if isinstance(v, str) and v in SERIALIZABLE_CLASSES else v
+            )
+            for k, v in self.params.items()
+        }
         self._length = self._set_length(length)
 
     @staticmethod
@@ -255,7 +268,7 @@ class FPCalculator(SerializableCalculator):
         Args:
             method: name of the fingerprint method
         """
-        return FP_DEF_PARAMS[method].copy()
+        return FP_DEF_PARAMS[normalize_fingerprint_name(method)].copy()
 
     @property
     def columns(self):
@@ -313,7 +326,11 @@ class FPCalculator(SerializableCalculator):
 
         fp_func = FP_FUNCS[self.method]
         if self.method in FP_GENERATORS:
-            fp_func = fp_func(**self.params)
+            params = self.params
+            atom_invariants = params.get("atomInvariantsGenerator")
+            if isinstance(atom_invariants, SerializableMorganFeatureAtomInvGen):
+                params = {**params, "atomInvariantsGenerator": atom_invariants._generator}
+            fp_func = fp_func(**params)
             if self.counting:
                 fp_val = fp_func.GetCountFingerprint(mol)
             else:
@@ -321,17 +338,16 @@ class FPCalculator(SerializableCalculator):
         else:
             fp_val = fp_func(mol, **self.params)
         if self.counting:
-            fp_val = fold_count_fp(fp_val, self._length)
+            fp_val = dm.fold_count_fp(fp_val, self._length)
         if not raw:
             fp_val = to_numpy(fp_val)
         if self.counting and raw:
-            # converint the counted values to SparseInt again
+            # Convert counted values back to an RDKit SparseIntVect.
             fp_val = to_fp(fp_val, bitvect=False)
         return fp_val
 
     def __getstate__(self):
-        # EN: note that the state is standardized with all the parameter
-        # because of the possibility of default changing after
+        # Persist every parameter so future default changes do not alter the state.
         state = {}
         state["length"] = self.input_length
         state["input_length"] = self.input_length

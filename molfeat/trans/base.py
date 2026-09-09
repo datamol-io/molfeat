@@ -809,7 +809,6 @@ class PrecomputedMolTransformer(MoleculeTransformer):
                 parquet_kwargs=self.cache.parquet_kwargs,
             )
         else:
-            # EN: we do not copy the cache
             state["cache"] = self.cache
         return state
 

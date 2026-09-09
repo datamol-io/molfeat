@@ -1,57 +1,100 @@
-name: test
+name: tests
 
 on:
   push:
-    branches: ["main"]
-    tags: ["*"]
+    branches: [main, dev]
   pull_request:
-    branches:
-      - "*"
-      - "!gh-pages"
+    branches: [main, dev]
   schedule:
     - cron: "0 4 * * MON"
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build-test:
+  core:
+    name: ${{ matrix.os }} / Python ${{ matrix.python-version }} / RDKit ${{ matrix.rdkit-version }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 35
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.9", "3.10"]
-        os: ["ubuntu-latest"] #, "macos-latest", "windows-latest"]
-        pytorch-version: ["1.13"]
-
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 30
-
-    defaults:
-      run:
-        shell: bash -l {0}
-
-    name: |
-      os=${{ matrix.os }}
-      - python=${{ matrix.python-version }}
-      - pytorch=${{ matrix.pytorch-version }}
+        include:
+          - os: ubuntu-latest
+            python-version: "3.11"
+            rdkit-version: "2024.9.*"
+          - os: ubuntu-latest
+            python-version: "3.12"
+            rdkit-version: "2025.3.*"
+          - os: ubuntu-latest
+            python-version: "3.13"
+            rdkit-version: "2025.9.*"
+          - os: ubuntu-latest
+            python-version: "3.14"
+            rdkit-version: "2026.3.*"
+          - os: macos-latest
+            python-version: "3.13"
+            rdkit-version: "2026.3.*"
+          - os: macos-15-intel
+            python-version: "3.12"
+            rdkit-version: "2025.9.*"
+          - os: windows-latest
+            python-version: "3.13"
+            rdkit-version: "2026.3.*"
 
     steps:
-      - name: Checkout the code
-        uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Setup mamba
-        uses: mamba-org/setup-micromamba@v2
+      - name: Set up uv and Python
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
         with:
-          environment-file: env.yml
-          environment-name: my_env
-          cache-environment: true
-          cache-downloads: true
-          create-args: >-
-            python=${{ matrix.python-version }}
-            pytorch=${{ matrix.pytorch-version }}
+          version: "0.12.8"
+          python-version: ${{ matrix.python-version }}
+          activate-environment: true
+          enable-cache: true
 
-      - name: Install library
-        run: python -m pip install --no-deps .
+      - name: Install dependencies
+        run: |
+          uv pip install "rdkit==${{ matrix.rdkit-version }}"
+          uv pip install --editable ".[test]"
 
-      - name: Run pytest
-        run: pytest
+      - name: Run core tests
+        run: python -m pytest -m "not integration"
 
-      - name: Run doc building
-        run: mkdocs build
+      - name: Upload coverage
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.14'
+        uses: codecov/codecov-action@a99c28d3f0da835de33ff2feb2e15691c7b9641f # v7
+        with:
+          files: cov.xml
+          fail_ci_if_error: false
+          flags: core
+
+  integrations:
+    name: All maintained extras and published models
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up uv and Python
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          version: "0.12.8"
+          python-version: "3.13"
+          activate-environment: true
+          enable-cache: true
+
+      - name: Install every maintained extra
+        run: |
+          uv pip install --editable ".[test,all]"
+
+      - name: Run the complete feature suite
+        run: python -m pytest --no-cov -n 0

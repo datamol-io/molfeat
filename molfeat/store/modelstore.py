@@ -3,6 +3,7 @@ import pathlib
 import tempfile
 from typing import Any, Callable, Dict, Optional, Union
 import io
+import hashlib
 
 import datamol as dm
 import filelock
@@ -10,33 +11,57 @@ import fsspec
 import joblib
 import platformdirs
 import yaml
-from dotenv import load_dotenv
+from fsspec.callbacks import TqdmCallback
 from loguru import logger
 
 from molfeat.store.modelcard import ModelInfo
 from molfeat.utils import commons
-
-load_dotenv()
 
 
 class ModelStoreError(Exception):
     pass
 
 
+def _download_directory(source, destination, chunk_size=None):
+    """Download directory contents without copying HTTP index pages as files."""
+    if not dm.fs.is_local_path(destination):
+        raise ValueError("Model downloads require a local destination.")
+    fs, root = fsspec.core.url_to_fs(str(source))
+    _, local_root = fsspec.core.url_to_fs(str(destination))
+    local_root = pathlib.Path(local_root).resolve()
+    prefix = root.rstrip("/") + "/"
+    sources, targets = [], []
+    for path, info in fs.find(root, detail=True).items():
+        if info["type"] != "file" or not path.startswith(prefix) or path == prefix:
+            continue
+        relative = pathlib.PurePosixPath(path[len(prefix) :])
+        target = local_root.joinpath(*relative.parts).resolve()
+        if not target.is_relative_to(local_root):
+            raise ValueError(f"Model artifact escapes its directory: {path}")
+        sources.append(path)
+        targets.append(str(target))
+    local_root.mkdir(parents=True, exist_ok=True)
+    if sources:
+        kwargs = {} if chunk_size is None else {"chunk_size": chunk_size}
+        with TqdmCallback(tqdm_kwargs={"leave": False}) as callback:
+            fs.get(sources, targets, callback=callback, **kwargs)
+
+
 class ModelStore:
-    """A class for artefact serializing from any url
+    """Register, list, download and load model artifacts from an fsspec URL.
 
-    This class not only allow pretrained model serializing and loading,
-    but also help in listing model availability and registering models.
+    A store contains one artifact per model name and does not provide artifact
+    versioning. The default public store is read-only.
 
-    For simplicity.
+    For simplicity:
+
         * There is no versioning.
-        * Only one model should match a given name
-        * Model deletion is not allowed (on the read-only default store)
-        * Only a single store is supported per model store instance
+        * Only one model matches a given name.
+        * Model deletion is unavailable on the default store.
+        * Each ``ModelStore`` instance addresses one store.
 
     !!! note "Building a New Model Store"
-        To create a new model store, you will mainly need a model store bucket path. The default model store bucket, located at `gs://molfeat-store-prod/artifacts/`, is **read-only**.
+        To create a new model store, you will mainly need a model store bucket path. The default model store bucket, located at `https://fs.molfeat.datamol.io/artifacts/`, is **read-only**.
 
         To build your own model store bucket, follow the instructions below:
 
@@ -48,11 +73,10 @@ class ModelStore:
 
     """
 
-    # EN: be careful not to recreate ada
-    # EN: should we just use modelstore ?
     MODEL_STORE_ROOT = "https://fs.molfeat.datamol.io/artifacts/"
     MODEL_PATH_NAME = "model.save"
     METADATA_PATH_NAME = "metadata.json"
+    EMPTY_SHA256 = hashlib.sha256(b"").hexdigest()
 
     def __init__(self, model_store_root: Optional[str] = None):
         self.model_store_root = (
@@ -61,11 +85,10 @@ class ModelStore:
             or os.getenv("MOLFEAT_MODEL_STORE_BUCKET")
             or self.MODEL_STORE_ROOT
         )
-        self._available_models = []
-        self._update_store()
+        self._available_models = None
 
     def _update_store(self):
-        """Initialize the store with all available models"""
+        """Refresh the list of models available in the store."""
         all_metadata = dm.fs.glob(dm.fs.join(self.model_store_root, "**", self.METADATA_PATH_NAME))
         self._available_models = []
         for mtd_file in all_metadata:
@@ -76,11 +99,13 @@ class ModelStore:
 
     @property
     def available_models(self):
-        """Return a list of all models that have been serialized in molfeat"""
+        """Return metadata for every model registered in the store."""
+        if self._available_models is None:
+            self._update_store()
         return self._available_models
 
     def __len__(self):
-        """Return the length of the model store"""
+        """Return the number of registered models."""
         return len(self.available_models)
 
     def register(
@@ -92,8 +117,7 @@ class ModelStore:
         save_fn_kwargs: Optional[dict] = None,
         force: bool = True,
     ):
-        """
-        Register a new model to the store
+        """Register a model in the store.
 
         !!! note `save_fn`
             You can pass additional kwargs for your `save_fn` through the `save_fn_kwargs` argument.
@@ -112,7 +136,10 @@ class ModelStore:
         """
         if not isinstance(modelcard, ModelInfo):
             modelcard = ModelInfo(**modelcard)
-        # we save the model first
+        if modelcard.type == "pretrained" and not modelcard.license:
+            raise ModelStoreError(
+                "Pretrained model cards must declare the checkpoint license before registration."
+            )
         if self.exists(card=modelcard):
             logger.warning(f"Model {modelcard.name} exists already ...")
             if not force:
@@ -141,7 +168,7 @@ class ModelStore:
             )
         else:
             model_path = save_fn(model, model_upload_path, **save_fn_kwargs)
-            # we reset to None if the save_fn has not returned anything
+            # A serializer may upload directly and return no local path.
             model_path = model_path or model_upload_path
         modelcard.sha256sum = commons.sha256sum(model_path)
         # then we save the metadata as json
@@ -197,7 +224,6 @@ class ModelStore:
 
         # avoid downloading if the file exists already
         if force or not dm.fs.exists(metadata_dest_path) or not dm.fs.exists(model_dest_path):
-            # metadata should exists if the model existsgit st
             with self._filelock(f"{model_name}.metadata.json.lock"):
                 dm.fs.copy_file(
                     metadata_remote_path,
@@ -210,17 +236,12 @@ class ModelStore:
             if dm.fs.exists(model_remote_path):
                 with self._filelock(f"{model_name}.lock"):
                     if dm.fs.is_dir(model_remote_path):
-                        # we copy the model dir
-                        dm.fs.copy_dir(
+                        _download_directory(
                             model_remote_path,
                             model_dest_path,
-                            progress=True,
-                            leave_progress=False,
                             chunk_size=chunk_size,
-                            force=force,
                         )
                     else:
-                        # we copy the model dir
                         dm.fs.copy_file(
                             model_remote_path,
                             model_dest_path,
@@ -231,7 +252,18 @@ class ModelStore:
                         )
 
         cache_sha256sum = commons.sha256sum(model_dest_path)
-        if modelcard.sha256sum is not None and cache_sha256sum != modelcard.sha256sum:
+        # A few legacy directory artifacts were registered with the checksum
+        # of an empty file. Keep those downloadable, but never silently accept
+        # another non-matching checksum.
+        legacy_empty_directory_checksum = modelcard.sha256sum == self.EMPTY_SHA256 and dm.fs.is_dir(
+            model_dest_path
+        )
+        if legacy_empty_directory_checksum and cache_sha256sum != modelcard.sha256sum:
+            logger.warning(
+                f"Model {model_name} has a legacy empty-directory checksum; "
+                "the downloaded directory cannot be verified against its metadata."
+            )
+        elif modelcard.sha256sum is not None and cache_sha256sum != modelcard.sha256sum:
             mapper = dm.fs.get_mapper(output_dir)
             mapper.fs.delete(output_dir, recursive=True)
             raise ModelStoreError(

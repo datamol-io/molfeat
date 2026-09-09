@@ -37,7 +37,6 @@ ENTRY_POINT_GROUP_FACTORYCLASS_MAPPING = {
     "molfeat.calc": factories.CalculatorFactory,
     "molfeat.trans": factories.TransformerFactory,
     "molfeat.trans.pretrained": factories.PretrainedTransformerFactory,
-    "molfeat.trans.struct": factories.DefaultFactory,
     "molfeat.trans.graph": factories.DefaultFactory,
     "molfeat.utils": factories.DefaultFactory,
 }

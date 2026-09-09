@@ -38,6 +38,15 @@ def test_pharm2d_binary_output():
     assert len(np.unique(fp)) == 2 or len(np.unique(fp)) == 1
 
 
+@pytest.mark.parametrize("use_counts", [False, True])
+def test_pharm2d_empty_fingerprint(use_counts):
+    featurizer = Pharmacophore2D(length=128, useCounts=use_counts)
+
+    fp = featurizer("[He]")
+
+    np.testing.assert_array_equal(fp, np.zeros(128, dtype=int))
+
+
 def test_pharmacophore_2d_invalid_mol():
     featurizer = Pharmacophore2D()
 
@@ -122,21 +131,22 @@ def test_pharmacophore_3d_invalid_mol():
         featurizer("invalid_mol")
 
 
-@pytest.mark.xfail
 def test_pharmacophore_3d():
     mol = dm.to_mol("Nc1cnn(-c2ccccc2)c(=O)c1Cl")
     mol = dm.conformers.generate(mol)
 
     factories = ["default", "cats", "pmapper", "gobbi"]
 
-    # NOTE(hadim): It will work as long as the conformer generation remains the same.
-    excepted_sum = [50, 102, 76, 153]
-
-    for factory, s in zip(factories, excepted_sum):
+    for factory in factories:
         featurizer = Pharmacophore3D(factory=factory, length=2048)
         fp = featurizer(mol)
+        raw_fp = featurizer(mol, raw=True)
 
-        assert s == fp.sum()
+        assert fp.shape == (2048,)
+        assert 0 < fp.sum() < len(fp)
+        assert fp.sum() == len(raw_fp)
+        np.testing.assert_array_equal(fp, featurizer(mol))
+        np.testing.assert_array_equal(np.flatnonzero(fp), np.sort(raw_fp))
 
 
 def test_pharmacophore_3d_consensus():
