@@ -4,7 +4,7 @@ This file records user-visible changes. See the [migration guide](docs/migration
 for upgrade instructions and [GitHub releases](https://github.com/datamol-io/molfeat/releases)
 for earlier release notes.
 
-## Next major release (unreleased)
+## 1.0.0 - 2026-09-09
 
 ### Highlights
 

@@ -53,8 +53,7 @@ an unreleased dependency. SELFIES support is explicit, and InChI decoding now
 returns SMILES instead of silently failing.
 
 See the [complete changelog](CHANGELOG.md) and the
-[1.x migration guide](docs/migration.md). These notes describe the upcoming
-major release; PyPI and conda-forge still provide the published stable versions.
+[1.x migration guide](docs/migration.md) for the complete 1.0 transition.
 
 Release maintainers: see the [manual release guide](docs/releasing.md).
 
