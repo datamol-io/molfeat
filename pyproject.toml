@@ -40,10 +40,10 @@ dependencies = [
     "filelock>=3.13",
     "fsspec[http]>=2024.3",
     "pandas>=2.2",
-    "numpy>=1.26,<2; platform_system == 'Darwin' and platform_machine == 'x86_64'",
+    "numpy>=1.26,<3; platform_system == 'Darwin' and platform_machine == 'x86_64'",
     "numpy>=1.26; platform_system != 'Darwin' or platform_machine != 'x86_64'",
     "scipy>=1.11",
-    "torch>=2.2.2,<2.3; platform_system == 'Darwin' and platform_machine == 'x86_64'",
+    "torch>=2.2.2,<2.16; platform_system == 'Darwin' and platform_machine == 'x86_64'",
     "torch>=2.5; platform_system != 'Darwin' or platform_machine != 'x86_64'",
     "datamol>=0.13.0",
     "pyyaml>=6",
@@ -57,7 +57,7 @@ dependencies = [
 
 [project.optional-dependencies]
 transformer = [
-    "transformers>=4.57,<5; platform_system == 'Darwin' and platform_machine == 'x86_64'",
+    "transformers>=4.57,<6; platform_system == 'Darwin' and platform_machine == 'x86_64'",
     "transformers>=4.57,<6; platform_system != 'Darwin' or platform_machine != 'x86_64'",
     "huggingface-hub>=0.34",
     "safetensors>=0.6",
@@ -80,7 +80,7 @@ mordred = ["mordredcommunity>=2.0.7"]
 pyg = ["torch_geometric>=2.6"]
 
 all = [
-    "transformers>=4.57,<5; platform_system == 'Darwin' and platform_machine == 'x86_64'",
+    "transformers>=4.57,<6; platform_system == 'Darwin' and platform_machine == 'x86_64'",
     "transformers>=4.57,<6; platform_system != 'Darwin' or platform_machine != 'x86_64'",
     "huggingface-hub>=0.34",
     "safetensors>=0.6",
